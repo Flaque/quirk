@@ -1,8 +1,21 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  AsyncStorage,
+  Alert
+} from "react-native";
+import safeJsonStringify from "safe-json-stringify";
 
-const IntensityButton = ({ intensity }) => (
-  <TouchableOpacity style={styles.circleButton}>
+const KEY = "@Quirk:items";
+
+const IntensityButton = ({ intensity, onPress }) => (
+  <TouchableOpacity
+    style={styles.circleButton}
+    onPress={() => onPress(intensity)}
+  >
     <Text style={styles.label}>{intensity}</Text>
   </TouchableOpacity>
 );
@@ -20,39 +33,93 @@ const Row = ({ children }) => (
   </View>
 );
 
+const Keypad = ({ onPress, stamps = [] }) => (
+  <View style={styles.buttonContainer}>
+    <Row>
+      <IntensityButton intensity={1} onPress={onPress} />
+      <IntensityButton intensity={2} onPress={onPress} />
+      <IntensityButton intensity={3} onPress={onPress} />
+    </Row>
+
+    <Row>
+      <IntensityButton intensity={4} onPress={onPress} />
+      <IntensityButton intensity={5} onPress={onPress} />
+      <IntensityButton intensity={6} onPress={onPress} />
+    </Row>
+
+    <Row>
+      <IntensityButton intensity={7} onPress={onPress} />
+      <IntensityButton intensity={8} onPress={onPress} />
+      <IntensityButton intensity={9} onPress={onPress} />
+    </Row>
+
+    <Row>
+      <IntensityButton intensity={0} onPress={onPress} />
+      <IntensityButton intensity={10} onPress={onPress} />
+    </Row>
+  </View>
+);
+
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      stamps: []
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>quirk.</Text>
 
-        <View style={styles.buttonContainer}>
-          <Row>
-            <IntensityButton intensity={1} />
-            <IntensityButton intensity={2} />
-            <IntensityButton intensity={3} />
-          </Row>
-
-          <Row>
-            <IntensityButton intensity={4} />
-            <IntensityButton intensity={5} />
-            <IntensityButton intensity={6} />
-          </Row>
-
-          <Row>
-            <IntensityButton intensity={7} />
-            <IntensityButton intensity={8} />
-            <IntensityButton intensity={9} />
-          </Row>
-
-          <Row>
-            <IntensityButton intensity={0} />
-            <IntensityButton intensity={10} />
-          </Row>
-        </View>
+        <Keypad onPress={this.onPress} stamps={this.state.stamps} />
       </View>
     );
   }
+
+  componentDidMount = () => {
+    this._syncStampsToState();
+  };
+
+  onPress = async intensity => {
+    await this._storeStamp(intensity);
+    await this._syncStampsToState();
+  };
+
+  _syncStampsToState = async () => {
+    const { stamps } = await this._retrieveStamps();
+    this.setState({ stamps });
+  };
+
+  _retrieveStamps = async () => {
+    try {
+      const json = await AsyncStorage.getItem(KEY);
+      return JSON.parse(json);
+    } catch (error) {
+      Alert.alert(
+        "Aw Shucks",
+        `Something went wrong getting your info. I'm really sorry about that! Would you mind sending me an email with some info about your device and what you were doing before this? Email: evanjamesconrad@gmail.com`
+      );
+    }
+  };
+
+  _storeStamp = async value => {
+    let { stamps } = await this._retrieveStamps();
+    stamps = stamps.concat({ value, time: Date.now() });
+
+    try {
+      const jsonString = safeJsonStringify({ stamps });
+      await AsyncStorage.mergeItem(KEY, jsonString);
+    } catch (error) {
+      Alert.alert(
+        "Aw Shucks",
+        `Something went wrong saving your info. I'm really sorry about that! Would you mind sending me an email with some info about your device and what you were doing before this? Email: evanjamesconrad@gmail.com`
+      );
+      console.error(error);
+    }
+  };
 }
 
 const styles = StyleSheet.create({
