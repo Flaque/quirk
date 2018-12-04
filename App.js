@@ -8,6 +8,7 @@ import {
   Alert
 } from "react-native";
 import safeJsonStringify from "safe-json-stringify";
+import { Svg, Circle, Line } from "react-native-svg";
 
 const KEY = "@Quirk:items";
 
@@ -60,6 +61,32 @@ const Keypad = ({ onPress, stamps = [] }) => (
   </View>
 );
 
+const ChartWithCircles = ({ stamps }) => {
+  const numCircles = 20;
+  const width = 400;
+  const height = 100;
+
+  const circleDistance = width / numCircles;
+  const firstFewStamps = stamps.slice(Math.max(stamps.length - numCircles, 1));
+
+  const cirlces = firstFewStamps.map(({ value }, index) => (
+    <Circle
+      cx={index * circleDistance}
+      cy={50}
+      r={value * 5}
+      fill={"pink"}
+      fillOpacity={0.5}
+      key={`circle-${index}`}
+    />
+  ));
+
+  return (
+    <Svg height={height} width={width}>
+      {cirlces}
+    </Svg>
+  );
+};
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -75,6 +102,7 @@ export default class App extends React.Component {
         <Text style={styles.header}>quirk.</Text>
 
         <Keypad onPress={this.onPress} stamps={this.state.stamps} />
+        {<ChartWithCircles stamps={this.state.stamps} />}
       </View>
     );
   }
