@@ -1,129 +1,24 @@
 import React from "react";
+import { StyleSheet, View, Button, AsyncStorage } from "react-native";
 import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  ScrollView
-} from "react-native";
+  Row,
+  GrayContainer,
+  FormContainer,
+  Header,
+  SubHeader,
+  RoundedInput,
+  RoundedSelector
+} from "./ui";
+
+const uuidv4 = require("uuid/v4");
 
 const KEY = "@Quirk:items";
 
-const Row = ({ children, ...rest }) => (
-  <View
-    style={{
-      flex: 1,
-      flexDirection: "row",
-      ...rest
-    }}
-  >
-    {children}
-  </View>
-);
+function getKey(info) {
+  return `@Quirk:thoughts:${info}`;
+}
 
-const GrayContainer = ({ children, ...rest }) => (
-  <View
-    style={{
-      flex: 1,
-      backgroundColor: "#F9F9F9",
-      padding: 25,
-      borderRadius: 18,
-      ...rest
-    }}
-  >
-    {children}
-  </View>
-);
-
-const FormContainer = ({ children }) => (
-  <View
-    style={{
-      marginBottom: 24
-    }}
-  >
-    {children}
-  </View>
-);
-
-const Header = ({ children }) => (
-  <Text
-    style={{
-      fontWeight: "900",
-      fontSize: 48,
-      color: "#353B48",
-      marginBottom: 12
-    }}
-  >
-    {children}
-  </Text>
-);
-
-const SubHeader = ({ children }) => (
-  <Text
-    style={{
-      fontWeight: "700",
-      fontSize: 24,
-      color: "#353B48",
-      marginBottom: 12
-    }}
-  >
-    {children}
-  </Text>
-);
-
-const RoundedInput = ({ value, onChangeText, placeholder, style, ...rest }) => (
-  <TextInput
-    value={value}
-    placeholder={placeholder}
-    placeholderTextColor={"#D8D8D8"}
-    onChangeText={onChangeText}
-    style={{
-      height: 48,
-      backgroundColor: "white",
-      paddingLeft: 12,
-      borderRadius: 12,
-      ...style
-    }}
-    {...rest}
-  />
-);
-
-const SelectorTextItem = ({ text, selected = false, onPress }) => (
-  <TouchableOpacity onPress={onPress}>
-    <Text
-      style={{
-        fontWeight: "400",
-        fontSize: 14,
-        color: selected ? "#353B48" : "#D8D8D8",
-        paddingBottom: 12
-      }}
-    >
-      {text}
-    </Text>
-  </TouchableOpacity>
-);
-
-const RoundedSelector = ({ options, onPress, style }) => (
-  <ScrollView
-    style={{
-      backgroundColor: "white",
-      padding: 12,
-      borderRadius: 12,
-      ...style
-    }}
-  >
-    {options.map(({ label, selected }) => (
-      <SelectorTextItem
-        key={label}
-        text={label}
-        selected={selected}
-        onPress={() => onPress(label)}
-      />
-    ))}
-  </ScrollView>
-);
-
+// TODO add slugs for these so we can change them in the future
 const distortions = [
   "All or Nothing Thinking",
   "Overgeneralization",
@@ -141,19 +36,25 @@ const distortions = [
   "Other-Blaming"
 ];
 
+const defaultState = {
+  automaticThought: "",
+  cognitiveDistortions: distortions.map(label => {
+    return { label, selected: false };
+  }),
+  challenge: "",
+  alternativeThought: ""
+};
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      automaticThought: "",
-      cognitiveDistortions: distortions.map(label => {
-        return { label, selected: false };
-      }),
-      challenge: "",
-      alternativeThought: ""
-    };
+    this.state = defaultState;
   }
+
+  componentDidMount = () => {
+    this._getExercises().then(console.log);
+  };
 
   // Toggles Cognitive Distortion when selected
   onSelectCognitiveDistortion = text => {
@@ -171,6 +72,58 @@ export default class App extends React.Component {
 
   onTextChange = (key, text) => {
     this.setState({ [key]: text });
+  };
+
+  onSave = () => {
+    const {
+      automaticThought,
+      cognitiveDistortions,
+      challenge,
+      alternativeThought
+    } = this.state;
+
+    this._saveExercise(
+      automaticThought,
+      cognitiveDistortions,
+      challenge,
+      alternativeThought
+    ).then(() => {
+      this.setState(defaultState);
+    });
+  };
+
+  _saveExercise = async (
+    automaticThought,
+    cognitiveDistortions,
+    challenge,
+    alternativeThought
+  ) => {
+    const thought = {
+      automaticThought,
+      cognitiveDistortions,
+      challenge,
+      alternativeThought,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+      uuid: getKey(uuidv4())
+    };
+
+    console.log(thought);
+
+    try {
+      await AsyncStorage.setItem(thought.uuid, JSON.stringify(thought));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  _getExercises = async () => {
+    try {
+      const keys = await AsyncStorage.getAllKeys();
+      return AsyncStorage.multiGet(keys);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
@@ -219,6 +172,10 @@ export default class App extends React.Component {
                 this.onTextChange("alternativeThought", text)
               }
             />
+          </FormContainer>
+
+          <FormContainer>
+            <Button title={"Save"} onPress={this.onSave} />
           </FormContainer>
         </GrayContainer>
       </View>
