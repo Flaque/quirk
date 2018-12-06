@@ -89,8 +89,8 @@ const RoundedInput = ({ value, onChangeText, placeholder, style, ...rest }) => (
   />
 );
 
-const SelectorTextItem = ({ text, selected = false }) => (
-  <TouchableOpacity>
+const SelectorTextItem = ({ text, selected = false, onPress }) => (
+  <TouchableOpacity onPress={onPress}>
     <Text
       style={{
         fontWeight: "400",
@@ -104,7 +104,7 @@ const SelectorTextItem = ({ text, selected = false }) => (
   </TouchableOpacity>
 );
 
-const RoundedSelector = ({ value, options, onChange, style }) => (
+const RoundedSelector = ({ options, onPress, style }) => (
   <ScrollView
     style={{
       backgroundColor: "white",
@@ -114,7 +114,12 @@ const RoundedSelector = ({ value, options, onChange, style }) => (
     }}
   >
     {options.map(({ label, selected }) => (
-      <SelectorTextItem key={label} text={label} selected={selected} />
+      <SelectorTextItem
+        key={label}
+        text={label}
+        selected={selected}
+        onPress={() => onPress(label)}
+      />
     ))}
   </ScrollView>
 );
@@ -150,6 +155,24 @@ export default class App extends React.Component {
     };
   }
 
+  // Toggles Cognitive Distortion when selected
+  onSelectCognitiveDistortion = text => {
+    this.setState(prevState => {
+      const { cognitiveDistortions } = prevState;
+      const index = cognitiveDistortions.findIndex(
+        ({ label }) => label == text
+      );
+
+      cognitiveDistortions[index].selected = !cognitiveDistortions[index]
+        .selected;
+      return { cognitiveDistortions, ...prevState };
+    });
+  };
+
+  onTextChange = (key, text) => {
+    this.setState({ [key]: text });
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -163,6 +186,7 @@ export default class App extends React.Component {
             <RoundedInput
               placeholder={"What's going on?"}
               value={this.state.automaticThought}
+              onChangeText={text => this.onTextChange("automaticThought", text)}
             />
           </FormContainer>
 
@@ -173,6 +197,7 @@ export default class App extends React.Component {
                 height: 200
               }}
               options={this.state.cognitiveDistortions}
+              onPress={this.onSelectCognitiveDistortion}
             />
           </FormContainer>
 
@@ -180,7 +205,8 @@ export default class App extends React.Component {
             <SubHeader>Challenge</SubHeader>
             <RoundedInput
               placeholder={"Debate that thought!"}
-              value={this.state.automaticThought}
+              value={this.state.challenge}
+              onChangeText={text => this.onTextChange("challenge", text)}
             />
           </FormContainer>
 
@@ -188,7 +214,10 @@ export default class App extends React.Component {
             <SubHeader>Alternative Thought</SubHeader>
             <RoundedInput
               placeholder={"What should we think instead?"}
-              value={this.state.automaticThought}
+              value={this.state.alternativeThought}
+              onChangeText={text =>
+                this.onTextChange("alternativeThought", text)
+              }
             />
           </FormContainer>
         </GrayContainer>
