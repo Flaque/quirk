@@ -1,154 +1,58 @@
 import React from "react";
-import { StyleSheet, View, Button, TextInput } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import {
-  GrayContainer,
-  FormContainer,
-  SubHeader,
-  RoundedInput,
-  RoundedSelector
-} from "./ui";
-import { saveExercise, getExercise } from "./store";
-import distortions from "./distortions";
+import { StyleSheet, View, Text } from "react-native";
+import { getExercise } from "./store";
+import Swiper from "react-native-swiper";
+import CBTForm from "./CBTForm";
+import { GrayContainer, SubHeader, FormContainer } from "./ui";
 
-const defaultState = {
-  automaticThought: "",
-  cognitiveDistortions: distortions.map(label => {
-    return { label, selected: false };
-  }),
-  challenge: "",
-  alternativeThought: ""
-};
+const CBTList = ({ thought }) => (
+  <View style={styles.container}>
+    <GrayContainer>
+      <FormContainer>
+        <SubHeader> Automatic Thought</SubHeader>
+        <Text>{thought.automaticThought}</Text>
+      </FormContainer>
 
-const textInputStyle = {
-  height: 48,
-  backgroundColor: "white",
-  paddingLeft: 12,
-  borderRadius: 12
-};
-const textInputPlaceholderColor = "#D8D8D8";
+      <FormContainer>
+        <SubHeader> Challenge </SubHeader>
+        <Text>{thought.challenge}</Text>
+      </FormContainer>
+
+      <FormContainer>
+        <SubHeader> Alternative Thought</SubHeader>
+        <Text>{thought.alternativeThought}</Text>
+      </FormContainer>
+    </GrayContainer>
+  </View>
+);
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = defaultState;
-    this.challenge = React.createRef();
-    this.alternative = React.createRef();
+    this.state = {
+      thoughts: []
+    };
   }
 
   componentDidMount = () => {
-    getExercise();
-  };
-
-  // Toggles Cognitive Distortion when selected
-  onSelectCognitiveDistortion = text => {
-    this.setState(prevState => {
-      const { cognitiveDistortions } = prevState;
-      const index = cognitiveDistortions.findIndex(
-        ({ label }) => label == text
-      );
-
-      cognitiveDistortions[index].selected = !cognitiveDistortions[index]
-        .selected;
-      return { cognitiveDistortions, ...prevState };
-    });
-  };
-
-  onTextChange = (key, text) => {
-    this.setState({ [key]: text });
-  };
-
-  onSave = () => {
-    const {
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought
-    } = this.state;
-
-    saveExercise(
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought
-    ).then(() => {
-      this.setState(defaultState);
+    getExercise().then(data => {
+      const thoughts = data.map(([key, value]) => JSON.parse(value));
+      this.setState({ thoughts });
     });
   };
 
   render() {
     return (
-      <View style={styles.container}>
-        <KeyboardAwareScrollView scrollEnabled={false}>
-          <GrayContainer flexGrow={6}>
-            <FormContainer>
-              <SubHeader>Automatic Thought</SubHeader>
-              <TextInput
-                style={textInputStyle}
-                placeholderTextColor={textInputPlaceholderColor}
-                placeholder={"What's going on?"}
-                value={this.state.automaticThought}
-                onChangeText={text =>
-                  this.onTextChange("automaticThought", text)
-                }
-                returnKeyType="next"
-                blurOnSubmit={false}
-                onSubmitEditing={() => {
-                  this.challenge.current.focus();
-                }}
-              />
-            </FormContainer>
-
-            <FormContainer>
-              <SubHeader>Cognitive Distortion</SubHeader>
-              <RoundedSelector
-                style={{
-                  height: 150
-                }}
-                options={this.state.cognitiveDistortions}
-                onPress={this.onSelectCognitiveDistortion}
-              />
-            </FormContainer>
-
-            <FormContainer>
-              <SubHeader>Challenge</SubHeader>
-              <TextInput
-                style={textInputStyle}
-                placeholderTextColor={textInputPlaceholderColor}
-                placeholder={"Debate that thought!"}
-                value={this.state.challenge}
-                onChangeText={text => this.onTextChange("challenge", text)}
-                onSubmitEditing={() => {
-                  this.alternative.current.focus();
-                }}
-                returnKeyType="next"
-                blurOnSubmit={false}
-                ref={this.challenge}
-              />
-            </FormContainer>
-
-            <FormContainer>
-              <SubHeader>Alternative Thought</SubHeader>
-              <TextInput
-                style={textInputStyle}
-                placeholderTextColor={textInputPlaceholderColor}
-                placeholder={"What should we think instead?"}
-                value={this.state.alternativeThought}
-                onChangeText={text =>
-                  this.onTextChange("alternativeThought", text)
-                }
-                returnKeyType="done"
-                ref={this.alternative}
-              />
-            </FormContainer>
-
-            <FormContainer>
-              <Button title={"Save"} onPress={this.onSave} />
-            </FormContainer>
-          </GrayContainer>
-        </KeyboardAwareScrollView>
-      </View>
+      <Swiper>
+        <View style={styles.container}>
+          <CBTForm />
+        </View>
+        {this.state.thoughts.length > 0 && (
+          <View style={styles.container}>
+            <CBTList thought={this.state.thoughts[0]} />
+          </View>
+        )}
+      </Swiper>
     );
   }
 }

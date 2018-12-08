@@ -70,35 +70,6 @@ export const SubHeader = ({ children }) => (
   </Text>
 );
 
-// RoundedInput is a class so we can use refs and manipulate it's focus
-export class RoundedInput extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { value, onChangeText, placeholder, style, ...rest } = this.props;
-
-    return (
-      <TextInput
-        value={value}
-        placeholder={placeholder}
-        placeholderTextColor={"#D8D8D8"}
-        onChangeText={onChangeText}
-        ref="textInput"
-        style={{
-          height: 48,
-          backgroundColor: "white",
-          paddingLeft: 12,
-          borderRadius: 12,
-          ...style
-        }}
-        {...rest}
-      />
-    );
-  }
-}
-
 export const SelectorTextItem = ({ text, selected = false, onPress }) => (
   <TouchableOpacity onPress={onPress}>
     <Text
