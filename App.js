@@ -92,6 +92,8 @@ export default class App extends React.Component {
                 onChangeText={text =>
                   this.onTextChange("automaticThought", text)
                 }
+                returnKeyType="next"
+                blurOnSubmit={false}
                 onSubmitEditing={() => {
                   this.challenge.current.focus();
                 }}
@@ -120,6 +122,8 @@ export default class App extends React.Component {
                 onSubmitEditing={() => {
                   this.alternative.current.focus();
                 }}
+                returnKeyType="next"
+                blurOnSubmit={false}
                 ref={this.challenge}
               />
             </FormContainer>
@@ -134,6 +138,7 @@ export default class App extends React.Component {
                 onChangeText={text =>
                   this.onTextChange("alternativeThought", text)
                 }
+                returnKeyType="done"
                 ref={this.alternative}
               />
             </FormContainer>
