@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, View, Button, AsyncStorage } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {
   Row,
   GrayContainer,
@@ -9,14 +10,7 @@ import {
   RoundedInput,
   RoundedSelector
 } from "./ui";
-
-const uuidv4 = require("uuid/v4");
-
-const KEY = "@Quirk:items";
-
-function getKey(info) {
-  return `@Quirk:thoughts:${info}`;
-}
+import { saveExercise, getExercise } from "./store";
 
 // TODO add slugs for these so we can change them in the future
 const distortions = [
@@ -53,7 +47,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount = () => {
-    this._getExercises().then(console.log);
+    getExercise().then(console.log);
   };
 
   // Toggles Cognitive Distortion when selected
@@ -82,7 +76,7 @@ export default class App extends React.Component {
       alternativeThought
     } = this.state;
 
-    this._saveExercise(
+    saveExercise(
       automaticThought,
       cognitiveDistortions,
       challenge,
@@ -92,92 +86,58 @@ export default class App extends React.Component {
     });
   };
 
-  _saveExercise = async (
-    automaticThought,
-    cognitiveDistortions,
-    challenge,
-    alternativeThought
-  ) => {
-    const thought = {
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-      uuid: getKey(uuidv4())
-    };
-
-    console.log(thought);
-
-    try {
-      await AsyncStorage.setItem(thought.uuid, JSON.stringify(thought));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  _getExercises = async () => {
-    try {
-      const keys = await AsyncStorage.getAllKeys();
-      return AsyncStorage.multiGet(keys);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   render() {
     return (
       <View style={styles.container}>
-        <Row flexGrow={1}>
-          <Header>quirk.</Header>
-        </Row>
+        <KeyboardAwareScrollView scrollEnabled={false}>
+          <GrayContainer flexGrow={6}>
+            <FormContainer>
+              <SubHeader>Automatic Thought</SubHeader>
+              <RoundedInput
+                placeholder={"What's going on?"}
+                value={this.state.automaticThought}
+                onChangeText={text =>
+                  this.onTextChange("automaticThought", text)
+                }
+              />
+            </FormContainer>
 
-        <GrayContainer flexGrow={6}>
-          <FormContainer>
-            <SubHeader>Automatic Thought</SubHeader>
-            <RoundedInput
-              placeholder={"What's going on?"}
-              value={this.state.automaticThought}
-              onChangeText={text => this.onTextChange("automaticThought", text)}
-            />
-          </FormContainer>
+            <FormContainer>
+              <SubHeader>Cognitive Distortion</SubHeader>
+              <RoundedSelector
+                style={{
+                  height: 150
+                }}
+                options={this.state.cognitiveDistortions}
+                onPress={this.onSelectCognitiveDistortion}
+              />
+            </FormContainer>
 
-          <FormContainer>
-            <SubHeader>Cognitive Distortion</SubHeader>
-            <RoundedSelector
-              style={{
-                height: 200
-              }}
-              options={this.state.cognitiveDistortions}
-              onPress={this.onSelectCognitiveDistortion}
-            />
-          </FormContainer>
+            <FormContainer>
+              <SubHeader>Challenge</SubHeader>
+              <RoundedInput
+                placeholder={"Debate that thought!"}
+                value={this.state.challenge}
+                onChangeText={text => this.onTextChange("challenge", text)}
+              />
+            </FormContainer>
 
-          <FormContainer>
-            <SubHeader>Challenge</SubHeader>
-            <RoundedInput
-              placeholder={"Debate that thought!"}
-              value={this.state.challenge}
-              onChangeText={text => this.onTextChange("challenge", text)}
-            />
-          </FormContainer>
+            <FormContainer>
+              <SubHeader>Alternative Thought</SubHeader>
+              <RoundedInput
+                placeholder={"What should we think instead?"}
+                value={this.state.alternativeThought}
+                onChangeText={text =>
+                  this.onTextChange("alternativeThought", text)
+                }
+              />
+            </FormContainer>
 
-          <FormContainer>
-            <SubHeader>Alternative Thought</SubHeader>
-            <RoundedInput
-              placeholder={"What should we think instead?"}
-              value={this.state.alternativeThought}
-              onChangeText={text =>
-                this.onTextChange("alternativeThought", text)
-              }
-            />
-          </FormContainer>
-
-          <FormContainer>
-            <Button title={"Save"} onPress={this.onSave} />
-          </FormContainer>
-        </GrayContainer>
+            <FormContainer>
+              <Button title={"Save"} onPress={this.onSave} />
+            </FormContainer>
+          </GrayContainer>
+        </KeyboardAwareScrollView>
       </View>
     );
   }
@@ -188,7 +148,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     flexDirection: "column",
-    paddingTop: 50,
+    paddingTop: 75,
     paddingLeft: 25,
     paddingRight: 25,
     paddingBottom: 50

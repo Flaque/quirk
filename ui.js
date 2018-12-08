@@ -4,7 +4,8 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 
 export const Row = ({ children, ...rest }) => (
