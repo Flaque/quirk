@@ -3713,10 +3713,6 @@ react-devtools-core@3.3.4:
     shell-quote "^1.6.1"
     ws "^3.3.1"
 
-react-native-autofocus@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/react-native-autofocus/-/react-native-autofocus-0.0.7.tgz#d5c8ef10a35a2bfcdc28cb42df6a5c3917eb2fbd"
-
 react-native-branch@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"

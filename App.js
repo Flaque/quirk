@@ -1,34 +1,15 @@
 import React from "react";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View, Button, TextInput } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {
-  Row,
   GrayContainer,
   FormContainer,
-  Header,
   SubHeader,
   RoundedInput,
   RoundedSelector
 } from "./ui";
 import { saveExercise, getExercise } from "./store";
-
-// TODO add slugs for these so we can change them in the future
-const distortions = [
-  "All or Nothing Thinking",
-  "Overgeneralization",
-  "Filtering out the Positive",
-  "Jumping to Conclusions",
-  "Mind Reading",
-  "Fortune Telling",
-  "Magnification of the Negative",
-  "Minimization of the Positive",
-  "Catastrophizing",
-  "Emotional Reasoning",
-  "Should Statements",
-  "Labeling",
-  "Self-Blaming",
-  "Other-Blaming"
-];
+import distortions from "./distortions";
 
 const defaultState = {
   automaticThought: "",
@@ -39,15 +20,25 @@ const defaultState = {
   alternativeThought: ""
 };
 
+const textInputStyle = {
+  height: 48,
+  backgroundColor: "white",
+  paddingLeft: 12,
+  borderRadius: 12
+};
+const textInputPlaceholderColor = "#D8D8D8";
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = defaultState;
+    this.challenge = React.createRef();
+    this.alternative = React.createRef();
   }
 
   componentDidMount = () => {
-    getExercise().then(console.log);
+    getExercise();
   };
 
   // Toggles Cognitive Distortion when selected
@@ -93,12 +84,17 @@ export default class App extends React.Component {
           <GrayContainer flexGrow={6}>
             <FormContainer>
               <SubHeader>Automatic Thought</SubHeader>
-              <RoundedInput
+              <TextInput
+                style={textInputStyle}
+                placeholderTextColor={textInputPlaceholderColor}
                 placeholder={"What's going on?"}
                 value={this.state.automaticThought}
                 onChangeText={text =>
                   this.onTextChange("automaticThought", text)
                 }
+                onSubmitEditing={() => {
+                  this.challenge.current.focus();
+                }}
               />
             </FormContainer>
 
@@ -115,21 +111,30 @@ export default class App extends React.Component {
 
             <FormContainer>
               <SubHeader>Challenge</SubHeader>
-              <RoundedInput
+              <TextInput
+                style={textInputStyle}
+                placeholderTextColor={textInputPlaceholderColor}
                 placeholder={"Debate that thought!"}
                 value={this.state.challenge}
                 onChangeText={text => this.onTextChange("challenge", text)}
+                onSubmitEditing={() => {
+                  this.alternative.current.focus();
+                }}
+                ref={this.challenge}
               />
             </FormContainer>
 
             <FormContainer>
               <SubHeader>Alternative Thought</SubHeader>
-              <RoundedInput
+              <TextInput
+                style={textInputStyle}
+                placeholderTextColor={textInputPlaceholderColor}
                 placeholder={"What should we think instead?"}
                 value={this.state.alternativeThought}
                 onChangeText={text =>
                   this.onTextChange("alternativeThought", text)
                 }
+                ref={this.alternative}
               />
             </FormContainer>
 
