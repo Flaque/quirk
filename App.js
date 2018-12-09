@@ -61,7 +61,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.thoughts.length);
     return (
       <Swiper>
         <View style={styles.container}>
