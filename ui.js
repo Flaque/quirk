@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  KeyboardAvoidingView
-} from "react-native";
+import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 
 export const Row = ({ children, ...rest }) => (
   <View

@@ -5,25 +5,44 @@ import Swiper from "react-native-swiper";
 import CBTForm from "./CBTForm";
 import { GrayContainer, SubHeader, FormContainer } from "./ui";
 
+const CognitiveDistortionItem = ({ label }) => (
+  <Text>
+    {"• "}
+    {label}
+    {"\n"}
+  </Text>
+);
+
+const cognitiveDistortionsToString = cognitiveDistortions => {
+  return cognitiveDistortions
+    .filter(({ selected }) => selected) // Only the selected ones
+    .map(({ label }) => `• ${label}\n`) // `• some_distortion`
+    .join("") // Combine the strings
+    .trim(); // Trim any final endlines
+};
+
 const CBTList = ({ thought }) => (
-  <View style={styles.container}>
-    <GrayContainer>
-      <FormContainer>
-        <SubHeader> Automatic Thought</SubHeader>
-        <Text>{thought.automaticThought}</Text>
-      </FormContainer>
+  <GrayContainer>
+    <FormContainer>
+      <SubHeader>Automatic Thought</SubHeader>
+      <Text>{thought.automaticThought}</Text>
+    </FormContainer>
 
-      <FormContainer>
-        <SubHeader> Challenge </SubHeader>
-        <Text>{thought.challenge}</Text>
-      </FormContainer>
+    <FormContainer>
+      <SubHeader>Challenge</SubHeader>
+      <Text>{thought.challenge}</Text>
+    </FormContainer>
 
-      <FormContainer>
-        <SubHeader> Alternative Thought</SubHeader>
-        <Text>{thought.alternativeThought}</Text>
-      </FormContainer>
-    </GrayContainer>
-  </View>
+    <FormContainer>
+      <SubHeader>Cognitive Distortion</SubHeader>
+      <Text>{cognitiveDistortionsToString(thought.cognitiveDistortions)}</Text>
+    </FormContainer>
+
+    <FormContainer>
+      <SubHeader>Alternative Thought</SubHeader>
+      <Text>{thought.alternativeThought}</Text>
+    </FormContainer>
+  </GrayContainer>
 );
 
 export default class App extends React.Component {
@@ -42,14 +61,18 @@ export default class App extends React.Component {
   };
 
   render() {
+    console.log(this.state.thoughts.length);
     return (
       <Swiper>
         <View style={styles.container}>
           <CBTForm />
         </View>
+
         {this.state.thoughts.length > 0 && (
           <View style={styles.container}>
-            <CBTList thought={this.state.thoughts[0]} />
+            {this.state.thoughts.map(thought => (
+              <CBTList key={thought.uuid} thought={thought} />
+            ))}
           </View>
         )}
       </Swiper>
