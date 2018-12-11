@@ -14,11 +14,15 @@ const defaultState = {
   alternativeThought: ""
 };
 
+// Text input styles defined here instead of componentized to
+// avoid issues with refs and subcomponents
 const textInputStyle = {
   height: 48,
   backgroundColor: "white",
   paddingLeft: 12,
-  borderRadius: 12
+  borderRadius: 12,
+  borderColor: "#EEECEC", // Light shadow for subtle contrast
+  borderWidth: 1
 };
 const textInputPlaceholderColor = "#D8D8D8";
 

@@ -1,9 +1,8 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { getExercise } from "./store";
-import Swiper from "react-native-swiper";
 import CBTForm from "./CBTForm";
-import { GrayContainer, SubHeader, FormContainer } from "./ui";
+import { Header } from "./ui";
 
 const CognitiveDistortionItem = ({ label }) => (
   <Text>
@@ -20,30 +19,6 @@ const cognitiveDistortionsToString = cognitiveDistortions => {
     .join("") // Combine the strings
     .trim(); // Trim any final endlines
 };
-
-const CBTList = ({ thought }) => (
-  <GrayContainer>
-    <FormContainer>
-      <SubHeader>Automatic Thought</SubHeader>
-      <Text>{thought.automaticThought}</Text>
-    </FormContainer>
-
-    <FormContainer>
-      <SubHeader>Challenge</SubHeader>
-      <Text>{thought.challenge}</Text>
-    </FormContainer>
-
-    <FormContainer>
-      <SubHeader>Cognitive Distortion</SubHeader>
-      <Text>{cognitiveDistortionsToString(thought.cognitiveDistortions)}</Text>
-    </FormContainer>
-
-    <FormContainer>
-      <SubHeader>Alternative Thought</SubHeader>
-      <Text>{thought.alternativeThought}</Text>
-    </FormContainer>
-  </GrayContainer>
-);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -62,19 +37,10 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Swiper>
-        <View style={styles.container}>
-          <CBTForm />
-        </View>
-
-        {this.state.thoughts.length > 0 && (
-          <View style={styles.container}>
-            {this.state.thoughts.map(thought => (
-              <CBTList key={thought.uuid} thought={thought} />
-            ))}
-          </View>
-        )}
-      </Swiper>
+      <View style={styles.container}>
+        <Header>quirk.</Header>
+        <CBTForm />
+      </View>
     );
   }
 }
@@ -84,6 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     flexDirection: "column",
+    justifyContent: "flex-start",
     paddingTop: 75,
     paddingLeft: 25,
     paddingRight: 25,

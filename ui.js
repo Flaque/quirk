@@ -17,7 +17,7 @@ export const GrayContainer = ({ children, ...rest }) => (
   <View
     style={{
       flex: 1,
-      backgroundColor: "#F9F9F9",
+      backgroundColor: "#F4F4F5",
       padding: 25,
       borderRadius: 18,
       ...rest
@@ -84,6 +84,8 @@ export const RoundedSelector = ({ options, onPress, style }) => (
       backgroundColor: "white",
       padding: 12,
       borderRadius: 12,
+      borderColor: "#EFEFEF", // Light shadow for subtle contrast
+      borderWidth: 1,
       ...style
     }}
   >
