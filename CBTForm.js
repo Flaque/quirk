@@ -4,6 +4,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { GrayContainer, FormContainer, SubHeader, RoundedSelector } from "./ui";
 import { saveExercise, getExercise } from "./store";
 import distortions from "./distortions";
+import theme from "./theme";
 
 const defaultState = {
   automaticThought: "",
@@ -21,10 +22,10 @@ const textInputStyle = {
   backgroundColor: "white",
   paddingLeft: 12,
   borderRadius: 12,
-  borderColor: "#EEECEC", // Light shadow for subtle contrast
-  borderWidth: 1
+  borderColor: theme.veryLightText,
+  borderWidth: 3
 };
-const textInputPlaceholderColor = "#D8D8D8";
+const textInputPlaceholderColor = theme.veryLightText;
 
 export default class CBTForm extends React.Component {
   constructor(props) {

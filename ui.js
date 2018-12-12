@@ -1,11 +1,12 @@
 import React from "react";
 import { Text, View, TouchableOpacity, ScrollView } from "react-native";
+import theme from "./theme";
 
 export const Row = ({ children, ...rest }) => (
   <View
     style={{
-      flex: 1,
       flexDirection: "row",
+      justifyContent: "space-between",
       ...rest
     }}
   >
@@ -17,7 +18,7 @@ export const GrayContainer = ({ children, ...rest }) => (
   <View
     style={{
       flex: 1,
-      backgroundColor: "#F4F4F5",
+      backgroundColor: theme.offwhite,
       padding: 25,
       borderRadius: 18,
       ...rest
@@ -42,7 +43,7 @@ export const Header = ({ children }) => (
     style={{
       fontWeight: "900",
       fontSize: 48,
-      color: "#353B48",
+      color: theme.darkText,
       marginBottom: 12
     }}
   >
@@ -55,7 +56,7 @@ export const SubHeader = ({ children }) => (
     style={{
       fontWeight: "700",
       fontSize: 24,
-      color: "#353B48",
+      color: theme.darkText,
       marginBottom: 12
     }}
   >
@@ -69,7 +70,7 @@ export const SelectorTextItem = ({ text, selected = false, onPress }) => (
       style={{
         fontWeight: "400",
         fontSize: 14,
-        color: selected ? "#353B48" : "#D8D8D8",
+        color: selected ? theme.darkText : theme.veryLightText,
         paddingBottom: 12
       }}
     >
@@ -84,8 +85,8 @@ export const RoundedSelector = ({ options, onPress, style }) => (
       backgroundColor: "white",
       padding: 12,
       borderRadius: 12,
-      borderColor: "#EFEFEF", // Light shadow for subtle contrast
-      borderWidth: 1,
+      borderColor: theme.veryLightText,
+      borderWidth: 3,
       ...style
     }}
   >

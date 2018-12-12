@@ -1,8 +1,10 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { getExercise } from "./store";
 import CBTForm from "./CBTForm";
-import { Header } from "./ui";
+import { Header, Row } from "./ui";
+import { Feather } from "@expo/vector-icons";
+import theme from "./theme";
 
 const CognitiveDistortionItem = ({ label }) => (
   <Text>
@@ -38,8 +40,26 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header>quirk.</Header>
-        <CBTForm />
+        <Row>
+          <Header>quirk.</Header>
+          <TouchableOpacity
+            style={{
+              backgroundColor: theme.offwhite,
+              height: 48,
+              width: 48,
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "12",
+              alignSelf: "center"
+            }}
+          >
+            <Feather name="menu" size={24} color={theme.veryLightText} />
+          </TouchableOpacity>
+        </Row>
+
+        <Row>
+          <CBTForm />
+        </Row>
       </View>
     );
   }
