@@ -1,10 +1,21 @@
 import React from "react";
-import { Button, TextInput } from "react-native";
+import { Button, TextInput, TouchableOpacity } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { GrayContainer, FormContainer, SubHeader, RoundedSelector } from "./ui";
+import {
+  Container,
+  GrayContainer,
+  FormContainer,
+  SubHeader,
+  RoundedSelector,
+  Row,
+  Header
+} from "./ui";
 import { saveExercise, getExercise } from "./store";
 import distortions from "./distortions";
 import theme from "./theme";
+import { CBT_LIST_SCREEN } from "./screens";
+import { Feather } from "@expo/vector-icons";
+import { get } from "lodash";
 
 const defaultState = {
   automaticThought: "",
@@ -27,18 +38,14 @@ const textInputStyle = {
 };
 const textInputPlaceholderColor = theme.veryLightText;
 
-export default class CBTForm extends React.Component {
+class CBTForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
 
-    this.state = defaultState;
     this.challenge = React.createRef();
     this.alternative = React.createRef();
   }
-
-  componentDidMount = () => {
-    getExercise();
-  };
 
   // Toggles Cognitive Distortion when selected
   onSelectCognitiveDistortion = text => {
@@ -55,7 +62,7 @@ export default class CBTForm extends React.Component {
   };
 
   onTextChange = (key, text) => {
-    this.setState({ [key]: text });
+    this.props.onTextChange({ [key]: text });
   };
 
   onSave = () => {
@@ -144,6 +151,62 @@ export default class CBTForm extends React.Component {
           </FormContainer>
         </GrayContainer>
       </KeyboardAwareScrollView>
+    );
+  }
+}
+
+export default class CBTFormScreen extends React.Component {
+  static navigationOptions = {
+    header: null
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = { thought: defaultState };
+
+    this.props.navigation.addListener("willFocus", payload => {
+      const thought = get(payload, "state.params.thought", false);
+      if (thought) {
+        this.setState({ thought: thought });
+      }
+    });
+  }
+
+  // TODO hoist state
+  onTextChange = (key, text) => {
+    this.setState({ [key]: text });
+  };
+
+  render() {
+    console.log(this.state);
+    return (
+      <Container>
+        <Row>
+          <Header>quirk.</Header>
+          <TouchableOpacity
+            style={{
+              backgroundColor: theme.offwhite,
+              height: 48,
+              width: 48,
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "12",
+              alignSelf: "center"
+            }}
+            onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
+          >
+            <Feather name="menu" size={24} color={theme.veryLightText} />
+          </TouchableOpacity>
+        </Row>
+
+        <Row>
+          <CBTForm
+            thought={this.state.thought}
+            onTextChange={this.onTextChange}
+          />
+        </Row>
+      </Container>
     );
   }
 }

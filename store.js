@@ -34,6 +34,6 @@ export const getExercise = async () => {
     const keys = await AsyncStorage.getAllKeys();
     return AsyncStorage.multiGet(keys);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

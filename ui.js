@@ -38,13 +38,14 @@ export const FormContainer = ({ children }) => (
   </View>
 );
 
-export const Header = ({ children }) => (
+export const Header = ({ children, ...rest }) => (
   <Text
     style={{
       fontWeight: "900",
       fontSize: 48,
       color: theme.darkText,
-      marginBottom: 12
+      marginBottom: 12,
+      ...rest
     }}
   >
     {children}
@@ -99,4 +100,21 @@ export const RoundedSelector = ({ options, onPress, style }) => (
       />
     ))}
   </ScrollView>
+);
+
+export const Container = ({ children }) => (
+  <View
+    style={{
+      flex: 1,
+      backgroundColor: "#fff",
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      paddingTop: 75,
+      paddingLeft: 25,
+      paddingRight: 25,
+      paddingBottom: 50
+    }}
+  >
+    {children}
+  </View>
 );
