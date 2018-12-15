@@ -39,7 +39,7 @@ To bootstrap this, we're just using [a pre-canned, but fairly muted, color palet
 
 ## Other Stupid Design Logic
 I'm not really a designer, but I do like to engage in _stupid design logic_ for why things are a certain way. Quirk has
-a particlar style, but it's one I ripped off from a bunch of other apps. 
+a particular style, but it's one I ripped off from a bunch of other apps. 
 
 Some things are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make [that thing a full screen giant, towering over mortals.](https://i.imgur.com/zcplBkP.png)
 
