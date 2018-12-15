@@ -57,70 +57,68 @@ class CBTForm extends React.Component {
     } = this.props;
 
     return (
-      <KeyboardAwareScrollView scrollEnabled={false}>
-        <GrayContainer flexGrow={6}>
-          <FormContainer>
-            <SubHeader>Automatic Thought</SubHeader>
-            <TextInput
-              style={textInputStyle}
-              placeholderTextColor={textInputPlaceholderColor}
-              placeholder={"What's going on?"}
-              value={thought.automaticThought}
-              returnKeyType="next"
-              blurOnSubmit={false}
-              onChangeText={text => onTextChange("automaticThought", text)}
-              onSubmitEditing={() => {
-                this.challenge.current.focus();
-              }}
-            />
-          </FormContainer>
+      <GrayContainer flexGrow={6}>
+        <FormContainer>
+          <SubHeader>Automatic Thought</SubHeader>
+          <TextInput
+            style={textInputStyle}
+            placeholderTextColor={textInputPlaceholderColor}
+            placeholder={"What's going on?"}
+            value={thought.automaticThought}
+            returnKeyType="next"
+            blurOnSubmit={false}
+            onChangeText={text => onTextChange("automaticThought", text)}
+            onSubmitEditing={() => {
+              this.challenge.current.focus();
+            }}
+          />
+        </FormContainer>
 
-          <FormContainer>
-            <SubHeader>Cognitive Distortion</SubHeader>
-            <RoundedSelector
-              style={{
-                height: 150,
-              }}
-              items={thought.cognitiveDistortions}
-              onPress={onSelectCognitiveDistortion}
-            />
-          </FormContainer>
+        <FormContainer>
+          <SubHeader>Cognitive Distortion</SubHeader>
+          <RoundedSelector
+            style={{
+              height: 150,
+            }}
+            items={thought.cognitiveDistortions}
+            onPress={onSelectCognitiveDistortion}
+          />
+        </FormContainer>
 
-          <FormContainer>
-            <SubHeader>Challenge</SubHeader>
-            <TextInput
-              ref={this.challenge}
-              blurOnSubmit={false}
-              placeholder="Debate that thought!"
-              placeholderTextColor={textInputPlaceholderColor}
-              returnKeyType="next"
-              style={textInputStyle}
-              value={thought.challenge}
-              onChangeText={text => onTextChange("challenge", text)}
-              onSubmitEditing={() => {
-                this.alternative.current.focus();
-              }}
-            />
-          </FormContainer>
+        <FormContainer>
+          <SubHeader>Challenge</SubHeader>
+          <TextInput
+            ref={this.challenge}
+            blurOnSubmit={false}
+            placeholder="Debate that thought!"
+            placeholderTextColor={textInputPlaceholderColor}
+            returnKeyType="next"
+            style={textInputStyle}
+            value={thought.challenge}
+            onChangeText={text => onTextChange("challenge", text)}
+            onSubmitEditing={() => {
+              this.alternative.current.focus();
+            }}
+          />
+        </FormContainer>
 
-          <FormContainer>
-            <SubHeader>Alternative Thought</SubHeader>
-            <TextInput
-              ref={this.alternative}
-              placeholder="What should we think instead?"
-              placeholderTextColor={textInputPlaceholderColor}
-              returnKeyType="done"
-              style={textInputStyle}
-              value={thought.alternativeThought}
-              onChangeText={text => onTextChange("alternativeThought", text)}
-            />
-          </FormContainer>
+        <FormContainer>
+          <SubHeader>Alternative Thought</SubHeader>
+          <TextInput
+            ref={this.alternative}
+            placeholder="What should we think instead?"
+            placeholderTextColor={textInputPlaceholderColor}
+            returnKeyType="done"
+            style={textInputStyle}
+            value={thought.alternativeThought}
+            onChangeText={text => onTextChange("alternativeThought", text)}
+          />
+        </FormContainer>
 
-          <FormContainer>
-            <Button title="Save" onPress={onSave} />
-          </FormContainer>
-        </GrayContainer>
-      </KeyboardAwareScrollView>
+        <FormContainer>
+          <Button title="Save" onPress={onSave} />
+        </FormContainer>
+      </GrayContainer>
     );
   }
 }
@@ -191,34 +189,34 @@ export default class CBTFormScreen extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Header>quirk.</Header>
-          <TouchableOpacity
-            style={{
-              backgroundColor: theme.offwhite,
-              height: 48,
-              width: 48,
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "12",
-              alignSelf: "center",
-            }}
-            onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
-          >
-            <Feather name="menu" size={24} color={theme.veryLightText} />
-          </TouchableOpacity>
-        </Row>
+      <KeyboardAwareScrollView scrollEnabled={true}>
+        <Container>
+          <Row>
+            <Header>quirk.</Header>
+            <TouchableOpacity
+              style={{
+                backgroundColor: theme.offwhite,
+                height: 48,
+                width: 48,
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "12",
+                alignSelf: "center",
+              }}
+              onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
+            >
+              <Feather name="menu" size={24} color={theme.veryLightText} />
+            </TouchableOpacity>
+          </Row>
 
-        <Row>
           <CBTForm
             thought={this.state.thought}
             onTextChange={this.onTextChange}
             onSelectCognitiveDistortion={this.onSelectCognitiveDistortion}
             onSave={this.onSave}
           />
-        </Row>
-      </Container>
+        </Container>
+      </KeyboardAwareScrollView>
     );
   }
 }
