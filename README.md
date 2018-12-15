@@ -28,12 +28,21 @@ yarn start
 You'll then be in the [expo development environment](https://docs.expo.io/versions/latest/). 
 If you already have XCode installed with a simulator, you can just press `i` to start it.
 
-## License
+# Design
+
+Quirk's goal is to be both inviting and focused. It should be _really_ easy to enter in a thought; people frequently enter these in public settings and need to do it fairly quickly. It also should not cause any increased frustration. 
+
+## Color Palette
+To bootstrap this, we're just using [a pre-canned, but fairly muted, color palette.](https://flatuicolors.com/palette/ru)
+
+![palette](https://i.imgur.com/yXyLg3I.png)
+
+# License
 
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which 
 guarantees end users the freedom to study, share, and modify the software.
 
-### Does that mean I can publish and redistribute my own version?
+## Does that mean I can publish and redistribute my own version?
 
 As long as you publicly share the up-to-date code, you can yes. Though I would ask that you change the name and branding 
 to avoid conflicts and confusions among less tech-savy customers.
