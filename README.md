@@ -1,5 +1,3 @@
-![quirk](https://i.imgur.com/DHkNIKy.png)
-
 # 🐙 quirk
 
 Quirk is a crossplatform, GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy#Declining_effectiveness) 
