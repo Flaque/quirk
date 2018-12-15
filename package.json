@@ -4,17 +4,41 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "xo"
   },
   "dependencies": {
+    "@expo/vector-icons": "^8.0.0",
     "expo": "^31.0.2",
+    "json-stringify-safe": "^5.0.1",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.6.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native-keyboard-aware-scroll-view": "^0.7.4",
     "react-native-svg": "^8.0.8",
-    "safe-json-stringify": "^1.2.0"
+    "react-native-swiper": "^1.5.14",
+    "react-navigation": "^3.0.8",
+    "safe-json-stringify": "^1.2.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-eslint": "^10.0.1",
+    "babel-preset-expo": "^5.0.0",
+    "eslint-config-xo-react": "^0.17.0",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "1.15.3",
+    "xo": "^0.23.0"
+  },
+  "xo": {
+    "parser": "babel-eslint",
+    "prettier": true,
+    "space": true,
+    "rules": {
+      "unicorn/filename-case": false,
+      "react/require-default-props": false
+    },
+    "extends": "xo-react"
   },
   "private": true
 }
