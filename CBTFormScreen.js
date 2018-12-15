@@ -17,7 +17,7 @@ import { CBT_LIST_SCREEN } from "./screens";
 import { Feather } from "@expo/vector-icons";
 import { get } from "lodash";
 
-const defaultState = {
+const emptyThought = {
   automaticThought: "",
   cognitiveDistortions: distortions.map(label => {
     return { label, selected: false };
@@ -47,43 +47,14 @@ class CBTForm extends React.Component {
     this.alternative = React.createRef();
   }
 
-  // Toggles Cognitive Distortion when selected
-  onSelectCognitiveDistortion = text => {
-    this.setState(prevState => {
-      const { cognitiveDistortions } = prevState;
-      const index = cognitiveDistortions.findIndex(
-        ({ label }) => label == text
-      );
-
-      cognitiveDistortions[index].selected = !cognitiveDistortions[index]
-        .selected;
-      return { cognitiveDistortions, ...prevState };
-    });
-  };
-
-  onTextChange = (key, text) => {
-    this.props.onTextChange({ [key]: text });
-  };
-
-  onSave = () => {
-    const {
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought
-    } = this.state;
-
-    saveExercise(
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought
-    ).then(() => {
-      this.setState(defaultState);
-    });
-  };
-
   render() {
+    const {
+      onTextChange,
+      onSelectCognitiveDistortion,
+      onSave,
+      thought
+    } = this.props;
+
     return (
       <KeyboardAwareScrollView scrollEnabled={false}>
         <GrayContainer flexGrow={6}>
@@ -93,8 +64,8 @@ class CBTForm extends React.Component {
               style={textInputStyle}
               placeholderTextColor={textInputPlaceholderColor}
               placeholder={"What's going on?"}
-              value={this.state.automaticThought}
-              onChangeText={text => this.onTextChange("automaticThought", text)}
+              value={thought.automaticThought}
+              onChangeText={text => onTextChange("automaticThought", text)}
               returnKeyType="next"
               blurOnSubmit={false}
               onSubmitEditing={() => {
@@ -109,8 +80,8 @@ class CBTForm extends React.Component {
               style={{
                 height: 150
               }}
-              options={this.state.cognitiveDistortions}
-              onPress={this.onSelectCognitiveDistortion}
+              options={thought.cognitiveDistortions}
+              onPress={onSelectCognitiveDistortion}
             />
           </FormContainer>
 
@@ -120,8 +91,8 @@ class CBTForm extends React.Component {
               style={textInputStyle}
               placeholderTextColor={textInputPlaceholderColor}
               placeholder={"Debate that thought!"}
-              value={this.state.challenge}
-              onChangeText={text => this.onTextChange("challenge", text)}
+              value={thought.challenge}
+              onChangeText={text => onTextChange("challenge", text)}
               onSubmitEditing={() => {
                 this.alternative.current.focus();
               }}
@@ -137,17 +108,15 @@ class CBTForm extends React.Component {
               style={textInputStyle}
               placeholderTextColor={textInputPlaceholderColor}
               placeholder={"What should we think instead?"}
-              value={this.state.alternativeThought}
-              onChangeText={text =>
-                this.onTextChange("alternativeThought", text)
-              }
+              value={thought.alternativeThought}
+              onChangeText={text => onTextChange("alternativeThought", text)}
               returnKeyType="done"
               ref={this.alternative}
             />
           </FormContainer>
 
           <FormContainer>
-            <Button title={"Save"} onPress={this.onSave} />
+            <Button title={"Save"} onPress={onSave} />
           </FormContainer>
         </GrayContainer>
       </KeyboardAwareScrollView>
@@ -163,7 +132,7 @@ export default class CBTFormScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { thought: defaultState };
+    this.state = { thought: emptyThought };
 
     this.props.navigation.addListener("willFocus", payload => {
       const thought = get(payload, "state.params.thought", false);
@@ -173,13 +142,46 @@ export default class CBTFormScreen extends React.Component {
     });
   }
 
-  // TODO hoist state
   onTextChange = (key, text) => {
-    this.setState({ [key]: text });
+    this.setState(prevState => {
+      prevState.thought[key] = text;
+      return prevState;
+    });
+  };
+
+  onSave = () => {
+    const {
+      automaticThought,
+      cognitiveDistortions,
+      challenge,
+      alternativeThought
+    } = this.state.thought;
+
+    saveExercise(
+      automaticThought,
+      cognitiveDistortions,
+      challenge,
+      alternativeThought
+    ).then(() => {
+      this.setState({ thought: emptyThought });
+    });
+  };
+
+  // Toggles Cognitive Distortion when selected
+  onSelectCognitiveDistortion = text => {
+    this.setState(prevState => {
+      const { cognitiveDistortions } = prevState.thought;
+      const index = cognitiveDistortions.findIndex(
+        ({ label }) => label == text
+      );
+
+      cognitiveDistortions[index].selected = !cognitiveDistortions[index]
+        .selected;
+      return { cognitiveDistortions, ...prevState };
+    });
   };
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Row>
@@ -204,6 +206,8 @@ export default class CBTFormScreen extends React.Component {
           <CBTForm
             thought={this.state.thought}
             onTextChange={this.onTextChange}
+            onSelectCognitiveDistortion={this.onSelectCognitiveDistortion}
+            onSave={this.onSave}
           />
         </Row>
       </Container>
