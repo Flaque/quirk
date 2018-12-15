@@ -43,7 +43,7 @@ a particlar style, but it's one I ripped off from a bunch of other apps.
 
 Some things are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make [that thing a full screen giant, towering over mortals.](https://i.imgur.com/zcplBkP.png)
 
-Illustrations should be excessively cute and burst with as much personality as your artistic talent can muster. None of that sleek silicon valley business-casual airplane art. Nah. **Give me bubbles and smiles.** We're making a healthy-cool app here, not some collared-shirt-wearing fintech money-market manstravaganza. 
+Illustrations should be excessively cute and burst with as much personality as your artistic talent can muster. None of that sleek silicon valley business-casual airplane art. Nah. **Give me bubbles and smiles.** Draw little dudes and [make them eat each other.](https://i.imgur.com/JYM9CbA.png) We're making a healthy-cool app here, not some collared-shirt-wearing fintech money-market manstravaganza. 
 
 When I first started making things, I made those websites that just threw every color you could on the page and it looked awful. Eventually I noticed it looked awful and then because super cautious about doing anything remotely interesting. I think I'm not back in a happy medium. The UI design tweeks I stole from a lot of other apps, this general thinking comes from [the game design concept of "Juice."](https://www.youtube.com/watch?v=216_5nu4aVQ)
 
