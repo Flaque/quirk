@@ -1,3 +1,5 @@
+![quirk](https://i.imgur.com/DHkNIKy.png)
+
 # 🐙 quirk
 
 Quirk is a crossplatform, GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy#Declining_effectiveness) 
@@ -7,7 +9,7 @@ Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't as
 to depression-specific CBT exercises. That makes it fairly quick and discreet to use, especially in a public 
 setting. 
 
-![mock](https://i.imgur.com/6yP25ej.png)
+![mockup](https://i.imgur.com/UKY0jc4.png)
 
 ## Running Locally
 
