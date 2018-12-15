@@ -1,6 +1,9 @@
 import React from "react";
 import { Button, TextInput, TouchableOpacity } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { Feather } from "@expo/vector-icons";
+import { get } from "lodash";
+import PropTypes from "prop-types";
 import {
   Container,
   GrayContainer,
@@ -8,14 +11,12 @@ import {
   SubHeader,
   RoundedSelector,
   Row,
-  Header
+  Header,
 } from "./ui";
-import { saveExercise, getExercise } from "./store";
+import { saveExercise } from "./store";
 import distortions from "./distortions";
 import theme from "./theme";
 import { CBT_LIST_SCREEN } from "./screens";
-import { Feather } from "@expo/vector-icons";
-import { get } from "lodash";
 
 const emptyThought = {
   automaticThought: "",
@@ -23,7 +24,7 @@ const emptyThought = {
     return { label, selected: false };
   }),
   challenge: "",
-  alternativeThought: ""
+  alternativeThought: "",
 };
 
 // Text input styles defined here instead of componentized to
@@ -34,7 +35,7 @@ const textInputStyle = {
   paddingLeft: 12,
   borderRadius: 12,
   borderColor: theme.veryLightText,
-  borderWidth: 3
+  borderWidth: 3,
 };
 const textInputPlaceholderColor = theme.veryLightText;
 
@@ -52,7 +53,7 @@ class CBTForm extends React.Component {
       onTextChange,
       onSelectCognitiveDistortion,
       onSave,
-      thought
+      thought,
     } = this.props;
 
     return (
@@ -65,9 +66,9 @@ class CBTForm extends React.Component {
               placeholderTextColor={textInputPlaceholderColor}
               placeholder={"What's going on?"}
               value={thought.automaticThought}
-              onChangeText={text => onTextChange("automaticThought", text)}
               returnKeyType="next"
               blurOnSubmit={false}
+              onChangeText={text => onTextChange("automaticThought", text)}
               onSubmitEditing={() => {
                 this.challenge.current.focus();
               }}
@@ -78,9 +79,9 @@ class CBTForm extends React.Component {
             <SubHeader>Cognitive Distortion</SubHeader>
             <RoundedSelector
               style={{
-                height: 150
+                height: 150,
               }}
-              options={thought.cognitiveDistortions}
+              items={thought.cognitiveDistortions}
               onPress={onSelectCognitiveDistortion}
             />
           </FormContainer>
@@ -88,35 +89,35 @@ class CBTForm extends React.Component {
           <FormContainer>
             <SubHeader>Challenge</SubHeader>
             <TextInput
-              style={textInputStyle}
+              ref={this.challenge}
+              blurOnSubmit={false}
+              placeholder="Debate that thought!"
               placeholderTextColor={textInputPlaceholderColor}
-              placeholder={"Debate that thought!"}
+              returnKeyType="next"
+              style={textInputStyle}
               value={thought.challenge}
               onChangeText={text => onTextChange("challenge", text)}
               onSubmitEditing={() => {
                 this.alternative.current.focus();
               }}
-              returnKeyType="next"
-              blurOnSubmit={false}
-              ref={this.challenge}
             />
           </FormContainer>
 
           <FormContainer>
             <SubHeader>Alternative Thought</SubHeader>
             <TextInput
-              style={textInputStyle}
+              ref={this.alternative}
+              placeholder="What should we think instead?"
               placeholderTextColor={textInputPlaceholderColor}
-              placeholder={"What should we think instead?"}
+              returnKeyType="done"
+              style={textInputStyle}
               value={thought.alternativeThought}
               onChangeText={text => onTextChange("alternativeThought", text)}
-              returnKeyType="done"
-              ref={this.alternative}
             />
           </FormContainer>
 
           <FormContainer>
-            <Button title={"Save"} onPress={onSave} />
+            <Button title="Save" onPress={onSave} />
           </FormContainer>
         </GrayContainer>
       </KeyboardAwareScrollView>
@@ -124,9 +125,16 @@ class CBTForm extends React.Component {
   }
 }
 
+CBTForm.propTypes = {
+  onTextChange: PropTypes.func.isRequired,
+  onSelectCognitiveDistortion: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  thought: PropTypes.object.isRequired,
+};
+
 export default class CBTFormScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    header: null,
   };
 
   constructor(props) {
@@ -137,7 +145,7 @@ export default class CBTFormScreen extends React.Component {
     this.props.navigation.addListener("willFocus", payload => {
       const thought = get(payload, "state.params.thought", false);
       if (thought) {
-        this.setState({ thought: thought });
+        this.setState({ thought });
       }
     });
   }
@@ -154,7 +162,7 @@ export default class CBTFormScreen extends React.Component {
       automaticThought,
       cognitiveDistortions,
       challenge,
-      alternativeThought
+      alternativeThought,
     } = this.state.thought;
 
     saveExercise(
@@ -172,7 +180,7 @@ export default class CBTFormScreen extends React.Component {
     this.setState(prevState => {
       const { cognitiveDistortions } = prevState.thought;
       const index = cognitiveDistortions.findIndex(
-        ({ label }) => label == text
+        ({ label }) => label === text
       );
 
       cognitiveDistortions[index].selected = !cognitiveDistortions[index]
@@ -194,7 +202,7 @@ export default class CBTFormScreen extends React.Component {
               justifyContent: "center",
               alignItems: "center",
               borderRadius: "12",
-              alignSelf: "center"
+              alignSelf: "center",
             }}
             onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
           >
@@ -214,3 +222,7 @@ export default class CBTFormScreen extends React.Component {
     );
   }
 }
+
+CBTFormScreen.propTypes = {
+  navigation: PropTypes.any.isRequired,
+};

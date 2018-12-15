@@ -13,7 +13,7 @@ const distortions = [
   "Should Statements",
   "Labeling",
   "Self-Blaming",
-  "Other-Blaming"
+  "Other-Blaming",
 ];
 
 export default distortions;

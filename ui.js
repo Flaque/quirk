@@ -1,69 +1,95 @@
 import React from "react";
 import { Text, View, TouchableOpacity, ScrollView } from "react-native";
+import PropTypes from "prop-types";
 import theme from "./theme";
 
-export const Row = ({ children, ...rest }) => (
+export const Row = ({ children, ...style }) => (
   <View
     style={{
       flexDirection: "row",
       justifyContent: "space-between",
-      ...rest
+      ...style,
     }}
   >
     {children}
   </View>
 );
 
-export const GrayContainer = ({ children, ...rest }) => (
+Row.propTypes = {
+  children: PropTypes.any.isRequired,
+  style: PropTypes.object,
+};
+
+export const GrayContainer = ({ children, ...style }) => (
   <View
     style={{
       flex: 1,
       backgroundColor: theme.offwhite,
       padding: 25,
       borderRadius: 18,
-      ...rest
+      ...style,
     }}
   >
     {children}
   </View>
 );
+
+GrayContainer.propTypes = {
+  children: PropTypes.any.isRequired,
+  style: PropTypes.object,
+};
 
 export const FormContainer = ({ children }) => (
   <View
     style={{
-      marginBottom: 24
+      marginBottom: 24,
     }}
   >
     {children}
   </View>
 );
 
-export const Header = ({ children, ...rest }) => (
+FormContainer.propTypes = {
+  children: PropTypes.any.isRequired,
+};
+
+export const Header = ({ children, ...style }) => (
   <Text
     style={{
       fontWeight: "900",
       fontSize: 48,
       color: theme.darkText,
       marginBottom: 12,
-      ...rest
+      ...style,
     }}
   >
     {children}
   </Text>
 );
 
-export const SubHeader = ({ children }) => (
+Header.propTypes = {
+  children: PropTypes.any.isRequired,
+  style: PropTypes.object,
+};
+
+export const SubHeader = ({ children, ...style }) => (
   <Text
     style={{
       fontWeight: "700",
       fontSize: 24,
       color: theme.darkText,
-      marginBottom: 12
+      marginBottom: 12,
+      ...style,
     }}
   >
     {children}
   </Text>
 );
+
+SubHeader.propTypes = {
+  children: PropTypes.any.isRequired,
+  style: PropTypes.object,
+};
 
 export const SelectorTextItem = ({ text, selected = false, onPress }) => (
   <TouchableOpacity onPress={onPress}>
@@ -72,7 +98,7 @@ export const SelectorTextItem = ({ text, selected = false, onPress }) => (
         fontWeight: "400",
         fontSize: 14,
         color: selected ? theme.darkText : theme.veryLightText,
-        paddingBottom: 12
+        paddingBottom: 12,
       }}
     >
       {text}
@@ -80,7 +106,13 @@ export const SelectorTextItem = ({ text, selected = false, onPress }) => (
   </TouchableOpacity>
 );
 
-export const RoundedSelector = ({ options, onPress, style }) => (
+SelectorTextItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
+  onPress: PropTypes.func.isRequired,
+};
+
+export const RoundedSelector = ({ items, onPress, style }) => (
   <ScrollView
     style={{
       backgroundColor: "white",
@@ -88,10 +120,10 @@ export const RoundedSelector = ({ options, onPress, style }) => (
       borderRadius: 12,
       borderColor: theme.veryLightText,
       borderWidth: 3,
-      ...style
+      ...style,
     }}
   >
-    {options.map(({ label, selected }) => (
+    {items.map(({ label, selected }) => (
       <SelectorTextItem
         key={label}
         text={label}
@@ -101,6 +133,12 @@ export const RoundedSelector = ({ options, onPress, style }) => (
     ))}
   </ScrollView>
 );
+
+RoundedSelector.propTypes = {
+  items: PropTypes.array.isRequired,
+  onPress: PropTypes.func.isRequired,
+  style: PropTypes.object,
+};
 
 export const Container = ({ children }) => (
   <View
@@ -112,9 +150,13 @@ export const Container = ({ children }) => (
       paddingTop: 75,
       paddingLeft: 25,
       paddingRight: 25,
-      paddingBottom: 50
+      paddingBottom: 50,
     }}
   >
     {children}
   </View>
 );
+
+Container.propTypes = {
+  children: PropTypes.any,
+};

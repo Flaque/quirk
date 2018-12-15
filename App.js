@@ -6,10 +6,10 @@ import CBTFormScreen from "./CBTFormScreen";
 const App = createStackNavigator(
   {
     [CBT_LIST_SCREEN]: CBTListScreen,
-    [CBT_FORM_SCREEN]: CBTFormScreen
+    [CBT_FORM_SCREEN]: CBTFormScreen,
   },
   {
-    initialRouteName: CBT_FORM_SCREEN
+    initialRouteName: CBT_FORM_SCREEN,
   }
 );
 

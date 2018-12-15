@@ -1,8 +1,9 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import PropTypes from "prop-types";
 import { getExercise } from "./store";
 import { Header, Row, Container } from "./ui";
-import { Feather } from "@expo/vector-icons";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
 
@@ -14,7 +15,7 @@ const ThoughtItem = ({ thought, onPress }) => (
       borderRadius: 13,
       marginBottom: 18,
       borderLeftWidth: 18,
-      borderLeftColor: theme.pink
+      borderLeftColor: theme.pink,
     }}
     onPress={() => onPress(thought)}
   >
@@ -22,22 +23,27 @@ const ThoughtItem = ({ thought, onPress }) => (
   </TouchableOpacity>
 );
 
+ThoughtItem.propTypes = {
+  thought: PropTypes.object.isRequired,
+  onPress: PropTypes.func.isRequired,
+};
+
 class CBTListScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      thoughts: []
+      thoughts: [],
     };
   }
 
   static navigationOptions = {
-    header: null
+    header: null,
   };
 
   componentDidMount = () => {
     getExercise()
       .then(data => {
-        const thoughts = data.map(([key, value]) => JSON.parse(value));
+        const thoughts = data.map(([_, value]) => JSON.parse(value));
         this.setState({ thoughts });
       })
       .catch(console.error);
@@ -45,7 +51,7 @@ class CBTListScreen extends React.Component {
 
   onItemPress = thought => {
     this.props.navigation.navigate(CBT_FORM_SCREEN, {
-      thought
+      thought,
     });
   };
 
@@ -69,7 +75,7 @@ class CBTListScreen extends React.Component {
               justifyContent: "center",
               alignItems: "center",
               borderRadius: "12",
-              alignSelf: "center"
+              alignSelf: "center",
             }}
             onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}
           >
@@ -83,5 +89,9 @@ class CBTListScreen extends React.Component {
     );
   }
 }
+
+CBTListScreen.propTypes = {
+  navigation: PropTypes.any.isRequired,
+};
 
 export default CBTListScreen;
