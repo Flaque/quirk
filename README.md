@@ -41,9 +41,9 @@ To bootstrap this, we're just using [a pre-canned, but fairly muted, color palet
 I'm not really a designer, but I do like to engage in _stupid design logic_ for why things are a certain way. Quirk has
 a particlar style, but it's one I ripped off from a bunch of other apps. 
 
-Some things are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make that thing a giant towering over mortals. 
+Some things are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make [that thing a full screen giant, towering over mortals.](https://i.imgur.com/zcplBkP.png)
 
-Illustrations should be excessively cute and burst with as much personality as your artistic talent can muster. None of that sleek silicon valley business casual airplane art. Nah. **Give me them bubbles and smiles.** We're making a healthy-cool app here, not some collared-shirt wearing fintech money market manstravaganza. 
+Illustrations should be excessively cute and burst with as much personality as your artistic talent can muster. None of that sleek silicon valley business casual airplane art. Nah. **Give me bubbles and smiles.** We're making a healthy-cool app here, not some collared-shirt wearing fintech money market manstravaganza. 
 
 Though the UI design tweeks I stole from a lot of other apps, this general thinking comes from [the game design concept of "Juice."](https://www.youtube.com/watch?v=216_5nu4aVQ)
 
