@@ -7,6 +7,8 @@ Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't as
 to depression-specific CBT exercises. That makes it fairly quick and discreet to use, especially in a public 
 setting. 
 
+![mock](https://i.imgur.com/6yP25ej.png)
+
 ## Running Locally
 
 Quirk is built on React Native and therefore assumes you have [node](https://nodejs.org/en/) installed. 
