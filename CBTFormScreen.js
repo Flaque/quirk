@@ -18,13 +18,17 @@ import distortions from "./distortions";
 import theme from "./theme";
 import { CBT_LIST_SCREEN } from "./screens";
 
-const emptyThought = {
-  automaticThought: "",
-  cognitiveDistortions: distortions.map(label => {
-    return { label, selected: false };
-  }),
-  challenge: "",
-  alternativeThought: "",
+// This is a function instead of a constant to avoid some
+// REAL weird JS bugs
+const getEmptyThought = () => {
+  return {
+    automaticThought: "",
+    cognitiveDistortions: distortions.map(label => {
+      return { label, selected: false };
+    }),
+    challenge: "",
+    alternativeThought: "",
+  };
 };
 
 // Text input styles defined here instead of componentized to
@@ -138,7 +142,7 @@ export default class CBTFormScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { thought: emptyThought };
+    this.state = { thought: getEmptyThought() };
 
     this.props.navigation.addListener("willFocus", payload => {
       const thought = get(payload, "state.params.thought", false);
@@ -169,7 +173,10 @@ export default class CBTFormScreen extends React.Component {
       challenge,
       alternativeThought
     ).then(() => {
-      this.setState({ thought: emptyThought });
+      this.setState(prevState => {
+        prevState.thought = getEmptyThought();
+        return prevState;
+      });
     });
   };
 
