@@ -126,7 +126,7 @@ class CBTForm extends React.Component {
           />
         </FormContainer>
 
-        <Row>
+        <Row justifyContent="flex-end">
           <RoundedButton title="Save" onPress={onSave} />
         </Row>
       </View>
@@ -190,12 +190,12 @@ export default class CBTFormScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { thought: getEmptyThought() };
+    this.state = { thought: getEmptyThought(), isEditing: true };
 
     this.props.navigation.addListener("willFocus", payload => {
       const thought = get(payload, "state.params.thought", false);
       if (thought) {
-        this.setState({ thought });
+        this.setState({ thought, isEditing: false });
       } else {
         this.setEmptyThought();
       }
@@ -205,6 +205,7 @@ export default class CBTFormScreen extends React.Component {
   setEmptyThought = () => {
     this.setState(prevState => {
       prevState.thought = getEmptyThought();
+      prevState.isEditing = true;
       return prevState;
     });
   };
@@ -218,6 +219,7 @@ export default class CBTFormScreen extends React.Component {
 
   onSave = () => {
     const {
+      uuid,
       automaticThought,
       cognitiveDistortions,
       challenge,
@@ -225,6 +227,7 @@ export default class CBTFormScreen extends React.Component {
     } = this.state.thought;
 
     saveExercise(
+      uuid,
       automaticThought,
       cognitiveDistortions,
       challenge,
@@ -239,6 +242,10 @@ export default class CBTFormScreen extends React.Component {
 
   onNew = () => {
     this.setEmptyThought();
+  };
+
+  onEdit = () => {
+    this.setState({ isEditing: true });
   };
 
   // Toggles Cognitive Distortion when selected
@@ -256,9 +263,7 @@ export default class CBTFormScreen extends React.Component {
   };
 
   render() {
-    // We assign uuids when the thought is saved, so if it doesn't
-    // have one, then the user is in the process of creating it
-    const isSavedThought = !!this.state.thought.uuid; // TODO: Create edit screen
+    const { thought, isEditing } = this.state;
 
     return (
       <KeyboardAwareScrollView
@@ -276,14 +281,18 @@ export default class CBTFormScreen extends React.Component {
             />
           </Row>
 
-          {isSavedThought ? (
-            <CBTViewer thought={this.state.thought} onNew={this.onNew} />
-          ) : (
+          {isEditing ? (
             <CBTForm
-              thought={this.state.thought}
+              thought={thought}
               onTextChange={this.onTextChange}
               onSelectCognitiveDistortion={this.onSelectCognitiveDistortion}
               onSave={this.onSave}
+            />
+          ) : (
+            <CBTViewer
+              thought={thought}
+              onNew={this.onNew}
+              onEdit={this.onEdit}
             />
           )}
         </Container>

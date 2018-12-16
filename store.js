@@ -7,6 +7,7 @@ export function getKey(info) {
 }
 
 export const saveExercise = async (
+  uuid,
   automaticThought,
   cognitiveDistortions,
   challenge,
@@ -19,7 +20,7 @@ export const saveExercise = async (
     alternativeThought,
     createdAt: Date.now(),
     updatedAt: Date.now(),
-    uuid: getKey(uuidv4()),
+    uuid: uuid || getKey(uuidv4()),
   };
 
   try {
