@@ -65,7 +65,11 @@ class CBTListScreen extends React.Component {
     this.syncExercises();
   };
 
-  onItemPress = thought => {
+  navigateToForm = () => {
+    this.navigateToFormWithThought(false);
+  };
+
+  navigateToFormWithThought = thought => {
     this.props.navigation.navigate(CBT_FORM_SCREEN, {
       thought,
     });
@@ -81,7 +85,7 @@ class CBTListScreen extends React.Component {
       <ThoughtItem
         key={thought.uuid}
         thought={thought}
-        onPress={this.onItemPress}
+        onPress={this.navigateToFormWithThought}
         onDelete={this.onItemDelete}
       />
     ));
@@ -90,7 +94,7 @@ class CBTListScreen extends React.Component {
         <Row marginBottom={18}>
           <IconButton
             featherIconName={"edit"}
-            onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}
+            onPress={() => this.navigateToForm()}
           />
           <Header>.quirk</Header>
         </Row>

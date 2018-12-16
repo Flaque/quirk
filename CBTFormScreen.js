@@ -5,7 +5,6 @@ import { get } from "lodash";
 import PropTypes from "prop-types";
 import {
   Container,
-  GrayContainer,
   FormContainer,
   SubHeader,
   RoundedSelector,
@@ -13,6 +12,7 @@ import {
   Header,
   RoundedButton,
   IconButton,
+  Paragraph,
 } from "./ui";
 import { saveExercise } from "./store";
 import distortions from "./distortions";
@@ -60,13 +60,8 @@ class CBTForm extends React.Component {
       onTextChange,
       onSelectCognitiveDistortion,
       onSave,
-      onDelete,
       thought,
     } = this.props;
-
-    // We assign uuids when the thought is saved, so if it doesn't
-    // have one, then the user is in the process of creating it
-    const isSavedThought = !!thought.uuid; // TODO: Create edit screen
 
     return (
       <View
@@ -146,6 +141,47 @@ CBTForm.propTypes = {
   thought: PropTypes.object.isRequired,
 };
 
+const CBTViewer = ({ thought, onEdit, onNew }) => {
+  if (!thought.uuid) console.error("Viewing something that's not saved");
+
+  return (
+    <View
+      style={{
+        marginTop: 18,
+      }}
+    >
+      <FormContainer>
+        <SubHeader>Automatic Thought</SubHeader>
+        <Paragraph>{thought.automaticThought}</Paragraph>
+      </FormContainer>
+
+      <FormContainer>
+        <SubHeader>Cognitive Distortion</SubHeader>
+      </FormContainer>
+
+      <FormContainer>
+        <SubHeader>Challenge</SubHeader>
+        <Paragraph>{thought.challenge}</Paragraph>
+      </FormContainer>
+
+      <FormContainer>
+        <SubHeader>Alternative Thought</SubHeader>
+        <Paragraph>{thought.alternativeThought}</Paragraph>
+      </FormContainer>
+
+      <Row>
+        <RoundedButton
+          fillColor="transparent"
+          textColor={theme.blue}
+          title="Edit"
+          onPress={() => onEdit(thought.uuid)}
+        />
+        <RoundedButton title="New" onPress={() => onNew()} />
+      </Row>
+    </View>
+  );
+};
+
 export default class CBTFormScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -160,9 +196,18 @@ export default class CBTFormScreen extends React.Component {
       const thought = get(payload, "state.params.thought", false);
       if (thought) {
         this.setState({ thought });
+      } else {
+        this.setEmptyThought();
       }
     });
   }
+
+  setEmptyThought = () => {
+    this.setState(prevState => {
+      prevState.thought = getEmptyThought();
+      return prevState;
+    });
+  };
 
   onTextChange = (key, text) => {
     this.setState(prevState => {
@@ -192,6 +237,10 @@ export default class CBTFormScreen extends React.Component {
     });
   };
 
+  onNew = () => {
+    this.setEmptyThought();
+  };
+
   // Toggles Cognitive Distortion when selected
   onSelectCognitiveDistortion = text => {
     this.setState(prevState => {
@@ -207,6 +256,10 @@ export default class CBTFormScreen extends React.Component {
   };
 
   render() {
+    // We assign uuids when the thought is saved, so if it doesn't
+    // have one, then the user is in the process of creating it
+    const isSavedThought = !!this.state.thought.uuid; // TODO: Create edit screen
+
     return (
       <KeyboardAwareScrollView
         style={{
@@ -223,12 +276,16 @@ export default class CBTFormScreen extends React.Component {
             />
           </Row>
 
-          <CBTForm
-            thought={this.state.thought}
-            onTextChange={this.onTextChange}
-            onSelectCognitiveDistortion={this.onSelectCognitiveDistortion}
-            onSave={this.onSave}
-          />
+          {isSavedThought ? (
+            <CBTViewer thought={this.state.thought} onNew={this.onNew} />
+          ) : (
+            <CBTForm
+              thought={this.state.thought}
+              onTextChange={this.onTextChange}
+              onSelectCognitiveDistortion={this.onSelectCognitiveDistortion}
+              onSave={this.onSave}
+            />
+          )}
         </Container>
       </KeyboardAwareScrollView>
     );

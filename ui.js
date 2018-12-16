@@ -192,6 +192,22 @@ IconButton.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
+export const Paragraph = ({ children }) => (
+  <Text
+    style={{
+      color: theme.lightText,
+      fontWeight: "400",
+      fontSize: 16,
+    }}
+  >
+    {children}
+  </Text>
+);
+
+Paragraph.propTypes = {
+  children: PropTypes.any.isRequired,
+};
+
 export const Container = ({ children }) => (
   <View
     style={{
