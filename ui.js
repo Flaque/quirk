@@ -21,25 +21,6 @@ Row.propTypes = {
   style: PropTypes.object,
 };
 
-export const GrayContainer = ({ children, ...style }) => (
-  <View
-    style={{
-      flex: 1,
-      backgroundColor: theme.offwhite,
-      padding: 25,
-      borderRadius: 18,
-      ...style,
-    }}
-  >
-    {children}
-  </View>
-);
-
-GrayContainer.propTypes = {
-  children: PropTypes.any.isRequired,
-  style: PropTypes.object,
-};
-
 export const FormContainer = ({ children, ...style }) => (
   <View
     style={{
@@ -192,7 +173,7 @@ RoundedButton.defaultProps = {
 export const IconButton = ({ featherIconName, onPress }) => (
   <TouchableOpacity
     style={{
-      backgroundColor: theme.offwhite,
+      backgroundColor: theme.lightGray,
       height: 48,
       width: 48,
       justifyContent: "center",
@@ -214,8 +195,7 @@ IconButton.propTypes = {
 export const Container = ({ children }) => (
   <View
     style={{
-      flex: 1,
-      backgroundColor: "#fff",
+      backgroundColor: theme.lightOffwhite,
       flexDirection: "column",
       justifyContent: "flex-start",
       paddingTop: 75,

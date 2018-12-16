@@ -11,16 +11,24 @@ const ThoughtItem = ({ thought, onPress, onDelete }) => (
     <TouchableOpacity
       style={{
         padding: 18,
-        backgroundColor: theme.offwhite,
+        backgroundColor: theme.lightGray,
         borderRadius: 13,
         borderLeftWidth: 18,
-        borderLeftColor: theme.pink,
+        borderLeftColor: theme.blue,
         flex: 1,
         marginRight: 18,
       }}
       onPress={() => onPress(thought)}
     >
-      <Text>{thought.automaticThought}</Text>
+      <Text
+        style={{
+          color: theme.lightText,
+          fontWeight: "700",
+          fontSize: 16,
+        }}
+      >
+        {thought.automaticThought}
+      </Text>
     </TouchableOpacity>
 
     <IconButton featherIconName={"trash"} onPress={() => onDelete(thought)} />
@@ -79,7 +87,7 @@ class CBTListScreen extends React.Component {
     ));
     return (
       <Container>
-        <Row>
+        <Row marginBottom={18}>
           <IconButton
             featherIconName={"edit"}
             onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}

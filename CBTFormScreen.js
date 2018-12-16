@@ -1,7 +1,6 @@
 import React from "react";
-import { TextInput, TouchableOpacity } from "react-native";
+import { TextInput, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { Feather } from "@expo/vector-icons";
 import { get } from "lodash";
 import PropTypes from "prop-types";
 import {
@@ -13,6 +12,7 @@ import {
   Row,
   Header,
   RoundedButton,
+  IconButton,
 } from "./ui";
 import { saveExercise } from "./store";
 import distortions from "./distortions";
@@ -42,6 +42,7 @@ const textInputStyle = {
   fontSize: 16,
   borderColor: theme.lightGray,
   borderWidth: 1,
+  color: theme.darkText,
 };
 const textInputPlaceholderColor = theme.veryLightText;
 
@@ -68,7 +69,11 @@ class CBTForm extends React.Component {
     const isSavedThought = !!thought.uuid; // TODO: Create edit screen
 
     return (
-      <GrayContainer flexGrow={6}>
+      <View
+        style={{
+          marginTop: 18,
+        }}
+      >
         <FormContainer>
           <SubHeader>Automatic Thought</SubHeader>
           <TextInput
@@ -129,7 +134,7 @@ class CBTForm extends React.Component {
         <Row>
           <RoundedButton title="Save" onPress={onSave} />
         </Row>
-      </GrayContainer>
+      </View>
     );
   }
 }
@@ -203,24 +208,19 @@ export default class CBTFormScreen extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView scrollEnabled>
+      <KeyboardAwareScrollView
+        style={{
+          backgroundColor: theme.lightOffwhite,
+        }}
+        scrollEnabled
+      >
         <Container>
           <Row>
             <Header>quirk.</Header>
-            <TouchableOpacity
-              style={{
-                backgroundColor: theme.offwhite,
-                height: 48,
-                width: 48,
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "12",
-                alignSelf: "center",
-              }}
+            <IconButton
+              featherIconName={"menu"}
               onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
-            >
-              <Feather name="menu" size={24} color={theme.veryLightText} />
-            </TouchableOpacity>
+            />
           </Row>
 
           <CBTForm
