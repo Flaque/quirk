@@ -141,6 +141,15 @@ CBTForm.propTypes = {
   thought: PropTypes.object.isRequired,
 };
 
+const cognitiveDistortionsToText = distortions => {
+  const text = distortions
+    .filter(distortion => distortion.selected) // Only take selected items
+    .map(({ label }) => `• ${label}`) // format as "• All or Nothing Thinking"
+    .join("\n")
+    .trim(); // Remove excess whitespace
+  return text;
+};
+
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) console.error("Viewing something that's not saved");
 
@@ -152,21 +161,24 @@ const CBTViewer = ({ thought, onEdit, onNew }) => {
     >
       <FormContainer>
         <SubHeader>Automatic Thought</SubHeader>
-        <Paragraph>{thought.automaticThought}</Paragraph>
+        <Paragraph>{thought.automaticThought || "🤷‍"}</Paragraph>
       </FormContainer>
 
       <FormContainer>
         <SubHeader>Cognitive Distortion</SubHeader>
+        <Paragraph>
+          {cognitiveDistortionsToText(thought.cognitiveDistortions) || "🤷‍"}
+        </Paragraph>
       </FormContainer>
 
       <FormContainer>
         <SubHeader>Challenge</SubHeader>
-        <Paragraph>{thought.challenge}</Paragraph>
+        <Paragraph>{thought.challenge || "🤷‍"}</Paragraph>
       </FormContainer>
 
       <FormContainer>
         <SubHeader>Alternative Thought</SubHeader>
-        <Paragraph>{thought.alternativeThought}</Paragraph>
+        <Paragraph>{thought.alternativeThought || "🤷‍"}</Paragraph>
       </FormContainer>
 
       <Row>
@@ -232,11 +244,8 @@ export default class CBTFormScreen extends React.Component {
       cognitiveDistortions,
       challenge,
       alternativeThought
-    ).then(() => {
-      this.setState(prevState => {
-        prevState.thought = getEmptyThought();
-        return prevState;
-      });
+    ).then(thought => {
+      this.setState({ isEditing: false, thought });
     });
   };
 

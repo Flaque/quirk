@@ -25,6 +25,7 @@ export const saveExercise = async (
 
   try {
     await AsyncStorage.setItem(thought.uuid, stringify(thought));
+    return thought;
   } catch (error) {
     console.error(error);
   }
