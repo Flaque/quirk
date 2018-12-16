@@ -1,0 +1,5 @@
+Quirk is a tool for Cognitive Behavioral Therapy (CBT). CBT is one of the most effective and widely prescribed treatments for depression, anxiety, panic disorder, and multiple other mental health problems.  
+
+Quirk helps you record "automatic thoughts," challenge them, and then train your brain with an alternative thought. 
+
+The app is open source under the GPL. You can find the code on Github at: https://github.com/Flaque/quirk
