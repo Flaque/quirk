@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, ScrollView } from "react-native";
 import PropTypes from "prop-types";
 import { getExercise, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton } from "./ui";
@@ -91,15 +91,16 @@ class CBTListScreen extends React.Component {
     ));
     return (
       <Container>
-        <Row marginBottom={18}>
-          <IconButton
-            featherIconName={"edit"}
-            onPress={() => this.navigateToForm()}
-          />
-          <Header>.quirk</Header>
-        </Row>
-
-        {items}
+        <ScrollView>
+          <Row marginBottom={18}>
+            <IconButton
+              featherIconName={"edit"}
+              onPress={() => this.navigateToForm()}
+            />
+            <Header>.quirk</Header>
+          </Row>
+          {items}
+        </ScrollView>
       </Container>
     );
   }
