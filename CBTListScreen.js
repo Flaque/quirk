@@ -1,26 +1,30 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import PropTypes from "prop-types";
-import { getExercise } from "./store";
-import { Header, Row, Container } from "./ui";
+import { getExercise, deleteExercise } from "./store";
+import { Header, Row, Container, IconButton } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
 
-const ThoughtItem = ({ thought, onPress }) => (
-  <TouchableOpacity
-    style={{
-      padding: 18,
-      backgroundColor: theme.offwhite,
-      borderRadius: 13,
-      marginBottom: 18,
-      borderLeftWidth: 18,
-      borderLeftColor: theme.pink,
-    }}
-    onPress={() => onPress(thought)}
-  >
-    <Text>{thought.automaticThought}</Text>
-  </TouchableOpacity>
+const ThoughtItem = ({ thought, onPress, onDelete }) => (
+  <Row alignItems={"strech"} marginBottom={18}>
+    <TouchableOpacity
+      style={{
+        padding: 18,
+        backgroundColor: theme.offwhite,
+        borderRadius: 13,
+        borderLeftWidth: 18,
+        borderLeftColor: theme.pink,
+        flex: 1,
+        marginRight: 18,
+      }}
+      onPress={() => onPress(thought)}
+    >
+      <Text>{thought.automaticThought}</Text>
+    </TouchableOpacity>
+
+    <IconButton featherIconName={"trash"} onPress={() => onDelete(thought)} />
+  </Row>
 );
 
 ThoughtItem.propTypes = {
@@ -40,7 +44,7 @@ class CBTListScreen extends React.Component {
     header: null,
   };
 
-  componentDidMount = () => {
+  syncExercises = () => {
     getExercise()
       .then(data => {
         const thoughts = data.map(([_, value]) => JSON.parse(value));
@@ -49,10 +53,18 @@ class CBTListScreen extends React.Component {
       .catch(console.error);
   };
 
+  componentDidMount = () => {
+    this.syncExercises();
+  };
+
   onItemPress = thought => {
     this.props.navigation.navigate(CBT_FORM_SCREEN, {
       thought,
     });
+  };
+
+  onItemDelete = thought => {
+    deleteExercise(thought.uuid).then(() => this.syncExercises());
   };
 
   render() {
@@ -62,25 +74,16 @@ class CBTListScreen extends React.Component {
         key={thought.uuid}
         thought={thought}
         onPress={this.onItemPress}
+        onDelete={this.onItemDelete}
       />
     ));
     return (
       <Container>
         <Row>
-          <TouchableOpacity
-            style={{
-              backgroundColor: theme.offwhite,
-              height: 48,
-              width: 48,
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "12",
-              alignSelf: "center",
-            }}
+          <IconButton
+            featherIconName={"edit"}
             onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}
-          >
-            <Feather name="edit" size={24} color={theme.veryLightText} />
-          </TouchableOpacity>
+          />
           <Header>.quirk</Header>
         </Row>
 

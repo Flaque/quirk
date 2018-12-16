@@ -29,6 +29,14 @@ export const saveExercise = async (
   }
 };
 
+export const deleteExercise = async uuid => {
+  try {
+    await AsyncStorage.removeItem(uuid);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getExercise = async () => {
   try {
     const keys = await AsyncStorage.getAllKeys();

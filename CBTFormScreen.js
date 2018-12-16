@@ -12,7 +12,7 @@ import {
   RoundedSelector,
   Row,
   Header,
-  PrimaryButton,
+  RoundedButton,
 } from "./ui";
 import { saveExercise } from "./store";
 import distortions from "./distortions";
@@ -59,8 +59,13 @@ class CBTForm extends React.Component {
       onTextChange,
       onSelectCognitiveDistortion,
       onSave,
+      onDelete,
       thought,
     } = this.props;
+
+    // We assign uuids when the thought is saved, so if it doesn't
+    // have one, then the user is in the process of creating it
+    const isSavedThought = !!thought.uuid; // TODO: Create edit screen
 
     return (
       <GrayContainer flexGrow={6}>
@@ -121,13 +126,9 @@ class CBTForm extends React.Component {
           />
         </FormContainer>
 
-        <FormContainer
-          style={{
-            justifyContent: "flex-end",
-          }}
-        >
-          <PrimaryButton title="Save" onPress={onSave} />
-        </FormContainer>
+        <Row>
+          <RoundedButton title="Save" onPress={onSave} />
+        </Row>
       </GrayContainer>
     );
   }

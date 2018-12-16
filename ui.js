@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import PropTypes from "prop-types";
 import theme from "./theme";
+import { Feather } from "@expo/vector-icons";
 
 export const Row = ({ children, ...style }) => (
   <View
@@ -142,20 +143,31 @@ RoundedSelector.propTypes = {
   style: PropTypes.object,
 };
 
-export const PrimaryButton = ({ title, onPress }) => (
+export const RoundedButton = ({
+  title,
+  onPress,
+  fillColor,
+  textColor,
+  width,
+  disabled,
+}) => (
   <TouchableOpacity
     style={{
-      backgroundColor: theme.blue,
+      backgroundColor: fillColor,
       padding: 12,
       borderRadius: 8,
       textAlign: "center",
+      width,
     }}
+    disabled={disabled}
     onPress={onPress}
   >
     <Text
       style={{
         textAlign: "center",
-        color: "white",
+        color: textColor,
+        fontWeight: "700",
+        fontSize: 16,
       }}
     >
       {title}
@@ -163,8 +175,39 @@ export const PrimaryButton = ({ title, onPress }) => (
   </TouchableOpacity>
 );
 
-PrimaryButton.propTypes = {
+RoundedButton.propTypes = {
   title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+  fillColor: PropTypes.string,
+  textColor: PropTypes.string,
+  width: PropTypes.number,
+};
+
+RoundedButton.defaultProps = {
+  fillColor: theme.blue,
+  textColor: "white",
+  width: 100,
+};
+
+export const IconButton = ({ featherIconName, onPress }) => (
+  <TouchableOpacity
+    style={{
+      backgroundColor: theme.offwhite,
+      height: 48,
+      width: 48,
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: "12",
+      alignSelf: "center",
+    }}
+    onPress={onPress}
+  >
+    <Feather name={featherIconName} size={24} color={theme.veryLightText} />
+  </TouchableOpacity>
+);
+
+IconButton.propTypes = {
+  featherIconName: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
 };
 
