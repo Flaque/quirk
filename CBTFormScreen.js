@@ -24,8 +24,8 @@ import { CBT_LIST_SCREEN } from "./screens";
 const getEmptyThought = () => {
   return {
     automaticThought: "",
-    cognitiveDistortions: distortions.map(label => {
-      return { label, selected: false };
+    cognitiveDistortions: distortions.map(({ label, slug }) => {
+      return { label, slug, selected: false };
     }),
     challenge: "",
     alternativeThought: "",
@@ -261,9 +261,7 @@ export default class CBTFormScreen extends React.Component {
   onSelectCognitiveDistortion = text => {
     this.setState(prevState => {
       const { cognitiveDistortions } = prevState.thought;
-      const index = cognitiveDistortions.findIndex(
-        ({ label }) => label === text
-      );
+      const index = cognitiveDistortions.findIndex(({ slug }) => slug === text);
 
       cognitiveDistortions[index].selected = !cognitiveDistortions[index]
         .selected;

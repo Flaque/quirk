@@ -3,6 +3,8 @@ import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import PropTypes from "prop-types";
 import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
+import distortions from "./distortions";
+import { find } from "lodash";
 
 export const Row = ({ children, ...style }) => (
   <View
@@ -107,12 +109,12 @@ export const RoundedSelector = ({ items, onPress, style }) => (
       ...style,
     }}
   >
-    {items.map(({ label, selected }) => (
+    {items.map(({ slug, selected }) => (
       <SelectorTextItem
-        key={label}
-        text={label}
+        key={slug}
+        text={find(distortions, { slug }).label}
         selected={selected}
-        onPress={() => onPress(label)}
+        onPress={() => onPress(slug)}
       />
     ))}
   </ScrollView>
