@@ -5,4 +5,5 @@ export default {
   lightText: "#596275",
   darkText: "#303952",
   pink: "#f8a5c2",
+  blue: "#778beb",
 };

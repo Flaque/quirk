@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, TextInput, TouchableOpacity } from "react-native";
+import { TextInput, TouchableOpacity } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Feather } from "@expo/vector-icons";
 import { get } from "lodash";
@@ -12,6 +12,7 @@ import {
   RoundedSelector,
   Row,
   Header,
+  PrimaryButton,
 } from "./ui";
 import { saveExercise } from "./store";
 import distortions from "./distortions";
@@ -37,7 +38,7 @@ const textInputStyle = {
   height: 48,
   backgroundColor: "white",
   paddingLeft: 12,
-  borderRadius: 12,
+  borderRadius: 8,
   borderColor: theme.veryLightText,
   borderWidth: 3,
 };
@@ -119,8 +120,12 @@ class CBTForm extends React.Component {
           />
         </FormContainer>
 
-        <FormContainer>
-          <Button title="Save" onPress={onSave} />
+        <FormContainer
+          style={{
+            justifyContent: "flex-end",
+          }}
+        >
+          <PrimaryButton title="Save" onPress={onSave} />
         </FormContainer>
       </GrayContainer>
     );
@@ -196,7 +201,7 @@ export default class CBTFormScreen extends React.Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView scrollEnabled={true}>
+      <KeyboardAwareScrollView scrollEnabled>
         <Container>
           <Row>
             <Header>quirk.</Header>

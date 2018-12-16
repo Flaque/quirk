@@ -39,10 +39,11 @@ GrayContainer.propTypes = {
   style: PropTypes.object,
 };
 
-export const FormContainer = ({ children }) => (
+export const FormContainer = ({ children, ...style }) => (
   <View
     style={{
       marginBottom: 24,
+      ...style,
     }}
   >
     {children}
@@ -51,6 +52,7 @@ export const FormContainer = ({ children }) => (
 
 FormContainer.propTypes = {
   children: PropTypes.any.isRequired,
+  style: PropTypes.object,
 };
 
 export const Header = ({ children, ...style }) => (
@@ -117,7 +119,7 @@ export const RoundedSelector = ({ items, onPress, style }) => (
     style={{
       backgroundColor: "white",
       padding: 12,
-      borderRadius: 12,
+      borderRadius: 8,
       borderColor: theme.veryLightText,
       borderWidth: 3,
       ...style,
@@ -138,6 +140,32 @@ RoundedSelector.propTypes = {
   items: PropTypes.array.isRequired,
   onPress: PropTypes.func.isRequired,
   style: PropTypes.object,
+};
+
+export const PrimaryButton = ({ title, onPress }) => (
+  <TouchableOpacity
+    style={{
+      backgroundColor: theme.blue,
+      padding: 12,
+      borderRadius: 8,
+      textAlign: "center",
+    }}
+    onPress={onPress}
+  >
+    <Text
+      style={{
+        textAlign: "center",
+        color: "white",
+      }}
+    >
+      {title}
+    </Text>
+  </TouchableOpacity>
+);
+
+PrimaryButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export const Container = ({ children }) => (
