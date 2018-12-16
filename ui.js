@@ -78,7 +78,7 @@ export const SubHeader = ({ children, ...style }) => (
   <Text
     style={{
       fontWeight: "700",
-      fontSize: 24,
+      fontSize: 18,
       color: theme.darkText,
       marginBottom: 12,
       ...style,
@@ -98,7 +98,7 @@ export const SelectorTextItem = ({ text, selected = false, onPress }) => (
     <Text
       style={{
         fontWeight: "400",
-        fontSize: 14,
+        fontSize: 16,
         color: selected ? theme.darkText : theme.veryLightText,
         paddingBottom: 12,
       }}
@@ -120,8 +120,8 @@ export const RoundedSelector = ({ items, onPress, style }) => (
       backgroundColor: "white",
       padding: 12,
       borderRadius: 8,
-      borderColor: theme.veryLightText,
-      borderWidth: 3,
+      borderColor: theme.lightGray,
+      borderWidth: 1,
       ...style,
     }}
   >

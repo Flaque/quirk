@@ -39,8 +39,9 @@ const textInputStyle = {
   backgroundColor: "white",
   paddingLeft: 12,
   borderRadius: 8,
-  borderColor: theme.veryLightText,
-  borderWidth: 3,
+  fontSize: 16,
+  borderColor: theme.lightGray,
+  borderWidth: 1,
 };
 const textInputPlaceholderColor = theme.veryLightText;
 

@@ -1,5 +1,6 @@
 export default {
   offwhite: "#f2f5fa",
+  lightGray: "#EAEDF8",
   gray: "#dadfeb",
   veryLightText: "#a7b0c4",
   lightText: "#596275",
