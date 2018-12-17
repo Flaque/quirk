@@ -8,3 +8,4 @@ npm-debug.*
 .gitignore
 .DS_Store
 app.ipa
+app.apk

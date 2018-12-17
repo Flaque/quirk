@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, View } from "react-native";
+import { TextInput, View, StatusBar } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { get } from "lodash";
 import PropTypes from "prop-types";
@@ -279,6 +279,7 @@ export default class CBTFormScreen extends React.Component {
         }}
         scrollEnabled
       >
+        <StatusBar barStyle="dark-content" />
         <Container>
           <Row>
             <Header>quirk.</Header>

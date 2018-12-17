@@ -24,7 +24,8 @@
       "bundleIdentifier": "tech.econn.quirk"
     },
     "android": {
-      "package": "tech.econn.quirk"
+      "package": "tech.econn.quirk",
+      "permissions": []
     }
   }
 }

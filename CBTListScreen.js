@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, ScrollView } from "react-native";
+import { Text, TouchableOpacity, ScrollView, StatusBar } from "react-native";
 import PropTypes from "prop-types";
 import { getExercise, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton } from "./ui";
@@ -91,6 +91,7 @@ class CBTListScreen extends React.Component {
     ));
     return (
       <Container>
+        <StatusBar barStyle="dark-content" />
         <ScrollView>
           <Row marginBottom={18}>
             <IconButton
