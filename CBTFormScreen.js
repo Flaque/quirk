@@ -37,7 +37,8 @@ const getEmptyThought = () => {
 const textInputStyle = {
   height: 48,
   backgroundColor: "white",
-  paddingLeft: 12,
+  padding: 12,
+  paddingTop: 14,
   borderRadius: 8,
   fontSize: 16,
   borderColor: theme.lightGray,
@@ -77,11 +78,9 @@ class CBTForm extends React.Component {
             placeholder={"What's going on?"}
             value={thought.automaticThought}
             returnKeyType="next"
-            blurOnSubmit={false}
+            multiline={true}
+            blurOnSubmit={true}
             onChangeText={text => onTextChange("automaticThought", text)}
-            onSubmitEditing={() => {
-              this.challenge.current.focus();
-            }}
           />
         </FormContainer>
 
@@ -106,6 +105,7 @@ class CBTForm extends React.Component {
             returnKeyType="next"
             style={textInputStyle}
             value={thought.challenge}
+            multiline={true}
             onChangeText={text => onTextChange("challenge", text)}
             onSubmitEditing={() => {
               this.alternative.current.focus();
@@ -122,6 +122,7 @@ class CBTForm extends React.Component {
             returnKeyType="done"
             style={textInputStyle}
             value={thought.alternativeThought}
+            multiline={true}
             onChangeText={text => onTextChange("alternativeThought", text)}
           />
         </FormContainer>

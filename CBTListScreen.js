@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, TouchableOpacity, ScrollView, StatusBar } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StatusBar,
+  View,
+} from "react-native";
 import PropTypes from "prop-types";
 import { getExercise, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton } from "./ui";
@@ -31,7 +37,11 @@ const ThoughtItem = ({ thought, onPress, onDelete }) => (
       </Text>
     </TouchableOpacity>
 
-    <IconButton featherIconName={"trash"} onPress={() => onDelete(thought)} />
+    <IconButton
+      alignSelf={"flex-start"}
+      featherIconName={"trash"}
+      onPress={() => onDelete(thought)}
+    />
   </Row>
 );
 
@@ -81,28 +91,38 @@ class CBTListScreen extends React.Component {
 
   render() {
     const { thoughts } = this.state;
-    const items = thoughts.map(thought => (
-      <ThoughtItem
-        key={thought.uuid}
-        thought={thought}
-        onPress={this.navigateToFormWithThought}
-        onDelete={this.onItemDelete}
-      />
-    ));
+    const items = thoughts
+      .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
+      .map(thought => (
+        <ThoughtItem
+          key={thought.uuid}
+          thought={thought}
+          onPress={this.navigateToFormWithThought}
+          onDelete={this.onItemDelete}
+        />
+      ));
+
     return (
-      <Container>
-        <StatusBar barStyle="dark-content" />
-        <ScrollView>
-          <Row marginBottom={18}>
-            <IconButton
-              featherIconName={"edit"}
-              onPress={() => this.navigateToForm()}
-            />
-            <Header>.quirk</Header>
-          </Row>
-          {items}
-        </ScrollView>
-      </Container>
+      <View
+        style={{
+          backgroundColor: theme.lightOffwhite,
+          flex: 1,
+        }}
+      >
+        <Container>
+          <StatusBar barStyle="dark-content" />
+          <ScrollView>
+            <Row marginBottom={18}>
+              <IconButton
+                featherIconName={"edit"}
+                onPress={() => this.navigateToForm()}
+              />
+              <Header>.quirk</Header>
+            </Row>
+            {items}
+          </ScrollView>
+        </Container>
+      </View>
     );
   }
 }

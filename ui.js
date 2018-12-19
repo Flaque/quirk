@@ -172,7 +172,7 @@ RoundedButton.defaultProps = {
   width: 100,
 };
 
-export const IconButton = ({ featherIconName, onPress }) => (
+export const IconButton = ({ featherIconName, onPress, ...style }) => (
   <TouchableOpacity
     style={{
       backgroundColor: theme.lightGray,
@@ -182,6 +182,7 @@ export const IconButton = ({ featherIconName, onPress }) => (
       alignItems: "center",
       borderRadius: "12",
       alignSelf: "center",
+      ...style,
     }}
     onPress={onPress}
   >
@@ -192,6 +193,7 @@ export const IconButton = ({ featherIconName, onPress }) => (
 IconButton.propTypes = {
   featherIconName: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
+  style: PropTypes.any,
 };
 
 export const Paragraph = ({ children }) => (
@@ -213,7 +215,6 @@ Paragraph.propTypes = {
 export const Container = ({ children }) => (
   <View
     style={{
-      backgroundColor: theme.lightOffwhite,
       flexDirection: "column",
       justifyContent: "flex-start",
       paddingTop: 75,
