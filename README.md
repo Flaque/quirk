@@ -47,6 +47,22 @@ Some things are muted because they're dumb and not the important bits. But the i
 
 Illustrations should be excessively cute and burst with as much personality as your artistic talent can muster. None of that sleek silicon valley business-casual airplane art. Nah. **Give me bubbles and smiles.** Draw little dudes and [make them eat each other.](https://i.imgur.com/JYM9CbA.png) We're making a healthy-cool app here, not some collared-shirt-wearing fintech money-market manstravaganza.
 
+Likewise, I don't want to have literally any of the branding of most mental health tools. Almost
+all of them seem like they're afraid of their users. They all seem to be as quiet and bland as possible as if their users would get spooked and run away.
+
+This ends up coming across as either _really_ patronizing or _really_ sterile. In general it's
+both.
+
+Folks with mental health issues are touch! They can handle bold, out there stuff. Literally
+no one should be trying to create the design equivalent of a hospital.
+
+By choosing a neutral, unassuming brand identity, you're choosing to hide your product
+from the people who need it most. If you're making mental health tech, you're probably
+trying to help people; why wouldn't you be as in-your-face-shout-it-from-the-roof-tops
+as possible?
+
+Like come on, you're not JP Morgan or something; you're literally saving people's _brains_.
+
 When I first started making things, I made those websites that just threw every color you could on the page and it looked awful. Eventually I noticed it looked awful and then became super cautious about doing anything remotely interesting. I think I'm back in a happy medium. The UI design tweeks I stole from a lot of other apps, this general thinking comes from [the game design concept of "Juice."](https://www.youtube.com/watch?v=216_5nu4aVQ)
 
 # License

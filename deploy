@@ -15,7 +15,6 @@ curl -o app.apk "$(exp url:apk --non-interactive)"
 
 fastlane supply --track 'production' --json_key '~/.api-7738836530326696066-539250-c6f11c3abb07.json' --package_name "tech.econn.quirk" --apk "app.apk" --skip_upload_metadata --skip_upload_images --skip_upload_screenshots
 
-
 # Build a ios standalone release 
 exp build:ios --release-channel production --non-interactive --no-publish
 
