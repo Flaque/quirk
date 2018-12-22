@@ -1,6 +1,6 @@
 # 🐙 quirk
 
-Quirk is a crossplatform, GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy#Declining_effectiveness)
+Quirk is a ~crossplatform~ (iOS, Android coming soon), GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy#Declining_effectiveness)
 app built in React Native / Expo.
 
 Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't ask about your mood or ask you
