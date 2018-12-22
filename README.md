@@ -53,7 +53,7 @@ all of them seem like they're afraid of their users. They all seem to be as quie
 This ends up coming across as either _really_ patronizing or _really_ sterile. In general it's
 both.
 
-Folks with mental health issues are touch! They can handle bold, out there stuff. Literally
+Folks with mental health issues are tough! They can handle bold, out there stuff. Literally
 no one should be trying to create the design equivalent of a hospital.
 
 By choosing a neutral, unassuming brand identity, you're choosing to hide your product
