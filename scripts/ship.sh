@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 set -e # exit if something goes wrong
-./preflight_checks.sh
+./$(dirname $0)/preflight_checks.sh
 
 # Install deps
 yarn
@@ -9,7 +9,10 @@ yarn
 exp publish --release-channel production --non-interactive
 
 # ios
-./ship_ios.sh
+./$(dirname $0)/ship_ios.sh
 
 # android
-./ship_android.sh
+./$(dirname $0)/ship_android.sh
+
+# Tag everything
+./$(dirname $0)/tag_version.sh
