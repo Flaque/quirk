@@ -1,7 +1,7 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import { CBT_LIST_SCREEN, CBT_FORM_SCREEN } from "./screens";
-import CBTListScreen from "./CBTListScreen";
-import CBTFormScreen from "./CBTFormScreen";
+import { CBT_LIST_SCREEN, CBT_FORM_SCREEN } from "./src/screens";
+import CBTListScreen from "./src/CBTListScreen";
+import CBTFormScreen from "./src/CBTFormScreen";
 
 const App = createStackNavigator(
   {

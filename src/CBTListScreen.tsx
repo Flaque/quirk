@@ -51,16 +51,16 @@ ThoughtItem.propTypes = {
 };
 
 class CBTListScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       thoughts: [],
     };
   }
-
-  static navigationOptions = {
-    header: null,
-  };
 
   syncExercises = () => {
     getExercise()

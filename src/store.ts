@@ -54,7 +54,9 @@ export const getExercise = async () => {
 
     // It's better to lose data than to brick the app
     // (though losing data is really bad too)
-    if (!rows) rows = [];
+    if (!rows) {
+      rows = [];
+    }
 
     // This filter removes "null", "undefined"
     // which we should _never_ ever ever ever let

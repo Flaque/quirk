@@ -142,8 +142,8 @@ CBTForm.propTypes = {
   thought: PropTypes.object.isRequired,
 };
 
-const cognitiveDistortionsToText = distortions => {
-  const text = distortions
+const cognitiveDistortionsToText = cognitiveDistortions => {
+  const text = cognitiveDistortions
     .filter(distortion => distortion.selected) // Only take selected items
     .map(({ label }) => `• ${label}`) // format as "• All or Nothing Thinking"
     .join("\n")
@@ -152,7 +152,9 @@ const cognitiveDistortionsToText = distortions => {
 };
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
-  if (!thought.uuid) console.error("Viewing something that's not saved");
+  if (!thought.uuid) {
+    console.error("Viewing something that's not saved");
+  }
 
   return (
     <View
