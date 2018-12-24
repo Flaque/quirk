@@ -93,6 +93,7 @@ class CBTListScreen extends React.Component {
     const { thoughts } = this.state;
     const items = thoughts
       .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
+      .sort((first, second) => first.updatedAt - second.updatedAt)
       .map(thought => (
         <ThoughtItem
           key={thought.uuid}
