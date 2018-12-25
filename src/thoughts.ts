@@ -16,7 +16,7 @@ export interface SavedThought extends Thought {
 
 export interface ThoughtGroup {
   date: string;
-  thoughts: Thought[];
+  thoughts: SavedThought[];
 }
 
 // This is a function instead of a constant to avoid some
@@ -36,8 +36,13 @@ export function groupThoughtsByDay(thoughts: SavedThought[]): ThoughtGroup[] {
   const dates: string[] = [];
   const groups: ThoughtGroup[] = [];
 
-  for (const thought of thoughts) {
-    const date = thought.createdAt.toDateString();
+  const sortedThoughts = thoughts.sort(
+    (first, second) =>
+      new Date(first.createdAt).getTime() - new Date(second.createdAt).getTime()
+  );
+
+  for (const thought of sortedThoughts) {
+    const date = new Date(thought.createdAt).toDateString();
     if (!dates.includes(date)) {
       dates.push(date);
       groups.push({

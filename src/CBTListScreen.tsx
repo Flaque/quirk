@@ -8,10 +8,10 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { getExercises, deleteExercise } from "./store";
-import { Header, Row, Container, IconButton } from "./ui";
+import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
-import { SavedThought } from "./thoughts";
+import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -61,7 +61,7 @@ interface Props {
 }
 
 interface State {
-  thoughts: SavedThought[];
+  groups: ThoughtGroup[];
 }
 
 class CBTListScreen extends React.Component<Props, State> {
@@ -72,7 +72,7 @@ class CBTListScreen extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      thoughts: [],
+      groups: [],
     };
   }
 
@@ -91,8 +91,12 @@ class CBTListScreen extends React.Component<Props, State> {
       .then(data => {
         const thoughts: SavedThought[] = data
           .map(([_, value]) => JSON.parse(value))
+          .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
           .map(fixTimestamps);
-        this.setState({ thoughts });
+
+        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts);
+
+        this.setState({ groups });
       })
       .catch(console.error);
   };
@@ -116,15 +120,9 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { thoughts } = this.state;
-    const items = thoughts
-      .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
-      .sort(
-        (first, second) =>
-          new Date(first.createdAt).getTime() -
-          new Date(second.createdAt).getTime()
-      )
-      .map(thought => (
+    const { groups } = this.state;
+    const items = groups.map(group => {
+      const thoughts = group.thoughts.map(thought => (
         <ThoughtItem
           key={thought.uuid}
           thought={thought}
@@ -132,6 +130,17 @@ class CBTListScreen extends React.Component<Props, State> {
           onDelete={this.onItemDelete}
         />
       ));
+
+      const isToday =
+        new Date(group.date).toDateString() === new Date().toDateString();
+
+      return (
+        <View key={group.date}>
+          <Label marginLeft={18}>{isToday ? "Today" : group.date}</Label>
+          {thoughts}
+        </View>
+      );
+    });
 
     return (
       <View

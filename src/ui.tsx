@@ -231,3 +231,17 @@ export const Container = ({ children }) => (
 Container.propTypes = {
   children: PropTypes.any,
 };
+
+export const Label = ({ children, ...style }) => (
+  <Text
+    style={{
+      fontWeight: "700",
+      fontSize: 18,
+      color: theme.veryLightText,
+      marginBottom: 12,
+      ...style,
+    }}
+  >
+    {children}
+  </Text>
+);
