@@ -164,6 +164,7 @@ RoundedButton.propTypes = {
   fillColor: PropTypes.string,
   textColor: PropTypes.string,
   width: PropTypes.number,
+  disabled: PropTypes.bool,
 };
 
 RoundedButton.defaultProps = {

@@ -1,19 +1,20 @@
 import { AsyncStorage } from "react-native";
 import stringify from "json-stringify-safe";
 import uuidv4 from "uuid/v4";
+import { Thought } from "./thoughts";
 
-export function getKey(info) {
+export function getKey(info): string {
   return `@Quirk:thoughts:${info}`;
 }
 
 export const saveExercise = async (
   uuid,
   automaticThought = "",
-  cognitiveDistortions = "",
+  cognitiveDistortions = [],
   challenge = "",
   alternativeThought = ""
-) => {
-  const thought = {
+): Promise<Thought> => {
+  const thought: Thought = {
     automaticThought,
     cognitiveDistortions,
     challenge,
@@ -29,17 +30,18 @@ export const saveExercise = async (
     // No matter what, we NEVER save bad data.
     if (!thoughtString || thoughtString.length <= 0) {
       console.warn("something went very wrong stringifying this data");
-      return {};
+      return thought;
     }
 
     await AsyncStorage.setItem(thought.uuid, thoughtString);
     return thought;
   } catch (error) {
     console.error(error);
+    return thought;
   }
 };
 
-export const deleteExercise = async uuid => {
+export const deleteExercise = async (uuid: string) => {
   try {
     await AsyncStorage.removeItem(uuid);
   } catch (error) {
@@ -47,7 +49,7 @@ export const deleteExercise = async uuid => {
   }
 };
 
-export const getExercise = async () => {
+export const getExercises = async () => {
   try {
     const keys = await AsyncStorage.getAllKeys();
     let rows = await AsyncStorage.multiGet(keys);
@@ -64,5 +66,6 @@ export const getExercise = async () => {
     return rows.filter(n => n);
   } catch (error) {
     console.error(error);
+    return [];
   }
 };

@@ -1,5 +1,10 @@
-// TODO add slugs for these so we can change them in the future
-const distortions = [
+export interface CognitiveDistortion {
+  label: string;
+  slug: string;
+  selected?: boolean;
+}
+
+const distortions: CognitiveDistortion[] = [
   { label: "All or Nothing Thinking", slug: "all-or-nothing" },
   { label: "Overgeneralization", slug: "overgeneralization" },
   { label: "Filtering out the Positive", slug: "filtering-out-the-positive" },
