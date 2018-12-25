@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "lint": "tslint src/**/*.ts src/**/*.tsx"
+    "lint": "tslint src/**/*.ts src/**/*.tsx",
+    "test": "jest"
   },
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
@@ -27,14 +28,17 @@
   "devDependencies": {
     "@types/expo": "^31.0.4",
     "@types/expo__vector-icons": "^6.2.3",
+    "@types/jest": "^23.3.10",
     "@types/react": "^16.7.18",
     "@types/react-native": "^0.57.22",
     "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
     "eslint-config-xo-react": "^0.17.0",
     "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
     "prettier": "1.15.3",
     "react-native-typescript-transformer": "^1.2.11",
+    "ts-jest": "^23.10.5",
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2"
