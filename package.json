@@ -5,10 +5,11 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "xo"
+    "lint": "tslint src/**/*.ts src/**/*.tsx"
   },
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
+    "@types/react-navigation": "^3.0.1",
     "expo": "^31.0.2",
     "json-stringify-safe": "^5.0.1",
     "lodash": "^4.17.11",
@@ -20,15 +21,23 @@
     "react-native-swiper": "^1.5.14",
     "react-navigation": "^3.0.8",
     "safe-json-stringify": "^1.2.0",
+    "tslib": "^1.9.3",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@types/expo": "^31.0.4",
+    "@types/expo__vector-icons": "^6.2.3",
+    "@types/react": "^16.7.18",
+    "@types/react-native": "^0.57.22",
     "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
     "eslint-config-xo-react": "^0.17.0",
     "eslint-plugin-react": "^7.11.1",
     "prettier": "1.15.3",
-    "xo": "^0.23.0"
+    "react-native-typescript-transformer": "^1.2.11",
+    "tslint": "^5.12.0",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2"
   },
   "xo": {
     "parser": "babel-eslint",

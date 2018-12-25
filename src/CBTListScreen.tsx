@@ -7,10 +7,16 @@ import {
   View,
 } from "react-native";
 import PropTypes from "prop-types";
-import { getExercise, deleteExercise } from "./store";
+import { getExercises, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
+import { Thought } from "./thoughts";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationAction,
+} from "react-navigation";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
   <Row alignItems={"strech"} marginBottom={18}>
@@ -50,7 +56,19 @@ ThoughtItem.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-class CBTListScreen extends React.Component {
+interface Props {
+  navigation: NavigationScreenProp<NavigationState, NavigationAction>;
+}
+
+interface State {
+  thoughts: Thought[];
+}
+
+class CBTListScreen extends React.Component<Props, State> {
+  static navigationOptions = {
+    header: null,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -58,12 +76,8 @@ class CBTListScreen extends React.Component {
     };
   }
 
-  static navigationOptions = {
-    header: null,
-  };
-
-  syncExercises = () => {
-    getExercise()
+  syncExercises = (): void => {
+    getExercises()
       .then(data => {
         const thoughts = data.map(([_, value]) => JSON.parse(value));
         this.setState({ thoughts });
@@ -127,9 +141,5 @@ class CBTListScreen extends React.Component {
     );
   }
 }
-
-CBTListScreen.propTypes = {
-  navigation: PropTypes.any.isRequired,
-};
 
 export default CBTListScreen;

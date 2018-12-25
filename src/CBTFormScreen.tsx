@@ -1,13 +1,11 @@
 import React from "react";
-import { TextInput, View, StatusBar } from "react-native";
+import { View, StatusBar } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { get } from "lodash";
-import PropTypes from "prop-types";
 import {
   Container,
   FormContainer,
   SubHeader,
-  RoundedSelector,
   Row,
   Header,
   RoundedButton,
@@ -18,10 +16,17 @@ import { saveExercise } from "./store";
 import distortions from "./distortions";
 import theme from "./theme";
 import { CBT_LIST_SCREEN } from "./screens";
+import CBTForm from "./CBTForm";
+import { Thought } from "./thoughts";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationAction,
+} from "react-navigation";
 
 // This is a function instead of a constant to avoid some
 // REAL weird JS bugs
-const getEmptyThought = () => {
+const getEmptyThought = (): Thought => {
   return {
     automaticThought: "",
     cognitiveDistortions: distortions.map(({ label, slug }) => {
@@ -32,118 +37,8 @@ const getEmptyThought = () => {
   };
 };
 
-// Text input styles defined here instead of componentized to
-// avoid issues with refs and subcomponents
-const textInputStyle = {
-  height: 48,
-  backgroundColor: "white",
-  padding: 12,
-  paddingTop: 14,
-  borderRadius: 8,
-  fontSize: 16,
-  borderColor: theme.lightGray,
-  borderWidth: 1,
-  color: theme.darkText,
-};
-const textInputPlaceholderColor = theme.veryLightText;
-
-class CBTForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-
-    this.challenge = React.createRef();
-    this.alternative = React.createRef();
-  }
-
-  render() {
-    const {
-      onTextChange,
-      onSelectCognitiveDistortion,
-      onSave,
-      thought,
-    } = this.props;
-
-    return (
-      <View
-        style={{
-          marginTop: 18,
-        }}
-      >
-        <FormContainer>
-          <SubHeader>Automatic Thought</SubHeader>
-          <TextInput
-            style={textInputStyle}
-            placeholderTextColor={textInputPlaceholderColor}
-            placeholder={"What's going on?"}
-            value={thought.automaticThought}
-            returnKeyType="next"
-            multiline={true}
-            blurOnSubmit={true}
-            onChangeText={text => onTextChange("automaticThought", text)}
-          />
-        </FormContainer>
-
-        <FormContainer>
-          <SubHeader>Cognitive Distortion</SubHeader>
-          <RoundedSelector
-            style={{
-              height: 150,
-            }}
-            items={thought.cognitiveDistortions}
-            onPress={onSelectCognitiveDistortion}
-          />
-        </FormContainer>
-
-        <FormContainer>
-          <SubHeader>Challenge</SubHeader>
-          <TextInput
-            ref={this.challenge}
-            blurOnSubmit={false}
-            placeholder="Debate that thought!"
-            placeholderTextColor={textInputPlaceholderColor}
-            returnKeyType="next"
-            style={textInputStyle}
-            value={thought.challenge}
-            multiline={true}
-            onChangeText={text => onTextChange("challenge", text)}
-            onSubmitEditing={() => {
-              this.alternative.current.focus();
-            }}
-          />
-        </FormContainer>
-
-        <FormContainer>
-          <SubHeader>Alternative Thought</SubHeader>
-          <TextInput
-            ref={this.alternative}
-            placeholder="What should we think instead?"
-            placeholderTextColor={textInputPlaceholderColor}
-            returnKeyType="done"
-            style={textInputStyle}
-            value={thought.alternativeThought}
-            multiline={true}
-            onChangeText={text => onTextChange("alternativeThought", text)}
-          />
-        </FormContainer>
-
-        <Row justifyContent="flex-end">
-          <RoundedButton title="Save" onPress={onSave} />
-        </Row>
-      </View>
-    );
-  }
-}
-
-CBTForm.propTypes = {
-  onTextChange: PropTypes.func.isRequired,
-  onSelectCognitiveDistortion: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  thought: PropTypes.object.isRequired,
-};
-
-const cognitiveDistortionsToText = distortions => {
-  const text = distortions
+const cognitiveDistortionsToText = cognitiveDistortions => {
+  const text = cognitiveDistortions
     .filter(distortion => distortion.selected) // Only take selected items
     .map(({ label }) => `• ${label}`) // format as "• All or Nothing Thinking"
     .join("\n")
@@ -152,7 +47,9 @@ const cognitiveDistortionsToText = distortions => {
 };
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
-  if (!thought.uuid) console.error("Viewing something that's not saved");
+  if (!thought.uuid) {
+    console.error("Viewing something that's not saved");
+  }
 
   return (
     <View
@@ -188,22 +85,35 @@ const CBTViewer = ({ thought, onEdit, onNew }) => {
           textColor={theme.blue}
           title="Edit"
           onPress={() => onEdit(thought.uuid)}
+          disabled={false}
         />
-        <RoundedButton title="New" onPress={() => onNew()} />
+        <RoundedButton title="New" onPress={() => onNew()} disabled={false} />
       </Row>
     </View>
   );
 };
 
-export default class CBTFormScreen extends React.Component {
+interface Props {
+  navigation: NavigationScreenProp<NavigationState, NavigationAction>;
+}
+
+interface State {
+  thought: Thought;
+  isEditing: boolean;
+}
+
+export default class CBTFormScreen extends React.Component<Props, State> {
   static navigationOptions = {
     header: null,
   };
 
+  state = {
+    thought: getEmptyThought(),
+    isEditing: true,
+  };
+
   constructor(props) {
     super(props);
-
-    this.state = { thought: getEmptyThought(), isEditing: true };
 
     this.props.navigation.addListener("willFocus", payload => {
       const thought = get(payload, "state.params.thought", false);
@@ -215,22 +125,18 @@ export default class CBTFormScreen extends React.Component {
     });
   }
 
-  setEmptyThought = () => {
-    this.setState(prevState => {
-      prevState.thought = getEmptyThought();
-      prevState.isEditing = true;
-      return prevState;
-    });
+  setEmptyThought = (): void => {
+    this.setState({ thought: getEmptyThought(), isEditing: true });
   };
 
-  onTextChange = (key, text) => {
+  onTextChange = (key: string, text: string): void => {
     this.setState(prevState => {
       prevState.thought[key] = text;
       return prevState;
     });
   };
 
-  onSave = () => {
+  onSave = (): void => {
     const {
       uuid,
       automaticThought,
@@ -250,16 +156,16 @@ export default class CBTFormScreen extends React.Component {
     });
   };
 
-  onNew = () => {
+  onNew = (): void => {
     this.setEmptyThought();
   };
 
-  onEdit = () => {
+  onEdit = (): void => {
     this.setState({ isEditing: true });
   };
 
   // Toggles Cognitive Distortion when selected
-  onSelectCognitiveDistortion = text => {
+  onSelectCognitiveDistortion = (text: string): void => {
     this.setState(prevState => {
       const { cognitiveDistortions } = prevState.thought;
       const index = cognitiveDistortions.findIndex(({ slug }) => slug === text);
@@ -309,7 +215,3 @@ export default class CBTFormScreen extends React.Component {
     );
   }
 }
-
-CBTFormScreen.propTypes = {
-  navigation: PropTypes.any.isRequired,
-};
