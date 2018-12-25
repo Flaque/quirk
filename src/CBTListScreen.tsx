@@ -11,7 +11,7 @@ import { getExercises, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
-import { Thought } from "./thoughts";
+import { SavedThought } from "./thoughts";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -61,7 +61,7 @@ interface Props {
 }
 
 interface State {
-  thoughts: Thought[];
+  thoughts: SavedThought[];
 }
 
 class CBTListScreen extends React.Component<Props, State> {
@@ -77,9 +77,21 @@ class CBTListScreen extends React.Component<Props, State> {
   }
 
   syncExercises = (): void => {
+    const fixTimestamps = (json): SavedThought => {
+      const createdAt: Date = new Date(json.createdAt);
+      const updatedAt: Date = new Date(json.updatedAt);
+      return {
+        createdAt,
+        updatedAt,
+        ...json,
+      };
+    };
+
     getExercises()
       .then(data => {
-        const thoughts = data.map(([_, value]) => JSON.parse(value));
+        const thoughts: SavedThought[] = data
+          .map(([_, value]) => JSON.parse(value))
+          .map(fixTimestamps);
         this.setState({ thoughts });
       })
       .catch(console.error);
@@ -93,13 +105,13 @@ class CBTListScreen extends React.Component<Props, State> {
     this.navigateToFormWithThought(false);
   };
 
-  navigateToFormWithThought = thought => {
+  navigateToFormWithThought = (thought: SavedThought | boolean) => {
     this.props.navigation.navigate(CBT_FORM_SCREEN, {
       thought,
     });
   };
 
-  onItemDelete = thought => {
+  onItemDelete = (thought: SavedThought) => {
     deleteExercise(thought.uuid).then(() => this.syncExercises());
   };
 
@@ -107,7 +119,11 @@ class CBTListScreen extends React.Component<Props, State> {
     const { thoughts } = this.state;
     const items = thoughts
       .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
-      .sort((first, second) => first.updatedAt - second.updatedAt)
+      .sort(
+        (first, second) =>
+          new Date(first.createdAt).getTime() -
+          new Date(second.createdAt).getTime()
+      )
       .map(thought => (
         <ThoughtItem
           key={thought.uuid}
