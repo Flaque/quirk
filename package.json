@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "lint": "tslint src/**/*.ts src/**/*.tsx",
-    "test": "jest"
+    "test": "jest",
+    "ship": "./scripts/ship.sh"
   },
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
