@@ -92,11 +92,10 @@ export default class CBTForm extends React.Component<Props> {
             returnKeyType="next"
             style={textInputStyle}
             value={thought.challenge}
-            multiline={true}
-            onChangeText={text => onTextChange("challenge", text)}
             onSubmitEditing={() => {
               this.alternative.current!.focus();
             }}
+            onChangeText={text => onTextChange("challenge", text)}
           />
         </FormContainer>
 
@@ -109,7 +108,6 @@ export default class CBTForm extends React.Component<Props> {
             returnKeyType="done"
             style={textInputStyle}
             value={thought.alternativeThought}
-            multiline={true}
             onChangeText={text => onTextChange("alternativeThought", text)}
           />
         </FormContainer>
