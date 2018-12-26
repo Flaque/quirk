@@ -13,29 +13,15 @@ import {
   Paragraph,
 } from "./ui";
 import { saveExercise } from "./store";
-import distortions from "./distortions";
 import theme from "./theme";
 import { CBT_LIST_SCREEN } from "./screens";
 import CBTForm from "./CBTForm";
-import { Thought } from "./thoughts";
+import { Thought, SavedThought, newThought } from "./thoughts";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-
-// This is a function instead of a constant to avoid some
-// REAL weird JS bugs
-const getEmptyThought = (): Thought => {
-  return {
-    automaticThought: "",
-    cognitiveDistortions: distortions.map(({ label, slug }) => {
-      return { label, slug, selected: false };
-    }),
-    challenge: "",
-    alternativeThought: "",
-  };
-};
 
 const cognitiveDistortionsToText = cognitiveDistortions => {
   const text = cognitiveDistortions
@@ -98,7 +84,7 @@ interface Props {
 }
 
 interface State {
-  thought: Thought;
+  thought: Thought | SavedThought;
   isEditing: boolean;
 }
 
@@ -108,7 +94,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   };
 
   state = {
-    thought: getEmptyThought(),
+    thought: newThought(),
     isEditing: true,
   };
 
@@ -126,7 +112,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   }
 
   setEmptyThought = (): void => {
-    this.setState({ thought: getEmptyThought(), isEditing: true });
+    this.setState({ thought: newThought(), isEditing: true });
   };
 
   onTextChange = (key: string, text: string): void => {
@@ -138,12 +124,12 @@ export default class CBTFormScreen extends React.Component<Props, State> {
 
   onSave = (): void => {
     const {
-      uuid,
       automaticThought,
       cognitiveDistortions,
       challenge,
       alternativeThought,
     } = this.state.thought;
+    const uuid = (this.state.thought as SavedThought).uuid;
 
     saveExercise(
       uuid,

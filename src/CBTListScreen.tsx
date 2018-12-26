@@ -8,10 +8,10 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { getExercises, deleteExercise } from "./store";
-import { Header, Row, Container, IconButton } from "./ui";
+import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
-import { Thought } from "./thoughts";
+import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -61,7 +61,7 @@ interface Props {
 }
 
 interface State {
-  thoughts: Thought[];
+  groups: ThoughtGroup[];
 }
 
 class CBTListScreen extends React.Component<Props, State> {
@@ -72,15 +72,31 @@ class CBTListScreen extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      thoughts: [],
+      groups: [],
     };
   }
 
   syncExercises = (): void => {
+    const fixTimestamps = (json): SavedThought => {
+      const createdAt: Date = new Date(json.createdAt);
+      const updatedAt: Date = new Date(json.updatedAt);
+      return {
+        createdAt,
+        updatedAt,
+        ...json,
+      };
+    };
+
     getExercises()
       .then(data => {
-        const thoughts = data.map(([_, value]) => JSON.parse(value));
-        this.setState({ thoughts });
+        const thoughts: SavedThought[] = data
+          .map(([_, value]) => JSON.parse(value))
+          .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
+          .map(fixTimestamps);
+
+        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts);
+
+        this.setState({ groups });
       })
       .catch(console.error);
   };
@@ -93,22 +109,20 @@ class CBTListScreen extends React.Component<Props, State> {
     this.navigateToFormWithThought(false);
   };
 
-  navigateToFormWithThought = thought => {
+  navigateToFormWithThought = (thought: SavedThought | boolean) => {
     this.props.navigation.navigate(CBT_FORM_SCREEN, {
       thought,
     });
   };
 
-  onItemDelete = thought => {
+  onItemDelete = (thought: SavedThought) => {
     deleteExercise(thought.uuid).then(() => this.syncExercises());
   };
 
   render() {
-    const { thoughts } = this.state;
-    const items = thoughts
-      .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
-      .sort((first, second) => first.updatedAt - second.updatedAt)
-      .map(thought => (
+    const { groups } = this.state;
+    const items = groups.map(group => {
+      const thoughts = group.thoughts.map(thought => (
         <ThoughtItem
           key={thought.uuid}
           thought={thought}
@@ -116,6 +130,17 @@ class CBTListScreen extends React.Component<Props, State> {
           onDelete={this.onItemDelete}
         />
       ));
+
+      const isToday =
+        new Date(group.date).toDateString() === new Date().toDateString();
+
+      return (
+        <View key={group.date}>
+          <Label marginLeft={18}>{isToday ? "Today" : group.date}</Label>
+          {thoughts}
+        </View>
+      );
+    });
 
     return (
       <View

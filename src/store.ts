@@ -1,7 +1,7 @@
 import { AsyncStorage } from "react-native";
 import stringify from "json-stringify-safe";
 import uuidv4 from "uuid/v4";
-import { Thought } from "./thoughts";
+import { Thought, SavedThought } from "./thoughts";
 
 export function getKey(info): string {
   return `@Quirk:thoughts:${info}`;
@@ -14,13 +14,13 @@ export const saveExercise = async (
   challenge = "",
   alternativeThought = ""
 ): Promise<Thought> => {
-  const thought: Thought = {
+  const thought: SavedThought = {
     automaticThought,
     cognitiveDistortions,
     challenge,
     alternativeThought,
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
+    createdAt: new Date(),
+    updatedAt: new Date(),
     uuid: uuid || getKey(uuidv4()),
   };
 
