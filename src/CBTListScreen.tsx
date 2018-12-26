@@ -143,7 +143,7 @@ class CBTListScreen extends React.Component<Props, State> {
     });
 
     return (
-      <View
+      <ScrollView
         style={{
           backgroundColor: theme.lightOffwhite,
           flex: 1,
@@ -151,18 +151,16 @@ class CBTListScreen extends React.Component<Props, State> {
       >
         <Container>
           <StatusBar barStyle="dark-content" />
-          <ScrollView>
-            <Row marginBottom={18}>
-              <IconButton
-                featherIconName={"edit"}
-                onPress={() => this.navigateToForm()}
-              />
-              <Header>.quirk</Header>
-            </Row>
-            {items}
-          </ScrollView>
+          <Row marginBottom={18}>
+            <IconButton
+              featherIconName={"edit"}
+              onPress={() => this.navigateToForm()}
+            />
+            <Header>.quirk</Header>
+          </Row>
+          {items}
         </Container>
-      </View>
+      </ScrollView>
     );
   }
 }
