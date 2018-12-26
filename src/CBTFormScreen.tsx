@@ -22,6 +22,7 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
+import { Haptic } from "expo";
 
 const cognitiveDistortionsToText = cognitiveDistortions => {
   const text = cognitiveDistortions
@@ -121,6 +122,8 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   };
 
   onSave = (): void => {
+    Haptic.notification(Haptic.NotificationFeedbackType.Success);
+
     const {
       automaticThought,
       cognitiveDistortions,
@@ -150,6 +153,8 @@ export default class CBTFormScreen extends React.Component<Props, State> {
 
   // Toggles Cognitive Distortion when selected
   onSelectCognitiveDistortion = (text: string): void => {
+    Haptic.selection(); // iOS users get a selected buzz
+
     this.setState(prevState => {
       const { cognitiveDistortions } = prevState.thought;
       const index = cognitiveDistortions.findIndex(({ slug }) => slug === text);

@@ -518,8 +518,8 @@
     source-map-support "^0.5.9"
 
 "@babel/runtime@^7.1.2":
-  version "7.1.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.1.5.tgz#4170907641cf1f61508f563ece3725150cc6fe39"
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
   dependencies:
     regenerator-runtime "^0.12.0"
 
@@ -590,9 +590,9 @@
     react-native-safe-area-view "^0.11.0"
     react-native-screens "^1.0.0 || ^1.0.0-alpha"
 
-"@types/expo@^31.0.4":
-  version "31.0.4"
-  resolved "https://registry.yarnpkg.com/@types/expo/-/expo-31.0.4.tgz#093e37fa8ef5be87d323091482c0a4c494031a90"
+"@types/expo@^31.0.5":
+  version "31.0.5"
+  resolved "https://registry.yarnpkg.com/@types/expo/-/expo-31.0.5.tgz#54aa6ca7c97cf17fa83caedc8d0ef6ba2521003d"
   dependencies:
     "@types/fbemitter" "*"
     "@types/react" "*"
@@ -626,8 +626,8 @@
     "@types/lodash" "*"
 
 "@types/lodash@*":
-  version "4.14.118"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.118.tgz#247bab39bfcc6d910d4927c6e06cbc70ec376f27"
+  version "4.14.119"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.119.tgz#be847e5f4bc3e35e46d041c394ead8b603ad8b39"
 
 "@types/prop-types@*":
   version "15.5.8"
@@ -2381,7 +2381,7 @@ expo-sms@~1.1.0:
     expo-core "~1.2.0"
     expo-permissions-interface "~1.2.0"
 
-expo@^31.0.2:
+expo@^31.0.5:
   version "31.0.6"
   resolved "https://registry.yarnpkg.com/expo/-/expo-31.0.6.tgz#3e1d8d617c959e7218aabf9ff523703183dfdbaf"
   dependencies:
@@ -4414,8 +4414,8 @@ npmlog@^4.0.2:
     set-blocking "~2.0.0"
 
 nullthrows@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/nullthrows/-/nullthrows-1.1.0.tgz#832bb19ef7fedab989f81675c846e2858a3917a2"
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nullthrows/-/nullthrows-1.1.1.tgz#7818258843856ae971eae4208ad7d7eb19a431b1"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
@@ -4894,7 +4894,7 @@ react-native-keyboard-aware-scroll-view@^0.7.4:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
 
-react-native-maps@*, react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
+react-native-maps@*, "react-native-maps@github:expo/react-native-maps#v0.22.1-exp.0":
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
