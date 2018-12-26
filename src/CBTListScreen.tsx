@@ -135,8 +135,8 @@ class CBTListScreen extends React.Component<Props, State> {
         new Date(group.date).toDateString() === new Date().toDateString();
 
       return (
-        <View key={group.date}>
-          <Label marginLeft={18}>{isToday ? "Today" : group.date}</Label>
+        <View key={group.date} style={{ marginBottom: 18 }}>
+          <Label>{isToday ? "Today" : group.date}</Label>
           {thoughts}
         </View>
       );

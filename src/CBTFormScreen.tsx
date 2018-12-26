@@ -105,8 +105,6 @@ export default class CBTFormScreen extends React.Component<Props, State> {
       const thought = get(payload, "state.params.thought", false);
       if (thought) {
         this.setState({ thought, isEditing: false });
-      } else {
-        this.setEmptyThought();
       }
     });
   }
