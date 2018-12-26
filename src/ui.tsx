@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import PropTypes from "prop-types";
 import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
-import distortions from "./distortions";
+import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
 
 export const Row = ({ children, ...style }) => (
@@ -78,17 +78,31 @@ SubHeader.propTypes = {
 };
 
 export const SelectorTextItem = ({ text, selected = false, onPress }) => (
-  <TouchableOpacity onPress={onPress}>
+  <TouchableOpacity
+    onPress={onPress}
+    style={{
+      backgroundColor: selected ? theme.blue : "white",
+      borderBottomColor: selected ? theme.darkBlue : "transparent",
+      borderBottomWidth: 2,
+      paddingTop: 8,
+      paddingBottom: 8,
+      paddingRight: 12,
+      justifyContent: "space-between",
+      flexDirection: "row",
+    }}
+  >
     <Text
       style={{
         fontWeight: "400",
         fontSize: 16,
-        color: selected ? theme.darkText : theme.veryLightText,
-        paddingBottom: 12,
+        color: selected ? "white" : theme.veryLightText,
+        paddingLeft: 12,
       }}
     >
       {text}
     </Text>
+
+    {selected && <Feather name={"check"} size={16} color={"white"} />}
   </TouchableOpacity>
 );
 
@@ -102,7 +116,6 @@ export const RoundedSelector = ({ items, onPress, style }) => (
   <ScrollView
     style={{
       backgroundColor: "white",
-      padding: 12,
       borderRadius: 8,
       borderColor: theme.lightGray,
       borderWidth: 1,
@@ -112,7 +125,7 @@ export const RoundedSelector = ({ items, onPress, style }) => (
     {items.map(({ slug, selected }) => (
       <SelectorTextItem
         key={slug}
-        text={find(distortions, { slug }).label}
+        text={(find(distortions, { slug }) as CognitiveDistortion).label}
         selected={selected}
         onPress={() => onPress(slug)}
       />

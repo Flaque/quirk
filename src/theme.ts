@@ -9,4 +9,5 @@ export default {
   pink: "#f8a5c2",
   red: "#c44569",
   blue: "#778beb",
+  darkBlue: "#546de5",
 };
