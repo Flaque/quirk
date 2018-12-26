@@ -25,6 +25,19 @@ const distortions: CognitiveDistortion[] = [
   { label: "Labeling", slug: "labeling" },
   { label: "Self-Blaming", slug: "self-blaming" },
   { label: "Other-Blaming", slug: "other-blaming" },
-];
+].sort((first, second) => {
+  const firstLabel = first.label.toUpperCase();
+  const secondLabel = second.label.toUpperCase();
+
+  if (firstLabel < secondLabel) {
+    return -1;
+  }
+
+  if (firstLabel > secondLabel) {
+    return 1;
+  }
+
+  return 0;
+}); // Alphabetical sorting
 
 export default distortions;
