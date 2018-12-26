@@ -38,7 +38,7 @@ export function groupThoughtsByDay(thoughts: SavedThought[]): ThoughtGroup[] {
 
   const sortedThoughts = thoughts.sort(
     (first, second) =>
-      new Date(first.createdAt).getTime() - new Date(second.createdAt).getTime()
+      new Date(second.createdAt).getTime() - new Date(first.createdAt).getTime()
   );
 
   for (const thought of sortedThoughts) {
