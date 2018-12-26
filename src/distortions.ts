@@ -8,7 +8,6 @@ const distortions: CognitiveDistortion[] = [
   { label: "All or Nothing Thinking", slug: "all-or-nothing" },
   { label: "Overgeneralization", slug: "overgeneralization" },
   { label: "Filtering out the Positive", slug: "filtering-out-the-positive" },
-  { label: "Jumping to Conclusions", slug: "jumping-to-conclusions" },
   { label: "Mind Reading", slug: "mind-reading" },
   { label: "Fortune Telling", slug: "fortune-telling" },
   {
