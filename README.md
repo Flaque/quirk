@@ -72,10 +72,11 @@ Those seem like simple goals, yet many existing mental health apps seem to fail 
 
 ## Stupid Design Logic
 
-I'm not really a designer, but I do like to engage in _stupid design logic_ for why things are a certain way. Quirk has
-a particular style, but it's one I ripped off from a bunch of other apps.
+I'm not really a designer, but I do like to engage in _stupid design logic_ for why things are a certain way. _Stupid design logic_ differs from traditional design logic by being inherently biased and largely driven by emotion, personality, and whatever part of your brain has decided to listen to _XYZ-pop-song_ on loop for three days. 
 
-Some components are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make [that thing a full screen giant, towering over mortals.](https://i.imgur.com/zcplBkP.png)
+In other words, it's raw, unadulterated opinion with no basis in research or experience.
+
+Quirk has a particular style, but it's one I ripped off from a bunch of other apps. Some components are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make [that thing a full screen giant, towering over mortals.](https://i.imgur.com/zcplBkP.png)
 
 Illustrations should be excessively cute and burst with as much personality as your artistic talent can muster. None of that sleek silicon valley business-casual airplane art. Nah. **Give me bubbles and smiles.** Draw little dudes and [make them eat each other.](https://i.imgur.com/JYM9CbA.png) We're making a healthy-cool app here, not some collared-shirt-wearing fintech money-market manstravaganza.
 
