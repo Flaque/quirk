@@ -68,6 +68,8 @@ Those seem like simple goals, yet many existing mental health apps seem to fail 
 
 **Don't push people to be unhappy.** I cannot believe I have to state this, but do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state their unhappy in order to access a feature. 
 
+**Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in the help. But holy moly becareful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._  
+
 ## Stupid Design Logic
 
 I'm not really a designer, but I do like to engage in _stupid design logic_ for why things are a certain way. Quirk has
