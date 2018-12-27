@@ -7,6 +7,16 @@ export function getKey(info): string {
   return `@Quirk:thoughts:${info}`;
 }
 
+export async function exists(key: string): Promise<boolean> {
+  try {
+    const value = await AsyncStorage.getItem(key);
+    return !!value;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+}
+
 export const saveExercise = async (
   thought: SavedThought | Thought
 ): Promise<Thought> => {
