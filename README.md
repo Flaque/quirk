@@ -32,12 +32,6 @@ If you already have XCode installed with a simulator, you can just press `i` to 
 
 Quirk's goal is to be both inviting and focused. It should be _really_ easy to enter in a thought; people frequently enter these in public settings and need to do it fairly quickly. It also should not cause any increased frustration.
 
-## Color Palette
-
-To bootstrap this, we're just using [a pre-canned, but fairly muted, color palette.](https://flatuicolors.com/palette/ru)
-
-![palette](https://i.imgur.com/yXyLg3I.png)
-
 ## Design Logic
 
 Qurik is built with two main goals in mind:
@@ -96,6 +90,12 @@ as possible?
 Give these tools the respect they deserve; don't be afraid of the subject matter. You're not JP Morgan or whatnot. 
 
 _This general thinking draws heavily on [the game design concept of "Juice."](https://www.youtube.com/watch?v=216_5nu4aVQ)_
+
+## Color Palette
+
+To bootstrap this, we're just using [a pre-canned, but fairly muted, color palette.](https://flatuicolors.com/palette/ru)
+
+![palette](https://i.imgur.com/yXyLg3I.png)
 
 # License
 
