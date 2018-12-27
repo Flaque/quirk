@@ -97,6 +97,29 @@ To bootstrap this, we're just using [a pre-canned, but fairly muted, color palet
 
 ![palette](https://i.imgur.com/yXyLg3I.png)
 
+# Engineering Logic
+
+Quirk _must not_ lose user data. The entire point of the app is to record your thoughts, so if you lost them it would be pretty bad. As stated in [one study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6010839/):
+
+> While an app failure in general can be inconvenient and annoying, it can have serious consequences in the context of mental health apps—someone who has come to rely on an app for emotional support can find a failure “devastating.”
+
+Therefore, data management should be given a higher priority than any other part of the app. 
+
+## Taxonomy and Order of Data Failure Cases
+The following is a list of extremely _bad_ behaviors and states that could happen in order of severity.
+
+### 1 - Large Scale Data Corruption
+All thoughts have been corrupted somehow. For example, the JSON format of every item is wrong. This is put at the top because not only can a user not access the data, but it may spiral out can cause continuing errors forcing the app to be "bricked."
+
+### 2 - Large Scale Data Loss
+All thoughts have been deleted without any hope of recovery.
+
+### 3 - Small Scale Data Loss
+A small amount of data has been deleted without any hope of recovery.
+
+### 4 - Small Scale Data Corruption
+A small amount of data has been corrupted in a recoverable way. The user still has lost data, but the app does not crash, and this is potentially fixable via an update. 
+
 # License
 
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
