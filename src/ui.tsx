@@ -122,14 +122,21 @@ export const RoundedSelector = ({ items, onPress, style }) => (
       ...style,
     }}
   >
-    {items.map(({ slug, selected }) => (
-      <SelectorTextItem
-        key={slug}
-        text={(find(distortions, { slug }) as CognitiveDistortion).label}
-        selected={selected}
-        onPress={() => onPress(slug)}
-      />
-    ))}
+    {items.map(({ slug, selected }) => {
+      const text = find(distortions, { slug });
+      if (!text) {
+        return null;
+      }
+
+      return (
+        <SelectorTextItem
+          key={slug}
+          text={(text as CognitiveDistortion).label}
+          selected={selected}
+          onPress={() => onPress(slug)}
+        />
+      );
+    })}
   </ScrollView>
 );
 

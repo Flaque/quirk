@@ -122,23 +122,10 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   };
 
   onSave = (): void => {
+    // Ignore the typescript error here, it's because of an Expo bug
     Haptic.notification(Haptic.NotificationFeedbackType.Success);
 
-    const {
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought,
-    } = this.state.thought;
-    const uuid = (this.state.thought as SavedThought).uuid;
-
-    saveExercise(
-      uuid,
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought
-    ).then(thought => {
+    saveExercise(this.state.thought).then(thought => {
       this.setState({ isEditing: false, thought });
     });
   };

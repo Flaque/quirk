@@ -8,36 +8,37 @@ export function getKey(info): string {
 }
 
 export const saveExercise = async (
-  uuid,
-  automaticThought = "",
-  cognitiveDistortions = [],
-  challenge = "",
-  alternativeThought = ""
+  thought: SavedThought | Thought
 ): Promise<Thought> => {
-  const thought: SavedThought = {
-    automaticThought,
-    cognitiveDistortions,
-    challenge,
-    alternativeThought,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    uuid: uuid || getKey(uuidv4()),
-  };
+  let saveableThought: SavedThought;
+
+  const isSavedThought = (thought as SavedThought).uuid === undefined;
+  if (isSavedThought) {
+    saveableThought = {
+      uuid: getKey(uuidv4()),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      ...thought,
+    };
+  } else {
+    saveableThought = thought as SavedThought;
+    saveableThought.updatedAt = new Date();
+  }
 
   try {
-    const thoughtString = stringify(thought);
+    const thoughtString = stringify(saveableThought);
 
     // No matter what, we NEVER save bad data.
     if (!thoughtString || thoughtString.length <= 0) {
       console.warn("something went very wrong stringifying this data");
-      return thought;
+      return saveableThought;
     }
 
-    await AsyncStorage.setItem(thought.uuid, thoughtString);
-    return thought;
+    await AsyncStorage.setItem(saveableThought.uuid, thoughtString);
+    return saveableThought;
   } catch (error) {
     console.error(error);
-    return thought;
+    return saveableThought;
   }
 };
 

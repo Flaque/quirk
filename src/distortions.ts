@@ -18,7 +18,6 @@ const distortions: CognitiveDistortion[] = [
     label: "Minimization of the Positive",
     slug: "minimization-of-the-positive",
   },
-  { label: "Catastrophizing", slug: "catastrophizing" },
   { label: "Emotional Reasoning", slug: "emotional-reasoning" },
   { label: "Should Statements", slug: "should-statements" },
   { label: "Labeling", slug: "labeling" },
