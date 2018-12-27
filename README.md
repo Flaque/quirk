@@ -38,17 +38,46 @@ To bootstrap this, we're just using [a pre-canned, but fairly muted, color palet
 
 ![palette](https://i.imgur.com/yXyLg3I.png)
 
-## Other Stupid Design Logic
+## Design Logic
+
+Qurik is built with two main goals in mind:
+* Don't be bloated
+* Don't be evil
+
+Those seem like simple goals, yet many existing mental health apps seem to fail on both. 
+
+### Don't be bloated
+
+**Don't include features for one particular condition at the expense of other conditions.** For example, don't couple mood tracking to thought tracking. If a user _has_ to enter a mood in order to track a thought, then the entire app is ruined for people who use it for panic, OCD or another condition where mood isn't the primary focus.
+
+**Don't include non-CBT related treatments without good reason.** No relaxation audio tracks or meditation guides. It's a CBT app, keep it focused on CBT.
+
+**Don't include things that could be better acomplished by another app.** No one needs an in-app diary when a diary works just fine. No one needs an in-app heart rate tracker when a heart rate tracker works just fine. 
+
+**Be quick and efficent.** Thoughts shouldn't take 5 minutes to enter and you should be able to skip fields if it's reasonable. Don't let the perfect be the enemy of the good. 
+
+### Don't be Evil
+
+**Thoughts are more valuable than passwords, treat them that way.** Most people would rather give over their passwords than their CBT thoughts. They're incredibly private, occasionally involve other people, and frequently are embarrassing.
+
+**Don't have $200 dollar in app purchases.** I'm looking at you CBT Thought Diary. I get it, developers need to make money. It costs a lot to just keep the app on the app store. But you're preying on vulnerable people. Very few people of rational mind will purposely spend $200s for a dark mode. Gimme a break. 
+
+**Don't have dumb notifications.** Scheduling is fine, abusing push notifications so your app has better traffic is scummy and gross.
+
+**Be open.** Not every app has to be open source; it's a hard choice to make. But be clear and obvious within the app about what's going on with the user's data. Don't be sending it to some server without making that clear within the app, not within some dumb privacy policy no one will ever read. 
+
+**Don't push people to be unhappy.** I cannot believe I have to state this, but do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state their unhappy in order to access a feature. 
+
+## Stupid Design Logic
 
 I'm not really a designer, but I do like to engage in _stupid design logic_ for why things are a certain way. Quirk has
 a particular style, but it's one I ripped off from a bunch of other apps.
 
-Some things are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make [that thing a full screen giant, towering over mortals.](https://i.imgur.com/zcplBkP.png)
+Some components are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make [that thing a full screen giant, towering over mortals.](https://i.imgur.com/zcplBkP.png)
 
 Illustrations should be excessively cute and burst with as much personality as your artistic talent can muster. None of that sleek silicon valley business-casual airplane art. Nah. **Give me bubbles and smiles.** Draw little dudes and [make them eat each other.](https://i.imgur.com/JYM9CbA.png) We're making a healthy-cool app here, not some collared-shirt-wearing fintech money-market manstravaganza.
 
-Likewise, I don't want to have literally any of the branding of most mental health tools. Almost
-all of them seem like they're afraid of their users. They all seem to be as quiet and bland as possible as if their users would get spooked and run away.
+Likewise, I don't want any of the branding of most mental health tools. Almost all of them seem like they're afraid of their users. They all seem to be as quiet and bland as possible as if their users would get spooked and run away. 
 
 This ends up coming across as either _really_ patronizing or _really_ sterile. In general it's
 both.
@@ -61,9 +90,9 @@ from the people who need it most. If you're making mental health tech, you're pr
 trying to help people; why wouldn't you be as in-your-face-shout-it-from-the-roof-tops
 as possible?
 
-Like come on, you're not JP Morgan or something; you're literally saving people's _brains_.
+Give these tools the respect they deserve; don't be afraid of the subject matter. You're not JP Morgan or whatnot. 
 
-When I first started making things, I made those websites that just threw every color you could on the page and it looked awful. Eventually I noticed it looked awful and then became super cautious about doing anything remotely interesting. I think I'm back in a happy medium. The UI design tweeks I stole from a lot of other apps, this general thinking comes from [the game design concept of "Juice."](https://www.youtube.com/watch?v=216_5nu4aVQ)
+_This general thinking draws heavily on [the game design concept of "Juice."](https://www.youtube.com/watch?v=216_5nu4aVQ)_
 
 # License
 
