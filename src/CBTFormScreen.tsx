@@ -12,7 +12,7 @@ import {
   IconButton,
   Paragraph,
 } from "./ui";
-import { saveExercise } from "./store";
+import { saveExercise, exists } from "./store";
 import theme from "./theme";
 import { CBT_LIST_SCREEN } from "./screens";
 import CBTForm from "./CBTForm";
@@ -102,10 +102,24 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   constructor(props) {
     super(props);
 
-    this.props.navigation.addListener("willFocus", payload => {
+    this.props.navigation.addListener("willFocus", async payload => {
+      // We've come from a list item
       const thought = get(payload, "state.params.thought", false);
-      if (thought) {
+      if (thought && thought.uuid) {
         this.setState({ thought, isEditing: false });
+        return;
+      }
+
+      // We've come from the form-button back to an existing view
+      if (!this.state.isEditing) {
+        // Wipe the item if it doesn't exist
+        const thoughtExists = await exists(
+          (this.state.thought as SavedThought).uuid
+        );
+
+        if (!thoughtExists) {
+          this.setState({ thought: newThought(), isEditing: true });
+        }
       }
     });
   }
@@ -122,23 +136,10 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   };
 
   onSave = (): void => {
+    // Ignore the typescript error here, it's because of an Expo bug
     Haptic.notification(Haptic.NotificationFeedbackType.Success);
 
-    const {
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought,
-    } = this.state.thought;
-    const uuid = (this.state.thought as SavedThought).uuid;
-
-    saveExercise(
-      uuid,
-      automaticThought,
-      cognitiveDistortions,
-      challenge,
-      alternativeThought
-    ).then(thought => {
+    saveExercise(this.state.thought).then(thought => {
       this.setState({ isEditing: false, thought });
     });
   };
