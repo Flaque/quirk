@@ -9,11 +9,14 @@ import {
 } from "./ui";
 import theme from "./theme";
 import { Thought } from "./thoughts";
+import { max } from "lodash";
+
+const InputSize = 48;
 
 // Text input styles defined here instead of componentized to
 // avoid issues with refs and subcomponents
 const textInputStyle = {
-  height: 48,
+  height: InputSize,
   backgroundColor: "white",
   padding: 12,
   paddingTop: 14,
@@ -32,9 +35,21 @@ interface Props {
   onTextChange: (key: string, text: string) => void;
 }
 
-export default class CBTForm extends React.Component<Props> {
+interface State {
+  automaticHeight: number;
+  challengeHeight: number;
+  alternativeHeight: number;
+}
+
+export default class CBTForm extends React.Component<Props, State> {
   challenge: React.RefObject<TextInput>;
   alternative: React.RefObject<TextInput>;
+
+  state = {
+    automaticHeight: 48,
+    challengeHeight: 48,
+    alternativeHeight: 48,
+  };
 
   constructor(props) {
     super(props);
@@ -42,6 +57,24 @@ export default class CBTForm extends React.Component<Props> {
     this.challenge = React.createRef();
     this.alternative = React.createRef();
   }
+
+  growAutomatic = height => {
+    this.setState({
+      automaticHeight: height,
+    });
+  };
+
+  growChallenge = height => {
+    this.setState({
+      challengeHeight: height,
+    });
+  };
+
+  growAlternative = height => {
+    this.setState({
+      alternativeHeight: height,
+    });
+  };
 
   render() {
     const {
@@ -60,14 +93,21 @@ export default class CBTForm extends React.Component<Props> {
         <FormContainer>
           <SubHeader>Automatic Thought</SubHeader>
           <TextInput
-            style={textInputStyle}
+            style={{
+              ...textInputStyle,
+              height: max([this.state.automaticHeight, InputSize]),
+            }}
             placeholderTextColor={textInputPlaceholderColor}
             placeholder={"What's going on?"}
             value={thought.automaticThought}
             returnKeyType="next"
             multiline={true}
             blurOnSubmit={true}
+            autoFocus={true}
             onChangeText={text => onTextChange("automaticThought", text)}
+            onContentSizeChange={e =>
+              this.growAutomatic(e.nativeEvent.contentSize.height)
+            }
           />
         </FormContainer>
 
@@ -90,12 +130,25 @@ export default class CBTForm extends React.Component<Props> {
             placeholder="Debate that thought!"
             placeholderTextColor={textInputPlaceholderColor}
             returnKeyType="next"
-            style={textInputStyle}
-            value={thought.challenge}
-            onSubmitEditing={() => {
-              this.alternative.current!.focus();
+            style={{
+              ...textInputStyle,
+              height: max([this.state.challengeHeight, InputSize]),
             }}
-            onChangeText={text => onTextChange("challenge", text)}
+            value={thought.challenge}
+            multiline={true}
+            onKeyPress={({ nativeEvent }) => {
+              if (nativeEvent.key === "Enter") {
+                this.alternative.current!.focus();
+                return;
+              }
+            }}
+            enablesReturnKeyAutomatically={true}
+            onContentSizeChange={e =>
+              this.growChallenge(e.nativeEvent.contentSize.height)
+            }
+            onChangeText={text => {
+              onTextChange("challenge", text.replace(/\n|\r/g, ""));
+            }}
           />
         </FormContainer>
 
@@ -106,8 +159,15 @@ export default class CBTForm extends React.Component<Props> {
             placeholder="What should we think instead?"
             placeholderTextColor={textInputPlaceholderColor}
             returnKeyType="done"
-            style={textInputStyle}
+            style={{
+              ...textInputStyle,
+              height: max([this.state.alternativeHeight, InputSize]),
+            }}
+            multiline={true}
             value={thought.alternativeThought}
+            onContentSizeChange={e =>
+              this.growAlternative(e.nativeEvent.contentSize.height)
+            }
             onChangeText={text => onTextChange("alternativeThought", text)}
           />
         </FormContainer>
