@@ -233,7 +233,7 @@ Paragraph.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-export const Container = ({ children }) => (
+export const Container = ({ children, ...style }) => (
   <View
     style={{
       flexDirection: "column",
@@ -242,6 +242,7 @@ export const Container = ({ children }) => (
       paddingLeft: 25,
       paddingRight: 25,
       paddingBottom: 50,
+      ...style,
     }}
   >
     {children}
