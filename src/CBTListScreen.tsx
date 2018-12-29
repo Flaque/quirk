@@ -5,6 +5,7 @@ import {
   ScrollView,
   StatusBar,
   View,
+  Image,
 } from "react-native";
 import PropTypes from "prop-types";
 import { getExercises, deleteExercise } from "./store";
@@ -163,7 +164,30 @@ class CBTListScreen extends React.Component<Props, State> {
             />
             <Header>.quirk</Header>
           </Row>
-          {items}
+
+          {items.length !== 0 ? (
+            items
+          ) : (
+            <View
+              style={{
+                alignItems: "center",
+                marginTop: 36,
+              }}
+            >
+              <Image
+                source={require("../assets/looker/Looker.png")}
+                style={{
+                  width: 200,
+                  height: 150,
+                  alignSelf: "center",
+                  marginBottom: 32,
+                }}
+              />
+              <Label marginBottom={18} textAlign={"center"}>
+                No thoughts yet!
+              </Label>
+            </View>
+          )}
         </Container>
       </ScrollView>
     );
