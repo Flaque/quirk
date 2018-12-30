@@ -23,15 +23,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import { Haptic } from "expo";
-
-const cognitiveDistortionsToText = cognitiveDistortions => {
-  const text = cognitiveDistortions
-    .filter(distortion => distortion.selected) // Only take selected items
-    .map(({ label }) => `• ${label}`) // format as "• All or Nothing Thinking"
-    .join("\n")
-    .trim(); // Remove excess whitespace
-  return text;
-};
+import CBTView from "./CBTView";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -44,27 +36,7 @@ const CBTViewer = ({ thought, onEdit, onNew }) => {
         marginTop: 18,
       }}
     >
-      <FormContainer>
-        <SubHeader>Automatic Thought</SubHeader>
-        <Paragraph>{thought.automaticThought || "🤷‍"}</Paragraph>
-      </FormContainer>
-
-      <FormContainer>
-        <SubHeader>Cognitive Distortion</SubHeader>
-        <Paragraph>
-          {cognitiveDistortionsToText(thought.cognitiveDistortions) || "🤷‍"}
-        </Paragraph>
-      </FormContainer>
-
-      <FormContainer>
-        <SubHeader>Challenge</SubHeader>
-        <Paragraph>{thought.challenge || "🤷‍"}</Paragraph>
-      </FormContainer>
-
-      <FormContainer>
-        <SubHeader>Alternative Thought</SubHeader>
-        <Paragraph>{thought.alternativeThought || "🤷‍"}</Paragraph>
-      </FormContainer>
+      <CBTView thought={thought} />
 
       <Row>
         <RoundedButton
@@ -92,6 +64,7 @@ interface State {
 export default class CBTFormScreen extends React.Component<Props, State> {
   static navigationOptions = {
     header: null,
+    gesturesEnabled: false,
   };
 
   state = {

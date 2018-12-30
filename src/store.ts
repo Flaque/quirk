@@ -3,7 +3,9 @@ import stringify from "json-stringify-safe";
 import uuidv4 from "uuid/v4";
 import { Thought, SavedThought } from "./thoughts";
 
-export function getKey(info): string {
+const EXISTING_USER_KEY = "@Quirk:existing-user";
+
+export function getThoughtKey(info): string {
   return `@Quirk:thoughts:${info}`;
 }
 
@@ -17,6 +19,24 @@ export async function exists(key: string): Promise<boolean> {
   }
 }
 
+export async function getIsExistingUser(): Promise<boolean> {
+  try {
+    const value = await AsyncStorage.getItem(EXISTING_USER_KEY);
+    return !!value;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+}
+
+export async function setIsExistingUser() {
+  try {
+    await AsyncStorage.setItem(EXISTING_USER_KEY, "true");
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export const saveExercise = async (
   thought: SavedThought | Thought
 ): Promise<Thought> => {
@@ -25,7 +45,7 @@ export const saveExercise = async (
   const isSavedThought = (thought as SavedThought).uuid === undefined;
   if (isSavedThought) {
     saveableThought = {
-      uuid: getKey(uuidv4()),
+      uuid: getThoughtKey(uuidv4()),
       createdAt: new Date(),
       updatedAt: new Date(),
       ...thought,

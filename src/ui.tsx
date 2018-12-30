@@ -1,10 +1,26 @@
 import React from "react";
-import { Text, View, TouchableOpacity, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  ImageSourcePropType,
+  Image,
+} from "react-native";
 import PropTypes from "prop-types";
 import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
+
+export interface ParentComponent {
+  children: any;
+  style?: object;
+}
+
+export interface Component {
+  style?: object;
+}
 
 export const Row = ({ children, ...style }) => (
   <View
@@ -39,7 +55,7 @@ FormContainer.propTypes = {
   style: PropTypes.object,
 };
 
-export const Header = ({ children, ...style }) => (
+export const Header = ({ children, style }: ParentComponent) => (
   <Text
     style={{
       fontWeight: "900",
@@ -58,7 +74,7 @@ Header.propTypes = {
   style: PropTypes.object,
 };
 
-export const SubHeader = ({ children, ...style }) => (
+export const SubHeader = ({ children, style }: ParentComponent) => (
   <Text
     style={{
       fontWeight: "700",
@@ -71,11 +87,6 @@ export const SubHeader = ({ children, ...style }) => (
     {children}
   </Text>
 );
-
-SubHeader.propTypes = {
-  children: PropTypes.any.isRequired,
-  style: PropTypes.object,
-};
 
 export const SelectorTextItem = ({ text, selected = false, onPress }) => (
   <TouchableOpacity
@@ -217,12 +228,13 @@ IconButton.propTypes = {
   style: PropTypes.any,
 };
 
-export const Paragraph = ({ children }) => (
+export const Paragraph = ({ children, style }: ParentComponent) => (
   <Text
     style={{
       color: theme.lightText,
       fontWeight: "400",
       fontSize: 16,
+      ...style,
     }}
   >
     {children}
@@ -233,7 +245,7 @@ Paragraph.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-export const Container = ({ children, ...style }) => (
+export const Container = ({ children, style }: ParentComponent) => (
   <View
     style={{
       flexDirection: "column",
@@ -265,4 +277,23 @@ export const Label = ({ children, ...style }) => (
   >
     {children}
   </Text>
+);
+
+export interface IllustrationComponent {
+  style?: object;
+  source: ImageSourcePropType;
+}
+
+export const Illustration = ({ style, source }: IllustrationComponent) => (
+  <Image
+    source={source}
+    style={{ width: 200, height: 150, alignSelf: "center", ...style }}
+  />
+);
+
+export const ThoughtDook = ({ style, source }: IllustrationComponent) => (
+  <Image
+    source={source}
+    style={{ width: 48, height: 48, alignSelf: "center", ...style }}
+  />
 );

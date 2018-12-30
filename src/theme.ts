@@ -10,4 +10,5 @@ export default {
   red: "#c44569",
   blue: "#778beb",
   darkBlue: "#546de5",
+  purple: "#8B77AA",
 };
