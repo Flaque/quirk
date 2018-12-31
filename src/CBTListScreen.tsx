@@ -24,6 +24,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import { Haptic } from "expo";
+import { maybeRepairThought, validThoughtGroup } from "./sanitize";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
   <Row alignItems={"strech"} marginBottom={18}>
@@ -89,28 +90,12 @@ interface GroupComponent {
   groups: ThoughtGroup[];
 }
 
-// Carefully, CAREFULLY, HOLY CRAP CAREFULLY validate these.
-// Crazy stupid things can happen if something EVER gets saved incorrectly,
-// so this prevents us from ever bricking the app because one thing got saved wrong.
-function groupIsExtremelyValid(g: ThoughtGroup) {
-  const structureIsGood = g && g.thoughts && g.thoughts.length > 0 && !!g.date;
-  const allThoughtsHaveTitles =
-    g.thoughts.filter(t => t.automaticThought).length === g.thoughts.length;
-
-  return structureIsGood && allThoughtsHaveTitles;
-}
-
 const ThoughtItemList = ({ groups }: GroupComponent) => {
-  // Don't ever show bad groups, it could brick the app
-  if (!groups) {
-    return <EmptyThoughtIllustration />;
-  }
-  const filteredGroups = groups.filter(groupIsExtremelyValid);
-  if (filteredGroups.length === 0) {
+  if (!groups || groups.length === 0) {
     return <EmptyThoughtIllustration />;
   }
 
-  const items = filteredGroups.map(group => {
+  const items = groups.map(group => {
     const thoughts = group.thoughts.map(thought => (
       <ThoughtItem
         key={thought.uuid}
@@ -172,7 +157,9 @@ class CBTListScreen extends React.Component<Props, State> {
           .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
           .map(fixTimestamps);
 
-        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts);
+        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts).filter(
+          validThoughtGroup
+        );
 
         this.setState({ groups });
       })

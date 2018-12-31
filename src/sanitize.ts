@@ -11,8 +11,8 @@
  * regular JS and only validates at compile time! This helps validate objects at _runtime_.
  */
 
-import { Thought } from "./thoughts";
-import { isEqual } from "lodash";
+import { Thought, SavedThought, newThought, ThoughtGroup } from "./thoughts";
+import { defaults, isObject } from "lodash";
 
 // require to avoid weirdness around untyped lib
 const Schema = require("validate");
@@ -32,21 +32,14 @@ const thoughtSchema = new Schema({
   },
 });
 
-export function validThought(thought: Thought): boolean {
-  if (!thought) {
+export function validThought(thought: Thought | SavedThought): boolean {
+  if (!thought || !isObject(thought)) {
     return false;
   }
 
   // Check that we generally have the correct properties
   // The validate library can't handle empty strings, so this is a double check
-  if (
-    !isEqual(Object.keys(thought).sort(), [
-      "alternativeThought",
-      "automaticThought",
-      "challenge",
-      "cognitiveDistortions",
-    ])
-  ) {
+  if (Object.keys(thought).length < 4) {
     return false;
   }
 
@@ -57,4 +50,48 @@ export function validThought(thought: Thought): boolean {
   }
 
   return true;
+}
+
+const groupSchema = new Schema({
+  date: {
+    type: String,
+    required: true,
+    length: { min: 1 },
+  },
+  thoughts: {
+    type: Array,
+    required: true,
+    length: { min: 1 },
+  },
+});
+
+export function validThoughtGroup(group: ThoughtGroup): boolean {
+  if (!group) {
+    return false;
+  }
+
+  const validationErrors = groupSchema.validate(group);
+  if (validationErrors && validationErrors.length !== 0) {
+    return false;
+  }
+
+  if (!group.thoughts.every(validThought)) {
+    return false;
+  }
+
+  return true;
+}
+
+// Attempts to "fix" an incorrect thought with sensible defaults
+export function maybeRepairThought(thought: any): Thought {
+  // Never repair a valid thought.
+  if (validThought(thought)) {
+    return thought as Thought;
+  }
+
+  if (!thought || !isObject(thought)) {
+    return newThought();
+  }
+
+  return defaults(thought, newThought());
 }
