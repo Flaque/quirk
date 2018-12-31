@@ -2,17 +2,13 @@ import React from "react";
 import { View, StatusBar } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { get } from "lodash";
+import { Container, Row, Header, RoundedButton, IconButton } from "./ui";
 import {
-  Container,
-  FormContainer,
-  SubHeader,
-  Row,
-  Header,
-  RoundedButton,
-  IconButton,
-  Paragraph,
-} from "./ui";
-import { saveExercise, exists } from "./store";
+  saveExercise,
+  exists,
+  setIsExistingUser,
+  getIsExistingUser,
+} from "./store";
 import theme from "./theme";
 import { CBT_LIST_SCREEN } from "./screens";
 import CBTForm from "./CBTForm";
@@ -22,8 +18,9 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { Haptic } from "expo";
+import { Haptic, AppLoading } from "expo";
 import CBTView from "./CBTView";
+import CBTOnBoardingScreen from "./CBTOnBoardingScreen";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -59,17 +56,20 @@ interface Props {
 interface State {
   thought: Thought | SavedThought;
   isEditing: boolean;
+  shouldShowOnBoarding: boolean;
+  isLoading: boolean;
 }
 
 export default class CBTFormScreen extends React.Component<Props, State> {
   static navigationOptions = {
     header: null,
-    gesturesEnabled: false,
   };
 
   state = {
     thought: newThought(),
     isEditing: true,
+    shouldShowOnBoarding: false,
+    isLoading: true,
   };
 
   constructor(props) {
@@ -94,6 +94,10 @@ export default class CBTFormScreen extends React.Component<Props, State> {
           this.setState({ thought: newThought(), isEditing: true });
         }
       }
+    });
+
+    getIsExistingUser().then(isExisting => {
+      this.setState({ shouldShowOnBoarding: !isExisting, isLoading: false });
     });
   }
 
@@ -139,8 +143,22 @@ export default class CBTFormScreen extends React.Component<Props, State> {
     });
   };
 
+  stopOnBoarding = () => {
+    setIsExistingUser();
+
+    this.setState({ shouldShowOnBoarding: false });
+  };
+
   render() {
-    const { thought, isEditing } = this.state;
+    const { thought, isEditing, shouldShowOnBoarding, isLoading } = this.state;
+
+    if (isLoading) {
+      return <AppLoading onError={console.warn} />;
+    }
+
+    if (shouldShowOnBoarding) {
+      return <CBTOnBoardingScreen toFormScreen={this.stopOnBoarding} />;
+    }
 
     return (
       <KeyboardAwareScrollView

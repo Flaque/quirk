@@ -9,23 +9,15 @@ import {
   ThoughtDook,
   RoundedButton,
 } from "./ui";
-import { CBT_FORM_SCREEN } from "./screens";
 import Swiper from "react-native-swiper";
 import { View } from "react-native";
 import CBTView from "./CBTView";
 import { Thought } from "./thoughts";
-import {
-  NavigationScreenProp,
-  NavigationState,
-  NavigationAction,
-} from "react-navigation";
-import { setIsExistingUser, getIsExistingUser } from "./store";
-import { AppLoading } from "expo";
 
 const thought: Thought = {
   automaticThought: "I missed George's recital, he must hate me.",
-  challenge: `George knows I can't make things, I wouldn't hate him if he missed something of mine. By beating myself up over this, I'm treating myself worse than I treat others.`,
-  alternativeThought: `It's true I missed George's recital and I can appologize, but he'll probably forgive me.`,
+  challenge: `George knows I couldnt make it this time, I wouldn't hate him if he missed something of mine. I should treat myself at least as well as I treat others.`,
+  alternativeThought: `It's true I missed George's recital, I can appologize, and he'll probably forgive me.`,
   cognitiveDistortions: [
     { label: "Mind Reading", slug: "mind-reading", selected: true },
   ],
@@ -202,7 +194,7 @@ const BadThoughtNote = () => (
 const IdentifyDistortions = () => (
   <Main>
     <LeftPushedHeader>
-      2. Then let's look for <Exaggerated>Cognitive Distortions</Exaggerated>{" "}
+      2. Look for <Exaggerated>Cognitive Distortions</Exaggerated>{" "}
     </LeftPushedHeader>
   </Main>
 );
@@ -220,8 +212,7 @@ const BadThoughtDistortions = () => (
 const Challenge = () => (
   <Main>
     <LeftPushedHeader>
-      3. Let's write down our <Exaggerated>challenge</Exaggerated> to solidify
-      it.
+      3. Write down a <Exaggerated>challenge</Exaggerated> to solidify it.
     </LeftPushedHeader>
   </Main>
 );
@@ -257,7 +248,7 @@ const ShowOff = () => (
     }}
   >
     <LeftPushedHeader style={{ marginBottom: 18 }}>
-      Quirk'll store it:
+      Quirk stores it for later:
     </LeftPushedHeader>
     <CBTView thought={thought} />
   </Main>
@@ -270,7 +261,7 @@ const GotIt = ({ onPress }) => (
     }}
   >
     <LeftPushedHeader style={{ marginBottom: 18 }}>
-      Congrats you're done!
+      And that's really about it.
     </LeftPushedHeader>
 
     <RoundedButton
@@ -284,43 +275,11 @@ const GotIt = ({ onPress }) => (
 );
 
 interface Props {
-  navigation: NavigationScreenProp<NavigationState, NavigationAction>;
+  toFormScreen: () => void;
 }
 
-interface State {
-  isReady: boolean;
-}
-
-export default class CBTOnBoardingScreen extends React.Component<Props, State> {
-  static navigationOptions = {
-    header: null,
-  };
-
-  state = {
-    isReady: false,
-  };
-
-  constructor(props) {
-    super(props);
-
-    getIsExistingUser().then(isExisting => {
-      if (isExisting) {
-        this.props.navigation.navigate(CBT_FORM_SCREEN);
-      }
-      this.setState({ isReady: true });
-    });
-  }
-
-  toFormScreen = async () => {
-    await setIsExistingUser();
-    this.props.navigation.navigate(CBT_FORM_SCREEN);
-  };
-
+export default class CBTOnBoardingScreen extends React.Component<Props> {
   render() {
-    if (!this.state.isReady) {
-      return <AppLoading onError={console.warn} />;
-    }
-
     return (
       <Swiper
         loop={false}
@@ -342,7 +301,7 @@ export default class CBTOnBoardingScreen extends React.Component<Props, State> {
         <WriteChallenge />
         <AlternativeThought />
         <ShowOff />
-        <GotIt onPress={this.toFormScreen} />
+        <GotIt onPress={this.props.toFormScreen} />
       </Swiper>
     );
   }

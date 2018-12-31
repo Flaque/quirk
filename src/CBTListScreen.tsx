@@ -12,7 +12,12 @@ import { getExercises, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
-import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
+import {
+  SavedThought,
+  ThoughtGroup,
+  groupThoughtsByDay,
+  Thought,
+} from "./thoughts";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -56,6 +61,77 @@ const ThoughtItem = ({ thought, onPress, onDelete }) => (
 ThoughtItem.propTypes = {
   thought: PropTypes.object.isRequired,
   onPress: PropTypes.func.isRequired,
+};
+
+const EmptyThoughtIllustration = () => (
+  <View
+    style={{
+      alignItems: "center",
+      marginTop: 36,
+    }}
+  >
+    <Image
+      source={require("../assets/looker/Looker.png")}
+      style={{
+        width: 200,
+        height: 150,
+        alignSelf: "center",
+        marginBottom: 32,
+      }}
+    />
+    <Label marginBottom={18} textAlign={"center"}>
+      No thoughts yet!
+    </Label>
+  </View>
+);
+
+interface GroupComponent {
+  groups: ThoughtGroup[];
+}
+
+// Carefully, CAREFULLY, HOLY CRAP CAREFULLY validate these.
+// Crazy stupid things can happen if something EVER gets saved incorrectly,
+// so this prevents us from ever bricking the app because one thing got saved wrong.
+function groupIsExtremelyValid(g: ThoughtGroup) {
+  const structureIsGood = g && g.thoughts && g.thoughts.length > 0 && !!g.date;
+  const allThoughtsHaveTitles =
+    g.thoughts.filter(t => t.automaticThought).length === g.thoughts.length;
+
+  return structureIsGood && allThoughtsHaveTitles;
+}
+
+const ThoughtItemList = ({ groups }: GroupComponent) => {
+  // Don't ever show bad groups, it could brick the app
+  if (!groups) {
+    return <EmptyThoughtIllustration />;
+  }
+  const filteredGroups = groups.filter(groupIsExtremelyValid);
+  if (filteredGroups.length === 0) {
+    return <EmptyThoughtIllustration />;
+  }
+
+  const items = filteredGroups.map(group => {
+    const thoughts = group.thoughts.map(thought => (
+      <ThoughtItem
+        key={thought.uuid}
+        thought={thought}
+        onPress={this.navigateToFormWithThought}
+        onDelete={this.onItemDelete}
+      />
+    ));
+
+    const isToday =
+      new Date(group.date).toDateString() === new Date().toDateString();
+
+    return (
+      <View key={group.date} style={{ marginBottom: 18 }}>
+        <Label>{isToday ? "Today" : group.date}</Label>
+        {thoughts}
+      </View>
+    );
+  });
+
+  return <>{items}</>;
 };
 
 interface Props {
@@ -127,26 +203,6 @@ class CBTListScreen extends React.Component<Props, State> {
 
   render() {
     const { groups } = this.state;
-    const items = groups.map(group => {
-      const thoughts = group.thoughts.map(thought => (
-        <ThoughtItem
-          key={thought.uuid}
-          thought={thought}
-          onPress={this.navigateToFormWithThought}
-          onDelete={this.onItemDelete}
-        />
-      ));
-
-      const isToday =
-        new Date(group.date).toDateString() === new Date().toDateString();
-
-      return (
-        <View key={group.date} style={{ marginBottom: 18 }}>
-          <Label>{isToday ? "Today" : group.date}</Label>
-          {thoughts}
-        </View>
-      );
-    });
 
     return (
       <ScrollView
@@ -165,29 +221,7 @@ class CBTListScreen extends React.Component<Props, State> {
             <Header>.quirk</Header>
           </Row>
 
-          {items.length !== 0 ? (
-            items
-          ) : (
-            <View
-              style={{
-                alignItems: "center",
-                marginTop: 36,
-              }}
-            >
-              <Image
-                source={require("../assets/looker/Looker.png")}
-                style={{
-                  width: 200,
-                  height: 150,
-                  alignSelf: "center",
-                  marginBottom: 32,
-                }}
-              />
-              <Label marginBottom={18} textAlign={"center"}>
-                No thoughts yet!
-              </Label>
-            </View>
-          )}
+          <ThoughtItemList groups={groups} />
         </Container>
       </ScrollView>
     );
