@@ -132,6 +132,23 @@ test("validThoughtGroup works against happyThoughtGroups fixtures", () => {
   testAgainstFixtures(validThoughtGroup, happyThoughtGroups);
 });
 
+test("validThoughtGroup works against single item", () => {
+  const thought = newThought();
+  const savedThought: SavedThought = {
+    uuid: "aaghhhhh",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    ...thought,
+  };
+
+  const group: ThoughtGroup = {
+    date: new Date().toDateString(),
+    thoughts: [savedThought],
+  };
+
+  expect(validThoughtGroup(group)).toBe(true);
+});
+
 const badThoughtGroups = [
   fix(false, g(null, [save("", "", [], "")])),
   fix(false, g(dateStr(), [])),

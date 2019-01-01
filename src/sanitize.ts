@@ -9,28 +9,17 @@
  *
  * Answer: no. In fact, TS can lure you into a false sense of security. TS compiles to
  * regular JS and only validates at compile time! This helps validate objects at _runtime_.
+ *
+ * You may also wonder:
+ * > Woah woah woah why don't you just use a validation library?
+ *
+ * Answer: I can't find one that's actually more effective than checking for what I need.
+ * I tried a bunch and they all had unrurly awful problems. 🤷‍
  */
 
 import { Thought, SavedThought, newThought, ThoughtGroup } from "./thoughts";
-import { defaults, isObject } from "lodash";
-
-// require to avoid weirdness around untyped lib
-const Schema = require("validate");
-
-const thoughtSchema = new Schema({
-  automaticThought: {
-    type: String,
-  },
-  alternativeThought: {
-    type: String,
-  },
-  cognitiveDistortions: {
-    type: Array,
-  },
-  challenge: {
-    type: String,
-  },
-});
+import { defaults, isObject, has } from "lodash";
+import is from "@sindresorhus/is";
 
 export function validThought(thought: Thought | SavedThought): boolean {
   if (!thought || !isObject(thought)) {
@@ -43,35 +32,25 @@ export function validThought(thought: Thought | SavedThought): boolean {
     return false;
   }
 
-  // For items that DO exist check that they're the right types
-  const validationErrors = thoughtSchema.validate(thought);
-  if (validationErrors && validationErrors.length !== 0) {
+  if (!is.string(thought.automaticThought)) {
     return false;
   }
 
   return true;
 }
 
-const groupSchema = new Schema({
-  date: {
-    type: String,
-    required: true,
-    length: { min: 1 },
-  },
-  thoughts: {
-    type: Array,
-    required: true,
-    length: { min: 1 },
-  },
-});
-
 export function validThoughtGroup(group: ThoughtGroup): boolean {
   if (!group) {
     return false;
   }
 
-  const validationErrors = groupSchema.validate(group);
-  if (validationErrors && validationErrors.length !== 0) {
+  const hasCorrectKeys =
+    has(group, "date") && has(group, "thoughts[0].automaticThought");
+  if (!hasCorrectKeys) {
+    return false;
+  }
+
+  if (!group.date) {
     return false;
   }
 
