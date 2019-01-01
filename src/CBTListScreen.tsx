@@ -19,6 +19,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import { Haptic } from "expo";
+import { validThoughtGroup } from "./sanitize";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
   <Row alignItems={"strech"} marginBottom={18}>
@@ -56,6 +57,67 @@ const ThoughtItem = ({ thought, onPress, onDelete }) => (
 ThoughtItem.propTypes = {
   thought: PropTypes.object.isRequired,
   onPress: PropTypes.func.isRequired,
+};
+
+const EmptyThoughtIllustration = () => (
+  <View
+    style={{
+      alignItems: "center",
+      marginTop: 36,
+    }}
+  >
+    <Image
+      source={require("../assets/looker/Looker.png")}
+      style={{
+        width: 200,
+        height: 150,
+        alignSelf: "center",
+        marginBottom: 32,
+      }}
+    />
+    <Label marginBottom={18} textAlign={"center"}>
+      No thoughts yet!
+    </Label>
+  </View>
+);
+
+interface ThoughtListProps {
+  groups: ThoughtGroup[];
+  navigateToFormWithThought: (thought: SavedThought | boolean) => void;
+  onItemDelete: (thought: SavedThought) => void;
+}
+
+const ThoughtItemList = ({
+  groups,
+  navigateToFormWithThought,
+  onItemDelete,
+}: ThoughtListProps) => {
+  if (!groups || groups.length === 0) {
+    return <EmptyThoughtIllustration />;
+  }
+
+  const items = groups.map(group => {
+    const thoughts = group.thoughts.map(thought => (
+      <ThoughtItem
+        key={thought.uuid}
+        thought={thought}
+        onPress={navigateToFormWithThought}
+        onDelete={onItemDelete}
+      />
+    ));
+
+    const isToday =
+      new Date(group.date).toDateString() === new Date().toDateString();
+
+    return (
+      <View key={group.date} style={{ marginBottom: 18 }}>
+        <Label>{isToday ? "Today" : group.date}</Label>
+        {thoughts}
+      </View>
+    );
+  });
+
+  return <>{items}</>;
 };
 
 interface Props {
@@ -96,7 +158,9 @@ class CBTListScreen extends React.Component<Props, State> {
           .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
           .map(fixTimestamps);
 
-        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts);
+        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts).filter(
+          validThoughtGroup
+        );
 
         this.setState({ groups });
       })
@@ -127,26 +191,6 @@ class CBTListScreen extends React.Component<Props, State> {
 
   render() {
     const { groups } = this.state;
-    const items = groups.map(group => {
-      const thoughts = group.thoughts.map(thought => (
-        <ThoughtItem
-          key={thought.uuid}
-          thought={thought}
-          onPress={this.navigateToFormWithThought}
-          onDelete={this.onItemDelete}
-        />
-      ));
-
-      const isToday =
-        new Date(group.date).toDateString() === new Date().toDateString();
-
-      return (
-        <View key={group.date} style={{ marginBottom: 18 }}>
-          <Label>{isToday ? "Today" : group.date}</Label>
-          {thoughts}
-        </View>
-      );
-    });
 
     return (
       <ScrollView
@@ -165,29 +209,11 @@ class CBTListScreen extends React.Component<Props, State> {
             <Header>.quirk</Header>
           </Row>
 
-          {items.length !== 0 ? (
-            items
-          ) : (
-            <View
-              style={{
-                alignItems: "center",
-                marginTop: 36,
-              }}
-            >
-              <Image
-                source={require("../assets/looker/Looker.png")}
-                style={{
-                  width: 200,
-                  height: 150,
-                  alignSelf: "center",
-                  marginBottom: 32,
-                }}
-              />
-              <Label marginBottom={18} textAlign={"center"}>
-                No thoughts yet!
-              </Label>
-            </View>
-          )}
+          <ThoughtItemList
+            groups={groups}
+            navigateToFormWithThought={this.navigateToFormWithThought}
+            onItemDelete={this.onItemDelete}
+          />
         </Container>
       </ScrollView>
     );
