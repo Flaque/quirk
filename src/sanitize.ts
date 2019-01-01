@@ -19,7 +19,6 @@
 
 import { Thought, SavedThought, newThought, ThoughtGroup } from "./thoughts";
 import { defaults, isObject, has } from "lodash";
-import is from "@sindresorhus/is";
 
 export function validThought(thought: Thought | SavedThought): boolean {
   if (!thought || !isObject(thought)) {
@@ -32,7 +31,7 @@ export function validThought(thought: Thought | SavedThought): boolean {
     return false;
   }
 
-  if (!is.string(thought.automaticThought)) {
+  if (typeof thought.automaticThought !== "string") {
     return false;
   }
 

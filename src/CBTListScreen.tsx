@@ -12,19 +12,14 @@ import { getExercises, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
-import {
-  SavedThought,
-  ThoughtGroup,
-  groupThoughtsByDay,
-  Thought,
-} from "./thoughts";
+import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationAction,
 } from "react-navigation";
 import { Haptic } from "expo";
-import { maybeRepairThought, validThoughtGroup } from "./sanitize";
+import { validThoughtGroup } from "./sanitize";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
   <Row alignItems={"strech"} marginBottom={18}>
@@ -86,11 +81,17 @@ const EmptyThoughtIllustration = () => (
   </View>
 );
 
-interface GroupComponent {
+interface ThoughtListProps {
   groups: ThoughtGroup[];
+  navigateToFormWithThought: (thought: SavedThought | boolean) => void;
+  onItemDelete: (thought: SavedThought) => void;
 }
 
-const ThoughtItemList = ({ groups }: GroupComponent) => {
+const ThoughtItemList = ({
+  groups,
+  navigateToFormWithThought,
+  onItemDelete,
+}: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
     return <EmptyThoughtIllustration />;
   }
@@ -100,8 +101,8 @@ const ThoughtItemList = ({ groups }: GroupComponent) => {
       <ThoughtItem
         key={thought.uuid}
         thought={thought}
-        onPress={this.navigateToFormWithThought}
-        onDelete={this.onItemDelete}
+        onPress={navigateToFormWithThought}
+        onDelete={onItemDelete}
       />
     ));
 
@@ -208,7 +209,11 @@ class CBTListScreen extends React.Component<Props, State> {
             <Header>.quirk</Header>
           </Row>
 
-          <ThoughtItemList groups={groups} />
+          <ThoughtItemList
+            groups={groups}
+            navigateToFormWithThought={this.navigateToFormWithThought}
+            onItemDelete={this.onItemDelete}
+          />
         </Container>
       </ScrollView>
     );
