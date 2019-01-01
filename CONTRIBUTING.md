@@ -25,9 +25,3 @@ yarn ship
 ```
 
 That version gets shipped to beta testers but might not actually be the version released to the store.
-
-## Illustrations
-
-Quirk's mascot is called the _Dook_.
-
-Each Dook is a personified thought and is meant to be used as such.
