@@ -13,6 +13,7 @@ import Swiper from "react-native-swiper";
 import { View } from "react-native";
 import CBTView from "./CBTView";
 import { Thought } from "./thoughts";
+import { normalize } from "./sizes";
 
 const thought: Thought = {
   automaticThought: "I missed George's party, he must hate me.",
@@ -26,7 +27,7 @@ const thought: Thought = {
 const BigParagraph = ({ children, style }: ParentComponent) => (
   <Paragraph
     style={{
-      fontSize: 18,
+      fontSize: normalize(18),
       margin: 0,
       padding: 12,
       marginRight: 25,
@@ -68,6 +69,7 @@ const Exaggerated = ({ children, style }: ParentComponent) => (
       color: theme.pink,
       marginBottom: 0,
       margin: 0,
+      fontSize: normalize(48),
       ...style,
     }}
   >
@@ -81,6 +83,7 @@ const LeftPushedHeader = ({ children, style }: ParentComponent) => (
       // Small bump to make things appear more left-aligned
       paddingRight: 48,
       marginBottom: 0,
+      fontSize: normalize(48),
       ...style,
     }}
   >
@@ -212,7 +215,8 @@ const BadThoughtDistortions = () => (
 const Challenge = () => (
   <Main>
     <LeftPushedHeader>
-      3. Write down a <Exaggerated>challenge</Exaggerated> to solidify it.
+      3. <Exaggerated>Debate the thought!</Exaggerated> Write a{" "}
+      <Exaggerated>challenge</Exaggerated> to solidify your logic.
     </LeftPushedHeader>
   </Main>
 );
@@ -248,7 +252,7 @@ const ShowOff = () => (
     }}
   >
     <LeftPushedHeader style={{ marginBottom: 18 }}>
-      Quirk stores it for later:
+      Find it later:
     </LeftPushedHeader>
     <CBTView thought={thought} />
   </Main>
