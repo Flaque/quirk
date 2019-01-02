@@ -215,15 +215,15 @@ const BadThoughtDistortions = () => (
 const Challenge = () => (
   <Main>
     <LeftPushedHeader>
-      3. <Exaggerated>Debate the thought!</Exaggerated> Write a{" "}
-      <Exaggerated>challenge</Exaggerated> to solidify your logic.
+      3. Why isn't this thought realistic?{" "}
+      <Exaggerated>Challenge it.</Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
 
 const WriteChallenge = () => (
   <Main>
-    <LeftPushedHeader>Something like this:</LeftPushedHeader>
+    <LeftPushedHeader>We'll write something like this:</LeftPushedHeader>
     <BigParagraph
       style={{
         backgroundColor: theme.offwhite,
