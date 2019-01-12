@@ -64,6 +64,7 @@ export const Header = ({ children, style }: ParentComponent) => (
       marginBottom: 12,
       ...style,
     }}
+    textBreakStrategy={"simple"}
   >
     {children}
   </Text>
@@ -212,7 +213,7 @@ export const IconButton = ({ featherIconName, onPress, ...style }) => (
       width: 48,
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: "12",
+      borderRadius: 12,
       alignSelf: "center",
       ...style,
     }}

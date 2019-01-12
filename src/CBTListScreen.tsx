@@ -22,7 +22,7 @@ import { Haptic } from "expo";
 import { validThoughtGroup } from "./sanitize";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
-  <Row alignItems={"strech"} marginBottom={18}>
+  <Row marginBottom={18}>
     <TouchableOpacity
       style={{
         padding: 18,

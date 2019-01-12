@@ -84,6 +84,7 @@ const LeftPushedHeader = ({ children, style }: ParentComponent) => (
       paddingRight: 48,
       marginBottom: 0,
       fontSize: normalize(48),
+      flexWrap: "wrap",
       ...style,
     }}
   >
@@ -164,7 +165,7 @@ const CBTOverview = () => (
   <Main>
     <LeftPushedHeader>
       The goal of CBT is to recognize the{" "}
-      <Exaggerated>distorted thoughts </Exaggerated> and{" "}
+      <Exaggerated>distorted thoughts</Exaggerated> and{" "}
       <Exaggerated>replace them</Exaggerated> with rational ones.
     </LeftPushedHeader>
   </Main>
