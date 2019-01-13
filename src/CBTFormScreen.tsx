@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StatusBar } from "react-native";
+import { View, StatusBar, Platform } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { get } from "lodash";
 import { Container, Row, Header, RoundedButton, IconButton } from "./ui";
@@ -167,6 +167,8 @@ export default class CBTFormScreen extends React.Component<Props, State> {
           backgroundColor: theme.lightOffwhite,
         }}
         scrollEnabled
+        enableOnAndroid={true}
+        extraScrollHeight={128}
       >
         <StatusBar barStyle="dark-content" />
         <Container>
