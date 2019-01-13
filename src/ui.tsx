@@ -12,6 +12,7 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
+import { Constants } from "expo";
 
 export interface ParentComponent {
   children: any;
@@ -250,7 +251,7 @@ export const Container = ({ children, style }: ParentComponent) => (
     style={{
       flexDirection: "column",
       justifyContent: "flex-start",
-      paddingTop: 75,
+      paddingTop: Constants.statusBarHeight + 25,
       paddingLeft: 25,
       paddingRight: 25,
       paddingBottom: 50,
