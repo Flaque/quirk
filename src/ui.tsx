@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ScrollView,
   ImageSourcePropType,
   Image,
 } from "react-native";
@@ -12,6 +11,7 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
+import { Constants } from "expo";
 
 export interface ParentComponent {
   children: any;
@@ -94,13 +94,17 @@ export const SelectorTextItem = ({ text, selected = false, onPress }) => (
     onPress={onPress}
     style={{
       backgroundColor: selected ? theme.blue : "white",
-      borderBottomColor: selected ? theme.darkBlue : "transparent",
+      borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
       paddingTop: 8,
       paddingBottom: 8,
       paddingRight: 12,
       justifyContent: "space-between",
       flexDirection: "row",
+      borderRadius: 8,
+      borderWidth: 1,
+      marginBottom: 4,
+      marginTop: 1,
     }}
   >
     <Text
@@ -125,12 +129,9 @@ SelectorTextItem.propTypes = {
 };
 
 export const RoundedSelector = ({ items, onPress, style }) => (
-  <ScrollView
+  <View
     style={{
-      backgroundColor: "white",
-      borderRadius: 8,
-      borderColor: theme.lightGray,
-      borderWidth: 1,
+      backgroundColor: theme.lightOffwhite,
       ...style,
     }}
   >
@@ -149,7 +150,7 @@ export const RoundedSelector = ({ items, onPress, style }) => (
         />
       );
     })}
-  </ScrollView>
+  </View>
 );
 
 RoundedSelector.propTypes = {
@@ -251,7 +252,7 @@ export const Container = ({ children, style }: ParentComponent) => (
     style={{
       flexDirection: "column",
       justifyContent: "flex-start",
-      paddingTop: 75,
+      paddingTop: Constants.statusBarHeight + 25,
       paddingLeft: 25,
       paddingRight: 25,
       paddingBottom: 50,

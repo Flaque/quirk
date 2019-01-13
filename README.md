@@ -1,4 +1,11 @@
-# 🐙 quirk
+
+<p align="center">
+<h1 align="center">✨🐙 quirk. </h1>
+</p>
+<p align="center">
+  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download</a> • <a href="mailto:humans@usequirk.com">Contact</a> • <a href="https://timeline.noticeable.io/Eg17gkp9Nga9OcrvjToA">Changelog</a>
+<br><br>
+</p>
 
 Quirk is a ~crossplatform~ (iOS, Android coming soon), GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy#Declining_effectiveness)
 app built in React Native / Expo.
@@ -7,7 +14,7 @@ Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't as
 to depression-specific CBT exercises. That makes it fairly quick and discreet to use, especially in a public
 setting.
 
-![mockup](https://i.imgur.com/UKY0jc4.png)
+![gif](https://ph-files.imgix.net/d9469681-fc6c-4dc1-a715-125dd6700736?auto=format&auto=compress&codec=mozjpeg&cs=strip)
 
 ## Running Locally
 
