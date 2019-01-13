@@ -18,7 +18,8 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { Haptic, AppLoading } from "expo";
+import universalHaptic from "./haptic";
+import { AppLoading, Haptic } from "expo";
 import CBTView from "./CBTView";
 import CBTOnBoardingScreen from "./CBTOnBoardingScreen";
 
@@ -114,7 +115,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
 
   onSave = (): void => {
     // Ignore the typescript error here, it's because of an Expo bug
-    Haptic.notification(Haptic.NotificationFeedbackType.Success);
+    universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
 
     saveExercise(this.state.thought).then(thought => {
       this.setState({ isEditing: false, thought });
@@ -131,7 +132,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
 
   // Toggles Cognitive Distortion when selected
   onSelectCognitiveDistortion = (text: string): void => {
-    Haptic.selection(); // iOS users get a selected buzz
+    universalHaptic.selection(); // iOS users get a selected buzz
 
     this.setState(prevState => {
       const { cognitiveDistortions } = prevState.thought;
