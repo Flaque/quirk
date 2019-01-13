@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ScrollView,
   ImageSourcePropType,
   Image,
 } from "react-native";
@@ -94,13 +93,17 @@ export const SelectorTextItem = ({ text, selected = false, onPress }) => (
     onPress={onPress}
     style={{
       backgroundColor: selected ? theme.blue : "white",
-      borderBottomColor: selected ? theme.darkBlue : "transparent",
+      borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
       paddingTop: 8,
       paddingBottom: 8,
       paddingRight: 12,
       justifyContent: "space-between",
       flexDirection: "row",
+      borderRadius: 8,
+      borderWidth: 1,
+      marginBottom: 4,
+      marginTop: 1,
     }}
   >
     <Text
@@ -127,10 +130,7 @@ SelectorTextItem.propTypes = {
 export const RoundedSelector = ({ items, onPress, style }) => (
   <View
     style={{
-      backgroundColor: "white",
-      borderRadius: 8,
-      borderColor: theme.lightGray,
-      borderWidth: 1,
+      backgroundColor: theme.lightOffwhite,
       ...style,
     }}
   >
