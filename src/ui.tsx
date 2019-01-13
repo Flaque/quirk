@@ -125,7 +125,7 @@ SelectorTextItem.propTypes = {
 };
 
 export const RoundedSelector = ({ items, onPress, style }) => (
-  <ScrollView
+  <View
     style={{
       backgroundColor: "white",
       borderRadius: 8,
@@ -149,7 +149,7 @@ export const RoundedSelector = ({ items, onPress, style }) => (
         />
       );
     })}
-  </ScrollView>
+  </View>
 );
 
 RoundedSelector.propTypes = {
