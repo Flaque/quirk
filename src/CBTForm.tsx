@@ -74,9 +74,6 @@ export default class CBTForm extends React.Component<Props> {
         <FormContainer>
           <SubHeader>Cognitive Distortion</SubHeader>
           <RoundedSelector
-            style={{
-              height: 150,
-            }}
             items={thought.cognitiveDistortions}
             onPress={onSelectCognitiveDistortion}
           />
