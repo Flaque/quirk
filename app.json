@@ -5,9 +5,8 @@
     "privacy": "unlisted",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
-    "version": "1.3.2",
+    "version": "1.3.3",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "githubUrl": "https://github.com/Flaque/quirk",
     "primaryColor": "#F8A5C2",
     "splash": {
