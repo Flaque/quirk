@@ -12,7 +12,7 @@
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
     "@types/react-navigation": "^3.0.1",
-    "expo": "^31.0.5",
+    "expo": "^31.0.6",
     "json-stringify-safe": "^5.0.1",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
