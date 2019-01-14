@@ -89,7 +89,12 @@ export const SubHeader = ({ children, style }: ParentComponent) => (
   </Text>
 );
 
-export const SelectorTextItem = ({ text, selected = false, onPress }) => (
+export const SelectorTextItem = ({
+  text,
+  emoji,
+  selected = false,
+  onPress,
+}) => (
   <TouchableOpacity
     onPress={onPress}
     style={{
@@ -99,24 +104,33 @@ export const SelectorTextItem = ({ text, selected = false, onPress }) => (
       paddingTop: 8,
       paddingBottom: 8,
       paddingRight: 12,
-      justifyContent: "space-between",
       flexDirection: "row",
+      justifyContent: "space-between",
       borderRadius: 8,
       borderWidth: 1,
       marginBottom: 4,
       marginTop: 1,
     }}
   >
-    <Text
-      style={{
-        fontWeight: "400",
-        fontSize: 16,
-        color: selected ? "white" : theme.veryLightText,
-        paddingLeft: 12,
-      }}
-    >
-      {text}
-    </Text>
+    <View style={{ flexDirection: "row" }}>
+      <Text
+        style={{
+          marginRight: 12,
+          marginLeft: 12,
+        }}
+      >
+        {emoji}
+      </Text>
+      <Text
+        style={{
+          fontWeight: "400",
+          fontSize: 16,
+          color: selected ? "white" : theme.veryLightText,
+        }}
+      >
+        {text}
+      </Text>
+    </View>
 
     {selected && <Feather name={"check"} size={16} color={"white"} />}
   </TouchableOpacity>
@@ -136,15 +150,18 @@ export const RoundedSelector = ({ items, onPress, style }) => (
     }}
   >
     {items.map(({ slug, selected }) => {
-      const text = find(distortions, { slug });
-      if (!text) {
+      const item = find(distortions, { slug });
+      if (!item) {
         return null;
       }
+
+      const cogDistortion = item as CognitiveDistortion;
 
       return (
         <SelectorTextItem
           key={slug}
-          text={(text as CognitiveDistortion).label}
+          emoji={cogDistortion.emoji || "🍎"}
+          text={cogDistortion.label}
           selected={selected}
           onPress={() => onPress(slug)}
         />

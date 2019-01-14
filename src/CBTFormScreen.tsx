@@ -127,6 +127,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   };
 
   onEdit = (): void => {
+    universalHaptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.setState({ isEditing: true });
   };
 
@@ -145,6 +146,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   };
 
   stopOnBoarding = () => {
+    universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
     setIsExistingUser();
 
     this.setState({ shouldShowOnBoarding: false });

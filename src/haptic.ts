@@ -20,4 +20,11 @@ export default {
     }
     Haptic.selection();
   },
+  impact: type => {
+    if (Platform.OS !== "ios") {
+      return;
+    }
+
+    Haptic.impact(type);
+  },
 };
