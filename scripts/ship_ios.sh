@@ -1,8 +1,6 @@
 #! /usr/bin/env bash
 set -e # exit if something goes wrong
 
-./$(dirname $0)/preflight_checks.sh
-
 # Build a ios standalone release 
 exp build:ios --release-channel production --non-interactive --no-publish
 
