@@ -125,7 +125,7 @@ export const SelectorTextItem = ({
         style={{
           fontWeight: "400",
           fontSize: 16,
-          color: selected ? "white" : theme.veryLightText,
+          color: selected ? "white" : theme.darkText,
         }}
       >
         {text}

@@ -18,11 +18,13 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "tech.econn.quirk"
+      "bundleIdentifier": "tech.econn.quirk",
+      "icon": "./assets/ios.png"
     },
     "android": {
       "package": "tech.econn.quirk",
-      "permissions": []
+      "permissions": [],
+      "icon": "./assets/android.png"
     }
   }
 }
