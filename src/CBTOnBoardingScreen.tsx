@@ -18,7 +18,7 @@ import { normalize } from "./sizes";
 const thought: Thought = {
   automaticThought: "I missed George's party, he must hate me.",
   challenge: `George knows I couldn't make it every time, I wouldn't hate him if he missed something of mine.\n\nI should treat myself at least as well as I treat others.`,
-  alternativeThought: `It's true I missed George's party, I can appologize, and he'll probably forgive me.`,
+  alternativeThought: `It's true I missed George's party, I can apologize, and he'll probably forgive me.`,
   cognitiveDistortions: [
     { label: "Mind Reading", slug: "mind-reading", selected: true },
   ],
