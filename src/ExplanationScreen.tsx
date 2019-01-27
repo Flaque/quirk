@@ -113,7 +113,145 @@ const FortuneTelling = () => (
       {"Fortune Telling"} {"🔮"}
     </SubHeader>
 
-    <Paragraph>todo</Paragraph>
+    <Paragraph>
+      This distortion happens when we predict the future. We often overestimate
+      our abilities to predict what will happen. Frequently we'll start at
+      something we're worried might happen and then look for evidence that it
+      will occur.
+    </Paragraph>
+  </Distortion>
+);
+
+const Labeling = () => (
+  <Distortion>
+    <SubHeader>
+      {"Labeling"} {"🏷"}
+    </SubHeader>
+
+    <Paragraph>
+      If we're taking one characteristic of a person and applying it to the
+      whole person, we're labeling. If someone brushed us off, they might not be
+      a "jerk," maybe they're just in a hurry. This applies to ourselves as
+      well; just because we make a mistake doesn't mean we're a "failure."
+    </Paragraph>
+  </Distortion>
+);
+
+const MagnificationOfTheNegative = () => (
+  <Distortion>
+    <SubHeader>
+      {"Magnification of the Negative"} {"👎"}
+    </SubHeader>
+
+    <Paragraph>
+      If you’re judging a situation based <I>entirely</I> on the negative parts
+      and not considering the positive parts, you’re likely magnifying the
+      negative. If you’re constantly berating yourself for bombing a job
+      interview, you’re probably filtering out all the experience you gained
+      from that interview.
+    </Paragraph>
+  </Distortion>
+);
+
+const MindReading = () => (
+  <Distortion>
+    <SubHeader>
+      {"Mind Reading"} {"🧠"}
+    </SubHeader>
+
+    <Paragraph>
+      If we're worried about what someone else is thinking about us, we're
+      attempting to read minds. Unless someone tells you what they're thinking,
+      you have absolutely no way of knowing. So why assume the worst?
+    </Paragraph>
+  </Distortion>
+);
+
+const MimizationOfThePositive = () => (
+  <Distortion>
+    <SubHeader>
+      {"Minimization of the Positive"} {"👍"}
+    </SubHeader>
+
+    <Paragraph>
+      If we're worried about what someone else is thinking about us, we're
+      attempting to read minds. Unless someone tells you what they're thinking,
+      you have absolutely no way of knowing. So why assume the worst?
+    </Paragraph>
+  </Distortion>
+);
+
+const OtherBlaming = () => (
+  <Distortion>
+    <SubHeader>
+      {"Other Blaming"} {"🦹‍"}
+    </SubHeader>
+
+    <Paragraph>
+      If a bad situation must be the fault of someone, we're other-blaming. If
+      you failed an exam and you're blaming the teacher, you're directing your
+      energy to the wrong place. Someone cut you off on the highway? If you honk
+      your horn, flip them off, and stew, how is that helping? Now you're cut
+      off and mad! {`\n`}
+    </Paragraph>
+
+    <Paragraph>
+      This doesn't mean you have to blame yourself for every negative situation.
+      You don't have to blame anyone. No one has to be at fault if you let the
+      situation pass without attaching blame.
+    </Paragraph>
+  </Distortion>
+);
+
+const OverGeneralization = () => (
+  <Distortion>
+    <SubHeader>
+      {"Over Generalization"} {"👯‍"}
+    </SubHeader>
+
+    <Paragraph>
+      If we draw conclusions based on just one example, we're over generalizing.
+      If you bombed a presentation and assume that means you're "bad" at
+      presenting, you're over-generalizing.
+    </Paragraph>
+  </Distortion>
+);
+
+const SelfBlaming = () => (
+  <Distortion>
+    <SubHeader>
+      {"Self Blaming"} {"👁"}
+    </SubHeader>
+
+    <Paragraph>
+      If you're attributing a negative situation entirely to yourself, you're
+      self-blaming. You don't have to be responsible for every bad thing that
+      happens. If you're getting caught in traffic and you're berating yourself
+      for not leaving earlier, you're self-blaming. Would you treat someone else
+      this way?
+    </Paragraph>
+  </Distortion>
+);
+
+const ShouldStatements = () => (
+  <Distortion>
+    <SubHeader>
+      {"Should Statements"} {"✨"}
+    </SubHeader>
+
+    <Paragraph>
+      If you're assigning someone abilities they don't have, you're using faulty
+      "should" statements. For example, if you have a fear of flying and are
+      telling yourself "I shouldn't be afraid of this, there's nothing wrong
+      with the airplane!" you're putting an undue burden on yourself. You have a
+      fear of flying! It's normal for people who have a fear of flying to be
+      afraid flying! {"\n"}
+    </Paragraph>
+
+    <Paragraph>
+      Should statements can seem nonsensical when you say it out loud; that's
+      the point! They're illogical!
+    </Paragraph>
   </Distortion>
 );
 
@@ -141,6 +279,14 @@ class ExplanationScreen extends React.Component<Props> {
           <Catastrophizing />
           <EmotionalReasoning />
           <FortuneTelling />
+          <Labeling />
+          <MagnificationOfTheNegative />
+          <MindReading />
+          <MimizationOfThePositive />
+          <OtherBlaming />
+          <OverGeneralization />
+          <SelfBlaming />
+          <ShouldStatements />
         </View>
       </ScrollView>
     );
