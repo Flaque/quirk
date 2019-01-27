@@ -322,7 +322,8 @@ class ExplanationScreen extends React.Component<Props> {
     return (
       <ScrollView
         style={{
-          paddingTop: Constants.statusBarHeight + 24,
+          marginTop: Constants.statusBarHeight,
+          paddingTop: 24,
           paddingLeft: 24,
           paddingRight: 24,
           backgroundColor: "white",

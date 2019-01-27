@@ -19,7 +19,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import universalHaptic from "./haptic";
-import { Haptic } from "expo";
+import { Haptic, Constants } from "expo";
 import { validThoughtGroup } from "./sanitize";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
@@ -194,29 +194,33 @@ class CBTListScreen extends React.Component<Props, State> {
     const { groups } = this.state;
 
     return (
-      <ScrollView
-        style={{
-          backgroundColor: theme.lightOffwhite,
-          flex: 1,
-        }}
-      >
-        <Container>
-          <StatusBar barStyle="dark-content" />
-          <Row marginBottom={18}>
-            <IconButton
-              featherIconName={"edit"}
-              onPress={() => this.navigateToForm()}
-            />
-            <Header>.quirk</Header>
-          </Row>
+      <View style={{ backgroundColor: theme.lightOffwhite }}>
+        <ScrollView
+          style={{
+            backgroundColor: theme.lightOffwhite,
+            marginTop: Constants.statusBarHeight,
+            paddingTop: 24,
+            height: "100%",
+          }}
+        >
+          <Container>
+            <StatusBar barStyle="dark-content" />
+            <Row marginBottom={18}>
+              <Header>quirk.</Header>
+              <IconButton
+                featherIconName={"edit"}
+                onPress={() => this.navigateToForm()}
+              />
+            </Row>
 
-          <ThoughtItemList
-            groups={groups}
-            navigateToFormWithThought={this.navigateToFormWithThought}
-            onItemDelete={this.onItemDelete}
-          />
-        </Container>
-      </ScrollView>
+            <ThoughtItemList
+              groups={groups}
+              navigateToFormWithThought={this.navigateToFormWithThought}
+              onItemDelete={this.onItemDelete}
+            />
+          </Container>
+        </ScrollView>
+      </View>
     );
   }
 }

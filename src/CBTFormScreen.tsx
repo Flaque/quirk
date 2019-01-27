@@ -19,7 +19,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import universalHaptic from "./haptic";
-import { AppLoading, Haptic } from "expo";
+import { AppLoading, Haptic, Constants } from "expo";
 import CBTView from "./CBTView";
 import CBTOnBoardingScreen from "./CBTOnBoardingScreen";
 
@@ -164,44 +164,54 @@ export default class CBTFormScreen extends React.Component<Props, State> {
     }
 
     return (
-      <KeyboardAwareScrollView
+      <View
         style={{
           backgroundColor: theme.lightOffwhite,
         }}
-        scrollEnabled
-        enableOnAndroid={true}
-        extraScrollHeight={128}
       >
-        <StatusBar barStyle="dark-content" />
-        <Container>
-          <Row>
-            <IconButton
-              featherIconName={"help-circle"}
-              onPress={() => this.props.navigation.navigate(EXPLANATION_SCREEN)}
-            />
-            <Header>quirk</Header>
-            <IconButton
-              featherIconName={"list"}
-              onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
-            />
-          </Row>
+        <KeyboardAwareScrollView
+          style={{
+            backgroundColor: theme.lightOffwhite,
+            marginTop: Constants.statusBarHeight,
+            paddingTop: 24,
+          }}
+          scrollEnabled
+          enableOnAndroid={true}
+          extraScrollHeight={128}
+        >
+          <StatusBar barStyle="dark-content" />
+          <Container>
+            <Row>
+              <IconButton
+                featherIconName={"help-circle"}
+                onPress={() =>
+                  this.props.navigation.navigate(EXPLANATION_SCREEN)
+                }
+              />
+              <Header>quirk</Header>
+              <IconButton
+                featherIconName={"list"}
+                onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
+              />
+            </Row>
 
-          {isEditing ? (
-            <CBTForm
-              thought={thought}
-              onTextChange={this.onTextChange}
-              onSelectCognitiveDistortion={this.onSelectCognitiveDistortion}
-              onSave={this.onSave}
-            />
-          ) : (
-            <CBTViewer
-              thought={thought}
-              onNew={this.onNew}
-              onEdit={this.onEdit}
-            />
-          )}
-        </Container>
-      </KeyboardAwareScrollView>
+            {isEditing ? (
+              <CBTForm
+                thought={thought}
+                onTextChange={this.onTextChange}
+                onSelectCognitiveDistortion={this.onSelectCognitiveDistortion}
+                onSave={this.onSave}
+              />
+            ) : (
+              <CBTViewer
+                thought={thought}
+                onNew={this.onNew}
+                onEdit={this.onEdit}
+              />
+            )}
+          </Container>
+        </KeyboardAwareScrollView>
+      </View>
     );
   }
 }

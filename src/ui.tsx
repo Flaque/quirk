@@ -269,9 +269,8 @@ export const Container = ({ children, style }: ParentComponent) => (
     style={{
       flexDirection: "column",
       justifyContent: "flex-start",
-      paddingTop: Constants.statusBarHeight + 25,
-      paddingLeft: 25,
-      paddingRight: 25,
+      paddingLeft: 24,
+      paddingRight: 24,
       paddingBottom: 50,
       ...style,
     }}
