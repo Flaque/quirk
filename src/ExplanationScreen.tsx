@@ -7,7 +7,6 @@ import {
 import { SubHeader, Paragraph, ThoughtDook, I } from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
-import distortions from "./distortions";
 import theme from "./theme";
 
 interface Props {
@@ -19,6 +18,7 @@ const ThoughtView = ({ children }) => (
     style={{
       flexDirection: "row",
       marginTop: 12,
+      paddingRight: 48,
     }}
   >
     <ThoughtDook
@@ -30,7 +30,6 @@ const ThoughtView = ({ children }) => (
         backgroundColor: theme.offwhite,
         borderRadius: 8,
         padding: 8,
-        marginRight: 25,
       }}
     >
       <Paragraph>{children}</Paragraph>
@@ -83,6 +82,41 @@ const Catastrophizing = () => (
   </Distortion>
 );
 
+const EmotionalReasoning = () => (
+  <Distortion>
+    <SubHeader>
+      {"Emotional Reasoning"} {"🎭"}
+    </SubHeader>
+
+    <Paragraph>
+      “I feel it, therefore it must be true.” If you find yourself justifying
+      the “danger” of something innocuous <I>because</I> you’re afraid of it,
+      then you’re likely engaging in emotional reasoning. Things aren’t
+      dangerous because we’re afraid of them and we’re not awful just because we
+      may think we are. {"\n"}
+    </Paragraph>
+
+    <Paragraph>
+      This one is often hard to recognize. It takes some effort to recognize
+      when your emotional mind is taking the logical reins.
+    </Paragraph>
+
+    <ThoughtView>
+      I feel guilty, therefore I must have done something bad.
+    </ThoughtView>
+  </Distortion>
+);
+
+const FortuneTelling = () => (
+  <Distortion>
+    <SubHeader>
+      {"Fortune Telling"} {"🔮"}
+    </SubHeader>
+
+    <Paragraph>todo</Paragraph>
+  </Distortion>
+);
+
 class ExplanationScreen extends React.Component<Props> {
   static navigationOptions = {
     header: null,
@@ -95,12 +129,19 @@ class ExplanationScreen extends React.Component<Props> {
           paddingTop: Constants.statusBarHeight + 25,
           paddingLeft: 25,
           paddingRight: 25,
-          paddingBottom: Constants.statusBarHeight + 25,
           backgroundColor: "white",
         }}
       >
-        <AllOrNothingThinking />
-        <Catastrophizing />
+        <View
+          style={{
+            marginBottom: Constants.statusBarHeight + 25,
+          }}
+        >
+          <AllOrNothingThinking />
+          <Catastrophizing />
+          <EmotionalReasoning />
+          <FortuneTelling />
+        </View>
       </ScrollView>
     );
   }
