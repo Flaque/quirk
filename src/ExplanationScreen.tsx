@@ -8,35 +8,61 @@ import { SubHeader, Paragraph, ThoughtDook, I, Header, IconButton } from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
 import theme from "./theme";
-import { CBT_LIST_SCREEN, CBT_FORM_SCREEN } from "./screens";
+import { CBT_FORM_SCREEN } from "./screens";
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
 
-const ThoughtView = ({ children }) => (
-  <View
-    style={{
-      flexDirection: "row",
-      marginTop: 12,
-      paddingRight: 48,
-    }}
-  >
-    <ThoughtDook
-      style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
-      source={require("../assets/yellow/Dook.png")}
-    />
+const PurpleDook = () => (
+  <ThoughtDook
+    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    source={require(`../assets/purple/Dook.png`)}
+  />
+);
+
+const YellowDook = () => (
+  <ThoughtDook
+    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    source={require(`../assets/yellow/Dook.png`)}
+  />
+);
+
+const PinkDook = () => (
+  <ThoughtDook
+    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    source={require(`../assets/pink/Dook.png`)}
+  />
+);
+
+const ThoughtView = ({ children, color = "yellow" }) => {
+  const dooks = {
+    purple: <PurpleDook />,
+    yellow: <YellowDook />,
+    pink: <PinkDook />,
+  };
+
+  return (
     <View
       style={{
-        backgroundColor: theme.offwhite,
-        borderRadius: 8,
-        padding: 8,
+        flexDirection: "row",
+        marginTop: 12,
+        paddingRight: 48,
       }}
     >
-      <Paragraph>{children}</Paragraph>
+      {dooks[color]}
+      <View
+        style={{
+          backgroundColor: theme.offwhite,
+          borderRadius: 8,
+          padding: 8,
+        }}
+      >
+        <Paragraph>{children}</Paragraph>
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 const Distortion = ({ children }) => (
   <View
@@ -77,7 +103,7 @@ const Catastrophizing = () => (
       serious? You’re probably catastrophizing.
     </Paragraph>
 
-    <ThoughtView>
+    <ThoughtView color="purple">
       I'm feeling jittery, I might be having a heart attack.
     </ThoughtView>
   </Distortion>
@@ -102,7 +128,7 @@ const EmotionalReasoning = () => (
       when your emotional mind is taking the logical reins.
     </Paragraph>
 
-    <ThoughtView>
+    <ThoughtView color="pink">
       I feel guilty, therefore I must have done something bad.
     </ThoughtView>
   </Distortion>
@@ -120,6 +146,10 @@ const FortuneTelling = () => (
       something we're worried might happen and then look for evidence that it
       will occur.
     </Paragraph>
+
+    <ThoughtView color="purple">
+      The plane I'm about to get on will crash.
+    </ThoughtView>
   </Distortion>
 );
 
@@ -135,6 +165,8 @@ const Labeling = () => (
       a "jerk," maybe they're just in a hurry. This applies to ourselves as
       well; just because we make a mistake doesn't mean we're a "failure."
     </Paragraph>
+
+    <ThoughtView>I failed a test, so I'm a bad student.</ThoughtView>
   </Distortion>
 );
 
@@ -151,6 +183,8 @@ const MagnificationOfTheNegative = () => (
       interview, you’re probably filtering out all the experience you gained
       from that interview.
     </Paragraph>
+
+    <ThoughtView>I ate healthy this week, but I skipped my run.</ThoughtView>
   </Distortion>
 );
 
@@ -165,6 +199,10 @@ const MindReading = () => (
       attempting to read minds. Unless someone tells you what they're thinking,
       you have absolutely no way of knowing. So why assume the worst?
     </Paragraph>
+
+    <ThoughtView color="pink">
+      I think I was rude to George, I'll bet he hates me.
+    </ThoughtView>
   </Distortion>
 );
 
@@ -175,10 +213,15 @@ const MimizationOfThePositive = () => (
     </SubHeader>
 
     <Paragraph>
-      If we're worried about what someone else is thinking about us, we're
-      attempting to read minds. Unless someone tells you what they're thinking,
-      you have absolutely no way of knowing. So why assume the worst?
+      If we downplay the good things that are happening to us, we're minimizing
+      the positive. Even if our day didn't go 100% as planned, it doesn't mean
+      that the 60% that did go right should be ignored.
     </Paragraph>
+
+    <ThoughtView>
+      Many people liked my presentation, but I stumbled giving the intro, so it
+      was bad.
+    </ThoughtView>
   </Distortion>
 );
 
@@ -201,6 +244,10 @@ const OtherBlaming = () => (
       You don't have to blame anyone. No one has to be at fault if you let the
       situation pass without attaching blame.
     </Paragraph>
+
+    <ThoughtView color="purple">
+      That jerk is taking too long in line and I'm going to be late!
+    </ThoughtView>
   </Distortion>
 );
 
@@ -215,6 +262,8 @@ const OverGeneralization = () => (
       If you bombed a presentation and assume that means you're "bad" at
       presenting, you're over-generalizing.
     </Paragraph>
+
+    <ThoughtView>No one asked me to dance, so no one ever will.</ThoughtView>
   </Distortion>
 );
 
@@ -231,6 +280,10 @@ const SelfBlaming = () => (
       for not leaving earlier, you're self-blaming. Would you treat someone else
       this way?
     </Paragraph>
+
+    <ThoughtView color="pink">
+      My son is failing in school, I must have failed him.
+    </ThoughtView>
   </Distortion>
 );
 
@@ -253,6 +306,10 @@ const ShouldStatements = () => (
       Should statements can seem nonsensical when you say it out loud; that's
       the point! They're illogical!
     </Paragraph>
+
+    <ThoughtView>
+      I'm an adult, I shouldn't have these mental issues.
+    </ThoughtView>
   </Distortion>
 );
 
