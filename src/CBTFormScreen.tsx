@@ -10,7 +10,7 @@ import {
   getIsExistingUser,
 } from "./store";
 import theme from "./theme";
-import { CBT_LIST_SCREEN } from "./screens";
+import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "./screens";
 import CBTForm from "./CBTForm";
 import { Thought, SavedThought, newThought } from "./thoughts";
 import {
@@ -175,9 +175,13 @@ export default class CBTFormScreen extends React.Component<Props, State> {
         <StatusBar barStyle="dark-content" />
         <Container>
           <Row>
-            <Header>quirk.</Header>
             <IconButton
-              featherIconName={"menu"}
+              featherIconName={"help-circle"}
+              onPress={() => this.props.navigation.navigate(EXPLANATION_SCREEN)}
+            />
+            <Header>quirk</Header>
+            <IconButton
+              featherIconName={"list"}
               onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
             />
           </Row>

@@ -4,10 +4,11 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, ThoughtDook, I } from "./ui";
+import { SubHeader, Paragraph, ThoughtDook, I, Header, IconButton } from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
 import theme from "./theme";
+import { CBT_LIST_SCREEN, CBT_FORM_SCREEN } from "./screens";
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -264,17 +265,31 @@ class ExplanationScreen extends React.Component<Props> {
     return (
       <ScrollView
         style={{
-          paddingTop: Constants.statusBarHeight + 25,
-          paddingLeft: 25,
-          paddingRight: 25,
+          paddingTop: Constants.statusBarHeight + 24,
+          paddingLeft: 24,
+          paddingRight: 24,
           backgroundColor: "white",
         }}
       >
         <View
           style={{
-            marginBottom: Constants.statusBarHeight + 25,
+            marginBottom: Constants.statusBarHeight + 24,
           }}
         >
+          <View
+            style={{
+              marginBottom: 24,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <Header>quirk.</Header>
+            <IconButton
+              featherIconName={"edit"}
+              onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}
+            />
+          </View>
+
           <AllOrNothingThinking />
           <Catastrophizing />
           <EmotionalReasoning />
