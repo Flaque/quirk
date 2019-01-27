@@ -316,3 +316,11 @@ export const ThoughtDook = ({ style, source }: IllustrationComponent) => (
     style={{ width: 48, height: 48, alignSelf: "center", ...style }}
   />
 );
+
+export const I = ({ children }) => (
+  <Text style={{ fontStyle: "italic" }}>{children}</Text>
+);
+
+export const B = ({ children }) => (
+  <Text style={{ fontWeight: "bold" }}>{children}</Text>
+);

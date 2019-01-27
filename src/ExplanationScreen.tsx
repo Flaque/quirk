@@ -4,7 +4,7 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, ThoughtDook } from "./ui";
+import { SubHeader, Paragraph, ThoughtDook, I } from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
 import distortions from "./distortions";
@@ -38,6 +38,51 @@ const ThoughtView = ({ children }) => (
   </View>
 );
 
+const Distortion = ({ children }) => (
+  <View
+    style={{
+      marginBottom: 48,
+    }}
+  >
+    {children}
+  </View>
+);
+
+const AllOrNothingThinking = () => (
+  <Distortion>
+    <SubHeader>
+      {"All or Nothing Thinking"} {"🌓"}
+    </SubHeader>
+
+    <Paragraph>
+      This distortion happens when we have no room for middle ground. If we
+      think that a small fault in ourselves means we’re fundamentally rotten or
+      otherwise terrible, we’re likely engaging in all or nothing thinking.
+    </Paragraph>
+
+    <ThoughtView>I bombed the interview, I must be unhirable.</ThoughtView>
+  </Distortion>
+);
+
+const Catastrophizing = () => (
+  <Distortion>
+    <SubHeader>
+      {"Catastrophizing"} {"🤯"}
+    </SubHeader>
+
+    <Paragraph>
+      If we’re taking a small problem and blowing it <I>way</I> out of
+      proportion, we’re catastrophizing. Did you make a small mistake at work
+      and are <I>dreading</I> if someone found out even though it’s nothing
+      serious? You’re probably catastrophizing.
+    </Paragraph>
+
+    <ThoughtView>
+      I'm feeling jittery, I might be having a heart attack.
+    </ThoughtView>
+  </Distortion>
+);
+
 class ExplanationScreen extends React.Component<Props> {
   static navigationOptions = {
     header: null,
@@ -54,30 +99,8 @@ class ExplanationScreen extends React.Component<Props> {
           backgroundColor: "white",
         }}
       >
-        {distortions.map(dist => (
-          <View
-            style={{
-              marginBottom: 48,
-            }}
-            key={dist.slug}
-          >
-            <SubHeader>
-              {dist.label} {dist.emoji}
-            </SubHeader>
-
-            <Paragraph>
-              This distortion happens when we have no room for a middle ground.
-              If we think that a small fault in ourselves means we’re
-              fundamentally rotten or otherwise terrible, we’re likely engaging
-              in all or nothing thinking.
-            </Paragraph>
-
-            <ThoughtView>
-              This chicken is a little burnt, there must be something wrong with
-              it.
-            </ThoughtView>
-          </View>
-        ))}
+        <AllOrNothingThinking />
+        <Catastrophizing />
       </ScrollView>
     );
   }
