@@ -269,9 +269,8 @@ export const Container = ({ children, style }: ParentComponent) => (
     style={{
       flexDirection: "column",
       justifyContent: "flex-start",
-      paddingTop: Constants.statusBarHeight + 25,
-      paddingLeft: 25,
-      paddingRight: 25,
+      paddingLeft: 24,
+      paddingRight: 24,
       paddingBottom: 50,
       ...style,
     }}
@@ -315,4 +314,12 @@ export const ThoughtDook = ({ style, source }: IllustrationComponent) => (
     source={source}
     style={{ width: 48, height: 48, alignSelf: "center", ...style }}
   />
+);
+
+export const I = ({ children }) => (
+  <Text style={{ fontStyle: "italic" }}>{children}</Text>
+);
+
+export const B = ({ children }) => (
+  <Text style={{ fontWeight: "bold" }}>{children}</Text>
 );
