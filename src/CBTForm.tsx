@@ -7,6 +7,7 @@ import {
   Row,
   RoundedButton,
 } from "./ui";
+import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import theme from "./theme";
 import { Thought } from "./thoughts";
 
@@ -52,14 +53,10 @@ export default class CBTForm extends React.Component<Props> {
     } = this.props;
 
     return (
-      <View
-        style={{
-          marginTop: 18,
-        }}
-      >
+      <View style={{ marginTop: 18 }}>
         <FormContainer>
           <SubHeader>Automatic Thought</SubHeader>
-          <TextInput
+          <AutoGrowingTextInput
             style={textInputStyle}
             placeholderTextColor={textInputPlaceholderColor}
             placeholder={"What's going on?"}
@@ -81,7 +78,7 @@ export default class CBTForm extends React.Component<Props> {
 
         <FormContainer>
           <SubHeader>Challenge</SubHeader>
-          <TextInput
+          <AutoGrowingTextInput
             ref={this.challenge}
             blurOnSubmit={false}
             placeholder="Debate that thought!"
@@ -98,7 +95,7 @@ export default class CBTForm extends React.Component<Props> {
 
         <FormContainer>
           <SubHeader>Alternative Thought</SubHeader>
-          <TextInput
+          <AutoGrowingTextInput
             ref={this.alternative}
             placeholder="What should we think instead?"
             placeholderTextColor={textInputPlaceholderColor}
