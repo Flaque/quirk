@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, View } from "react-native";
+import { TextInput, View, Keyboard } from "react-native";
 import {
   FormContainer,
   SubHeader,
@@ -89,7 +89,10 @@ export default class CBTForm extends React.Component<Props> {
             onSubmitEditing={() => {
               this.alternative.current!.focus();
             }}
-            onChangeText={text => onTextChange("challenge", text)}
+            onChangeText={text => {
+              // We remove new lines here to avoid weird "enter" key issues
+              return onTextChange("challenge", text.replace(/\n|\r/g, ""));
+            }}
           />
         </FormContainer>
 
@@ -97,12 +100,16 @@ export default class CBTForm extends React.Component<Props> {
           <SubHeader>Alternative Thought</SubHeader>
           <AutoGrowingTextInput
             ref={this.alternative}
+            blurOnSubmit={false}
             placeholder="What should we think instead?"
             placeholderTextColor={textInputPlaceholderColor}
             returnKeyType="done"
             style={textInputStyle}
             value={thought.alternativeThought}
-            onChangeText={text => onTextChange("alternativeThought", text)}
+            onSubmitEditing={Keyboard.dismiss}
+            onChangeText={text =>
+              onTextChange("alternativeThought", text.replace(/\n|\r/g, ""))
+            }
           />
         </FormContainer>
 
