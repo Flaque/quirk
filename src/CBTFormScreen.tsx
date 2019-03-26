@@ -167,6 +167,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
       <View
         style={{
           backgroundColor: theme.lightOffwhite,
+          height: "100%",
         }}
       >
         <KeyboardAwareScrollView

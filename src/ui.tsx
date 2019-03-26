@@ -11,7 +11,6 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
-import { Constants } from "expo";
 
 export interface ParentComponent {
   children: any;
