@@ -13,7 +13,7 @@ Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't as
 to depression-specific CBT exercises. That makes it fairly quick and discreet to use, especially in a public
 setting.
 
-<img src="./misc/screenshot.gif" alt="quirk screenshot" />
+<img src="https://user-images.githubusercontent.com/5942769/54972305-4081d180-4f48-11e9-91d8-7e8117668418.gif" alt="quirk screenshot" />
 
 ## Running Locally
 
