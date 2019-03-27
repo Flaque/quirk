@@ -9,7 +9,15 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { getExercises, deleteExercise } from "./store";
-import { Header, Row, Container, IconButton, Label } from "./ui";
+import {
+  Header,
+  SubHeader,
+  Row,
+  Container,
+  IconButton,
+  Label,
+  Paragraph,
+} from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
@@ -21,6 +29,7 @@ import {
 import universalHaptic from "./haptic";
 import { Haptic, Constants } from "expo";
 import { validThoughtGroup } from "./sanitize";
+import Alert from "./alert";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
   <Row marginBottom={18}>
@@ -136,9 +145,7 @@ class CBTListScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = {
-      groups: [],
-    };
+    this.state = { groups: [] };
   }
 
   syncExercises = (): void => {
@@ -170,6 +177,9 @@ class CBTListScreen extends React.Component<Props, State> {
 
   componentDidMount = () => {
     this.syncExercises();
+    setTimeout(() => {
+      this.setState({ showPopup: true });
+    }, 100);
   };
 
   navigateToForm = () => {
@@ -220,6 +230,7 @@ class CBTListScreen extends React.Component<Props, State> {
             />
           </Container>
         </ScrollView>
+        <Alert title={"Hey-o!"} body={"We changed some stuff!"} />
       </View>
     );
   }
