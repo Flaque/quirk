@@ -44,7 +44,7 @@ const CBTViewer = ({ thought, onEdit, onNew }) => {
           onPress={() => onEdit(thought.uuid)}
           disabled={false}
         />
-        <RoundedButton title="New" onPress={() => onNew()} disabled={false} />
+        <RoundedButton title="New" onPress={onNew} disabled={false} />
       </Row>
     </View>
   );
@@ -123,6 +123,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   };
 
   onNew = (): void => {
+    universalHaptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.setEmptyThought();
   };
 
