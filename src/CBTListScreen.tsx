@@ -230,7 +230,14 @@ class CBTListScreen extends React.Component<Props, State> {
             />
           </Container>
         </ScrollView>
-        <Alert title={"Hey-o!"} body={"We changed some stuff!"} />
+        <Alert
+          title={"👋 Hey-o!"}
+          body={`Something's changed!
+
+Thoughts shown here are now the alternative thought, not your initial thought. We changed this to cement the importance of changing your thought, not just recording them.
+
+If you don't like it, you can change it in the settings.`}
+        />
       </View>
     );
   }

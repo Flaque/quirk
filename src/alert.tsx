@@ -1,13 +1,20 @@
 import React from "react";
 import theme from "./theme";
-import { SubHeader, Paragraph } from "./ui";
+import { SubHeader, Paragraph, RoundedButton } from "./ui";
 import posed from "react-native-pose";
-import { TouchableWithoutFeedback } from "react-native";
+import { TouchableWithoutFeedback, View } from "react-native";
+import universalHaptic from "./haptic";
+import { Haptic } from "expo";
 
 const PopsUp = posed.View({
-  full: { height: 512 },
-  peak: { height: 128 },
-  hidden: { height: 0 },
+  full: { height: 412, paddingTop: 18, paddingBottom: 18 },
+  peak: {
+    height: 156,
+    paddingTop: 18,
+    paddingBottom: 18,
+    transition: { type: "spring", stiffness: 150 },
+  },
+  hidden: { height: 0, paddingTop: 0, paddingBottom: 0 },
 });
 
 interface AlertProps {
@@ -23,7 +30,8 @@ class Alert extends React.Component<AlertProps> {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ view: "peak" });
-    }, 100);
+      universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
+    }, 350);
   }
 
   render() {
@@ -41,7 +49,7 @@ class Alert extends React.Component<AlertProps> {
             position: "absolute",
             width: "100%",
             height: 256,
-            padding: 24,
+            padding: 18,
             bottom: 24,
             borderRadius: 13,
             backgroundColor: "white",
@@ -51,10 +59,50 @@ class Alert extends React.Component<AlertProps> {
             shadowOffset: { width: 0, height: 1 },
             shadowRadius: 10,
             shadowOpacity: 0.8,
+            opacity: 1,
           }}
         >
-          <SubHeader>{title}</SubHeader>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginBottom: 18,
+            }}
+          >
+            <SubHeader
+              style={{
+                height: 48,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                lineHeight: 48,
+                marginBottom: 0,
+                fontSize: 24,
+              }}
+            >
+              {title}
+            </SubHeader>
+          </View>
           <Paragraph>{body}</Paragraph>
+
+          <View
+            style={{
+              padding: 24,
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+            }}
+          >
+            <RoundedButton
+              title={"Got it."}
+              onPress={() => {
+                this.setState({
+                  view: "hidden",
+                });
+              }}
+            />
+          </View>
         </PopsUp>
       </TouchableWithoutFeedback>
     );
