@@ -45,7 +45,7 @@ const ThoughtItem = ({ thought, onPress, onDelete }) => (
           fontSize: 16,
         }}
       >
-        {thought.automaticThought}
+        {thought.alternativeThought}
       </Text>
     </TouchableOpacity>
 
