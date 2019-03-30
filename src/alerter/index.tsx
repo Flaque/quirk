@@ -9,7 +9,7 @@ import { hiddenAlerts, hide } from "./alertstore";
 import { sortBy } from "lodash";
 
 const PopsUp = posed.View({
-  full: { height: 412, paddingTop: 18, paddingBottom: 18 },
+  full: { height: 380, paddingTop: 18, paddingBottom: 18 },
   peak: {
     height: 156,
     paddingTop: 18,
@@ -52,7 +52,7 @@ class AlertView extends React.Component<AlertViewProps> {
             position: "absolute",
             width: "100%",
             height: 256,
-            padding: 18,
+            padding: 24,
             bottom: 24,
             borderRadius: 13,
             backgroundColor: "white",
