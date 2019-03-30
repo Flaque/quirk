@@ -1,10 +1,12 @@
 import React from "react";
-import theme from "./theme";
-import { SubHeader, Paragraph, RoundedButton } from "./ui";
+import theme from "../theme";
+import { SubHeader, Paragraph, RoundedButton } from "../ui";
 import posed from "react-native-pose";
 import { TouchableWithoutFeedback, View } from "react-native";
-import universalHaptic from "./haptic";
+import universalHaptic from "../haptic";
 import { Haptic } from "expo";
+import { hiddenAlerts, hide } from "./alertstore";
+import { sortBy } from "lodash";
 
 const PopsUp = posed.View({
   full: { height: 412, paddingTop: 18, paddingBottom: 18 },
@@ -17,12 +19,13 @@ const PopsUp = posed.View({
   hidden: { height: 0, paddingTop: 0, paddingBottom: 0 },
 });
 
-interface AlertProps {
+interface AlertViewProps {
   title: string;
   body: string;
+  onHide: () => void;
 }
 
-class Alert extends React.Component<AlertProps> {
+class AlertView extends React.Component<AlertViewProps> {
   state = {
     view: "hidden",
   };
@@ -100,6 +103,7 @@ class Alert extends React.Component<AlertProps> {
                 this.setState({
                   view: "hidden",
                 });
+                this.props.onHide();
               }}
             />
           </View>
@@ -109,4 +113,59 @@ class Alert extends React.Component<AlertProps> {
   }
 }
 
-export default Alert;
+export interface Alert {
+  title: string;
+  body: string;
+  slug: string;
+
+  // Increase this number for newer alerts if you'd like
+  priority: 0;
+}
+
+interface AlerterProps {
+  alerts: Alert[];
+}
+
+interface AlerterState {
+  shown?: Alert;
+}
+
+class Alerter extends React.Component<AlerterProps, AlerterState> {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  async componentDidMount() {
+    const hidden = await hiddenAlerts();
+
+    const showableAlerts = sortBy(this.props.alerts, ["priority"]).filter(
+      ({ slug }) => !hidden.includes(slug)
+    );
+
+    this.setState({
+      shown: showableAlerts[0],
+    });
+  }
+
+  onHide = (slug: string) => {
+    hide(slug);
+  };
+
+  render() {
+    if (!this.state.shown) {
+      return false;
+    }
+
+    const { shown } = this.state;
+    return (
+      <AlertView
+        title={shown.title}
+        body={shown.body}
+        onHide={() => this.onHide(shown.slug)}
+      />
+    );
+  }
+}
+
+export default Alerter;

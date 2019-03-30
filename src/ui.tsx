@@ -182,6 +182,13 @@ export const RoundedButton = ({
   textColor,
   width,
   disabled,
+}: {
+  title: string;
+  onPress: () => void;
+  fillColor?: string;
+  textColor?: string;
+  width?: number;
+  disabled?: boolean;
 }) => (
   <TouchableOpacity
     style={{
@@ -206,15 +213,6 @@ export const RoundedButton = ({
     </Text>
   </TouchableOpacity>
 );
-
-RoundedButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  fillColor: PropTypes.string,
-  textColor: PropTypes.string,
-  width: PropTypes.number,
-  disabled: PropTypes.bool,
-};
 
 RoundedButton.defaultProps = {
   fillColor: theme.blue,

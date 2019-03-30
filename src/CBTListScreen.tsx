@@ -9,15 +9,7 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { getExercises, deleteExercise } from "./store";
-import {
-  Header,
-  SubHeader,
-  Row,
-  Container,
-  IconButton,
-  Label,
-  Paragraph,
-} from "./ui";
+import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN } from "./screens";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
@@ -29,7 +21,8 @@ import {
 import universalHaptic from "./haptic";
 import { Haptic, Constants } from "expo";
 import { validThoughtGroup } from "./sanitize";
-import Alert from "./alert";
+import Alerter from "./alerter";
+import alerts from "./alerts";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
   <Row marginBottom={18}>
@@ -230,14 +223,7 @@ class CBTListScreen extends React.Component<Props, State> {
             />
           </Container>
         </ScrollView>
-        <Alert
-          title={"👋 Hey-o!"}
-          body={`Something's changed!
-
-Thoughts shown here are now the alternative thought, not your initial thought. We changed this to cement the importance of changing your thought, not just recording them.
-
-If you don't like it, you can change it in the settings.`}
-        />
+        <Alerter alerts={alerts} />
       </View>
     );
   }
