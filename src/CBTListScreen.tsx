@@ -25,7 +25,7 @@ import Alerter from "./alerter";
 import alerts from "./alerts";
 
 const ThoughtItem = ({ thought, onPress, onDelete }) => (
-  <Row marginBottom={18}>
+  <Row style={{ marginBottom: 18 }}>
     <TouchableOpacity
       style={{
         padding: 18,
@@ -154,6 +154,7 @@ class CBTListScreen extends React.Component<Props, State> {
 
     getExercises()
       .then(data => {
+        console.log(data);
         const thoughts: SavedThought[] = data
           .map(([_, value]) => JSON.parse(value))
           .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
@@ -208,8 +209,8 @@ class CBTListScreen extends React.Component<Props, State> {
         >
           <Container>
             <StatusBar barStyle="dark-content" />
-            <Row marginBottom={18}>
-              <Header>quirk.</Header>
+            <Row style={{ marginBottom: 18 }}>
+              <Header>.quirk</Header>
               <IconButton
                 featherIconName={"edit"}
                 onPress={() => this.navigateToForm()}

@@ -21,7 +21,7 @@ export interface Component {
   style?: object;
 }
 
-export const Row = ({ children, ...style }) => (
+export const Row = ({ children, style }: { children: any; style?: any }) => (
   <View
     style={{
       flexDirection: "row",
@@ -174,6 +174,49 @@ RoundedSelector.propTypes = {
   onPress: PropTypes.func.isRequired,
   style: PropTypes.object,
 };
+
+export const RoundedSelectorButton = ({
+  title,
+  selected = false,
+  onPress,
+}: {
+  title: string;
+  selected?: boolean;
+  onPress: () => void;
+}) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={{
+      backgroundColor: selected ? theme.blue : "white",
+      borderColor: selected ? theme.darkBlue : theme.lightGray,
+      borderBottomWidth: 2,
+      paddingTop: 8,
+      paddingBottom: 8,
+      paddingRight: 12,
+      borderRadius: 8,
+      borderWidth: 1,
+      marginBottom: 4,
+      marginTop: 1,
+      flexDirection: "row",
+      justifyContent: "space-between",
+    }}
+  >
+    <View style={{ flexDirection: "row" }}>
+      <Text
+        style={{
+          fontWeight: "400",
+          fontSize: 16,
+          color: selected ? "white" : theme.darkText,
+          marginLeft: 12,
+        }}
+      >
+        {title}
+      </Text>
+    </View>
+
+    {selected && <Feather name={"check"} size={16} color={"white"} />}
+  </TouchableOpacity>
+);
 
 export const RoundedButton = ({
   title,

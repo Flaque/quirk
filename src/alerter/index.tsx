@@ -5,7 +5,12 @@ import posed from "react-native-pose";
 import { TouchableWithoutFeedback, View } from "react-native";
 import universalHaptic from "../haptic";
 import { Haptic } from "expo";
-import { hiddenAlerts, hide } from "./alertstore";
+import {
+  hiddenAlerts,
+  hide,
+  hideMultipleAlerts,
+  isNewUser,
+} from "./alertstore";
 import { sortBy } from "lodash";
 
 const PopsUp = posed.View({
@@ -137,9 +142,17 @@ class Alerter extends React.Component<AlerterProps, AlerterState> {
   }
 
   async componentDidMount() {
-    const hidden = await hiddenAlerts();
+    const { alerts } = this.props;
 
-    const showableAlerts = sortBy(this.props.alerts, ["priority"]).filter(
+    // If someone is a new user, just go ahead and hide
+    // all anouncements. They can just see the app as it is
+    if (await isNewUser()) {
+      await hideMultipleAlerts(alerts.map(({ slug }) => slug));
+      return;
+    }
+
+    const hidden = await hiddenAlerts();
+    const showableAlerts = sortBy(alerts, ["priority"]).filter(
       ({ slug }) => !hidden.includes(slug)
     );
 

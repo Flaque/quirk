@@ -4,9 +4,10 @@ import uuidv4 from "uuid/v4";
 import { Thought, SavedThought } from "./thoughts";
 
 const EXISTING_USER_KEY = "@Quirk:existing-user";
+const THOUGHTS_KEY_PREFIX = `@Quirk:thoughts:`;
 
 export function getThoughtKey(info): string {
-  return `@Quirk:thoughts:${info}`;
+  return THOUGHTS_KEY_PREFIX + info;
 }
 
 export async function exists(key: string): Promise<boolean> {
@@ -82,7 +83,10 @@ export const deleteExercise = async (uuid: string) => {
 
 export const getExercises = async () => {
   try {
-    const keys = await AsyncStorage.getAllKeys();
+    const keys = (await AsyncStorage.getAllKeys()).filter(key =>
+      key.startsWith(THOUGHTS_KEY_PREFIX)
+    );
+
     let rows = await AsyncStorage.multiGet(keys);
 
     // It's better to lose data than to brick the app
