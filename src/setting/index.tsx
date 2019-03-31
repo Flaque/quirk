@@ -16,7 +16,7 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { CBT_FORM_SCREEN } from "../screens";
+import { CBT_LIST_SCREEN } from "../screens";
 import { setSetting, getSettingOrSetDefault } from "./settingstore";
 import {
   HISTORY_BUTTON_LABEL_KEY,
@@ -79,10 +79,8 @@ class SettingScreen extends React.Component<Props, State> {
     });
   };
 
-  navigateToForm = () => {
-    this.props.navigation.navigate(CBT_FORM_SCREEN, {
-      thought: false,
-    });
+  navigateToList = () => {
+    this.props.navigation.navigate(CBT_LIST_SCREEN);
   };
 
   toggleHistoryButtonLabels = () => {
@@ -128,8 +126,8 @@ class SettingScreen extends React.Component<Props, State> {
             <Row style={{ marginBottom: 18 }}>
               <Header>quirk*</Header>
               <IconButton
-                featherIconName={"edit"}
-                onPress={() => this.navigateToForm()}
+                featherIconName={"list"}
+                onPress={() => this.navigateToList()}
               />
             </Row>
 

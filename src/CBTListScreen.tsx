@@ -7,11 +7,10 @@ import {
   View,
   Image,
 } from "react-native";
-import PropTypes from "prop-types";
 import { getExercises, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
-import { CBT_FORM_SCREEN } from "./screens";
+import { CBT_FORM_SCREEN, SETTING_SCREEN } from "./screens";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
 import {
   NavigationScreenProp,
@@ -25,7 +24,17 @@ import Alerter from "./alerter";
 import alerts from "./alerts";
 import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
 
-const ThoughtItem = ({ thought, historyButtonLabel, onPress, onDelete }) => (
+const ThoughtItem = ({
+  thought,
+  historyButtonLabel,
+  onPress,
+  onDelete,
+}: {
+  thought: SavedThought;
+  historyButtonLabel: HistoryButtonLabelSetting;
+  onPress: (thought: SavedThought | boolean) => void;
+  onDelete: (thought: SavedThought) => void;
+}) => (
   <Row style={{ marginBottom: 18 }}>
     <TouchableOpacity
       style={{
@@ -53,17 +62,14 @@ const ThoughtItem = ({ thought, historyButtonLabel, onPress, onDelete }) => (
     </TouchableOpacity>
 
     <IconButton
-      alignSelf={"flex-start"}
+      style={{
+        alignSelf: "flex-start",
+      }}
       featherIconName={"trash"}
       onPress={() => onDelete(thought)}
     />
   </Row>
 );
-
-ThoughtItem.propTypes = {
-  thought: PropTypes.object.isRequired,
-  onPress: PropTypes.func.isRequired,
-};
 
 const EmptyThoughtIllustration = () => (
   <View
@@ -146,6 +152,10 @@ class CBTListScreen extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = { groups: [], historyButtonLabel: "alternative-thought" };
+
+    this.props.navigation.addListener("willFocus", () => {
+      this.loadSettings();
+    });
   }
 
   loadExercises = (): void => {
@@ -189,6 +199,10 @@ class CBTListScreen extends React.Component<Props, State> {
     }, 100);
   };
 
+  navigateToSettings = () => {
+    this.props.navigation.navigate(SETTING_SCREEN);
+  };
+
   navigateToForm = () => {
     this.navigateToFormWithThought(false);
   };
@@ -224,16 +238,25 @@ class CBTListScreen extends React.Component<Props, State> {
             <StatusBar barStyle="dark-content" />
             <Row style={{ marginBottom: 18 }}>
               <Header>.quirk</Header>
-              <IconButton
-                featherIconName={"edit"}
-                onPress={() => this.navigateToForm()}
-              />
+
+              <View style={{ flexDirection: "row" }}>
+                <IconButton
+                  featherIconName={"settings"}
+                  onPress={() => this.navigateToSettings()}
+                  style={{ marginRight: 18 }}
+                />
+                <IconButton
+                  featherIconName={"edit"}
+                  onPress={() => this.navigateToForm()}
+                />
+              </View>
             </Row>
 
             <ThoughtItemList
               groups={groups}
               navigateToFormWithThought={this.navigateToFormWithThought}
               onItemDelete={this.onItemDelete}
+              historyButtonLabel={historyButtonLabel}
             />
           </Container>
         </ScrollView>

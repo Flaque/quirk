@@ -263,7 +263,15 @@ RoundedButton.defaultProps = {
   width: 100,
 };
 
-export const IconButton = ({ featherIconName, onPress, ...style }) => (
+export const IconButton = ({
+  featherIconName,
+  onPress,
+  style,
+}: {
+  featherIconName: string;
+  onPress: () => void;
+  style?: object;
+}) => (
   <TouchableOpacity
     style={{
       backgroundColor: theme.lightGray,
