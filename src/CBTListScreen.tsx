@@ -23,8 +23,9 @@ import { Haptic, Constants } from "expo";
 import { validThoughtGroup } from "./sanitize";
 import Alerter from "./alerter";
 import alerts from "./alerts";
+import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
 
-const ThoughtItem = ({ thought, onPress, onDelete }) => (
+const ThoughtItem = ({ thought, historyButtonLabel, onPress, onDelete }) => (
   <Row style={{ marginBottom: 18 }}>
     <TouchableOpacity
       style={{
@@ -45,7 +46,9 @@ const ThoughtItem = ({ thought, onPress, onDelete }) => (
           fontSize: 16,
         }}
       >
-        {thought.alternativeThought}
+        {historyButtonLabel === "alternative-thought"
+          ? thought.alternativeThought
+          : thought.automaticThought}
       </Text>
     </TouchableOpacity>
 
@@ -86,6 +89,7 @@ const EmptyThoughtIllustration = () => (
 
 interface ThoughtListProps {
   groups: ThoughtGroup[];
+  historyButtonLabel: HistoryButtonLabelSetting;
   navigateToFormWithThought: (thought: SavedThought | boolean) => void;
   onItemDelete: (thought: SavedThought) => void;
 }
@@ -94,6 +98,7 @@ const ThoughtItemList = ({
   groups,
   navigateToFormWithThought,
   onItemDelete,
+  historyButtonLabel,
 }: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
     return <EmptyThoughtIllustration />;
@@ -106,6 +111,7 @@ const ThoughtItemList = ({
         thought={thought}
         onPress={navigateToFormWithThought}
         onDelete={onItemDelete}
+        historyButtonLabel={historyButtonLabel}
       />
     ));
 
@@ -129,6 +135,7 @@ interface Props {
 
 interface State {
   groups: ThoughtGroup[];
+  historyButtonLabel: HistoryButtonLabelSetting;
 }
 
 class CBTListScreen extends React.Component<Props, State> {
@@ -138,10 +145,10 @@ class CBTListScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = { groups: [] };
+    this.state = { groups: [], historyButtonLabel: "alternative-thought" };
   }
 
-  syncExercises = (): void => {
+  loadExercises = (): void => {
     const fixTimestamps = (json): SavedThought => {
       const createdAt: Date = new Date(json.createdAt);
       const updatedAt: Date = new Date(json.updatedAt);
@@ -154,7 +161,6 @@ class CBTListScreen extends React.Component<Props, State> {
 
     getExercises()
       .then(data => {
-        console.log(data);
         const thoughts: SavedThought[] = data
           .map(([_, value]) => JSON.parse(value))
           .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
@@ -169,8 +175,15 @@ class CBTListScreen extends React.Component<Props, State> {
       .catch(console.error);
   };
 
+  loadSettings = (): void => {
+    getHistoryButtonLabel().then(historyButtonLabel => {
+      this.setState({ historyButtonLabel });
+    });
+  };
+
   componentDidMount = () => {
-    this.syncExercises();
+    this.loadExercises();
+    this.loadSettings();
     setTimeout(() => {
       this.setState({ showPopup: true });
     }, 100);
@@ -191,11 +204,11 @@ class CBTListScreen extends React.Component<Props, State> {
     // Upgrade to 32 when it's released to fix
     universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
 
-    deleteExercise(thought.uuid).then(() => this.syncExercises());
+    deleteExercise(thought.uuid).then(() => this.loadExercises());
   };
 
   render() {
-    const { groups } = this.state;
+    const { groups, historyButtonLabel } = this.state;
 
     return (
       <View style={{ backgroundColor: theme.lightOffwhite }}>

@@ -17,13 +17,34 @@ import {
   NavigationAction,
 } from "react-navigation";
 import { CBT_FORM_SCREEN } from "../screens";
-import * as store from "./settingstore";
+import { setSetting, getSettingOrSetDefault } from "./settingstore";
 import {
   HISTORY_BUTTON_LABEL_KEY,
   HISTORY_BUTTON_LABEL_DEFAULT,
   HistoryButtonLabelSetting,
   isHistoryButtonLabelSetting,
 } from "./settings";
+
+export { HistoryButtonLabelSetting };
+
+// Exportable settings
+export async function getHistoryButtonLabel(): Promise<
+  HistoryButtonLabelSetting
+> {
+  const value = await getSettingOrSetDefault(
+    HISTORY_BUTTON_LABEL_KEY,
+    HISTORY_BUTTON_LABEL_DEFAULT
+  );
+
+  if (!isHistoryButtonLabelSetting(value)) {
+    console.error(
+      `Something went wrong getting ${HISTORY_BUTTON_LABEL_KEY}. Got: "${value}"`
+    );
+    return HISTORY_BUTTON_LABEL_DEFAULT;
+  }
+
+  return value;
+}
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -51,17 +72,7 @@ class SettingScreen extends React.Component<Props, State> {
   }
 
   refresh = async () => {
-    const historyButtonLabel = await store.getSettingOrSetDefault(
-      HISTORY_BUTTON_LABEL_KEY,
-      HISTORY_BUTTON_LABEL_DEFAULT
-    );
-    if (!isHistoryButtonLabelSetting(historyButtonLabel)) {
-      console.error(
-        `Something went wrong getting ${HISTORY_BUTTON_LABEL_KEY}. Got: "${historyButtonLabel}"`
-      );
-      return;
-    }
-
+    const historyButtonLabel = await getHistoryButtonLabel();
     this.setState({
       historyButtonLabel,
       ready: true,
@@ -81,13 +92,13 @@ class SettingScreen extends React.Component<Props, State> {
     }
 
     if (this.state.historyButtonLabel === "alternative-thought") {
-      store.setSetting<HistoryButtonLabelSetting>(
+      setSetting<HistoryButtonLabelSetting>(
         HISTORY_BUTTON_LABEL_KEY,
         "automatic-thought"
       );
       this.refresh();
     } else {
-      store.setSetting<HistoryButtonLabelSetting>(
+      setSetting<HistoryButtonLabelSetting>(
         HISTORY_BUTTON_LABEL_KEY,
         "alternative-thought"
       );
