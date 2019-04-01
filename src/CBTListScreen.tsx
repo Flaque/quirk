@@ -7,11 +7,10 @@ import {
   View,
   Image,
 } from "react-native";
-import PropTypes from "prop-types";
 import { getExercises, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
-import { CBT_FORM_SCREEN } from "./screens";
+import { CBT_FORM_SCREEN, SETTING_SCREEN } from "./screens";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
 import {
   NavigationScreenProp,
@@ -21,9 +20,22 @@ import {
 import universalHaptic from "./haptic";
 import { Haptic, Constants } from "expo";
 import { validThoughtGroup } from "./sanitize";
+import Alerter from "./alerter";
+import alerts from "./alerts";
+import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
 
-const ThoughtItem = ({ thought, onPress, onDelete }) => (
-  <Row marginBottom={18}>
+const ThoughtItem = ({
+  thought,
+  historyButtonLabel,
+  onPress,
+  onDelete,
+}: {
+  thought: SavedThought;
+  historyButtonLabel: HistoryButtonLabelSetting;
+  onPress: (thought: SavedThought | boolean) => void;
+  onDelete: (thought: SavedThought) => void;
+}) => (
+  <Row style={{ marginBottom: 18 }}>
     <TouchableOpacity
       style={{
         padding: 18,
@@ -43,22 +55,21 @@ const ThoughtItem = ({ thought, onPress, onDelete }) => (
           fontSize: 16,
         }}
       >
-        {thought.automaticThought}
+        {historyButtonLabel === "alternative-thought"
+          ? thought.alternativeThought
+          : thought.automaticThought}
       </Text>
     </TouchableOpacity>
 
     <IconButton
-      alignSelf={"flex-start"}
+      style={{
+        alignSelf: "flex-start",
+      }}
       featherIconName={"trash"}
       onPress={() => onDelete(thought)}
     />
   </Row>
 );
-
-ThoughtItem.propTypes = {
-  thought: PropTypes.object.isRequired,
-  onPress: PropTypes.func.isRequired,
-};
 
 const EmptyThoughtIllustration = () => (
   <View
@@ -84,6 +95,7 @@ const EmptyThoughtIllustration = () => (
 
 interface ThoughtListProps {
   groups: ThoughtGroup[];
+  historyButtonLabel: HistoryButtonLabelSetting;
   navigateToFormWithThought: (thought: SavedThought | boolean) => void;
   onItemDelete: (thought: SavedThought) => void;
 }
@@ -92,6 +104,7 @@ const ThoughtItemList = ({
   groups,
   navigateToFormWithThought,
   onItemDelete,
+  historyButtonLabel,
 }: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
     return <EmptyThoughtIllustration />;
@@ -104,6 +117,7 @@ const ThoughtItemList = ({
         thought={thought}
         onPress={navigateToFormWithThought}
         onDelete={onItemDelete}
+        historyButtonLabel={historyButtonLabel}
       />
     ));
 
@@ -127,6 +141,7 @@ interface Props {
 
 interface State {
   groups: ThoughtGroup[];
+  historyButtonLabel: HistoryButtonLabelSetting;
 }
 
 class CBTListScreen extends React.Component<Props, State> {
@@ -136,12 +151,14 @@ class CBTListScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = {
-      groups: [],
-    };
+    this.state = { groups: [], historyButtonLabel: "alternative-thought" };
+
+    this.props.navigation.addListener("willFocus", () => {
+      this.loadSettings();
+    });
   }
 
-  syncExercises = (): void => {
+  loadExercises = (): void => {
     const fixTimestamps = (json): SavedThought => {
       const createdAt: Date = new Date(json.createdAt);
       const updatedAt: Date = new Date(json.updatedAt);
@@ -168,8 +185,22 @@ class CBTListScreen extends React.Component<Props, State> {
       .catch(console.error);
   };
 
+  loadSettings = (): void => {
+    getHistoryButtonLabel().then(historyButtonLabel => {
+      this.setState({ historyButtonLabel });
+    });
+  };
+
   componentDidMount = () => {
-    this.syncExercises();
+    this.loadExercises();
+    this.loadSettings();
+    setTimeout(() => {
+      this.setState({ showPopup: true });
+    }, 100);
+  };
+
+  navigateToSettings = () => {
+    this.props.navigation.navigate(SETTING_SCREEN);
   };
 
   navigateToForm = () => {
@@ -187,11 +218,11 @@ class CBTListScreen extends React.Component<Props, State> {
     // Upgrade to 32 when it's released to fix
     universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
 
-    deleteExercise(thought.uuid).then(() => this.syncExercises());
+    deleteExercise(thought.uuid).then(() => this.loadExercises());
   };
 
   render() {
-    const { groups } = this.state;
+    const { groups, historyButtonLabel } = this.state;
 
     return (
       <View style={{ backgroundColor: theme.lightOffwhite }}>
@@ -205,21 +236,31 @@ class CBTListScreen extends React.Component<Props, State> {
         >
           <Container>
             <StatusBar barStyle="dark-content" />
-            <Row marginBottom={18}>
-              <Header>quirk.</Header>
-              <IconButton
-                featherIconName={"edit"}
-                onPress={() => this.navigateToForm()}
-              />
+            <Row style={{ marginBottom: 18 }}>
+              <Header>.quirk</Header>
+
+              <View style={{ flexDirection: "row" }}>
+                <IconButton
+                  featherIconName={"settings"}
+                  onPress={() => this.navigateToSettings()}
+                  style={{ marginRight: 18 }}
+                />
+                <IconButton
+                  featherIconName={"edit"}
+                  onPress={() => this.navigateToForm()}
+                />
+              </View>
             </Row>
 
             <ThoughtItemList
               groups={groups}
               navigateToFormWithThought={this.navigateToFormWithThought}
               onItemDelete={this.onItemDelete}
+              historyButtonLabel={historyButtonLabel}
             />
           </Container>
         </ScrollView>
+        <Alerter alerts={alerts} />
       </View>
     );
   }

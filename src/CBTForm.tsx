@@ -113,7 +113,7 @@ export default class CBTForm extends React.Component<Props> {
           />
         </FormContainer>
 
-        <Row justifyContent="flex-end">
+        <Row style={{ justifyContent: "flex-end" }}>
           <RoundedButton disabled={false} title="Save" onPress={onSave} />
         </Row>
       </View>

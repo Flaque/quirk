@@ -21,7 +21,7 @@ export interface Component {
   style?: object;
 }
 
-export const Row = ({ children, ...style }) => (
+export const Row = ({ children, style }: { children: any; style?: any }) => (
   <View
     style={{
       flexDirection: "row",
@@ -175,6 +175,49 @@ RoundedSelector.propTypes = {
   style: PropTypes.object,
 };
 
+export const RoundedSelectorButton = ({
+  title,
+  selected = false,
+  onPress,
+}: {
+  title: string;
+  selected?: boolean;
+  onPress: () => void;
+}) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={{
+      backgroundColor: selected ? theme.blue : "white",
+      borderColor: selected ? theme.darkBlue : theme.lightGray,
+      borderBottomWidth: 2,
+      paddingTop: 8,
+      paddingBottom: 8,
+      paddingRight: 12,
+      borderRadius: 8,
+      borderWidth: 1,
+      marginBottom: 4,
+      marginTop: 1,
+      flexDirection: "row",
+      justifyContent: "space-between",
+    }}
+  >
+    <View style={{ flexDirection: "row" }}>
+      <Text
+        style={{
+          fontWeight: "400",
+          fontSize: 16,
+          color: selected ? "white" : theme.darkText,
+          marginLeft: 12,
+        }}
+      >
+        {title}
+      </Text>
+    </View>
+
+    {selected && <Feather name={"check"} size={16} color={"white"} />}
+  </TouchableOpacity>
+);
+
 export const RoundedButton = ({
   title,
   onPress,
@@ -182,6 +225,13 @@ export const RoundedButton = ({
   textColor,
   width,
   disabled,
+}: {
+  title: string;
+  onPress: () => void;
+  fillColor?: string;
+  textColor?: string;
+  width?: number;
+  disabled?: boolean;
 }) => (
   <TouchableOpacity
     style={{
@@ -207,22 +257,21 @@ export const RoundedButton = ({
   </TouchableOpacity>
 );
 
-RoundedButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  fillColor: PropTypes.string,
-  textColor: PropTypes.string,
-  width: PropTypes.number,
-  disabled: PropTypes.bool,
-};
-
 RoundedButton.defaultProps = {
   fillColor: theme.blue,
   textColor: "white",
   width: 100,
 };
 
-export const IconButton = ({ featherIconName, onPress, ...style }) => (
+export const IconButton = ({
+  featherIconName,
+  onPress,
+  style,
+}: {
+  featherIconName: string;
+  onPress: () => void;
+  style?: object;
+}) => (
   <TouchableOpacity
     style={{
       backgroundColor: theme.lightGray,
