@@ -45,8 +45,6 @@ Qurik is built with two main goals in mind:
 - Don't be bloated
 - Don't be evil
 
-Those seem like simple goals, yet many existing mental health apps seem to fail on both.
-
 ### Don't be bloated
 
 **Don't include features for one particular condition at the expense of other conditions.** For example, don't couple mood tracking to thought tracking. If a user _has_ to enter a mood in order to track a thought, then the entire app is ruined for people who use it for panic, OCD or another condition where mood isn't the primary focus.
