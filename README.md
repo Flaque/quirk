@@ -71,39 +71,6 @@ Those seem like simple goals, yet many existing mental health apps seem to fail 
 
 **Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in the help. But holy moly becareful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._
 
-## Stupid Design Logic
-
-I'm not really a designer, but I do like to engage in _stupid design logic_ for why things are a certain way. _Stupid design logic_ differs from traditional design logic by being inherently biased and largely driven by emotion, personality, and whatever part of your brain has decided to listen to _XYZ-pop-song_ on loop for three days.
-
-In other words, it's raw, unadulterated opinion with no basis in research or experience.
-
-Quirk has a particular style, but it's one I ripped off from a bunch of other apps. Some components are muted because they're dumb and not the important bits. But the important bits are big, gigantic works of in-your-face crunchy juicy goodness. Titles should be bold, the boldyest bold you got. Only got one thing to say? Make [that thing a full screen giant, towering over mortals.](https://i.imgur.com/zcplBkP.png)
-
-Illustrations should be excessively cute and burst with as much personality as your artistic talent can muster. None of that sleek silicon valley business-casual airplane art. Nah. **Give me bubbles and smiles.** Draw little dudes and [make them eat each other.](https://i.imgur.com/JYM9CbA.png) We're making a healthy-cool app here, not some collared-shirt-wearing fintech money-market manstravaganza.
-
-Likewise, I don't want any of the branding of most mental health tools. Almost all of them seem like they're afraid of their users. They all seem to be as quiet and bland as possible as if their users would get spooked and run away.
-
-This ends up coming across as either _really_ patronizing or _really_ sterile. In general it's
-both.
-
-Folks with mental health issues are tough! They can handle bold, out there stuff. Literally
-no one should be trying to create the design equivalent of a hospital.
-
-By choosing a neutral, unassuming brand identity, you're choosing to hide your product
-from the people who need it most. If you're making mental health tech, you're probably
-trying to help people; why wouldn't you be as in-your-face-shout-it-from-the-roof-tops
-as possible?
-
-Give these tools the respect they deserve; don't be afraid of the subject matter. You're not JP Morgan or whatnot.
-
-_This general thinking draws heavily on [the game design concept of "Juice."](https://www.youtube.com/watch?v=216_5nu4aVQ)_
-
-## Color Palette
-
-To bootstrap this, we're just using [a pre-canned, but fairly muted, color palette.](https://flatuicolors.com/palette/ru)
-
-![palette](https://i.imgur.com/yXyLg3I.png)
-
 # Engineering Logic
 
 Quirk _must not_ lose user data. The entire point of the app is to record your thoughts, so if you lost them it would be pretty bad. As stated in [one study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6010839/):
