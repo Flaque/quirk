@@ -1,3 +1,7 @@
 {
-  "auto_thought": "Pensée Automatique"
+  "auto_thought": "Pensée Automatique",
+  "settings": {
+    "history_button_labels": "*étiquettes pour les boutons d'historique",
+    "history_button_labels_explanation": "Par défaut, nous configurons les boutons de l'écran d'historique pour utiliser la pensée alternative. Cela rend la pensée comme \"changé.\""
+  }
 }

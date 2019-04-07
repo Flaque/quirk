@@ -24,6 +24,7 @@ import {
   HistoryButtonLabelSetting,
   isHistoryButtonLabelSetting,
 } from "./settings";
+import i18n from "../i18n";
 
 export { HistoryButtonLabelSetting };
 
@@ -138,14 +139,13 @@ class SettingScreen extends React.Component<Props, State> {
                 flexDirection: "column",
               }}
             >
-              <SubHeader>*history button labels</SubHeader>
+              <SubHeader>{i18n.t("settings.history_button_labels")}</SubHeader>
               <Paragraph
                 style={{
                   marginBottom: 9,
                 }}
               >
-                By default, we set the buttons in the history screen to use the
-                Alternative Thought. This helps cement the thought as "changed."
+                {i18n.t("settings.history_button_labels_explanation")}
               </Paragraph>
               <RoundedSelectorButton
                 title={"Alternative Thought"}

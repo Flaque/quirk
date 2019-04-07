@@ -38,5 +38,9 @@
   "should_statements": "Should Statements",
   "should_statements_explanation_1": "If you're assigning someone abilities they don't have, you're using faulty \"should\" statements. For example, if you have a fear of flying and are telling yourself \"I shouldn't be afraid of this, there's nothing wrong with the airplane!\" you're putting an undue burden on yourself. You have a fear of flying! It's normal for people who have a fear of flying to be afraid flying!",
   "should_statements_explanation_2": "Should statements can seem nonsensical when you say it out loud; that's the point! They're illogical!",
-  "should_statements_thought": "I'm an adult, I shouldn't have these mental issues."
+  "should_statements_thought": "I'm an adult, I shouldn't have these mental issues.",
+  "settings": {
+    "history_button_labels": "*history button labels",
+    "history_button_labels_explanation": "By default, we set the buttons in the history screen to use the Alternative Thought. This helps cement the thought as \"changed.\""
+  }
 }
