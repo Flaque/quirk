@@ -11,26 +11,26 @@
       "emphasis2": "Terapia Cognitiva-Conductual (TCC)",
       "line3": ""
     },
-    "crashCourse": {
+    "crash_course": {
       "line1": "Éste es un",
       "emphasis1": "curso intensivo",
       "line2": "en TCC y",
       "emphasis2": "no una alternativa",
       "line3": "para un terapeuta formado."
     },
-    "moodThoughts": {
+    "mood_thoughts": {
       "line1": "Primero:",
       "emphasis1": "tus pensamientos causan tu estado de ánimo."
     },
-    "thoughtsArentThoughts": {
+    "thoughts_arent_thoughts": {
       "line1": "Segundo: tus pensamientos pueden ser",
       "emphasis1": "automáticos."
     },
-    "yourDistorted": {
+    "your_distorted": {
       "line1": "Tercero: a menudo pensamientos automáticos pueden estar",
       "emphasis1": "distorsionados."
     },
-    "cbtOverview": {
+    "cbt_overview": {
       "line1": "El objetivo de TCC es reconocer los",
       "emphasis1": "pensamientos distorsionados",
       "line2": "y",
@@ -46,36 +46,36 @@
       "emphasis1": "solo escribiendo",
       "line2": "los pensamientos automáticos cuando suceden."
     },
-    "badThoughtNote": {
+    "bad_thought_note": {
       "line1": "Apunta el pensamiento:",
       "line2": "Falté a la fiesta de Jorge, me tiene que odiar."
     },
-    "identifyDistortions": {
+    "identify_distortions": {
       "line1": "Busca",
       "emphasis1": "Distorsiones cognitivas"
     },
-    "badDistortions": {
+    "bad_distortions": {
       "line1": "¿Sabemos de verdad que Jorge nos va a odiar? Si no, estamos",
       "emphasis1": "leyendo el pensamiento",
       "line2": "Falté a la fiesta de Jorge, me tiene que odiar por ello."
     },
-    "challengeScreen": {
+    "challenge_screen": {
       "line1": "3. ¿Por qué este pensamiento no es realista?",
       "emphasis1": "desafíalo."
     },
-    "writeChallenge": {
+    "write_challenge": {
       "line1": "Escribiremos algo del tipo:"
     },
-    "altThought": {
+    "alt_thought": {
       "line1": "4. Por último, escribiremos un",
       "emphasis1": "pensamiento alternativo."
     },
-    "showOff": {
+    "show_off": {
       "line1": "Encuéntralo más tarde:"
     },
-    "gotIt": {
+    "got_it": {
       "line1": "Y eso es todo realmente",
-      "btnTitle": "¡Vamos!"
+      "btn_title": "¡Vamos!"
     }
   },
   "auto_thought": "Pensamiento automático",
