@@ -1,3 +1,5 @@
+import i18n from "./i18n";
+
 export interface CognitiveDistortion {
   emoji?: string;
   label: string;
@@ -6,26 +8,26 @@ export interface CognitiveDistortion {
 }
 
 const distortions: CognitiveDistortion[] = [
-  { emoji: "🌓", label: "All or Nothing Thinking", slug: "all-or-nothing" },
-  { emoji: "👯‍", label: "Overgeneralization", slug: "overgeneralization" },
-  { emoji: "🧠", label: "Mind Reading", slug: "mind-reading" },
-  { emoji: "🔮", label: "Fortune Telling", slug: "fortune-telling" },
+  { emoji: "🌓", label: i18n.t("all_or_nothing_thinking"), slug: "all-or-nothing" },
+  { emoji: "👯‍", label: i18n.t("over_generalization"), slug: "overgeneralization" },
+  { emoji: "🧠", label: i18n.t("mind_reading"), slug: "mind-reading" },
+  { emoji: "🔮", label: i18n.t("fortune_telling"), slug: "fortune-telling" },
   {
     emoji: "👎",
-    label: "Magnification of the Negative",
+    label: i18n.t("magnification_of_the_negative"),
     slug: "magnification-of-the-negative",
   },
   {
     emoji: "👍",
-    label: "Minimization of the Positive",
+    label: i18n.t("minimization_of_the_positive"),
     slug: "minimization-of-the-positive",
   },
-  { emoji: "🤯", label: "Catastrophizing", slug: "catastrophizing" },
-  { emoji: "🎭", label: "Emotional Reasoning", slug: "emotional-reasoning" },
-  { emoji: "✨", label: "Should Statements", slug: "should-statements" },
-  { emoji: "🏷", label: "Labeling", slug: "labeling" },
-  { emoji: "👁", label: "Self-Blaming", slug: "self-blaming" },
-  { emoji: "🦹‍", label: "Other-Blaming", slug: "other-blaming" },
+  { emoji: "🤯", label: i18n.t("catastrophizing"), slug: "catastrophizing" },
+  { emoji: "🎭", label: i18n.t("emotional_reasoning"), slug: "emotional-reasoning" },
+  { emoji: "✨", label: i18n.t("should_statements"), slug: "should-statements" },
+  { emoji: "🏷", label: i18n.t("labeling"), slug: "labeling" },
+  { emoji: "👁", label: i18n.t("self_blaming"), slug: "self-blaming" },
+  { emoji: "🦹‍", label: i18n.t("other_blaming"), slug: "other-blaming" },
 ].sort((first, second) => {
   const firstLabel = first.label.toUpperCase();
   const secondLabel = second.label.toUpperCase();
