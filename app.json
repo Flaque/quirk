@@ -6,7 +6,7 @@
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
     "version": "1.6.0",
-    "orientation": "portrait",
+    "orientation": "all",
     "githubUrl": "https://github.com/Flaque/quirk",
     "primaryColor": "#F8A5C2",
     "splash": {
@@ -16,7 +16,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "tech.econn.quirk",
       "icon": "./assets/ios.png"
     },
