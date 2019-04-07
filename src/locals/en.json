@@ -11,26 +11,26 @@
       "emphasis2": "Cognitive Behavioral Therapy (CBT)",
       "line3": "App."
     },
-    "crashCourse": {
+    "crash_course": {
       "line1": "This is a",
       "emphasis1": "crash course",
       "line2": "in CBT and",
       "emphasis2": "not an alternative",
       "line3": "for a trained therapist."
     },
-    "moodThoughts": {
+    "mood_thoughts": {
       "line1": "First:",
       "emphasis1": "your thoughts cause your moods."
     },
-    "thoughtsArentThoughts": {
+    "thoughts_arent_thoughts": {
       "line1": "Second: your thoughts can be",
       "emphasis1": "automatic."
     },
-    "yourDistorted": {
+    "your_distorted": {
       "line1": "Third: automatic thoughts are often",
       "emphasis1": "distorted."
     },
-    "cbtOverview": {
+    "cbt_overview": {
       "line1": "The goal of CBT is to recognize the",
       "emphasis1": "distorted thoughts",
       "line2": "and",
@@ -46,36 +46,36 @@
       "emphasis1": "just writing down",
       "line2": "the automatic thoughts when they happen."
     },
-    "badThoughtNote": {
+    "bad_thought_note": {
       "line1": "Note the thought:",
       "line2": "I missed George's party, he must hate me."
     },
-    "identifyDistortions": {
+    "identify_distortions": {
       "line1": "Look for",
       "emphasis1": "Cognitive Distortions"
     },
-    "badDistortions": {
+    "bad_distortions": {
       "line1": "Do we really know George will hate us? If not, we're",
       "emphasis1": "Mind Reading",
       "line2": "I missed George's party, he must hate me."
     },
-    "challengeScreen": {
+    "challenge_screen": {
       "line1": "3. Why isn't this thought realistic?",
       "emphasis1": "Challenge it."
     },
-    "writeChallenge": {
+    "write_challenge": {
       "line1": "We'll write something like this:"
     },
-    "altThought": {
+    "alt_thought": {
       "line1": "4. Finally, we'll write an",
       "emphasis1": "alternative thought."
     },
-    "showOff": {
+    "show_off": {
       "line1": "Find it later:"
     },
-    "gotIt": {
+    "got_it": {
       "line1": "And that's really about it",
-      "btnTitle": "Let's go!"
+      "btn_title": "Let's go!"
     }
   },
   "auto_thought": "Automatic Thought",
