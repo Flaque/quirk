@@ -34,6 +34,18 @@ yarn start
 You'll then be in the [expo development environment](https://docs.expo.io/versions/latest/).
 If you already have XCode installed with a simulator, you can just press `i` to start it.
 
+# Can I help?
+
+Of course! 
+
+**If you like the app,** go give it 5 stars! It helps more people find the app.
+
+**If you're a mental health professional,** audit [the descriptions](https://github.com/Flaque/quirk/blob/master/src/locals/en.json) of the cognitive distortions. If you have suggestions, let me know and we'll change stuff!
+
+**If you can draw** and can make digital illustrations of the little blobs, let me know and I'll find a place to stick them in the app! 
+
+**If you know a language other than English,** help [us translate the app!](https://github.com/Flaque/quirk/issues/42#issuecomment-480547963)
+
 # Design
 
 Quirk's goal is to be both inviting and focused. It should be _really_ easy to enter in a thought; people frequently enter these in public settings and need to do it fairly quickly. It also should not cause any increased frustration.
