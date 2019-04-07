@@ -112,11 +112,12 @@ const ThoughtItemList = ({
   if (!groups || groups.length === 0) {
     return <EmptyThoughtIllustration />;
   }
-  search.toLowerCase()
+
   const items = groups.map(group => {
     const data = group.thoughts.filter(el => {
       const itemText = `${el.alternativeThought} ${el.alternativeThought} ${el.challenge}`.toLowerCase()
-      return itemText.indexOf(search) !== -1;
+      const lowercaseSearch = search.toLowerCase()
+      return itemText.indexOf(lowercaseSearch) !== -1;
     })
 
     const thoughts = data.map(thought => (
