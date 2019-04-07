@@ -1,0 +1,136 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Ich war nicht auf Georg's Party, er hasst mich bestimmt.",
+    "challenge_ex": "George weiß ich kann nicht jedes mal Zeit finden, Ich würde ihn nicht hassen, wenn er etwas von mir verpasst.\n\nIch sollte mich selbst mindestens so gut behandeln wie ich andere behandle.",
+    "alt_thought_ex": "Es ist wahr, ich habe George's Party verpasst, ich kann mich entschuldigen, er wird mir wahrscheinlich verzeihen.",
+    "cog_distortion": { "label": "Gedanken Lesen", "slug": "mind-reading" },
+    "intro": {
+      "line1": "Willkommen zu",
+      "emphasis1": "quirk",
+      "line2": ", der",
+      "emphasis2": "kognitiven Verhaltenstherapie (CBT)",
+      "line3": "App."
+    },
+    "crashCourse": {
+      "line1": "Dies ist ein",
+      "emphasis1": "grundlegende Hilfsanwendung",
+      "line2": "in CBT und",
+      "emphasis2": "keine Alternative",
+      "line3": "für einen ausgebildeten Therapeuten."
+    },
+    "moodThoughts": {
+      "line1": "Erstens:",
+      "emphasis1": "deine Gedanken beeinflußen deine Stimmung."
+    },
+    "thoughtsArentThoughts": {
+      "line1": "Zweitens: deine Gedanken können",
+      "emphasis1": "unbewusst angelernt",
+      "line2": "sein"
+    },
+    "yourDistorted": {
+      "line1": "Drittens: angelernte Gedanken können",
+      "emphasis1": "verfälscht",
+      "line2":"sein."
+    },
+    "cbtOverview": {
+      "line1": "Ziel von CBT ist das Erkennen von",
+      "emphasis1": "angelernten Gedanken",
+      "line2": "und",
+      "emphasis2": "dem Ersetzen",
+      "line3": "mit Rationalen."
+    },
+    "ready": {
+      "emphasis1": "Bereit?",
+      "line1": "Lass und die Schritte besprechen."
+    },
+    "catch": {
+      "line1": "1. Wir starten mit",
+      "emphasis1": "dem Aufschreiben",
+      "line2": "der angelernten Gedanken."
+    },
+    "badThoughtNote": {
+      "line1": "Schreiben deinen Gedanken auf:",
+      "line2": "Ich war nicht auf Georg's Party, er hasst mich bestimmt."
+    },
+    "identifyDistortions": {
+      "line1": "Achte auf eine",
+      "emphasis1": "verzerte Wahrnehmung."
+    },
+    "badDistortions": {
+      "line1": "Bist du dir sicher George hast dich? Wenn nicht, bist du am",
+      "emphasis1": "Gedanken Lesen",
+      "line2": "Ich war nicht auf Georg's Party, er hasst mich bestimmt."
+    },
+    "challengeScreen": {
+      "line1": "3. Wieso ist dieser Gedanke nicht realistisch?",
+      "emphasis1": "Korrigiere deine Gedanken."
+    },
+    "writeChallenge": {
+      "line1": "Schreib stattdessen:"
+    },
+    "altThought": {
+      "line1": "4. Nun, schreib einen",
+      "emphasis1": "alternativen Gedanken."
+    },
+    "showOff": {
+      "line1": "Finde diesen später:"
+    },
+    "gotIt": {
+      "line1": "So einfach ist es.",
+      "btnTitle": "Lass uns anfangen!"
+    }
+  },
+  "auto_thought": "angelernter Gedanke",
+  "cog_distortion": "verzerte Wahrnehmung",
+  "challenge": "Herausfordern",
+  "alt_thought": "alternativer Gedanke",
+  "cbt_form": {
+    "edit": "Bearbeiten",
+    "new": "Neu",
+    "save": "Speichern",
+    "auto_thought_placeholder": "Was geht dir durch den Kopf?",
+    "cog_distortion": "verzerte Wahrnehmung",
+    "challenged": "Herausfordern",
+    "changed_placeholder": "erörter deinen Gedanken!",
+    "alt_thought_placeholder": "Was könnte ich anstatt dessen denken?"
+  },
+  "all_or_nothing_thinking": "Alles oder Nichts Denken",
+  "all_or_nothing_thinking_explanation": "Die Verzehrung passiert wenn du keinen Mittelweg siehst. Wenn du denkst, dass ein kleiner Fehler in deinem Verhalten bedeutet, dass du endgültig verdorben oder schlecht bist, denkst du wahrscheinlich in Schwarz und Weiß.",
+  "all_or_nothing_thinking_thought": "Ich habe das Bewerbungsgespräch vermasselt, ich bin komplett uneinstellbar.",
+  "catastrophizing": "Katastrophen ausdenken",
+  "catastrophizing_explanation": "Wenn du ein kleines Problem gößer machst als es ist, denkst du dir Katastrophen aus. Hast du einen kleinen Fehler bei der Arbeit gemacht und bist fürchtest dich davor, dass es Jemand rausfindet, obwohl es nichts ernstes ist? Du denkst dir Katastrophen aus.",
+  "catastrophizing_thought": "Ich fühle mich hektisch, vielleicht habe ich einen Schlaganfall.",
+  "emotional_reasoning": "emotionalas Schlussfolgern",
+  "emotional_reasoning_explaination_1": "\"Ich fühle es, deswegen muss es wahr sein.\" Wenn du dich erwichst wie du die \"Gefahr\" von etwas dir selbst unbewusst erklärst, weil du davor Angst hast, dann tust du wahrscheinlich emotional Schlussfolgern. Es ist nicht gefährlich weil du davor Angst hast und du bist nicht furchtbar nur weil du es vielleicht denkst.",
+  "emotional_reasoning_explaination_2": "Es ist schwierig zu erkennen. Es braucht Übung um zu erkennen wenn dein emotionales Denken die Führung vor dem logischen übernimmt.",
+  "emotional_reasoning_thought": "Ich fühle mich schuldig, also muss ich etwas angestellt haben.",
+  "fortune_telling": "Zukunft Vorhersagen",
+  "fortune_telling_explanation": "Diese Verzahrung passiert, wenn wir die Zukunft vorhersagen. Wir überschätzen oft unsere Fähigkeiten vorherzusehen was passieren wird. Manchmal fangen wir mit etwas von dem wir Angst haben an und suchen nach beweisen, dass es passieren wird.",
+  "fortune_telling_thought": "Das Flugzeug, mit dem ich gleich fliege, wird abstürzen.",
+  "labeling": "Schubladendenken",
+  "labeling_explanation": "Wenn wir eine Charactereigenschaft nehmen und diese auf die ganze Person beziehen, denken wir in Schubladen. Wenn uns jemand anrempelt, ist diese Person ein \"Depp,\" vielleicht war die Person einfach in Eile. Das trift auch auf uns zu; nur weil wir einen Fehler gemacht haben, heißt das nicht das wir ein \"fehler\" sind.",
+  "labeling_thought": "Ich habe eine Prüfung nicht bestanden, also bin ich ein schlechter Student.",
+  "magnification_of_the_negative": "Verherrlichung vom Negativen",
+  "magnification_of_the_negative_explanation": "If you’re judging a situation based entirely on the negative parts and not considering the positive parts, you’re likely magnifying the negative. If you’re constantly berating yourself for bombing a job interview, you’re probably filtering out all the experience you gained from that interview.",
+  "magnification_of_the_negative_thought": "I ate healthy this week, but I skipped my run.",
+  "mind_reading": "Gedanken lesen",
+  "mind_reading_explanation": "If we're worried about what someone else is thinking about us, we're attempting to read minds. Unless someone tells you what they're thinking, you have absolutely no way of knowing. So why assume the worst?",
+  "mind_reading_thought": "I think I was rude to George, I'll bet he hates me.",
+  "minimization_of_the_positive": "Reduzierung vom Positiven",
+  "minimization_of_the_positive_explanation": "If we downplay the good things that are happening to us, we're minimizing the positive. Even if our day didn't go 100% as planned, it doesn't mean that the 60% that did go right should be ignored.",
+  "minimization_of_the_positive_thought": "Many people liked my presentation, but I stumbled giving the intro, so it was bad.",
+  "other_blaming": "Anderes Anlastend",
+  "other_blaming_explanation_1": "If a bad situation must be the fault of someone, we're other-blaming. If you failed an exam and you're blaming the teacher, you're directing your energy to the wrong place. Someone cut you off on the highway? If you honk your horn, flip them off, and stew, how is that helping? Now you're cut off and mad!",
+  "other_blaming_explanation_2": "This doesn't mean you have to blame yourself for every negative situation. You don't have to blame anyone. No one has to be at fault if you let the situation pass without attaching blame.",
+  "other_blaming_thought": "That jerk is taking too long in line and I'm going to be late!",
+  "over_generalization": "Verallgemeinerung",
+  "over_generalization_explanation": "If we draw conclusions based on just one example, we're over generalizing. If you bombed a presentation and assume that means you're \"bad\" at presenting, you're over-generalizing.",
+  "over_generalization_thought": "No one asked me to dance, so no one ever will.",
+  "self_blaming": "Sich selbst Beschuldigen",
+  "self_blaming_explanation": "If you're attributing a negative situation entirely to yourself, you're self-blaming. You don't have to be responsible for every bad thing that happens. If you're getting caught in traffic and you're berating yourself for not leaving earlier, you're self-blaming. Would you treat someone else this way?",
+  "self_blaming_thought": "My son is failing in school, I must have failed him.",
+  "should_statements": "Should Statements",
+  "should_statements_explanation_1": "If you're assigning someone abilities they don't have, you're using faulty \"should\" statements. For example, if you have a fear of flying and are telling yourself \"I shouldn't be afraid of this, there's nothing wrong with the airplane!\" you're putting an undue burden on yourself. You have a fear of flying! It's normal for people who have a fear of flying to be afraid flying!",
+  "should_statements_explanation_2": "Should statements can seem nonsensical when you say it out loud; that's the point! They're illogical!",
+  "should_statements_thought": "I'm an adult, I shouldn't have these mental issues."
+}
