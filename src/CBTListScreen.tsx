@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StatusBar,
+  TextInput,
   View,
   Image,
 } from "react-native";
@@ -96,6 +97,7 @@ const EmptyThoughtIllustration = () => (
 interface ThoughtListProps {
   groups: ThoughtGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
+  search: string;
   navigateToFormWithThought: (thought: SavedThought | boolean) => void;
   onItemDelete: (thought: SavedThought) => void;
 }
@@ -103,15 +105,21 @@ interface ThoughtListProps {
 const ThoughtItemList = ({
   groups,
   navigateToFormWithThought,
+  search,
   onItemDelete,
   historyButtonLabel,
 }: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
     return <EmptyThoughtIllustration />;
   }
-
+  search.toLowerCase()
   const items = groups.map(group => {
-    const thoughts = group.thoughts.map(thought => (
+    const data = group.thoughts.filter(el => {
+      const itemText = `${el.alternativeThought} ${el.alternativeThought} ${el.challenge}`.toLowerCase()
+      return itemText.indexOf(search) !== -1;
+    })
+
+    const thoughts = data.map(thought => (
       <ThoughtItem
         key={thought.uuid}
         thought={thought}
@@ -141,6 +149,7 @@ interface Props {
 
 interface State {
   groups: ThoughtGroup[];
+  search: string;
   historyButtonLabel: HistoryButtonLabelSetting;
 }
 
@@ -151,7 +160,7 @@ class CBTListScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = { groups: [], historyButtonLabel: "alternative-thought" };
+    this.state = { groups: [], search: "", historyButtonLabel: "alternative-thought" };
 
     this.props.navigation.addListener("willFocus", () => {
       this.loadSettings();
@@ -222,7 +231,7 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { groups, historyButtonLabel } = this.state;
+    const { groups, search, historyButtonLabel } = this.state;
 
     return (
       <View style={{ backgroundColor: theme.lightOffwhite }}>
@@ -252,8 +261,15 @@ class CBTListScreen extends React.Component<Props, State> {
               </View>
             </Row>
 
+            <TextInput
+              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              onChangeText={(search) => this.setState({search})}
+              value={this.state.search}
+            />
+
             <ThoughtItemList
               groups={groups}
+              search={search}
               navigateToFormWithThought={this.navigateToFormWithThought}
               onItemDelete={this.onItemDelete}
               historyButtonLabel={historyButtonLabel}
