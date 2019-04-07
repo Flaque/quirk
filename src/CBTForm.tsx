@@ -10,6 +10,7 @@ import {
 import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import theme from "./theme";
 import { Thought } from "./thoughts";
+import i18n from './i18n';
 
 // Text input styles defined here instead of componentized to
 // avoid issues with refs and subcomponents
@@ -55,7 +56,7 @@ export default class CBTForm extends React.Component<Props> {
     return (
       <View style={{ marginTop: 18 }}>
         <FormContainer>
-          <SubHeader>Automatic Thought</SubHeader>
+          <SubHeader>{i18n.t('auto_thought')}</SubHeader>
           <AutoGrowingTextInput
             style={textInputStyle}
             placeholderTextColor={textInputPlaceholderColor}

@@ -23,7 +23,8 @@
     "android": {
       "package": "tech.econn.quirk",
       "permissions": [],
-      "icon": "./assets/android.png"
+      "icon": "./assets/android.png",
+      "versionCode": 2
     }
   }
 }
