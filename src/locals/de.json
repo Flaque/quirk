@@ -11,28 +11,28 @@
       "emphasis2": "kognitiven Verhaltenstherapie (CBT)",
       "line3": "App."
     },
-    "crashCourse": {
+    "crash_course": {
       "line1": "Dies ist ein",
       "emphasis1": "grundlegende Hilfsanwendung",
       "line2": "in CBT und",
       "emphasis2": "keine Alternative",
       "line3": "für einen ausgebildeten Therapeuten."
     },
-    "moodThoughts": {
+    "mood_thoughts": {
       "line1": "Erstens:",
       "emphasis1": "deine Gedanken beeinflußen deine Stimmung."
     },
-    "thoughtsArentThoughts": {
+    "thoughts_arent_thoughts": {
       "line1": "Zweitens: deine Gedanken können",
       "emphasis1": "unbewusst angelernt",
       "line2": "sein"
     },
-    "yourDistorted": {
+    "your_distorted": {
       "line1": "Drittens: angelernte Gedanken können",
       "emphasis1": "verfälscht",
       "line2":"sein."
     },
-    "cbtOverview": {
+    "cbt_overview": {
       "line1": "Ziel von CBT ist das Erkennen von",
       "emphasis1": "angelernten Gedanken",
       "line2": "und",
@@ -48,36 +48,36 @@
       "emphasis1": "dem Aufschreiben",
       "line2": "der angelernten Gedanken."
     },
-    "badThoughtNote": {
+    "bad_thought_note": {
       "line1": "Schreiben deinen Gedanken auf:",
       "line2": "Ich war nicht auf Georg's Party, er hasst mich bestimmt."
     },
-    "identifyDistortions": {
+    "identify_distortions": {
       "line1": "Achte auf eine",
       "emphasis1": "verzerrte Wahrnehmung."
     },
-    "badDistortions": {
+    "bad_distortions": {
       "line1": "Bist du dir sicher George hast dich? Wenn nicht, bist du am",
       "emphasis1": "Gedanken Lesen",
       "line2": "Ich war nicht auf Georg's Party, er hasst mich bestimmt."
     },
-    "challengeScreen": {
+    "challenge_screen": {
       "line1": "3. Wieso ist dieser Gedanke nicht realistisch?",
       "emphasis1": "Korrigiere deine Gedanken."
     },
-    "writeChallenge": {
+    "write_challenge": {
       "line1": "Schreib stattdessen:"
     },
-    "altThought": {
+    "alt_thought": {
       "line1": "4. Nun, schreib einen",
       "emphasis1": "alternativen Gedanken."
     },
-    "showOff": {
+    "show_off": {
       "line1": "Finde diesen später:"
     },
-    "gotIt": {
+    "got_it": {
       "line1": "So einfach ist es.",
-      "btnTitle": "Lass uns anfangen!"
+      "btn_title": "Lass uns anfangen!"
     }
   },
   "auto_thought": "angelernter Gedanke",
