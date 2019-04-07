@@ -11,26 +11,26 @@
       "emphasis2": "Terapii Poznawczo-Behawioralnej",
       "line3": "(TPB)."
     },
-    "crashCourse": {
+    "crash_course": {
       "line1": "To mały",
       "emphasis1": "kurs",
       "line2": "z TPB, który",
       "emphasis2": "nie jest alternatywą",
       "line3": "dla psychoterapeuty."
     },
-    "moodThoughts": {
+    "mood_thoughts": {
       "line1": "Po pierwsze:",
       "emphasis1": "twoje nastroje wynikają z twoich myśli."
     },
-    "thoughtsArentThoughts": {
+    "thoughts_arent_thoughts": {
       "line1": "Po drugie: twoje myśli mogą być",
       "emphasis1": "automatyczne."
     },
-    "yourDistorted": {
+    "your_distorted": {
       "line1": "Po trzecie: automatyczne myśli są często",
       "emphasis1": "zniekształcone."
     },
-    "cbtOverview": {
+    "cbt_overview": {
       "line1": "Celem TPB jest rozpoznanie",
       "emphasis1": "zniekształconych myśli",
       "line2": "i",
@@ -46,36 +46,36 @@
       "emphasis1": "spisywania",
       "line2": "automatycznych myśli kiedy tylko się pojawią."
     },
-    "badThoughtNote": {
+    "bad_thought_note": {
       "line1": "Zwróć uwagę:",
       "line2": "Nie było mnie na imprezie Grześka, na pewno jest na mnie zły."
     },
-    "identifyDistortions": {
+    "identify_distortions": {
       "line1": "Szukaj",
       "emphasis1": "Zniekształceń Poznawczych"
     },
-    "badDistortions": {
+    "bad_distortions": {
       "line1": "Czy jesteśmy pewni, że Grzesiek będzie zły? Jeśli nie, uprawiamy",
       "emphasis1": "Czytanie Myśli",
       "line2": "Nie było mnie na imprezie Grześka, na pewno jest na mnie zły."
     },
-    "challengeScreen": {
+    "challenge_screen": {
       "line1": "3. Dlaczego ta myśl nie jest realistyczna?",
       "emphasis1": "Zakwestionuj ją."
     },
-    "writeChallenge": {
+    "write_challenge": {
       "line1": "Napiszemy tak:"
     },
-    "altThought": {
+    "alt_thought": {
       "line1": "4. Na końcu napiszemy",
       "emphasis1": "alternatywną, racjonalną myśl."
     },
-    "showOff": {
+    "show_off": {
       "line1": "Możesz to odszukać później:"
     },
-    "gotIt": {
+    "got_it": {
       "line1": "I to wszystko",
-      "btnTitle": "Zaczynajmy!"
+      "btn_title": "Zaczynajmy!"
     }
   },
   "auto_thought": "Automatyczna Myśl",
