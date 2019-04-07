@@ -14,14 +14,18 @@ import { View } from "react-native";
 import CBTView from "./CBTView";
 import { Thought } from "./thoughts";
 import { normalize } from "./sizes";
-import i18n from './i18n';
+import i18n from "./i18n";
 
 const thought: Thought = {
-  automaticThought: i18n.t('onboarding_screen.auto_thought_ex'),
-  challenge: i18n.t('onboarding_screen.challenge_ex'),
-  alternativeThought: i18n.t('onboarding_screen.alt_thought_ex'),
+  automaticThought: i18n.t("onboarding_screen.auto_thought_ex"),
+  challenge: i18n.t("onboarding_screen.challenge_ex"),
+  alternativeThought: i18n.t("onboarding_screen.alt_thought_ex"),
   cognitiveDistortions: [
-    { label: i18n.t('onboarding_screen.cog_distortion.label'), slug: i18n.t('onboarding_screen.cog_distortion.slug'), selected: true },
+    {
+      label: i18n.t("onboarding_screen.cog_distortion.label"),
+      slug: i18n.t("onboarding_screen.cog_distortion.slug"),
+      selected: true,
+    },
   ],
 };
 
@@ -123,8 +127,11 @@ const Intro = () => (
       }}
     />
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.intro.line1')} <Exaggerated>{i18n.t('onboarding_screen.intro.emphasis1')}</Exaggerated>{i18n.t('onboarding_screen.intro.line2')}{" "}
-      <Exaggerated>{i18n.t('onboarding_screen.intro.emphasis2')}</Exaggerated> {i18n.t('onboarding_screen.intro.line3')}
+      {i18n.t("onboarding_screen.intro.line1")}{" "}
+      <Exaggerated>{i18n.t("onboarding_screen.intro.emphasis1")}</Exaggerated>
+      {i18n.t("onboarding_screen.intro.line2")}{" "}
+      <Exaggerated>{i18n.t("onboarding_screen.intro.emphasis2")}</Exaggerated>{" "}
+      {i18n.t("onboarding_screen.intro.line3")}
     </LeftPushedHeader>
   </Main>
 );
@@ -132,8 +139,15 @@ const Intro = () => (
 const CrashCourse = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.crashCourse.line1')} <Exaggerated>{i18n.t('onboarding_screen.crashCourse.emphasis1')}</Exaggerated> {i18n.t('onboarding_screen.crashCourse.line2')}{" "}
-      <Exaggerated>{i18n.t('onboarding_screen.crashCourse.emphasis2')}</Exaggerated> {i18n.t('onboarding_screen.crashCourse.line3')}
+      {i18n.t("onboarding_screen.crash_course.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.crash_course.emphasis1")}
+      </Exaggerated>{" "}
+      {i18n.t("onboarding_screen.crash_course.line2")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.crash_course.emphasis2")}
+      </Exaggerated>{" "}
+      {i18n.t("onboarding_screen.crash_course.line3")}
     </LeftPushedHeader>
   </Main>
 );
@@ -141,7 +155,10 @@ const CrashCourse = () => (
 const YourThoughtsCauseYourMoods = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.moodThoughts.line1')} <Exaggerated>{i18n.t('onboarding_screen.moodThoughts.emphasis1')}</Exaggerated>
+      {i18n.t("onboarding_screen.mood_thoughts.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.mood_thoughts.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
@@ -149,7 +166,10 @@ const YourThoughtsCauseYourMoods = () => (
 const YourThoughtsArentYourThoughts = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.thoughtsArentThoughts.line1')} <Exaggerated>{i18n.t('onboarding_screen.thoughtsArentThoughts.emphasis1')}</Exaggerated>
+      {i18n.t("onboarding_screen.thoughts_arent_thoughts.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.thoughts_arent_thoughts.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
@@ -157,7 +177,10 @@ const YourThoughtsArentYourThoughts = () => (
 const YourThoughtsAreDistorted = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.yourDistorted.line1')} <Exaggerated>{i18n.t('onboarding_screen.yourDistorted.emphasis1')}</Exaggerated>
+      {i18n.t("onboarding_screen.your_distorted.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.your_distorted.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
@@ -165,9 +188,15 @@ const YourThoughtsAreDistorted = () => (
 const CBTOverview = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.cbtOverview.line1')}{" "}
-      <Exaggerated>{i18n.t('onboarding_screen.cbtOverview.emphasis1')}</Exaggerated> {i18n.t('onboarding_screen.cbtOverview.line2')}{" "}
-      <Exaggerated>{i18n.t('onboarding_screen.cbtOverview.emphasis2')}</Exaggerated> {i18n.t('onboarding_screen.cbtOverview.line3')}
+      {i18n.t("onboarding_screen.cbt_overview.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.cbt_overview.emphasis1")}
+      </Exaggerated>{" "}
+      {i18n.t("onboarding_screen.cbt_overview.line2")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.cbt_overview.emphasis2")}
+      </Exaggerated>{" "}
+      {i18n.t("onboarding_screen.cbt_overview.line3")}
     </LeftPushedHeader>
   </Main>
 );
@@ -175,7 +204,8 @@ const CBTOverview = () => (
 const Ready = () => (
   <Main>
     <LeftPushedHeader>
-      <Exaggerated>{i18n.t('onboarding_screen.ready.emphasis1')}</Exaggerated> {i18n.t('onboarding_screen.ready.line1')}
+      <Exaggerated>{i18n.t("onboarding_screen.ready.emphasis1")}</Exaggerated>{" "}
+      {i18n.t("onboarding_screen.ready.line1")}
     </LeftPushedHeader>
   </Main>
 );
@@ -183,23 +213,31 @@ const Ready = () => (
 const Catch = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.catch.line1')} <Exaggerated>{i18n.t('onboarding_screen.catch.emphasis1')}</Exaggerated>{" "}
-      {i18n.t('onboarding_screen.catch.line2')}
+      {i18n.t("onboarding_screen.catch.line1")}{" "}
+      <Exaggerated>{i18n.t("onboarding_screen.catch.emphasis1")}</Exaggerated>{" "}
+      {i18n.t("onboarding_screen.catch.line2")}
     </LeftPushedHeader>
   </Main>
 );
 
 const BadThoughtNote = () => (
   <Main>
-    <LeftPushedHeader>{i18n.t('onboarding_screen.badThoughtNote.line1')}</LeftPushedHeader>
-    <ThoughtView>{i18n.t('onboarding_screen.badThoughtNote.line2')}</ThoughtView>
+    <LeftPushedHeader>
+      {i18n.t("onboarding_screen.bad_thought_note.line1")}
+    </LeftPushedHeader>
+    <ThoughtView>
+      {i18n.t("onboarding_screen.bad_thought_note.line2")}
+    </ThoughtView>
   </Main>
 );
 
 const IdentifyDistortions = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.identifyDistortions.line1')} <Exaggerated>{i18n.t('onboarding_screen.identifyDistortions.emphasis1')}</Exaggerated>{" "}
+      {i18n.t("onboarding_screen.identify_distortions.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.identify_distortions.emphasis1")}
+      </Exaggerated>{" "}
     </LeftPushedHeader>
   </Main>
 );
@@ -207,25 +245,33 @@ const IdentifyDistortions = () => (
 const BadThoughtDistortions = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.badDistortions.line1')}{" "}
-      <Exaggerated>{i18n.t('onboarding_screen.badDistortions.emphasis1')}.</Exaggerated>
+      {i18n.t("onboarding_screen.bad_distortions.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.bad_distortions.emphasis1")}.
+      </Exaggerated>
     </LeftPushedHeader>
-    <ThoughtView>{i18n.t('onboarding_screen.badDistortions.line2')}</ThoughtView>
+    <ThoughtView>
+      {i18n.t("onboarding_screen.bad_distortions.line2")}
+    </ThoughtView>
   </Main>
 );
 
 const Challenge = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.challengeScreen.line1')}{" "}
-      <Exaggerated>{i18n.t('onboarding_screen.challengeScreen.emphasis1')}</Exaggerated>
+      {i18n.t("onboarding_screen.challenge_screen.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.challenge_screen.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
 
 const WriteChallenge = () => (
   <Main>
-    <LeftPushedHeader>{i18n.t('onboarding_screen.writeChallenge.line1')}</LeftPushedHeader>
+    <LeftPushedHeader>
+      {i18n.t("onboarding_screen.write_challenge.line1")}
+    </LeftPushedHeader>
     <BigParagraph
       style={{
         backgroundColor: theme.offwhite,
@@ -241,7 +287,10 @@ const WriteChallenge = () => (
 const AlternativeThought = () => (
   <Main>
     <LeftPushedHeader>
-      {i18n.t('onboarding_screen.altThought.line1')} <Exaggerated>{i18n.t('onboarding_screen.altThought.emphasis1')}</Exaggerated>
+      {i18n.t("onboarding_screen.alt_thought.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.alt_thought.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
     <ThoughtView>{thought.alternativeThought}</ThoughtView>
   </Main>
@@ -254,7 +303,7 @@ const ShowOff = () => (
     }}
   >
     <LeftPushedHeader style={{ marginBottom: 18 }}>
-      {i18n.t('onboarding_screen.showOff.line1')}
+      {i18n.t("onboarding_screen.show_off.line1")}
     </LeftPushedHeader>
     <CBTView thought={thought} />
   </Main>
@@ -267,11 +316,11 @@ const GotIt = ({ onPress }) => (
     }}
   >
     <LeftPushedHeader style={{ marginBottom: 18 }}>
-      {i18n.t('onboarding_screen.gotIt.line1')}
+      {i18n.t("onboarding_screen.got_it.line1")}
     </LeftPushedHeader>
 
     <RoundedButton
-      title={i18n.t('onboarding_screen.gotIt.btnTitle')}
+      title={i18n.t("onboarding_screen.got_it.btn_title")}
       disabled={false}
       fillColor={theme.blue}
       width={150}
