@@ -60,7 +60,7 @@ export default class CBTForm extends React.Component<Props> {
           <AutoGrowingTextInput
             style={textInputStyle}
             placeholderTextColor={textInputPlaceholderColor}
-            placeholder={"What's going on?"}
+            placeholder={i18n.t('cbt_form.auto_thought_placeholder')}
             value={thought.automaticThought}
             returnKeyType="next"
             multiline={true}
@@ -70,7 +70,7 @@ export default class CBTForm extends React.Component<Props> {
         </FormContainer>
 
         <FormContainer>
-          <SubHeader>Cognitive Distortion</SubHeader>
+          <SubHeader>{i18n.t('cog_distortion')}</SubHeader>
           <RoundedSelector
             items={thought.cognitiveDistortions}
             onPress={onSelectCognitiveDistortion}
@@ -78,11 +78,11 @@ export default class CBTForm extends React.Component<Props> {
         </FormContainer>
 
         <FormContainer>
-          <SubHeader>Challenge</SubHeader>
+          <SubHeader>{i18n.t('challenge')}</SubHeader>
           <AutoGrowingTextInput
             ref={this.challenge}
             blurOnSubmit={false}
-            placeholder="Debate that thought!"
+            placeholder={i18n.t('cbt_form.changed_placeholder')}
             placeholderTextColor={textInputPlaceholderColor}
             returnKeyType="next"
             style={textInputStyle}
@@ -98,11 +98,11 @@ export default class CBTForm extends React.Component<Props> {
         </FormContainer>
 
         <FormContainer>
-          <SubHeader>Alternative Thought</SubHeader>
+          <SubHeader>{i18n.t('alt_thought')}</SubHeader>
           <AutoGrowingTextInput
             ref={this.alternative}
             blurOnSubmit={false}
-            placeholder="What should we think instead?"
+            placeholder={i18n.t('cbt_form.alt_thought_placeholder')}
             placeholderTextColor={textInputPlaceholderColor}
             returnKeyType="done"
             style={textInputStyle}
@@ -115,7 +115,7 @@ export default class CBTForm extends React.Component<Props> {
         </FormContainer>
 
         <Row style={{ justifyContent: "flex-end" }}>
-          <RoundedButton disabled={false} title="Save" onPress={onSave} />
+          <RoundedButton disabled={false} title={i18n.t('cbt_form.save')} onPress={onSave} />
         </Row>
       </View>
     );
