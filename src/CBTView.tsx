@@ -1,6 +1,7 @@
 import React from "react";
 import { FormContainer, SubHeader, Paragraph } from "./ui";
 import { Thought } from "./thoughts";
+import i18n from './i18n';
 
 const cognitiveDistortionsToText = cognitiveDistortions => {
   const text = cognitiveDistortions
@@ -18,24 +19,24 @@ interface ThoughtComponent {
 export default ({ thought }: ThoughtComponent) => (
   <>
     <FormContainer>
-      <SubHeader>Automatic Thought</SubHeader>
+      <SubHeader>{i18n.t('auto_thought')}</SubHeader>
       <Paragraph>{thought.automaticThought || "🤷‍"}</Paragraph>
     </FormContainer>
 
     <FormContainer>
-      <SubHeader>Cognitive Distortion</SubHeader>
+      <SubHeader>{i18n.t('cog_distortion')}</SubHeader>
       <Paragraph>
         {cognitiveDistortionsToText(thought.cognitiveDistortions) || "🤷‍"}
       </Paragraph>
     </FormContainer>
 
     <FormContainer>
-      <SubHeader>Challenge</SubHeader>
+      <SubHeader>{i18n.t('challenge')}</SubHeader>
       <Paragraph>{thought.challenge || "🤷‍"}</Paragraph>
     </FormContainer>
 
     <FormContainer>
-      <SubHeader>Alternative Thought</SubHeader>
+      <SubHeader>{i18n.t('alt_thought')}</SubHeader>
       <Paragraph>{thought.alternativeThought || "🤷‍"}</Paragraph>
     </FormContainer>
   </>
