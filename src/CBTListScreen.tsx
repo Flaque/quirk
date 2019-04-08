@@ -8,6 +8,7 @@ import {
   View,
   Image,
 } from "react-native";
+import { textInputStyle } from './CBTForm';
 import { getExercises, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
@@ -263,7 +264,8 @@ class CBTListScreen extends React.Component<Props, State> {
             </Row>
 
             <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              style={{...textInputStyle, marginBottom: 15}}
+              placeholder={"Search"}
               onChangeText={(search) => this.setState({search})}
               value={this.state.search}
             />
