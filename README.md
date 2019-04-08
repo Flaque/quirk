@@ -77,9 +77,9 @@ Qurik is built with two main goals in mind:
 
 **Be open.** Not every app has to be open source; it's a hard choice to make. But be clear and obvious within the app about what's going on with the user's data. Don't be sending it to some server without making that clear within the app, not within some dumb privacy policy no one will ever read.
 
-**Don't push people to be unhappy.** I cannot believe I have to state this, but do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state their unhappy in order to access a feature.
+**Don't push people to be unhappy.** I cannot believe I have to state this, but do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state they're unhappy in order to access a feature.
 
-**Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in the help. But holy moly becareful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._
+**Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in the help. But holy moly be careful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._
 
 # Engineering Logic
 
