@@ -22,6 +22,7 @@ import universalHaptic from "./haptic";
 import { AppLoading, Haptic, Constants } from "expo";
 import CBTView from "./CBTView";
 import CBTOnBoardingScreen from "./CBTOnBoardingScreen";
+import i18n from './i18n';
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -40,11 +41,11 @@ const CBTViewer = ({ thought, onEdit, onNew }) => {
         <RoundedButton
           fillColor="transparent"
           textColor={theme.blue}
-          title="Edit"
+          title={i18n.t('cbt_form.edit')}
           onPress={() => onEdit(thought.uuid)}
           disabled={false}
         />
-        <RoundedButton title="New" onPress={onNew} disabled={false} />
+        <RoundedButton title={i18n.t('cbt_form.new')} onPress={onNew} disabled={false} />
       </Row>
     </View>
   );
