@@ -25,6 +25,7 @@ import { validThoughtGroup } from "./sanitize";
 import Alerter from "./alerter";
 import alerts from "./alerts";
 import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
+import i18n from './i18n';
 
 const ThoughtItem = ({
   thought,
@@ -232,6 +233,8 @@ class CBTListScreen extends React.Component<Props, State> {
     deleteExercise(thought.uuid).then(() => this.loadExercises());
   };
 
+  searchThoughts = (search: string) => this.setState({search})
+
   render() {
     const { groups, search, historyButtonLabel } = this.state;
 
@@ -265,8 +268,8 @@ class CBTListScreen extends React.Component<Props, State> {
 
             <TextInput
               style={{...textInputStyle, marginBottom: 15}}
-              placeholder={"Search"}
-              onChangeText={(search) => this.setState({search})}
+              placeholder={i18n.t('search_placeholder')}
+              onChangeText={this.searchThoughts}
               value={this.state.search}
             />
 
