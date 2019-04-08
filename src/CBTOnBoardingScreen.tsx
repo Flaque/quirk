@@ -14,13 +14,18 @@ import { View } from "react-native";
 import CBTView from "./CBTView";
 import { Thought } from "./thoughts";
 import { normalize } from "./sizes";
+import i18n from "./i18n";
 
 const thought: Thought = {
-  automaticThought: "I missed George's party, he must hate me.",
-  challenge: `George knows I couldn't make it every time, I wouldn't hate him if he missed something of mine.\n\nI should treat myself at least as well as I treat others.`,
-  alternativeThought: `It's true I missed George's party, I can apologize, and he'll probably forgive me.`,
+  automaticThought: i18n.t("onboarding_screen.auto_thought_ex"),
+  challenge: i18n.t("onboarding_screen.challenge_ex"),
+  alternativeThought: i18n.t("onboarding_screen.alt_thought_ex"),
   cognitiveDistortions: [
-    { label: "Mind Reading", slug: "mind-reading", selected: true },
+    {
+      label: i18n.t("onboarding_screen.cog_distortion.label"),
+      slug: i18n.t("onboarding_screen.cog_distortion.slug"),
+      selected: true,
+    },
   ],
 };
 
@@ -122,8 +127,11 @@ const Intro = () => (
       }}
     />
     <LeftPushedHeader>
-      Welcome to <Exaggerated>quirk</Exaggerated>, the{" "}
-      <Exaggerated>Cognitive Behavioral Therapy (CBT) </Exaggerated> App.
+      {i18n.t("onboarding_screen.intro.line1")}{" "}
+      <Exaggerated>{i18n.t("onboarding_screen.intro.emphasis1")}</Exaggerated>
+      {i18n.t("onboarding_screen.intro.line2")}{" "}
+      <Exaggerated>{i18n.t("onboarding_screen.intro.emphasis2")}</Exaggerated>{" "}
+      {i18n.t("onboarding_screen.intro.line3")}
     </LeftPushedHeader>
   </Main>
 );
@@ -131,8 +139,15 @@ const Intro = () => (
 const CrashCourse = () => (
   <Main>
     <LeftPushedHeader>
-      This is a <Exaggerated>crash course</Exaggerated> in CBT and{" "}
-      <Exaggerated>not an alternative</Exaggerated> for a trained therapist.
+      {i18n.t("onboarding_screen.crash_course.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.crash_course.emphasis1")}
+      </Exaggerated>{" "}
+      {i18n.t("onboarding_screen.crash_course.line2")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.crash_course.emphasis2")}
+      </Exaggerated>{" "}
+      {i18n.t("onboarding_screen.crash_course.line3")}
     </LeftPushedHeader>
   </Main>
 );
@@ -140,7 +155,10 @@ const CrashCourse = () => (
 const YourThoughtsCauseYourMoods = () => (
   <Main>
     <LeftPushedHeader>
-      First: <Exaggerated>your thoughts cause your moods.</Exaggerated>
+      {i18n.t("onboarding_screen.mood_thoughts.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.mood_thoughts.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
@@ -148,7 +166,10 @@ const YourThoughtsCauseYourMoods = () => (
 const YourThoughtsArentYourThoughts = () => (
   <Main>
     <LeftPushedHeader>
-      Second: your thoughts can be <Exaggerated>automatic.</Exaggerated>
+      {i18n.t("onboarding_screen.thoughts_arent_thoughts.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.thoughts_arent_thoughts.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
@@ -156,7 +177,10 @@ const YourThoughtsArentYourThoughts = () => (
 const YourThoughtsAreDistorted = () => (
   <Main>
     <LeftPushedHeader>
-      Third: automatic thoughts are often <Exaggerated>distorted.</Exaggerated>
+      {i18n.t("onboarding_screen.your_distorted.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.your_distorted.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
@@ -164,9 +188,15 @@ const YourThoughtsAreDistorted = () => (
 const CBTOverview = () => (
   <Main>
     <LeftPushedHeader>
-      The goal of CBT is to recognize the{" "}
-      <Exaggerated>distorted thoughts</Exaggerated> and{" "}
-      <Exaggerated>replace them</Exaggerated> with rational ones.
+      {i18n.t("onboarding_screen.cbt_overview.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.cbt_overview.emphasis1")}
+      </Exaggerated>{" "}
+      {i18n.t("onboarding_screen.cbt_overview.line2")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.cbt_overview.emphasis2")}
+      </Exaggerated>{" "}
+      {i18n.t("onboarding_screen.cbt_overview.line3")}
     </LeftPushedHeader>
   </Main>
 );
@@ -174,7 +204,8 @@ const CBTOverview = () => (
 const Ready = () => (
   <Main>
     <LeftPushedHeader>
-      <Exaggerated>Ready?</Exaggerated> Let's go over the steps.
+      <Exaggerated>{i18n.t("onboarding_screen.ready.emphasis1")}</Exaggerated>{" "}
+      {i18n.t("onboarding_screen.ready.line1")}
     </LeftPushedHeader>
   </Main>
 );
@@ -182,23 +213,31 @@ const Ready = () => (
 const Catch = () => (
   <Main>
     <LeftPushedHeader>
-      1. We'll start by <Exaggerated>just writing down</Exaggerated> the
-      automatic thoughts when they happen.
+      {i18n.t("onboarding_screen.catch.line1")}{" "}
+      <Exaggerated>{i18n.t("onboarding_screen.catch.emphasis1")}</Exaggerated>{" "}
+      {i18n.t("onboarding_screen.catch.line2")}
     </LeftPushedHeader>
   </Main>
 );
 
 const BadThoughtNote = () => (
   <Main>
-    <LeftPushedHeader>Note the thought: </LeftPushedHeader>
-    <ThoughtView>I missed George's party, he must hate me.</ThoughtView>
+    <LeftPushedHeader>
+      {i18n.t("onboarding_screen.bad_thought_note.line1")}
+    </LeftPushedHeader>
+    <ThoughtView>
+      {i18n.t("onboarding_screen.bad_thought_note.line2")}
+    </ThoughtView>
   </Main>
 );
 
 const IdentifyDistortions = () => (
   <Main>
     <LeftPushedHeader>
-      2. Look for <Exaggerated>Cognitive Distortions</Exaggerated>{" "}
+      {i18n.t("onboarding_screen.identify_distortions.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.identify_distortions.emphasis1")}
+      </Exaggerated>{" "}
     </LeftPushedHeader>
   </Main>
 );
@@ -206,25 +245,33 @@ const IdentifyDistortions = () => (
 const BadThoughtDistortions = () => (
   <Main>
     <LeftPushedHeader>
-      Do we really know George will hate us? If not, we're{" "}
-      <Exaggerated>Mind Reading.</Exaggerated>
+      {i18n.t("onboarding_screen.bad_distortions.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.bad_distortions.emphasis1")}.
+      </Exaggerated>
     </LeftPushedHeader>
-    <ThoughtView>I missed George's party, he must hate me.</ThoughtView>
+    <ThoughtView>
+      {i18n.t("onboarding_screen.bad_distortions.line2")}
+    </ThoughtView>
   </Main>
 );
 
 const Challenge = () => (
   <Main>
     <LeftPushedHeader>
-      3. Why isn't this thought realistic?{" "}
-      <Exaggerated>Challenge it.</Exaggerated>
+      {i18n.t("onboarding_screen.challenge_screen.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.challenge_screen.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
   </Main>
 );
 
 const WriteChallenge = () => (
   <Main>
-    <LeftPushedHeader>We'll write something like this:</LeftPushedHeader>
+    <LeftPushedHeader>
+      {i18n.t("onboarding_screen.write_challenge.line1")}
+    </LeftPushedHeader>
     <BigParagraph
       style={{
         backgroundColor: theme.offwhite,
@@ -240,7 +287,10 @@ const WriteChallenge = () => (
 const AlternativeThought = () => (
   <Main>
     <LeftPushedHeader>
-      4. Finally, we'll write an <Exaggerated>alternative thought.</Exaggerated>
+      {i18n.t("onboarding_screen.alt_thought.line1")}{" "}
+      <Exaggerated>
+        {i18n.t("onboarding_screen.alt_thought.emphasis1")}
+      </Exaggerated>
     </LeftPushedHeader>
     <ThoughtView>{thought.alternativeThought}</ThoughtView>
   </Main>
@@ -253,7 +303,7 @@ const ShowOff = () => (
     }}
   >
     <LeftPushedHeader style={{ marginBottom: 18 }}>
-      Find it later:
+      {i18n.t("onboarding_screen.show_off.line1")}
     </LeftPushedHeader>
     <CBTView thought={thought} />
   </Main>
@@ -266,11 +316,11 @@ const GotIt = ({ onPress }) => (
     }}
   >
     <LeftPushedHeader style={{ marginBottom: 18 }}>
-      And that's really about it.
+      {i18n.t("onboarding_screen.got_it.line1")}
     </LeftPushedHeader>
 
     <RoundedButton
-      title={"Let's go!"}
+      title={i18n.t("onboarding_screen.got_it.btn_title")}
       disabled={false}
       fillColor={theme.blue}
       width={150}

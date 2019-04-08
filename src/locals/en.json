@@ -1,5 +1,97 @@
 {
+  "onboarding_screen": {
+    "auto_thought_ex": "I missed George's party, he must hate me.",
+    "challenge_ex": "George knows I couldn't make it every time, I wouldn't hate him if he missed something of mine.\n\nI should treat myself at least as well as I treat others.",
+    "alt_thought_ex": "It's true I missed George's party, I can apologize, and he'll probably forgive me.",
+    "cog_distortion": { "label": "Mind Reading", "slug": "mind-reading" },
+    "intro": {
+      "line1": "Welcome to",
+      "emphasis1": "quirk",
+      "line2": ", the",
+      "emphasis2": "Cognitive Behavioral Therapy (CBT)",
+      "line3": "App."
+    },
+    "crash_course": {
+      "line1": "This is a",
+      "emphasis1": "crash course",
+      "line2": "in CBT and",
+      "emphasis2": "not an alternative",
+      "line3": "for a trained therapist."
+    },
+    "mood_thoughts": {
+      "line1": "First:",
+      "emphasis1": "your thoughts cause your moods."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Second: your thoughts can be",
+      "emphasis1": "automatic."
+    },
+    "your_distorted": {
+      "line1": "Third: automatic thoughts are often",
+      "emphasis1": "distorted."
+    },
+    "cbt_overview": {
+      "line1": "The goal of CBT is to recognize the",
+      "emphasis1": "distorted thoughts",
+      "line2": "and",
+      "emphasis2": "replace them",
+      "line3": "with rational ones."
+    },
+    "ready": {
+      "emphasis1": "Ready?",
+      "line1": "Let's go over the steps."
+    },
+    "catch": {
+      "line1": "1. We'll start by",
+      "emphasis1": "just writing down",
+      "line2": "the automatic thoughts when they happen."
+    },
+    "bad_thought_note": {
+      "line1": "Note the thought:",
+      "line2": "I missed George's party, he must hate me."
+    },
+    "identify_distortions": {
+      "line1": "Look for",
+      "emphasis1": "Cognitive Distortions"
+    },
+    "bad_distortions": {
+      "line1": "Do we really know George will hate us? If not, we're",
+      "emphasis1": "Mind Reading",
+      "line2": "I missed George's party, he must hate me."
+    },
+    "challenge_screen": {
+      "line1": "3. Why isn't this thought realistic?",
+      "emphasis1": "Challenge it."
+    },
+    "write_challenge": {
+      "line1": "We'll write something like this:"
+    },
+    "alt_thought": {
+      "line1": "4. Finally, we'll write an",
+      "emphasis1": "alternative thought."
+    },
+    "show_off": {
+      "line1": "Find it later:"
+    },
+    "got_it": {
+      "line1": "And that's really about it",
+      "btn_title": "Let's go!"
+    }
+  },
   "auto_thought": "Automatic Thought",
+  "cog_distortion": "Cognitive Distortion",
+  "challenge": "Challenge",
+  "alt_thought": "Alternative Thought",
+  "cbt_form": {
+    "edit": "Edit",
+    "new": "New",
+    "save": "Save",
+    "auto_thought_placeholder": "What's going on?",
+    "cog_distortion": "Cognitive Distortion",
+    "challenged": "Challenge",
+    "changed_placeholder": "Debate that thought!",
+    "alt_thought_placeholder": "What should we think instead?"
+  },
   "all_or_nothing_thinking": "All or Nothing Thinking",
   "all_or_nothing_thinking_explanation": "This distortion happens when we have no room for middle ground. If we think that a small fault in ourselves means we’re fundamentally rotten or otherwise terrible, we’re likely engaging in all or nothing thinking.",
   "all_or_nothing_thinking_thought": "I bombed the interview, I must be unhirable.",
