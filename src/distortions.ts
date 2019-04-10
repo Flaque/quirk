@@ -8,8 +8,16 @@ export interface CognitiveDistortion {
 }
 
 const distortions: CognitiveDistortion[] = [
-  { emoji: "🌓", label: i18n.t("all_or_nothing_thinking"), slug: "all-or-nothing" },
-  { emoji: "👯‍", label: i18n.t("over_generalization"), slug: "overgeneralization" },
+  {
+    emoji: "🌓",
+    label: i18n.t("all_or_nothing_thinking"),
+    slug: "all-or-nothing",
+  },
+  {
+    emoji: "👯‍",
+    label: i18n.t("over_generalization"),
+    slug: "overgeneralization",
+  },
   { emoji: "🧠", label: i18n.t("mind_reading"), slug: "mind-reading" },
   { emoji: "🔮", label: i18n.t("fortune_telling"), slug: "fortune-telling" },
   {
@@ -23,8 +31,16 @@ const distortions: CognitiveDistortion[] = [
     slug: "minimization-of-the-positive",
   },
   { emoji: "🤯", label: i18n.t("catastrophizing"), slug: "catastrophizing" },
-  { emoji: "🎭", label: i18n.t("emotional_reasoning"), slug: "emotional-reasoning" },
-  { emoji: "✨", label: i18n.t("should_statements"), slug: "should-statements" },
+  {
+    emoji: "🎭",
+    label: i18n.t("emotional_reasoning"),
+    slug: "emotional-reasoning",
+  },
+  {
+    emoji: "✨",
+    label: i18n.t("should_statements"),
+    slug: "should-statements",
+  },
   { emoji: "🏷", label: i18n.t("labeling"), slug: "labeling" },
   { emoji: "👁", label: i18n.t("self_blaming"), slug: "self-blaming" },
   { emoji: "🦹‍", label: i18n.t("other_blaming"), slug: "other-blaming" },
