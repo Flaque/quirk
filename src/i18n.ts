@@ -4,7 +4,7 @@ import en from "./locals/en.json";
 import fr from "./locals/fr.json";
 
 i18n.fallbacks = true;
-i18n.translations = { fr, en };
+i18n.translations = { en, fr };
 i18n.locale = Localization.locale;
 
 export default i18n;

@@ -1,9 +1,17 @@
 module.exports = {
+  preset: "jest-expo",
   roots: ["<rootDir>/src"],
   transform: {
+    "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
     "^.+\\.tsx?$": "ts-jest",
   },
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-  transformIgnorePatterns: ["/node_modules/"],
+  testMatch: ["**/__tests__/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)"],
+  moduleFileExtensions: ["js", "ts", "tsx"],
+  globals: {
+    "ts-jest": {
+      tsConfig: {
+        jsx: "react",
+      },
+    },
+  },
 };
