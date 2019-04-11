@@ -80,7 +80,7 @@ class SettingScreen extends React.Component<Props, State> {
   };
 
   navigateToList = () => {
-    this.props.navigation.navigate(CBT_LIST_SCREEN);
+    this.props.navigation.push(CBT_LIST_SCREEN);
   };
 
   toggleHistoryButtonLabels = () => {

@@ -269,7 +269,7 @@ class ExplanationScreen extends React.Component<Props> {
             <Header>quirk.</Header>
             <IconButton
               featherIconName={"edit"}
-              onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}
+              onPress={() => this.props.navigation.push(CBT_FORM_SCREEN)}
             />
           </View>
 

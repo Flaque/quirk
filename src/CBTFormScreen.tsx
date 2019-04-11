@@ -22,7 +22,7 @@ import universalHaptic from "./haptic";
 import { AppLoading, Haptic, Constants } from "expo";
 import CBTView from "./CBTView";
 import CBTOnBoardingScreen from "./CBTOnBoardingScreen";
-import i18n from './i18n';
+import i18n from "./i18n";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -41,11 +41,15 @@ const CBTViewer = ({ thought, onEdit, onNew }) => {
         <RoundedButton
           fillColor="transparent"
           textColor={theme.blue}
-          title={i18n.t('cbt_form.edit')}
+          title={i18n.t("cbt_form.edit")}
           onPress={() => onEdit(thought.uuid)}
           disabled={false}
         />
-        <RoundedButton title={i18n.t('cbt_form.new')} onPress={onNew} disabled={false} />
+        <RoundedButton
+          title={i18n.t("cbt_form.new")}
+          onPress={onNew}
+          disabled={false}
+        />
       </Row>
     </View>
   );
@@ -187,14 +191,12 @@ export default class CBTFormScreen extends React.Component<Props, State> {
             <Row>
               <IconButton
                 featherIconName={"help-circle"}
-                onPress={() =>
-                  this.props.navigation.navigate(EXPLANATION_SCREEN)
-                }
+                onPress={() => this.props.navigation.push(EXPLANATION_SCREEN)}
               />
               <Header>quirk</Header>
               <IconButton
                 featherIconName={"list"}
-                onPress={() => this.props.navigation.navigate(CBT_LIST_SCREEN)}
+                onPress={() => this.props.navigation.push(CBT_LIST_SCREEN)}
               />
             </Row>
 
