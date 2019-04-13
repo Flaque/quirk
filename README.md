@@ -52,7 +52,7 @@ Quirk's goal is to be both inviting and focused. It should be _really_ easy to e
 
 ## Design Logic
 
-Qurik is built with two main goals in mind:
+Quirk is built with two main goals in mind:
 
 - Don't be bloated
 - Don't be evil
