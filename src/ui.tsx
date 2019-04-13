@@ -260,7 +260,7 @@ export const RoundedButton = ({
 RoundedButton.defaultProps = {
   fillColor: theme.blue,
   textColor: "white",
-  width: 100,
+  width: 120,
 };
 
 export const IconButton = ({
