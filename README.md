@@ -19,7 +19,7 @@ setting.
 
 Some amazing folks have helped build the Quirk you see today. 
 
-* [@devinroche](https://github.com/devinroche) for setting up translation 🔥
+* [@devinroche](https://github.com/devinroche) for setting up translation and stepping up as a core maintainer 🔥
 * [@devilcius](https://github.com/devilcius) for the amazing Spanish translation 🇪🇸
 * [@idnovic](https://github.com/idnovic) for the amazing German translation 🇩🇪 (and the iPad support!) 
 * [@idnovic](https://github.com/kwierbol) for the amazing Polish translation 🇵🇱
