@@ -15,6 +15,19 @@ setting.
 
 <img src="https://user-images.githubusercontent.com/5942769/54972305-4081d180-4f48-11e9-91d8-7e8117668418.gif" alt="quirk screenshot" />
 
+## Contributors 
+
+Some amazing folks have helped build the Quirk you see today. 
+
+* [@devinroche](https://github.com/devinroche) for setting up translation 🔥
+* [@devilcius](https://github.com/devilcius) for the amazing Spanish translation 🇪🇸
+* [@idnovic](https://github.com/idnovic) for the amazing German translation 🇩🇪 (and the iPad support!) 
+* [@idnovic](https://github.com/kwierbol) for the amazing Polish translation 🇵🇱
+* [@Walther](https://github.com/Walther) for the amazing Finnish translation 🇫🇮
+* [@Jos512](https://github.com/Jos512) for the amazing Dutch translation 🇳🇱
+* [@jinto](https://github.com/jinto) for the amazing Korean translation 🇰🇷
+* [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and helping guide the entire translation effort. 🎉
+
 ## Running Locally
 
 Quirk is built on React Native and therefore assumes you have [node](https://nodejs.org/en/) installed.
