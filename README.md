@@ -22,7 +22,7 @@ Some amazing folks have helped build the Quirk you see today.
 * [@devinroche](https://github.com/devinroche) for setting up translation and stepping up as a core maintainer 🔥
 * [@devilcius](https://github.com/devilcius) for the amazing Spanish translation 🇪🇸
 * [@idnovic](https://github.com/idnovic) for the amazing German translation 🇩🇪 (and the iPad support!) 
-* [@idnovic](https://github.com/kwierbol) for the amazing Polish translation 🇵🇱
+* [@kwierbol](https://github.com/kwierbol) for the amazing Polish translation 🇵🇱
 * [@Walther](https://github.com/Walther) for the amazing Finnish translation 🇫🇮
 * [@Jos512](https://github.com/Jos512) for the amazing Dutch translation 🇳🇱
 * [@jinto](https://github.com/jinto) for the amazing Korean translation 🇰🇷
