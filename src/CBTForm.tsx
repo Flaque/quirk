@@ -14,7 +14,7 @@ import i18n from './i18n';
 
 // Text input styles defined here instead of componentized to
 // avoid issues with refs and subcomponents
-const textInputStyle = {
+export const textInputStyle = {
   height: 48,
   backgroundColor: "white",
   padding: 12,
