@@ -8,7 +8,7 @@ import {
   View,
   Image,
 } from "react-native";
-import { textInputStyle } from './CBTForm';
+import { textInputStyle } from "./CBTForm";
 import { getExercises, deleteExercise } from "./store";
 import { Header, Row, Container, IconButton, Label } from "./ui";
 import theme from "./theme";
@@ -25,7 +25,7 @@ import { validThoughtGroup } from "./sanitize";
 import Alerter from "./alerter";
 import alerts from "./alerts";
 import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
-import i18n from './i18n';
+import i18n from "./i18n";
 
 const ThoughtItem = ({
   thought,
@@ -117,10 +117,12 @@ const ThoughtItemList = ({
 
   const items = groups.map(group => {
     const data = group.thoughts.filter(el => {
-      const itemText = `${el.alternativeThought} ${el.alternativeThought} ${el.challenge}`.toLowerCase()
-      const lowercaseSearch = search.toLowerCase()
+      const itemText = `${el.automaticThought} ${el.alternativeThought} ${
+        el.challenge
+      }`.toLowerCase();
+      const lowercaseSearch = search.toLowerCase();
       return itemText.indexOf(lowercaseSearch) !== -1;
-    })
+    });
 
     const thoughts = data.map(thought => (
       <ThoughtItem
@@ -163,7 +165,11 @@ class CBTListScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = { groups: [], search: "", historyButtonLabel: "alternative-thought" };
+    this.state = {
+      groups: [],
+      search: "",
+      historyButtonLabel: "alternative-thought",
+    };
 
     this.props.navigation.addListener("willFocus", () => {
       this.loadSettings();
@@ -233,7 +239,7 @@ class CBTListScreen extends React.Component<Props, State> {
     deleteExercise(thought.uuid).then(() => this.loadExercises());
   };
 
-  searchThoughts = (search: string) => this.setState({search})
+  searchThoughts = (search: string) => this.setState({ search });
 
   render() {
     const { groups, search, historyButtonLabel } = this.state;
@@ -267,8 +273,8 @@ class CBTListScreen extends React.Component<Props, State> {
             </Row>
 
             <TextInput
-              style={{...textInputStyle, marginBottom: 15}}
-              placeholder={i18n.t('search_placeholder')}
+              style={{ ...textInputStyle, marginBottom: 18 }}
+              placeholder={i18n.t("search_placeholder")}
               onChangeText={this.searchThoughts}
               value={this.state.search}
             />
