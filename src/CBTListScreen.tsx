@@ -200,7 +200,7 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   navigateToSettings = () => {
-    this.props.navigation.navigate(SETTING_SCREEN);
+    this.props.navigation.push(SETTING_SCREEN);
   };
 
   navigateToForm = () => {
@@ -208,7 +208,7 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   navigateToFormWithThought = (thought: SavedThought | boolean) => {
-    this.props.navigation.navigate(CBT_FORM_SCREEN, {
+    this.props.navigation.push(CBT_FORM_SCREEN, {
       thought,
     });
   };
