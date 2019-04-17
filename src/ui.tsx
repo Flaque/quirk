@@ -265,10 +265,12 @@ RoundedButton.defaultProps = {
 
 export const IconButton = ({
   featherIconName,
+  accessibilityLabel,
   onPress,
   style,
 }: {
   featherIconName: string;
+  accessibilityLabel: string;
   onPress: () => void;
   style?: object;
 }) => (

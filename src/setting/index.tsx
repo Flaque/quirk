@@ -24,6 +24,7 @@ import {
   HistoryButtonLabelSetting,
   isHistoryButtonLabelSetting,
 } from "./settings";
+import i18n from "../i18n";
 
 export { HistoryButtonLabelSetting };
 
@@ -127,6 +128,7 @@ class SettingScreen extends React.Component<Props, State> {
               <Header>quirk*</Header>
               <IconButton
                 featherIconName={"list"}
+                accessibilityLabel={i18n.t("accessibility.list_button")}
                 onPress={() => this.navigateToList()}
               />
             </Row>
