@@ -8,7 +8,6 @@ import { SubHeader, Paragraph, ThoughtDook, I, Header, IconButton } from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
 import theme from "./theme";
-import { CBT_FORM_SCREEN } from "./screens";
 import i18n from "./i18n";
 
 interface Props {
@@ -269,7 +268,7 @@ class ExplanationScreen extends React.Component<Props> {
             <Header>quirk.</Header>
             <IconButton
               featherIconName={"edit"}
-              onPress={() => this.props.navigation.push(CBT_FORM_SCREEN)}
+              onPress={() => this.props.navigation.pop()}
             />
           </View>
 
