@@ -6,7 +6,6 @@ import {
   ImageSourcePropType,
   Image,
 } from "react-native";
-import PropTypes from "prop-types";
 import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
@@ -21,7 +20,7 @@ export interface Component {
   style?: object;
 }
 
-export const Row = ({ children, style }: { children: any; style?: any }) => (
+export const Row = ({ children, style }: ParentComponent) => (
   <View
     style={{
       flexDirection: "row",
@@ -33,12 +32,7 @@ export const Row = ({ children, style }: { children: any; style?: any }) => (
   </View>
 );
 
-Row.propTypes = {
-  children: PropTypes.any.isRequired,
-  style: PropTypes.object,
-};
-
-export const FormContainer = ({ children, ...style }) => (
+export const FormContainer = ({ children, ...style }: ParentComponent) => (
   <View
     style={{
       marginBottom: 24,
@@ -48,11 +42,6 @@ export const FormContainer = ({ children, ...style }) => (
     {children}
   </View>
 );
-
-FormContainer.propTypes = {
-  children: PropTypes.any.isRequired,
-  style: PropTypes.object,
-};
 
 export const Header = ({ children, style }: ParentComponent) => (
   <Text
@@ -68,11 +57,6 @@ export const Header = ({ children, style }: ParentComponent) => (
     {children}
   </Text>
 );
-
-Header.propTypes = {
-  children: PropTypes.any.isRequired,
-  style: PropTypes.object,
-};
 
 export const SubHeader = ({ children, style }: ParentComponent) => (
   <Text
@@ -92,8 +76,8 @@ export const SelectorTextItem = ({
   text,
   emoji,
   selected = false,
-  onPress,
-}) => (
+  onPress
+}: {text: string; emoji: any; selected?: boolean; onPress: () => void}) => (
   <TouchableOpacity
     onPress={onPress}
     style={{
@@ -135,13 +119,7 @@ export const SelectorTextItem = ({
   </TouchableOpacity>
 );
 
-SelectorTextItem.propTypes = {
-  text: PropTypes.string.isRequired,
-  selected: PropTypes.bool,
-  onPress: PropTypes.func.isRequired,
-};
-
-export const RoundedSelector = ({ items, onPress, style }) => (
+export const RoundedSelector = ({ items, onPress, style }: {items: CognitiveDistortion[]; onPress: (arg: string) => void; style?: object}) => (
   <View
     style={{
       backgroundColor: theme.lightOffwhite,
@@ -149,12 +127,10 @@ export const RoundedSelector = ({ items, onPress, style }) => (
     }}
   >
     {items.map(({ slug, selected }) => {
-      const item = find(distortions, { slug });
-      if (!item) {
+      const cogDistortion = find(distortions, { slug });
+      if (!cogDistortion) {
         return null;
       }
-
-      const cogDistortion = item as CognitiveDistortion;
 
       return (
         <SelectorTextItem
@@ -168,12 +144,6 @@ export const RoundedSelector = ({ items, onPress, style }) => (
     })}
   </View>
 );
-
-RoundedSelector.propTypes = {
-  items: PropTypes.array.isRequired,
-  onPress: PropTypes.func.isRequired,
-  style: PropTypes.object,
-};
 
 export const RoundedSelectorButton = ({
   title,
@@ -257,12 +227,6 @@ export const RoundedButton = ({
   </TouchableOpacity>
 );
 
-RoundedButton.defaultProps = {
-  fillColor: theme.blue,
-  textColor: "white",
-  width: 120,
-};
-
 export const IconButton = ({
   featherIconName,
   onPress,
@@ -289,12 +253,6 @@ export const IconButton = ({
   </TouchableOpacity>
 );
 
-IconButton.propTypes = {
-  featherIconName: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  style: PropTypes.any,
-};
-
 export const Paragraph = ({ children, style }: ParentComponent) => (
   <Text
     style={{
@@ -307,10 +265,6 @@ export const Paragraph = ({ children, style }: ParentComponent) => (
     {children}
   </Text>
 );
-
-Paragraph.propTypes = {
-  children: PropTypes.any.isRequired,
-};
 
 export const Container = ({ children, style }: ParentComponent) => (
   <View
@@ -327,11 +281,7 @@ export const Container = ({ children, style }: ParentComponent) => (
   </View>
 );
 
-Container.propTypes = {
-  children: PropTypes.any,
-};
-
-export const Label = ({ children, ...style }) => (
+export const Label = ({ children, ...style }: ParentComponent) => (
   <Text
     style={{
       fontWeight: "700",
@@ -364,10 +314,10 @@ export const ThoughtDook = ({ style, source }: IllustrationComponent) => (
   />
 );
 
-export const I = ({ children }) => (
-  <Text style={{ fontStyle: "italic" }}>{children}</Text>
+export const I = ({ children, style }: ParentComponent) => (
+  <Text style={{ fontStyle: "italic", ...style }}>{children}</Text>
 );
 
-export const B = ({ children }) => (
-  <Text style={{ fontWeight: "bold" }}>{children}</Text>
+export const B = ({ children, style }: ParentComponent) => (
+  <Text style={{ fontWeight: "bold", ...style }}>{children}</Text>
 );
