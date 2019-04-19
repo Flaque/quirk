@@ -99,11 +99,11 @@
   "catastrophizing_explanation": "If we’re taking a small problem and blowing it way out of proportion, we’re catastrophizing. Did you make a small mistake at work and are dreading if someone found out even though it’s nothing serious? You’re probably catastrophizing.",
   "catastrophizing_thought": "I'm feeling jittery, I might be having a heart attack.",
   "emotional_reasoning": "Emotional Reasoning",
-  "emotional_reasoning_explaination_1": "\"I feel it, therefore it must be true.\" If you find yourself justifying the \"danger\" of something innocuous because you’re afraid of it, then you’re likely engaging in emotional reasoning. Things aren’t dangerous because we’re afraid of them and we’re not awful just because we may think we are.",
-  "emotional_reasoning_explaination_2": "This one is often hard to recognize. It takes some effort to recognize when your emotional mind is taking the logical reins.",
+  "emotional_reasoning_explanation_1": "\"I feel it, therefore it must be true.\" If you find yourself justifying the \"danger\" of something innocuous because you’re afraid of it, then you’re likely engaging in emotional reasoning. Things aren’t dangerous because we’re afraid of them and we’re not awful just because we may think we are.",
+  "emotional_reasoning_explanation_2": "This one is often hard to recognize. It takes some effort to recognize when your emotional mind is taking the logical reins.",
   "emotional_reasoning_thought": "I feel guilty, therefore I must have done something bad.",
   "fortune_telling": "Fortune Telling",
-  "fortune_telling_explanation": "This distortion happens when we predict the future. We often overestimate our abilities to predict what will happen. Frequently we'll start at something we're worried might happen and then look for evidence that it will occur.",
+  "fortune_telling_explanation": "This distortion happens when we predict the future. We often overestimate our abilities to predict what will happen. Frequently we'll worry that something might happen and then start to look for evidence that it will occur.",
   "fortune_telling_thought": "The plane I'm about to get on will crash.",
   "labeling": "Labeling",
   "labeling_explanation": "If we're taking one characteristic of a person and applying it to the whole person, we're labeling. If someone brushed us off, they might not be a \"jerk,\" maybe they're just in a hurry. This applies to ourselves as well; just because we make a mistake doesn't mean we're a \"failure.\"",
@@ -130,5 +130,12 @@
   "should_statements": "Should Statements",
   "should_statements_explanation_1": "If you're assigning someone abilities they don't have, you're using faulty \"should\" statements. For example, if you have a fear of flying and are telling yourself \"I shouldn't be afraid of this, there's nothing wrong with the airplane!\" you're putting an undue burden on yourself. You have a fear of flying! It's normal for people who have a fear of flying to be afraid flying!",
   "should_statements_explanation_2": "Should statements can seem nonsensical when you say it out loud; that's the point! They're illogical!",
-  "should_statements_thought": "I'm an adult, I shouldn't have these mental issues."
+  "should_statements_thought": "I'm an adult, I shouldn't have these mental issues.",
+  "accessibility": {
+    "help_button": "help",
+    "list_button": "list thoughts",
+    "new_thought_button": "new thought",
+    "settings_button": "settings",
+    "delete_thought_button": "delete thought"
+  }
 }

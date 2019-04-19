@@ -191,10 +191,12 @@ export default class CBTFormScreen extends React.Component<Props, State> {
             <Row>
               <IconButton
                 featherIconName={"help-circle"}
+                accessibilityLabel={i18n.t("accessibility.help_button")}
                 onPress={() => this.props.navigation.push(EXPLANATION_SCREEN)}
               />
               <Header>quirk</Header>
               <IconButton
+                accessibilityLabel={i18n.t("accessibility.list_button")}
                 featherIconName={"list"}
                 onPress={() => this.props.navigation.push(CBT_LIST_SCREEN)}
               />

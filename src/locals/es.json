@@ -1,6 +1,6 @@
 {
   "onboarding_screen": {
-    "auto_thought_ex": "Me perdí la fiesta de Jorge, me tiene que odiar.",
+    "auto_thought_ex": "Me perdí la fiesta de Jorge, apuesto a que me odia.",
     "challenge_ex": "Jorge sabe que no siempre puedo acudir, yo no le odiaría si faltara a algún evento mío.\n\nDebería tratarme a mí mismo por lo menos tan bien como trato a los demás.",
     "alt_thought_ex": "Es verdad que falté a la fiesta de Jorge, puedo disculparme y seguramente me perdonará por ello.",
     "cog_distortion": { "label": "Lectura del pensamiento", "slug": "lectura-pensamiento" },
@@ -31,24 +31,24 @@
       "emphasis1": "distorsionados."
     },
     "cbt_overview": {
-      "line1": "El objetivo de TCC es reconocer los",
+      "line1": "El objetivo de la TCC es reconocer los",
       "emphasis1": "pensamientos distorsionados",
       "line2": "y",
       "emphasis2": "remplazarlos",
-      "line3": "con unos racionales."
+      "line3": "con pensamientos racionales."
     },
     "ready": {
       "emphasis1": "¿Listo?",
       "line1": "Repasemos los pasos."
     },
     "catch": {
-      "line1": "1. Empezaremos con",
-      "emphasis1": "solo escribiendo",
-      "line2": "los pensamientos automáticos cuando suceden."
+      "line1": "1. Empezaremos",
+      "emphasis1": "escribiendo",
+      "line2": "los pensamientos automáticos apenas ocurren."
     },
     "bad_thought_note": {
       "line1": "Apunta el pensamiento:",
-      "line2": "Falté a la fiesta de Jorge, me tiene que odiar."
+      "line2": "Falté a la fiesta de Jorge, apuesto a que me odia."
     },
     "identify_distortions": {
       "line1": "Busca",
@@ -57,7 +57,7 @@
     "bad_distortions": {
       "line1": "¿Sabemos de verdad que Jorge nos va a odiar? Si no, estamos",
       "emphasis1": "leyendo el pensamiento",
-      "line2": "Falté a la fiesta de Jorge, me tiene que odiar por ello."
+      "line2": "Falté a la fiesta de Jorge, apuesto a que me odia por ello."
     },
     "challenge_screen": {
       "line1": "3. ¿Por qué este pensamiento no es realista?",
@@ -99,11 +99,11 @@
   "catastrophizing_explanation": "Si tomamos un pequeño problema y lo exageramos, estamos catastrofizando. ¿Cometiste un pequeño error en el trabajo y estás temiendo que alguien lo descubra aunque no sea nada grave? Probablemente estés catastrofizando.",
   "catastrophizing_thought": "Me siento nervioso, podría estar teniendo un ataque al corazón.",
   "emotional_reasoning": "Razonamiento emocional",
-  "emotional_reasoning_explaination_1": "\"Lo siento por tanto ha de ser verdad.\" Si te encuentras a ti mismo justificando el \"peligro\" de algo inocuo porque le tienes miedo, entonces puede que estés incurriendo en un razonamiento emocial. Las cosas no son peligrosas porque les tengamos miedo de la misma manera que no somos malos porque pensemos que lo somos.",
-  "emotional_reasoning_explaination_2": "Éste es a menudo difícil de reconocer. Se necesita un cierto esfuerzo para reconocer que tu mente emocional ha tomado las riendas lógicas.",
+  "emotional_reasoning_explanation_1": "\"Lo siento por tanto ha de ser verdad.\" Si te encuentras a ti mismo justificando el \"peligro\" de algo inocuo porque le tienes miedo, entonces puede que estés incurriendo en un razonamiento emocional. Las cosas no son peligrosas porque les tengamos miedo de la misma manera que no somos malos porque pensemos que lo somos.",
+  "emotional_reasoning_explanation_2": "Éste es a menudo difícil de reconocer. Se necesita un cierto esfuerzo para reconocer que tu mente emocional ha tomado las riendas lógicas.",
   "emotional_reasoning_thought": "Me siento culpable, por tanto he tenido que hacer algo malo.",
   "fortune_telling": "Adivinación",
-  "fortune_telling_explanation": "Esta distorsión ocurre cuando predecimos el futuro. A menudo sobreestimamos nuestras habilidades para predecir lo que sucederá. Con frecuencia, comenzaremos con algo que nos preocupa y luego buscamos evidencia de que ocurrirá.",
+  "fortune_telling_explanation": "Esta distorsión ocurre cuando intentamos predecir el futuro. A menudo sobreestimamos nuestras habilidades para predecir lo que sucederá. Con frecuencia, comenzaremos con algo que nos preocupa y luego buscamos evidencia de que ocurrirá.",
   "fortune_telling_thought": "El avión al que estoy a punto de subir se estrellará.",
   "labeling": "Etiquetado",
   "labeling_explanation": "Si estamos tomando una característica de una persona y aplicándola a toda la persona, estamos etiquetando. Si alguien nos rechazó, tal vez no sea un \"imbécil\", tal vez solo tenga prisa. Esto también se aplica a nosotros mismos; solo porque cometamos un error no significa que seamos un \"fracaso\".",

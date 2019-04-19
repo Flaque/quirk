@@ -15,18 +15,19 @@ setting.
 
 <img src="https://user-images.githubusercontent.com/5942769/54972305-4081d180-4f48-11e9-91d8-7e8117668418.gif" alt="quirk screenshot" />
 
-## Contributors 
+## Contributors
 
-Some amazing folks have helped build the Quirk you see today. 
+Some amazing folks have helped build the Quirk you see today.
 
-* [@devinroche](https://github.com/devinroche) for setting up translation and stepping up as a core maintainer 🔥
-* [@devilcius](https://github.com/devilcius) for the amazing Spanish translation 🇪🇸
-* [@idnovic](https://github.com/idnovic) for the amazing German translation 🇩🇪 (and the iPad support!) 
-* [@kwierbol](https://github.com/kwierbol) for the amazing Polish translation 🇵🇱
-* [@Walther](https://github.com/Walther) for the amazing Finnish translation 🇫🇮
-* [@Jos512](https://github.com/Jos512) for the amazing Dutch translation 🇳🇱
-* [@jinto](https://github.com/jinto) for the amazing Korean translation 🇰🇷
-* [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and helping guide the entire translation effort. 🎉
+- [@devinroche](https://github.com/devinroche) for setting up translation and stepping up as a core maintainer 🔥
+- [@devilcius](https://github.com/devilcius) for the amazing Spanish translation 🇪🇸
+- [@idnovic](https://github.com/idnovic) for the amazing German translation 🇩🇪 (and the iPad support!)
+- [@kwierbol](https://github.com/kwierbol) for the amazing Polish translation 🇵🇱
+- [@Walther](https://github.com/Walther) for the amazing Finnish translation 🇫🇮
+- [@Jos512](https://github.com/Jos512) for the amazing Dutch translation 🇳🇱
+- [@jinto](https://github.com/jinto) for the amazing Korean translation 🇰🇷
+- [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and helping guide the entire translation effort. 🎉
+- [@akinariobi](https://github.com/akinariobi) for the Russian translation 🇷🇺 
 
 ## Running Locally
 
@@ -49,15 +50,15 @@ If you already have XCode installed with a simulator, you can just press `i` to 
 
 # Can I help?
 
-Of course! 
+Of course!
 
 **If you like the app,** go give it 5 stars! It helps more people find the app.
 
 **If you're a mental health professional,** audit [the descriptions](https://github.com/Flaque/quirk/blob/master/src/locals/en.json) of the cognitive distortions. If you have suggestions, let me know and we'll change stuff!
 
-**If you can draw** and can make digital illustrations of the little blobs, let me know and I'll find a place to stick them in the app! 
+**If you can draw** and can make digital illustrations of the little blobs, let me know and I'll find a place to stick them in the app!
 
-**If you know a language other than English,** help [us translate the app!](https://github.com/Flaque/quirk/issues/42#issuecomment-480547963)
+**If you know a language other than English,** help [us translate the app!](/TRANSLATIONS.md)
 
 # Design
 
@@ -76,9 +77,9 @@ Quirk is built with two main goals in mind:
 
 **Don't include non-CBT related treatments without good reason.** No relaxation audio tracks or meditation guides. It's a CBT app, keep it focused on CBT.
 
-**Don't include things that could be better acomplished by another app.** No one needs an in-app diary when a diary works just fine. No one needs an in-app heart rate tracker when a heart rate tracker works just fine.
+**Don't include things that could be better accomplished by another app.** No one needs an in-app diary when a diary works just fine. No one needs an in-app heart rate tracker when a heart rate tracker works just fine.
 
-**Be quick and efficent.** Thoughts shouldn't take 5 minutes to enter and you should be able to skip fields if it's reasonable. Don't let the perfect be the enemy of the good.
+**Be quick and efficient.** Thoughts shouldn't take 5 minutes to enter and you should be able to skip fields if it's reasonable. Don't let the perfect be the enemy of the good.
 
 ### Don't be Evil
 

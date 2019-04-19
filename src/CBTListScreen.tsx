@@ -23,6 +23,7 @@ import { validThoughtGroup } from "./sanitize";
 import Alerter from "./alerter";
 import alerts from "./alerts";
 import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
+import i18n from "./i18n";
 
 const ThoughtItem = ({
   thought,
@@ -65,6 +66,7 @@ const ThoughtItem = ({
       style={{
         alignSelf: "flex-start",
       }}
+      accessibilityLabel={i18n.t("accessibility.delete_thought_button")}
       featherIconName={"trash"}
       onPress={() => onDelete(thought)}
     />
@@ -243,11 +245,15 @@ class CBTListScreen extends React.Component<Props, State> {
                 <IconButton
                   featherIconName={"settings"}
                   onPress={() => this.navigateToSettings()}
+                  accessibilityLabel={i18n.t("accessibility.settings_button")}
                   style={{ marginRight: 18 }}
                 />
                 <IconButton
                   featherIconName={"edit"}
                   onPress={() => this.navigateToForm()}
+                  accessibilityLabel={i18n.t(
+                    "accessibility.new_thought_button"
+                  )}
                 />
               </View>
             </Row>

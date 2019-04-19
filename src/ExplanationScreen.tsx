@@ -107,10 +107,10 @@ const EmotionalReasoning = () => (
     </SubHeader>
 
     <Paragraph>
-      {i18n.t("emotional_reasoning_explaination_1")} {"\n"}
+      {i18n.t("emotional_reasoning_explanation_1")} {"\n"}
     </Paragraph>
 
-    <Paragraph>{i18n.t("emotional_reasoning_explaination_2")}</Paragraph>
+    <Paragraph>{i18n.t("emotional_reasoning_explanation_2")}</Paragraph>
 
     <ThoughtView color="pink">
       {i18n.t("emotional_reasoning_thought")}
@@ -183,7 +183,7 @@ const MimizationOfThePositive = () => (
 const OtherBlaming = () => (
   <Distortion>
     <SubHeader>
-      {i18n.t("other_blaming")} {"🦹‍"}
+      {i18n.t("other_blaming")} {"🧛‍"}
     </SubHeader>
 
     <Paragraph>
