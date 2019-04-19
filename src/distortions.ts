@@ -43,7 +43,7 @@ const distortions: CognitiveDistortion[] = [
   },
   { emoji: "🏷", label: i18n.t("labeling"), slug: "labeling" },
   { emoji: "👁", label: i18n.t("self_blaming"), slug: "self-blaming" },
-  { emoji: "🦹‍", label: i18n.t("other_blaming"), slug: "other-blaming" },
+  { emoji: "🧛‍", label: i18n.t("other_blaming"), slug: "other-blaming" },
 ].sort((first, second) => {
   const firstLabel = first.label.toUpperCase();
   const secondLabel = second.label.toUpperCase();

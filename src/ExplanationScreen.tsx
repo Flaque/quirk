@@ -184,7 +184,7 @@ const MimizationOfThePositive = () => (
 const OtherBlaming = () => (
   <Distortion>
     <SubHeader>
-      {i18n.t("other_blaming")} {"🦹‍"}
+      {i18n.t("other_blaming")} {"🧛‍"}
     </SubHeader>
 
     <Paragraph>
