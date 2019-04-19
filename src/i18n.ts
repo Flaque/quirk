@@ -1,5 +1,3 @@
-export default i18n;
-
 import { Localization } from "expo";
 import i18n from "i18n-js";
 import en from "./locals/en.json";
