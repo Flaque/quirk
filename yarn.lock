@@ -1234,6 +1234,11 @@ assign-symbols@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
 
+ast-types-flow@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/ast-types-flow/-/ast-types-flow-0.0.7.tgz#f70b735c6bca1a5c9c22d982c3e39e7feba3bdad"
+  integrity sha1-9wtzXGvKGlycItmCw+Oef+ujva0=
+
 astral-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
@@ -2528,6 +2533,14 @@ escodegen@^1.9.1:
 eslint-config-xo-react@^0.17.0:
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/eslint-config-xo-react/-/eslint-config-xo-react-0.17.0.tgz#c6ab39b1212f9cfb2d3f97f486290997d90080cb"
+
+eslint-plugin-react-native-a11y@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-native-a11y/-/eslint-plugin-react-native-a11y-1.2.0.tgz#7d128d1e36c81d1418b54745a7fdac6baee1038f"
+  integrity sha512-YI0Om+R7etakx1EAYq/kyBwybVZ46067hIkkVQJfgtPqky81xYi+xRsQmZGUf0ftfXvpCtPsTZOuCzlTheoz6g==
+  dependencies:
+    ast-types-flow "^0.0.7"
+    jsx-ast-utils "^2.0.1"
 
 eslint-plugin-react@^7.11.1:
   version "7.11.1"
@@ -6217,7 +6230,7 @@ react-native-maps@*:
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.23.0.tgz#edbfdcad0e42190627eb1c8067eaba5965c8f81e"
   integrity sha512-qxOIQGsDtQXQlSJdXMW1wg8pvLaVYdbiIolB7tZTTgTGgIA/hDxXwZbQZ08c4KDD6/VTk8krfd1APaHkqvh6og==
 
-"react-native-maps@github:expo/react-native-maps#v0.22.1-exp.0":
+react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 

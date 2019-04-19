@@ -1,5 +1,3 @@
-export default i18n;
-
 import { Localization } from "expo";
 import i18n from "i18n-js";
 import en from "./locals/en.json";
@@ -13,7 +11,7 @@ import fi from "./locals/fi.json";
 import ru from "./locals/ru.json";
 
 i18n.fallbacks = true;
-i18n.translations = { fr, en, ko, pl, es, de, fi, nl, ru };
+i18n.translations = { fr, en, ko, pl, es, de, fi, nl, ru, "zh-CN": zhCN };
 i18n.locale = Localization.locale;
 
 export default i18n;
