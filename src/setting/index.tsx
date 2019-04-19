@@ -10,7 +10,7 @@ import {
   SubHeader,
   Paragraph,
   RoundedSelectorButton,
-  RoundedButton,
+  ActionButton,
 } from "../ui";
 import {
   NavigationScreenProp,
@@ -175,7 +175,7 @@ class SettingScreen extends React.Component<Props, State> {
             >
               <SubHeader>*show intro screen</SubHeader>
 
-              <RoundedButton
+              <ActionButton
                 title="intro screen"
                 onPress={this.navigateToOnboardingScreen}
               />

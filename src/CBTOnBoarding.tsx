@@ -7,7 +7,7 @@ import {
   Container,
   Paragraph,
   ThoughtDook,
-  RoundedButton,
+  ActionButton,
 } from "./ui";
 import Swiper from "react-native-swiper";
 import universalHaptic from "./haptic";
@@ -326,7 +326,7 @@ const GotIt = ({ onPress }) => (
       {i18n.t("onboarding_screen.got_it.line1")}
     </LeftPushedHeader>
 
-    <RoundedButton
+    <ActionButton
       title={i18n.t("onboarding_screen.got_it.btn_title")}
       disabled={false}
       fillColor={theme.blue}

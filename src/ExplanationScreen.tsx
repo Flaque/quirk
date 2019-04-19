@@ -4,11 +4,18 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, ThoughtDook, I, Header, IconButton } from "./ui";
+import {
+  SubHeader,
+  Paragraph,
+  ThoughtDook,
+  Header,
+  IconButton,
+  ActionButton,
+} from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
 import theme from "./theme";
-import { CBT_FORM_SCREEN } from "./screens";
+import { CBT_FORM_SCREEN, CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
 
 interface Props {
@@ -243,6 +250,10 @@ class ExplanationScreen extends React.Component<Props> {
     header: null,
   };
 
+  navigateToOnboardingScreen = () => {
+    this.props.navigation.navigate(CBT_ON_BOARDING_SCREEN);
+  };
+
   render() {
     return (
       <ScrollView
@@ -267,8 +278,13 @@ class ExplanationScreen extends React.Component<Props> {
             }}
           >
             <Header>quirk.</Header>
+            <ActionButton
+              title="Intro"
+              onPress={this.navigateToOnboardingScreen}
+            />
             <IconButton
               featherIconName={"edit"}
+              accessibilityLabel={i18n.t("accessibility.new_thought_button")}
               onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}
             />
           </View>

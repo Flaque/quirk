@@ -218,7 +218,7 @@ export const RoundedSelectorButton = ({
   </TouchableOpacity>
 );
 
-export const RoundedButton = ({
+export const ActionButton = ({
   title,
   onPress,
   fillColor,
@@ -257,7 +257,7 @@ export const RoundedButton = ({
   </TouchableOpacity>
 );
 
-RoundedButton.defaultProps = {
+ActionButton.defaultProps = {
   fillColor: theme.blue,
   textColor: "white",
   width: 120,

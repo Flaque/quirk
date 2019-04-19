@@ -5,7 +5,7 @@ import {
   SubHeader,
   RoundedSelector,
   Row,
-  RoundedButton,
+  ActionButton,
 } from "./ui";
 import { AutoGrowingTextInput } from "react-native-autogrow-textinput";
 import theme from "./theme";
@@ -115,7 +115,7 @@ export default class CBTForm extends React.Component<Props> {
         </FormContainer>
 
         <Row style={{ justifyContent: "flex-end" }}>
-          <RoundedButton
+          <ActionButton
             disabled={false}
             title={i18n.t("cbt_form.save")}
             onPress={onSave}
