@@ -57,7 +57,7 @@ Of course!
 
 **If you can draw** and can make digital illustrations of the little blobs, let me know and I'll find a place to stick them in the app!
 
-**If you know a language other than English,** help [us translate the app!]()
+**If you know a language other than English,** help [us translate the app!](/TRANSLATIONS.md)
 
 # Design
 
