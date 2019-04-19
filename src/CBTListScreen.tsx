@@ -87,7 +87,11 @@ const EmptyThoughtIllustration = () => (
         marginBottom: 32,
       }}
     />
-    <Label marginBottom={18} textAlign={"center"}>
+    <Label 
+      style={{
+        marginBottom: 18,
+        textAlign: "center"
+      }}>
       No thoughts yet!
     </Label>
   </View>

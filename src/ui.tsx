@@ -76,8 +76,10 @@ export const SelectorTextItem = ({
   text,
   emoji,
   selected = false,
-  onPress
-}: {text: string; emoji: any; selected?: boolean; onPress: () => void}) => (
+  onPress,
+  emojiStyle = {},
+  textStyle = {}
+}: {text: string; emoji: any; selected?: boolean; onPress: () => void, emojiStyle?: object, textStyle?: object}) => (
   <TouchableOpacity
     onPress={onPress}
     style={{
@@ -100,6 +102,7 @@ export const SelectorTextItem = ({
         style={{
           marginRight: 12,
           marginLeft: 12,
+          ...emojiStyle,
         }}
       >
         {emoji}
@@ -109,6 +112,7 @@ export const SelectorTextItem = ({
           fontWeight: "400",
           fontSize: 16,
           color: selected ? "white" : theme.darkText,
+          ...textStyle,
         }}
       >
         {text}
@@ -149,10 +153,12 @@ export const RoundedSelectorButton = ({
   title,
   selected = false,
   onPress,
+  style,
 }: {
   title: string;
   selected?: boolean;
   onPress: () => void;
+  style?: object;
 }) => (
   <TouchableOpacity
     onPress={onPress}
@@ -178,6 +184,7 @@ export const RoundedSelectorButton = ({
           fontSize: 16,
           color: selected ? "white" : theme.darkText,
           marginLeft: 12,
+          ...style,
         }}
       >
         {title}
@@ -281,7 +288,7 @@ export const Container = ({ children, style }: ParentComponent) => (
   </View>
 );
 
-export const Label = ({ children, ...style }: ParentComponent) => (
+export const Label = ({ children, style }: ParentComponent) => (
   <Text
     style={{
       fontWeight: "700",
@@ -296,18 +303,18 @@ export const Label = ({ children, ...style }: ParentComponent) => (
 );
 
 export interface IllustrationComponent {
-  style?: object;
   source: ImageSourcePropType;
+  style?: object;
 }
 
-export const Illustration = ({ style, source }: IllustrationComponent) => (
+export const Illustration = ({ source, style }: IllustrationComponent) => (
   <Image
     source={source}
     style={{ width: 200, height: 150, alignSelf: "center", ...style }}
   />
 );
 
-export const ThoughtDook = ({ style, source }: IllustrationComponent) => (
+export const ThoughtDook = ({ source, style }: IllustrationComponent) => (
   <Image
     source={source}
     style={{ width: 48, height: 48, alignSelf: "center", ...style }}
