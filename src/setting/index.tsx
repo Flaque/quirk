@@ -16,7 +16,6 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { CBT_LIST_SCREEN } from "../screens";
 import { setSetting, getSettingOrSetDefault } from "./settingstore";
 import {
   HISTORY_BUTTON_LABEL_KEY,
@@ -81,7 +80,7 @@ class SettingScreen extends React.Component<Props, State> {
   };
 
   navigateToList = () => {
-    this.props.navigation.navigate(CBT_LIST_SCREEN);
+    this.props.navigation.pop();
   };
 
   toggleHistoryButtonLabels = () => {

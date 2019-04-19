@@ -98,7 +98,7 @@ const EmptyThoughtIllustration = () => (
 interface ThoughtListProps {
   groups: ThoughtGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
-  navigateToFormWithThought: (thought: SavedThought | boolean) => void;
+  navigateToFormWithThought: (thought: SavedThought) => void;
   onItemDelete: (thought: SavedThought) => void;
 }
 
@@ -202,15 +202,15 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   navigateToSettings = () => {
-    this.props.navigation.navigate(SETTING_SCREEN);
+    this.props.navigation.push(SETTING_SCREEN);
   };
 
   navigateToForm = () => {
-    this.navigateToFormWithThought(false);
+    this.props.navigation.pop();
   };
 
-  navigateToFormWithThought = (thought: SavedThought | boolean) => {
-    this.props.navigation.navigate(CBT_FORM_SCREEN, {
+  navigateToFormWithThought = (thought: SavedThought) => {
+    this.props.navigation.push(CBT_FORM_SCREEN, {
       thought,
     });
   };
