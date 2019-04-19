@@ -10,13 +10,14 @@ import {
   SubHeader,
   Paragraph,
   RoundedSelectorButton,
+  RoundedButton,
 } from "../ui";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { CBT_LIST_SCREEN } from "../screens";
+import { CBT_LIST_SCREEN, CBT_ON_BOARDING_SCREEN } from "../screens";
 import { setSetting, getSettingOrSetDefault } from "./settingstore";
 import {
   HISTORY_BUTTON_LABEL_KEY,
@@ -82,6 +83,10 @@ class SettingScreen extends React.Component<Props, State> {
 
   navigateToList = () => {
     this.props.navigation.navigate(CBT_LIST_SCREEN);
+  };
+
+  navigateToOnboardingScreen = () => {
+    this.props.navigation.navigate(CBT_ON_BOARDING_SCREEN);
   };
 
   toggleHistoryButtonLabels = () => {
@@ -158,6 +163,21 @@ class SettingScreen extends React.Component<Props, State> {
                 title={"Automatic Thought"}
                 selected={historyButtonLabel === "automatic-thought"}
                 onPress={() => this.toggleHistoryButtonLabels()}
+              />
+            </Row>
+
+            <Row
+              style={{
+                marginBottom: 18,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <SubHeader>*show intro screen</SubHeader>
+
+              <RoundedButton
+                title="intro screen"
+                onPress={this.navigateToOnboardingScreen}
               />
             </Row>
           </Container>

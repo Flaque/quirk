@@ -10,11 +10,18 @@ import {
   RoundedButton,
 } from "./ui";
 import Swiper from "react-native-swiper";
+import universalHaptic from "./haptic";
 import { View } from "react-native";
 import CBTView from "./CBTView";
 import { Thought } from "./thoughts";
 import { normalize } from "./sizes";
 import i18n from "./i18n";
+import {
+  NavigationScreenProp,
+  NavigationState,
+  NavigationAction,
+} from "react-navigation";
+import { Haptic } from "expo";
 
 const thought: Thought = {
   automaticThought: i18n.t("onboarding_screen.auto_thought_ex"),
@@ -329,11 +336,50 @@ const GotIt = ({ onPress }) => (
   </Main>
 );
 
-interface Props {
-  toFormScreen: () => void;
+export const CBTOnBoardingComponent = ({
+  handleScreenTransition,
+}: {
+  handleScreenTransition: () => void;
+}) => (
+  <Swiper loop={false} dotColor={theme.offwhite} activeDotColor={theme.pink}>
+    <Intro />
+    <CrashCourse />
+    <YourThoughtsCauseYourMoods />
+    <YourThoughtsArentYourThoughts />
+    <YourThoughtsAreDistorted />
+    <CBTOverview />
+    <Ready />
+    <Catch />
+    <BadThoughtNote />
+    <IdentifyDistortions />
+    <BadThoughtDistortions />
+    <Challenge />
+    <WriteChallenge />
+    <AlternativeThought />
+    <ShowOff />
+    <GotIt
+      onPress={() => {
+        universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
+        handleScreenTransition();
+      }}
+    />
+  </Swiper>
+);
+
+interface ScreenProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
 
-export default class CBTOnBoardingScreen extends React.Component<Props> {
+export class CBTOnBoardingScreen extends React.Component<ScreenProps> {
+  static navigationOptions = {
+    header: null,
+  };
+
+  stopOnBoarding = () => {
+    universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
+    this.props.navigation.pop();
+  };
+
   render() {
     return (
       <Swiper
@@ -356,7 +402,7 @@ export default class CBTOnBoardingScreen extends React.Component<Props> {
         <WriteChallenge />
         <AlternativeThought />
         <ShowOff />
-        <GotIt onPress={this.props.toFormScreen} />
+        <GotIt onPress={this.stopOnBoarding} />
       </Swiper>
     );
   }
