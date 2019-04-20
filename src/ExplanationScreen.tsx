@@ -11,6 +11,7 @@ import {
   Header,
   IconButton,
   ActionButton,
+  Row,
 } from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
@@ -278,15 +279,34 @@ class ExplanationScreen extends React.Component<Props> {
             }}
           >
             <Header>quirk.</Header>
-            <ActionButton
-              title="Intro"
-              onPress={this.navigateToOnboardingScreen}
-            />
-            <IconButton
-              featherIconName={"edit"}
-              accessibilityLabel={i18n.t("accessibility.new_thought_button")}
-              onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}
-            />
+
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <View
+                style={{
+                  marginRight: 8,
+                }}
+              >
+                <ActionButton
+                  title="Intro"
+                  width={80}
+                  height={48}
+                  fillColor={theme.lightGray}
+                  textColor={theme.veryLightText}
+                  onPress={this.navigateToOnboardingScreen}
+                />
+              </View>
+              <IconButton
+                featherIconName={"edit"}
+                accessibilityLabel={i18n.t("accessibility.new_thought_button")}
+                onPress={() => this.props.navigation.navigate(CBT_FORM_SCREEN)}
+              />
+            </View>
           </View>
 
           <AllOrNothingThinking />

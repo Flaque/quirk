@@ -165,21 +165,6 @@ class SettingScreen extends React.Component<Props, State> {
                 onPress={() => this.toggleHistoryButtonLabels()}
               />
             </Row>
-
-            <Row
-              style={{
-                marginBottom: 18,
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SubHeader>*show intro screen</SubHeader>
-
-              <ActionButton
-                title="intro screen"
-                onPress={this.navigateToOnboardingScreen}
-              />
-            </Row>
           </Container>
         </ScrollView>
       </View>
