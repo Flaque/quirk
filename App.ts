@@ -21,7 +21,7 @@ const App = createStackNavigator(
     [SETTING_SCREEN]: SettingScreen,
   },
   {
-    initialRouteName: EXPLANATION_SCREEN,
+    initialRouteName: CBT_FORM_SCREEN,
     mode: "modal",
   }
 );
