@@ -8,7 +8,7 @@ import {
   Image,
 } from "react-native";
 import { getExercises, deleteExercise } from "./store";
-import { Header, Row, Container, IconButton, Label } from "./ui";
+import { Header, Row, Container, IconButton, Label, Paragraph } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN, SETTING_SCREEN } from "./screens";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
@@ -24,6 +24,8 @@ import Alerter from "./alerter";
 import alerts from "./alerts";
 import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
 import i18n from "./i18n";
+import { emojiForSlug } from "./distortions";
+import { take } from "lodash";
 
 const ThoughtItem = ({
   thought,
@@ -38,28 +40,40 @@ const ThoughtItem = ({
 }) => (
   <Row style={{ marginBottom: 18 }}>
     <TouchableOpacity
-      style={{
-        padding: 18,
-        backgroundColor: theme.lightGray,
-        borderRadius: 13,
-        borderLeftWidth: 18,
-        borderLeftColor: theme.blue,
-        flex: 1,
-        marginRight: 18,
-      }}
       onPress={() => onPress(thought)}
+      style={{
+        backgroundColor: "white",
+        borderColor: theme.lightGray,
+        borderBottomWidth: 2,
+        padding: 12,
+        borderRadius: 8,
+        borderWidth: 1,
+        marginRight: 18,
+        flex: 1,
+      }}
     >
-      <Text
+      <Paragraph
         style={{
-          color: theme.lightText,
-          fontWeight: "700",
+          color: theme.darkText,
+          fontWeight: "400",
           fontSize: 16,
+          marginBottom: 8,
         }}
       >
         {historyButtonLabel === "alternative-thought"
           ? thought.alternativeThought
           : thought.automaticThought}
-      </Text>
+      </Paragraph>
+      <Paragraph>
+        {take(
+          thought.cognitiveDistortions
+            .filter(distortion => distortion.selected)
+            .map(dist => emojiForSlug(dist.slug)),
+          6 // only take a max of 6
+        )
+          .join(" ")
+          .trim()}
+      </Paragraph>
     </TouchableOpacity>
 
     <IconButton
