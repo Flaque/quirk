@@ -4,74 +4,18 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import {
-  SubHeader,
-  Paragraph,
-  ThoughtDook,
-  Header,
-  IconButton,
-  ActionButton,
-} from "./ui";
+import { SubHeader, Paragraph, Header, IconButton, ActionButton } from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
 import theme from "./theme";
 import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
 
+import { BubbleThought } from "./Bubbles";
+
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
-
-const PurpleDook = () => (
-  <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
-    source={require(`../assets/purple/Dook.png`)}
-  />
-);
-
-const YellowDook = () => (
-  <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
-    source={require(`../assets/yellow/Dook.png`)}
-  />
-);
-
-const PinkDook = () => (
-  <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
-    source={require(`../assets/pink/Dook.png`)}
-  />
-);
-
-const ThoughtView = ({ children, color = "yellow" }) => {
-  const dooks = {
-    purple: <PurpleDook />,
-    yellow: <YellowDook />,
-    pink: <PinkDook />,
-  };
-
-  return (
-    <View
-      style={{
-        flexDirection: "row",
-        marginTop: 12,
-        paddingRight: 48,
-      }}
-    >
-      {dooks[color]}
-      <View
-        style={{
-          backgroundColor: theme.offwhite,
-          borderRadius: 8,
-          padding: 8,
-        }}
-      >
-        <Paragraph>{children}</Paragraph>
-      </View>
-    </View>
-  );
-};
-
 const Distortion = ({ children }) => (
   <View
     style={{
@@ -90,7 +34,7 @@ const AllOrNothingThinking = () => (
 
     <Paragraph>{i18n.t("all_or_nothing_thinking_explanation")}</Paragraph>
 
-    <ThoughtView>{i18n.t("all_or_nothing_thinking_thought")}</ThoughtView>
+    <BubbleThought>{i18n.t("all_or_nothing_thinking_thought")}</BubbleThought>
   </Distortion>
 );
 
@@ -102,9 +46,9 @@ const Catastrophizing = () => (
 
     <Paragraph>{i18n.t("catastrophizing_explanation")}</Paragraph>
 
-    <ThoughtView color="purple">
+    <BubbleThought color="purple">
       {i18n.t("catastrophizing_thought")}
-    </ThoughtView>
+    </BubbleThought>
   </Distortion>
 );
 
@@ -120,9 +64,9 @@ const EmotionalReasoning = () => (
 
     <Paragraph>{i18n.t("emotional_reasoning_explanation_2")}</Paragraph>
 
-    <ThoughtView color="pink">
+    <BubbleThought color="pink">
       {i18n.t("emotional_reasoning_thought")}
-    </ThoughtView>
+    </BubbleThought>
   </Distortion>
 );
 
@@ -134,9 +78,9 @@ const FortuneTelling = () => (
 
     <Paragraph>{i18n.t("fortune_telling_explanation")}</Paragraph>
 
-    <ThoughtView color="purple">
+    <BubbleThought color="purple">
       {i18n.t("fortune_telling_thought")}
-    </ThoughtView>
+    </BubbleThought>
   </Distortion>
 );
 
@@ -148,7 +92,7 @@ const Labeling = () => (
 
     <Paragraph>{i18n.t("labeling_explanation")}</Paragraph>
 
-    <ThoughtView>{i18n.t("labeling_thought")}</ThoughtView>
+    <BubbleThought>{i18n.t("labeling_thought")}</BubbleThought>
   </Distortion>
 );
 
@@ -160,7 +104,9 @@ const MagnificationOfTheNegative = () => (
 
     <Paragraph>{i18n.t("magnification_of_the_negative_explanation")}</Paragraph>
 
-    <ThoughtView>{i18n.t("magnification_of_the_negative_thought")}</ThoughtView>
+    <BubbleThought>
+      {i18n.t("magnification_of_the_negative_thought")}
+    </BubbleThought>
   </Distortion>
 );
 
@@ -172,7 +118,7 @@ const MindReading = () => (
 
     <Paragraph>{i18n.t("mind_reading_explanation")}</Paragraph>
 
-    <ThoughtView color="pink">{i18n.t("mind_reading_thought")}</ThoughtView>
+    <BubbleThought color="pink">{i18n.t("mind_reading_thought")}</BubbleThought>
   </Distortion>
 );
 
@@ -184,7 +130,9 @@ const MimizationOfThePositive = () => (
 
     <Paragraph>{i18n.t("minimization_of_the_positive_explanation")}</Paragraph>
 
-    <ThoughtView>{i18n.t("minimization_of_the_positive_thought")}</ThoughtView>
+    <BubbleThought>
+      {i18n.t("minimization_of_the_positive_thought")}
+    </BubbleThought>
   </Distortion>
 );
 
@@ -200,7 +148,9 @@ const OtherBlaming = () => (
 
     <Paragraph>{i18n.t("other_blaming_explanation_2")}</Paragraph>
 
-    <ThoughtView color="purple">{i18n.t("other_blaming_thought")}</ThoughtView>
+    <BubbleThought color="purple">
+      {i18n.t("other_blaming_thought")}
+    </BubbleThought>
   </Distortion>
 );
 
@@ -212,7 +162,7 @@ const OverGeneralization = () => (
 
     <Paragraph>{i18n.t("over_generalization_explanation")}</Paragraph>
 
-    <ThoughtView>{i18n.t("over_generalization_thought")}</ThoughtView>
+    <BubbleThought>{i18n.t("over_generalization_thought")}</BubbleThought>
   </Distortion>
 );
 
@@ -225,7 +175,7 @@ const SelfBlaming = () => (
 
     <Paragraph>{i18n.t("self_blaming_explanation")}</Paragraph>
 
-    <ThoughtView color="pink">{i18n.t("self_blaming_thought")}</ThoughtView>
+    <BubbleThought color="pink">{i18n.t("self_blaming_thought")}</BubbleThought>
   </Distortion>
 );
 
@@ -241,7 +191,7 @@ const ShouldStatements = () => (
 
     <Paragraph>{i18n.t("should_statements_explanation_2")}</Paragraph>
 
-    <ThoughtView>{i18n.t("should_statements_thought")}</ThoughtView>
+    <BubbleThought>{i18n.t("should_statements_thought")}</BubbleThought>
   </Distortion>
 );
 
