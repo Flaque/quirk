@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "../theme";
-import { SubHeader, Paragraph, RoundedButton } from "../ui";
+import { SubHeader, Paragraph, ActionButton } from "../ui";
 import posed from "react-native-pose";
 import { TouchableWithoutFeedback, View } from "react-native";
 import universalHaptic from "../haptic";
@@ -102,7 +102,7 @@ class AlertView extends React.Component<AlertViewProps> {
               justifyContent: "flex-end",
             }}
           >
-            <RoundedButton
+            <ActionButton
               title={"Got it."}
               onPress={() => {
                 this.setState({

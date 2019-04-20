@@ -4,10 +4,18 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, ThoughtDook, I, Header, IconButton } from "./ui";
+import {
+  SubHeader,
+  Paragraph,
+  ThoughtDook,
+  Header,
+  IconButton,
+  ActionButton,
+} from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
 import theme from "./theme";
+import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
 
 interface Props {
@@ -242,6 +250,10 @@ class ExplanationScreen extends React.Component<Props> {
     header: null,
   };
 
+  navigateToOnboardingScreen = () => {
+    this.props.navigation.navigate(CBT_ON_BOARDING_SCREEN);
+  };
+
   render() {
     return (
       <ScrollView
@@ -266,10 +278,33 @@ class ExplanationScreen extends React.Component<Props> {
             }}
           >
             <Header>quirk.</Header>
-            <IconButton
-              featherIconName={"edit"}
-              onPress={() => this.props.navigation.pop()}
-            />
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <View
+                style={{
+                  marginRight: 8,
+                }}
+              >
+                <ActionButton
+                  title="Intro"
+                  width={80}
+                  height={48}
+                  fillColor={theme.lightGray}
+                  textColor={theme.veryLightText}
+                  onPress={this.navigateToOnboardingScreen}
+                />
+              </View>
+              <IconButton
+                featherIconName={"edit"}
+                accessibilityLabel={i18n.t("accessibility.new_thought_button")}
+                onPress={() => this.props.navigation.pop()}
+              />
+            </View>
           </View>
 
           <AllOrNothingThinking />

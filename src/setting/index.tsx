@@ -16,6 +16,7 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
+import { CBT_ON_BOARDING_SCREEN } from "../screens";
 import { setSetting, getSettingOrSetDefault } from "./settingstore";
 import {
   HISTORY_BUTTON_LABEL_KEY,
@@ -81,6 +82,10 @@ class SettingScreen extends React.Component<Props, State> {
 
   navigateToList = () => {
     this.props.navigation.pop();
+  };
+
+  navigateToOnboardingScreen = () => {
+    this.props.navigation.navigate(CBT_ON_BOARDING_SCREEN);
   };
 
   toggleHistoryButtonLabels = () => {

@@ -218,12 +218,13 @@ export const RoundedSelectorButton = ({
   </TouchableOpacity>
 );
 
-export const RoundedButton = ({
+export const ActionButton = ({
   title,
   onPress,
   fillColor,
   textColor,
   width,
+  height,
   disabled,
 }: {
   title: string;
@@ -231,15 +232,20 @@ export const RoundedButton = ({
   fillColor?: string;
   textColor?: string;
   width?: number;
+  height?: number;
   disabled?: boolean;
 }) => (
   <TouchableOpacity
     style={{
       backgroundColor: fillColor,
       padding: 12,
-      borderRadius: 8,
+      borderRadius: 10,
       textAlign: "center",
+      justifyContent: "center",
+      alignItems: "center",
+      maxHeight: 48,
       width,
+      height,
     }}
     disabled={disabled}
     onPress={onPress}
@@ -257,7 +263,7 @@ export const RoundedButton = ({
   </TouchableOpacity>
 );
 
-RoundedButton.defaultProps = {
+ActionButton.defaultProps = {
   fillColor: theme.blue,
   textColor: "white",
   width: 120,
@@ -281,7 +287,7 @@ export const IconButton = ({
       width: 48,
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: 12,
+      borderRadius: 10,
       alignSelf: "center",
       ...style,
     }}

@@ -2,13 +2,8 @@ import React from "react";
 import { View, StatusBar } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { get } from "lodash";
-import { Container, Row, Header, RoundedButton, IconButton } from "./ui";
-import {
-  saveExercise,
-  exists,
-  setIsExistingUser,
-  getIsExistingUser,
-} from "./store";
+import { Container, Row, Header, ActionButton, IconButton } from "./ui";
+import { saveExercise, exists, getIsExistingUser } from "./store";
 import theme from "./theme";
 import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "./screens";
 import CBTForm from "./CBTForm";
@@ -21,8 +16,9 @@ import {
 import universalHaptic from "./haptic";
 import { AppLoading, Haptic, Constants } from "expo";
 import CBTView from "./CBTView";
-import CBTOnBoardingScreen from "./CBTOnBoardingScreen";
+import { CBTOnBoardingComponent } from "./CBTOnBoarding";
 import i18n from "./i18n";
+import { setIsExistingUser } from "./store";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -38,14 +34,14 @@ const CBTViewer = ({ thought, onEdit, onNew }) => {
       <CBTView thought={thought} />
 
       <Row>
-        <RoundedButton
+        <ActionButton
           fillColor="transparent"
           textColor={theme.blue}
           title={i18n.t("cbt_form.edit")}
           onPress={() => onEdit(thought.uuid)}
           disabled={false}
         />
-        <RoundedButton
+        <ActionButton
           title={i18n.t("cbt_form.new")}
           onPress={onNew}
           disabled={false}
@@ -151,13 +147,6 @@ export default class CBTFormScreen extends React.Component<Props, State> {
     });
   };
 
-  stopOnBoarding = () => {
-    universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
-    setIsExistingUser();
-
-    this.setState({ shouldShowOnBoarding: false });
-  };
-
   render() {
     const { thought, isEditing, shouldShowOnBoarding, isLoading } = this.state;
 
@@ -166,7 +155,14 @@ export default class CBTFormScreen extends React.Component<Props, State> {
     }
 
     if (shouldShowOnBoarding) {
-      return <CBTOnBoardingScreen toFormScreen={this.stopOnBoarding} />;
+      return (
+        <CBTOnBoardingComponent
+          handleScreenTransition={() => {
+            setIsExistingUser();
+            this.setState({ shouldShowOnBoarding: false });
+          }}
+        />
+      );
     }
 
     return (
