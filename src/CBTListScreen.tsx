@@ -236,7 +236,9 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   navigateToForm = () => {
-    this.props.navigation.pop();
+    this.props.navigation.navigate(CBT_FORM_SCREEN, {
+      thought: false,
+    });
   };
 
   navigateToFormWithThought = (thought: SavedThought) => {
