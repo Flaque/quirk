@@ -7,7 +7,7 @@ Copy the `src/locals/en.json` file to a new locale following [the ISO-639-1](htt
 For example, if I wanted to translate to Finnish like @Walther, I would do:
 
 ```
-mv src/locals/en.json src/locals/fi.json
+cp src/locals/en.json src/locals/fi.json
 ```
 
 Note that the convention typically uses the english name for the language, so no `suomi.json`! 😭
