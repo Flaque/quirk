@@ -59,4 +59,9 @@ const distortions: CognitiveDistortion[] = [
   return 0;
 }); // Alphabetical sorting
 
+export const emojiForSlug = (slug: string): string => {
+  const distortion = distortions.find(dist => dist.slug === slug);
+  return distortion.emoji || "🤷‍";
+};
+
 export default distortions;

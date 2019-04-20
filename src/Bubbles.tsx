@@ -24,7 +24,15 @@ const PinkBubble = () => (
   />
 );
 
-export const BubbleThought = ({ children, color = "yellow" }) => {
+export const BubbleThought = ({
+  children,
+  color = "yellow",
+  style,
+}: {
+  children: any;
+  color?: "yellow" | "purple" | "pink";
+  style?: any;
+}) => {
   const bubbles = {
     purple: <PurpleBubble />,
     yellow: <YellowBubble />,
@@ -37,6 +45,7 @@ export const BubbleThought = ({ children, color = "yellow" }) => {
         flexDirection: "row",
         marginTop: 12,
         paddingRight: 48,
+        ...style,
       }}
     >
       {bubbles[color]}
