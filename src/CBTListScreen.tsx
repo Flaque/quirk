@@ -45,7 +45,6 @@ const ThoughtItem = ({
         backgroundColor: "white",
         borderColor: theme.lightGray,
         borderBottomWidth: 2,
-        padding: 12,
         borderRadius: 8,
         borderWidth: 1,
         marginRight: 18,
@@ -58,22 +57,39 @@ const ThoughtItem = ({
           fontWeight: "400",
           fontSize: 16,
           marginBottom: 8,
+          paddingLeft: 12,
+          paddingRight: 12,
+          paddingTop: 12,
+          paddingBottom: 6,
         }}
       >
         {historyButtonLabel === "alternative-thought"
           ? thought.alternativeThought
           : thought.automaticThought}
       </Paragraph>
-      <Paragraph>
-        {take(
-          thought.cognitiveDistortions
-            .filter(distortion => distortion.selected)
-            .map(dist => emojiForSlug(dist.slug)),
-          6 // only take a max of 6
-        )
-          .join(" ")
-          .trim()}
-      </Paragraph>
+
+      <View
+        style={{
+          backgroundColor: theme.lightOffwhite,
+          paddingLeft: 12,
+          paddingRight: 12,
+          paddingBottom: 12,
+          paddingTop: 6,
+          margin: 4,
+          borderRadius: 8,
+        }}
+      >
+        <Paragraph>
+          {take(
+            thought.cognitiveDistortions
+              .filter(distortion => distortion.selected)
+              .map(dist => emojiForSlug(dist.slug)),
+            8 // only take a max of 8
+          )
+            .join(" ")
+            .trim()}
+        </Paragraph>
+      </View>
     </TouchableOpacity>
 
     <IconButton
