@@ -10,9 +10,10 @@ import nl from "./locals/nl_NL.json";
 import fi from "./locals/fi.json";
 import ru from "./locals/ru.json";
 import zhCN from "./locals/zh-CN.json";
+import pt from "./locals/pt-pt.json";
 
 i18n.fallbacks = true;
-i18n.translations = { fr, en, ko, pl, es, de, fi, nl, ru, "zh-CN": zhCN };
+i18n.translations = { fr, en, ko, pl, es, de, fi, nl, ru, "zh-CN": zhCN, pt-pt };
 i18n.locale = Localization.locale;
 
 export default i18n;
