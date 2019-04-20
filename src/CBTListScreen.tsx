@@ -226,9 +226,6 @@ class CBTListScreen extends React.Component<Props, State> {
   componentDidMount = () => {
     this.loadExercises();
     this.loadSettings();
-    setTimeout(() => {
-      this.setState({ showPopup: true });
-    }, 100);
   };
 
   navigateToSettings = () => {
