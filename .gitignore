@@ -10,3 +10,4 @@ npm-debug.*
 app.ipa
 app.apk
 *.log
+.env

@@ -11,6 +11,7 @@ import CBTFormScreen from "./src/CBTFormScreen";
 import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/setting";
 import { CBTOnBoardingScreen } from "./src/CBTOnBoarding";
+import withErrorBoundary from "./src/withErrorBoundary";
 
 const App = createStackNavigator(
   {
@@ -26,4 +27,4 @@ const App = createStackNavigator(
   }
 );
 
-export default createAppContainer(App);
+export default withErrorBoundary(createAppContainer(App));
