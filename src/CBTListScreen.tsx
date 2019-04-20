@@ -82,10 +82,12 @@ const ThoughtItem = ({
         <Paragraph>
           {take(
             thought.cognitiveDistortions
+              .filter(n => n) // Filters out any nulls or undefineds which can crop up
               .filter(distortion => distortion.selected)
               .map(dist => emojiForSlug(dist.slug)),
             8 // only take a max of 8
           )
+            .filter(n => n)
             .join(" ")
             .trim()}
         </Paragraph>

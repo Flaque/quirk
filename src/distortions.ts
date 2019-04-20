@@ -61,7 +61,7 @@ const distortions: CognitiveDistortion[] = [
 
 export const emojiForSlug = (slug: string): string => {
   const distortion = distortions.find(dist => dist.slug === slug);
-  return distortion.emoji || "🤷‍";
+  return distortion ? distortion.emoji : "🤷‍";
 };
 
 export default distortions;
