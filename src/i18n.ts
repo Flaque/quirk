@@ -24,7 +24,7 @@ i18n.translations = {
   nl,
   ru,
   "zh-CN": zhCN,
-  "pt-pt": ptPT,
+  "pt-PT": ptPT,
 };
 i18n.locale = Localization.locale;
 
