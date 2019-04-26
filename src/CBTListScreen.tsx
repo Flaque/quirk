@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Text,
   TouchableOpacity,
   ScrollView,
   StatusBar,
@@ -26,6 +25,7 @@ import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
 import i18n from "./i18n";
 import { emojiForSlug } from "./distortions";
 import { take } from "lodash";
+import { recordScreenCallOnFocus } from "./navigation";
 
 const ThoughtItem = ({
   thought,
@@ -190,6 +190,8 @@ class CBTListScreen extends React.Component<Props, State> {
     this.props.navigation.addListener("willFocus", () => {
       this.loadSettings();
     });
+
+    recordScreenCallOnFocus(this.props.navigation, "list");
   }
 
   loadExercises = (): void => {

@@ -12,6 +12,7 @@ import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
 
 import { BubbleThought } from "./Bubbles";
+import { recordScreenCallOnFocus } from "./navigation";
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -199,6 +200,11 @@ class ExplanationScreen extends React.Component<Props> {
   static navigationOptions = {
     header: null,
   };
+
+  constructor(props) {
+    super(props);
+    recordScreenCallOnFocus(this.props.navigation, "help");
+  }
 
   navigateToOnboardingScreen = () => {
     this.props.navigation.navigate(CBT_ON_BOARDING_SCREEN);

@@ -25,6 +25,7 @@ import {
   isHistoryButtonLabelSetting,
 } from "./settings";
 import i18n from "../i18n";
+import { recordScreenCallOnFocus } from "../navigation";
 
 export { HistoryButtonLabelSetting };
 
@@ -66,6 +67,7 @@ class SettingScreen extends React.Component<Props, State> {
     this.state = {
       ready: false,
     };
+    recordScreenCallOnFocus(this.props.navigation, "settings");
   }
 
   async componentDidMount() {
