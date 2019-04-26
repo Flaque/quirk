@@ -22,6 +22,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import { Haptic } from "expo";
+import { recordScreenCallOnFocus } from "./navigation";
 
 const thought: Thought = {
   automaticThought: i18n.t("onboarding_screen.auto_thought_ex"),
@@ -374,6 +375,12 @@ export class CBTOnBoardingScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
     header: null,
   };
+
+  constructor(props) {
+    super(props);
+
+    recordScreenCallOnFocus(this.props.navigation, "intro");
+  }
 
   stopOnBoarding = () => {
     universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
