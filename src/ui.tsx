@@ -54,7 +54,11 @@ FormContainer.propTypes = {
   style: PropTypes.object,
 };
 
-export const Header = ({ children, style }: ParentComponent) => (
+export const Header = ({
+  children,
+  style,
+  allowFontScaling,
+}: ParentComponent & { allowFontScaling?: boolean }) => (
   <Text
     style={{
       fontWeight: "900",
@@ -64,6 +68,7 @@ export const Header = ({ children, style }: ParentComponent) => (
       ...style,
     }}
     textBreakStrategy={"simple"}
+    allowFontScaling={allowFontScaling}
   >
     {children}
   </Text>

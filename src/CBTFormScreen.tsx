@@ -193,7 +193,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
                 accessibilityLabel={i18n.t("accessibility.help_button")}
                 onPress={() => this.props.navigation.push(EXPLANATION_SCREEN)}
               />
-              <Header>quirk</Header>
+              <Header allowFontScaling={false}>quirk</Header>
               <IconButton
                 accessibilityLabel={i18n.t("accessibility.list_button")}
                 featherIconName={"list"}
