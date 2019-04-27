@@ -5,7 +5,7 @@
     "privacy": "unlisted",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
-    "version": "1.8.6",
+    "version": "1.9.0",
     "orientation": "portrait",
     "githubUrl": "https://github.com/Flaque/quirk",
     "primaryColor": "#F8A5C2",
@@ -24,7 +24,7 @@
       "package": "tech.econn.quirk",
       "permissions": [],
       "icon": "./assets/android.png",
-      "versionCode": 11
+      "versionCode": 12
     },
     "hooks": {
       "postPublish": [
