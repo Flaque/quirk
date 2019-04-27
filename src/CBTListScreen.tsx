@@ -272,7 +272,7 @@ class CBTListScreen extends React.Component<Props, State> {
           <Container>
             <StatusBar barStyle="dark-content" />
             <Row style={{ marginBottom: 18 }}>
-              <Header>.quirk</Header>
+              <Header allowFontScaling={false}>.quirk</Header>
 
               <View style={{ flexDirection: "row" }}>
                 <IconButton

@@ -5,16 +5,14 @@ import {
   ParentComponent,
   Illustration,
   Container,
-  Paragraph,
   ThoughtDook,
   ActionButton,
 } from "./ui";
 import Swiper from "react-native-swiper";
 import universalHaptic from "./haptic";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import CBTView from "./CBTView";
 import { Thought } from "./thoughts";
-import { normalize } from "./sizes";
 import i18n from "./i18n";
 import {
   NavigationScreenProp,
@@ -38,18 +36,19 @@ const thought: Thought = {
 };
 
 const BigParagraph = ({ children, style }: ParentComponent) => (
-  <Paragraph
+  <Text
     style={{
-      fontSize: normalize(18),
+      fontSize: 18,
       margin: 0,
       padding: 12,
       marginRight: 25,
       borderRadius: 8,
+      color: theme.darkText,
       ...style,
     }}
   >
     {children}
-  </Paragraph>
+  </Text>
 );
 
 const ThoughtView = ({ children }) => (
@@ -77,32 +76,37 @@ const ThoughtView = ({ children }) => (
 );
 
 const Exaggerated = ({ children, style }: ParentComponent) => (
-  <Header
+  <Text
     style={{
       color: theme.pink,
+      fontWeight: "900",
       marginBottom: 0,
       margin: 0,
-      fontSize: normalize(48),
+      fontSize: 48,
       ...style,
     }}
+    allowFontScaling={false}
   >
     {children}
-  </Header>
+  </Text>
 );
 
 const LeftPushedHeader = ({ children, style }: ParentComponent) => (
-  <Header
+  <Text
     style={{
       // Small bump to make things appear more left-aligned
       paddingRight: 48,
+      fontWeight: "900",
       marginBottom: 0,
-      fontSize: normalize(48),
+      fontSize: 48,
       flexWrap: "wrap",
+      color: theme.darkText,
       ...style,
     }}
+    allowFontScaling={false}
   >
     {children}
-  </Header>
+  </Text>
 );
 
 const Main = ({ children, style }: ParentComponent) => (
