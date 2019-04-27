@@ -23,6 +23,7 @@
  */
 
 import { Segment } from "expo";
+import isInDev from "./isInDev";
 
 Segment.initialize({
   androidWriteKey: "ZivFALGI9FH1L4WiAEY3o5PDtKwvLLxB",
@@ -42,5 +43,8 @@ export type ScreenType = "main" | "help" | "intro" | "list" | "settings";
  * enough.
  */
 export function screen(val: ScreenType) {
+  if (isInDev()) {
+    return;
+  }
   Segment.screen(val);
 }
