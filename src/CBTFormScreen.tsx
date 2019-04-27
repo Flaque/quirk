@@ -20,6 +20,7 @@ import { CBTOnBoardingComponent } from "./CBTOnBoarding";
 import i18n from "./i18n";
 import { setIsExistingUser } from "./store";
 import { recordScreenCallOnFocus } from "./navigation";
+import * as stats from "./stats";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -103,6 +104,11 @@ export default class CBTFormScreen extends React.Component<Props, State> {
 
     getIsExistingUser().then(isExisting => {
       this.setState({ shouldShowOnBoarding: !isExisting, isLoading: false });
+
+      // New Users
+      if (!isExisting) {
+        stats.newuser();
+      }
     });
   }
 

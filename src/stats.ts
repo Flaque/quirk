@@ -48,3 +48,15 @@ export function screen(val: ScreenType) {
   }
   Segment.screen(val);
 }
+
+/**
+ * Bumps a counter everytime we find a _new_ user. This let's
+ * us roughly understand and then share how many downloads Quirk
+ * is getting.
+ */
+export function newuser() {
+  if (isInDev()) {
+    return;
+  }
+  Segment.track("newuser");
+}
