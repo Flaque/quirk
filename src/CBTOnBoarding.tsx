@@ -10,7 +10,7 @@ import {
 } from "./ui";
 import Swiper from "react-native-swiper";
 import universalHaptic from "./haptic";
-import { View, Text } from "react-native";
+import { View, Text, Dimensions } from "react-native";
 import CBTView from "./CBTView";
 import { Thought } from "./thoughts";
 import i18n from "./i18n";
@@ -35,10 +35,22 @@ const thought: Thought = {
   ],
 };
 
+// Really simple hack to get fontsizes mostly working
+const bigFont = (): number => {
+  const height = Dimensions.get("screen").height;
+  // size of iPhone SE
+  if (height <= 568) {
+    // argle bargle why are there so many screen sizes and no good
+    // scaling support 😭
+    return 32;
+  }
+  return 48;
+};
+
 const BigParagraph = ({ children, style }: ParentComponent) => (
   <Text
     style={{
-      fontSize: 18,
+      fontSize: mediumFont(),
       margin: 0,
       padding: 12,
       marginRight: 25,
@@ -75,21 +87,23 @@ const ThoughtView = ({ children }) => (
   </View>
 );
 
-const Exaggerated = ({ children, style }: ParentComponent) => (
-  <Text
-    style={{
-      color: theme.pink,
-      fontWeight: "900",
-      marginBottom: 0,
-      margin: 0,
-      fontSize: 48,
-      ...style,
-    }}
-    allowFontScaling={false}
-  >
-    {children}
-  </Text>
-);
+const Exaggerated = ({ children, style }: ParentComponent) => {
+  return (
+    <Text
+      style={{
+        color: theme.pink,
+        fontWeight: "900",
+        marginBottom: 0,
+        margin: 0,
+        fontSize: bigFont(),
+        ...style,
+      }}
+      allowFontScaling={false}
+    >
+      {children}
+    </Text>
+  );
+};
 
 const LeftPushedHeader = ({ children, style }: ParentComponent) => (
   <Text
@@ -98,7 +112,7 @@ const LeftPushedHeader = ({ children, style }: ParentComponent) => (
       paddingRight: 48,
       fontWeight: "900",
       marginBottom: 0,
-      fontSize: 48,
+      fontSize: bigFont(),
       flexWrap: "wrap",
       color: theme.darkText,
       ...style,
