@@ -50,7 +50,7 @@ const bigFont = (): number => {
 const BigParagraph = ({ children, style }: ParentComponent) => (
   <Text
     style={{
-      fontSize: mediumFont(),
+      fontSize: 18,
       margin: 0,
       padding: 12,
       marginRight: 25,
