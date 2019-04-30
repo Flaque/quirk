@@ -10,7 +10,7 @@ For example, if I wanted to translate to Finnish like @Walther, I would do:
 cp src/locals/en.json src/locals/fi.json
 ```
 
-Note that the convention typically uses the english name for the language, so no `suomi.json`! 😭
+Note that the convention typically uses the English name for the language, so no `suomi.json`! 😭
 
 ## Fill out the JSON file
 
@@ -43,7 +43,7 @@ Then go on github, click "New Pull Request", and then fill in your branch and ma
 
 <img width="825" alt="Screen Shot 2019-04-06 at 5 17 52 PM" src="https://user-images.githubusercontent.com/5942769/55676761-f37af500-588f-11e9-9c4a-fc205ca2043e.png">
 
-## Then, give a little description of what your doing and open your PR!
+## Then, give a little description of what you're doing and open your PR!
 
 <img width="834" alt="Screen Shot 2019-04-06 at 5 19 37 PM" src="https://user-images.githubusercontent.com/5942769/55676770-363ccd00-5890-11e9-96f9-f797f65fc3ef.png">
 
