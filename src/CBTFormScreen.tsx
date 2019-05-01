@@ -3,7 +3,7 @@ import { View, StatusBar } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { get } from "lodash";
 import { Container, Row, Header, ActionButton, IconButton } from "./ui";
-import { saveExercise, exists, getIsExistingUser } from "./store";
+import { saveExercise, exists, getIsExistingUser } from "./thoughtstore";
 import theme from "./theme";
 import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "./screens";
 import CBTForm from "./CBTForm";
@@ -18,9 +18,10 @@ import { AppLoading, Haptic, Constants } from "expo";
 import CBTView from "./CBTView";
 import { CBTOnBoardingComponent } from "./CBTOnBoarding";
 import i18n from "./i18n";
-import { setIsExistingUser } from "./store";
+import { setIsExistingUser } from "./thoughtstore";
 import { recordScreenCallOnFocus } from "./navigation";
 import * as stats from "./stats";
+import * as flagstore from "./flagstore";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -61,6 +62,7 @@ interface State {
   thought: Thought | SavedThought;
   isEditing: boolean;
   shouldShowOnBoarding: boolean;
+  shouldShowHelpBadge: boolean;
   isLoading: boolean;
 }
 
@@ -74,6 +76,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
     isEditing: true,
     shouldShowOnBoarding: false,
     isLoading: true,
+    shouldShowHelpBadge: false,
   };
 
   constructor(props) {
@@ -109,6 +112,10 @@ export default class CBTFormScreen extends React.Component<Props, State> {
       if (!isExisting) {
         stats.newuser();
       }
+    });
+
+    flagstore.get("start-help-badge", "true").then(val => {
+      this.setState({ shouldShowHelpBadge: val });
     });
   }
 
@@ -157,7 +164,13 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { thought, isEditing, shouldShowOnBoarding, isLoading } = this.state;
+    const {
+      thought,
+      isEditing,
+      shouldShowOnBoarding,
+      isLoading,
+      shouldShowHelpBadge,
+    } = this.state;
 
     if (isLoading) {
       return <AppLoading onError={console.warn} />;
@@ -197,7 +210,13 @@ export default class CBTFormScreen extends React.Component<Props, State> {
               <IconButton
                 featherIconName={"help-circle"}
                 accessibilityLabel={i18n.t("accessibility.help_button")}
-                onPress={() => this.props.navigation.push(EXPLANATION_SCREEN)}
+                onPress={() => {
+                  flagstore.setFalse("start-help-badge").then(() => {
+                    this.setState({ shouldShowHelpBadge: false });
+                    this.props.navigation.push(EXPLANATION_SCREEN);
+                  });
+                }}
+                hasBadge={shouldShowHelpBadge}
               />
               <Header allowFontScaling={false}>quirk</Header>
               <IconButton

@@ -11,6 +11,7 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
+import posed from "react-native-pose";
 
 export interface ParentComponent {
   children: any;
@@ -279,11 +280,13 @@ export const IconButton = ({
   accessibilityLabel,
   onPress,
   style,
+  hasBadge,
 }: {
   featherIconName: string;
   accessibilityLabel: string;
   onPress: () => void;
   style?: object;
+  hasBadge?: boolean;
 }) => (
   <TouchableOpacity
     style={{
@@ -294,10 +297,25 @@ export const IconButton = ({
       alignItems: "center",
       borderRadius: 10,
       alignSelf: "center",
+      position: "relative",
       ...style,
     }}
+    accessibilityLabel={accessibilityLabel}
     onPress={onPress}
   >
+    {hasBadge && (
+      <View
+        style={{
+          height: 20,
+          width: 20,
+          borderRadius: 24,
+          backgroundColor: theme.pink,
+          position: "absolute",
+          bottom: 34,
+          left: 34,
+        }}
+      />
+    )}
     <Feather name={featherIconName} size={24} color={theme.veryLightText} />
   </TouchableOpacity>
 );
