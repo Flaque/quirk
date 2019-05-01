@@ -6,7 +6,7 @@ import {
   View,
   Image,
 } from "react-native";
-import { getExercises, deleteExercise } from "./store";
+import { getExercises, deleteExercise } from "./thoughtstore";
 import { Header, Row, Container, IconButton, Label, Paragraph } from "./ui";
 import theme from "./theme";
 import { CBT_FORM_SCREEN, SETTING_SCREEN } from "./screens";
