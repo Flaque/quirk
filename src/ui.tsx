@@ -5,12 +5,14 @@ import {
   TouchableOpacity,
   ImageSourcePropType,
   Image,
+  Animated,
 } from "react-native";
 import PropTypes from "prop-types";
 import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
+import posed from "react-native-pose";
 
 export interface ParentComponent {
   children: any;
@@ -274,33 +276,97 @@ ActionButton.defaultProps = {
   width: 120,
 };
 
-export const IconButton = ({
-  featherIconName,
-  accessibilityLabel,
-  onPress,
-  style,
-}: {
-  featherIconName: string;
-  accessibilityLabel: string;
-  onPress: () => void;
-  style?: object;
-}) => (
-  <TouchableOpacity
-    style={{
-      backgroundColor: theme.lightGray,
-      height: 48,
-      width: 48,
-      justifyContent: "center",
-      alignItems: "center",
-      borderRadius: 10,
-      alignSelf: "center",
-      ...style,
-    }}
-    onPress={onPress}
-  >
-    <Feather name={featherIconName} size={24} color={theme.veryLightText} />
-  </TouchableOpacity>
-);
+export const WiggledComponent = posed()({
+  wiggled: {
+    rotate: "45deg",
+  },
+  stable: {
+    rotate: "0deg",
+  },
+});
+
+export class IconButton extends React.Component<
+  {
+    featherIconName: string;
+    accessibilityLabel: string;
+    onPress: () => void;
+    style?: object;
+    doesWiggle?: boolean;
+  },
+  {
+    pose: "stable" | "wiggled";
+    animationOver: boolean;
+  }
+> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pose: "stable",
+      animationOver: false,
+    };
+  }
+
+  componentDidMount() {
+    if (this.state.animationOver) {
+      return;
+    }
+
+    const delay = 1500;
+    const duration = 100;
+
+    if (this.props.doesWiggle) {
+      setTimeout(() => {
+        this.setWiggled();
+
+        setTimeout(() => {
+          this.setStable();
+        }, duration);
+      }, delay);
+    }
+  }
+
+  setWiggled = () => {
+    this.setState({ pose: "wiggled" });
+  };
+
+  setStable = () => {
+    this.setState({ pose: "stable", animationOver: true });
+  };
+
+  render() {
+    const { featherIconName, accessibilityLabel, onPress, style } = this.props;
+    const { pose } = this.state;
+
+    return (
+      <WiggledComponent pose={pose}>
+        {({ rotate }) => (
+          <Animated.View style={{ transform: [{ rotate }] }}>
+            <TouchableOpacity
+              style={{
+                backgroundColor: theme.lightGray,
+                height: 48,
+                width: 48,
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 10,
+                alignSelf: "center",
+                ...style,
+              }}
+              onPress={onPress}
+              accessibilityLabel={accessibilityLabel}
+            >
+              <Feather
+                name={featherIconName}
+                size={24}
+                color={theme.veryLightText}
+              />
+            </TouchableOpacity>
+          </Animated.View>
+        )}
+      </WiggledComponent>
+    );
+  }
+}
 
 IconButton.propTypes = {
   featherIconName: PropTypes.string.isRequired,

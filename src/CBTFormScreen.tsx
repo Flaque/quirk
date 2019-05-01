@@ -2,7 +2,14 @@ import React from "react";
 import { View, StatusBar } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { get } from "lodash";
-import { Container, Row, Header, ActionButton, IconButton } from "./ui";
+import {
+  Container,
+  Row,
+  Header,
+  ActionButton,
+  IconButton,
+  WiggledComponent,
+} from "./ui";
 import { saveExercise, exists, getIsExistingUser } from "./store";
 import theme from "./theme";
 import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "./screens";
@@ -198,6 +205,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
                 featherIconName={"help-circle"}
                 accessibilityLabel={i18n.t("accessibility.help_button")}
                 onPress={() => this.props.navigation.push(EXPLANATION_SCREEN)}
+                doesWiggle={true}
               />
               <Header allowFontScaling={false}>quirk</Header>
               <IconButton
