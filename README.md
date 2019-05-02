@@ -28,6 +28,9 @@ Some amazing folks have helped build the Quirk you see today.
 - [@jinto](https://github.com/jinto) for the amazing Korean translation 🇰🇷
 - [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and helping guide the entire translation effort. 🎉
 - [@akinariobi](https://github.com/akinariobi) for the Russian translation 🇷🇺 
+- [@miguelmf](https://github.com/miguelmf) for the Portugese translation 🇵🇹
+- [@comradekingu](https://github.com/comradekingu) for the Norweigan Bokmål translation 🇳🇴
+- [@micheleriva](https://github.com/micheleriva) for the Italian translation 🇮🇹
 
 ## Running Locally
 
