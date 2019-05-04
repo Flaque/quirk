@@ -67,5 +67,18 @@ export function newuser() {
  * or if it's too long.
  */
 export function endedOnboarding() {
+  if (isInDev()) {
+    return;
+  }
   Segment.track("ended_onboarding");
+}
+
+/**
+ * Thought Recorded
+ */
+export function thoughtRecorded() {
+  if (isInDev()) {
+    return;
+  }
+  Segment.track("thought_recorded");
 }

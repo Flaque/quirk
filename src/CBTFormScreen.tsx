@@ -135,6 +135,7 @@ export default class CBTFormScreen extends React.Component<Props, State> {
     universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
 
     saveExercise(this.state.thought).then(thought => {
+      stats.thoughtRecorded();
       this.setState({ isEditing: false, thought });
     });
   };
