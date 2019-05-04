@@ -10,13 +10,11 @@ import pl from "./locals/pl.json";
 import nl from "./locals/nl_NL.json";
 import fi from "./locals/fi.json";
 import ru from "./locals/ru.json";
-import zhCN from "./locals/zh-CN.json";
+import zhHans from "./locals/zh-Hans.json";
 import ptPT from "./locals/pt-pt.json";
 import ptBR from "./locals/pt-br.json";
 import nb from "./locals/nb.json";
 import sv from "./locals/sv.json";
-
-
 
 i18n.fallbacks = true;
 i18n.translations = {
@@ -30,7 +28,7 @@ i18n.translations = {
   fi,
   nl,
   ru,
-  "zh-CN": zhCN,
+  "zh-Hans": zhHans,
   "pt-PT": ptPT,
   "pt-BR": ptBR,
   nb,
