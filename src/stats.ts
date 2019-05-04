@@ -60,3 +60,12 @@ export function newuser() {
   }
   Segment.track("newuser");
 }
+
+/**
+ * Records if a user finished onboarding. This helps us
+ * understand if there's a bug in the onboarding flow,
+ * or if it's too long.
+ */
+export function endedOnboarding() {
+  Segment.track("ended_onboarding");
+}

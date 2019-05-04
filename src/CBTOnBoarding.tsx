@@ -21,6 +21,7 @@ import {
 } from "react-navigation";
 import { Haptic } from "expo";
 import { recordScreenCallOnFocus } from "./navigation";
+import * as stats from "./stats";
 
 const thought: Thought = {
   automaticThought: i18n.t("onboarding_screen.auto_thought_ex"),
@@ -379,6 +380,7 @@ export const CBTOnBoardingComponent = ({
     <GotIt
       onPress={() => {
         universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
+        stats.endedOnboarding();
         handleScreenTransition();
       }}
     />
@@ -402,6 +404,7 @@ export class CBTOnBoardingScreen extends React.Component<ScreenProps> {
 
   stopOnBoarding = () => {
     universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
+    stats.endedOnboarding();
     this.props.navigation.pop();
   };
 

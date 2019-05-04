@@ -42,7 +42,7 @@
       "line1": "Let's go over the steps."
     },
     "catch": {
-      "line1": "1. We'll start by",
+      "line1": "We'll start by",
       "emphasis1": "just writing down",
       "line2": "the automatic thoughts when they happen."
     },
@@ -56,18 +56,18 @@
     },
     "bad_distortions": {
       "line1": "Do we really know George will hate us? If not, we're",
-      "emphasis1": "Mind Reading",
+      "emphasis1": "🧠 Mind Reading",
       "line2": "I missed George's party, he must hate me."
     },
     "challenge_screen": {
-      "line1": "3. Why isn't this thought realistic?",
+      "line1": "Why isn't this thought realistic?",
       "emphasis1": "Challenge it."
     },
     "write_challenge": {
       "line1": "We'll write something like this:"
     },
     "alt_thought": {
-      "line1": "4. Finally, we'll write an",
+      "line1": "Finally, we'll write an",
       "emphasis1": "alternative thought."
     },
     "show_off": {
