@@ -13,6 +13,9 @@ import ru from "./locals/ru.json";
 import zhCN from "./locals/zh-CN.json";
 import ptPT from "./locals/pt-pt.json";
 import nb from "./locals/nb.json";
+import sv from "./locals/sv.json";
+
+
 
 i18n.fallbacks = true;
 i18n.translations = {
@@ -29,6 +32,7 @@ i18n.translations = {
   "zh-CN": zhCN,
   "pt-PT": ptPT,
   nb,
+  sv,
 };
 i18n.locale = Localization.locale;
 

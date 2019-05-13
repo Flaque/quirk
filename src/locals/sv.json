@@ -1,0 +1,141 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Jag missade George's fest, han måste vara arg på mig nu.",
+    "challenge_ex": "George vet att jag inte alltid kan vara med på allt. Jag skulle inte vara arg på honom om inte han kom till min fest en gång.\n\nJag borde behandla mig själv som jag hade behandlat andra.",
+    "alt_thought_ex": "Det är sant att jag missade Georges fest, jag kan be om ursäkt, och han kommer med all sannolikhet förlåta mig.",
+    "cog_distortion": { "label": "Tankeläsning", "slug": "tanke-läsning" },
+    "intro": {
+      "line1": "Välkommen till",
+      "emphasis1": "quirk",
+      "line2": ", ",
+      "emphasis2": "Kognitiv Beteende Terapi (KBT)",
+      "line3": "Appen."
+    },
+    "crash_course": {
+      "line1": "Detta är en",
+      "emphasis1": "snabbkurs",
+      "line2": "i KBT och",
+      "emphasis2": "inte ett alternativ",
+      "line3": "till en utbildad terapeut."
+    },
+    "mood_thoughts": {
+      "line1": "Ett:",
+      "emphasis1": "dina tankar skapar ditt mående."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Två: dina tankar kan vara",
+      "emphasis1": "automatiska."
+    },
+    "your_distorted": {
+      "line1": "Tre: automatiska tankar kan vara",
+      "emphasis1": "förvrängda."
+    },
+    "cbt_overview": {
+      "line1": "Målet med KBT är att känna igen",
+      "emphasis1": "förvrängda tankar",
+      "line2": "och",
+      "emphasis2": "ersätta dem",
+      "line3": "med mer verkliga tankar."
+    },
+    "ready": {
+      "emphasis1": "Redo?",
+      "line1": "Låt oss ge igenom stegen."
+    },
+    "catch": {
+      "line1": "Vi börjar med",
+      "emphasis1": "att skriva ner",
+      "line2": "automatiska tankar när de kommer till oss."
+    },
+    "bad_thought_note": {
+      "line1": "Skriv ner tanken:",
+      "line2": "Jag missade George's fest, han måste vara arg på mig nu."
+    },
+    "identify_distortions": {
+      "line1": "Leta efter",
+      "emphasis1": "Kognitiva förvrängningar"
+    },
+    "bad_distortions": {
+      "line1": "Vet vi verkligen att George kommer att hata oss? Om inte så försöker vi oss på tankeläsning.",
+      "emphasis1": "🧠 Tankeläsning",
+      "line2": "Jag missade George's fest, han måste vara arg på mig nu."
+    },
+    "challenge_screen": {
+      "line1": "Varför är inte denna tanken realistisk?",
+      "emphasis1": "Utmana den!"
+    },
+    "write_challenge": {
+      "line1": "Vi skriver något i denna stilen:"
+    },
+    "alt_thought": {
+      "line1": "Till sist skall vi skriva en",
+      "emphasis1": "alternativ tanke."
+    },
+    "show_off": {
+      "line1": "Hitta den senare:"
+    },
+    "got_it": {
+      "line1": "Och det är faktiskt allt!",
+      "btn_title": "Nu kör vi!"
+    }
+  },
+  "auto_thought": "automatisk tanke",
+  "cog_distortion": "Kognitiv Förvrängning",
+  "challenge": "Utmaning",
+  "alt_thought": "Alternativ tanke",
+  "cbt_form": {
+    "edit": "Ändra",
+    "new": "Ny",
+    "save": "Spara",
+    "auto_thought_placeholder": "Vad händer?",
+    "cog_distortion": "Kognitiv Förvrängning",
+    "challenged": "Utmaning",
+    "changed_placeholder": "Ifrågasätt tanken!",
+    "alt_thought_placeholder": "Hur skulle vi kunna tänka istället?"
+  },
+  "all_or_nothing_thinking": "Allt eller inget tänkande",
+  "all_or_nothing_thinking_explanation": "Denna förvrängning sker när vi ser allt svart eller vitt. Om vi tror att ett litet fel hos oss själva betyder att vi är totalt värdelösa, så håller tänker vi i termer av svart och vitt.",
+  "all_or_nothing_thinking_thought": "Jag klanatade mig på intervjun, det är ingen som vill anställa mig nu.",
+  "catastrophizing": "Katastroftankar",
+  "catastrophizing_explanation": "Om vi tar ett litet problem och blåser upp det till enorma proportioner, så har vi katastroftankar. Gjorde du ett litet misstag på jobbet, och du oroar dig för att någon skall upptäcka det, även om det inte var något allvarligt? Då kan du ha katastroftankar.",
+  "catastrophizing_thought": "Det sticker lite i fingrarna, kanske jag håller på att få en hjärtinfarkt.",
+  "emotional_reasoning": "Känslomässigt Resonemang",
+  "emotional_reasoning_explanation_1": "\"Det känns så, så det måste vara sant.\" Om du kommer på dig själv med att rättfärdiga \"faran\" med något ofarligt för du är rädd för det, då använder du känslomässigt resonemang. Saker är inte farliga bara för att vi är rädda för dem, och vi är inte dåliga bara för att vi tror det.",
+  "emotional_reasoning_explanation_2": "Denna är ofta svår att känna igen. Det krävs lite ansträngning för att känna igen när ditt sinne väljer att följa denna logiken.",
+  "emotional_reasoning_thought": "Jag känner mig skyldig, därför måste jag ha gjort något felaktigt.",
+  "fortune_telling": "Spå framtiden",
+  "fortune_telling_explanation": "Denna avvikelse händer när vi försöker spå framtiden. Det är ofta vi överskattar vår förmåga att förutsäga vad som skall hända. Ofta börjar vi då oroa oss för att något skall inträffa och börjar leta efter bevis för att det kommer att ske.",
+  "fortune_telling_thought": "Flygplanet som jag sitter på kommer att krasha.",
+  "labeling": "Märkning",
+  "labeling_explanation": "Om vi tar en egenskap hos en person och applicerar den på hela personen, så använder vi märkning. Om någon avfärdar oss så kanske inte de är dumma, de kanske bara har bråttom. Detta gäller även oss själva. Bara för att vi gör ett misstag betyder det inte att vi är misslyckade. ",
+  "labeling_thought": "Jag fick underkänt på ett prov, så jag måste vara en dålig elev.",
+  "magnification_of_the_negative": "Förstora det Negativa",
+  "magnification_of_the_negative_explanation": "Om du bedömer en situation enbart från det negativa och inte väger in det positiva, förstorar du troligen det negativa. Om du hela tiden kritiserar dig själv för en dålig arbetsintervju, så filtrerar du troligen ut all erfarenhet du fick från intervjun.",
+  "magnification_of_the_negative_thought": "Jag åt hälsosamt hela helgen, men hoppade över träningen.",
+  "mind_reading": "Tankeläsning",
+  "mind_reading_explanation": "Om vi oroar oss för vad någon annan tycker om oss, så försöker vi troligen oss på tankeläsning. Om inte personen berättar vad det tänker, så har vi ingen aning om vad de faktiskt tänker. Varför tro det värsta tänkbara?",
+  "mind_reading_thought": "Jag var nog otrevlig mot George, han måste hata mig nu.",
+  "minimization_of_the_positive": "Minimera det Postiva",
+  "minimization_of_the_positive_explanation": "Om vi undervärderar de bra sakerna som händer oss, så minimerar vi det postiva. Även inte vår dag var 100% som vi tänkt oss, betyder det inte att vi skall glömma de 60% som gick bra.",
+  "minimization_of_the_positive_thought": "Många gillade min presentation, men jag stakade mig lite i inledningen, så presentationen blev dålig.",
+  "other_blaming": "Skylla på andra",
+  "other_blaming_explanation_1": "Om en dålig situation som uppstår måste vara någon annans fel så skyller vi på andra. Om du misslyckades på ett prov och du skyller på läraren, fokuserar du din energi på fel saker. Om någon tränger dig på motorvägen? Om du tutar, viftar med handen, ger dem fingret, hur hjälper det? Du blev fortfarande trängd och har nu även blivit arg!",
+  "other_blaming_explanation_2": "Detta betyder inte att man behöver lasta sig själv för varje negativ situation. Man behöver inte skylla på någon. Om man låter situationen passera utan att lägga skuld, då behöver man inte skylla på någon.",
+  "other_blaming_thought": "Den där personen tar för långt tid på sig i kön, så jag kommer att bli sen!",
+  "over_generalization": "Övergeneralisera",
+  "over_generalization_explanation": "Om vi drar slutsatser på enbart ett exempel, så övergeneraliserar vi. Om du gör en dålig presentation och likställer det med att du är \"dålig\" på att presentera, så övergeneraliserar du.",
+  "over_generalization_thought": "Ingen frågade mig om jag ville dansa, så jag kommer aldrig att få dansa. ",
+  "self_blaming": "Skylla på sig själv",
+  "self_blaming_explanation": "Om du belastar dig själv helt och hållet för en negativ situation , så är detta att skylla på sig själv. Du behöver inte vara orsaken för allt dåligt som händer. Om du fastnar i trafiken och skyller det på att du inte åkte tidigare, så skyller du på dig själv. Skulle du beskylla någon annan på samma sätt?",
+  "self_blaming_thought": "Min son har dåliga betyg, därför är jag en dålig förälder.",
+  "should_statements": "\"Borde\" uttalanden",
+  "should_statements_explanation_1": "Om du ger någon ansvar för saker de inte kan bära, så tänker du i felaktiga \"borde\" banor. Om du till exemepl är flygrädd och du intalar dig själv att \"Jag borde inte vara rädd, för att flyga är säkert\", så lägger du en felaktig last på dig själv. Du är helt enkelt bara flygrädd! ",
+  "should_statements_explanation_2": "\"Borde\" uttalanden kan kännas löjliga när man tänker, och det är just precis det de är. De är ologiska.",
+  "should_statements_thought": "Jag är vuxen, jag borde inte ha dessa mentala problem.",
+  "accessibility": {
+    "help_button": "hjälp",
+    "list_button": "lista tankar",
+    "new_thought_button": "ny tanke",
+    "settings_button": "inställningar",
+    "delete_thought_button": "ta bort tanke"
+  }
+}
