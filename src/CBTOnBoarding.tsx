@@ -197,6 +197,7 @@ const YourThoughtsArentYourThoughts = () => (
       <Exaggerated>
         {i18n.t("onboarding_screen.thoughts_arent_thoughts.emphasis1")}
       </Exaggerated>
+      {i18n.t("onboarding_screen.thoughts_arent_thoughts.line2")}
     </LeftPushedHeader>
   </Main>
 );
@@ -208,6 +209,7 @@ const YourThoughtsAreDistorted = () => (
       <Exaggerated>
         {i18n.t("onboarding_screen.your_distorted.emphasis1")}
       </Exaggerated>
+      {i18n.t("onboarding_screen.your_distorted.line2")}
     </LeftPushedHeader>
   </Main>
 );
