@@ -1,5 +1,6 @@
 {
   "expo": {
+    "icon": "./assets/ios.png",
     "name": "quirk",
     "slug": "quirk",
     "privacy": "unlisted",
