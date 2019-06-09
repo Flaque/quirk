@@ -23,6 +23,7 @@
 
 */
 import { AsyncStorage } from "react-native";
+import { userGrandfathered } from "../stats";
 
 const FREE_SUBSCRIPTION_KEY = "@Grandfathered:free-subscription";
 
@@ -40,6 +41,7 @@ export async function isGrandfatheredIntoFreeSubscription(): Promise<boolean> {
 export async function grandfatherUserIntoFreeSubscription() {
   try {
     await AsyncStorage.setItem(FREE_SUBSCRIPTION_KEY, "true");
+    userGrandfathered();
   } catch (err) {
     console.error(err);
   }
