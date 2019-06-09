@@ -31,7 +31,13 @@ Segment.initialize({
 });
 
 // Don't rename these; it can mess a bunch of stuff down the pipe
-export type ScreenType = "form" | "help" | "intro" | "list" | "settings";
+export type ScreenType =
+  | "form"
+  | "help"
+  | "intro"
+  | "list"
+  | "settings"
+  | "payments";
 
 /**
  * Screen calls bump a counter every time someone sees a particular screen.

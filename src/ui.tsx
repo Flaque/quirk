@@ -11,7 +11,6 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
-import posed from "react-native-pose";
 
 export interface ParentComponent {
   children: any;
