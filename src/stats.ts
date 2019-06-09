@@ -55,6 +55,13 @@ export function screen(val: ScreenType) {
   Segment.screen(val);
 }
 
+export function userGrandfathered() {
+  if (isInDev()) {
+    return;
+  }
+  Segment.track("user_grandfathered");
+}
+
 /**
  * Bumps a counter everytime we find a _new_ user. This let's
  * us roughly understand and then share how many downloads Quirk
