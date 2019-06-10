@@ -48,6 +48,7 @@
     "eslint-config-xo-react": "^0.17.0",
     "eslint-plugin-react": "^7.11.1",
     "prettier": "1.15.3",
+    "react-native-dotenv": "^0.2.0",
     "react-native-typescript-transformer": "^1.2.11",
     "ts-jest": "^24.0.2",
     "tslint": "^5.12.0",

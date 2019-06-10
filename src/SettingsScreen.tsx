@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, View, StatusBar } from "react-native";
-import theme from "../theme";
+import theme from "./theme";
 import { Constants } from "expo";
 import {
   Header,
@@ -10,22 +10,25 @@ import {
   SubHeader,
   Paragraph,
   RoundedSelectorButton,
-} from "../ui";
+  B,
+} from "./ui";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { CBT_ON_BOARDING_SCREEN } from "../screens";
-import { setSetting, getSettingOrSetDefault } from "./settingstore";
+import { CBT_ON_BOARDING_SCREEN } from "./screens";
+import { setSetting, getSettingOrSetDefault } from "./setting/settingstore";
 import {
   HISTORY_BUTTON_LABEL_KEY,
   HISTORY_BUTTON_LABEL_DEFAULT,
   HistoryButtonLabelSetting,
   isHistoryButtonLabelSetting,
-} from "./settings";
-import i18n from "../i18n";
-import { recordScreenCallOnFocus } from "../navigation";
+} from "./setting";
+import i18n from "./i18n";
+import { recordScreenCallOnFocus } from "./navigation";
+import { getSubscriptionExpirationDate } from "./subscriptions/subscriptionstore";
+import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 
 export { HistoryButtonLabelSetting };
 
@@ -48,6 +51,39 @@ export async function getHistoryButtonLabel(): Promise<
   return value;
 }
 
+const GrandfatheredInFreeQuirk = () => (
+  <>
+    <Paragraph
+      style={{
+        marginBottom: 4,
+      }}
+    >
+      <B>You've been given Quirk for free! 🙌</B>
+    </Paragraph>
+    <Paragraph
+      style={{
+        marginBottom: 49,
+      }}
+    >
+      This will go away if you uninstall the app. Feel free to reach out by
+      email ({"ejc" + "@" + "quirk.fyi"}) if you get a new phone; we'll work
+      something out. Thanks for being an early supporter! ❤️
+    </Paragraph>
+  </>
+);
+
+const SubscriptionExpirationDate = ({ expirationDate }) => (
+  <>
+    <Paragraph
+      style={{
+        marginBottom: 9,
+      }}
+    >
+      Your subscription will renew on {expirationDate}.
+    </Paragraph>
+  </>
+);
+
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
@@ -55,6 +91,8 @@ interface Props {
 interface State {
   ready: boolean;
   historyButtonLabel?: HistoryButtonLabelSetting;
+  isGrandfatheredIntoSubscription?: boolean;
+  subscriptionExpirationDate?: string;
 }
 
 class SettingScreen extends React.Component<Props, State> {
@@ -66,6 +104,7 @@ class SettingScreen extends React.Component<Props, State> {
     super(props);
     this.state = {
       ready: false,
+      isGrandfatheredIntoSubscription: false,
     };
     recordScreenCallOnFocus(this.props.navigation, "settings");
   }
@@ -78,6 +117,21 @@ class SettingScreen extends React.Component<Props, State> {
     const historyButtonLabel = await getHistoryButtonLabel();
     this.setState({
       historyButtonLabel,
+    });
+
+    // Check subscription status
+    if (await isGrandfatheredIntoFreeSubscription()) {
+      this.setState({
+        isGrandfatheredIntoSubscription: true,
+      });
+    } else {
+      const subscriptionExpirationDate = await getSubscriptionExpirationDate();
+      this.setState({
+        subscriptionExpirationDate,
+      });
+    }
+
+    this.setState({
       ready: true,
     });
   };
@@ -165,6 +219,23 @@ class SettingScreen extends React.Component<Props, State> {
                 selected={historyButtonLabel === "automatic-thought"}
                 onPress={() => this.toggleHistoryButtonLabels()}
               />
+            </Row>
+
+            <Row
+              style={{
+                marginBottom: 18,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <SubHeader>*subscription</SubHeader>
+              {this.state.isGrandfatheredIntoSubscription ? (
+                <GrandfatheredInFreeQuirk />
+              ) : (
+                <SubscriptionExpirationDate
+                  expirationDate={this.state.subscriptionExpirationDate}
+                />
+              )}
             </Row>
           </Container>
         </ScrollView>

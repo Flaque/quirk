@@ -83,9 +83,6 @@ export default class CBTFormScreen extends React.Component<Props, State> {
   constructor(props) {
     super(props);
 
-    // TODO: Remove
-    grandfatherUserIntoFreeSubscription();
-
     this.props.navigation.addListener("willFocus", async payload => {
       // We've come from a list item
       const thought = get(payload, "state.params.thought", false);

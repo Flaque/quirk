@@ -19,6 +19,8 @@ async function getMostRecentOnlinePurchaseDate(
     product => product.productId === subscriptionSku
   );
 
+  console.log(subscriptions);
+
   // I _think_ multiple months of subscriptions are
   // considered multiple purchases. Also if somone
   // unsubscribes and then resubscribes, that's
@@ -34,7 +36,7 @@ async function getMostRecentOnlinePurchaseDate(
 
 export async function requiresPayment(): Promise<boolean> {
   // Step 1: Check local storage first
-  if (!(await subscriptionStore.hasValidSubscription())) {
+  if (await subscriptionStore.hasValidSubscription()) {
     return false;
   }
 
@@ -52,7 +54,8 @@ export async function requiresPayment(): Promise<boolean> {
 
   // Step 4: Check online if their most recent purchase is still valid
   const purchaseDate = await getMostRecentOnlinePurchaseDate(purchases);
-  const expirationDate = dayjs(purchaseDate).add(1, "month");
+  console.log(purchaseDate);
+  const expirationDate = dayjs.unix(purchaseDate).add(1, "month");
 
   // Is today after the expiration date?
   const isExpired = dayjs().isAfter(expirationDate);
@@ -64,4 +67,17 @@ export async function requiresPayment(): Promise<boolean> {
   }
 
   return true;
+}
+
+export async function getSubscriptionDefinition(): Promise<
+  InAppPurchases.Product<string>
+> {
+  const products = await InAppPurchases.getProducts([subscriptionSku]);
+
+  // @ts-ignore because _technically_ apple could return nothing
+  if (!products || products.length === 0 || !products[0]) {
+    throw new Error("There are no payments possible, that's really bad");
+  }
+
+  return products[0];
 }

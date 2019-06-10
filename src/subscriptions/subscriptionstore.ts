@@ -28,6 +28,21 @@ export async function storeExpirationDate(expirationDateInUnix: number) {
   }
 }
 
+export async function getSubscriptionExpirationDate(): Promise<string> {
+  try {
+    const date = await AsyncStorage.getItem(EXPIRATION_DATE);
+    if (!date) {
+      console.error("The user should never get here"); // TODO capture errors
+      return "";
+    }
+
+    return dayjs.unix(parseInt(date)).format();
+  } catch (err) {
+    console.error(err);
+    return "";
+  }
+}
+
 // If true, the user needs their subscription checked, or they
 // just haven't ever bought one.
 // If false, the user can be assumed to have a subscription
@@ -38,6 +53,7 @@ export async function hasValidSubscription(): Promise<boolean> {
 
     // The user has no subscription, so we should ask them for one
     if (!date) {
+      console.log("no date");
       return false;
     }
 

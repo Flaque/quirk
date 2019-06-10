@@ -10,7 +10,7 @@ import {
 import CBTListScreen from "./src/CBTListScreen";
 import CBTFormScreen from "./src/CBTFormScreen";
 import ExplanationScreen from "./src/ExplanationScreen";
-import SettingScreen from "./src/setting";
+import SettingScreen from "./src/SettingsScreen";
 import { CBTOnBoardingScreen } from "./src/CBTOnBoarding";
 import withErrorBoundary from "./src/withErrorBoundary";
 import PaymentScreen from "./src/PaymentScreen";

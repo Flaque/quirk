@@ -22,8 +22,7 @@ import { Constants } from "expo";
 import { Paragraph, SubHeader, ActionButton } from "./ui";
 import * as InAppPurchases from "react-native-iap";
 import { CBT_FORM_SCREEN } from "./screens";
-import { requiresSubscriptionCheck } from "./subscriptions/subscriptionstore";
-import { requiresPayment } from "./subscriptions";
+import { requiresPayment, getSubscriptionDefinition } from "./subscriptions";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const itemSku = Platform.select({
@@ -43,39 +42,18 @@ const Container = props => (
   </View>
 );
 
-async function getMostRecentPurchaseDate() {
-  const purchases = await InAppPurchases.getAvailablePurchases();
-
-  if (!purchases || purchases.length === 0) {
-    return false;
-  }
-
-  // Only grab the subscription purchase
-  // This is future proofing if we ever offer "deals"
-  // like 50% off Quirk, bulk purchases like "buy a year"
-  // or just any other new payment options
-  const subscriptions = purchases.filter(
-    product => product.productId === itemSku
-  );
-
-  // I _think_ multiple months of subscriptions are
-  // considered multiple purchases. Also if somone
-  // unsubscribes and then resubscribes, that's
-  // likely multiple purchases. Hence the sorting
-  // for the "most recent" purchase date.
-  const mostRecentPurchaseDate = subscriptions
-    .map(sub => sub.transactionDate)
-    .sort()
-    .reverse()[0];
-
-  return !!mostRecentPurchaseDate;
-}
-
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
 
-class PaymentScreen extends React.Component<Props> {
+class PaymentScreen extends React.Component<
+  Props,
+  {
+    subscription?: InAppPurchases.Product<string>;
+    canMakePayments: boolean;
+    ready: boolean;
+  }
+> {
   static navigationOptions = {
     header: null,
   };
@@ -104,7 +82,9 @@ class PaymentScreen extends React.Component<Props> {
       this.redirectToFormScreen();
     }
 
+    const subscription = await getSubscriptionDefinition();
     this.setState({
+      subscription,
       ready: true,
     });
   }
@@ -130,7 +110,7 @@ class PaymentScreen extends React.Component<Props> {
 
   render() {
     // TODO(evan): Add better loading screen here
-    if (!this.state.ready) {
+    if (!this.state.ready || !this.state.subscription) {
       return <Container />;
     }
 
@@ -191,7 +171,7 @@ class PaymentScreen extends React.Component<Props> {
                 fontSize: 28,
               }}
             >
-              $3.99
+              {this.state.subscription.localizedPrice}
             </SubHeader>{" "}
             a month.
           </Paragraph>
