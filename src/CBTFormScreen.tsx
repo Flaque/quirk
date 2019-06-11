@@ -23,6 +23,7 @@ import { recordScreenCallOnFocus } from "./navigation";
 import * as stats from "./stats";
 import * as flagstore from "./flagstore";
 import { grandfatherUserIntoFreeSubscription } from "./history/grandfatherstore";
+import * as Purchases from "react-native-purchases";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -82,6 +83,11 @@ export default class CBTFormScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
+
+    console.log("purchases", Purchases);
+
+    Purchases.setDebugLogsEnabled(true);
+    Purchases.configure("jEFlOhJcSQBEaKzocFmTSDFwnGEuBidX");
 
     // TODO: Remove
     grandfatherUserIntoFreeSubscription();
