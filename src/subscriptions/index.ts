@@ -19,15 +19,14 @@ async function getMostRecentOnlinePurchaseDate(
     product => product.productId === subscriptionSku
   );
 
-  console.log(subscriptions);
-
   // I _think_ multiple months of subscriptions are
   // considered multiple purchases. Also if somone
   // unsubscribes and then resubscribes, that's
   // likely multiple purchases. Hence the sorting
   // for the "most recent" purchase date.
   const mostRecentPurchaseDate = subscriptions
-    .map(sub => sub.transactionDate)
+    // In miliseconds to be EXTRA SECURE FO REALSIES
+    .map(sub => sub.transactionDate / 1000)
     .sort()
     .reverse()[0];
 
@@ -54,7 +53,6 @@ export async function requiresPayment(): Promise<boolean> {
 
   // Step 4: Check online if their most recent purchase is still valid
   const purchaseDate = await getMostRecentOnlinePurchaseDate(purchases);
-  console.log(purchaseDate);
   const expirationDate = dayjs.unix(purchaseDate).add(1, "month");
 
   // Is today after the expiration date?

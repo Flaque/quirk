@@ -25,6 +25,8 @@ import { CBT_FORM_SCREEN } from "./screens";
 import { getSubscriptionDefinition, requiresPayment } from "./subscriptions";
 import theme from "./theme";
 import i18n from "./i18n";
+import { storeExpirationDate } from "./subscriptions/subscriptionstore";
+import dayjs from "dayjs";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const itemSku = Platform.select({
@@ -41,8 +43,6 @@ const Container = props => (
     {props.children || null}
   </ScrollView>
 );
-
-const IOS_PAYMENT_INFO = i18n.t("payment.ios_explanation");
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -104,6 +104,12 @@ class PaymentScreen extends React.Component<
       }
 
       await InAppPurchases.finishTransaction();
+
+      // We divide by 1000 because transactionDates are in miliseconds
+      // so we're EXTRA SUPER SPECIAL ACCURATE DUH
+      storeExpirationDate(dayjs.unix(purchase.transactionDate / 1000).unix());
+
+      this.redirectToFormScreen();
     } catch (err) {
       // TODO capture error
       Alert.alert(err.message);
