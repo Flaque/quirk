@@ -231,14 +231,16 @@ export const ActionButton = ({
   width,
   height,
   disabled,
+  flex,
 }: {
   title: string;
   onPress: () => void;
   fillColor?: string;
   textColor?: string;
-  width?: number;
+  width?: number | string;
   height?: number;
   disabled?: boolean;
+  flex?: number;
 }) => (
   <TouchableOpacity
     style={{
@@ -251,6 +253,7 @@ export const ActionButton = ({
       maxHeight: 48,
       width,
       height,
+      flex,
     }}
     disabled={disabled}
     onPress={onPress}

@@ -6,23 +6,25 @@
  * Problem with Apple/Google? Cool, they get in free.
  *
  * It's infinitely more important for someone to be able to
- * _use_ Quirk and record their thoughts than for us
+ * USE Quirk and record their thoughts than for us
  * to be sticklers about a couple bucks.
  */
 
 import React from "react";
-import { View, Image, Platform, Alert } from "react-native";
+import { View, Image, Platform, Alert, StatusBar } from "react-native";
 import { recordScreenCallOnFocus } from "./navigation";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationAction,
+  ScrollView,
 } from "react-navigation";
-import { Constants } from "expo";
 import { Paragraph, SubHeader, ActionButton } from "./ui";
 import * as InAppPurchases from "react-native-iap";
 import { CBT_FORM_SCREEN } from "./screens";
-import { requiresPayment, getSubscriptionDefinition } from "./subscriptions";
+import { getSubscriptionDefinition, requiresPayment } from "./subscriptions";
+import theme from "./theme";
+import i18n from "./i18n";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const itemSku = Platform.select({
@@ -30,17 +32,17 @@ const itemSku = Platform.select({
 });
 
 const Container = props => (
-  <View
+  <ScrollView
     style={{
-      marginTop: Constants.statusBarHeight,
-      paddingTop: 24,
       height: "100%",
       backgroundColor: "white",
     }}
   >
     {props.children || null}
-  </View>
+  </ScrollView>
 );
+
+const IOS_PAYMENT_INFO = i18n.t("payment.ios_explanation");
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -116,39 +118,27 @@ class PaymentScreen extends React.Component<
 
     return (
       <Container>
+        <StatusBar hidden={true} />
         <Image
-          source={require("../assets/awetop/awetop.png")}
+          source={require("../assets/payments/payments.png")}
           style={{
+            width: "110%",
+            height: 500,
+            resizeMode: "center",
+            position: "relative",
+            top: -25,
+            left: -20,
             flex: 1,
-            width: 180,
-            height: 180,
-            resizeMode: "contain",
-            marginBottom: 32,
-            position: "absolute",
-            top: -100,
-            left: -50,
-          }}
-        />
-        <Image
-          source={require("../assets/awebottom/awebottom.png")}
-          style={{
-            flex: 1,
-            width: 400,
-            height: 400,
-            resizeMode: "contain",
-            marginBottom: 32,
-            position: "absolute",
-            bottom: -80,
-            right: -200,
+            justifyContent: "center",
+            marginBottom: 12,
           }}
         />
 
         <View
           style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
-            margin: 48,
+            justifyContent: "flex-start",
+            marginLeft: 32,
+            marginRight: 32,
           }}
         >
           <Paragraph
@@ -157,10 +147,11 @@ class PaymentScreen extends React.Component<
               marginBottom: 28,
             }}
           >
-            ❤️ Support{" "}
+            Support{" "}
             <SubHeader
               style={{
                 fontSize: 28,
+                fontWeight: "900",
               }}
             >
               quirk
@@ -169,14 +160,57 @@ class PaymentScreen extends React.Component<
             <SubHeader
               style={{
                 fontSize: 28,
+                fontWeight: "900",
               }}
             >
               {this.state.subscription.localizedPrice}
             </SubHeader>{" "}
             a month.
           </Paragraph>
+        </View>
 
-          <ActionButton title={"Continue"} onPress={this.onContinuePress} />
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            marginLeft: 32,
+            marginRight: 32,
+            justifyContent: "space-between",
+          }}
+        >
+          <ActionButton
+            flex={1}
+            title={"Continue"}
+            onPress={this.onContinuePress}
+          />
+          <Image
+            source={require("../assets/paymentlooker/paymentlooker.png")}
+            style={{
+              height: 64,
+              width: 64,
+              position: "relative",
+              top: -10,
+              resizeMode: "contain",
+              marginLeft: 24,
+            }}
+          />
+        </View>
+
+        <View
+          style={{
+            marginTop: 24,
+            marginBottom: 24,
+            marginLeft: 32,
+            marginRight: 32,
+          }}
+        >
+          <Paragraph
+            style={{
+              color: theme.lightText,
+            }}
+          >
+            {i18n.t("payment.ios_explanation")}
+          </Paragraph>
         </View>
       </Container>
     );
