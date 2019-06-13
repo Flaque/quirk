@@ -5,11 +5,8 @@
     "slug": "quirk",
     "privacy": "unlisted",
     "sdkVersion": "31.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
-    "version": "1.10.1",
+    "platforms": ["ios", "android"],
+    "version": "1.11.0",
     "orientation": "portrait",
     "githubUrl": "https://github.com/Flaque/quirk",
     "primaryColor": "#F8A5C2",
@@ -18,9 +15,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#F8A5C2"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "tech.econn.quirk",
