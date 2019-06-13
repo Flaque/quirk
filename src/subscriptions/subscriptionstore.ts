@@ -53,7 +53,6 @@ export async function hasValidSubscription(): Promise<boolean> {
 
     // The user has no subscription, so we should ask them for one
     if (!date) {
-      console.log("no date");
       return false;
     }
 

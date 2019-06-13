@@ -2,6 +2,7 @@ import { Platform } from "react-native";
 import * as InAppPurchases from "react-native-iap";
 import * as subscriptionStore from "./subscriptionstore";
 import dayjs from "dayjs";
+import * as stats from "../stats";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const subscriptionSku = Platform.select({
@@ -36,6 +37,7 @@ async function getMostRecentOnlinePurchaseDate(
 export async function requiresPayment(): Promise<boolean> {
   // Step 1: Check local storage first
   if (await subscriptionStore.hasValidSubscription()) {
+    stats.subscriptionVerified("cache");
     return false;
   }
 
@@ -61,6 +63,7 @@ export async function requiresPayment(): Promise<boolean> {
   // Cache this so we don't have to look it up again
   if (!isExpired) {
     subscriptionStore.storeExpirationDate(expirationDate.unix());
+    stats.subscriptionVerified("online");
     return false;
   }
 

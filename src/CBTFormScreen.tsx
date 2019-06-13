@@ -22,7 +22,6 @@ import { setIsExistingUser } from "./thoughtstore";
 import { recordScreenCallOnFocus } from "./navigation";
 import * as stats from "./stats";
 import * as flagstore from "./flagstore";
-import { grandfatherUserIntoFreeSubscription } from "./history/grandfatherstore";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {

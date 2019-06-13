@@ -27,6 +27,9 @@ import theme from "./theme";
 import i18n from "./i18n";
 import { storeExpirationDate } from "./subscriptions/subscriptionstore";
 import dayjs from "dayjs";
+import { SplashScreen } from "expo";
+import * as stats from "./stats";
+import { BallIndicator } from "react-native-indicators";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const itemSku = Platform.select({
@@ -54,6 +57,7 @@ class PaymentScreen extends React.Component<
     subscription?: InAppPurchases.Product<string>;
     canMakePayments: boolean;
     ready: boolean;
+    loading: boolean;
   }
 > {
   static navigationOptions = {
@@ -64,6 +68,7 @@ class PaymentScreen extends React.Component<
     subscription: null,
     canMakePayments: false,
     ready: false,
+    loading: false,
   };
 
   constructor(props) {
@@ -79,9 +84,13 @@ class PaymentScreen extends React.Component<
   }
 
   async componentDidMount() {
+    SplashScreen.preventAutoHide();
+
     // If we need don't need to pay, just go to the regular app
     if (!(await requiresPayment())) {
       this.redirectToFormScreen();
+      SplashScreen.hide();
+      return;
     }
 
     const subscription = await getSubscriptionDefinition();
@@ -89,13 +98,19 @@ class PaymentScreen extends React.Component<
       subscription,
       ready: true,
     });
+    SplashScreen.hide();
   }
 
   componentWillUnmount() {
     InAppPurchases.endConnection(); // Important to stop bugs on android
   }
 
-  async onContinuePress() {
+  onContinuePress = async () => {
+    stats.userStartedPayment(); // MUST happen first
+    this.setState({
+      loading: true,
+    });
+
     try {
       await InAppPurchases.initConnection();
       const purchase = await InAppPurchases.buySubscription(itemSku);
@@ -108,19 +123,29 @@ class PaymentScreen extends React.Component<
       // We divide by 1000 because transactionDates are in miliseconds
       // so we're EXTRA SUPER SPECIAL ACCURATE DUH
       storeExpirationDate(dayjs.unix(purchase.transactionDate / 1000).unix());
+      stats.userSubscribed();
 
       this.redirectToFormScreen();
     } catch (err) {
-      // TODO capture error
+      // We don't send this error to Sentry because it's not typically an
+      // error on ourside. It's typically a password failure or a network
+      // error. Still, if it's happening a lot, we want to know so we can
+      // fix it.
+      stats.userEncounteredPaymentError(err.message);
       Alert.alert(err.message);
     }
-  }
+    this.setState({
+      loading: false,
+    });
+  };
 
   render() {
-    // TODO(evan): Add better loading screen here
     if (!this.state.ready || !this.state.subscription) {
+      // This only gets rendered behind a splash screen
       return <Container />;
     }
+
+    console.log("loading", this.state.loading);
 
     return (
       <Container>
@@ -184,22 +209,28 @@ class PaymentScreen extends React.Component<
             justifyContent: "space-between",
           }}
         >
-          <ActionButton
-            flex={1}
-            title={"Continue"}
-            onPress={this.onContinuePress}
-          />
-          <Image
-            source={require("../assets/paymentlooker/paymentlooker.png")}
-            style={{
-              height: 64,
-              width: 64,
-              position: "relative",
-              top: -10,
-              resizeMode: "contain",
-              marginLeft: 24,
-            }}
-          />
+          {this.state.loading ? (
+            <BallIndicator color={theme.blue} size={24} />
+          ) : (
+            <>
+              <ActionButton
+                flex={1}
+                title={"Continue"}
+                onPress={this.onContinuePress}
+              />
+              <Image
+                source={require("../assets/paymentlooker/paymentlooker.png")}
+                style={{
+                  height: 64,
+                  width: 64,
+                  position: "relative",
+                  top: -10,
+                  resizeMode: "contain",
+                  marginLeft: 24,
+                }}
+              />
+            </>
+          )}
         </View>
 
         <View

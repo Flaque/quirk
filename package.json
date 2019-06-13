@@ -27,6 +27,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-autogrow-textinput": "^5.2.0",
     "react-native-iap": "^2.5.5",
+    "react-native-indicators": "^0.13.0",
     "react-native-keyboard-aware-scroll-view": "^0.7.4",
     "react-native-pose": "^0.9.0",
     "react-native-svg": "^8.0.8",
