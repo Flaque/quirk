@@ -1,3 +1,4 @@
+import React from "react";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import {
   CBT_LIST_SCREEN,
@@ -12,6 +13,9 @@ import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/setting";
 import { CBTOnBoardingScreen } from "./src/CBTOnBoarding";
 import withErrorBoundary from "./src/withErrorBoundary";
+import Midgar from "midgar-js";
+
+const midgar = new Midgar().init(""); // TODO put in api key again
 
 const App = createStackNavigator(
   {
@@ -27,4 +31,12 @@ const App = createStackNavigator(
   }
 );
 
-export default withErrorBoundary(createAppContainer(App));
+const AppContainer = createAppContainer(App);
+
+export default withErrorBoundary(() => (
+  <AppContainer
+    onNavigationStateChange={(prevState, currentState) => {
+      midgar.trackScreen(prevState, currentState);
+    }}
+  />
+));

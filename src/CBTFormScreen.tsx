@@ -23,6 +23,7 @@ import { recordScreenCallOnFocus } from "./navigation";
 import * as stats from "./stats";
 import * as flagstore from "./flagstore";
 import { grandfatherUserIntoFreeSubscription } from "./history/grandfatherstore";
+import Midgar from "midgar-js";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -65,6 +66,7 @@ interface State {
   shouldShowOnBoarding: boolean;
   shouldShowHelpBadge: boolean;
   isLoading: boolean;
+  midgarTracker?: any;
 }
 
 export default class CBTFormScreen extends React.Component<Props, State> {
@@ -121,7 +123,15 @@ export default class CBTFormScreen extends React.Component<Props, State> {
     flagstore.get("start-help-badge", "true").then(val => {
       this.setState({ shouldShowHelpBadge: val });
     });
+
+    this.setState({
+      midgarTracker: new Midgar().init("AuxoTkG5ZI"),
+    });
   }
+
+  onNavigationStateChange = (prevState, currentState) => {
+    midgarTracker.trackScreen(prevState, currentState);
+  };
 
   setEmptyThought = (): void => {
     this.setState({ thought: newThought(), isEditing: true });
