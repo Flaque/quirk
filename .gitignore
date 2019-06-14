@@ -88,3 +88,7 @@ RNTester/build
 ios/Pods/
 ios/Podfile.lock
 RNTester/RNTesterPods.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+
+# expo + fastlane
+*.zip
+*.cer

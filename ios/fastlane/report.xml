@@ -5,27 +5,29 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.017798">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.021124">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: get_certificates" time="1.308511">
+      <testcase classname="fastlane.lanes" name="1: get_certificates" time="3.200963">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: get_provisioning_profile" time="1.468986">
+      <testcase classname="fastlane.lanes" name="2: get_provisioning_profile" time="2.586157">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: build_app" time="166.023698">
+      <testcase classname="fastlane.lanes" name="3: build_app" time="183.879427">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: upload_to_testflight" time="466.292012">
+      <testcase classname="fastlane.lanes" name="4: upload_to_testflight" time="66.128362">
+        
+          <failure message="/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/actions/actions_helper.rb:48:in `execute_action'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/runner.rb:235:in `block in execute_action'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/runner.rb:227:in `chdir'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/runner.rb:227:in `execute_action'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/fast_file.rb:154:in `method_missing'&#10;Fastfile:24:in `block (2 levels) in parsing_binding'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/lane_manager.rb:56:in `cruise_lane'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/commands_generator.rb:108:in `block (2 levels) in run'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:153:in `run'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/commander-fastlane-4.4.6/lib/commander/runner.rb:476:in `run_active_command'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/commander-fastlane-4.4.6/lib/commander/delegates.rb:15:in `run!'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/commands_generator.rb:333:in `run'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/commands_generator.rb:41:in `start'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/fastlane/lib/fastlane/cli_tools_distributor.rb:119:in `take_off'&#10;/Users/flaque/.fastlane/bin/bundle/lib/ruby/gems/2.2.0/gems/fastlane-2.125.2/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/Users/flaque/.fastlane/bin/bundle/bin/fastlane:22:in `load'&#10;/Users/flaque/.fastlane/bin/bundle/bin/fastlane:22:in `&lt;main&gt;'&#10;&#10;Error uploading ipa file, for more information see above" />
         
       </testcase>
     
