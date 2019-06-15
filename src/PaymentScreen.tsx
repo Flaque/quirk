@@ -122,8 +122,12 @@ class PaymentScreen extends React.Component<
 
       // We divide by 1000 because transactionDates are in miliseconds
       // so we're EXTRA SUPER SPECIAL ACCURATE DUH
-      storeExpirationDate(dayjs.unix(purchase.transactionDate / 1000).unix());
-      stats.userSubscribed();
+      const expirationDate = dayjs
+        .unix(purchase.transactionDate / 1000)
+        .add(1, "month")
+        .unix();
+      await storeExpirationDate(expirationDate);
+      stats.userSubscribed(expirationDate);
 
       this.redirectToFormScreen();
     } catch (err) {

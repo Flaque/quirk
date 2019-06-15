@@ -44,12 +44,17 @@ export async function requiresPayment(): Promise<boolean> {
   // Step 2: Can they connect to the stores?
   const canMakePayments = await InAppPurchases.initConnection();
   if (!canMakePayments) {
+    stats.subscriptionGivenForFreeDueToError();
     return false; // They get a free ride if there's a problem here
   }
 
   // Step 3: Check online if they've ever purchased anything
-  const purchases = await InAppPurchases.getAvailablePurchases();
+  const availablePurchases =
+    (await InAppPurchases.getAvailablePurchases()) || [];
+  const historicalPurchases = (await InAppPurchases.getPurchaseHistory()) || [];
+  const purchases = [].concat(availablePurchases, historicalPurchases);
   if (!purchases || purchases.length === 0) {
+    stats.subscriptionUnverified("never-bought");
     return true;
   }
 
@@ -65,6 +70,8 @@ export async function requiresPayment(): Promise<boolean> {
     subscriptionStore.storeExpirationDate(expirationDate.unix());
     stats.subscriptionVerified("online");
     return false;
+  } else {
+    stats.subscriptionUnverified("expired");
   }
 
   return true;

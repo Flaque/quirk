@@ -24,6 +24,7 @@
 
 import { Segment } from "expo";
 import isInDev from "./isInDev";
+import dayjs from "dayjs";
 
 Segment.initialize({
   androidWriteKey: "ZivFALGI9FH1L4WiAEY3o5PDtKwvLLxB",
@@ -120,8 +121,10 @@ export function userEncounteredPaymentError(err: string) {
 /**
  * User Subscribed
  */
-export function userSubscribed() {
-  Segment.track("user_subscribed");
+export function userSubscribed(expirationUnixTimestamp: number) {
+  Segment.trackWithProperties("user_subscribed", {
+    expirationDate: dayjs.unix(expirationUnixTimestamp).format(),
+  });
 }
 
 /**
@@ -137,4 +140,33 @@ export function subscriptionVerified(method: "cache" | "online") {
   Segment.trackWithProperties("subscription_verified", {
     method,
   });
+}
+
+export function subscriptionUnverified(reason: "expired" | "never-bought") {
+  Segment.trackWithProperties("subscription_unverified", {
+    reason,
+  });
+}
+
+export function subscriptionGivenForFreeDueToError() {
+  Segment.track("subscription_given_for_free_due_to_error");
+}
+
+export function subscriptionFoundInCache(value: string) {
+  Segment.trackWithProperties("subscription_found_in_cache", {
+    value,
+  });
+}
+
+/**
+ * Basically production logs
+ * @param properties
+ */
+export function log(label: string, properties?: object) {
+  const args = { label, ...(properties || {}) };
+  if (isInDev()) {
+    console.log(args);
+  } else {
+    Segment.trackWithProperties("log", args);
+  }
 }

@@ -12,6 +12,7 @@
  */
 import { AsyncStorage } from "react-native";
 import dayjs from "dayjs";
+import { log } from "../stats";
 
 const EXPIRATION_DATE = `@PaymentStore:EXPIRATION_DATE`;
 
@@ -57,7 +58,7 @@ export async function hasValidSubscription(): Promise<boolean> {
     }
 
     // Is today before our month-long recheck date?
-    return dayjs().isBefore(dayjs(date));
+    return dayjs().unix() < parseInt(date);
   } catch (err) {
     console.error(err); // TODO: Catch error
     // If there's an error here, we should attempt to restore the user's purchases
