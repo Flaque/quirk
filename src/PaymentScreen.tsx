@@ -94,25 +94,25 @@ class PaymentScreen extends React.Component<
   async componentDidMount() {
     SplashScreen.preventAutoHide();
 
-    try {
-      // If we need don't need to pay, just go to the regular app
-      if (!(await requiresPayment())) {
-        this.redirectToFormScreen();
-        SplashScreen.hide();
-        return;
-      }
+    // try {
+    //   // If we need don't need to pay, just go to the regular app
+    //   if (!(await requiresPayment())) {
+    //     this.redirectToFormScreen();
+    //     SplashScreen.hide();
+    //     return;
+    //   }
 
-      const subscription = await getSubscriptionDefinition();
-      this.setState({
-        subscription,
-        ready: true,
-      });
-    } catch (err) {
-      Sentry.captureException(err);
+    const subscription = await getSubscriptionDefinition();
+    this.setState({
+      subscription,
+      ready: true,
+    });
+    // } catch (err) {
+    //   Sentry.captureException(err);
 
-      // If we mess something up, just send them through, it's cool.
-      this.redirectToFormScreen();
-    }
+    //   // If we mess something up, just send them through, it's cool.
+    //   this.redirectToFormScreen();
+    // }
     SplashScreen.hide();
   }
 
@@ -168,29 +168,58 @@ class PaymentScreen extends React.Component<
       <Container>
         <StatusBar hidden={true} />
 
+        <Image
+          source={require("../assets/background/background.png")}
+          style={{
+            position: "absolute",
+            width: Dimensions.get("window").width * 1.5,
+            height: Dimensions.get("window").height / 3,
+            resizeMode: "center",
+            overflow: "visible",
+            top: 0,
+            left: -Dimensions.get("window").width * 0.25,
+          }}
+        />
+
         <View
           style={{
-            justifyContent: "flex-start",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-end",
+            flexDirection: "row",
+            padding: 24,
           }}
         >
           <Image
-            source={require("../assets/payments/payments.png")}
+            source={require("../assets/pinkbobble/pinkbobble.png")}
             style={{
-              width: Dimensions.get("window").width,
-              height: Dimensions.get("window").height / 1.61,
-              resizeMode: "cover",
-              position: "relative",
+              width: Dimensions.get("window").width / 6,
+              height: Dimensions.get("window").width / 4,
+              resizeMode: "center",
               overflow: "visible",
-              flex: 1,
-              justifyContent: "center",
-              left: -(Dimensions.get("window").width * 0.05),
-              top: -25,
+            }}
+          />
+          <Image
+            source={require("../assets/icecream/icecream.png")}
+            style={{
+              width: Dimensions.get("window").width / 4,
+              height: Dimensions.get("window").width / 1.25,
+              resizeMode: "center",
+            }}
+          />
+          <Image
+            source={require("../assets/yellowbobble/yellowbobble.png")}
+            style={{
+              width: Dimensions.get("window").width / 6,
+              height: Dimensions.get("window").width / 4,
+              resizeMode: "center",
+              overflow: "visible",
             }}
           />
         </View>
         <View
           style={{
-            justifyContent: "flex-start",
+            justifyContent: "flex-end",
             marginLeft: 32,
             marginRight: 32,
           }}
@@ -238,7 +267,7 @@ class PaymentScreen extends React.Component<
             <>
               <ActionButton
                 flex={1}
-                title={"Continue"}
+                title={"Get it"}
                 onPress={this.onContinuePress}
               />
               <Image
@@ -258,7 +287,88 @@ class PaymentScreen extends React.Component<
 
         <View
           style={{
-            marginTop: 24,
+            justifyContent: "flex-end",
+            marginLeft: 32,
+            marginRight: 32,
+            marginTop: 32,
+          }}
+        >
+          <SubHeader
+            style={{
+              fontSize: 18,
+            }}
+          >
+            Why get quirk?
+          </SubHeader>
+          <Paragraph
+            style={{
+              fontSize: 18,
+              marginBottom: 18,
+            }}
+          >
+            "It reigns supreme in the mental health app world" - Quirk user
+          </Paragraph>
+          <Paragraph
+            style={{
+              fontSize: 18,
+              marginBottom: 18,
+            }}
+          >
+            "Super simple and easy to use, yet REALLY well considered." - Quirk
+            user
+          </Paragraph>
+
+          <Paragraph
+            style={{
+              fontSize: 18,
+              marginBottom: 18,
+            }}
+          >
+            "This is a gem, a real gem." - Quirk user
+          </Paragraph>
+        </View>
+
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            marginLeft: 32,
+            marginRight: 32,
+            marginBottom: 16,
+            marginTop: 32,
+            justifyContent: "space-between",
+          }}
+        >
+          <ActionButton
+            flex={1}
+            title={"Restore Purchases"}
+            fillColor="#EDF0FC"
+            textColor={theme.darkBlue}
+            onPress={this.onContinuePress}
+          />
+        </View>
+
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            marginLeft: 32,
+            marginRight: 32,
+            marginBottom: 32,
+            justifyContent: "space-between",
+          }}
+        >
+          <ActionButton
+            flex={1}
+            title={"Privacy Policy"}
+            fillColor="#EDF0FC"
+            textColor={theme.darkBlue}
+            onPress={this.onContinuePress}
+          />
+        </View>
+
+        <View
+          style={{
             marginBottom: 24,
             marginLeft: 32,
             marginRight: 32,
