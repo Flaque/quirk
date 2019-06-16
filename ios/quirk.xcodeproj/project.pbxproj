@@ -411,7 +411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = quirk/quirk.entitlements;
 				DEVELOPMENT_TEAM = F29L6XF84H;
-				INFOPLIST_FILE = "$(SRCROOT)/quirk/Supporting/Info.plist";
+				INFOPLIST_FILE = ./quirk/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.econn.quirk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = quirk/quirk.entitlements;
 				DEVELOPMENT_TEAM = F29L6XF84H;
-				INFOPLIST_FILE = "$(SRCROOT)/quirk/Supporting/Info.plist";
+				INFOPLIST_FILE = ./quirk/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.econn.quirk;
 				PRODUCT_NAME = "$(TARGET_NAME)";

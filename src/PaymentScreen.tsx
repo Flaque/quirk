@@ -11,7 +11,14 @@
  */
 
 import React from "react";
-import { View, Image, Platform, Alert, StatusBar } from "react-native";
+import {
+  View,
+  Image,
+  Platform,
+  Alert,
+  StatusBar,
+  Dimensions,
+} from "react-native";
 import { recordScreenCallOnFocus } from "./navigation";
 import {
   NavigationScreenProp,
@@ -30,6 +37,7 @@ import dayjs from "dayjs";
 import { SplashScreen } from "expo";
 import * as stats from "./stats";
 import { BallIndicator } from "react-native-indicators";
+import Sentry from "react-native-sentry";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const itemSku = Platform.select({
@@ -86,18 +94,25 @@ class PaymentScreen extends React.Component<
   async componentDidMount() {
     SplashScreen.preventAutoHide();
 
-    // If we need don't need to pay, just go to the regular app
-    if (!(await requiresPayment())) {
-      this.redirectToFormScreen();
-      SplashScreen.hide();
-      return;
-    }
+    try {
+      // If we need don't need to pay, just go to the regular app
+      if (!(await requiresPayment())) {
+        this.redirectToFormScreen();
+        SplashScreen.hide();
+        return;
+      }
 
-    const subscription = await getSubscriptionDefinition();
-    this.setState({
-      subscription,
-      ready: true,
-    });
+      const subscription = await getSubscriptionDefinition();
+      this.setState({
+        subscription,
+        ready: true,
+      });
+    } catch (err) {
+      Sentry.captureException(err);
+
+      // If we mess something up, just send them through, it's cool.
+      this.redirectToFormScreen();
+    }
     SplashScreen.hide();
   }
 
@@ -149,22 +164,21 @@ class PaymentScreen extends React.Component<
       return <Container />;
     }
 
-    console.log("loading", this.state.loading);
-
     return (
       <Container>
         <StatusBar hidden={true} />
         <Image
           source={require("../assets/payments/payments.png")}
           style={{
-            width: "110%",
-            height: 500,
+            width: Dimensions.get("window").width * 1.2,
+            height: 600,
             resizeMode: "center",
             position: "relative",
-            top: -25,
-            left: -20,
+            overflow: "visible",
             flex: 1,
             justifyContent: "center",
+            left: -(Dimensions.get("window").width * 0.1),
+            top: -25,
             marginBottom: 12,
           }}
         />
