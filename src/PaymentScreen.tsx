@@ -167,22 +167,27 @@ class PaymentScreen extends React.Component<
     return (
       <Container>
         <StatusBar hidden={true} />
-        <Image
-          source={require("../assets/payments/payments.png")}
-          style={{
-            width: Dimensions.get("window").width * 1.2,
-            height: 600,
-            resizeMode: "center",
-            position: "relative",
-            overflow: "visible",
-            flex: 1,
-            justifyContent: "center",
-            left: -(Dimensions.get("window").width * 0.1),
-            top: -25,
-            marginBottom: 12,
-          }}
-        />
 
+        <View
+          style={{
+            justifyContent: "flex-start",
+          }}
+        >
+          <Image
+            source={require("../assets/payments/payments.png")}
+            style={{
+              width: Dimensions.get("window").width,
+              height: Dimensions.get("window").height / 1.61,
+              resizeMode: "cover",
+              position: "relative",
+              overflow: "visible",
+              flex: 1,
+              justifyContent: "center",
+              left: -(Dimensions.get("window").width * 0.05),
+              top: -25,
+            }}
+          />
+        </View>
         <View
           style={{
             justifyContent: "flex-start",
