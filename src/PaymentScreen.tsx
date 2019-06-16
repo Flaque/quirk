@@ -17,6 +17,7 @@ import {
   Platform,
   Alert,
   StatusBar,
+  Linking,
   Dimensions,
 } from "react-native";
 import { recordScreenCallOnFocus } from "./navigation";
@@ -94,30 +95,40 @@ class PaymentScreen extends React.Component<
   async componentDidMount() {
     SplashScreen.preventAutoHide();
 
-    // try {
-    //   // If we need don't need to pay, just go to the regular app
-    //   if (!(await requiresPayment())) {
-    //     this.redirectToFormScreen();
-    //     SplashScreen.hide();
-    //     return;
-    //   }
+    try {
+      // If we need don't need to pay, just go to the regular app
+      if (!(await requiresPayment())) {
+        this.redirectToFormScreen();
+        SplashScreen.hide();
+        return;
+      }
 
-    const subscription = await getSubscriptionDefinition();
-    this.setState({
-      subscription,
-      ready: true,
-    });
-    // } catch (err) {
-    //   Sentry.captureException(err);
+      const subscription = await getSubscriptionDefinition();
+      this.setState({
+        subscription,
+        ready: true,
+      });
+    } catch (err) {
+      Sentry.captureException(err);
 
-    //   // If we mess something up, just send them through, it's cool.
-    //   this.redirectToFormScreen();
-    // }
+      // If we mess something up, just send them through, it's cool.
+      this.redirectToFormScreen();
+    }
     SplashScreen.hide();
   }
 
   componentWillUnmount() {
     InAppPurchases.endConnection(); // Important to stop bugs on android
+  }
+
+  async restorePurchases() {
+    // If we need don't need to pay, just go to the regular app
+    if (!(await requiresPayment())) {
+      this.redirectToFormScreen();
+      return;
+    }
+
+    Alert.alert("No active subscription found");
   }
 
   onContinuePress = async () => {
@@ -344,7 +355,7 @@ class PaymentScreen extends React.Component<
             title={"Restore Purchases"}
             fillColor="#EDF0FC"
             textColor={theme.darkBlue}
-            onPress={this.onContinuePress}
+            onPress={this.restorePurchases}
           />
         </View>
 
@@ -363,7 +374,11 @@ class PaymentScreen extends React.Component<
             title={"Privacy Policy"}
             fillColor="#EDF0FC"
             textColor={theme.darkBlue}
-            onPress={this.onContinuePress}
+            onPress={() => {
+              Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
+                Linking.openURL("https://quirk.fyi/privacy")
+              );
+            }}
           />
         </View>
 
