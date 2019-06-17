@@ -16,15 +16,33 @@
 default_platform(:android)
 
 platform :android do
+  desc "Assemble Build"
+  lane :assemble_build do |options|
+    properties = {
+      "android.injected.signing.store.file" => "keystore.jks",
+      "android.injected.signing.store.password" => "store_password",
+      "android.injected.signing.key.alias" => "key_alias",
+      "android.injected.signing.key.password" => "key_password",
+    } if @build_type == "Release"
+    
+    gradle(task: "clean assemble", build_type: @build_type, properties: properties)
+  end
+
   desc "Runs all the tests"
   lane :test do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
+  desc "Submit a new Internal"
+  lane :internal do
+    gradle(task: 'clean assembleRelease')
+    upload_to_play_store(
+      track: 'internal',
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_apk: false
+    )
   
     # sh "your_script.sh"
     # You can also use other beta testing services here

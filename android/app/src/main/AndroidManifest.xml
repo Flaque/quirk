@@ -15,7 +15,7 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
   <uses-permission android:name="android.permission.WAKE_LOCK" />
-
+  <uses-permission android:name="com.android.vending.BILLING" />
   
       
       <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" tools:node="remove" />
@@ -81,7 +81,7 @@
       android:theme="@style/Theme.Exponent.Splash"
       android:windowSoftInputMode="adjustResize">
       <intent-filter>
-        <data android:scheme="exp800ed8fa6f424fc897ca85d42f51b937"/>
+        <data android:scheme="expdf5b51d49bd24fb8bf87d0c11866cff7"/>
 
         <action android:name="android.intent.action.VIEW"/>
 
@@ -194,7 +194,7 @@
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="expo.modules.payments.stripe.54c5455c-90fa-4907-8eb0-0d8f0c217156" />
+            <data android:scheme="expo.modules.payments.stripe.9d555a50-8b60-4a6f-b304-e8c6745fb1f0" />
         </intent-filter>
     </activity>
     <!-- Versioned Activity for Stripe -->
@@ -350,7 +350,7 @@
     <!-- The Facebook SDK runs FacebookInitProvider on startup and crashes if there isn't an ID here -->
     <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="fb0"/>
 
-    <meta-data android:name="standaloneStripeScheme" android:value="54c5455c-90fa-4907-8eb0-0d8f0c217156" />
+    <meta-data android:name="standaloneStripeScheme" android:value="9d555a50-8b60-4a6f-b304-e8c6745fb1f0" />
   </application>
 
 </manifest>
