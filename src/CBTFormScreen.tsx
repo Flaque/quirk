@@ -1,8 +1,15 @@
 import React from "react";
-import { View, StatusBar } from "react-native";
+import { View, StatusBar, Image, Linking } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { get } from "lodash";
-import { Container, Row, Header, ActionButton, IconButton } from "./ui";
+import {
+  Container,
+  Row,
+  Header,
+  ActionButton,
+  IconButton,
+  SubHeader,
+} from "./ui";
 import { saveExercise, exists, getIsExistingUser } from "./thoughtstore";
 import theme from "./theme";
 import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "./screens";
@@ -49,6 +56,42 @@ const CBTViewer = ({ thought, onEdit, onNew }) => {
           title={i18n.t("cbt_form.new")}
           onPress={onNew}
           disabled={false}
+        />
+      </Row>
+
+      <Image
+        source={require("../assets/pink/Dook.png")}
+        style={{
+          width: 32,
+          height: 32,
+          marginTop: 128,
+          marginBottom: 32,
+          alignSelf: "center",
+          justifyContent: "center",
+        }}
+      />
+
+      <SubHeader
+        style={{
+          alignSelf: "center",
+          justifyContent: "center",
+        }}
+      >
+        Got Feedback?
+      </SubHeader>
+      <Row
+        style={{
+          alignSelf: "center",
+          justifyContent: "center",
+        }}
+      >
+        <ActionButton
+          fillColor={theme.lightGray}
+          textColor={theme.blue}
+          title={"Email Us!"}
+          onPress={() => {
+            Linking.openURL("mailto:humans@quirk.fyi");
+          }}
         />
       </Row>
     </View>
