@@ -68,10 +68,6 @@ target 'quirk' do
   pod 'EXSMS',
     :path => "../node_modules/expo-sms/ios"
 
-  pod 'EXPaymentsStripe',
-  :path => "../node_modules/expo-payments-stripe/ios",
-  :inhibit_warnings => true
-
   pod 'React',
     :path => "../node_modules/react-native",
     :inhibit_warnings => true,
