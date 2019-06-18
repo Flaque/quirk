@@ -20,7 +20,7 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane android build
 ```
-Just create a build
+Assemble Build
 ### android test
 ```
 fastlane android test

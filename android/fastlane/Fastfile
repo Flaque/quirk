@@ -17,7 +17,7 @@ default_platform(:android)
 
 platform :android do
   desc "Assemble Build"
-  lane :assemble_build do |options|
+  lane :build do |options|
     properties = {
       "android.injected.signing.store.file" => "keystore.jks",
       "android.injected.signing.store.password" => "store_password",
