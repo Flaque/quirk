@@ -1,0 +1,141 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Am ratat petrecerea lui George. Sigur mă urăște.",
+    "challenge_ex": "George știe că nu pot veni de fiecare dată, iar eu nu l-aș urî dacă ar rata o petrecere de-a mea.\n\nAr trebui să mă tratez cel puțin la fel de bine cum îi tratez pe ceilalți.",
+    "alt_thought_ex": "E adevărat că am ratat petrecerea lui George. Pot să îmi cer scuze și probabil mă va ierta.",
+    "cog_distortion": { "label": "Citirea Gândurilor", "slug": "citirea-gândurilor" },
+    "intro": {
+      "line1": "Bun venit în",
+      "emphasis1": "quirk",
+      "line2": ", aplicația de ",
+      "emphasis2": "Terapie Cognitiv-Comportamentală (TCC).",
+      "line3": ""
+    },
+    "crash_course": {
+      "line1": "Acesta este un",
+      "emphasis1": "curs rapid",
+      "line2": "de TCC, și",
+      "emphasis2": "nu înlocuiește",
+      "line3": "un terapeut profesionist."
+    },
+    "mood_thoughts": {
+      "line1": "Mai întâi,",
+      "emphasis1": "gândurile tale îți determină stările de spirit."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "În al doilea rând, gândurile tale pot fi",
+      "emphasis1": "automate."
+    },
+    "your_distorted": {
+      "line1": "În al treilea rând, gândurile automate sunt adesea",
+      "emphasis1": "distorsionate."
+    },
+    "cbt_overview": {
+      "line1": "Obiectivul TCC este de a recunoaște",
+      "emphasis1": "gândurile distorsionate",
+      "line2": "și",
+      "emphasis2": "de a le înlocui",
+      "line3": "cu gânduri raționale."
+    },
+    "ready": {
+      "emphasis1": "Ești gata?",
+      "line1": "Să vedem care sunt pașii."
+    },
+    "catch": {
+      "line1": "Vom începe simplu",
+      "emphasis1": "prin a scrie",
+      "line2": "gândurile automate atunci când acestea apar."
+    },
+    "bad_thought_note": {
+      "line1": "Notează gândul:",
+      "line2": "Am ratat petrecerea lui George. Sigur mă urăște."
+    },
+    "identify_distortions": {
+      "line1": "Caută",
+      "emphasis1": "distorsiunile cognitive"
+    },
+    "bad_distortions": {
+      "line1": "Chiar știm că George ne va urî? Dacă nu, doar",
+      "emphasis1": "🧠 citim gânduri",
+      "line2": "Am ratat petrecerea lui George. Sigur mă urăște."
+    },
+    "challenge_screen": {
+      "line1": "De ce nu e realist acest gând?",
+      "emphasis1": "Analizează-l."
+    },
+    "write_challenge": {
+      "line1": "Vom scrie ceva de felul:"
+    },
+    "alt_thought": {
+      "line1": "În cele din urmă, vom scrie un",
+      "emphasis1": "gând alternativ."
+    },
+    "show_off": {
+      "line1": "Recitește-l la final:"
+    },
+    "got_it": {
+      "line1": "Cam asta e tot.",
+      "btn_title": "Să începem!"
+    }
+  },
+  "auto_thought": "Gând automat",
+  "cog_distortion": "Distorsiune cognitivă",
+  "challenge": "Analiză",
+  "alt_thought": "Gând alternativ",
+  "cbt_form": {
+    "edit": "Editează",
+    "new": "Nou",
+    "save": "Salvează",
+    "auto_thought_placeholder": "Ce se întâmplă?",
+    "cog_distortion": "Distorsiune cognitivă",
+    "challenged": "Analiză",
+    "changed_placeholder": "Analizează-ți gândul!",
+    "alt_thought_placeholder": "Ce altceva am putea gândi?"
+  },
+  "all_or_nothing_thinking": "Gândirea de tip \"totul sau nimic\"",
+  "all_or_nothing_thinking_explanation": "Această distorsiune apare când nu găsim o cale de mijloc. Dacă noi credem că un mic defect al nostru ne face pe de-a-ntregul detestabili, atunci gândim în termeni dihotomici: \"totul sau nimic\"",
+  "all_or_nothing_thinking_thought": "Am dat-o în bară la interviu. Înseamnă că sunt de neangajat.",
+  "catastrophizing": "Catastrofarea",
+  "catastrophizing_explanation": "Dacă transformăm o problemă minoră într-o tragedie, catastrofăm. Ai facut o greșeală la serviciu și ți-e groază să nu afle cineva, chiar dacă nu e o problema serioasă? Probabil catastrofezi.",
+  "catastrophizing_thought": "Mă simt agitat, poate am un atac de cord.",
+  "emotional_reasoning": "Judecarea Afectivă",
+  "emotional_reasoning_explanation_1": "\"Trebuie să fie adevărat fiindcă asta simt.\" Dacă te surprinzi justificând \"pericolul\" unui lucru inofensiv pentru că ți-e frică de el, atunci probabil judeci afectiv. Lucrurile nu sunt periculoase pentru că ne e frică de ele, iar noi nu suntem groaznici doar pentru că așa ne percepem.",
+  "emotional_reasoning_explanation_2": "Adesea e greu să ințelegem asta. E nevoie de un anumit efort pentru a ne da seama când emoțiile au preluat controlul gândirii logice.",
+  "emotional_reasoning_thought": "Mă simt vinovat, deci trebuie să fi făcut ceva rău.",
+  "fortune_telling": "Ghicirea Viitorului",
+  "fortune_telling_explanation": "Această distorsiune apare când prezicem viitorul. De multe ori supraestimăm abilitățile noastre de a prezice ceea ce urmează. Adesea ne îngrijorăm că s-ar putea întâmpla ceva și începem să căutăm dovezi că avem dreptate.",
+  "fortune_telling_thought": "Avionul în care mă voi urca se va prăbuși.",
+  "labeling": "Etichetarea",
+  "labeling_explanation": "Dacă luăm  o singură caracteristică a unei persoane și o aplicăm la întreaga persoană, atunci etichetăm. Dacă cineva ne-a repezit, poate că nu era răuvoitor, ci doar se grăbea. Asta ni se aplică și nouă; nu suntem ratați doar pentru că am făcut o greșeală.",
+  "labeling_thought": "Am picat testul, deci sunt slab la învățătură.",
+  "magnification_of_the_negative": "Amplificarea părții negative",
+  "magnification_of_the_negative_explanation": "Când judeci o situație bazându-te exclusiv pe părțile negative și ignorându-le pe cele pozitive, le amplifici pe primele. Dacă te mustri pentru că ai dat-o în bară la un interviu, probabil nu iei în seamă toată experiența acumulată în timpul acelui interviu.",
+  "magnification_of_the_negative_thought": "Am mâncat sănătos săptămâna asta, dar n-am mai alergat.",
+  "mind_reading": "Citirea gândurilor",
+  "mind_reading_explanation": "Când suntem îngrijorați despre ceea ce gândesc alții despre noi, încercăm să le citim gândurile. Nu avem de unde să știm ce gândesc ceilalți, decăt dacă ne spun. De ce să presupunem ce e mai rău?",
+  "mind_reading_thought": "Cred că m-am purtat urât cu George, sigur mă urăște.",
+  "minimization_of_the_positive": "Minimalizarea părții pozitive",
+  "minimization_of_the_positive_explanation": "Minimalizăm partea pozitivă când subapreciem lucrurile bune care ni se întâmplă. Chiar dacă astăzi nu ne-a ieșit totul 100% cum ne-am fi dorit, nu înseamnă că trebuie ignorate cele 60% care au mers bine.",
+  "minimization_of_the_positive_thought": "Multor persoane le-a plăcut prezentarea mea, dar m-am încurcat la început, deci a ieșit prost.",
+  "other_blaming": "Blamarea celorlalți",
+  "other_blaming_explanation_1": "Când vrem să găsim un vinovat pentru o situatie neplacută, atunci recurgem la blamarea celorlalți. Dacă ai picat un examen și îți învinuiești profesorul, îți direcționezi energia în locul greșit. Cineva ți-a tăiat calea pe autostradă? Dacă claxonezi, îl înjuri și te enervezi, nu te va ajuta cu nimic. Acum ți s-a tăiat calea și ești și supărat!",
+  "other_blaming_explanation_2": "Asta nu înseamnă că trebuie să te învinovățești pentru fiecare situație negativă. De fapt, nu trebuie să învinuiești pe nimeni. Nu e nevoie să existe un vinovat dacă lași momentul să treacă fără să atașezi vina.",
+  "other_blaming_thought": "Nemernicul ține coada în loc și am să întârzii!",
+  "over_generalization": "Supra-generalizarea",
+  "over_generalization_explanation": "Dacă tragem concluzii bazate pe un singur exemplu, atunci supra-generalizăm. Dacă nu ți-a reușit o prezentare și tragi concluzia că \"nu te pricepi\" la prezentări, atunci supra-generalizezi.",
+  "over_generalization_thought": "Nimeni nu m-a invitat la dans, deci nimeni nu mă va invita niciodată.",
+  "self_blaming": "Auto-învinuirea",
+  "self_blaming_explanation": "Nu ești responsabil pentru fiecare lucru rău care se întămplă. Dacă ești blocat în trafic și te mustri pentru că nu ai plecat mai devreme, atunci te auto-învinuiești. Ai trata pe alcineva așa?",
+  "self_blaming_thought": "Fiul meu ia note proaste la școală, sigur nu i-am fost un părinte bun.",
+  "should_statements": "Afirmații de tip \"ar trebui\"",
+  "should_statements_explanation_1": "Dacă atribui cuiva abilități pe care nu le are, atunci folosești afirmații greșite de tip \"ar trebui\". De exemplu, dacă îți este frică de zbor și îți spui \"Nu ar trebui să îmi fie frică de asta - nu e nimic in neregulă cu avionul!\", atunci te împovărezi fără să fie cazul. Ai aviofobie! E normal ca oamenilor cu aviofobie să le fie frică de zbor!",
+  "should_statements_explanation_2": "Afimațiile de tip \"ar trebui\" par lipsite de sens când le spui cu voce tare; asta e ideea! Sunt ilogice!",
+  "should_statements_thought": "Sunt adult, nu ar trebui să am probleme psihice.",
+  "accessibility": {
+    "help_button": "ajutor",
+    "list_button": "afișare gânduri",
+    "new_thought_button": "gând nou",
+    "settings_button": "setări",
+    "delete_thought_button": "șterge gând"
+  }
+}
