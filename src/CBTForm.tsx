@@ -54,7 +54,7 @@ export default class CBTForm extends React.Component<Props> {
     } = this.props;
 
     return (
-      <View style={{ marginTop: 18 }}>
+      <View>
         <FormContainer>
           <SubHeader>{i18n.t("auto_thought")}</SubHeader>
           <AutoGrowingTextInput

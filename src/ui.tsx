@@ -97,6 +97,7 @@ export const SubHeader = ({ children, style }: ParentComponent) => (
 export const SelectorTextItem = ({
   text,
   emoji,
+  example,
   selected = false,
   onPress,
 }) => (
@@ -107,34 +108,57 @@ export const SelectorTextItem = ({
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
       paddingTop: 8,
-      paddingBottom: 8,
-      paddingRight: 12,
-      flexDirection: "row",
-      justifyContent: "space-between",
+      paddingBottom: 4,
       borderRadius: 8,
       borderWidth: 1,
       marginBottom: 4,
       marginTop: 1,
     }}
   >
-    <View style={{ flexDirection: "row" }}>
-      <Text
+    <View style={{ flexDirection: "column" }}>
+      <View style={{ flexDirection: "row", marginBottom: 12 }}>
+        <Text
+          style={{
+            marginRight: 12,
+            marginLeft: 12,
+          }}
+        >
+          {emoji}
+        </Text>
+        <Text
+          style={{
+            fontWeight: "600",
+            fontSize: 16,
+            color: selected ? "white" : theme.darkText,
+          }}
+        >
+          {text}
+        </Text>
+      </View>
+
+      <View
         style={{
           marginRight: 12,
           marginLeft: 12,
+          marginBottom: 6,
+          backgroundColor: theme.lightOffwhite,
+          paddingLeft: 12,
+          paddingRight: 12,
+          paddingBottom: 6,
+          paddingTop: 6,
+          borderRadius: 8,
         }}
       >
-        {emoji}
-      </Text>
-      <Text
-        style={{
-          fontWeight: "400",
-          fontSize: 16,
-          color: selected ? "white" : theme.darkText,
-        }}
-      >
-        {text}
-      </Text>
+        <Paragraph
+          style={{
+            fontWeight: "400",
+            fontSize: 16,
+            color: selected ? "white" : theme.darkText,
+          }}
+        >
+          {`"${example}"`}
+        </Paragraph>
+      </View>
     </View>
 
     {selected && <Feather name={"check"} size={16} color={"white"} />}
@@ -167,6 +191,7 @@ export const RoundedSelector = ({ items, onPress, style }) => (
           key={slug}
           emoji={cogDistortion.emoji || "🍎"}
           text={cogDistortion.label}
+          example={cogDistortion.example}
           selected={selected}
           onPress={() => onPress(slug)}
         />

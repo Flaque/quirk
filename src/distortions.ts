@@ -5,6 +5,7 @@ export interface CognitiveDistortion {
   label: string;
   slug: string;
   selected?: boolean;
+  example: string;
 }
 
 const distortions: CognitiveDistortion[] = [
@@ -12,18 +13,31 @@ const distortions: CognitiveDistortion[] = [
     emoji: "🌓",
     label: i18n.t("all_or_nothing_thinking"),
     slug: "all-or-nothing",
+    example: "That was a thorough waste of time",
   },
   {
     emoji: "👯‍",
     label: i18n.t("over_generalization"),
     slug: "overgeneralization",
+    example: "Everyone will let me down",
   },
-  { emoji: "🧠", label: i18n.t("mind_reading"), slug: "mind-reading" },
-  { emoji: "🔮", label: i18n.t("fortune_telling"), slug: "fortune-telling" },
+  {
+    emoji: "🧠",
+    label: i18n.t("mind_reading"),
+    slug: "mind-reading",
+    example: "I'll bet he hates me now",
+  },
+  {
+    emoji: "🔮",
+    label: i18n.t("fortune_telling"),
+    slug: "fortune-telling",
+    example: "I'll get sick at the party",
+  },
   {
     emoji: "👎",
     label: i18n.t("magnification_of_the_negative"),
     slug: "magnification-of-the-negative",
+    example: "... example here",
   },
   {
     emoji: "👍",
