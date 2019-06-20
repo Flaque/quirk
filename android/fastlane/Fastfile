@@ -35,7 +35,12 @@ platform :android do
 
   desc "Submit a new Internal"
   lane :internal do
-    gradle(task: 'clean assembleRelease')
+    gradle(task: 'clean assemble', build_type: @build_type, properties: {
+      "android.injected.signing.store.file" => "/Users/flaque/.keystores/android",
+      "android.injected.signing.store.password" => ENV['KEYSTORE_PASSWORD'],
+      "android.injected.signing.key.alias" => "key0",
+      "android.injected.signing.key.password" => ENV['KEY_PASSWORD'],
+    })
     upload_to_play_store(
       track: 'internal',
       skip_upload_metadata: true,

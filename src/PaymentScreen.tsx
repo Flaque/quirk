@@ -365,7 +365,7 @@ class PaymentScreen extends React.Component<
             flexDirection: "row",
             marginLeft: 32,
             marginRight: 32,
-            marginBottom: 32,
+            marginBottom: 16,
             justifyContent: "space-between",
           }}
         >
@@ -377,6 +377,29 @@ class PaymentScreen extends React.Component<
             onPress={() => {
               Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
                 Linking.openURL("https://quirk.fyi/privacy")
+              );
+            }}
+          />
+        </View>
+
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            marginLeft: 32,
+            marginRight: 32,
+            marginBottom: 32,
+            justifyContent: "space-between",
+          }}
+        >
+          <ActionButton
+            flex={1}
+            title={"Terms of Service"}
+            fillColor="#EDF0FC"
+            textColor={theme.darkBlue}
+            onPress={() => {
+              Linking.canOpenURL("https://quirk.fyi/tos").then(() =>
+                Linking.openURL("https://quirk.fyi/tos")
               );
             }}
           />

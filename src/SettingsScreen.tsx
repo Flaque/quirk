@@ -1,7 +1,7 @@
 import React from "react";
-import { ScrollView, View, StatusBar } from "react-native";
+import { ScrollView, View, StatusBar, Platform } from "react-native";
 import theme from "./theme";
-import { Constants } from "expo";
+import { Constants, Linking } from "expo";
 import {
   Header,
   Row,
@@ -11,6 +11,7 @@ import {
   Paragraph,
   RoundedSelectorButton,
   B,
+  ActionButton,
 } from "./ui";
 import {
   NavigationScreenProp,
@@ -74,13 +75,72 @@ const GrandfatheredInFreeQuirk = () => (
 
 const SubscriptionExpirationDate = ({ expirationDate }) => (
   <>
-    <Paragraph
+    <Row>
+      <Paragraph
+        style={{
+          marginBottom: 9,
+        }}
+      >
+        Thanks for supporting the development of Quirk!
+      </Paragraph>
+    </Row>
+    <Row>
+      <Paragraph
+        style={{
+          marginBottom: 9,
+        }}
+      >
+        You're currently subscribed to the <B>Quirk Monthly Subscription.</B> On{" "}
+        <B>{expirationDate}</B> your subscription will renew and your account
+        will be charged <B>$3.99.</B>
+      </Paragraph>
+    </Row>
+    <Row>
+      {Platform.OS === "ios" && (
+        <Paragraph
+          style={{
+            marginBottom: 9,
+          }}
+        >
+          Payment will be charged to your Apple ID account at the confirmation
+          of purchase. The subscription automatically renews unless it is
+          canceled at least 24 hours before the end of the current period. Your
+          account will be charged for renewal within 24 hours prior to the end
+          of the current period. You can manage and cancel your subscriptions by
+          going to your App Store account settings after purchase.
+        </Paragraph>
+      )}
+    </Row>
+    <Row
       style={{
         marginBottom: 9,
       }}
     >
-      Your subscription will renew on {expirationDate}.
-    </Paragraph>
+      <ActionButton
+        flex={1}
+        title={"Privacy Policy"}
+        fillColor="#EDF0FC"
+        textColor={theme.darkBlue}
+        onPress={() => {
+          Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
+            Linking.openURL("https://quirk.fyi/privacy")
+          );
+        }}
+      />
+    </Row>
+    <Row>
+      <ActionButton
+        flex={1}
+        title={"Terms of Service"}
+        fillColor="#EDF0FC"
+        textColor={theme.darkBlue}
+        onPress={() => {
+          Linking.canOpenURL("https://quirk.fyi/tos").then(() =>
+            Linking.openURL("https://quirk.fyi/tos")
+          );
+        }}
+      />
+    </Row>
   </>
 );
 
@@ -182,7 +242,11 @@ class SettingScreen extends React.Component<Props, State> {
             height: "100%",
           }}
         >
-          <Container>
+          <Container
+            style={{
+              paddingBottom: 128,
+            }}
+          >
             <StatusBar barStyle="dark-content" />
             <Row style={{ marginBottom: 18 }}>
               <Header>quirk*</Header>

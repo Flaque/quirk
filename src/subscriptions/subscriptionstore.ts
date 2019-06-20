@@ -12,7 +12,6 @@
  */
 import { AsyncStorage } from "react-native";
 import dayjs from "dayjs";
-import { log } from "../stats";
 
 const EXPIRATION_DATE = `@PaymentStore:EXPIRATION_DATE`;
 
@@ -33,8 +32,8 @@ export async function getSubscriptionExpirationDate(): Promise<string> {
   try {
     const date = await AsyncStorage.getItem(EXPIRATION_DATE);
     if (!date) {
-      console.error("The user should never get here"); // TODO capture errors
-      return "";
+      // console.error("The user should never get here"); // TODO capture errors
+      return dayjs().format("YYYY-MM-DD");
     }
 
     return dayjs.unix(parseInt(date)).format();
