@@ -19,10 +19,10 @@ platform :android do
   desc "Assemble Build"
   lane :build do |options|
     properties = {
-      "android.injected.signing.store.file" => "keystore.jks",
-      "android.injected.signing.store.password" => "store_password",
-      "android.injected.signing.key.alias" => "key_alias",
-      "android.injected.signing.key.password" => "key_password",
+      "android.injected.signing.store.file" => "/Users/flaque/.keystores/android",
+      "android.injected.signing.store.password" => ENV['KEYSTORE_PASSWORD'],
+      "android.injected.signing.key.alias" => "key0",
+      "android.injected.signing.key.password" => ENV['KEY_PASSWORD'],
     } if @build_type == "Release"
     
     gradle(task: "clean assemble", build_type: @build_type, properties: properties)
