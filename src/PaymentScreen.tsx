@@ -30,7 +30,11 @@ import {
 import { Paragraph, SubHeader, ActionButton } from "./ui";
 import * as InAppPurchases from "react-native-iap";
 import { CBT_FORM_SCREEN } from "./screens";
-import { getSubscriptionDefinition, requiresPayment } from "./subscriptions";
+import {
+  getSubscriptionDefinition,
+  requiresPayment,
+  isProbablyFreshlyInstalledApp,
+} from "./subscriptions";
 import theme from "./theme";
 import i18n from "./i18n";
 import { storeExpirationDate } from "./subscriptions/subscriptionstore";
@@ -39,6 +43,7 @@ import { SplashScreen } from "expo";
 import * as stats from "./stats";
 import { BallIndicator } from "react-native-indicators";
 import Sentry from "react-native-sentry";
+import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const itemSku = Platform.select({
@@ -95,19 +100,29 @@ class PaymentScreen extends React.Component<
   async componentDidMount() {
     SplashScreen.preventAutoHide();
 
+    // This can happen asynchronously while we do other stuff
+    getSubscriptionDefinition().then(subscription => {
+      this.setState({
+        subscription,
+        ready: true,
+      });
+      SplashScreen.hide();
+    });
+
     try {
+      // New apps don't need to spend time checking payments,
+      // let's just get to it asap
+      if (await isProbablyFreshlyInstalledApp()) {
+        console.log("AHHHH");
+        return;
+      }
+
       // If we need don't need to pay, just go to the regular app
       if (!(await requiresPayment())) {
         this.redirectToFormScreen();
         SplashScreen.hide();
         return;
       }
-
-      const subscription = await getSubscriptionDefinition();
-      this.setState({
-        subscription,
-        ready: true,
-      });
     } catch (err) {
       Sentry.captureException(err);
 
@@ -118,10 +133,14 @@ class PaymentScreen extends React.Component<
   }
 
   componentWillUnmount() {
-    InAppPurchases.endConnection(); // Important to stop bugs on android
+    InAppPurchases.endConnectionAndroid(); // Important to stop bugs on android
   }
 
-  async restorePurchases() {
+  restorePurchases = async () => {
+    this.setState({
+      loading: true,
+    });
+
     // If we need don't need to pay, just go to the regular app
     if (!(await requiresPayment())) {
       this.redirectToFormScreen();
@@ -129,7 +148,10 @@ class PaymentScreen extends React.Component<
     }
 
     Alert.alert("No active subscription found");
-  }
+    this.setState({
+      loading: false,
+    });
+  };
 
   onContinuePress = async () => {
     stats.userStartedPayment(); // MUST happen first
@@ -144,17 +166,31 @@ class PaymentScreen extends React.Component<
         throw new Error("Something went wrong subscribing, try again?");
       }
 
-      await InAppPurchases.finishTransaction();
+      let expirationDate;
 
-      // We divide by 1000 because transactionDates are in miliseconds
-      // so we're EXTRA SUPER SPECIAL ACCURATE DUH
-      const expirationDate = dayjs
-        .unix(purchase.transactionDate / 1000)
-        .add(1, "month")
-        .unix();
+      /** iOS **/
+      if (Platform.OS === "ios") {
+        expirationDate = await getAppleExpirationDateFromReceipt(
+          purchase.transactionReceipt
+        );
+        if (!expirationDate) {
+          throw new Error(
+            "Something went wrong validating your receipt, try again?"
+          );
+        }
+      } else {
+        /** Android **/
+
+        // We divide by 1000 because transactionDates are in miliseconds
+        // so we're EXTRA SUPER SPECIAL ACCURATE DUH
+        expirationDate = dayjs
+          .unix(purchase.transactionDate / 1000)
+          .add(1, "month")
+          .unix();
+      }
+
       await storeExpirationDate(expirationDate);
       stats.userSubscribed(expirationDate);
-
       this.redirectToFormScreen();
     } catch (err) {
       // We don't send this error to Sentry because it's not typically an
@@ -350,13 +386,17 @@ class PaymentScreen extends React.Component<
             justifyContent: "space-between",
           }}
         >
-          <ActionButton
-            flex={1}
-            title={"Restore Purchases"}
-            fillColor="#EDF0FC"
-            textColor={theme.darkBlue}
-            onPress={this.restorePurchases}
-          />
+          {this.state.loading ? (
+            <BallIndicator color={theme.blue} size={24} />
+          ) : (
+            <ActionButton
+              flex={1}
+              title={"Restore Purchases"}
+              fillColor="#EDF0FC"
+              textColor={theme.darkBlue}
+              onPress={this.restorePurchases}
+            />
+          )}
         </View>
 
         <View

@@ -28,6 +28,16 @@ export async function storeExpirationDate(expirationDateInUnix: number) {
   }
 }
 
+export async function hasExpirationDate(): Promise<boolean> {
+  try {
+    const date = await AsyncStorage.getItem(EXPIRATION_DATE);
+    return !!date;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+}
+
 export async function getSubscriptionExpirationDate(): Promise<string> {
   try {
     const date = await AsyncStorage.getItem(EXPIRATION_DATE);

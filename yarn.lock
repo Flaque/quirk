@@ -7019,10 +7019,10 @@ react-native-gesture-handler@1.0.9:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-iap@^2.5.5:
-  version "2.5.5"
-  resolved "https://registry.yarnpkg.com/react-native-iap/-/react-native-iap-2.5.5.tgz#dc470c154dabd265f00e40164643a23fb01cd3eb"
-  integrity sha512-mAZNi49JjIrutUmousqLoR0slEaq8Ey7B7rfnZS1q2PGLVI+7nlz3ugu19tF7bGtAA7OVBCRWANsntZAIiMAww==
+react-native-iap@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-iap/-/react-native-iap-3.0.0.tgz#357d9c3b9d1e5aa3f4a76e5287d26e57b978a951"
+  integrity sha512-LoWB3k/PXaXiV5mRFTfAafJVq9momTPeYgAP7z+rBVXMYY4xuHQjxvGoToW4+bzhXKpJfYmA3I6LRIcCdc/foA==
   dependencies:
     dooboolab-welcome "^1.1.0"
 

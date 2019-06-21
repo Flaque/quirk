@@ -3,6 +3,7 @@ import * as InAppPurchases from "react-native-iap";
 import * as subscriptionStore from "./subscriptionstore";
 import dayjs from "dayjs";
 import * as stats from "../stats";
+import { getAppleExpirationDateFromRecentPurchases } from "./iosReceipts";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const subscriptionSku = Platform.select({
@@ -34,6 +35,12 @@ async function getMostRecentOnlinePurchaseDate(
   return mostRecentPurchaseDate; // Unix Timestamp
 }
 
+// This phone doesn't appear to have ever subscribed.
+// We can probably safely show them the payment screen immediately.
+export async function isProbablyFreshlyInstalledApp(): Promise<boolean> {
+  return !(await subscriptionStore.hasExpirationDate());
+}
+
 export async function requiresPayment(): Promise<boolean> {
   // Step 1: Check local storage first
   if (await subscriptionStore.hasValidSubscription()) {
@@ -50,7 +57,31 @@ export async function requiresPayment(): Promise<boolean> {
     return false; // They get a free ride if there's a problem here
   }
 
-  // Step 3: Check online if they've ever purchased anything
+  // (iOS) Step 3: validate the receipt locally and get the most
+  // recent expiration date so we don't mess up Apple's review
+  // process which can use shorter expiration dates. X.X
+  if (Platform.OS === "ios") {
+    const expirationDate = await getAppleExpirationDateFromRecentPurchases();
+    if (!expirationDate) {
+      console.log("No expiration date");
+      stats.subscriptionUnverified("never-bought");
+      return true;
+    }
+
+    const isExpired = dayjs().isAfter(dayjs.unix(expirationDate));
+    console.log("ExpirationDate", dayjs.unix(expirationDate));
+    if (isExpired) {
+      console.log("iOS expired");
+      stats.subscriptionUnverified("expired");
+      return true;
+    } else {
+      subscriptionStore.storeExpirationDate(expirationDate);
+      stats.subscriptionVerified("online");
+      return false;
+    }
+  }
+
+  // (Android) Step 3: Check online if they've ever purchased anything
   const purchases = (await InAppPurchases.getAvailablePurchases()) || [];
   if (!purchases || purchases.length === 0) {
     console.log("Never purchased");
@@ -58,7 +89,7 @@ export async function requiresPayment(): Promise<boolean> {
     return true;
   }
 
-  // Step 4: Check online if their most recent purchase is still valid
+  // (Android) Step 4: Check online if their most recent purchase is still valid
   const purchaseDate = await getMostRecentOnlinePurchaseDate(purchases);
   const expirationDate = dayjs.unix(purchaseDate).add(1, "month");
 

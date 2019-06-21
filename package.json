@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
-    "@types/expo": "^32.0.10",
-    "@types/react-navigation": "^3.0.1",
     "dayjs": "^1.8.14",
     "eslint-plugin-react-native-a11y": "^1.2.0",
     "expo": "^31.0.6",
@@ -26,7 +24,7 @@
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-autogrow-textinput": "^5.2.0",
-    "react-native-iap": "^2.5.5",
+    "react-native-iap": "3.0.0",
     "react-native-indicators": "^0.13.0",
     "react-native-keyboard-aware-scroll-view": "^0.7.4",
     "react-native-pose": "^0.9.0",
@@ -40,6 +38,8 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@types/expo": "^32.0.10",
+    "@types/react-navigation": "^3.0.1",
     "@types/expo__vector-icons": "^6.2.3",
     "@types/jest": "^24.0.11",
     "@types/react": "^16.7.18",
