@@ -238,7 +238,7 @@ class PaymentScreen extends React.Component<
           }}
         >
           <Image
-            source={require("../assets/pinkbobble/pinkbobble.png")}
+            source={require("../assets/pinkbubble/pinkbubble.png")}
             style={{
               width: Dimensions.get("screen").width / 6,
               height: Dimensions.get("screen").width / 4,
