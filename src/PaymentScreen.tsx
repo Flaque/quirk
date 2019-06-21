@@ -61,6 +61,11 @@ const Container = props => (
   </ScrollView>
 );
 
+const isIPad = () => {
+  const { height, width } = Dimensions.get("window");
+  return Platform.OS === "ios" && height / width < 1.6;
+};
+
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
@@ -215,18 +220,16 @@ class PaymentScreen extends React.Component<
       <Container>
         <StatusBar hidden={true} />
 
-        <Image
-          source={require("../assets/background/background.png")}
-          style={{
-            position: "absolute",
-            width: Dimensions.get("screen").width * 1.5,
-            height: Dimensions.get("screen").height / 3,
-            resizeMode: "center",
-            overflow: "visible",
-            top: 0,
-            left: -Dimensions.get("screen").width * 0.25,
-          }}
-        />
+        {!isIPad() && (
+          <View
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: Dimensions.get("screen").height / 2.5,
+              backgroundColor: "#FDF1F5",
+            }}
+          />
+        )}
 
         <View
           style={{
@@ -235,35 +238,34 @@ class PaymentScreen extends React.Component<
             alignItems: "flex-end",
             flexDirection: "row",
             padding: 24,
+            marginTop: 48,
           }}
         >
           <Image
             source={require("../assets/pinkbubble/pinkbubble.png")}
             style={{
-              width: Dimensions.get("screen").width / 6,
-              height: Dimensions.get("screen").width / 4,
-              maxHeight: 400,
-              resizeMode: "center",
-              overflow: "visible",
+              width: 67,
+              height: 75,
+              top: 10,
+              resizeMode: "contain",
             }}
           />
           <Image
             source={require("../assets/icecream/icecream.png")}
             style={{
-              width: Dimensions.get("screen").width / 4,
-              height: Dimensions.get("screen").width / 1.25,
-              maxHeight: 400,
-              resizeMode: "center",
+              width: 149,
+              height: 344,
+              top: -10,
+              resizeMode: "contain",
             }}
           />
           <Image
             source={require("../assets/yellowbobble/yellowbobble.png")}
             style={{
-              width: Dimensions.get("screen").width / 6,
-              height: Dimensions.get("screen").width / 4,
-              maxHeight: 400,
-              resizeMode: "center",
-              overflow: "visible",
+              width: 67,
+              height: 75,
+              top: 10,
+              resizeMode: "contain",
             }}
           />
         </View>
