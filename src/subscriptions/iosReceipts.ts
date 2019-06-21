@@ -1,16 +1,40 @@
 import * as InAppPurchases from "react-native-iap";
 import { APPLE_SHARED_SECRET } from "react-native-dotenv";
 
+const CODE_PRODUCTION_SANDBOX_MODE = 21007;
+
 export async function getAppleExpirationDateFromReceipt(
   receipt: string
 ): Promise<false | number> {
-  const data = await InAppPurchases.validateReceiptIos(
+  let data = await InAppPurchases.validateReceiptIos(
     {
       "receipt-data": receipt,
       password: APPLE_SHARED_SECRET, // Shared Secret
     },
     !!__DEV__ // Ask for sandbox if we're in dev
   );
+  if (!data) {
+    return false;
+  }
+
+  /**
+   * Apple's reviewers test in sandbox mode, so
+   * if we find ourselves in a build that SHOULD
+   * be production, but Apple's servers are
+   * "helpfully" returning a 21007, (thank you apple you're the best and totally not the bane of my entire existance)
+   * then we'll just try again in sandbox mode.
+   *
+   * everything is fine. This is fine.
+   */
+  if (data.status === CODE_PRODUCTION_SANDBOX_MODE) {
+    data = await InAppPurchases.validateReceiptIos(
+      {
+        "receipt-data": receipt,
+        password: APPLE_SHARED_SECRET, // Shared Secret
+      },
+      true
+    );
+  }
   if (!data) {
     return false;
   }

@@ -163,7 +163,7 @@ export function subscriptionFoundInCache(value: string) {
  * @param properties
  */
 export function log(label: string, properties?: object) {
-  const args = { label, ...(properties || {}) };
+  const args = { label, properties };
   if (isInDev()) {
     console.log(args);
   } else {

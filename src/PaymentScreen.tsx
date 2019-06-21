@@ -219,12 +219,12 @@ class PaymentScreen extends React.Component<
           source={require("../assets/background/background.png")}
           style={{
             position: "absolute",
-            width: Dimensions.get("window").width * 1.5,
-            height: Dimensions.get("window").height / 3,
+            width: Dimensions.get("screen").width * 1.5,
+            height: Dimensions.get("screen").height / 3,
             resizeMode: "center",
             overflow: "visible",
             top: 0,
-            left: -Dimensions.get("window").width * 0.25,
+            left: -Dimensions.get("screen").width * 0.25,
           }}
         />
 
@@ -240,8 +240,9 @@ class PaymentScreen extends React.Component<
           <Image
             source={require("../assets/pinkbobble/pinkbobble.png")}
             style={{
-              width: Dimensions.get("window").width / 6,
-              height: Dimensions.get("window").width / 4,
+              width: Dimensions.get("screen").width / 6,
+              height: Dimensions.get("screen").width / 4,
+              maxHeight: 400,
               resizeMode: "center",
               overflow: "visible",
             }}
@@ -249,16 +250,18 @@ class PaymentScreen extends React.Component<
           <Image
             source={require("../assets/icecream/icecream.png")}
             style={{
-              width: Dimensions.get("window").width / 4,
-              height: Dimensions.get("window").width / 1.25,
+              width: Dimensions.get("screen").width / 4,
+              height: Dimensions.get("screen").width / 1.25,
+              maxHeight: 400,
               resizeMode: "center",
             }}
           />
           <Image
             source={require("../assets/yellowbobble/yellowbobble.png")}
             style={{
-              width: Dimensions.get("window").width / 6,
-              height: Dimensions.get("window").width / 4,
+              width: Dimensions.get("screen").width / 6,
+              height: Dimensions.get("screen").width / 4,
+              maxHeight: 400,
               resizeMode: "center",
               overflow: "visible",
             }}
