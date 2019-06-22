@@ -35,7 +35,6 @@ import {
   Dimensions,
   EmitterSubscription,
 } from "react-native";
-import { recordScreenCallOnFocus } from "./navigation";
 import {
   NavigationScreenProp,
   NavigationState,
