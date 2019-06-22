@@ -21,11 +21,11 @@ android {
 
   defaultConfig {
     applicationId 'tech.econn.quirk'
-    targetSdkVersion 26
-    versionCode 20
-    versionName '1.10.1'
+    targetSdkVersion 27
+    versionCode 21
+    versionName '2.0.4'
     ndk {
-//      abiFilters 'armeabi-v7a', 'x86'
+     abiFilters 'armeabi-v7a', 'x86'
     }
     multiDexEnabled true
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
