@@ -59,6 +59,7 @@ import * as stats from "./stats";
 import { BallIndicator } from "react-native-indicators";
 import Sentry from "react-native-sentry";
 import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
+import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const ANDROID_ID = "basic_subscription";
@@ -109,7 +110,6 @@ class PaymentScreen extends React.Component<
 
   constructor(props) {
     super(props);
-    recordScreenCallOnFocus(this.props.navigation, "payments");
   }
 
   redirectToFormScreen = () => {
@@ -179,6 +179,13 @@ class PaymentScreen extends React.Component<
     });
 
     try {
+      if (await isGrandfatheredIntoFreeSubscription()) {
+        stats.subscriptionVerified("grandfathered");
+        this.redirectToFormScreen();
+        SplashScreen.hide();
+        return;
+      }
+
       // New apps don't need to spend time checking payments,
       // let's just get to it asap
       if (await isProbablyFreshlyInstalledApp()) {
@@ -186,6 +193,7 @@ class PaymentScreen extends React.Component<
           ready: true,
         });
         SplashScreen.hide();
+        recordScreenCallOnFocus(this.props.navigation, "payments");
         return;
       }
 
@@ -202,6 +210,7 @@ class PaymentScreen extends React.Component<
       SplashScreen.hide();
     }
 
+    recordScreenCallOnFocus(this.props.navigation, "payments");
     this.setState({
       ready: true,
     });

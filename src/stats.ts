@@ -136,7 +136,9 @@ export function userSubscribed(expirationUnixTimestamp: number) {
  * using too much data and that the app might
  * be slow for folks.
  */
-export function subscriptionVerified(method: "cache" | "online") {
+export function subscriptionVerified(
+  method: "cache" | "online" | "grandfathered"
+) {
   Segment.trackWithProperties("subscription_verified", {
     method,
   });
