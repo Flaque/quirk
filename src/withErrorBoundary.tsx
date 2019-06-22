@@ -8,6 +8,12 @@ Sentry.config(
 
 class ErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {
+    // Don't send errors to sentry in development
+    if (__DEV__) {
+      console.error(error, errorInfo);
+      return;
+    }
+
     if (errorInfo) {
       Sentry.captureException(error, {
         extra: errorInfo,
