@@ -1,20 +1,11 @@
-import {
-  Container,
-  Row,
-  Header,
-  IconButton,
-  SubHeader,
-  Paragraph,
-  RoundedSelector,
-} from "../ui";
+import { Container, Row, Header, IconButton } from "../ui";
 import React from "react";
 import Carousel from "react-native-snap-carousel";
-import { View, TextInput } from "react-native";
+import { View } from "react-native";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationAction,
-  ScrollView,
 } from "react-navigation";
 import theme from "../theme";
 import { Constants } from "expo";
@@ -24,162 +15,11 @@ import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "../screens";
 import * as flagstore from "../flagstore";
 import { newThought } from "../thoughts";
 import { Thought } from "../thoughts";
-import { CognitiveDistortion } from "../distortions";
 import universalHaptic from "../haptic";
-
-const textInputStyle = {
-  height: 156,
-  backgroundColor: "white",
-  padding: 12,
-  paddingTop: 14,
-  borderRadius: 8,
-  fontSize: 16,
-  borderColor: theme.lightGray,
-  borderWidth: 1,
-  color: theme.darkText,
-};
-const textInputPlaceholderColor = theme.veryLightText;
-
-const AutomaticThought = ({
-  value,
-  onChange,
-  onNext,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  onNext: () => void;
-}) => (
-  <View
-    style={{
-      display: "flex",
-    }}
-  >
-    <SubHeader
-      style={{
-        marginBottom: 6,
-      }}
-    >
-      {i18n.t("auto_thought")}
-    </SubHeader>
-    <Paragraph
-      style={{
-        marginBottom: 12,
-      }}
-    >
-      Include the situation and the thoughts.
-    </Paragraph>
-    <TextInput
-      style={textInputStyle}
-      placeholderTextColor={textInputPlaceholderColor}
-      placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
-      value={value}
-      multiline={true}
-      numberOfLines={6}
-      blurOnSubmit={true}
-      returnKeyType="next"
-      onChangeText={onChange}
-      onSubmitEditing={onNext}
-    />
-  </View>
-);
-
-const Challenge = ({
-  value,
-  onChange,
-  onNext,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  onNext: () => void;
-}) => (
-  <View
-    style={{
-      display: "flex",
-    }}
-  >
-    <SubHeader
-      style={{
-        marginBottom: 6,
-      }}
-    >
-      {i18n.t("challenge")}
-    </SubHeader>
-    <Paragraph
-      style={{
-        marginBottom: 12,
-      }}
-    >
-      Be truthful, honest, and open.
-    </Paragraph>
-    <TextInput
-      style={textInputStyle}
-      placeholderTextColor={textInputPlaceholderColor}
-      placeholder={i18n.t("cbt_form.alt_thought_placeholder")}
-      value={value}
-      returnKeyType="next"
-      multiline={true}
-      numberOfLines={6}
-      blurOnSubmit={true}
-      onChangeText={onChange}
-      onSubmitEditing={onNext}
-    />
-  </View>
-);
-
-const AlternativeThought = ({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-}) => (
-  <View
-    style={{
-      display: "flex",
-    }}
-  >
-    <SubHeader
-      style={{
-        marginBottom: 6,
-      }}
-    >
-      {i18n.t("alt_thought")}
-    </SubHeader>
-    <Paragraph
-      style={{
-        marginBottom: 12,
-      }}
-    >
-      What could we think instead?
-    </Paragraph>
-    <TextInput
-      style={textInputStyle}
-      placeholderTextColor={textInputPlaceholderColor}
-      placeholder={i18n.t("cbt_form.alt_thought_placeholder")}
-      value={value}
-      returnKeyType="next"
-      multiline={true}
-      numberOfLines={6}
-      blurOnSubmit={true}
-      onChangeText={onChange}
-    />
-  </View>
-);
-
-const Distortions = ({
-  distortions = [],
-  onChange,
-}: {
-  distortions: CognitiveDistortion[];
-  onChange: (slug: string) => void;
-}) => (
-  <ScrollView>
-    <View>
-      <SubHeader>{i18n.t("cog_distortion")}</SubHeader>
-      <RoundedSelector items={distortions} onPress={onChange} />
-    </View>
-  </ScrollView>
-);
+import AutomaticThought from "./AutomaticThought";
+import AlternativeThought from "./AlternativeThought";
+import Challenge from "./Challenge";
+import Distortions from "./Distortions";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
