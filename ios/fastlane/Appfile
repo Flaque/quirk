@@ -1,0 +1,8 @@
+app_identifier("tech.econn.quirk") # The bundle identifier of your app
+apple_id("flaqueeau@gmail.com") # Your Apple email address
+
+itc_team_id("117847754") # App Store Connect Team ID
+team_id("F29L6XF84H") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

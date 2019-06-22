@@ -1,0 +1,9 @@
+Quirk is an open source thought diary for Cognitive Behavioral Therapy (CBT). 
+
+Cognitive Behavioral Therapy (CBT) is the "gold standard" of psychotherapy and is widely considered to be one of the most effective, evidence backed treatments for depression, anxiety, and panic. If you go into just about any therapist or psychiatrist, CBT will likely be one of the first treatments they try.
+
+Quirk is a companion and self-help app for one of the most common formats of CBT. You may have heard it called "the three column technique" or "catch it, check it, change it." Your brain is really good at making you feel exactly what you're thinking. Often, we find ourselves thinking "automatic negative thoughts" that lead us to fume on something that may not be true. That can cause us to feel depressed or anxious. 
+
+CBT helps you record "automatic thoughts," challenge them with cognitive distortions and then train your brain with an alternative thought. 
+
+The app is open source under the GPL. You can find the code on Github at: https://github.com/Flaque/quirk

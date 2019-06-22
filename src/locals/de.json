@@ -132,5 +132,8 @@
   "should_statements": "Sollte Aussagen",
   "should_statements_explanation_1": "Wenn du jemanden nicht vorhandene Fähigkeiten zusprichst, benutzt du falsche \"sollte\" Aussagen. Als Beispiel, wenn du Flugangst hast und dir selbst einredest \"Ich sollte nicht Angst haben, es ist nichts falsch mir dem Flugzeug!\" legst du eine unnötige Last auf dich. Du hast Flugangst! Es ist normal für Menschen welche Angst vor dem Fliegen haben Angst beim Fliegen zu haben!",
   "should_statements_explanation_2": "Sollte Aussagen klingen manchmal unsinnig, wenn du diese Laut aussprichst; das ist der Punkt! Sie sind unlogisch!",
-  "should_statements_thought": "Ich bin Erwachsen, ich sollte diese mentalen Probleme nicht haben."
+  "should_statements_thought": "Ich bin Erwachsen, ich sollte diese mentalen Probleme nicht haben.",
+  "payment": {
+    "ios_explanation": "Die Zahlung wird Ihrem Apple ID-Konto bei Bestätigung des Kaufs belastet. Das Abonnement verlängert sich automatisch, es sei denn, es wird mindestens 24 Stunden vor dem Ende des aktuellen Zeitraums gekündigt. Ihr Konto wird innerhalb von 24 Stunden vor Ablauf des aktuellen Zeitraums mit der Verlängerung belastet. Sie können Ihre Abonnements verwalten und kündigen, indem Sie nach dem Kauf die Einstellungen Ihres App Store-Kontos aufrufen."
+  }
 }

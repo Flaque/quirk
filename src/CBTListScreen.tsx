@@ -21,7 +21,10 @@ import { Haptic, Constants } from "expo";
 import { validThoughtGroup } from "./sanitize";
 import Alerter from "./alerter";
 import alerts from "./alerts";
-import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
+import {
+  HistoryButtonLabelSetting,
+  getHistoryButtonLabel,
+} from "./SettingsScreen";
 import i18n from "./i18n";
 import { emojiForSlug } from "./distortions";
 import { take } from "lodash";
