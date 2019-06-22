@@ -6,8 +6,10 @@ import * as stats from "../stats";
 import { getAppleExpirationDateFromRecentPurchases } from "./iosReceipts";
 
 const IOS_SKU = "fyi.quirk.subscription";
+const ANDROID_ID = "basic_subscription";
 const subscriptionSku = Platform.select({
   ios: IOS_SKU,
+  android: ANDROID_ID,
 });
 
 async function getMostRecentOnlinePurchaseDate(
@@ -45,14 +47,12 @@ export async function requiresPayment(): Promise<boolean> {
   // Step 1: Check local storage first
   if (await subscriptionStore.hasValidSubscription()) {
     stats.subscriptionVerified("cache");
-    console.log("Has subscription in cache");
     return false;
   }
 
   // Step 2: Can they connect to the stores?
   const canMakePayments = await InAppPurchases.initConnection();
   if (!canMakePayments) {
-    console.log("Can't make payments");
     stats.subscriptionGivenForFreeDueToError();
     return false; // They get a free ride if there's a problem here
   }
@@ -63,15 +63,12 @@ export async function requiresPayment(): Promise<boolean> {
   if (Platform.OS === "ios") {
     const expirationDate = await getAppleExpirationDateFromRecentPurchases();
     if (!expirationDate) {
-      console.log("No expiration date");
       stats.subscriptionUnverified("never-bought");
       return true;
     }
 
     const isExpired = dayjs().isAfter(dayjs.unix(expirationDate));
-    console.log("ExpirationDate", dayjs.unix(expirationDate));
     if (isExpired) {
-      console.log("iOS expired");
       stats.subscriptionUnverified("expired");
       return true;
     } else {
@@ -84,7 +81,6 @@ export async function requiresPayment(): Promise<boolean> {
   // (Android) Step 3: Check online if they've ever purchased anything
   const purchases = (await InAppPurchases.getAvailablePurchases()) || [];
   if (!purchases || purchases.length === 0) {
-    console.log("Never purchased");
     stats.subscriptionUnverified("never-bought");
     return true;
   }
@@ -98,12 +94,10 @@ export async function requiresPayment(): Promise<boolean> {
 
   // Cache this so we don't have to look it up again
   if (!isExpired) {
-    console.log("Is Expired");
     subscriptionStore.storeExpirationDate(expirationDate.unix());
     stats.subscriptionVerified("online");
     return false;
   } else {
-    console.log("Expired");
     stats.subscriptionUnverified("expired");
   }
 
@@ -111,14 +105,16 @@ export async function requiresPayment(): Promise<boolean> {
 }
 
 export async function getSubscriptionDefinition(): Promise<
-  InAppPurchases.Product<string>
+  InAppPurchases.Subscription<string>
 > {
-  const products = await InAppPurchases.getProducts([subscriptionSku]);
+  const subscriptions = await InAppPurchases.getSubscriptions([
+    subscriptionSku,
+  ]);
 
   // @ts-ignore because _technically_ apple could return nothing
-  if (!products || products.length === 0 || !products[0]) {
+  if (!subscriptions || subscriptions.length === 0 || !subscriptions[0]) {
     throw new Error("There are no payments possible, that's really bad");
   }
 
-  return products[0];
+  return subscriptions[0];
 }

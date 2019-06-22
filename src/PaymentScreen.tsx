@@ -8,6 +8,20 @@
  * It's infinitely more important for someone to be able to
  * USE Quirk and record their thoughts than for us
  * to be sticklers about a couple bucks.
+ *
+ * ## !! HEY YOU IN THE FUTURE !!
+ *
+ * Look payments are an awful nightmare fueled hellscape.
+ * Much of this code isn't great and probably isn't the
+ * "right" way to do it.
+ *
+ * Apple is awful. Google is awful. They're all bad.
+ *
+ * If you're looking at this in the future as an example
+ * of how to setup payments for your own app, just
+ * go use Revenuecat. They're pretty cool I hear,
+ * and if you can actual get them to work, they're
+ * amazing.
  */
 
 import React from "react";
@@ -19,6 +33,7 @@ import {
   StatusBar,
   Linking,
   Dimensions,
+  EmitterSubscription,
 } from "react-native";
 import { recordScreenCallOnFocus } from "./navigation";
 import {
@@ -46,8 +61,10 @@ import Sentry from "react-native-sentry";
 import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 
 const IOS_SKU = "fyi.quirk.subscription";
-const itemSku = Platform.select({
+const ANDROID_ID = "basic_subscription";
+const subscriptionSku = Platform.select({
   ios: IOS_SKU,
+  android: ANDROID_ID,
 });
 
 const Container = props => (
@@ -73,7 +90,7 @@ interface Props {
 class PaymentScreen extends React.Component<
   Props,
   {
-    subscription?: InAppPurchases.Product<string>;
+    subscription?: InAppPurchases.Subscription<string>;
     canMakePayments: boolean;
     ready: boolean;
     loading: boolean;
@@ -95,30 +112,80 @@ class PaymentScreen extends React.Component<
     recordScreenCallOnFocus(this.props.navigation, "payments");
   }
 
-  redirectToFormScreen() {
+  redirectToFormScreen = () => {
     // We replace here because you shouldn't be able to go "back" to this screen
     this.props.navigation.replace(CBT_FORM_SCREEN, {
       thought: false,
     });
-  }
+  };
+
+  storePurchase = async (sub: InAppPurchases.SubscriptionPurchase) => {
+    let expirationDate;
+
+    /** iOS **/
+    if (Platform.OS === "ios") {
+      expirationDate = await getAppleExpirationDateFromReceipt(
+        sub.transactionReceipt
+      );
+      if (!expirationDate) {
+        throw new Error(
+          "Something went wrong validating your receipt, try again?"
+        );
+      }
+    } else {
+      /** Android **/
+
+      // We divide by 1000 because transactionDates are in miliseconds
+      // so we're EXTRA SUPER SPECIAL ACCURATE DUH
+      expirationDate = dayjs
+        .unix(sub.transactionDate / 1000)
+        .add(1, "month")
+        .unix();
+    }
+
+    await storeExpirationDate(expirationDate);
+    stats.userSubscribed(expirationDate);
+    this.redirectToFormScreen();
+
+    this.setState({
+      loading: false,
+    });
+  };
+
+  // See: https://github.com/dooboolab/react-native-iap#purchase
+  purchaseUpdateSubscription: EmitterSubscription;
+  purchaseErrorSubscription: EmitterSubscription;
 
   async componentDidMount() {
     SplashScreen.preventAutoHide();
+
+    this.purchaseUpdateSubscription = InAppPurchases.purchaseUpdatedListener(
+      (purchase: InAppPurchases.SubscriptionPurchase) => {
+        this.storePurchase(purchase);
+      }
+    );
+    this.purchaseErrorSubscription = InAppPurchases.purchaseErrorListener(
+      (error: InAppPurchases.PurchaseError) => {
+        console.error("purchaseErrorListener", error);
+        Alert.alert("purchase error", JSON.stringify(error));
+      }
+    );
 
     // This can happen asynchronously while we do other stuff
     getSubscriptionDefinition().then(subscription => {
       this.setState({
         subscription,
-        ready: true,
       });
-      SplashScreen.hide();
     });
 
     try {
       // New apps don't need to spend time checking payments,
       // let's just get to it asap
       if (await isProbablyFreshlyInstalledApp()) {
-        console.log("AHHHH");
+        this.setState({
+          ready: true,
+        });
+        SplashScreen.hide();
         return;
       }
 
@@ -126,15 +193,29 @@ class PaymentScreen extends React.Component<
       if (!(await requiresPayment())) {
         this.redirectToFormScreen();
         SplashScreen.hide();
-        return;
       }
     } catch (err) {
       Sentry.captureException(err);
 
       // If we mess something up, just send them through, it's cool.
       this.redirectToFormScreen();
+      SplashScreen.hide();
     }
-    SplashScreen.hide();
+
+    this.setState({
+      ready: true,
+    });
+  }
+
+  componentWillMount() {
+    if (this.purchaseUpdateSubscription) {
+      this.purchaseUpdateSubscription.remove();
+      this.purchaseUpdateSubscription = null;
+    }
+    if (this.purchaseErrorSubscription) {
+      this.purchaseErrorSubscription.remove();
+      this.purchaseErrorSubscription = null;
+    }
   }
 
   componentWillUnmount() {
@@ -166,38 +247,10 @@ class PaymentScreen extends React.Component<
 
     try {
       await InAppPurchases.initConnection();
-      const purchase = await InAppPurchases.buySubscription(itemSku);
-      if (!purchase || !purchase.transactionReceipt) {
-        throw new Error("Something went wrong subscribing, try again?");
-      }
 
-      let expirationDate;
-
-      /** iOS **/
-      if (Platform.OS === "ios") {
-        expirationDate = await getAppleExpirationDateFromReceipt(
-          purchase.transactionReceipt
-        );
-        if (!expirationDate) {
-          throw new Error(
-            "Something went wrong validating your receipt, try again?"
-          );
-        }
-      } else {
-        /** Android **/
-
-        // We divide by 1000 because transactionDates are in miliseconds
-        // so we're EXTRA SUPER SPECIAL ACCURATE DUH
-        expirationDate = dayjs
-          .unix(purchase.transactionDate / 1000)
-          .add(1, "month")
-          .unix();
-      }
-
-      await storeExpirationDate(expirationDate);
-      stats.userSubscribed(expirationDate);
-      this.redirectToFormScreen();
+      await InAppPurchases.requestSubscription(subscriptionSku);
     } catch (err) {
+      console.error(err);
       // We don't send this error to Sentry because it's not typically an
       // error on ourside. It's typically a password failure or a network
       // error. Still, if it's happening a lot, we want to know so we can
