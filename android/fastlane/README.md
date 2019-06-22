@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane android build
 ```
 Assemble Build
+### android bump_version_code
+```
+fastlane android bump_version_code
+```
+
 ### android test
 ```
 fastlane android test

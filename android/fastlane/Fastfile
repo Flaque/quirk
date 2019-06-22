@@ -26,6 +26,19 @@ platform :android do
     })
   end
 
+  lane :bump_version_code do
+    path = '../app/build.gradle'
+    re = /versionCode\s+(\d+)/ 
+  
+    s = File.read(path)
+    versionCode = s[re, 1].to_i
+    s[re, 1] = (versionCode + 1).to_s
+  
+    f = File.new(path, 'w')
+    f.write(s)
+    f.close
+  end
+
   desc "Runs all the tests"
   lane :test do
     gradle(task: "test")
@@ -33,6 +46,7 @@ platform :android do
 
   desc "Submit a new Internal"
   lane :internal do
+    bump_version_code
     gradle(task: 'clean assemble', build_type: "release", properties: {
       "android.injected.signing.store.file" => "/Users/flaque/.keystores/android",
       "android.injected.signing.store.password" => ENV['KEYSTORE_PASSWORD'],
