@@ -165,6 +165,15 @@ class PaymentScreen extends React.Component<
     );
     this.purchaseErrorSubscription = InAppPurchases.purchaseErrorListener(
       (error: InAppPurchases.PurchaseError) => {
+        if (
+          error.debugMessage ===
+          "Billing is unavailable. This may be a problem with your device, or the Play Store may be down."
+        ) {
+          Alert.alert("Can't connect. Are you logged into the Play Store?");
+          stats.log("Android Billing Error", { error });
+          return;
+        }
+
         console.error("purchaseErrorListener", error);
         Alert.alert("purchase error", JSON.stringify(error));
       }
