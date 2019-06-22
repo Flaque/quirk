@@ -193,7 +193,7 @@ class PaymentScreen extends React.Component<
           ready: true,
         });
         SplashScreen.hide();
-        recordScreenCallOnFocus(this.props.navigation, "payments");
+        stats.screen("payments");
         return;
       }
 
@@ -210,7 +210,7 @@ class PaymentScreen extends React.Component<
       SplashScreen.hide();
     }
 
-    recordScreenCallOnFocus(this.props.navigation, "payments");
+    stats.screen("payments");
     this.setState({
       ready: true,
     });
