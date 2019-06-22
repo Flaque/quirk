@@ -4,7 +4,14 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, Header, IconButton, ActionButton } from "./ui";
+import {
+  SubHeader,
+  Paragraph,
+  Header,
+  IconButton,
+  ActionButton,
+  GhostButton,
+} from "./ui";
 import { ScrollView, View } from "react-native";
 import { Constants } from "expo";
 import theme from "./theme";
@@ -246,17 +253,17 @@ class ExplanationScreen extends React.Component<Props> {
                   marginRight: 8,
                 }}
               >
-                <ActionButton
+                <GhostButton
                   title="Intro"
                   width={80}
                   height={48}
-                  fillColor={theme.lightGray}
+                  borderColor={theme.lightGray}
                   textColor={theme.veryLightText}
                   onPress={this.navigateToOnboardingScreen}
                 />
               </View>
               <IconButton
-                featherIconName={"edit"}
+                featherIconName={"x"}
                 accessibilityLabel={i18n.t("accessibility.new_thought_button")}
                 onPress={() => this.props.navigation.pop()}
               />

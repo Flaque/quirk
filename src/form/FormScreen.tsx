@@ -23,6 +23,9 @@ import i18n from "../i18n";
 import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "../screens";
 import * as flagstore from "../flagstore";
 import { newThought } from "../thoughts";
+import { Thought } from "../thoughts";
+import { CognitiveDistortion } from "../distortions";
+import universalHaptic from "../haptic";
 
 const textInputStyle = {
   height: 156,
@@ -37,11 +40,15 @@ const textInputStyle = {
 };
 const textInputPlaceholderColor = theme.veryLightText;
 
-interface ScreenProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationAction>;
-}
-
-const AutomaticThought = () => (
+const AutomaticThought = ({
+  value,
+  onChange,
+  onNext,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  onNext: () => void;
+}) => (
   <View
     style={{
       display: "flex",
@@ -65,17 +72,26 @@ const AutomaticThought = () => (
       style={textInputStyle}
       placeholderTextColor={textInputPlaceholderColor}
       placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
-      value={""}
-      returnKeyType="next"
+      value={value}
       multiline={true}
       numberOfLines={6}
       blurOnSubmit={true}
-      onChangeText={text => console.log("automaticThought", text)}
+      returnKeyType="next"
+      onChangeText={onChange}
+      onSubmitEditing={onNext}
     />
   </View>
 );
 
-const Challenge = () => (
+const Challenge = ({
+  value,
+  onChange,
+  onNext,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  onNext: () => void;
+}) => (
   <View
     style={{
       display: "flex",
@@ -99,17 +115,24 @@ const Challenge = () => (
       style={textInputStyle}
       placeholderTextColor={textInputPlaceholderColor}
       placeholder={i18n.t("cbt_form.alt_thought_placeholder")}
-      value={""}
+      value={value}
       returnKeyType="next"
       multiline={true}
       numberOfLines={6}
       blurOnSubmit={true}
-      onChangeText={text => console.log("automaticThought", text)}
+      onChangeText={onChange}
+      onSubmitEditing={onNext}
     />
   </View>
 );
 
-const AlternativeThought = () => (
+const AlternativeThought = ({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) => (
   <View
     style={{
       display: "flex",
@@ -133,54 +156,133 @@ const AlternativeThought = () => (
       style={textInputStyle}
       placeholderTextColor={textInputPlaceholderColor}
       placeholder={i18n.t("cbt_form.alt_thought_placeholder")}
-      value={""}
+      value={value}
       returnKeyType="next"
       multiline={true}
       numberOfLines={6}
       blurOnSubmit={true}
-      onChangeText={text => console.log("automaticThought", text)}
+      onChangeText={onChange}
     />
   </View>
 );
 
-const Distortions = () => (
+const Distortions = ({
+  distortions = [],
+  onChange,
+}: {
+  distortions: CognitiveDistortion[];
+  onChange: (slug: string) => void;
+}) => (
   <ScrollView>
     <View>
       <SubHeader>{i18n.t("cog_distortion")}</SubHeader>
-      <RoundedSelector
-        items={newThought().cognitiveDistortions}
-        onPress={() => {}}
-      />
+      <RoundedSelector items={distortions} onPress={onChange} />
     </View>
   </ScrollView>
 );
 
-export default class extends React.Component<ScreenProps> {
+interface ScreenProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationAction>;
+}
+
+interface FormScreenState {
+  thought: Thought;
+  activeSlide: number;
+}
+
+export default class extends React.Component<ScreenProps, FormScreenState> {
   static navigationOptions = {
     header: null,
   };
 
+  state = {
+    thought: newThought(),
+    activeSlide: 0,
+  };
+
   _carousel = null;
 
-  _renderItem({ item, index }) {
+  onChangeAutomaticThought = val => {
+    this.setState(prevState => {
+      prevState.thought.automaticThought = val;
+      return prevState;
+    });
+  };
+
+  onChangeChallenge = (val: string) => {
+    this.setState(prevState => {
+      prevState.thought.challenge = val;
+      return prevState;
+    });
+  };
+
+  onChangeAlternativeThought = (val: string) => {
+    this.setState(prevState => {
+      prevState.thought.alternativeThought = val;
+      return prevState;
+    });
+  };
+
+  onChangeDistortion = (selected: string) => {
+    universalHaptic.selection(); // iOS users get a selected buzz
+
+    this.setState(prevState => {
+      const { cognitiveDistortions } = prevState.thought;
+      const index = cognitiveDistortions.findIndex(
+        ({ slug }) => slug === selected
+      );
+
+      cognitiveDistortions[index].selected = !cognitiveDistortions[index]
+        .selected;
+
+      prevState.thought.cognitiveDistortions = cognitiveDistortions;
+      return prevState;
+    });
+  };
+
+  _renderItem = ({ item, index }) => {
+    const { thought } = this.state;
+
     if (item.slug === "automatic-thought") {
-      return <AutomaticThought />;
+      return (
+        <AutomaticThought
+          value={thought.automaticThought}
+          onChange={this.onChangeAutomaticThought}
+          onNext={() => this._carousel.snapToNext(true)}
+        />
+      );
     }
 
     if (item.slug === "distortions") {
-      return <Distortions />;
+      return (
+        <Distortions
+          distortions={thought.cognitiveDistortions}
+          onChange={this.onChangeDistortion}
+        />
+      );
     }
 
     if (item.slug === "challenge") {
-      return <Challenge />;
+      return (
+        <Challenge
+          value={thought.challenge}
+          onChange={this.onChangeChallenge}
+          onNext={() => this._carousel.snapToNext(true)}
+        />
+      );
     }
 
     if (item.slug === "alternative-thought") {
-      return <AlternativeThought />;
+      return (
+        <AlternativeThought
+          value={thought.alternativeThought}
+          onChange={this.onChangeAlternativeThought}
+        />
+      );
     }
 
     return null;
-  }
+  };
 
   render() {
     return (
@@ -192,7 +294,6 @@ export default class extends React.Component<ScreenProps> {
       >
         <Container
           style={{
-            justifyContent: "initial",
             height: "100%",
             paddingLeft: 0,
             paddingRight: 0,
@@ -239,6 +340,7 @@ export default class extends React.Component<ScreenProps> {
             renderItem={this._renderItem}
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
+            onSnapToItem={index => this.setState({ activeSlide: index })}
           />
         </Container>
       </View>

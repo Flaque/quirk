@@ -124,15 +124,26 @@ export const SelectorTextItem = ({
         >
           {emoji}
         </Text>
-        <Text
+
+        <View
           style={{
-            fontWeight: "600",
-            fontSize: 16,
-            color: selected ? "white" : theme.darkText,
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
           }}
         >
-          {text}
-        </Text>
+          <Text
+            style={{
+              fontWeight: "600",
+              fontSize: 16,
+              color: selected ? "white" : theme.darkText,
+              marginRight: 8,
+            }}
+          >
+            {text}
+          </Text>
+          {selected && <Feather name={"check"} size={16} color={"white"} />}
+        </View>
       </View>
 
       <View
@@ -140,7 +151,7 @@ export const SelectorTextItem = ({
           marginRight: 12,
           marginLeft: 12,
           marginBottom: 6,
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: selected ? theme.darkBlue : theme.lightOffwhite,
           paddingLeft: 12,
           paddingRight: 12,
           paddingBottom: 6,
@@ -159,8 +170,6 @@ export const SelectorTextItem = ({
         </Paragraph>
       </View>
     </View>
-
-    {selected && <Feather name={"check"} size={16} color={"white"} />}
   </TouchableOpacity>
 );
 
@@ -170,7 +179,13 @@ SelectorTextItem.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-export const RoundedSelector = ({ items, onPress, style }) => (
+export const RoundedSelector = ({
+  items,
+  onPress,
+  style,
+}: {
+  onPress: (slug: string) => void;
+} & any) => (
   <View
     style={{
       backgroundColor: theme.lightOffwhite,
@@ -245,6 +260,55 @@ export const RoundedSelectorButton = ({
     </View>
 
     {selected && <Feather name={"check"} size={16} color={"white"} />}
+  </TouchableOpacity>
+);
+
+export const GhostButton = ({
+  title,
+  onPress,
+  borderColor,
+  textColor,
+  width,
+  height,
+  disabled,
+  flex,
+}: {
+  title: string;
+  onPress: () => void;
+  borderColor: string;
+  textColor: string;
+  width?: number | string;
+  height?: number;
+  disabled?: boolean;
+  flex?: number;
+}) => (
+  <TouchableOpacity
+    style={{
+      padding: 12,
+      borderRadius: 10,
+      justifyContent: "center",
+      alignItems: "center",
+      borderColor: borderColor,
+      borderWidth: 1,
+      borderBottomWidth: 2,
+      maxHeight: 48,
+      width,
+      height,
+      flex,
+    }}
+    disabled={disabled}
+    onPress={onPress}
+  >
+    <Text
+      style={{
+        textAlign: "center",
+        color: textColor,
+        fontWeight: "700",
+        fontSize: 16,
+      }}
+    >
+      {title}
+    </Text>
   </TouchableOpacity>
 );
 

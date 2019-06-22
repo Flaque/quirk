@@ -285,7 +285,7 @@ class CBTListScreen extends React.Component<Props, State> {
                   style={{ marginRight: 18 }}
                 />
                 <IconButton
-                  featherIconName={"edit"}
+                  featherIconName={"x"}
                   onPress={() => this.navigateToForm()}
                   accessibilityLabel={i18n.t(
                     "accessibility.new_thought_button"
