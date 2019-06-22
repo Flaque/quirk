@@ -29,7 +29,6 @@ import { setIsExistingUser } from "./thoughtstore";
 import { recordScreenCallOnFocus } from "./navigation";
 import * as stats from "./stats";
 import * as flagstore from "./flagstore";
-import { grandfatherUserIntoFreeSubscription } from "./history/grandfatherstore";
 
 const CBTViewer = ({ thought, onEdit, onNew }) => {
   if (!thought.uuid) {
@@ -125,9 +124,6 @@ export default class CBTFormScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-
-    // TODO: Remove
-    grandfatherUserIntoFreeSubscription();
 
     this.props.navigation.addListener("willFocus", async payload => {
       // We've come from a list item

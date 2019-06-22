@@ -24,6 +24,7 @@
 
 import { Segment } from "expo";
 import isInDev from "./isInDev";
+import dayjs from "dayjs";
 
 Segment.initialize({
   androidWriteKey: "ZivFALGI9FH1L4WiAEY3o5PDtKwvLLxB",
@@ -31,7 +32,13 @@ Segment.initialize({
 });
 
 // Don't rename these; it can mess a bunch of stuff down the pipe
-export type ScreenType = "form" | "help" | "intro" | "list" | "settings";
+export type ScreenType =
+  | "form"
+  | "help"
+  | "intro"
+  | "list"
+  | "settings"
+  | "payments";
 
 /**
  * Screen calls bump a counter every time someone sees a particular screen.
@@ -88,4 +95,80 @@ export function thoughtRecorded() {
     return;
   }
   Segment.track("thought_recorded");
+}
+
+/**
+ * User Started Payment
+ * Purpose: The user clicked on the subscription button,
+ * but didn't necessarily finish subscribing.
+ *
+ * If this doesn't match the user_usbscribed
+ * numbers, then there's likely a bug.
+ */
+export function userStartedPayment() {
+  Segment.track("user_started_payment");
+}
+
+/**
+ * User Encountered Payment Error
+ */
+export function userEncounteredPaymentError(err: string) {
+  Segment.trackWithProperties("user_encountered_payment_error", {
+    error: err,
+  });
+}
+
+/**
+ * User Subscribed
+ */
+export function userSubscribed(expirationUnixTimestamp: number) {
+  Segment.trackWithProperties("user_subscribed", {
+    expirationDate: dayjs.unix(expirationUnixTimestamp).format(),
+  });
+}
+
+/**
+ * Subscription Verified
+ *
+ * Purpose: Tracks HOW a person's sub was verified so
+ * we can see if local cache actually works. If we're
+ * seeing spikes in "online", we'll know that we're
+ * using too much data and that the app might
+ * be slow for folks.
+ */
+export function subscriptionVerified(
+  method: "cache" | "online" | "grandfathered"
+) {
+  Segment.trackWithProperties("subscription_verified", {
+    method,
+  });
+}
+
+export function subscriptionUnverified(reason: "expired" | "never-bought") {
+  Segment.trackWithProperties("subscription_unverified", {
+    reason,
+  });
+}
+
+export function subscriptionGivenForFreeDueToError() {
+  Segment.track("subscription_given_for_free_due_to_error");
+}
+
+export function subscriptionFoundInCache(value: string) {
+  Segment.trackWithProperties("subscription_found_in_cache", {
+    value,
+  });
+}
+
+/**
+ * Basically production logs
+ * @param properties
+ */
+export function log(label: string, properties?: object) {
+  const args = { label, properties };
+  if (isInDev()) {
+    console.log(args);
+  } else {
+    Segment.trackWithProperties("log", args);
+  }
 }

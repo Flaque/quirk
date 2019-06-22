@@ -11,7 +11,6 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
-import posed from "react-native-pose";
 
 export interface ParentComponent {
   children: any;
@@ -257,14 +256,16 @@ export const ActionButton = ({
   width,
   height,
   disabled,
+  flex,
 }: {
   title: string;
   onPress: () => void;
   fillColor?: string;
   textColor?: string;
-  width?: number;
+  width?: number | string;
   height?: number;
   disabled?: boolean;
+  flex?: number;
 }) => (
   <TouchableOpacity
     style={{
@@ -277,6 +278,7 @@ export const ActionButton = ({
       maxHeight: 48,
       width,
       height,
+      flex,
     }}
     disabled={disabled}
     onPress={onPress}

@@ -8,9 +8,13 @@ Sentry.config(
 
 class ErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {
-    Sentry.captureException(error, {
-      extra: errorInfo,
-    });
+    if (errorInfo) {
+      Sentry.captureException(error, {
+        extra: errorInfo,
+      });
+    }
+
+    Sentry.captureException(error);
   }
 
   render() {
