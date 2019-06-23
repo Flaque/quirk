@@ -78,11 +78,11 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     });
   };
 
-  onEdit = () => {
+  onEdit = (uuid: string, slide: Slides) => {
     this.setState({
       isEditing: true,
       // Start on the closest to where they were
-      slideToShow: "alternative",
+      slideToShow: slide,
     });
   };
 
@@ -139,7 +139,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
             />
           ) : (
             <FinishedThoughtView
-              thought={this.state.thought}
+              thought={this.state.thought as SavedThought}
               onNew={this.onNew}
               onEdit={this.onEdit}
             />

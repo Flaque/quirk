@@ -1,6 +1,6 @@
 import React from "react";
 import { SavedThought, Thought } from "../thoughts";
-import { View } from "react-native";
+import { View, Linking, ScrollView } from "react-native";
 import {
   Row,
   ActionButton,
@@ -13,6 +13,7 @@ import i18n from "../i18n";
 import { BubbleThought } from "../imgs/Bubbles";
 import { emojiForSlug } from "../distortions";
 import theme from "../theme";
+import { Slides } from "./FormView";
 
 const cognitiveDistortionsToText = cognitiveDistortions => {
   const paragraphs = cognitiveDistortions
@@ -35,11 +36,13 @@ const cognitiveDistortionsToText = cognitiveDistortions => {
   return paragraphs;
 };
 
-interface ThoughtComponent {
-  thought: Thought;
-}
-
-const CBTView = ({ thought }: ThoughtComponent) => (
+const CBTView = ({
+  thought,
+  onEdit,
+}: {
+  thought: SavedThought;
+  onEdit: (uuid: string, slide: Slides) => void;
+}) => (
   <>
     <FormContainer>
       <SubHeader>{i18n.t("auto_thought")}</SubHeader>
@@ -49,6 +52,7 @@ const CBTView = ({ thought }: ThoughtComponent) => (
         style={{
           backgroundColor: "white",
         }}
+        onPress={() => onEdit(thought.uuid, "automatic")}
       >
         {thought.automaticThought ? (
           <BubbleThought
@@ -71,6 +75,7 @@ const CBTView = ({ thought }: ThoughtComponent) => (
         style={{
           backgroundColor: "white",
         }}
+        onPress={() => onEdit(thought.uuid, "distortions")}
       >
         {cognitiveDistortionsToText(thought.cognitiveDistortions)}
       </GhostButtonWithGuts>
@@ -83,6 +88,7 @@ const CBTView = ({ thought }: ThoughtComponent) => (
         style={{
           backgroundColor: "white",
         }}
+        onPress={() => onEdit(thought.uuid, "challenge")}
       >
         <Paragraph>{thought.challenge || "🤷‍"}</Paragraph>
       </GhostButtonWithGuts>
@@ -95,6 +101,7 @@ const CBTView = ({ thought }: ThoughtComponent) => (
         style={{
           backgroundColor: "white",
         }}
+        onPress={() => onEdit(thought.uuid, "alternative")}
       >
         {thought.alternativeThought ? (
           <BubbleThought
@@ -119,7 +126,7 @@ export default ({
   onNew,
 }: {
   thought: SavedThought;
-  onEdit: (uuid: string) => void;
+  onEdit: (uuid: string, slide: Slides) => void;
   onNew: () => void;
 }) => {
   if (!thought.uuid) {
@@ -127,22 +134,15 @@ export default ({
   }
 
   return (
-    <View
+    <ScrollView
       style={{
         paddingHorizontal: 24,
         paddingVertical: 18,
       }}
     >
-      <CBTView thought={thought} />
+      <CBTView thought={thought} onEdit={onEdit} />
 
       <Row>
-        {/* <ActionButton
-          fillColor="transparent"
-          textColor={theme.blue}
-          title={i18n.t("cbt_form.edit")}
-          onPress={() => onEdit(thought.uuid)}
-          disabled={false}
-        /> */}
         <ActionButton
           title={i18n.t("cbt_form.new")}
           onPress={onNew}
@@ -150,11 +150,12 @@ export default ({
           width={"100%"}
         />
       </Row>
-      {/* 
+
       <View
         style={{
-          marginTop: 24,
+          marginTop: 48,
           borderRadius: 8,
+          paddingBottom: 96,
         }}
       >
         <SubHeader
@@ -175,12 +176,13 @@ export default ({
             fillColor={theme.lightGray}
             textColor={theme.blue}
             title={"Email Us!"}
+            width={"100%"}
             onPress={() => {
               Linking.openURL("mailto:humans@quirk.fyi");
             }}
           />
         </Row>
-      </View> */}
-    </View>
+      </View>
+    </ScrollView>
   );
 };
