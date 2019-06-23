@@ -370,7 +370,7 @@ class PaymentScreen extends React.Component<
             >
               {this.state.subscription.localizedPrice}
             </SubHeader>{" "}
-            a month.
+            a month. {Platform.OS === "android" && "Try for free for 7 days."}
           </Paragraph>
         </View>
 
@@ -520,21 +520,23 @@ class PaymentScreen extends React.Component<
           />
         </View>
 
-        <View
-          style={{
-            marginBottom: 24,
-            marginLeft: 32,
-            marginRight: 32,
-          }}
-        >
-          <Paragraph
+        {Platform.OS === "ios" && (
+          <View
             style={{
-              color: theme.lightText,
+              marginBottom: 24,
+              marginLeft: 32,
+              marginRight: 32,
             }}
           >
-            {i18n.t("payment.ios_explanation")}
-          </Paragraph>
-        </View>
+            <Paragraph
+              style={{
+                color: theme.lightText,
+              }}
+            >
+              {i18n.t("payment.ios_explanation")}
+            </Paragraph>
+          </View>
+        )}
       </Container>
     );
   }
