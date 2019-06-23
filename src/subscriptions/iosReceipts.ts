@@ -78,7 +78,10 @@ export async function getAppleExpirationDateFromRecentPurchases(): Promise<
   false | number
 > {
   const purchases = (await InAppPurchases.getAvailablePurchases()) || [];
-  const receipt = purchases[0].transactionReceipt;
+  if (!purchases || purchases.length === 0) {
+    return false;
+  }
 
+  const receipt = purchases[0].transactionReceipt;
   return getAppleExpirationDateFromReceipt(receipt);
 }

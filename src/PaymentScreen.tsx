@@ -165,6 +165,15 @@ class PaymentScreen extends React.Component<
     );
     this.purchaseErrorSubscription = InAppPurchases.purchaseErrorListener(
       (error: InAppPurchases.PurchaseError) => {
+        if (
+          error.debugMessage ===
+          "Billing is unavailable. This may be a problem with your device, or the Play Store may be down."
+        ) {
+          Alert.alert("Can't connect. Are you logged into the Play Store?");
+          stats.log("Android Billing Error", { error });
+          return;
+        }
+
         console.error("purchaseErrorListener", error);
         Alert.alert("purchase error", JSON.stringify(error));
       }
@@ -202,6 +211,7 @@ class PaymentScreen extends React.Component<
         SplashScreen.hide();
       }
     } catch (err) {
+      stats.subscriptionGivenForFreeDueToError();
       Sentry.captureException(err);
 
       // If we mess something up, just send them through, it's cool.
@@ -361,7 +371,7 @@ class PaymentScreen extends React.Component<
             >
               {this.state.subscription.localizedPrice}
             </SubHeader>{" "}
-            a month.
+            a month. {Platform.OS === "android" && "Try for free for 7 days."}
           </Paragraph>
         </View>
 
@@ -511,21 +521,23 @@ class PaymentScreen extends React.Component<
           />
         </View>
 
-        <View
-          style={{
-            marginBottom: 24,
-            marginLeft: 32,
-            marginRight: 32,
-          }}
-        >
-          <Paragraph
+        {Platform.OS === "ios" && (
+          <View
             style={{
-              color: theme.lightText,
+              marginBottom: 24,
+              marginLeft: 32,
+              marginRight: 32,
             }}
           >
-            {i18n.t("payment.ios_explanation")}
-          </Paragraph>
-        </View>
+            <Paragraph
+              style={{
+                color: theme.lightText,
+              }}
+            >
+              {i18n.t("payment.ios_explanation")}
+            </Paragraph>
+          </View>
+        )}
       </Container>
     );
   }
