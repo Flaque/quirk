@@ -47,6 +47,8 @@ Some amazing folks have helped build the Quirk you see today.
 - [@miguelmf](https://github.com/miguelmf) for the Portugese translation 🇵🇹
 - [@comradekingu](https://github.com/comradekingu) for the Norweigan Bokmål translation 🇳🇴
 - [@micheleriva](https://github.com/micheleriva) for the Italian translation 🇮🇹
+- [@Jolg42](https://github.com/jolg42) for the French translation 🇫🇷
+- [@Buricescu](https://github.com/Buricescu) for the Romanian translation 🇷🇴
 
 ## Running Locally
 
