@@ -1,6 +1,6 @@
-import { Container, Row, Header, IconButton } from "../ui";
+import { Container, Row, Header, IconButton, ActionButton } from "../ui";
 import React from "react";
-import Carousel from "react-native-snap-carousel";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 import { View } from "react-native";
 import {
   NavigationScreenProp,
@@ -114,10 +114,24 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
 
     if (item.slug === "alternative-thought") {
       return (
-        <AlternativeThought
-          value={thought.alternativeThought}
-          onChange={this.onChangeAlternativeThought}
-        />
+        <>
+          <AlternativeThought
+            value={thought.alternativeThought}
+            onChange={this.onChangeAlternativeThought}
+          />
+
+          <View
+            style={{
+              marginTop: 12,
+            }}
+          >
+            <ActionButton
+              title="Save & Finish"
+              width="100%"
+              onPress={() => {}}
+            />
+          </View>
+        </>
       );
     }
 

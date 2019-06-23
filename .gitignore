@@ -109,3 +109,4 @@ report.xml
 # Android
 *.apk
 android/app/build/
+android/build/
