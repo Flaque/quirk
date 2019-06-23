@@ -211,6 +211,7 @@ class PaymentScreen extends React.Component<
         SplashScreen.hide();
       }
     } catch (err) {
+      stats.subscriptionGivenForFreeDueToError();
       Sentry.captureException(err);
 
       // If we mess something up, just send them through, it's cool.
