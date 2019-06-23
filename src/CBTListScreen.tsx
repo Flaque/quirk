@@ -179,6 +179,7 @@ interface Props {
 interface State {
   groups: ThoughtGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
+  isReady: boolean;
 }
 
 class CBTListScreen extends React.Component<Props, State> {
@@ -188,7 +189,11 @@ class CBTListScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = { groups: [], historyButtonLabel: "alternative-thought" };
+    this.state = {
+      groups: [],
+      historyButtonLabel: "alternative-thought",
+      isReady: false,
+    };
 
     this.props.navigation.addListener("willFocus", () => {
       this.loadSettings();
@@ -221,7 +226,12 @@ class CBTListScreen extends React.Component<Props, State> {
 
         this.setState({ groups });
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        this.setState({
+          isReady: true,
+        });
+      });
   };
 
   loadSettings = (): void => {
@@ -240,6 +250,7 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   navigateToForm = () => {
+    universalHaptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.props.navigation.navigate(CBT_FORM_SCREEN, {
       thought: false,
     });
@@ -260,7 +271,7 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { groups, historyButtonLabel } = this.state;
+    const { groups, historyButtonLabel, isReady } = this.state;
 
     return (
       <View style={{ backgroundColor: theme.lightOffwhite }}>
@@ -294,12 +305,14 @@ class CBTListScreen extends React.Component<Props, State> {
               </View>
             </Row>
 
-            <ThoughtItemList
-              groups={groups}
-              navigateToFormWithThought={this.navigateToFormWithThought}
-              onItemDelete={this.onItemDelete}
-              historyButtonLabel={historyButtonLabel}
-            />
+            {isReady && (
+              <ThoughtItemList
+                groups={groups}
+                navigateToFormWithThought={this.navigateToFormWithThought}
+                onItemDelete={this.onItemDelete}
+                historyButtonLabel={historyButtonLabel}
+              />
+            )}
           </Container>
         </ScrollView>
         <Alerter alerts={alerts} />

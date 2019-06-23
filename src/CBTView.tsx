@@ -2,7 +2,7 @@ import React from "react";
 import { FormContainer, SubHeader, Paragraph } from "./ui";
 import { Thought } from "./thoughts";
 import i18n from "./i18n";
-import { BubbleThought } from "./Bubbles";
+import { BubbleThought } from "./imgs/Bubbles";
 import { emojiForSlug } from "./distortions";
 
 const cognitiveDistortionsToText = cognitiveDistortions => {

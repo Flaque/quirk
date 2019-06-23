@@ -263,6 +263,38 @@ export const RoundedSelectorButton = ({
   </TouchableOpacity>
 );
 
+export const GhostButtonWithGuts = ({
+  onPress,
+  borderColor,
+  disabled,
+  flex,
+  children,
+  style,
+}: {
+  onPress: () => void;
+  borderColor: string;
+  disabled?: boolean;
+  flex?: number;
+  children: any;
+  style?: any;
+}) => (
+  <TouchableOpacity
+    style={{
+      padding: 12,
+      borderRadius: 10,
+      borderColor: borderColor,
+      borderWidth: 1,
+      borderBottomWidth: 2,
+      flex,
+      ...style,
+    }}
+    disabled={disabled}
+    onPress={onPress}
+  >
+    {children}
+  </TouchableOpacity>
+);
+
 export const GhostButton = ({
   title,
   onPress,

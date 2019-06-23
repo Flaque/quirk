@@ -1,6 +1,5 @@
-import { Container, Row, Header, IconButton, ActionButton } from "../ui";
+import { Container, Row, Header, IconButton } from "../ui";
 import React from "react";
-import Carousel, { Pagination } from "react-native-snap-carousel";
 import { View } from "react-native";
 import {
   NavigationScreenProp,
@@ -9,25 +8,23 @@ import {
 } from "react-navigation";
 import theme from "../theme";
 import { Constants } from "expo";
-import { sliderWidth, itemWidth } from "./sizes";
 import i18n from "../i18n";
 import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "../screens";
 import * as flagstore from "../flagstore";
-import { newThought } from "../thoughts";
-import { Thought } from "../thoughts";
-import universalHaptic from "../haptic";
-import AutomaticThought from "./AutomaticThought";
-import AlternativeThought from "./AlternativeThought";
-import Challenge from "./Challenge";
-import Distortions from "./Distortions";
+import FormView, { Slides } from "./FormView";
+import FinishedThoughtView from "./FinishedThoughtView";
+import { SavedThought, Thought, newThought } from "../thoughts";
+import { get } from "lodash";
+import { exists } from "../thoughtstore";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
 
 interface FormScreenState {
-  thought: Thought;
-  activeSlide: number;
+  isEditing: boolean;
+  thought?: SavedThought | Thought;
+  slideToShow: Slides;
 }
 
 export default class extends React.Component<ScreenProps, FormScreenState> {
@@ -35,110 +32,63 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     header: null,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.props.navigation.addListener("willFocus", async payload => {
+      // We've come from a list item
+      const thought = get(payload, "state.params.thought", false);
+      if (thought && thought.uuid) {
+        this.setState({ thought, isEditing: false });
+        return;
+      }
+
+      // We've come from the form-button back to an existing view
+      if (!this.state.isEditing) {
+        // Wipe the item if it doesn't exist
+        const thoughtExists = await exists(
+          (this.state.thought as SavedThought).uuid
+        );
+
+        if (!thoughtExists) {
+          this.setState({ thought: newThought(), isEditing: true });
+        }
+      }
+    });
+  }
+
   state = {
+    isEditing: true,
     thought: newThought(),
-    activeSlide: 0,
+    slideToShow: "automatic" as Slides,
   };
 
-  _carousel = null;
-
-  onChangeAutomaticThought = val => {
-    this.setState(prevState => {
-      prevState.thought.automaticThought = val;
-      return prevState;
+  onSave = thought => {
+    console.log("thought", thought);
+    this.setState({
+      isEditing: false,
+      thought,
     });
   };
 
-  onChangeChallenge = (val: string) => {
-    this.setState(prevState => {
-      prevState.thought.challenge = val;
-      return prevState;
+  onNew = () => {
+    this.setState({
+      isEditing: true,
+      thought: newThought(),
     });
   };
 
-  onChangeAlternativeThought = (val: string) => {
-    this.setState(prevState => {
-      prevState.thought.alternativeThought = val;
-      return prevState;
+  onEdit = () => {
+    this.setState({
+      isEditing: true,
+      // Start on the closest to where they were
+      slideToShow: "alternative",
     });
-  };
-
-  onChangeDistortion = (selected: string) => {
-    universalHaptic.selection(); // iOS users get a selected buzz
-
-    this.setState(prevState => {
-      const { cognitiveDistortions } = prevState.thought;
-      const index = cognitiveDistortions.findIndex(
-        ({ slug }) => slug === selected
-      );
-
-      cognitiveDistortions[index].selected = !cognitiveDistortions[index]
-        .selected;
-
-      prevState.thought.cognitiveDistortions = cognitiveDistortions;
-      return prevState;
-    });
-  };
-
-  _renderItem = ({ item, index }) => {
-    const { thought } = this.state;
-
-    if (item.slug === "automatic-thought") {
-      return (
-        <AutomaticThought
-          value={thought.automaticThought}
-          onChange={this.onChangeAutomaticThought}
-          onNext={() => this._carousel.snapToNext(true)}
-        />
-      );
-    }
-
-    if (item.slug === "distortions") {
-      return (
-        <Distortions
-          distortions={thought.cognitiveDistortions}
-          onChange={this.onChangeDistortion}
-        />
-      );
-    }
-
-    if (item.slug === "challenge") {
-      return (
-        <Challenge
-          value={thought.challenge}
-          onChange={this.onChangeChallenge}
-          onNext={() => this._carousel.snapToNext(true)}
-        />
-      );
-    }
-
-    if (item.slug === "alternative-thought") {
-      return (
-        <>
-          <AlternativeThought
-            value={thought.alternativeThought}
-            onChange={this.onChangeAlternativeThought}
-          />
-
-          <View
-            style={{
-              marginTop: 12,
-            }}
-          >
-            <ActionButton
-              title="Save & Finish"
-              width="100%"
-              onPress={() => {}}
-            />
-          </View>
-        </>
-      );
-    }
-
-    return null;
   };
 
   render() {
+    const { isEditing } = this.state;
+
     return (
       <View
         style={{
@@ -181,21 +131,19 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
             />
           </Row>
 
-          <Carousel
-            ref={c => {
-              this._carousel = c;
-            }}
-            data={[
-              { slug: "automatic-thought" },
-              { slug: "distortions" },
-              { slug: "challenge" },
-              { slug: "alternative-thought" },
-            ]}
-            renderItem={this._renderItem}
-            sliderWidth={sliderWidth}
-            itemWidth={itemWidth}
-            onSnapToItem={index => this.setState({ activeSlide: index })}
-          />
+          {isEditing ? (
+            <FormView
+              onSave={this.onSave}
+              initialThought={this.state.thought}
+              slideToShow={this.state.slideToShow}
+            />
+          ) : (
+            <FinishedThoughtView
+              thought={this.state.thought}
+              onNew={this.onNew}
+              onEdit={this.onEdit}
+            />
+          )}
         </Container>
       </View>
     );

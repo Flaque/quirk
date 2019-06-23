@@ -4,26 +4,20 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import {
-  SubHeader,
-  Paragraph,
-  Header,
-  IconButton,
-  ActionButton,
-  GhostButton,
-} from "./ui";
+import { SubHeader, Paragraph, Header, IconButton, GhostButton } from "./ui";
 import { ScrollView, View } from "react-native";
-import { Constants } from "expo";
+import { Constants, Haptic } from "expo";
 import theme from "./theme";
 import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
-
-import { BubbleThought } from "./Bubbles";
+import { BubbleThought } from "./imgs/Bubbles";
 import { recordScreenCallOnFocus } from "./navigation";
+import haptic from "./haptic";
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
+
 const Distortion = ({ children }) => (
   <View
     style={{
@@ -265,7 +259,10 @@ class ExplanationScreen extends React.Component<Props> {
               <IconButton
                 featherIconName={"x"}
                 accessibilityLabel={i18n.t("accessibility.new_thought_button")}
-                onPress={() => this.props.navigation.pop()}
+                onPress={() => {
+                  haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+                  this.props.navigation.pop();
+                }}
               />
             </View>
           </View>
