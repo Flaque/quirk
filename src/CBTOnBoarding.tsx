@@ -31,7 +31,7 @@ const thought: Thought = {
       label: i18n.t("onboarding_screen.cog_distortion.label"),
       slug: i18n.t("onboarding_screen.cog_distortion.slug"),
       selected: true,
-      example: "",
+      description: "",
     },
   ],
 };

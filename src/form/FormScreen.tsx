@@ -7,7 +7,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import theme from "../theme";
-import { Constants } from "expo";
+import { Constants, Haptic } from "expo";
 import i18n from "../i18n";
 import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "../screens";
 import * as flagstore from "../flagstore";
@@ -16,6 +16,7 @@ import FinishedThoughtView from "./FinishedThoughtView";
 import { SavedThought, Thought, newThought } from "../thoughts";
 import { get } from "lodash";
 import { exists } from "../thoughtstore";
+import haptic from "../haptic";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -73,6 +74,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
   };
 
   onNew = () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.setState({
       isEditing: true,
       thought: newThought(),

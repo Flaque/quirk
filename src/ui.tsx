@@ -96,7 +96,7 @@ export const SubHeader = ({ children, style }: ParentComponent) => (
 export const SelectorTextItem = ({
   text,
   emoji,
-  example,
+  description,
   selected = false,
   onPress,
 }) => (
@@ -166,7 +166,7 @@ export const SelectorTextItem = ({
             color: selected ? "white" : theme.darkText,
           }}
         >
-          {`"${example}"`}
+          {description}
         </Paragraph>
       </View>
     </View>
@@ -205,7 +205,7 @@ export const RoundedSelector = ({
           key={slug}
           emoji={cogDistortion.emoji || "🍎"}
           text={cogDistortion.label}
-          example={cogDistortion.example}
+          description={cogDistortion.description}
           selected={selected}
           onPress={() => onPress(slug)}
         />

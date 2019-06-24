@@ -4,7 +4,6 @@ import Carousel from "react-native-snap-carousel";
 import { View } from "react-native";
 import { Haptic } from "expo";
 import { sliderWidth, itemWidth } from "./sizes";
-import { newThought } from "../thoughts";
 import { Thought } from "../thoughts";
 import universalHaptic from "../haptic";
 import AutomaticThought from "./AutomaticThought";

@@ -12,7 +12,11 @@ export default ({
   onChange: (slug: string) => void;
 }) => (
   <ScrollView>
-    <View>
+    <View
+      style={{
+        paddingBottom: 48,
+      }}
+    >
       <SubHeader>{i18n.t("cog_distortion")}</SubHeader>
       <RoundedSelector items={distortions} onPress={onChange} />
     </View>
