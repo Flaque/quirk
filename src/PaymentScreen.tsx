@@ -59,6 +59,7 @@ import { BallIndicator } from "react-native-indicators";
 import Sentry from "react-native-sentry";
 import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
+import makeCancelable from "makecancelable";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const ANDROID_ID = "basic_subscription";
@@ -107,15 +108,27 @@ class PaymentScreen extends React.Component<
     loading: false,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   redirectToFormScreen = () => {
     // We replace here because you shouldn't be able to go "back" to this screen
     this.props.navigation.replace(CBT_FORM_SCREEN, {
       thought: false,
     });
+  };
+
+  fetchSubscriptionDefinition = async () => {
+    const subscription = await getSubscriptionDefinition();
+    this.setState({
+      subscription,
+    });
+  };
+
+  showPaymentsScreen = async () => {
+    stats.screen("payments");
+    await this.fetchSubscriptionDefinition();
+    this.setState({
+      ready: true,
+    });
+    SplashScreen.hide();
   };
 
   storePurchase = async (sub: InAppPurchases.SubscriptionPurchase) => {
@@ -179,13 +192,6 @@ class PaymentScreen extends React.Component<
       }
     );
 
-    // This can happen asynchronously while we do other stuff
-    getSubscriptionDefinition().then(subscription => {
-      this.setState({
-        subscription,
-      });
-    });
-
     try {
       if (await isGrandfatheredIntoFreeSubscription()) {
         stats.subscriptionVerified("grandfathered");
@@ -197,11 +203,7 @@ class PaymentScreen extends React.Component<
       // New apps don't need to spend time checking payments,
       // let's just get to it asap
       if (await isProbablyFreshlyInstalledApp()) {
-        this.setState({
-          ready: true,
-        });
-        SplashScreen.hide();
-        stats.screen("payments");
+        await this.showPaymentsScreen();
         return;
       }
 
@@ -209,6 +211,7 @@ class PaymentScreen extends React.Component<
       if (!(await requiresPayment())) {
         this.redirectToFormScreen();
         SplashScreen.hide();
+        return;
       }
     } catch (err) {
       stats.subscriptionGivenForFreeDueToError();
@@ -219,10 +222,7 @@ class PaymentScreen extends React.Component<
       SplashScreen.hide();
     }
 
-    stats.screen("payments");
-    this.setState({
-      ready: true,
-    });
+    await this.showPaymentsScreen();
   }
 
   componentWillMount() {

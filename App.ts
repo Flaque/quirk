@@ -8,7 +8,7 @@ import {
   PAYMENT_SCREEN,
 } from "./src/screens";
 import CBTListScreen from "./src/CBTListScreen";
-import CBTFormScreen from "./src/CBTFormScreen";
+import CBTFormScreen from "./src/form/FormScreen";
 import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/SettingsScreen";
 import { CBTOnBoardingScreen } from "./src/CBTOnBoarding";

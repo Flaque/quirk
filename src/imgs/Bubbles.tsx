@@ -1,26 +1,26 @@
 import React from "react";
-import { Paragraph, ThoughtDook } from "./ui";
+import { Paragraph, ThoughtDook } from "../ui";
 import { View } from "react-native";
-import theme from "./theme";
+import theme from "../theme";
 
 const PurpleBubble = () => (
   <ThoughtDook
     style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
-    source={require(`../assets/purple/Dook.png`)}
+    source={require("../../assets/pink/Dook.png")}
   />
 );
 
 const YellowBubble = () => (
   <ThoughtDook
     style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
-    source={require(`../assets/yellow/Dook.png`)}
+    source={require("../../assets/yellow/Dook.png")}
   />
 );
 
 const PinkBubble = () => (
   <ThoughtDook
     style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
-    source={require(`../assets/pink/Dook.png`)}
+    source={require("../../assets/pink/Dook.png")}
   />
 );
 

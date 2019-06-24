@@ -133,5 +133,17 @@
   "should_statements_thought": "나는 어른이니까, 이런 정신적인 문제들이 없어야해.",
   "payment": {
     "ios_explanation": "지불 확인은 Apple ID 계좌로 지불됩니다. 현재 기간이 종료되기 최소 24 시간 전에 취소되지 않으면 자동으로 갱신됩니다. 현재 기간이 끝나기 24 시간 이내에 귀하의 계정에 갱신 요금이 부과됩니다. 구매 후 앱 스토어 계정 설정으로 이동하여 구독을 관리하고 취소 할 수 있습니다."
-  }
+  },
+  "all_or_nothing_thinking_one_liner": "ex: \"그건 시간 낭비\"",
+  "overgeneralization_one_liner": "ex: \"모두가 나를 실망 시키겠다.\"",
+  "mind_reading_one_liner": "ex: \"그는 나를 싫어한다.\"",
+  "fortune_telling_one_liner": "ex: \"나는 아플거야.\"",
+  "magnification_of_the_negative_one_liner": "나는 무엇이 잘못되었는지 만 안다.",
+  "minimization_of_the_positive_one_liner": "나는 일어난 좋은 일들을 무시한다.",
+  "catastrophizing_one_liner": "나는 최악의 시나리오에 집중한다.",
+  "emotional_reasoning_one_liner": "ex: \"나는 두려워서 공황 발작을 일으킬 것이다.\"",
+  "should_statements_one_liner": "ex: \"나는 더 잘해야했다.\"",
+  "labeling_one_liner": "ex: \"그는 바보 야.\"",
+  "self_blaming_one_liner": "나는 완전히 잘못이다.",
+  "other_blaming_one_liner": "누군가 다른 사람이 전적으로 잘못되었습니다."
 }

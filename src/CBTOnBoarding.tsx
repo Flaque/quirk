@@ -1,7 +1,6 @@
 import React from "react";
 import theme from "./theme";
 import {
-  Header,
   ParentComponent,
   Illustration,
   Container,
@@ -32,6 +31,7 @@ const thought: Thought = {
       label: i18n.t("onboarding_screen.cog_distortion.label"),
       slug: i18n.t("onboarding_screen.cog_distortion.slug"),
       selected: true,
+      description: "",
     },
   ],
 };
