@@ -1,6 +1,6 @@
 import { Container, Row, Header, IconButton } from "../ui";
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -15,8 +15,10 @@ import FormView, { Slides } from "./FormView";
 import FinishedThoughtView from "./FinishedThoughtView";
 import { SavedThought, Thought, newThought } from "../thoughts";
 import { get } from "lodash";
-import { exists } from "../thoughtstore";
+import { exists, getIsExistingUser } from "../thoughtstore";
 import haptic from "../haptic";
+import { recordScreenCallOnFocus } from "../navigation";
+import * as stats from "../stats";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -26,6 +28,7 @@ interface FormScreenState {
   isEditing: boolean;
   thought?: SavedThought | Thought;
   slideToShow: Slides;
+  shouldShowHelpBadge: boolean;
 }
 
 export default class extends React.Component<ScreenProps, FormScreenState> {
@@ -56,12 +59,26 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
         }
       }
     });
+
+    recordScreenCallOnFocus(this.props.navigation, "form");
+
+    getIsExistingUser().then(isExisting => {
+      // New Users
+      if (!isExisting) {
+        stats.newuser();
+      }
+    });
+
+    flagstore.get("start-help-badge", "true").then(val => {
+      this.setState({ shouldShowHelpBadge: val });
+    });
   }
 
   state = {
     isEditing: true,
     thought: newThought(),
     slideToShow: "automatic" as Slides,
+    shouldShowHelpBadge: false,
   };
 
   onSave = thought => {
@@ -90,7 +107,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
   };
 
   render() {
-    const { isEditing } = this.state;
+    const { isEditing, shouldShowHelpBadge } = this.state;
 
     return (
       <View
@@ -124,7 +141,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
                   this.props.navigation.push(EXPLANATION_SCREEN);
                 });
               }}
-              hasBadge={false}
+              hasBadge={shouldShowHelpBadge}
             />
             <Header allowFontScaling={false}>quirk</Header>
             <IconButton
