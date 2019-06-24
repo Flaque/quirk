@@ -68,6 +68,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     this.setState({
       isEditing: false,
       thought,
+      slideToShow: "automatic",
     });
   };
 

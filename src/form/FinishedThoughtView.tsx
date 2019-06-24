@@ -1,5 +1,5 @@
 import React from "react";
-import { SavedThought, Thought } from "../thoughts";
+import { SavedThought } from "../thoughts";
 import { View, Linking, ScrollView } from "react-native";
 import {
   Row,
