@@ -107,7 +107,6 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <AutomaticThought
           value={thought.automaticThought}
           onChange={this.onChangeAutomaticThought}
-          onNext={() => this._carousel.snapToNext(true)}
         />
       );
     }
@@ -126,7 +125,6 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <Challenge
           value={thought.challenge}
           onChange={this.onChangeChallenge}
-          onNext={() => this._carousel.snapToNext(true)}
         />
       );
     }

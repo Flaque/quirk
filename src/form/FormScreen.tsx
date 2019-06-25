@@ -82,7 +82,6 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
   };
 
   onSave = thought => {
-    console.log("thought", thought);
     this.setState({
       isEditing: false,
       thought,

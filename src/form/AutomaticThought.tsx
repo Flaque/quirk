@@ -7,11 +7,9 @@ import { textInputStyle, textInputPlaceholderColor } from "./textInputStyle";
 export default ({
   value,
   onChange,
-  onNext,
 }: {
   value: string;
   onChange: (v: string) => void;
-  onNext: () => void;
 }) => (
   <View
     style={{
@@ -39,10 +37,7 @@ export default ({
       value={value}
       multiline={true}
       numberOfLines={6}
-      blurOnSubmit={true}
-      returnKeyType="next"
       onChangeText={onChange}
-      onSubmitEditing={onNext}
     />
   </View>
 );

@@ -35,10 +35,8 @@ export default ({
       placeholderTextColor={textInputPlaceholderColor}
       placeholder={i18n.t("cbt_form.alt_thought_placeholder")}
       value={value}
-      returnKeyType="next"
       multiline={true}
       numberOfLines={6}
-      blurOnSubmit={true}
       onChangeText={onChange}
     />
   </View>

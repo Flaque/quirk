@@ -7,11 +7,9 @@ import { textInputStyle, textInputPlaceholderColor } from "./textInputStyle";
 export default ({
   value,
   onChange,
-  onNext,
 }: {
   value: string;
   onChange: (v: string) => void;
-  onNext: () => void;
 }) => (
   <View
     style={{
@@ -37,12 +35,9 @@ export default ({
       placeholderTextColor={textInputPlaceholderColor}
       placeholder={i18n.t("cbt_form.changed_placeholder")}
       value={value}
-      returnKeyType="next"
       multiline={true}
       numberOfLines={6}
-      blurOnSubmit={true}
       onChangeText={onChange}
-      onSubmitEditing={onNext}
     />
   </View>
 );
