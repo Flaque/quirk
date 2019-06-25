@@ -35,7 +35,7 @@ export default ({
     <TextInput
       style={textInputStyle}
       placeholderTextColor={textInputPlaceholderColor}
-      placeholder={i18n.t("cbt_form.alt_thought_placeholder")}
+      placeholder={i18n.t("cbt_form.changed_placeholder")}
       value={value}
       returnKeyType="next"
       multiline={true}
