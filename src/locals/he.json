@@ -1,0 +1,156 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "פספסתי את המסיבה של יניב, הוא בטח שונא אותי.",
+    "challenge_ex": "יניב ידע שלא יכלתי להגיע בזמן, אני לא אשנא אותו אם הוא יפספס משהו שלי.\n\nאני צריך להתייחס לעצמי בצורה טובה לפחות כמו שאני מתחייס לאחרים.",
+    "alt_thought_ex": "זה נכון שפספסתי את המסיבה של יניב, אני יכול להתנצל, והוא בטוח יסלח לי.",
+    "cog_distortion": { "label": "קריאת מחשבות", "slug": "mind-reading" },
+    "intro": {
+      "line1": "ברוכים הבאים אל",
+      "emphasis1": "quirk",
+      "line2": ", האפליקציה של",
+      "emphasis2": "טיפול קוגניטיבי התנהגותי (CBT)",
+      "line3": ""
+    },
+    "crash_course": {
+      "line1": "זהו",
+      "emphasis1": "קורס מזורז",
+      "line2": "בCBT",
+      "emphasis2": "וזה לא תחליף",
+      "line3": "למטפל מומחה."
+    },
+    "mood_thoughts": {
+      "line1": "ראשית:",
+      "emphasis1": "המחשבות שלכם משפיעות על התנהגותכם."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "שנית: המחשבות שלכם יכולות להיות",
+      "emphasis1": "אוטומטיות."
+    },
+    "your_distorted": {
+      "line1": "שלישית: מחשבות אוטומטיות הן לרוב",
+      "emphasis1": "מעוותות."
+    },
+    "cbt_overview": {
+      "line1": "המטרה של CBT היא לזהות את",
+      "emphasis1": "המחשבות המעוותות",
+      "line2": "",
+      "emphasis2": "ולהחליף אותן",
+      "line3": "במחשבות הגיוניות."
+    },
+    "ready": {
+      "emphasis1": "מוכנים?",
+      "line1": "בואו נעבור על השלבים."
+    },
+    "catch": {
+      "line1": "נתחיל",
+      "emphasis1": "בפשוט לרשום",
+      "line2": "את המחשבות האוטומטיות תוך כדי שהן קורות."
+    },
+    "bad_thought_note": {
+      "line1": "שימו לב למחשבה:",
+      "line2": "פספסתי את המסיבה של יניב, הוא בטח שונא אותי."
+    },
+    "identify_distortions": {
+      "line1": "חפשו",
+      "emphasis1": "עיוותים קוגניטיביים"
+    },
+    "bad_distortions": {
+      "line1": "האם אנחנו באמת יודעים שיניב ישנא אותנו? אם לא, אנחנו מבצעים",
+      "emphasis1": "🧠 קריאת מחשבות",
+      "line2": "פספסתי את המסיבה של יניב, הוא בטח שונא אותי."
+    },
+    "challenge_screen": {
+      "line1": "מדוע המחשבה הזאת לא מציאותית?",
+      "emphasis1": "אתגרו אותה."
+    },
+    "write_challenge": {
+      "line1": "נכתוב משהו כזה:"
+    },
+    "alt_thought": {
+      "line1": "לבסוף, נכתוב",
+      "emphasis1": "מחשבה חילופית."
+    },
+    "show_off": {
+      "line1": "מצאו זאת לאחר מכן:"
+    },
+    "got_it": {
+      "line1": "אתם מוכנים!",
+      "btn_title": "בואו נתחיל!"
+    }
+  },
+  "auto_thought": "מחשבה אוטומטית",
+  "cog_distortion": "עיוות קוגניטיבי",
+  "challenge": "אתגר",
+  "alt_thought": "מחשבה חילופית",
+  "cbt_form": {
+    "edit": "ערוך",
+    "new": "חדש",
+    "save": "שמור",
+    "auto_thought_placeholder": "מה קורה?",
+    "cog_distortion": "עיוות מחשבתי",
+    "challenged": "אתגר",
+    "changed_placeholder": "דונו במחשבה זו!",
+    "alt_thought_placeholder": "מה אנחנו יכולים לחשוב במקום?"
+  },
+  "all_or_nothing_thinking": "חשיבה של הכל או כלום",
+  "all_or_nothing_thinking_explanation": "עיוות זה קורה כאשר אין לנו מקום לדברים באמצע. אם אנחנו חושבים שמשמעותו של פגם קטן בעצמנו היא שאנחנו מקולקלים ביסודנו או אחרת נוראים, אנחנו בטח מבצעים חשיבה של הכל או כלום.",
+  "all_or_nothing_thinking_thought": "פישלתי לגמרי בראיון ההוא, בטח אף אחד לא יעסיק אותי.",
+  "catastrophizing": "קטסטרופציה",
+  "catastrophizing_explanation": "אם אנו לוקחים בעיה קטנה ומוציאים אותה לגמרי מפרופורציה, אנחנו מבצעים קטסטרופציה. האם עשיתם טעות קטנה בעבודה ואתם בחרדה שמישהו יגלה למרות שהיא לא משהו חשוב? זה קטסטרופציה.",
+  "catastrophizing_thought": "אני לחוץ, יכול להיות שיהיה לי התקף לב.",
+  "emotional_reasoning": "היגיון רגשי",
+  "emotional_reasoning_explanation_1": "\"זה מה שאני מרגיש, אז זה בטוח נכון.\" האם אתם מוצאים את עצמכם מצדיקים את ה\"סכנה\" במשהו לא מזיק בגלל שאתם חוששים ממנו, אז אתם בטח מתעסקים בהיגיון רגשי. דברים אינם מסוכנים בגלל שאנחנו חוששים מהם ואנחנו לא נוראים רק בגלל שאנחנו חושבים שאנחנו אולי נוראים.",
+  "emotional_reasoning_explanation_2": "זה דבר שבדרך כלל קשה לזהות. זה לוקח מאמץ לזהות כאשר המחשבה הרגשית שלך משטלת על מושכות ההיגיון.",
+  "emotional_reasoning_thought": "אני מרגיש אשם, אז בטח עשיתי משהו רע.",
+  "fortune_telling": "הגדת עתידות",
+  "fortune_telling_explanation": "עיוות זה קורה כאשר אנו חוזים את העתיד. אנחנו לרוב מעריכים יתר על המידה על יכולותנו לחזות מה יקרה. בדרך כלל שמשהו אולי יקרה ואז נתחיל לחפש ראיות לכך שהוא יקרה.",
+  "fortune_telling_thought": "המטוס שאני עומד לעלות עליו יתרסק.",
+  "labeling": "תיוג",
+  "labeling_explanation": "אם אנחנו לוקחים מאפיין אחד של אדם ומיישמים אותו לכל בן האדם, אנחנו מתייגים. אם מישהו סירב לנו, הוא לא בהכרח \"מניאק,\" אולי הם פשוט ממהרים. זה מיושם גם לעצמנו; רק בגלל שביצענו טעות זה לא אומר ששאנחנו \"כישלון.\"",
+  "labeling_thought": "נכשלתי במבחן, אז אני תלמיד גרוע.",
+  "magnification_of_the_negative": "הגדלת השלילי",
+  "magnification_of_the_negative_explanation": "אם אתם שופטים סיטואציה בהתבסס אך ורק על החלקים השליליים ולא מתייחסים לחלקים החיוביים, סביר להניח שאת מגדילים את השליליות. אם אתם מאשימים את עצמכם ללא הפסקה עבור זה שנכשלתם בראיון עבודה, אתם בטח לא מתייחסים לכל הניסיון שצברתם מן הראיון ההוא.",
+  "magnification_of_the_negative_thought": "אכלתי בריא השבוע, אבל דילגתי על הריצה שלי.",
+  "mind_reading": "קריאת מחשבות",
+  "mind_reading_explanation": "אם אנחנו דואגים לגבי מה שמישהו אחר חושב עלינו, אנחנו מנסים לקרוא מחשבות. אלא אם מישהו אומר לכם מה הוא חושב, אין לכם שום דרך לדעת. אז למה להניח את הרע ביותר?",
+  "mind_reading_thought": "אני חושב שהייתי גס רוח ליניב, אני מתערב שהוא שונא אותי.",
+  "minimization_of_the_positive": "הקטנת החיובי",
+  "minimization_of_the_positive_explanation": "אם אנו גורמים לדברים הטובים שקורים לנו להיראות פחות חשובים, אנחנו מקטינים את החיובי. גם אם היום שלנו לא הלך 100% כמו שתכננו, זה לא אומר שצריך להתעלם מה60% שכן הלך כמו שצריך.",
+  "minimization_of_the_positive_thought": "הרבה אנשים אהבו את ההרצאה שלי, אבל התקשתי בהתחלה, אז זה היה רע.",
+  "other_blaming": "האשמת אחרים",
+  "other_blaming_explanation_1": "אם סיטואציה רעה חייבת להיות אשמה של מישהו, אנחנו מאשימים אחרים. אם נכשלתם במבחן ואתם מאשימים את המורה, אתם מעבירים את האנרגיה שלכם למקום הלא נכון. מישהו חתך אתכם בכביש המהיר? אם תצפצפו, תעשו אצבע משולשת, ותתעצבנו, איך זה יעזור? עכשיו גם חתכו אתכם וגם אתם עצבניים!",
+  "other_blaming_explanation_2": "זה לא אומר שאתם צריכים להאשים את עצמכם בכל סיטואציה שלילית. אתם לא צריכים להאשים אף אחד. אף אחד לא צריך להיות אשם אם אתם נותנים לסיטואציה לעבור בלי להאשים מישהו.",
+  "other_blaming_thought": "למניאק הזה לוקח יותר מדי זמן בתור ואני אאחר בגללו!",
+  "over_generalization": "הכללת יתר",
+  "over_generalization_explanation": "אם אנחנו מסיקים מסקנות מדוגמה אחת בלבד, אנחנו מבצעים הכללת יתר. אם הלך לכם גרוע בפרזנטציה ואתם מסיקים שאתם \"גרועים\" בלהציג, אתם מבצעים הכללת יתר.",
+  "over_generalization_thought": "אף אחד לא הזמין אותי לרקוד, אז אף אחד אף םען לא יזמין אותי.",
+  "self_blaming": "האשמה עצמית",
+  "self_blaming_explanation": "אם אתם מייחסים סיטואציה רעה לגמרי לעצמכם, אתם מבצעים האשמה עצמית. אתם לא חייבים להיות אחראים לכל דבר רע שקורה. אם נתקעתם בפקק ואתם מאשים את עצמכם שלא יצאתם מוקדם יותר, אתם מבצעים האשמה עצמית. האם אתם מתהגים למישהו אחר בצורה כזו?",
+  "self_blaming_thought": "הבן שלי נכשל בבית הספר, זה בטוח בגללי.",
+  "should_statements": "משפטי צריך",
+  "should_statements_explanation_1": "אם אתם מעניקים למישהו יכולות שאין לו, אתם משתמשים במשפטי \"צריך\" הפגומים. לדוגמה, אם יש לכם פחד מלעוף ואתם אומרים לעצמכם \"אני לא צריך לפחד מזה, אין שום דבר לא תקין במטוס הזה!\" אתם מעמיסים על עצמכם עומס שלא לצורך. יש לכם פחד מלעוף! זה נורמלי שאנשים שיש להם פחד מלעוף יפחדו לעוף!",
+  "should_statements_explanation_2": "משפטי צריך יכולים להישמע שטותיים כאשר אומרים אותם בקול; זה הקטע! הם לא הגיוניים!",
+  "should_statements_thought": "אני מבוגר, לא צריכות להיות לי בעיות נפשיות.",
+  "accessibility": {
+    "help_button": "עזרה",
+    "list_button": "רשום מחשבות",
+    "new_thought_button": "מחשבה חדשה",
+    "settings_button": "הגדרות",
+    "delete_thought_button": "מחק מחשבה"
+  },
+  "payment": {
+    "ios_explanation": "תשלום יחוייב מחשבון הApple ID שלכם ברגע אישור הרכישה. המנוי מתחדש באופן אוטומטי אלא אם הוא מבוטל לפחות 24 שעות לפני סיום התקופה הנוכחית. המשתמש שלכם יחוייב עבור חידוש עד 24 שעות לפני סוף התקופה הנוכחית. אתם יכולים לנהל ולבטל את המנויים שלכם כל ידי כניסה להגדרות משתמש הApp Store שלכם לאחר הרכישה."
+  },
+  "all_or_nothing_thinking_one_liner": "דוגמה: \"זה היה בזבוז מוחלט של זמן\"",
+  "overgeneralization_one_liner": "דוגמה: \"כולם יאכזבו אותי\"",
+  "mind_reading_one_liner": "דוגמה: \"הוא בטח שונא אותי עכשיו\"",
+  "fortune_telling_one_liner": "דוגמה: \"אני אהפוך לחולה במסיבה\"",
+  "magnification_of_the_negative_one_liner": "התמקדות רק במה שהלך רע",
+  "minimization_of_the_positive_one_liner": "התעלמות מהדברים הטובים שקרו",
+  "catastrophizing_one_liner": "התמקדות בתרחיש הגרוג ביותר שיכול לקרות",
+  "emotional_reasoning_one_liner": "דוגמה: \"אני חושש, אז יהיה לי התקף חרדה\"",
+  "should_statements_one_liner": "דוגמה: \"הייתי צריך להיות טוב יותר\"",
+  "labeling_one_liner": "דוגמה: \"הוא מטומטם\"",
+  "self_blaming_one_liner": "לקיחת כל האשמה על עצמך",
+  "other_blaming_one_liner": "העברת כל האשמה למישהו אחר"
+}
