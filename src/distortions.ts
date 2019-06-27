@@ -1,4 +1,5 @@
 import i18n from "./i18n";
+import { Platform } from "react-native";
 
 export interface CognitiveDistortion {
   emoji?: string;
@@ -7,6 +8,20 @@ export interface CognitiveDistortion {
   selected?: boolean;
   description: string;
 }
+
+const emj = (first: string, fallback: string) => {
+  // I'm not saying iOS is better, but wider support for emojis is reaaallll nice
+  if (Platform.OS === "ios") {
+    return first;
+  }
+
+  // update your phones people
+  if ((Platform.Version as number) <= 23) {
+    return fallback;
+  }
+
+  return first;
+};
 
 const distortions: CognitiveDistortion[] = [
   {
@@ -22,7 +37,7 @@ const distortions: CognitiveDistortion[] = [
     description: i18n.t("overgeneralization_one_liner"),
   },
   {
-    emoji: "🧠",
+    emoji: emj("🧠", "💭"),
     label: i18n.t("mind_reading"),
     slug: "mind-reading",
     description: i18n.t("mind_reading_one_liner"),
@@ -46,7 +61,7 @@ const distortions: CognitiveDistortion[] = [
     description: i18n.t("minimization_of_the_positive_one_liner"),
   },
   {
-    emoji: "🤯",
+    emoji: emj("🤯", "💥"),
     label: i18n.t("catastrophizing"),
     slug: "catastrophizing",
     description: i18n.t("catastrophizing_one_liner"),
@@ -64,19 +79,23 @@ const distortions: CognitiveDistortion[] = [
     description: i18n.t("should_statements_one_liner"),
   },
   {
-    emoji: "🏷",
+    // ya know, because onigiri has like a little seaweed label.
+    // Trust me it makese sense
+    emoji: emj("🏷", "🍙"),
     label: i18n.t("labeling"),
     slug: "labeling",
     description: i18n.t("labeling_one_liner"),
   },
   {
-    emoji: "👁",
+    // look man don't ask me why it's a no-pedestrian as a fallback
+    // update your phones people
+    emoji: emj("👁", "🚷"),
     label: i18n.t("self_blaming"),
     slug: "self-blaming",
     description: i18n.t("self_blaming_one_liner"),
   },
   {
-    emoji: "🧛‍",
+    emoji: emj("🧛‍", "👺"),
     label: i18n.t("other_blaming"),
     slug: "other-blaming",
     description: i18n.t("other_blaming_one_liner"),
