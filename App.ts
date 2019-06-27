@@ -12,7 +12,7 @@ import CBTFormScreen from "./src/form/FormScreen";
 import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/SettingsScreen";
 import { CBTOnBoardingScreen } from "./src/CBTOnBoarding";
-import withErrorBoundary from "./src/withErrorBoundary";
+import withErrorBoundary from "./src/sentry/withErrorBoundary";
 import PaymentScreen from "./src/PaymentScreen";
 
 const App = createStackNavigator(

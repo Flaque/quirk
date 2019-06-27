@@ -1,10 +1,5 @@
 import React from "react";
-import Sentry from "sentry-expo";
-
-Sentry.enableInExpoDevelopment = true;
-Sentry.config(
-  "https://a9115f37287d4db39106d77e73aefa03@sentry.io/1443374"
-).install();
+import Sentry from "./index";
 
 class ErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {

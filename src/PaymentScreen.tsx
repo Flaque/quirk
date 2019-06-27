@@ -56,10 +56,9 @@ import dayjs from "dayjs";
 import { SplashScreen } from "expo";
 import * as stats from "./stats";
 import { BallIndicator } from "react-native-indicators";
-import Sentry from "react-native-sentry";
 import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
-import makeCancelable from "makecancelable";
+import Sentry from "./sentry";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const ANDROID_ID = "basic_subscription";
