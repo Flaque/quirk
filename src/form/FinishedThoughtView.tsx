@@ -14,6 +14,9 @@ import { BubbleThought } from "../imgs/Bubbles";
 import { emojiForSlug } from "../distortions";
 import theme from "../theme";
 import { Slides } from "./FormView";
+import { shouldShowReview } from "../reviews";
+import Rate, { AndroidMarket } from "react-native-rate";
+import * as flasgstore from "../flagstore";
 
 const cognitiveDistortionsToText = cognitiveDistortions => {
   const paragraphs = cognitiveDistortions
@@ -120,69 +123,108 @@ const CBTView = ({
   </>
 );
 
-export default ({
-  thought,
-  onEdit,
-  onNew,
-}: {
+export default class extends React.Component<{
   thought: SavedThought;
   onEdit: (uuid: string, slide: Slides) => void;
   onNew: () => void;
-}) => {
-  if (!thought.uuid) {
-    console.error("Viewing something that's not saved");
+}> {
+  state = {
+    showReview: false,
+  };
+
+  componentDidMount() {
+    shouldShowReview().then(showReview => {
+      showReview;
+    });
   }
 
-  return (
-    <ScrollView
-      style={{
-        paddingHorizontal: 24,
-        paddingVertical: 18,
-      }}
-    >
-      <CBTView thought={thought} onEdit={onEdit} />
+  render() {
+    const { thought, onEdit, onNew } = this.props;
 
-      <Row>
-        <ActionButton
-          title={i18n.t("cbt_form.new")}
-          onPress={onNew}
-          disabled={false}
-          width={"100%"}
-        />
-      </Row>
+    if (!thought.uuid) {
+      console.error("Viewing something that's not saved");
+    }
 
-      <View
+    return (
+      <ScrollView
         style={{
-          marginTop: 48,
-          borderRadius: 8,
-          paddingBottom: 96,
+          paddingHorizontal: 24,
+          paddingVertical: 18,
         }}
       >
-        <SubHeader
-          style={{
-            alignSelf: "flex-start",
-            justifyContent: "center",
-          }}
-        >
-          Got Feedback?
-        </SubHeader>
-        <Row
-          style={{
-            alignSelf: "flex-start",
-            justifyContent: "center",
-          }}
-        >
+        <CBTView thought={thought} onEdit={onEdit} />
+
+        <Row>
           <ActionButton
-            fillColor={theme.lightGray}
-            textColor={theme.blue}
-            title={"Email Us!"}
+            title={i18n.t("cbt_form.new")}
+            onPress={onNew}
+            disabled={false}
             width={"100%"}
-            onPress={() => {
-              Linking.openURL("mailto:humans@quirk.fyi");
-            }}
           />
         </Row>
-      </View>
-    </ScrollView>
-  );
-};
+
+        <View
+          style={{
+            marginTop: 48,
+            borderRadius: 8,
+            paddingBottom: 96,
+          }}
+        >
+          <SubHeader
+            style={{
+              alignSelf: "flex-start",
+              justifyContent: "center",
+            }}
+          >
+            Got Feedback?
+          </SubHeader>
+          <Row
+            style={{
+              alignSelf: "flex-start",
+              justifyContent: "center",
+            }}
+          >
+            <ActionButton
+              fillColor={theme.lightGray}
+              textColor={theme.blue}
+              title={"Something wrong? Email us!"}
+              width={"100%"}
+              onPress={() => {
+                Linking.openURL("mailto:humans@quirk.fyi");
+              }}
+            />
+          </Row>
+
+          {(this.state.showReview || true) && (
+            <Row
+              style={{
+                alignSelf: "flex-start",
+                justifyContent: "center",
+                marginTop: 18,
+              }}
+            >
+              <ActionButton
+                fillColor={theme.lightGray}
+                textColor={theme.blue}
+                title={"Love Quirk? Leave a review! ❤️"}
+                width={"100%"}
+                onPress={() => {
+                  Rate.rate(
+                    {
+                      AppleAppID: "",
+                      GooglePackageName: "tech.econn.quirk",
+                      preferredAndroidMarket: AndroidMarket.Google,
+                    },
+                    () => {
+                      flasgstore.setTrue("has-reviewed");
+                    }
+                  );
+                }}
+              />
+            </Row>
+          )}
+        </View>
+      </ScrollView>
+    );
+  }
+}

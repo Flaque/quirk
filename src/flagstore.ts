@@ -6,9 +6,10 @@ import { AsyncStorage } from "react-native";
 
 const EXISTING_USER_KEY = "@Quirk:flags";
 
+// Can't be an actual boolean because we store the string, not the boolean
 export type bool = "true" | "false";
 
-export type Flag = "start-help-badge";
+export type Flag = "start-help-badge" | "has-reviewed" | "has-given-feedback";
 
 function getKey(flag: Flag): string {
   return EXISTING_USER_KEY + flag;

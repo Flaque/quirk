@@ -98,6 +98,7 @@ target 'quirk' do
   pod 'glog',
     :podspec => "../node_modules/react-native/third-party-podspecs/glog.podspec",
     :inhibit_warnings => true
+  pod 'RNRate', :path => '../node_modules/react-native-rate/ios'
 
 
   pod 'RNIap', :path => '../node_modules/react-native-iap'

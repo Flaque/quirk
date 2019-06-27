@@ -20,6 +20,19 @@ export async function exists(key: string): Promise<boolean> {
   }
 }
 
+export async function thoughtCount(): Promise<number> {
+  try {
+    const keys = (await AsyncStorage.getAllKeys()).filter(key =>
+      key.startsWith(THOUGHTS_KEY_PREFIX)
+    );
+
+    return keys.length;
+  } catch (err) {
+    console.error(err);
+    return 0;
+  }
+}
+
 export async function getIsExistingUser(): Promise<boolean> {
   try {
     const value = await AsyncStorage.getItem(EXISTING_USER_KEY);

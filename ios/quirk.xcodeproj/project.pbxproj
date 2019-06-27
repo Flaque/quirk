@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2504AF2E22AC6FEB00CE72F8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2504AF2D22AC6FEB00CE72F8 /* StoreKit.framework */; };
+		25C2093422C3469700D0882D /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C2093322C3469700D0882D /* Stickers.xcassets */; };
+		25C2093822C3469700D0882D /* stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 25C2093122C3469500D0882D /* stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		25C2094822C438A000D0882D /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 25C2094622C438A000D0882D /* ios */; };
+		8745047D6F614B73817EF7BD /* libRNRate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 618F8C1CB8D64814A3DD7059 /* libRNRate.a */; };
 		B501732B1DC01252003445D9 /* EXShell.plist in Resources */ = {isa = PBXBuildFile; fileRef = B501732A1DC01252003445D9 /* EXShell.plist */; };
 		B56386491DB9693800A0598C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56386481DB9693800A0598C /* AppDelegate.m */; };
 		B56386511DB9693800A0598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56386501DB9693800A0598C /* Assets.xcassets */; };
@@ -22,10 +26,47 @@
 		EBB8117C1BFA0514F79CAF74 /* libPods-quirk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A88D15726AD99E8A257BC7 /* libPods-quirk.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		25C2093622C3469700D0882D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B56386391DB9693800A0598C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25C2093022C3469500D0882D;
+			remoteInfo = stickers;
+		};
+		25C2094122C4326F00D0882D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 836A9568E2E34288BB8EEB46 /* RNRate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNRate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		25C2093C22C3469700D0882D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				25C2093822C3469700D0882D /* stickers.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2504AF2D22AC6FEB00CE72F8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2504AF2F22B3054200CE72F8 /* quirk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = quirk.entitlements; sourceTree = "<group>"; };
+		25C2093122C3469500D0882D /* stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = stickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		25C2093322C3469700D0882D /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
+		25C2093522C3469700D0882D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25C2094622C438A000D0882D /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; path = "../node_modules/react-native-rate/ios"; sourceTree = "<group>"; };
 		2C1548D9E4CB1AEFA5CCAE6D /* Pods-quirk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quirk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-quirk/Pods-quirk.debug.xcconfig"; sourceTree = "<group>"; };
+		618F8C1CB8D64814A3DD7059 /* libRNRate.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNRate.a; sourceTree = "<group>"; };
+		836A9568E2E34288BB8EEB46 /* RNRate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNRate.xcodeproj; path = "../node_modules/react-native-rate/ios/RNRate.xcodeproj"; sourceTree = "<group>"; };
 		A47FE4D7F70906B7DC8CE39B /* Pods-quirk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quirk.release.xcconfig"; path = "Pods/Target Support Files/Pods-quirk/Pods-quirk.release.xcconfig"; sourceTree = "<group>"; };
 		B501732A1DC01252003445D9 /* EXShell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EXShell.plist; sourceTree = "<group>"; };
 		B56386411DB9693800A0598C /* quirk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quirk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,12 +86,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		250ED308C20058847AB1B34D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B563863E1DB9693800A0598C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EBB8117C1BFA0514F79CAF74 /* libPods-quirk.a in Frameworks */,
 				2504AF2E22AC6FEB00CE72F8 /* StoreKit.framework in Frameworks */,
+				8745047D6F614B73817EF7BD /* libRNRate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +115,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		25C2093222C3469500D0882D /* stickers */ = {
+			isa = PBXGroup;
+			children = (
+				25C2093322C3469700D0882D /* Stickers.xcassets */,
+				25C2093522C3469700D0882D /* Info.plist */,
+			);
+			path = stickers;
+			sourceTree = "<group>";
+		};
+		25C2093D22C4326F00D0882D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				618F8C1CB8D64814A3DD7059 /* libRNRate.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		25C2093E22C4326F00D0882D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25C2094222C4326F00D0882D /* libRNRate.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5B29BC350A332C58878A9F13 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,13 +149,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		75B5A2A543EC48D4B8BA6487 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				836A9568E2E34288BB8EEB46 /* RNRate.xcodeproj */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		B56386381DB9693800A0598C = {
 			isa = PBXGroup;
 			children = (
+				25C2094622C438A000D0882D /* ios */,
 				B56386431DB9693800A0598C /* quirk */,
+				25C2093222C3469500D0882D /* stickers */,
 				B56386421DB9693800A0598C /* Products */,
 				5B29BC350A332C58878A9F13 /* Pods */,
 				1A42804E64B7E9E0AB8B6799 /* Frameworks */,
+				75B5A2A543EC48D4B8BA6487 /* Libraries */,
+				25C2093D22C4326F00D0882D /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				B56386411DB9693800A0598C /* quirk.app */,
+				25C2093122C3469500D0882D /* stickers.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +212,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		25C2093022C3469500D0882D /* stickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25C2093B22C3469700D0882D /* Build configuration list for PBXNativeTarget "stickers" */;
+			buildPhases = (
+				25C2092F22C3469500D0882D /* Resources */,
+				250ED308C20058847AB1B34D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = stickers;
+			productName = stickers;
+			productReference = 25C2093122C3469500D0882D /* stickers.appex */;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
+		};
 		B56386401DB9693800A0598C /* quirk */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B56386581DB9693800A0598C /* Build configuration list for PBXNativeTarget "quirk" */;
@@ -136,10 +239,12 @@
 				B563863F1DB9693800A0598C /* Resources */,
 				AA38385B7D8D0854176B72FC /* [CP] Copy Pods Resources */,
 				19D233B7204FDD7D0087ED51 /* Bundle Expo Assets */,
+				25C2093C22C3469700D0882D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				25C2093722C3469700D0882D /* PBXTargetDependency */,
 			);
 			name = quirk;
 			productName = quirk;
@@ -152,9 +257,14 @@
 		B56386391DB9693800A0598C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 900;
 				ORGANIZATIONNAME = "650 Industries, Inc.";
 				TargetAttributes = {
+					25C2093022C3469500D0882D = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = F29L6XF84H;
+						ProvisioningStyle = Automatic;
+					};
 					B56386401DB9693800A0598C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = F29L6XF84H;
@@ -182,14 +292,39 @@
 			mainGroup = B56386381DB9693800A0598C;
 			productRefGroup = B56386421DB9693800A0598C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 25C2093E22C4326F00D0882D /* Products */;
+					ProjectRef = 836A9568E2E34288BB8EEB46 /* RNRate.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B56386401DB9693800A0598C /* quirk */,
+				25C2093022C3469500D0882D /* stickers */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		25C2094222C4326F00D0882D /* libRNRate.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNRate.a;
+			remoteRef = 25C2094122C4326F00D0882D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		25C2092F22C3469500D0882D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25C2093422C3469700D0882D /* Stickers.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B563863F1DB9693800A0598C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +333,7 @@
 				B501732B1DC01252003445D9 /* EXShell.plist in Resources */,
 				B5CFBF4F1EDE419400B4BE24 /* EXBuildConstants.plist in Resources */,
 				B56386671DB9994300A0598C /* EXSDKVersions.plist in Resources */,
+				25C2094822C438A000D0882D /* ios in Resources */,
 				B5693E921FABD46800307FA4 /* launch_icon.png in Resources */,
 				B5693E8E1FABD16A00307FA4 /* LaunchScreen.xib in Resources */,
 				B5DB04801F3A684600E91581 /* shell-app-manifest.json in Resources */,
@@ -299,7 +435,72 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		25C2093722C3469700D0882D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25C2093022C3469500D0882D /* stickers */;
+			targetProxy = 25C2093622C3469700D0882D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		25C2093922C3469700D0882D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F29L6XF84H;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = stickers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.econn.quirk.stickers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		25C2093A22C3469700D0882D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F29L6XF84H;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = stickers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.econn.quirk.stickers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B56386561DB9693800A0598C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -408,9 +609,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = quirk/quirk.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = F29L6XF84H;
 				INFOPLIST_FILE = ./quirk/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.econn.quirk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -423,9 +629,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = quirk/quirk.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = F29L6XF84H;
 				INFOPLIST_FILE = ./quirk/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.econn.quirk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -435,6 +646,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		25C2093B22C3469700D0882D /* Build configuration list for PBXNativeTarget "stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25C2093922C3469700D0882D /* Debug */,
+				25C2093A22C3469700D0882D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B563863C1DB9693800A0598C /* Build configuration list for PBXProject "quirk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
