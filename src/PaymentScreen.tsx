@@ -370,7 +370,7 @@ class PaymentScreen extends React.Component<
             >
               {this.state.subscription.localizedPrice}
             </SubHeader>{" "}
-            a month. {Platform.OS === "android" && "Try for free for 7 days."}
+            a month. Try for free for 7 days.
           </Paragraph>
         </View>
 
