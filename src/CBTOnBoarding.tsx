@@ -21,6 +21,7 @@ import {
 import { Haptic } from "expo";
 import { recordScreenCallOnFocus } from "./navigation";
 import * as stats from "./stats";
+import { CBT_FORM_SCREEN } from "./screens";
 
 const thought: Thought = {
   automaticThought: i18n.t("onboarding_screen.auto_thought_ex"),

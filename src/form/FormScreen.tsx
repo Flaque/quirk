@@ -23,6 +23,7 @@ import { exists, getIsExistingUser, setIsExistingUser } from "../thoughtstore";
 import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";
+import { CBTOnBoardingComponent } from "../CBTOnBoarding";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -33,6 +34,7 @@ interface FormScreenState {
   thought?: SavedThought | Thought;
   slideToShow: Slides;
   shouldShowHelpBadge: boolean;
+  shouldShowOnboarding: boolean;
 }
 
 export default class extends React.Component<ScreenProps, FormScreenState> {
@@ -82,7 +84,9 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     const isExisting = await getIsExistingUser();
     if (!isExisting) {
       setIsExistingUser();
-      this.props.navigation.replace(CBT_ON_BOARDING_SCREEN);
+      this.setState({
+        shouldShowOnboarding: true,
+      });
     }
   }
 
@@ -91,6 +95,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     thought: newThought(),
     slideToShow: "automatic" as Slides,
     shouldShowHelpBadge: false,
+    shouldShowOnboarding: false,
   };
 
   onSave = thought => {
@@ -118,7 +123,19 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
   };
 
   render() {
-    const { isEditing, shouldShowHelpBadge } = this.state;
+    const { isEditing, shouldShowHelpBadge, shouldShowOnboarding } = this.state;
+
+    if (shouldShowOnboarding) {
+      return (
+        <CBTOnBoardingComponent
+          handleScreenTransition={() =>
+            this.setState({
+              shouldShowOnboarding: false,
+            })
+          }
+        />
+      );
+    }
 
     return (
       <View

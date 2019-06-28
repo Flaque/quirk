@@ -186,8 +186,7 @@ class PaymentScreen extends React.Component<
           return;
         }
 
-        console.error("purchaseErrorListener", error);
-        Alert.alert("purchase error", JSON.stringify(error));
+        stats.log("purchaseErrorListener", { error });
       }
     );
 
