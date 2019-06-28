@@ -1,6 +1,6 @@
 import { Container, Row, Header, IconButton } from "../ui";
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -9,13 +9,17 @@ import {
 import theme from "../theme";
 import { Constants, Haptic } from "expo";
 import i18n from "../i18n";
-import { CBT_LIST_SCREEN, EXPLANATION_SCREEN } from "../screens";
+import {
+  CBT_LIST_SCREEN,
+  EXPLANATION_SCREEN,
+  CBT_ON_BOARDING_SCREEN,
+} from "../screens";
 import * as flagstore from "../flagstore";
 import FormView, { Slides } from "./FormView";
 import FinishedThoughtView from "./FinishedThoughtView";
 import { SavedThought, Thought, newThought } from "../thoughts";
 import { get } from "lodash";
-import { exists, getIsExistingUser } from "../thoughtstore";
+import { exists, getIsExistingUser, setIsExistingUser } from "../thoughtstore";
 import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";
@@ -72,6 +76,14 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     flagstore.get("start-help-badge", "true").then(val => {
       this.setState({ shouldShowHelpBadge: val });
     });
+  }
+
+  async componentDidMount() {
+    const isExisting = await getIsExistingUser();
+    if (!isExisting) {
+      setIsExistingUser();
+      this.props.navigation.replace(CBT_ON_BOARDING_SCREEN);
+    }
   }
 
   state = {
