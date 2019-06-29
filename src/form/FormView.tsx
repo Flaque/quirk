@@ -107,6 +107,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <AutomaticThought
           value={thought.automaticThought}
           onChange={this.onChangeAutomaticThought}
+          isOnboarding={true}
         />
       );
     }
@@ -116,6 +117,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <Distortions
           distortions={thought.cognitiveDistortions}
           onChange={this.onChangeDistortion}
+          isOnboarding={true}
         />
       );
     }
@@ -125,6 +127,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <Challenge
           value={thought.challenge}
           onChange={this.onChangeChallenge}
+          isOnboarding={true}
         />
       );
     }
@@ -135,6 +138,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
           <AlternativeThought
             value={thought.alternativeThought}
             onChange={this.onChangeAlternativeThought}
+            isOnboarding={true}
           />
 
           <View

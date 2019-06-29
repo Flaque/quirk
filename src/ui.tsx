@@ -263,6 +263,33 @@ export const RoundedSelectorButton = ({
   </TouchableOpacity>
 );
 
+export const FloatingCard = ({
+  children,
+  style,
+}: {
+  children: any;
+  style?: any;
+}) => (
+  <View
+    style={{
+      backgroundColor: "white",
+      borderWidth: 2,
+      borderColor: theme.blue,
+      borderRadius: 8,
+      padding: 24,
+      elevation: 1,
+      shadowColor: theme.lightGray,
+      shadowOffset: { width: 0, height: 1 },
+      shadowRadius: 10,
+      shadowOpacity: 0.8,
+      width: "100%",
+      ...style,
+    }}
+  >
+    {children}
+  </View>
+);
+
 export const GhostButtonWithGuts = ({
   onPress,
   borderColor,
