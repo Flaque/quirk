@@ -1,6 +1,6 @@
 import { Container, Row, Header, IconButton } from "../ui";
 import React from "react";
-import { View } from "react-native";
+import { View, StatusBar } from "react-native";
 import {
   NavigationScreenProp,
   NavigationState,
@@ -23,10 +23,9 @@ import { exists, getIsExistingUser, setIsExistingUser } from "../thoughtstore";
 import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";
-import { CBTOnBoardingComponent } from "../CBTOnBoarding";
 
 interface ScreenProps {
-  navigation: NavigationScreenProp<NavigationState, NavigationAction>;
+  navigation: NavigationScreenProp<any, NavigationAction>;
 }
 
 interface FormScreenState {
@@ -35,6 +34,8 @@ interface FormScreenState {
   slideToShow: Slides;
   shouldShowHelpBadge: boolean;
   shouldShowOnboarding: boolean;
+  shouldShowInFlowOnboarding: boolean;
+  isReady: boolean;
 }
 
 export default class extends React.Component<ScreenProps, FormScreenState> {
@@ -74,10 +75,6 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
         stats.newuser();
       }
     });
-
-    flagstore.get("start-help-badge", "true").then(val => {
-      this.setState({ shouldShowHelpBadge: val });
-    });
   }
 
   async componentDidMount() {
@@ -88,6 +85,22 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
         shouldShowOnboarding: true,
       });
     }
+
+    // Check if coming from onboarding
+    // @ts-ignore argle bargle typescript plz don't do these things
+    if (this.props.navigation.getParam("fromOnboarding", false)) {
+      this.setState({
+        shouldShowInFlowOnboarding: true,
+      });
+    }
+
+    flagstore.get("start-help-badge", "true").then(val => {
+      this.setState({ shouldShowHelpBadge: val });
+    });
+
+    this.setState({
+      isReady: true,
+    });
   }
 
   state = {
@@ -96,6 +109,8 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     slideToShow: "automatic" as Slides,
     shouldShowHelpBadge: false,
     shouldShowOnboarding: false,
+    shouldShowInFlowOnboarding: false,
+    isReady: false,
   };
 
   onSave = thought => {
@@ -103,6 +118,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
       isEditing: false,
       thought,
       slideToShow: "automatic",
+      shouldShowInFlowOnboarding: false,
     });
   };
 
@@ -123,18 +139,20 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
   };
 
   render() {
-    const { isEditing, shouldShowHelpBadge, shouldShowOnboarding } = this.state;
+    const {
+      isEditing,
+      shouldShowHelpBadge,
+      shouldShowOnboarding,
+      shouldShowInFlowOnboarding,
+      isReady,
+    } = this.state;
+
+    if (!isReady) {
+      return null;
+    }
 
     if (shouldShowOnboarding) {
-      return (
-        <CBTOnBoardingComponent
-          handleScreenTransition={() =>
-            this.setState({
-              shouldShowOnboarding: false,
-            })
-          }
-        />
-      );
+      this.props.navigation.replace(CBT_ON_BOARDING_SCREEN);
     }
 
     return (
@@ -144,6 +162,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
           height: "100%",
         }}
       >
+        <StatusBar barStyle="dark-content" />
         <Container
           style={{
             height: "100%",
@@ -184,6 +203,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
               onSave={this.onSave}
               initialThought={this.state.thought}
               slideToShow={this.state.slideToShow}
+              shouldShowInFlowOnboarding={shouldShowInFlowOnboarding}
             />
           ) : (
             <FinishedThoughtView
