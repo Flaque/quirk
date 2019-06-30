@@ -32,6 +32,7 @@ interface FormViewProps {
   onSave: (thought: Thought) => void;
   initialThought: Thought;
   slideToShow: Slides;
+  shouldShowInFlowOnboarding: boolean;
 }
 
 interface FormViewState {
@@ -107,7 +108,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <AutomaticThought
           value={thought.automaticThought}
           onChange={this.onChangeAutomaticThought}
-          isOnboarding={true}
+          isOnboarding={this.props.shouldShowInFlowOnboarding}
         />
       );
     }
@@ -117,7 +118,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <Distortions
           distortions={thought.cognitiveDistortions}
           onChange={this.onChangeDistortion}
-          isOnboarding={true}
+          isOnboarding={this.props.shouldShowInFlowOnboarding}
         />
       );
     }
@@ -127,7 +128,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <Challenge
           value={thought.challenge}
           onChange={this.onChangeChallenge}
-          isOnboarding={true}
+          isOnboarding={this.props.shouldShowInFlowOnboarding}
         />
       );
     }
@@ -138,7 +139,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
           <AlternativeThought
             value={thought.alternativeThought}
             onChange={this.onChangeAlternativeThought}
-            isOnboarding={true}
+            isOnboarding={this.props.shouldShowInFlowOnboarding}
           />
 
           <View

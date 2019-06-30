@@ -193,7 +193,9 @@ export default class extends React.Component<ScreenProps> {
   stopOnBoarding = () => {
     haptic.notification(Haptic.NotificationFeedbackType.Success);
     stats.endedOnboarding();
-    this.props.navigation.replace(CBT_FORM_SCREEN);
+    this.props.navigation.replace(CBT_FORM_SCREEN, {
+      fromOnboarding: true,
+    });
   };
 
   _carousel = null;
