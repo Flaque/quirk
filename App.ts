@@ -6,9 +6,11 @@ import {
   SETTING_SCREEN,
   CBT_ON_BOARDING_SCREEN,
   PAYMENT_SCREEN,
+  CBT_VIEW_SCREEN,
 } from "./src/screens";
 import CBTListScreen from "./src/CBTListScreen";
 import CBTFormScreen from "./src/form/FormScreen";
+import FinishedThoughtScreen from "./src/form/FinishedThoughtScreen";
 import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/SettingsScreen";
 import OnboardingScreen from "./src/onboarding/OnboardingScreen";
@@ -23,6 +25,7 @@ const App = createStackNavigator(
     [CBT_FORM_SCREEN]: CBTFormScreen,
     [EXPLANATION_SCREEN]: ExplanationScreen,
     [SETTING_SCREEN]: SettingScreen,
+    [CBT_VIEW_SCREEN]: FinishedThoughtScreen,
   },
   {
     initialRouteName: PAYMENT_SCREEN,

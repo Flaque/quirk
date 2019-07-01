@@ -9,7 +9,7 @@ import {
 import { getExercises, deleteExercise } from "./thoughtstore";
 import { Header, Row, Container, IconButton, Label, Paragraph } from "./ui";
 import theme from "./theme";
-import { CBT_FORM_SCREEN, SETTING_SCREEN } from "./screens";
+import { CBT_FORM_SCREEN, SETTING_SCREEN, CBT_VIEW_SCREEN } from "./screens";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
 import {
   NavigationScreenProp,
@@ -133,13 +133,13 @@ const EmptyThoughtIllustration = () => (
 interface ThoughtListProps {
   groups: ThoughtGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
-  navigateToFormWithThought: (thought: SavedThought) => void;
+  navigateToViewer: (thought: SavedThought) => void;
   onItemDelete: (thought: SavedThought) => void;
 }
 
 const ThoughtItemList = ({
   groups,
-  navigateToFormWithThought,
+  navigateToViewer,
   onItemDelete,
   historyButtonLabel,
 }: ThoughtListProps) => {
@@ -152,7 +152,7 @@ const ThoughtItemList = ({
       <ThoughtItem
         key={thought.uuid}
         thought={thought}
-        onPress={navigateToFormWithThought}
+        onPress={navigateToViewer}
         onDelete={onItemDelete}
         historyButtonLabel={historyButtonLabel}
       />
@@ -256,8 +256,8 @@ class CBTListScreen extends React.Component<Props, State> {
     });
   };
 
-  navigateToFormWithThought = (thought: SavedThought) => {
-    this.props.navigation.push(CBT_FORM_SCREEN, {
+  navigateToViewerWithThought = (thought: SavedThought) => {
+    this.props.navigation.push(CBT_VIEW_SCREEN, {
       thought,
     });
   };
@@ -308,7 +308,7 @@ class CBTListScreen extends React.Component<Props, State> {
             {isReady && (
               <ThoughtItemList
                 groups={groups}
-                navigateToFormWithThought={this.navigateToFormWithThought}
+                navigateToViewer={this.navigateToViewerWithThought}
                 onItemDelete={this.onItemDelete}
                 historyButtonLabel={historyButtonLabel}
               />

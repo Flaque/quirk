@@ -1,11 +1,7 @@
 import { Container, Row, Header, IconButton } from "../ui";
 import React from "react";
 import { View, StatusBar } from "react-native";
-import {
-  NavigationScreenProp,
-  NavigationState,
-  NavigationAction,
-} from "react-navigation";
+import { NavigationScreenProp, NavigationAction } from "react-navigation";
 import theme from "../theme";
 import { Constants, Haptic } from "expo";
 import i18n from "../i18n";
@@ -13,10 +9,10 @@ import {
   CBT_LIST_SCREEN,
   EXPLANATION_SCREEN,
   CBT_ON_BOARDING_SCREEN,
+  CBT_VIEW_SCREEN,
 } from "../screens";
 import * as flagstore from "../flagstore";
 import FormView, { Slides } from "./FormView";
-import FinishedThoughtView from "./FinishedThoughtView";
 import { SavedThought, Thought, newThought } from "../thoughts";
 import { get } from "lodash";
 import { exists, getIsExistingUser, setIsExistingUser } from "../thoughtstore";
@@ -29,7 +25,6 @@ interface ScreenProps {
 }
 
 interface FormScreenState {
-  isEditing: boolean;
   thought?: SavedThought | Thought;
   slideToShow: Slides;
   shouldShowHelpBadge: boolean;
@@ -47,23 +42,30 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     super(props);
 
     this.props.navigation.addListener("willFocus", async payload => {
-      // We've come from a list item
+      // We've come from a list item or the viewer
       const thought = get(payload, "state.params.thought", false);
       if (thought && thought.uuid) {
-        this.setState({ thought, isEditing: false });
+        // Check if we're editing a particular slide
+        const slide = get(payload, "action.params.slide", undefined);
+        if (slide) {
+          this.setState({
+            slideToShow: slide,
+          });
+        }
+
+        this.setState({ thought, isReady: true });
         return;
       }
 
-      // We've come from the form-button back to an existing view
-      if (!this.state.isEditing) {
-        // Wipe the item if it doesn't exist
-        const thoughtExists = await exists(
-          (this.state.thought as SavedThought).uuid
-        );
-
-        if (!thoughtExists) {
-          this.setState({ thought: newThought(), isEditing: true });
-        }
+      // We've come from the form view and we've been asked to clear the screen
+      const shouldClear = get(payload, "action.params.clear", false);
+      if (shouldClear) {
+        this.setState({
+          thought: newThought(),
+          slideToShow: "automatic",
+          isReady: true, // Shows the screen again
+        });
+        return;
       }
     });
 
@@ -113,26 +115,63 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
     isReady: false,
   };
 
+  onChangeAutomaticThought = val => {
+    this.setState(prevState => {
+      prevState.thought.automaticThought = val;
+      return prevState;
+    });
+  };
+
+  onChangeChallenge = (val: string) => {
+    this.setState(prevState => {
+      prevState.thought.challenge = val;
+      return prevState;
+    });
+  };
+
+  onChangeAlternativeThought = (val: string) => {
+    this.setState(prevState => {
+      prevState.thought.alternativeThought = val;
+      return prevState;
+    });
+  };
+
+  onChangeDistortion = (selected: string) => {
+    haptic.selection(); // iOS users get a selected buzz
+
+    this.setState(prevState => {
+      const { cognitiveDistortions } = prevState.thought;
+      const index = cognitiveDistortions.findIndex(
+        ({ slug }) => slug === selected
+      );
+
+      cognitiveDistortions[index].selected = !cognitiveDistortions[index]
+        .selected;
+
+      prevState.thought.cognitiveDistortions = cognitiveDistortions;
+      return prevState;
+    });
+  };
+
   onSave = thought => {
-    this.setState({
-      isEditing: false,
+    this.props.navigation.push(CBT_VIEW_SCREEN, {
       thought,
+    });
+    this.setState({
       slideToShow: "automatic",
-      shouldShowInFlowOnboarding: false,
+      isReady: false, // "refreshes" the screen
     });
   };
 
   onNew = () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.setState({
-      isEditing: true,
       thought: newThought(),
     });
   };
 
   onEdit = (uuid: string, slide: Slides) => {
     this.setState({
-      isEditing: true,
       // Start on the closest to where they were
       slideToShow: slide,
     });
@@ -140,7 +179,6 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
 
   render() {
     const {
-      isEditing,
       shouldShowHelpBadge,
       shouldShowOnboarding,
       shouldShowInFlowOnboarding,
@@ -197,21 +235,16 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
               onPress={() => this.props.navigation.push(CBT_LIST_SCREEN)}
             />
           </Row>
-
-          {isEditing ? (
-            <FormView
-              onSave={this.onSave}
-              initialThought={this.state.thought}
-              slideToShow={this.state.slideToShow}
-              shouldShowInFlowOnboarding={shouldShowInFlowOnboarding}
-            />
-          ) : (
-            <FinishedThoughtView
-              thought={this.state.thought as SavedThought}
-              onNew={this.onNew}
-              onEdit={this.onEdit}
-            />
-          )}
+          <FormView
+            onSave={this.onSave}
+            thought={this.state.thought}
+            slideToShow={this.state.slideToShow}
+            shouldShowInFlowOnboarding={shouldShowInFlowOnboarding}
+            onChangeAlternativeThought={this.onChangeAlternativeThought}
+            onChangeAutomaticThought={this.onChangeAutomaticThought}
+            onChangeChallenge={this.onChangeChallenge}
+            onChangeDistortion={this.onChangeDistortion}
+          />
         </Container>
       </View>
     );

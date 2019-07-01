@@ -136,7 +136,8 @@
     "list_button": "list thoughts",
     "new_thought_button": "new thought",
     "settings_button": "settings",
-    "delete_thought_button": "delete thought"
+    "delete_thought_button": "delete thought",
+    "close_button": "close"
   },
   "payment": {
     "ios_explanation": "Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."

@@ -1,5 +1,5 @@
 import React from "react";
-import { SubHeader, Paragraph, FloatingCard } from "../ui";
+import { SubHeader, Paragraph } from "../ui";
 import { View, TextInput } from "react-native";
 import i18n from "../i18n";
 import { textInputStyle, textInputPlaceholderColor } from "./textInputStyle";
@@ -7,11 +7,9 @@ import { textInputStyle, textInputPlaceholderColor } from "./textInputStyle";
 export default ({
   value,
   onChange,
-  isOnboarding,
 }: {
   value: string;
   onChange: (v: string) => void;
-  isOnboarding?: boolean;
 }) => (
   <>
     <View
@@ -43,19 +41,5 @@ export default ({
         onChangeText={onChange}
       />
     </View>
-    {isOnboarding && (
-      <FloatingCard
-        style={{
-          position: "absolute",
-          bottom: 48,
-        }}
-      >
-        <SubHeader>How can we change the thought?💡</SubHeader>
-        <Paragraph>
-          An alternative thought helps cement where our thoughts could be in the
-          future.
-        </Paragraph>
-      </FloatingCard>
-    )}
   </>
 );

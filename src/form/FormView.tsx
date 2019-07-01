@@ -30,13 +30,16 @@ const slideToIndex = (slide: Slides): number => {
 
 interface FormViewProps {
   onSave: (thought: Thought) => void;
-  initialThought: Thought;
+  thought: Thought;
   slideToShow: Slides;
   shouldShowInFlowOnboarding: boolean;
+  onChangeAutomaticThought: (val: string) => void;
+  onChangeChallenge: (val: string) => void;
+  onChangeAlternativeThought: (val: string) => void;
+  onChangeDistortion: (selected: string) => void;
 }
 
 interface FormViewState {
-  thought: Thought;
   activeSlide: number;
 }
 
@@ -46,69 +49,28 @@ export default class extends React.Component<FormViewProps, FormViewState> {
   };
 
   state = {
-    thought: this.props.initialThought,
     activeSlide: 0,
   };
 
   _carousel = null;
 
-  onChangeAutomaticThought = val => {
-    this.setState(prevState => {
-      prevState.thought.automaticThought = val;
-      return prevState;
-    });
-  };
-
-  onChangeChallenge = (val: string) => {
-    this.setState(prevState => {
-      prevState.thought.challenge = val;
-      return prevState;
-    });
-  };
-
-  onChangeAlternativeThought = (val: string) => {
-    this.setState(prevState => {
-      prevState.thought.alternativeThought = val;
-      return prevState;
-    });
-  };
-
-  onChangeDistortion = (selected: string) => {
-    universalHaptic.selection(); // iOS users get a selected buzz
-
-    this.setState(prevState => {
-      const { cognitiveDistortions } = prevState.thought;
-      const index = cognitiveDistortions.findIndex(
-        ({ slug }) => slug === selected
-      );
-
-      cognitiveDistortions[index].selected = !cognitiveDistortions[index]
-        .selected;
-
-      prevState.thought.cognitiveDistortions = cognitiveDistortions;
-      return prevState;
-    });
-  };
-
   onSave = () => {
     universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
 
-    saveExercise(this.state.thought).then(thought => {
+    saveExercise(this.props.thought).then(thought => {
       stats.thoughtRecorded();
-      this.setState({ thought });
       this.props.onSave(thought);
     });
   };
 
   _renderItem = ({ item, index }) => {
-    const { thought } = this.state;
+    const { thought } = this.props;
 
     if (item.slug === "automatic-thought") {
       return (
         <AutomaticThought
           value={thought.automaticThought}
-          onChange={this.onChangeAutomaticThought}
-          isOnboarding={this.props.shouldShowInFlowOnboarding}
+          onChange={this.props.onChangeAutomaticThought}
         />
       );
     }
@@ -117,8 +79,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
       return (
         <Distortions
           distortions={thought.cognitiveDistortions}
-          onChange={this.onChangeDistortion}
-          isOnboarding={this.props.shouldShowInFlowOnboarding}
+          onChange={this.props.onChangeDistortion}
         />
       );
     }
@@ -127,8 +88,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
       return (
         <Challenge
           value={thought.challenge}
-          onChange={this.onChangeChallenge}
-          isOnboarding={this.props.shouldShowInFlowOnboarding}
+          onChange={this.props.onChangeChallenge}
         />
       );
     }
@@ -138,8 +98,7 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         <>
           <AlternativeThought
             value={thought.alternativeThought}
-            onChange={this.onChangeAlternativeThought}
-            isOnboarding={this.props.shouldShowInFlowOnboarding}
+            onChange={this.props.onChangeAlternativeThought}
           />
 
           <View

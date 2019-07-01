@@ -1,11 +1,9 @@
 import React from "react";
-import { SubHeader, Paragraph, FloatingCard, ActionButton } from "../ui";
+import { SubHeader, Paragraph } from "../ui";
 import { View, TextInput } from "react-native";
 import i18n from "../i18n";
 import { textInputStyle, textInputPlaceholderColor } from "./textInputStyle";
 import theme from "../theme";
-import haptic from "../haptic";
-import { Haptic } from "expo";
 
 const CHALLENGE = `George might be busy. I can't expect to have immediate access to his time.`;
 
@@ -13,7 +11,6 @@ export default class extends React.Component<
   {
     value: string;
     onChange: (v: string) => void;
-    isOnboarding?: boolean;
   },
   {
     showExample: boolean;
@@ -27,7 +24,7 @@ export default class extends React.Component<
   }
 
   render() {
-    const { value, onChange, isOnboarding } = this.props;
+    const { value, onChange } = this.props;
 
     return (
       <>
@@ -66,36 +63,6 @@ export default class extends React.Component<
             editable={!this.state.showExample}
           />
         </View>
-        {isOnboarding && (
-          <FloatingCard
-            style={{
-              position: "absolute",
-              bottom: 48,
-            }}
-          >
-            <SubHeader>Now it's your turn 💡</SubHeader>
-            <Paragraph
-              style={{
-                marginBottom: 24,
-              }}
-            >
-              In your own words, what's logically wrong with this thought?
-            </Paragraph>
-
-            <ActionButton
-              title={this.state.showExample ? "Hide Example" : "Show Example"}
-              width={"100%"}
-              fillColor="#EDF0FC"
-              textColor={theme.darkBlue}
-              onPress={() => {
-                haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-                this.setState({
-                  showExample: !this.state.showExample,
-                });
-              }}
-            />
-          </FloatingCard>
-        )}
       </>
     );
   }

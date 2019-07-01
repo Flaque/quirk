@@ -140,20 +140,19 @@ export default ({
         paddingVertical: 18,
       }}
     >
-      <CBTView thought={thought} onEdit={onEdit} />
+      {/* <Row
+        style={{
+          marginBottom: 18,
+        }}
+      >
+        <ActionButton title="New Thought" width={"100%"} onPress={onNew} />
+      </Row> */}
 
-      <Row>
-        <ActionButton
-          title={i18n.t("cbt_form.new")}
-          onPress={onNew}
-          disabled={false}
-          width={"100%"}
-        />
-      </Row>
+      <CBTView thought={thought} onEdit={onEdit} />
 
       <View
         style={{
-          marginTop: 48,
+          marginTop: 18,
           borderRadius: 8,
           paddingBottom: 96,
         }}
