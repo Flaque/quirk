@@ -231,6 +231,7 @@ export default class extends React.Component<ScreenProps> {
           justifyContent: "center",
           alignItems: "center",
           flex: 1,
+          paddingBottom: 0,
         }}
       >
         <Carousel
@@ -252,12 +253,15 @@ export default class extends React.Component<ScreenProps> {
         <Pagination
           dotsLength={4}
           activeDotIndex={this.state.activeSlide}
-          containerStyle={{}}
+          containerStyle={{
+            margin: 0,
+            padding: 0,
+            backgroundColor: "transparent",
+          }}
           dotStyle={{
             width: 10,
             height: 10,
             borderRadius: 5,
-            marginHorizontal: 8,
             backgroundColor: theme.pink,
           }}
           inactiveDotStyle={{
