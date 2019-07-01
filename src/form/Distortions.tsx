@@ -66,7 +66,20 @@ export default ({
             </FloatingCard>
           )}
 
-          <SubHeader>{i18n.t("cog_distortion")}</SubHeader>
+          <SubHeader
+            style={{
+              marginBottom: 6,
+            }}
+          >
+            {i18n.t("cog_distortion")}
+          </SubHeader>
+          <Paragraph
+            style={{
+              marginBottom: 18,
+            }}
+          >
+            Is this thought distorted?
+          </Paragraph>
           <RoundedSelector items={dists} onPress={onChange} />
 
           <Row

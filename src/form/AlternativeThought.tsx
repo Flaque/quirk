@@ -31,7 +31,7 @@ export default ({
           marginBottom: 12,
         }}
       >
-        What could we think instead?
+        This isn't a challenge, it's a way to cement an alternative thought.
       </Paragraph>
       <TextInput
         style={textInputStyle}

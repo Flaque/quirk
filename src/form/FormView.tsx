@@ -1,7 +1,7 @@
 import { ActionButton } from "../ui";
 import React from "react";
 import Carousel from "react-native-snap-carousel";
-import { View } from "react-native";
+import { View, Keyboard } from "react-native";
 import { Haptic } from "expo";
 import { sliderWidth, itemWidth } from "./sizes";
 import { Thought } from "../thoughts";
@@ -175,7 +175,10 @@ export default class extends React.Component<FormViewProps, FormViewState> {
         renderItem={this._renderItem}
         sliderWidth={sliderWidth}
         itemWidth={itemWidth}
-        onSnapToItem={index => this.setState({ activeSlide: index })}
+        onSnapToItem={index => {
+          this.setState({ activeSlide: index });
+          Keyboard.dismiss();
+        }}
         firstItem={slideToIndex(this.props.slideToShow)}
       />
     );

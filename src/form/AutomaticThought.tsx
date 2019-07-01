@@ -29,10 +29,10 @@ export default ({
       </SubHeader>
       <Paragraph
         style={{
-          marginBottom: 12,
+          marginBottom: 18,
         }}
       >
-        Include the situation and the thoughts.
+        This is generally an "automatic thought."
       </Paragraph>
       <TextInput
         style={textInputStyle}

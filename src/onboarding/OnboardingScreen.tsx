@@ -49,7 +49,7 @@ const RecordStep = () => (
         fontSize: 20,
       }}
     >
-      If you use it in the moment, Quirk retrains your moods to be less effected
+      If you use it in the moment, Quirk retrains your moods to be less affected
       by your thoughts.
     </Paragraph>
   </View>

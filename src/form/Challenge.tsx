@@ -48,7 +48,7 @@ export default class extends React.Component<
               marginBottom: 12,
             }}
           >
-            Be truthful, honest, and open.
+            Is it as serious as you think? Are you sure it's true?
           </Paragraph>
           <TextInput
             style={{

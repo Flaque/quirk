@@ -78,15 +78,15 @@
       "btn_title": "Let's go!"
     }
   },
-  "auto_thought": "Automatic Thought",
-  "cog_distortion": "Cognitive Distortion",
-  "challenge": "Challenge",
-  "alt_thought": "Alternative Thought",
+  "auto_thought": "Write down the thought that you're struggling with.",
+  "cog_distortion": "Select which fallacies apply.",
+  "challenge": "Now challenge that thought.",
+  "alt_thought": "Write down what you could think, instead of your original thought.",
   "cbt_form": {
     "edit": "Edit",
     "new": "New",
     "save": "Save",
-    "auto_thought_placeholder": "What's going on?",
+    "auto_thought_placeholder": "ex: 'The plane might crash'",
     "cog_distortion": "Cognitive Distortion",
     "challenged": "Challenge",
     "changed_placeholder": "It might not be true that...",
