@@ -1,15 +1,15 @@
 /**
- * This is Quirk's public stats file and is part of the
- * Open-Quirk project.
+ * This is Quirk's public stats file and is part of
+ * how we do things.
  *
- * **What's the Open Quirk Project?**
  * Quirk should be open; code _and_ stats. Typically,
  * a developer gets stats through the app stores, and even
  * if the app is open source, those stats tend to be kept
  * private.
  *
- * Quirk's not gonna be like that. Instead, stats will
- * be shared openly.
+ * Quirk's not gonna be like that. Instead, aggregate stats
+ * will be shared publicly, as long as it protects the privacy
+ * of the user.
  *
  * That let's community members:
  * - understand the status of the project
@@ -18,8 +18,11 @@
  * Plus, it allows researchers and mental health professionals
  * access the info in order to develop better treatments.
  *
- * These stats are valuable data that's created by
- * you, the user. **So you, the user, should have access to it.**
+ * These stats were created by you, the user.
+ * **So you, the user, should have access to it.**
+ *
+ * (Note: we don't necessarily share all financial info
+ * publicly due to legal + company risk)
  */
 
 import { Segment } from "expo";
@@ -88,7 +91,8 @@ export function endedOnboarding() {
 }
 
 /**
- * Thought Recorded
+ * Thoughts recorded counter. If this drops, we have a huge
+ * bug.
  */
 export function thoughtRecorded() {
   if (isInDev()) {
@@ -144,20 +148,49 @@ export function subscriptionVerified(
   });
 }
 
+/**
+ * If there's a spike in expired, there's probably a payment error.
+ */
 export function subscriptionUnverified(reason: "expired" | "never-bought") {
   Segment.trackWithProperties("subscription_unverified", {
     reason,
   });
 }
 
+/**
+ * If there's a spike these, there's probably a payment error.
+ */
 export function subscriptionGivenForFreeDueToError() {
   Segment.track("subscription_given_for_free_due_to_error");
 }
 
+/**
+ * If this drops dramatically, there's a cache bug
+ */
 export function subscriptionFoundInCache(value: string) {
   Segment.trackWithProperties("subscription_found_in_cache", {
     value,
   });
+}
+
+/**
+ * This lets us understand how people fill out the fields,
+ * and if people actually understand how the app works.
+ */
+export function userFilledOutFormField(
+  value: "automatic" | "distortions" | "challenge" | "alternative"
+) {
+  Segment.track("user_filled_out_" + value);
+}
+
+/**
+ * This "roughly" let's us understand if our descriptions
+ * make sense. If we change the descriptions, and people
+ * start selecting a particular distortion less, then
+ * it could mean the description is bad.
+ */
+export function userCheckedDistortion(slug: string) {
+  Segment.track("user_checked_distortion_" + slug);
 }
 
 /**

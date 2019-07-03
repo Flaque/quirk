@@ -3,6 +3,7 @@ import { SubHeader, Paragraph } from "../ui";
 import { View, TextInput } from "react-native";
 import i18n from "../i18n";
 import { textInputStyle, textInputPlaceholderColor } from "./textInputStyle";
+import * as stats from "../stats";
 
 export default ({
   value,
@@ -39,6 +40,7 @@ export default ({
         multiline={true}
         numberOfLines={6}
         onChangeText={onChange}
+        onBlur={() => stats.userFilledOutFormField("alternative")}
       />
     </View>
   </>

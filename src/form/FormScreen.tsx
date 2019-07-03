@@ -15,7 +15,7 @@ import * as flagstore from "../flagstore";
 import FormView, { Slides } from "./FormView";
 import { SavedThought, Thought, newThought } from "../thoughts";
 import { get } from "lodash";
-import { exists, getIsExistingUser, setIsExistingUser } from "../thoughtstore";
+import { getIsExistingUser, setIsExistingUser } from "../thoughtstore";
 import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";

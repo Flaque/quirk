@@ -78,10 +78,10 @@
       "btn_title": "Let's go!"
     }
   },
-  "auto_thought": "Write down the thought that you're struggling with.",
-  "cog_distortion": "Select which fallacies apply.",
-  "challenge": "Now challenge that thought.",
-  "alt_thought": "Write down what you could think, instead of your original thought.",
+  "auto_thought": "Automatic Thought",
+  "cog_distortion": "Select any distortions that apply.",
+  "challenge": "Challenge the thought.",
+  "alt_thought": "Write an alternative thought.",
   "cbt_form": {
     "edit": "Edit",
     "new": "New",
