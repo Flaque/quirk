@@ -7,7 +7,7 @@ import {
 import { recordScreenCallOnFocus } from "../navigation";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import { sliderWidth, itemWidth } from "../form/sizes";
-import { View, Image } from "react-native";
+import { View, Image, Linking, Alert } from "react-native";
 import { Header, Container, Paragraph, ActionButton } from "../ui";
 import { Constants, Haptic } from "expo";
 import theme from "../theme";
@@ -42,16 +42,30 @@ const RecordStep = () => (
         fontSize: 28,
       }}
     >
-      Record negative thoughts when they happen.
+      First, you should read this.
     </Header>
-    <Paragraph
-      style={{
-        fontSize: 20,
+    <ActionButton
+      flex={1}
+      width="100%"
+      title={"The Quirk Guide"}
+      fillColor="#EDF0FC"
+      textColor={theme.darkBlue}
+      onPress={() => {
+        stats.userClickedQuirkGuide();
+        Linking.canOpenURL("https://quirk.fyi/explanation?ref=quirk").then(
+          canOpen => {
+            if (!canOpen) {
+              stats.userCantOpenLink();
+              Alert.alert(
+                "You can't open this",
+                "We're not sure why, but your phone is telling us that you can't open this link. You can find it at 'https://quirk.fyi/explanation'"
+              );
+            }
+            Linking.openURL("https://quirk.fyi/explanation?ref=quirk");
+          }
+        );
       }}
-    >
-      If you use it in the moment, Quirk retrains your moods to be less affected
-      by your thoughts.
-    </Paragraph>
+    />
   </View>
 );
 
@@ -78,14 +92,14 @@ const ChallengeStep = () => (
         fontSize: 28,
       }}
     >
-      Challenge your internal monologue.
+      Quirk is something you have to practice
     </Header>
     <Paragraph
       style={{
         fontSize: 20,
       }}
     >
-      Thoughts that cause emotional stress are nearly always distorted.
+      It takes work, but learning Quirk can help you feel a lot better.
     </Paragraph>
   </View>
 );
@@ -113,15 +127,14 @@ const ChangeStep = () => (
         fontSize: 28,
       }}
     >
-      Change your thoughts over time.
+      Use Quirk in the moment.
     </Header>
     <Paragraph
       style={{
         fontSize: 20,
       }}
     >
-      Through practice, you’ll actively change your thoughts and feel a lot
-      better.
+      When you're feeling anxious, angry, or depressed, use Quirk.
     </Paragraph>
   </View>
 );
@@ -151,16 +164,6 @@ const DockStep = ({ onContinue }) => (
     >
       Put Quirk where you’ll find it again.
     </Header>
-
-    <Paragraph
-      style={{
-        fontSize: 20,
-        marginBottom: 18,
-      }}
-    >
-      Quirk is a habit you build up. If you do it right, it can get you out of a
-      bad place.
-    </Paragraph>
 
     <Paragraph
       style={{

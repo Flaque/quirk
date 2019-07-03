@@ -193,6 +193,14 @@ export function userCheckedDistortion(slug: string) {
   Segment.track("user_checked_distortion_" + slug);
 }
 
+export function userClickedQuirkGuide() {
+  Segment.track("user_clicked_quirk_guide");
+}
+
+export function userCantOpenLink() {
+  Segment.track("user_cant_open_link");
+}
+
 /**
  * Basically production logs
  * @param properties
