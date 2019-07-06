@@ -59,6 +59,8 @@ import { BallIndicator } from "react-native-indicators";
 import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import Sentry from "./sentry";
+import OneSignal from "react-native-onesignal";
+import { ONESIGNAL_SECRET } from "react-native-dotenv";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const ANDROID_ID = "basic_subscription";
@@ -168,6 +170,9 @@ class PaymentScreen extends React.Component<
   purchaseErrorSubscription: EmitterSubscription;
 
   async componentDidMount() {
+    OneSignal.init(ONESIGNAL_SECRET, { kOSSettingsKeyAutoPrompt: true });
+    OneSignal.registerForPushNotifications();
+
     SplashScreen.preventAutoHide();
 
     this.purchaseUpdateSubscription = InAppPurchases.purchaseUpdatedListener(
