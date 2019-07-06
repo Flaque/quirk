@@ -163,7 +163,7 @@ export default ({
             justifyContent: "center",
           }}
         >
-          Got Feedback?
+          Love Quirk?
         </SubHeader>
         <Row
           style={{
@@ -174,7 +174,7 @@ export default ({
           <ActionButton
             fillColor={theme.lightGray}
             textColor={theme.blue}
-            title={"Email Us!"}
+            title={"Tell us why"}
             width={"100%"}
             onPress={() => {
               Linking.openURL("mailto:humans@quirk.fyi");
