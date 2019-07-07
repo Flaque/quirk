@@ -7,13 +7,15 @@ import {
 import { recordScreenCallOnFocus } from "../navigation";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import { sliderWidth, itemWidth } from "../form/sizes";
-import { View, Image, Linking, Alert } from "react-native";
-import { Header, Container, Paragraph, ActionButton } from "../ui";
+import { View, Image, Linking, Alert, Platform } from "react-native";
+import { Header, Container, Paragraph, ActionButton, Row } from "../ui";
 import { Constants, Haptic } from "expo";
 import theme from "../theme";
 import haptic from "../haptic";
 import * as stats from "../stats";
 import { CBT_FORM_SCREEN } from "../screens";
+import OneSignal from "react-native-onesignal";
+import { ONESIGNAL_SECRET } from "react-native-dotenv";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -139,7 +141,7 @@ const ChangeStep = () => (
   </View>
 );
 
-const DockStep = ({ onContinue }) => (
+const RemindersStep = ({ onContinue, showPrompt }) => (
   <View
     style={{
       height: "100%",
@@ -148,7 +150,7 @@ const DockStep = ({ onContinue }) => (
     }}
   >
     <Image
-      source={require("../../assets/dock/dock.png")}
+      source={require("../../assets/notifications/notifications.png")}
       style={{
         width: 256,
         height: 196,
@@ -160,22 +162,59 @@ const DockStep = ({ onContinue }) => (
     <Header
       style={{
         fontSize: 28,
+        marginBottom: 12,
       }}
     >
-      Put Quirk where you’ll find it again.
+      {showPrompt
+        ? "Before you finish, we can send you reminders if you'd like."
+        : "You can control reminders in the settings screen."}
     </Header>
 
-    <Paragraph
-      style={{
-        fontSize: 20,
-        marginBottom: 48,
-      }}
-    >
-      To help yourself remember, try putting Quirk on the front page or the dock
-      of your phone.
-    </Paragraph>
+    {showPrompt ? (
+      <>
+        <Row
+          style={{
+            marginBottom: 8,
+          }}
+        >
+          <ActionButton
+            flex={1}
+            width="100%"
+            title={"Yes please!"}
+            onPress={() => {
+              stats.userTurnedOnNotifications();
+              if (Platform.OS === "ios") {
+                OneSignal.registerForPushNotifications();
+              }
+              OneSignal.setSubscription(true);
+              onContinue();
+            }}
+          />
+        </Row>
 
-    <ActionButton title="Continue" width="100%" onPress={onContinue} />
+        <Row>
+          <ActionButton
+            flex={1}
+            width="100%"
+            title={"Continue without reminders"}
+            fillColor="#EDF0FC"
+            textColor={theme.darkBlue}
+            onPress={onContinue}
+          />
+        </Row>
+      </>
+    ) : (
+      <Row>
+        <ActionButton
+          flex={1}
+          width="100%"
+          title={"Continue"}
+          onPress={() => {
+            onContinue();
+          }}
+        />
+      </Row>
+    )}
   </View>
 );
 
@@ -186,11 +225,35 @@ export default class extends React.Component<ScreenProps> {
 
   state = {
     activeSlide: 0,
+    showNotificationsPrompt: false,
   };
 
   constructor(props) {
     super(props);
     recordScreenCallOnFocus(this.props.navigation, "intro");
+  }
+
+  componentDidMount() {
+    OneSignal.init(ONESIGNAL_SECRET, {
+      kOSSettingsKeyAutoPrompt: false,
+      kOSSettingsKeyInFocusDisplayOption: 0,
+    });
+
+    OneSignal.getPermissionSubscriptionState(status => {
+      if (!status.hasPrompted && Platform.OS === "ios") {
+        this.setState({
+          showNotificationsPrompt: true,
+        });
+        return;
+      }
+
+      if (!status.subscriptionEnabled && Platform.OS === "android") {
+        this.setState({
+          showNotificationsPrompt: true,
+        });
+        return;
+      }
+    });
   }
 
   stopOnBoarding = () => {
@@ -216,8 +279,15 @@ export default class extends React.Component<ScreenProps> {
       return <ChangeStep />;
     }
 
-    if (item.slug === "in-dock") {
-      return <DockStep onContinue={this.stopOnBoarding} />;
+    if (item.slug === "reminders-or-continue") {
+      return (
+        <RemindersStep
+          onContinue={this.stopOnBoarding}
+          showPrompt={
+            !this.state.showNotificationsPrompt && Platform.OS === "ios"
+          }
+        />
+      );
     }
 
     return null;
@@ -245,7 +315,7 @@ export default class extends React.Component<ScreenProps> {
             { slug: "record" },
             { slug: "challenge" },
             { slug: "change" },
-            { slug: "in-dock" },
+            { slug: "reminders-or-continue" },
           ]}
           renderItem={this._renderItem}
           sliderWidth={sliderWidth}

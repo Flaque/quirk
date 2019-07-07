@@ -201,6 +201,14 @@ export function userCantOpenLink() {
   Segment.track("user_cant_open_link");
 }
 
+export function userTurnedOnNotifications() {
+  Segment.track("user_turned_on_notifications");
+}
+
+export function userTurnedOffNotifications() {
+  Segment.track("user_turned_off_notifications");
+}
+
 /**
  * Basically production logs
  * @param properties
