@@ -30,6 +30,9 @@ import i18n from "./i18n";
 import { recordScreenCallOnFocus } from "./navigation";
 import { getSubscriptionExpirationDate } from "./subscriptions/subscriptionstore";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
+import OneSignal from "react-native-onesignal";
+import { ONESIGNAL_SECRET } from "react-native-dotenv";
+import * as stats from "./stats";
 
 export { HistoryButtonLabelSetting };
 
@@ -95,22 +98,6 @@ const SubscriptionExpirationDate = ({ expirationDate }) => (
         will be charged <B>$3.99.</B>
       </Paragraph>
     </Row>
-    <Row>
-      {Platform.OS === "ios" && (
-        <Paragraph
-          style={{
-            marginBottom: 9,
-          }}
-        >
-          Payment will be charged to your Apple ID account at the confirmation
-          of purchase. The subscription automatically renews unless it is
-          canceled at least 24 hours before the end of the current period. Your
-          account will be charged for renewal within 24 hours prior to the end
-          of the current period. You can manage and cancel your subscriptions by
-          going to your App Store account settings after purchase.
-        </Paragraph>
-      )}
-    </Row>
     <Row
       style={{
         marginBottom: 9,
@@ -153,6 +140,7 @@ interface State {
   historyButtonLabel?: HistoryButtonLabelSetting;
   isGrandfatheredIntoSubscription?: boolean;
   subscriptionExpirationDate?: string;
+  areNotificationsOn?: boolean;
 }
 
 class SettingScreen extends React.Component<Props, State> {
@@ -165,11 +153,16 @@ class SettingScreen extends React.Component<Props, State> {
     this.state = {
       ready: false,
       isGrandfatheredIntoSubscription: false,
+      areNotificationsOn: false,
     };
     recordScreenCallOnFocus(this.props.navigation, "settings");
   }
 
   async componentDidMount() {
+    OneSignal.init(ONESIGNAL_SECRET, {
+      kOSSettingsKeyAutoPrompt: false,
+      kOSSettingsKeyInFocusDisplayOption: 0,
+    });
     await this.refresh();
   }
 
@@ -191,8 +184,12 @@ class SettingScreen extends React.Component<Props, State> {
       });
     }
 
-    this.setState({
-      ready: true,
+    // Check notification status
+    OneSignal.getPermissionSubscriptionState(status => {
+      this.setState({
+        areNotificationsOn: !!status.subscriptionEnabled,
+        ready: true,
+      });
     });
   };
 
@@ -254,6 +251,50 @@ class SettingScreen extends React.Component<Props, State> {
                 featherIconName={"list"}
                 accessibilityLabel={i18n.t("accessibility.list_button")}
                 onPress={() => this.navigateToList()}
+              />
+            </Row>
+
+            <Row
+              style={{
+                marginBottom: 18,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <SubHeader>*reminders</SubHeader>
+              <Paragraph
+                style={{
+                  marginBottom: 9,
+                }}
+              >
+                If you'd like, you can turn on notification reminders that help
+                you build up the habit of challenging thoughts.
+              </Paragraph>
+              <RoundedSelectorButton
+                title={"Please remind me"}
+                selected={this.state.areNotificationsOn}
+                onPress={() => {
+                  if (Platform.OS === "ios") {
+                    OneSignal.registerForPushNotifications();
+                  }
+                  OneSignal.setSubscription(true);
+                  this.setState({
+                    areNotificationsOn: true,
+                  });
+                  stats.userTurnedOnNotifications();
+                }}
+              />
+
+              <RoundedSelectorButton
+                title={"No reminders, thanks"}
+                selected={!this.state.areNotificationsOn}
+                onPress={() => {
+                  OneSignal.setSubscription(false);
+                  this.setState({
+                    areNotificationsOn: false,
+                  });
+                  stats.userTurnedOffNotifications();
+                }}
               />
             </Row>
 

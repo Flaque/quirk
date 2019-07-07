@@ -7071,6 +7071,13 @@ react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
+react-native-onesignal@^3.2.14:
+  version "3.2.14"
+  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.2.14.tgz#421a3b34c226e5b6ea9e801b7b3f914d8e3c0abb"
+  integrity sha512-pL5eSTUAPSeVZQcYJcuFhAUGA+Pl22WgBn4VXYGI93Dtmzklhpuzxtkdm4LZSu08tHkhbe3VzYuziconJ33AKw==
+  dependencies:
+    invariant "^2.2.2"
+
 react-native-pose@^0.9.0:
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/react-native-pose/-/react-native-pose-0.9.1.tgz#dbee4e0970d0a4d55c380e3099a2e91bc8980c81"
