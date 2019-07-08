@@ -104,3 +104,8 @@ export const getExercises = async () => {
     return [];
   }
 };
+
+export const countThoughts = async (): Promise<number> => {
+  const exercises = await getExercises();
+  return exercises.length;
+};

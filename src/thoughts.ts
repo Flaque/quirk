@@ -25,7 +25,7 @@ export const newThought = (): Thought => {
   return {
     automaticThought: "",
     cognitiveDistortions: distortions.map(({ label, slug }) => {
-      return { label, slug, selected: false };
+      return { label, slug, selected: false, description: "" };
     }),
     challenge: "",
     alternativeThought: "",
