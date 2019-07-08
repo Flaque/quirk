@@ -283,9 +283,7 @@ export default class extends React.Component<ScreenProps> {
       return (
         <RemindersStep
           onContinue={this.stopOnBoarding}
-          showPrompt={
-            !this.state.showNotificationsPrompt && Platform.OS === "ios"
-          }
+          showPrompt={this.state.showNotificationsPrompt}
         />
       );
     }

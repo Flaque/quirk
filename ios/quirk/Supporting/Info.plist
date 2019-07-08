@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -76,6 +76,8 @@
 	<string>Give quirk permission to access your photos</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow quirk to access your reminders</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow quirk to use your location</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

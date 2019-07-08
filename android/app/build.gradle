@@ -22,8 +22,8 @@ android {
   defaultConfig {
     applicationId 'tech.econn.quirk'
     targetSdkVersion 27
-    versionCode 21
-    versionName '2.0.4'
+    versionCode 23
+    versionName '2.1.0'
     ndk {
      abiFilters 'armeabi-v7a', 'x86'
     }
