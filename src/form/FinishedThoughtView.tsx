@@ -1,9 +1,7 @@
 import React from "react";
 import { SavedThought } from "../thoughts";
-import { View, Linking, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import {
-  Row,
-  ActionButton,
   SubHeader,
   Paragraph,
   FormContainer,
@@ -14,6 +12,7 @@ import { BubbleThought } from "../imgs/Bubbles";
 import { emojiForSlug } from "../distortions";
 import theme from "../theme";
 import { Slides } from "./FormView";
+import Feedback from "../feedback";
 
 const cognitiveDistortionsToText = cognitiveDistortions => {
   const paragraphs = cognitiveDistortions
@@ -149,39 +148,7 @@ export default ({
       </Row> */}
 
       <CBTView thought={thought} onEdit={onEdit} />
-
-      <View
-        style={{
-          marginTop: 18,
-          borderRadius: 8,
-          paddingBottom: 96,
-        }}
-      >
-        <SubHeader
-          style={{
-            alignSelf: "flex-start",
-            justifyContent: "center",
-          }}
-        >
-          Love Quirk?
-        </SubHeader>
-        <Row
-          style={{
-            alignSelf: "flex-start",
-            justifyContent: "center",
-          }}
-        >
-          <ActionButton
-            fillColor={theme.lightGray}
-            textColor={theme.blue}
-            title={"Tell us why"}
-            width={"100%"}
-            onPress={() => {
-              Linking.openURL("mailto:humans@quirk.fyi");
-            }}
-          />
-        </Row>
-      </View>
+      <Feedback />
     </ScrollView>
   );
 };

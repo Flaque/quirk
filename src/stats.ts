@@ -209,6 +209,10 @@ export function userTurnedOffNotifications() {
   Segment.track("user_turned_off_notifications");
 }
 
+export function userReviewed() {
+  Segment.track("user_reviewed");
+}
+
 /**
  * Basically production logs
  * @param properties
