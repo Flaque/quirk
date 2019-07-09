@@ -15,7 +15,7 @@ If you don't like it, you can change it in the settings.`,
     slug: "checkins",
     priority: 0,
     title: "👋 New Feature",
-    body: `I added optional check-in reminders.
+    body: `Quirk has optional reminders now!
 
 They'll nudge you in the evenings every once and awhile to help you remember to record thoughts. They're off by default, but you can turn them on in the settings.
 
