@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "../theme";
-import { SubHeader, Paragraph, ActionButton, IconButton } from "../ui";
+import { SubHeader, Paragraph, IconButton } from "../ui";
 import posed from "react-native-pose";
 import { TouchableWithoutFeedback, View } from "react-native";
 import universalHaptic from "../haptic";

@@ -59,6 +59,7 @@ import { BallIndicator } from "react-native-indicators";
 import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import Sentry from "./sentry";
+import { FadesIn } from "./animations";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const ANDROID_ID = "basic_subscription";
@@ -92,7 +93,7 @@ class PaymentScreen extends React.Component<
   {
     subscription?: InAppPurchases.Subscription<string>;
     canMakePayments: boolean;
-    ready: boolean;
+    isReady: boolean;
     loading: boolean;
   }
 > {
@@ -103,7 +104,7 @@ class PaymentScreen extends React.Component<
   state = {
     subscription: null,
     canMakePayments: false,
-    ready: false,
+    isReady: false,
     loading: false,
   };
 
@@ -116,7 +117,7 @@ class PaymentScreen extends React.Component<
 
   fetchSubscriptionDefinition = async () => {
     const subscription = await getSubscriptionDefinition();
-    this.setState({
+    await this.setState({
       subscription,
     });
   };
@@ -125,7 +126,7 @@ class PaymentScreen extends React.Component<
     stats.screen("payments");
     await this.fetchSubscriptionDefinition();
     this.setState({
-      ready: true,
+      isReady: true,
     });
     SplashScreen.hide();
   };
@@ -280,263 +281,266 @@ class PaymentScreen extends React.Component<
   };
 
   render() {
-    if (!this.state.ready || !this.state.subscription) {
-      // This only gets rendered behind a splash screen
+    if (!this.state.subscription) {
       return <Container />;
     }
 
+    const pose = this.state.isReady ? "visible" : "hidden";
+
     return (
-      <Container>
-        <StatusBar hidden={true} />
+      <FadesIn pose={pose}>
+        <Container>
+          <StatusBar hidden={true} />
 
-        {!isIPad() && (
-          <View
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: Dimensions.get("screen").height / 2.5,
-              backgroundColor: "#FDF1F5",
-            }}
-          />
-        )}
-
-        <View
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-end",
-            flexDirection: "row",
-            padding: 24,
-            marginTop: 48,
-          }}
-        >
-          <Image
-            source={require("../assets/pinkbubble/pinkbubble.png")}
-            style={{
-              width: 67,
-              height: 75,
-              top: 10,
-              resizeMode: "contain",
-            }}
-          />
-          <Image
-            source={require("../assets/icecream/icecream.png")}
-            style={{
-              width: 149,
-              height: 344,
-              top: -10,
-              resizeMode: "contain",
-            }}
-          />
-          <Image
-            source={require("../assets/yellowbobble/yellowbobble.png")}
-            style={{
-              width: 67,
-              height: 75,
-              top: 10,
-              resizeMode: "contain",
-            }}
-          />
-        </View>
-        <View
-          style={{
-            justifyContent: "flex-end",
-            marginLeft: 32,
-            marginRight: 32,
-          }}
-        >
-          <Paragraph
-            style={{
-              fontSize: 28,
-              marginBottom: 28,
-            }}
-          >
-            Support{" "}
-            <SubHeader
+          {!isIPad() && (
+            <View
               style={{
-                fontSize: 28,
-                fontWeight: "900",
+                position: "absolute",
+                width: "100%",
+                height: Dimensions.get("screen").height / 2.5,
+                backgroundColor: "#FDF1F5",
               }}
-            >
-              quirk
-            </SubHeader>{" "}
-            for{" "}
-            <SubHeader
-              style={{
-                fontSize: 28,
-                fontWeight: "900",
-              }}
-            >
-              {this.state.subscription.localizedPrice}
-            </SubHeader>{" "}
-            a month. Try for free for 7 days.
-          </Paragraph>
-        </View>
-
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginLeft: 32,
-            marginRight: 32,
-            justifyContent: "space-between",
-          }}
-        >
-          {this.state.loading ? (
-            <BallIndicator color={theme.blue} size={24} />
-          ) : (
-            <>
-              <ActionButton
-                flex={1}
-                title={"Get it"}
-                onPress={this.onContinuePress}
-              />
-              <Image
-                source={require("../assets/paymentlooker/paymentlooker.png")}
-                style={{
-                  height: 64,
-                  width: 64,
-                  position: "relative",
-                  top: -10,
-                  resizeMode: "contain",
-                  marginLeft: 24,
-                }}
-              />
-            </>
-          )}
-        </View>
-
-        <View
-          style={{
-            justifyContent: "flex-end",
-            marginLeft: 32,
-            marginRight: 32,
-            marginTop: 32,
-          }}
-        >
-          <SubHeader
-            style={{
-              fontSize: 18,
-            }}
-          >
-            Why get quirk?
-          </SubHeader>
-          <Paragraph
-            style={{
-              fontSize: 18,
-              marginBottom: 18,
-            }}
-          >
-            "It reigns supreme in the mental health app world" - Quirk user
-          </Paragraph>
-          <Paragraph
-            style={{
-              fontSize: 18,
-              marginBottom: 18,
-            }}
-          >
-            "Super simple and easy to use, yet REALLY well considered." - Quirk
-            user
-          </Paragraph>
-
-          <Paragraph
-            style={{
-              fontSize: 18,
-              marginBottom: 18,
-            }}
-          >
-            "This is a gem, a real gem." - Quirk user
-          </Paragraph>
-        </View>
-
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginLeft: 32,
-            marginRight: 32,
-            marginBottom: 16,
-            marginTop: 32,
-            justifyContent: "space-between",
-          }}
-        >
-          {this.state.loading ? (
-            <BallIndicator color={theme.blue} size={24} />
-          ) : (
-            <ActionButton
-              flex={1}
-              title={"Restore Purchases"}
-              fillColor="#EDF0FC"
-              textColor={theme.darkBlue}
-              onPress={this.restorePurchases}
             />
           )}
-        </View>
 
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginLeft: 32,
-            marginRight: 32,
-            marginBottom: 16,
-            justifyContent: "space-between",
-          }}
-        >
-          <ActionButton
-            flex={1}
-            title={"Privacy Policy"}
-            fillColor="#EDF0FC"
-            textColor={theme.darkBlue}
-            onPress={() => {
-              Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
-                Linking.openURL("https://quirk.fyi/privacy")
-              );
-            }}
-          />
-        </View>
-
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginLeft: 32,
-            marginRight: 32,
-            marginBottom: 32,
-            justifyContent: "space-between",
-          }}
-        >
-          <ActionButton
-            flex={1}
-            title={"Terms of Service"}
-            fillColor="#EDF0FC"
-            textColor={theme.darkBlue}
-            onPress={() => {
-              Linking.canOpenURL("https://quirk.fyi/tos").then(() =>
-                Linking.openURL("https://quirk.fyi/tos")
-              );
-            }}
-          />
-        </View>
-
-        {Platform.OS === "ios" && (
           <View
             style={{
-              marginBottom: 24,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flex-end",
+              flexDirection: "row",
+              padding: 24,
+              marginTop: 48,
+            }}
+          >
+            <Image
+              source={require("../assets/pinkbubble/pinkbubble.png")}
+              style={{
+                width: 67,
+                height: 75,
+                top: 10,
+                resizeMode: "contain",
+              }}
+            />
+            <Image
+              source={require("../assets/icecream/icecream.png")}
+              style={{
+                width: 149,
+                height: 344,
+                top: -10,
+                resizeMode: "contain",
+              }}
+            />
+            <Image
+              source={require("../assets/yellowbobble/yellowbobble.png")}
+              style={{
+                width: 67,
+                height: 75,
+                top: 10,
+                resizeMode: "contain",
+              }}
+            />
+          </View>
+          <View
+            style={{
+              justifyContent: "flex-end",
               marginLeft: 32,
               marginRight: 32,
             }}
           >
             <Paragraph
               style={{
-                color: theme.lightText,
+                fontSize: 28,
+                marginBottom: 28,
               }}
             >
-              {i18n.t("payment.ios_explanation")}
+              Support{" "}
+              <SubHeader
+                style={{
+                  fontSize: 28,
+                  fontWeight: "900",
+                }}
+              >
+                quirk
+              </SubHeader>{" "}
+              for{" "}
+              <SubHeader
+                style={{
+                  fontSize: 28,
+                  fontWeight: "900",
+                }}
+              >
+                {this.state.subscription.localizedPrice}
+              </SubHeader>{" "}
+              a month. Try for free for 7 days.
             </Paragraph>
           </View>
-        )}
-      </Container>
+
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: 32,
+              marginRight: 32,
+              justifyContent: "space-between",
+            }}
+          >
+            {this.state.loading ? (
+              <BallIndicator color={theme.blue} size={24} />
+            ) : (
+              <>
+                <ActionButton
+                  flex={1}
+                  title={"Get it"}
+                  onPress={this.onContinuePress}
+                />
+                <Image
+                  source={require("../assets/paymentlooker/paymentlooker.png")}
+                  style={{
+                    height: 64,
+                    width: 64,
+                    position: "relative",
+                    top: -10,
+                    resizeMode: "contain",
+                    marginLeft: 24,
+                  }}
+                />
+              </>
+            )}
+          </View>
+
+          <View
+            style={{
+              justifyContent: "flex-end",
+              marginLeft: 32,
+              marginRight: 32,
+              marginTop: 32,
+            }}
+          >
+            <SubHeader
+              style={{
+                fontSize: 18,
+              }}
+            >
+              Why get quirk?
+            </SubHeader>
+            <Paragraph
+              style={{
+                fontSize: 18,
+                marginBottom: 18,
+              }}
+            >
+              "It reigns supreme in the mental health app world" - Quirk user
+            </Paragraph>
+            <Paragraph
+              style={{
+                fontSize: 18,
+                marginBottom: 18,
+              }}
+            >
+              "Super simple and easy to use, yet REALLY well considered." -
+              Quirk user
+            </Paragraph>
+
+            <Paragraph
+              style={{
+                fontSize: 18,
+                marginBottom: 18,
+              }}
+            >
+              "This is a gem, a real gem." - Quirk user
+            </Paragraph>
+          </View>
+
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: 32,
+              marginRight: 32,
+              marginBottom: 16,
+              marginTop: 32,
+              justifyContent: "space-between",
+            }}
+          >
+            {this.state.loading ? (
+              <BallIndicator color={theme.blue} size={24} />
+            ) : (
+              <ActionButton
+                flex={1}
+                title={"Restore Purchases"}
+                fillColor="#EDF0FC"
+                textColor={theme.darkBlue}
+                onPress={this.restorePurchases}
+              />
+            )}
+          </View>
+
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: 32,
+              marginRight: 32,
+              marginBottom: 16,
+              justifyContent: "space-between",
+            }}
+          >
+            <ActionButton
+              flex={1}
+              title={"Privacy Policy"}
+              fillColor="#EDF0FC"
+              textColor={theme.darkBlue}
+              onPress={() => {
+                Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
+                  Linking.openURL("https://quirk.fyi/privacy")
+                );
+              }}
+            />
+          </View>
+
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: 32,
+              marginRight: 32,
+              marginBottom: 32,
+              justifyContent: "space-between",
+            }}
+          >
+            <ActionButton
+              flex={1}
+              title={"Terms of Service"}
+              fillColor="#EDF0FC"
+              textColor={theme.darkBlue}
+              onPress={() => {
+                Linking.canOpenURL("https://quirk.fyi/tos").then(() =>
+                  Linking.openURL("https://quirk.fyi/tos")
+                );
+              }}
+            />
+          </View>
+
+          {Platform.OS === "ios" && (
+            <View
+              style={{
+                marginBottom: 24,
+                marginLeft: 32,
+                marginRight: 32,
+              }}
+            >
+              <Paragraph
+                style={{
+                  color: theme.lightText,
+                }}
+              >
+                {i18n.t("payment.ios_explanation")}
+              </Paragraph>
+            </View>
+          )}
+        </Container>
+      </FadesIn>
     );
   }
 }

@@ -19,6 +19,7 @@ import { getIsExistingUser, setIsExistingUser } from "../thoughtstore";
 import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";
+import { FadesIn } from "../animations";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<any, NavigationAction>;
@@ -67,6 +68,10 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
         });
         return;
       }
+
+      this.setState({
+        isReady: true,
+      });
     });
 
     recordScreenCallOnFocus(this.props.navigation, "form");
@@ -185,20 +190,17 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
       isReady,
     } = this.state;
 
-    if (!isReady) {
-      return null;
-    }
-
     if (shouldShowOnboarding) {
       this.props.navigation.replace(CBT_ON_BOARDING_SCREEN);
     }
 
     return (
-      <View
+      <FadesIn
         style={{
           backgroundColor: theme.lightOffwhite,
           height: "100%",
         }}
+        pose={isReady ? "visible" : "hidden"}
       >
         <StatusBar barStyle="dark-content" />
         <Container
@@ -222,7 +224,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
               accessibilityLabel={i18n.t("accessibility.help_button")}
               onPress={() => {
                 flagstore.setFalse("start-help-badge").then(() => {
-                  this.setState({ shouldShowHelpBadge: false });
+                  this.setState({ shouldShowHelpBadge: false, isReady: false });
                   this.props.navigation.push(EXPLANATION_SCREEN);
                 });
               }}
@@ -232,7 +234,10 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
             <IconButton
               accessibilityLabel={i18n.t("accessibility.list_button")}
               featherIconName={"list"}
-              onPress={() => this.props.navigation.push(CBT_LIST_SCREEN)}
+              onPress={() => {
+                this.setState({ isReady: false });
+                this.props.navigation.push(CBT_LIST_SCREEN);
+              }}
             />
           </Row>
           <FormView
@@ -246,7 +251,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
             onChangeDistortion={this.onChangeDistortion}
           />
         </Container>
-      </View>
+      </FadesIn>
     );
   }
 }
