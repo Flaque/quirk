@@ -16,6 +16,7 @@ import * as stats from "../stats";
 import { CBT_FORM_SCREEN } from "../screens";
 import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
+import { FadesIn } from "../animations";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -226,6 +227,7 @@ export default class extends React.Component<ScreenProps> {
   state = {
     activeSlide: 0,
     showNotificationsPrompt: false,
+    isReady: false,
   };
 
   constructor(props) {
@@ -254,6 +256,13 @@ export default class extends React.Component<ScreenProps> {
         return;
       }
     });
+
+    // Triggers a fade in for fancy reasons
+    setTimeout(() => {
+      this.setState({
+        isReady: true,
+      });
+    }, 60);
   }
 
   stopOnBoarding = () => {
@@ -305,40 +314,42 @@ export default class extends React.Component<ScreenProps> {
           paddingBottom: 0,
         }}
       >
-        <Carousel
-          ref={c => {
-            this._carousel = c;
-          }}
-          data={[
-            { slug: "record" },
-            { slug: "challenge" },
-            { slug: "change" },
-            { slug: "reminders-or-continue" },
-          ]}
-          renderItem={this._renderItem}
-          sliderWidth={sliderWidth}
-          itemWidth={itemWidth}
-          onSnapToItem={index => this.setState({ activeSlide: index })}
-        />
+        <FadesIn pose={this.state.isReady ? "visible" : "hidden"}>
+          <Carousel
+            ref={c => {
+              this._carousel = c;
+            }}
+            data={[
+              { slug: "record" },
+              { slug: "challenge" },
+              { slug: "change" },
+              { slug: "reminders-or-continue" },
+            ]}
+            renderItem={this._renderItem}
+            sliderWidth={sliderWidth}
+            itemWidth={itemWidth}
+            onSnapToItem={index => this.setState({ activeSlide: index })}
+          />
 
-        <Pagination
-          dotsLength={4}
-          activeDotIndex={this.state.activeSlide}
-          containerStyle={{
-            margin: 0,
-            padding: 0,
-            backgroundColor: "transparent",
-          }}
-          dotStyle={{
-            width: 10,
-            height: 10,
-            borderRadius: 5,
-            backgroundColor: theme.pink,
-          }}
-          inactiveDotStyle={{
-            backgroundColor: theme.gray,
-          }}
-        />
+          <Pagination
+            dotsLength={4}
+            activeDotIndex={this.state.activeSlide}
+            containerStyle={{
+              margin: 0,
+              padding: 0,
+              backgroundColor: "transparent",
+            }}
+            dotStyle={{
+              width: 10,
+              height: 10,
+              borderRadius: 5,
+              backgroundColor: theme.pink,
+            }}
+            inactiveDotStyle={{
+              backgroundColor: theme.gray,
+            }}
+          />
+        </FadesIn>
       </Container>
     );
   }

@@ -29,6 +29,7 @@ import i18n from "./i18n";
 import { emojiForSlug } from "./distortions";
 import { take } from "lodash";
 import { recordScreenCallOnFocus } from "./navigation";
+import { FadesIn } from "./animations";
 
 const ThoughtItem = ({
   thought,
@@ -305,14 +306,14 @@ class CBTListScreen extends React.Component<Props, State> {
               </View>
             </Row>
 
-            {isReady && (
+            <FadesIn pose={isReady ? "visible" : "hidden"}>
               <ThoughtItemList
                 groups={groups}
                 navigateToViewer={this.navigateToViewerWithThought}
                 onItemDelete={this.onItemDelete}
                 historyButtonLabel={historyButtonLabel}
               />
-            )}
+            </FadesIn>
           </Container>
         </ScrollView>
         <Alerter alerts={alerts} />

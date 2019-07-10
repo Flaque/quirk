@@ -124,6 +124,7 @@ export default class extends React.Component<
               style={{
                 alignSelf: "flex-start",
                 justifyContent: "center",
+                marginTop: 18,
               }}
             >
               Love Quirk?

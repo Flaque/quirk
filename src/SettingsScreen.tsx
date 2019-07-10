@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, StatusBar, Platform } from "react-native";
+import { ScrollView, StatusBar, Platform } from "react-native";
 import theme from "./theme";
 import { Constants, Linking } from "expo";
 import {
@@ -33,6 +33,7 @@ import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore"
 import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
 import * as stats from "./stats";
+import { FadesIn } from "./animations";
 
 export { HistoryButtonLabelSetting };
 
@@ -136,7 +137,7 @@ interface Props {
 }
 
 interface State {
-  ready: boolean;
+  isReady: boolean;
   historyButtonLabel?: HistoryButtonLabelSetting;
   isGrandfatheredIntoSubscription?: boolean;
   subscriptionExpirationDate?: string;
@@ -151,7 +152,7 @@ class SettingScreen extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      ready: false,
+      isReady: false,
       isGrandfatheredIntoSubscription: false,
       areNotificationsOn: false,
     };
@@ -188,7 +189,7 @@ class SettingScreen extends React.Component<Props, State> {
     OneSignal.getPermissionSubscriptionState(status => {
       this.setState({
         areNotificationsOn: !!status.subscriptionEnabled,
-        ready: true,
+        isReady: true,
       });
     });
   };
@@ -202,7 +203,7 @@ class SettingScreen extends React.Component<Props, State> {
   };
 
   toggleHistoryButtonLabels = () => {
-    if (!this.state.ready) {
+    if (!this.state.isReady) {
       this.refresh();
       return;
     }
@@ -223,14 +224,13 @@ class SettingScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { historyButtonLabel, ready } = this.state;
-
-    if (!ready) {
-      return <View style={{ backgroundColor: theme.lightOffwhite }} />;
-    }
+    const { historyButtonLabel, isReady } = this.state;
 
     return (
-      <View style={{ backgroundColor: theme.lightOffwhite }}>
+      <FadesIn
+        style={{ backgroundColor: theme.lightOffwhite }}
+        pose={isReady ? "visible" : "hidden"}
+      >
         <ScrollView
           style={{
             backgroundColor: theme.lightOffwhite,
@@ -344,7 +344,7 @@ class SettingScreen extends React.Component<Props, State> {
             </Row>
           </Container>
         </ScrollView>
-      </View>
+      </FadesIn>
     );
   }
 }
