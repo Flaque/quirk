@@ -11,6 +11,7 @@ import { Constants, Haptic } from "expo";
 import { FadesIn, BouncyBigOnActive } from "../animations";
 import { isCorrectPincode, setPincode } from "./lockstore";
 import { CBT_FORM_SCREEN } from "../screens";
+import { get } from "lodash";
 import haptic from "../haptic";
 
 interface ScreenProps {
@@ -71,6 +72,7 @@ export default class extends React.Component<
   ScreenProps,
   {
     isReady: boolean;
+    isSettingCode: boolean;
     code: string;
   }
 > {
@@ -80,17 +82,27 @@ export default class extends React.Component<
 
   state = {
     isReady: false,
+    isSettingCode: true,
     code: "",
   };
 
   async componentDidMount() {
-    await setPincode("0000");
+    this.props.navigation.addListener("willFocus", async payload => {
+      const isSettingCode = get(payload, "state.params.isSettingCode", false);
+      this.setState({
+        isSettingCode: isSettingCode,
+      });
+    });
+
+    // Purely just for a smooth fade in
     setTimeout(() => {
       this.setState({ isReady: true });
     }, 100);
   }
 
   onEnterCode = async (key: string) => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+
     await this.setState(prevState => {
       if (prevState.code.length === 4) {
         return prevState;
@@ -103,6 +115,12 @@ export default class extends React.Component<
 
     if (this.state.code.length !== 4) {
       return;
+    }
+
+    if (this.state.isSettingCode) {
+      await setPincode(this.state.code);
+      haptic.notification(Haptic.NotificationFeedbackType.Success);
+      this.props.navigation.replace(CBT_FORM_SCREEN);
     }
 
     const isGood = await isCorrectPincode(this.state.code);
@@ -118,6 +136,7 @@ export default class extends React.Component<
   };
 
   onBackspace = () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Medium);
     this.setState(prevState => {
       if (prevState.code.length === 0) {
         return prevState;
@@ -130,7 +149,7 @@ export default class extends React.Component<
   };
 
   render() {
-    const { code } = this.state;
+    const { code, isSettingCode } = this.state;
     return (
       <FadesIn
         style={{
@@ -164,7 +183,9 @@ export default class extends React.Component<
                 textAlign: "center",
               }}
             >
-              Please enter your passcode.
+              {isSettingCode
+                ? "Please set a passcode"
+                : "Please enter your passcode."}
             </Header>
           </Row>
         </Container>

@@ -18,7 +18,7 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { CBT_ON_BOARDING_SCREEN } from "./screens";
+import { CBT_ON_BOARDING_SCREEN, LOCK_SCREEN } from "./screens";
 import { setSetting, getSettingOrSetDefault } from "./setting/settingstore";
 import {
   HISTORY_BUTTON_LABEL_KEY,
@@ -294,6 +294,37 @@ class SettingScreen extends React.Component<Props, State> {
                     areNotificationsOn: false,
                   });
                   stats.userTurnedOffNotifications();
+                }}
+              />
+            </Row>
+
+            <Row
+              style={{
+                marginBottom: 18,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <SubHeader>*pincode lock 🔒</SubHeader>
+              <Paragraph
+                style={{
+                  marginBottom: 9,
+                }}
+              >
+                You can lock the app with a pincode if you'd like. Be warned
+                that the only way to reset the code is to contact support (which
+                can take awhile), so be careful not to forget.
+              </Paragraph>
+              <ActionButton
+                flex={1}
+                title={"Set Pincode"}
+                width={"100%"}
+                fillColor="#EDF0FC"
+                textColor={theme.darkBlue}
+                onPress={() => {
+                  this.props.navigation.push(LOCK_SCREEN, {
+                    isSettingCode: true,
+                  });
                 }}
               />
             </Row>

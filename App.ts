@@ -31,7 +31,7 @@ const App = createStackNavigator(
     [LOCK_SCREEN]: LockScreen,
   },
   {
-    initialRouteName: LOCK_SCREEN,
+    initialRouteName: PAYMENT_SCREEN,
     mode: "modal",
   }
 );
