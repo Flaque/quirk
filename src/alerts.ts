@@ -22,6 +22,17 @@ They'll nudge you in the evenings every once and awhile to help you remember to 
 Love/hate them? Let me know by pressing the feedback button or sending an email to "ejc@quirk.fyi".
     `,
   },
+  {
+    slug: "lock-screen",
+    priority: 0,
+    title: "👋 Lock Screens!",
+    body: `Quirk has a pincode lock screen now. 
+
+You can turn it on in the settings. 
+
+Love/hate it? Let me know by pressing the feedback button or sending an email to "ejc@quirk.fyi".
+    `,
+  },
 ];
 
 export default alerts;
