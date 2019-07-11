@@ -5,22 +5,19 @@ import {
   NavigationAction,
 } from "react-navigation";
 import { StatusBar } from "react-native";
-import { Container, Row, GhostButton, Header } from "../ui";
+import { Container, Row, GhostButton, Header, IconButton } from "../ui";
 import theme from "../theme";
-import { Constants } from "expo";
-import {
-  FadesIn,
-  BlueOnActive,
-  BigOnActive,
-  BiggleOnActive,
-  BouncyBigOnActive,
-} from "../animations";
+import { Constants, Haptic } from "expo";
+import { FadesIn, BouncyBigOnActive } from "../animations";
+import { isCorrectPincode, setPincode } from "./lockstore";
+import { CBT_FORM_SCREEN } from "../screens";
+import haptic from "../haptic";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
 
-const KeypadButton = ({ title, onPress }) => (
+const KeypadButton = ({ title, onPress, style = {} }) => (
   <GhostButton
     title={title}
     borderColor={theme.gray}
@@ -30,6 +27,25 @@ const KeypadButton = ({ title, onPress }) => (
     fontSize={18}
     style={{
       backgroundColor: "white",
+      ...style,
+    }}
+    onPress={onPress}
+  />
+);
+
+const KeypadSideButton = ({
+  icon,
+  accessibilityLabel,
+  onPress,
+  style = {},
+}) => (
+  <IconButton
+    accessibilityLabel={accessibilityLabel}
+    featherIconName={icon}
+    style={{
+      backgroundColor: "white",
+      width: BUTTON_SIZE,
+      ...style,
     }}
     onPress={onPress}
   />
@@ -42,6 +58,8 @@ const Notifier = ({ isActive }) => (
       height: 32,
       borderRadius: 32,
       backgroundColor: theme.pink,
+      borderColor: theme.darkPink,
+      borderWidth: 2,
     }}
     pose={isActive ? "active" : "inactive"}
   />
@@ -65,17 +83,48 @@ export default class extends React.Component<
     code: "",
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    await setPincode("0000");
     setTimeout(() => {
       this.setState({ isReady: true });
     }, 100);
   }
 
-  onEnterCode = () => {
-    this.setState(prevState => {
+  onEnterCode = async (key: string) => {
+    await this.setState(prevState => {
+      if (prevState.code.length === 4) {
+        return prevState;
+      }
       return {
         ...prevState,
-        code: prevState.code + "0",
+        code: prevState.code + key,
+      };
+    });
+
+    if (this.state.code.length !== 4) {
+      return;
+    }
+
+    const isGood = await isCorrectPincode(this.state.code);
+    if (isGood) {
+      haptic.notification(Haptic.NotificationFeedbackType.Success);
+      this.props.navigation.replace(CBT_FORM_SCREEN);
+    } else {
+      this.setState({
+        code: "",
+      });
+      haptic.notification(Haptic.NotificationFeedbackType.Error);
+    }
+  };
+
+  onBackspace = () => {
+    this.setState(prevState => {
+      if (prevState.code.length === 0) {
+        return prevState;
+      }
+      return {
+        ...prevState,
+        code: prevState.code.substring(0, prevState.code.length - 1),
       };
     });
   };
@@ -85,7 +134,7 @@ export default class extends React.Component<
     return (
       <FadesIn
         style={{
-          backgroundColor: theme.offwhite,
+          backgroundColor: theme.pink,
           height: "100%",
         }}
         pose={this.state.isReady ? "visible" : "hidden"}
@@ -98,7 +147,7 @@ export default class extends React.Component<
             paddingRight: 12,
             paddingTop: 24,
             marginTop: Constants.statusBarHeight,
-            backgroundColor: theme.offwhite,
+            backgroundColor: theme.pink,
             justifyContent: "center",
           }}
         >
@@ -110,28 +159,33 @@ export default class extends React.Component<
             <Header
               style={{
                 fontSize: 32,
-                marginBottom: 24,
+                color: "white",
+                marginHorizontal: 24,
+                textAlign: "center",
               }}
             >
-              Enter your passcode.
+              Please enter your passcode.
             </Header>
           </Row>
         </Container>
 
         <Container
           style={{
-            flex: 1,
+            flex: 2,
             paddingLeft: 12,
             paddingRight: 12,
             paddingTop: 24,
             backgroundColor: "white",
+            borderTopWidth: 2,
+            borderColor: theme.darkPink,
           }}
         >
           <Row
             style={{
+              marginTop: 32,
               marginLeft: 48,
               marginRight: 48,
-              marginBottom: 24,
+              marginBottom: 32,
             }}
           >
             <Notifier isActive={code.length >= 1} />
@@ -145,9 +199,9 @@ export default class extends React.Component<
               marginBottom: 12,
             }}
           >
-            <KeypadButton title="1" onPress={this.onEnterCode} />
-            <KeypadButton title="2" onPress={this.onEnterCode} />
-            <KeypadButton title="3" onPress={this.onEnterCode} />
+            <KeypadButton title="1" onPress={() => this.onEnterCode("1")} />
+            <KeypadButton title="2" onPress={() => this.onEnterCode("2")} />
+            <KeypadButton title="3" onPress={() => this.onEnterCode("3")} />
           </Row>
 
           <Row
@@ -156,9 +210,9 @@ export default class extends React.Component<
               marginBottom: 12,
             }}
           >
-            <KeypadButton title="4" onPress={this.onEnterCode} />
-            <KeypadButton title="5" onPress={this.onEnterCode} />
-            <KeypadButton title="6" onPress={this.onEnterCode} />
+            <KeypadButton title="4" onPress={() => this.onEnterCode("4")} />
+            <KeypadButton title="5" onPress={() => this.onEnterCode("5")} />
+            <KeypadButton title="6" onPress={() => this.onEnterCode("6")} />
           </Row>
 
           <Row
@@ -167,9 +221,9 @@ export default class extends React.Component<
               marginBottom: 12,
             }}
           >
-            <KeypadButton title="7" onPress={this.onEnterCode} />
-            <KeypadButton title="8" onPress={this.onEnterCode} />
-            <KeypadButton title="9" onPress={this.onEnterCode} />
+            <KeypadButton title="7" onPress={() => this.onEnterCode("7")} />
+            <KeypadButton title="8" onPress={() => this.onEnterCode("8")} />
+            <KeypadButton title="9" onPress={() => this.onEnterCode("9")} />
           </Row>
 
           <Row
@@ -177,7 +231,17 @@ export default class extends React.Component<
               justifyContent: "space-evenly",
             }}
           >
-            <KeypadButton title="0" onPress={this.onEnterCode} />
+            <KeypadSideButton
+              icon="help"
+              accessibilityLabel="help"
+              onPress={() => {}}
+            />
+            <KeypadButton title="0" onPress={() => this.onEnterCode("0")} />
+            <KeypadSideButton
+              icon="delete"
+              accessibilityLabel="back"
+              onPress={this.onBackspace}
+            />
           </Row>
         </Container>
       </FadesIn>
