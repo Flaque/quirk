@@ -224,7 +224,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
               accessibilityLabel={i18n.t("accessibility.help_button")}
               onPress={() => {
                 flagstore.setFalse("start-help-badge").then(() => {
-                  this.setState({ shouldShowHelpBadge: false, isReady: false });
+                  this.setState({ shouldShowHelpBadge: false });
                   this.props.navigation.push(EXPLANATION_SCREEN);
                 });
               }}
@@ -235,7 +235,6 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
               accessibilityLabel={i18n.t("accessibility.list_button")}
               featherIconName={"list"}
               onPress={() => {
-                this.setState({ isReady: false });
                 this.props.navigation.push(CBT_LIST_SCREEN);
               }}
             />
