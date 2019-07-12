@@ -28,7 +28,7 @@ Love/hate them? Let me know by pressing the feedback button or sending an email 
     title: "👋 Lock Screens!",
     body: `Quirk has a pincode lock screen now. 
 
-You can turn it on in the settings. 
+You can turn it on in the settings. If you lock yourself out, send us an email.
 
 Love/hate it? Let me know by pressing the feedback button or sending an email to "ejc@quirk.fyi".
     `,
