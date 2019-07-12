@@ -43,7 +43,7 @@ import {
 } from "react-navigation";
 import { Paragraph, SubHeader, ActionButton } from "./ui";
 import * as InAppPurchases from "react-native-iap";
-import { CBT_FORM_SCREEN } from "./screens";
+import { CBT_FORM_SCREEN, LOCK_SCREEN } from "./screens";
 import {
   getSubscriptionDefinition,
   requiresPayment,
@@ -60,6 +60,7 @@ import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import Sentry from "./sentry";
 import { FadesIn } from "./animations";
+import { hasPincode } from "./lock/lockstore";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const ANDROID_ID = "basic_subscription";
@@ -95,6 +96,7 @@ class PaymentScreen extends React.Component<
     canMakePayments: boolean;
     isReady: boolean;
     loading: boolean;
+    shouldShowLock: boolean;
   }
 > {
   static navigationOptions = {
@@ -102,13 +104,22 @@ class PaymentScreen extends React.Component<
   };
 
   state = {
+    shouldShowLock: false,
     subscription: null,
     canMakePayments: false,
     isReady: false,
     loading: false,
   };
 
-  redirectToFormScreen = () => {
+  redirectToFormScreen = async () => {
+    // If we're locked, go to the lock instead
+    // Check if we should show a pincode
+    const isLocked = await hasPincode();
+    if (isLocked) {
+      this.props.navigation.replace(LOCK_SCREEN);
+      return;
+    }
+
     // We replace here because you shouldn't be able to go "back" to this screen
     this.props.navigation.replace(CBT_FORM_SCREEN, {
       thought: false,
