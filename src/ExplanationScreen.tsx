@@ -6,7 +6,8 @@ import {
 } from "react-navigation";
 import { SubHeader, Paragraph, Header, IconButton, GhostButton } from "./ui";
 import { ScrollView, View } from "react-native";
-import { Constants, Haptic } from "expo";
+import * as Haptic from 'expo-haptics';
+import Constants from 'expo-constants';
 import theme from "./theme";
 import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";

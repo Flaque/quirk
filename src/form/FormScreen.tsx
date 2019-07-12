@@ -3,7 +3,8 @@ import React from "react";
 import { View, StatusBar } from "react-native";
 import { NavigationScreenProp, NavigationAction } from "react-navigation";
 import theme from "../theme";
-import { Constants, Haptic } from "expo";
+import * as Haptic from 'expo-haptics';
+import Constants from 'expo-constants';
 import i18n from "../i18n";
 import {
   CBT_LIST_SCREEN,
