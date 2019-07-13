@@ -35,6 +35,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.7.4",
     "react-native-onesignal": "^3.2.14",
     "react-native-pose": "^0.9.0",
+    "react-native-purchases": "^2.2.2",
     "react-native-snap-carousel": "^3.8.0",
     "react-native-store-review": "^0.1.5",
     "react-native-svg": "~9.4.0",

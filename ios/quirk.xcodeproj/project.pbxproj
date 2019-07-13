@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2504AF2E22AC6FEB00CE72F8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2504AF2D22AC6FEB00CE72F8 /* StoreKit.framework */; };
+		25C0DF1122DA530D00B9DDD6 /* Purchases.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C0DF1022DA530C00B9DDD6 /* Purchases.framework */; };
+		25C0DF1222DA531400B9DDD6 /* Purchases.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C0DF1022DA530C00B9DDD6 /* Purchases.framework */; };
+		25C0DF1322DA531400B9DDD6 /* Purchases.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25C0DF1022DA530C00B9DDD6 /* Purchases.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B501732B1DC01252003445D9 /* EXShell.plist in Resources */ = {isa = PBXBuildFile; fileRef = B501732A1DC01252003445D9 /* EXShell.plist */; };
 		B56386491DB9693800A0598C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56386481DB9693800A0598C /* AppDelegate.m */; };
 		B56386511DB9693800A0598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56386501DB9693800A0598C /* Assets.xcassets */; };
@@ -22,9 +25,24 @@
 		EBB8117C1BFA0514F79CAF74 /* libPods-quirk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A88D15726AD99E8A257BC7 /* libPods-quirk.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		25C0DF1422DA531500B9DDD6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				25C0DF1322DA531400B9DDD6 /* Purchases.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2504AF2D22AC6FEB00CE72F8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2504AF2F22B3054200CE72F8 /* quirk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = quirk.entitlements; sourceTree = "<group>"; };
+		25C0DF1022DA530C00B9DDD6 /* Purchases.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Purchases.framework; path = "../node_modules/react-native-purchases/ios/Purchases.framework"; sourceTree = "<group>"; };
 		2C1548D9E4CB1AEFA5CCAE6D /* Pods-quirk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quirk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-quirk/Pods-quirk.debug.xcconfig"; sourceTree = "<group>"; };
 		A47FE4D7F70906B7DC8CE39B /* Pods-quirk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quirk.release.xcconfig"; path = "Pods/Target Support Files/Pods-quirk/Pods-quirk.release.xcconfig"; sourceTree = "<group>"; };
 		B501732A1DC01252003445D9 /* EXShell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EXShell.plist; sourceTree = "<group>"; };
@@ -50,7 +68,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBB8117C1BFA0514F79CAF74 /* libPods-quirk.a in Frameworks */,
+				25C0DF1222DA531400B9DDD6 /* Purchases.framework in Frameworks */,
 				2504AF2E22AC6FEB00CE72F8 /* StoreKit.framework in Frameworks */,
+				25C0DF1122DA530D00B9DDD6 /* Purchases.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +98,7 @@
 		B56386381DB9693800A0598C = {
 			isa = PBXGroup;
 			children = (
+				25C0DF1022DA530C00B9DDD6 /* Purchases.framework */,
 				B56386431DB9693800A0598C /* quirk */,
 				B56386421DB9693800A0598C /* Products */,
 				5B29BC350A332C58878A9F13 /* Pods */,
@@ -136,6 +157,8 @@
 				B563863F1DB9693800A0598C /* Resources */,
 				AA38385B7D8D0854176B72FC /* [CP] Copy Pods Resources */,
 				19D233B7204FDD7D0087ED51 /* Bundle Expo Assets */,
+				25C0DF1422DA531500B9DDD6 /* Embed Frameworks */,
+				25C0DF1522DA532D00B9DDD6 /* Strip Frameworks */,
 			);
 			buildRules = (
 			);
@@ -243,6 +266,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		25C0DF1522DA532D00B9DDD6 /* Strip Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/../node_modules/react-native-purchases/ios/strip-frameworks.sh\"\n";
 		};
 		AA38385B7D8D0854176B72FC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -418,6 +459,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = quirk/quirk.entitlements;
 				DEVELOPMENT_TEAM = F29L6XF84H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/FBAudienceNetwork/Static\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Maps/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+					"\"${PODS_ROOT}/OneSignal/iOS_SDK/OneSignalSDK/Framework\"",
+					"$(PROJECT_DIR)/../node_modules/react-native-purchases/ios",
+				);
 				INFOPLIST_FILE = ./quirk/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.econn.quirk;
@@ -433,6 +486,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = quirk/quirk.entitlements;
 				DEVELOPMENT_TEAM = F29L6XF84H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/FBAudienceNetwork/Static\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Maps/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+					"\"${PODS_ROOT}/OneSignal/iOS_SDK/OneSignalSDK/Framework\"",
+					"$(PROJECT_DIR)/../node_modules/react-native-purchases/ios",
+				);
 				INFOPLIST_FILE = ./quirk/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.econn.quirk;

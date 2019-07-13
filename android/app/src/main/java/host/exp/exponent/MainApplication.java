@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNPurchasesPackage;
 import expo.loaders.provider.interfaces.AppLoaderPackagesProviderInterface;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.dooboolab.RNIap.RNIapPackage;
@@ -30,6 +31,7 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
 
         // Needed for `react-native link`
         // new MainReactPackage(),
+            new RNPurchasesPackage(),
             new ReactNativeOneSignalPackage(),
             new RNIapPackage()
     );

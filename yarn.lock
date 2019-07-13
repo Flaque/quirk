@@ -7084,6 +7084,11 @@ react-native-pose@^0.9.0:
     animated-pose "^1.2.0"
     react-pose-core "^0.5.0"
 
+react-native-purchases@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-purchases/-/react-native-purchases-2.2.2.tgz#0ac44ab4634fcfb2f96ba94e77aa049f1fd1d885"
+  integrity sha512-ms8wof6X7A/tf98MHKzx3DQ4q4zGVwRp+O/SaIf25Vv7DfylI1fAVwUMw7am/TIr35hZE317rSxmNa9lzSIqAA==
+
 react-native-reanimated@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.0.1.tgz#5ecb6a2f6dad0351077ac9b771ca943b7ad6feda"

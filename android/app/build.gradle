@@ -83,6 +83,7 @@ apply from: 'expo.gradle'
 apply from: "../../node_modules/react-native-unimodules/gradle.groovy"
 
 dependencies {
+    implementation project(':react-native-purchases')
     compile project(':react-native-onesignal')
     compile project(':react-native-iap')
   implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -62,6 +62,7 @@ import Sentry from "./sentry";
 import { FadesIn } from "./animations";
 import loadImages from "./loadImages";
 import { hasPincode } from "./lock/lockstore";
+import Purchases from "react-native-purchases";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const ANDROID_ID = "basic_subscription";
