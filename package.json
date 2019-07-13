@@ -18,7 +18,7 @@
     "expo-asset": "^5.0.1",
     "expo-constants": "~5.0.1",
     "expo-haptics": "^5.0.1",
-    "expo-localization": "^5.0.1",
+    "expo-localization": "~5.0.1",
     "expokit": "33.0.4",
     "i18n-js": "^3.2.1",
     "jest": "^24.7.1",

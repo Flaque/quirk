@@ -1,19 +1,20 @@
 package host.exp.exponent;
 
-
 import com.facebook.react.ReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
 
-import expolib_v1.okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.dooboolab.RNIap.RNIapPackage;
 
-public class MainApplication extends ExpoApplication {
+import host.exp.exponent.generated.BasePackageList;
+
+public class MainApplication extends ExpoApplication implements AppLoaderPackagesProviderInterface {
 
   @Override
   public boolean isDebug() {
@@ -33,14 +34,13 @@ public class MainApplication extends ExpoApplication {
     );
   }
 
-  @Override
-  public String gcmSenderId() {
-    return getString(R.string.gcm_defaultSenderId);
+  public List getExpoPackages() {
+    return new BasePackageList().getPackageList();
   }
 
   @Override
-  public boolean shouldUseInternetKernel() {
-    return BuildVariantConstants.USE_INTERNET_KERNEL;
+  public String gcmSenderId() {
+    return getString(R.string.gcm_defaultSenderId);
   }
 
   public static OkHttpClient.Builder okHttpClientBuilder(OkHttpClient.Builder builder) {
