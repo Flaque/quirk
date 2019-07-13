@@ -331,6 +331,8 @@ export const GhostButton = ({
   height,
   disabled,
   flex,
+  fontSize,
+  style,
 }: {
   title: string;
   onPress: () => void;
@@ -340,6 +342,8 @@ export const GhostButton = ({
   height?: number;
   disabled?: boolean;
   flex?: number;
+  fontSize?: number;
+  style?: any;
 }) => (
   <TouchableOpacity
     style={{
@@ -354,6 +358,7 @@ export const GhostButton = ({
       width,
       height,
       flex,
+      ...style,
     }}
     disabled={disabled}
     onPress={onPress}
@@ -363,7 +368,7 @@ export const GhostButton = ({
         textAlign: "center",
         color: textColor,
         fontWeight: "700",
-        fontSize: 16,
+        fontSize: fontSize || 16,
       }}
     >
       {title}

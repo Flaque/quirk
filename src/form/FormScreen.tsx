@@ -21,6 +21,7 @@ import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";
 import { FadesIn } from "../animations";
+import { hasPincode } from "../lock/lockstore";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<any, NavigationAction>;

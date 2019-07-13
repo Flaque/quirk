@@ -7,6 +7,7 @@ import {
   CBT_ON_BOARDING_SCREEN,
   PAYMENT_SCREEN,
   CBT_VIEW_SCREEN,
+  LOCK_SCREEN,
 } from "./src/screens";
 import CBTListScreen from "./src/CBTListScreen";
 import CBTFormScreen from "./src/form/FormScreen";
@@ -16,6 +17,7 @@ import SettingScreen from "./src/SettingsScreen";
 import OnboardingScreen from "./src/onboarding/OnboardingScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
 import PaymentScreen from "./src/PaymentScreen";
+import LockScreen from "./src/lock/LockScreen";
 
 const App = createStackNavigator(
   {
@@ -26,6 +28,7 @@ const App = createStackNavigator(
     [EXPLANATION_SCREEN]: ExplanationScreen,
     [SETTING_SCREEN]: SettingScreen,
     [CBT_VIEW_SCREEN]: FinishedThoughtScreen,
+    [LOCK_SCREEN]: LockScreen,
   },
   {
     initialRouteName: PAYMENT_SCREEN,
