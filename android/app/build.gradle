@@ -22,6 +22,7 @@ android {
 
   defaultConfig {
     applicationId 'tech.econn.quirk'
+    minSdkVersion 21
     targetSdkVersion 27
     versionCode 24
     versionName '2.1.0'
@@ -73,7 +74,7 @@ android {
 
 configurations.all {
   resolutionStrategy {
-    force 'org.webkit:android-jsc:r224109'
+    force 'org.webkit:android-jsc:r241213'
   }
 }
 

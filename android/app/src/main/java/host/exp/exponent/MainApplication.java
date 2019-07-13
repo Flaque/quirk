@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import expo.loaders.provider.interfaces.AppLoaderPackagesProviderInterface;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.dooboolab.RNIap.RNIapPackage;
 
