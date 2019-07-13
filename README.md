@@ -15,6 +15,22 @@ setting.
 
 <img src="https://user-images.githubusercontent.com/5942769/54972305-4081d180-4f48-11e9-91d8-7e8117668418.gif" alt="quirk screenshot" />
 
+## How Quirk Supports Itself
+
+In order for Quirk to support itself, **it charges a small subscription fee.** Currently it's $3.99 / month in the US, which is roughly the cost of a cup of coffee. This helps pay for a full-time developer to make Quirk not-dead and generally good. 
+
+### The Survival Law of Product Design
+
+To understand _why_ we do a subscription, we can look to the Survival Law of Product Design, a fancy term I just made up. When you make a product, whatever keeps that product alive becomes the primary force of design. 
+
+For example, facebook.com is not Facebook's product, facebook.com/business/ads is Facebook's product. Because 0 dollars are made from facebook accounts, only from advertisers that pay to get access to those facebook accounts. The way you keep the lights on ultimately shapes the product you make. 
+
+So if you want to make a good product that helps folks, you should pick a model of sustainability where the financial incentives of the organization are aligned with the individual interests of the users.
+
+For us, that ended up being a subscription. In a subscription, the primary metric is retention: are people still using this thing? If retention drops, people cancel their subscription and you no longer get to exist.
+
+The _only_ solid way to have good retention is to create something that is actively useful and good. Similarly, the only way to get any value from CBT is to consistently do it. 
+
 ## Contributors
 
 Some amazing folks have helped build the Quirk you see today.
@@ -31,6 +47,8 @@ Some amazing folks have helped build the Quirk you see today.
 - [@miguelmf](https://github.com/miguelmf) for the Portugese translation 🇵🇹
 - [@comradekingu](https://github.com/comradekingu) for the Norweigan Bokmål translation 🇳🇴
 - [@micheleriva](https://github.com/micheleriva) for the Italian translation 🇮🇹
+- [@Jolg42](https://github.com/jolg42) for the French translation 🇫🇷
+- [@Buricescu](https://github.com/Buricescu) for the Romanian translation 🇷🇴
 
 ## Running Locally
 

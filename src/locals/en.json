@@ -74,22 +74,22 @@
       "line1": "Find it later:"
     },
     "got_it": {
-      "line1": "And that's really about it",
+      "line1": "You're ready to go!",
       "btn_title": "Let's go!"
     }
   },
   "auto_thought": "Automatic Thought",
-  "cog_distortion": "Cognitive Distortion",
-  "challenge": "Challenge",
-  "alt_thought": "Alternative Thought",
+  "cog_distortion": "Select any distortions that apply.",
+  "challenge": "Challenge the thought.",
+  "alt_thought": "Write an alternative thought.",
   "cbt_form": {
     "edit": "Edit",
     "new": "New",
     "save": "Save",
-    "auto_thought_placeholder": "What's going on?",
+    "auto_thought_placeholder": "ex: 'The plane might crash'",
     "cog_distortion": "Cognitive Distortion",
     "challenged": "Challenge",
-    "changed_placeholder": "Debate that thought!",
+    "changed_placeholder": "It might not be true that...",
     "alt_thought_placeholder": "What could we think instead?"
   },
   "all_or_nothing_thinking": "All or Nothing Thinking",
@@ -136,6 +136,22 @@
     "list_button": "list thoughts",
     "new_thought_button": "new thought",
     "settings_button": "settings",
-    "delete_thought_button": "delete thought"
-  }
+    "delete_thought_button": "delete thought",
+    "close_button": "close"
+  },
+  "payment": {
+    "ios_explanation": "Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."
+  },
+  "all_or_nothing_thinking_one_liner": "ex: \"That was a thorough waste of time\"",
+  "overgeneralization_one_liner": "ex: \"Everyone will let me down\"",
+  "mind_reading_one_liner": "ex: \"I'll bet he hates me now\"",
+  "fortune_telling_one_liner": "ex: \"I'll get sick at the party\"",
+  "magnification_of_the_negative_one_liner": "Focusing only on what went wrong",
+  "minimization_of_the_positive_one_liner": "Ignoring the good things that happened",
+  "catastrophizing_one_liner": "Focusing on the worst possible scenario",
+  "emotional_reasoning_one_liner": "ex: \"I feel afraid, so I'll have a panic attack\"",
+  "should_statements_one_liner": "ex: \"I should have been better\"",
+  "labeling_one_liner": "ex: \"He's a jerk\"",
+  "self_blaming_one_liner": "Taking all the blame on yourself",
+  "other_blaming_one_liner": "Assigning all the blame to someone else"
 }

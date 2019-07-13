@@ -1,10 +1,10 @@
 import React from "react";
 import theme from "../theme";
-import { SubHeader, Paragraph, ActionButton } from "../ui";
+import { SubHeader, Paragraph, IconButton } from "../ui";
 import posed from "react-native-pose";
 import { TouchableWithoutFeedback, View } from "react-native";
 import universalHaptic from "../haptic";
-import { Haptic } from "expo";
+import * as Haptic from 'expo-haptics';
 import {
   hiddenAlerts,
   hide,
@@ -91,19 +91,9 @@ class AlertView extends React.Component<AlertViewProps> {
             >
               {title}
             </SubHeader>
-          </View>
-          <Paragraph>{body}</Paragraph>
-
-          <View
-            style={{
-              padding: 24,
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-end",
-            }}
-          >
-            <ActionButton
-              title={"Got it."}
+            <IconButton
+              featherIconName="x"
+              accessibilityLabel="close"
               onPress={() => {
                 this.setState({
                   view: "hidden",
@@ -112,6 +102,7 @@ class AlertView extends React.Component<AlertViewProps> {
               }}
             />
           </View>
+          <Paragraph>{body}</Paragraph>
         </PopsUp>
       </TouchableWithoutFeedback>
     );

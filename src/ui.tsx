@@ -11,7 +11,6 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
-import posed from "react-native-pose";
 
 export interface ParentComponent {
   children: any;
@@ -97,6 +96,7 @@ export const SubHeader = ({ children, style }: ParentComponent) => (
 export const SelectorTextItem = ({
   text,
   emoji,
+  description,
   selected = false,
   onPress,
 }) => (
@@ -107,37 +107,69 @@ export const SelectorTextItem = ({
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
       paddingTop: 8,
-      paddingBottom: 8,
-      paddingRight: 12,
-      flexDirection: "row",
-      justifyContent: "space-between",
+      paddingBottom: 4,
       borderRadius: 8,
       borderWidth: 1,
       marginBottom: 4,
       marginTop: 1,
     }}
   >
-    <View style={{ flexDirection: "row" }}>
-      <Text
+    <View style={{ flexDirection: "column" }}>
+      <View style={{ flexDirection: "row", marginBottom: 12 }}>
+        <Text
+          style={{
+            marginRight: 12,
+            marginLeft: 12,
+          }}
+        >
+          {emoji}
+        </Text>
+
+        <View
+          style={{
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+          }}
+        >
+          <Text
+            style={{
+              fontWeight: "600",
+              fontSize: 16,
+              color: selected ? "white" : theme.darkText,
+              marginRight: 8,
+            }}
+          >
+            {text}
+          </Text>
+          {selected && <Feather name={"check"} size={16} color={"white"} />}
+        </View>
+      </View>
+
+      <View
         style={{
           marginRight: 12,
           marginLeft: 12,
+          marginBottom: 6,
+          backgroundColor: selected ? theme.darkBlue : theme.lightOffwhite,
+          paddingLeft: 12,
+          paddingRight: 12,
+          paddingBottom: 6,
+          paddingTop: 6,
+          borderRadius: 8,
         }}
       >
-        {emoji}
-      </Text>
-      <Text
-        style={{
-          fontWeight: "400",
-          fontSize: 16,
-          color: selected ? "white" : theme.darkText,
-        }}
-      >
-        {text}
-      </Text>
+        <Paragraph
+          style={{
+            fontWeight: "400",
+            fontSize: 16,
+            color: selected ? "white" : theme.darkText,
+          }}
+        >
+          {description}
+        </Paragraph>
+      </View>
     </View>
-
-    {selected && <Feather name={"check"} size={16} color={"white"} />}
   </TouchableOpacity>
 );
 
@@ -147,7 +179,13 @@ SelectorTextItem.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-export const RoundedSelector = ({ items, onPress, style }) => (
+export const RoundedSelector = ({
+  items,
+  onPress,
+  style,
+}: {
+  onPress: (slug: string) => void;
+} & any) => (
   <View
     style={{
       backgroundColor: theme.lightOffwhite,
@@ -167,6 +205,7 @@ export const RoundedSelector = ({ items, onPress, style }) => (
           key={slug}
           emoji={cogDistortion.emoji || "🍎"}
           text={cogDistortion.label}
+          description={cogDistortion.description}
           selected={selected}
           onPress={() => onPress(slug)}
         />
@@ -224,6 +263,119 @@ export const RoundedSelectorButton = ({
   </TouchableOpacity>
 );
 
+export const FloatingCard = ({
+  children,
+  style,
+}: {
+  children: any;
+  style?: any;
+}) => (
+  <View
+    style={{
+      backgroundColor: "white",
+      borderWidth: 2,
+      borderColor: theme.blue,
+      borderRadius: 8,
+      padding: 24,
+      elevation: 1,
+      shadowColor: theme.lightGray,
+      shadowOffset: { width: 0, height: 1 },
+      shadowRadius: 10,
+      shadowOpacity: 0.8,
+      width: "100%",
+      ...style,
+    }}
+  >
+    {children}
+  </View>
+);
+
+export const GhostButtonWithGuts = ({
+  onPress,
+  borderColor,
+  disabled,
+  flex,
+  children,
+  style,
+}: {
+  onPress: () => void;
+  borderColor: string;
+  disabled?: boolean;
+  flex?: number;
+  children: any;
+  style?: any;
+}) => (
+  <TouchableOpacity
+    style={{
+      padding: 12,
+      borderRadius: 10,
+      borderColor: borderColor,
+      borderWidth: 1,
+      borderBottomWidth: 2,
+      flex,
+      ...style,
+    }}
+    disabled={disabled}
+    onPress={onPress}
+  >
+    {children}
+  </TouchableOpacity>
+);
+
+export const GhostButton = ({
+  title,
+  onPress,
+  borderColor,
+  textColor,
+  width,
+  height,
+  disabled,
+  flex,
+  fontSize,
+  style,
+}: {
+  title: string;
+  onPress: () => void;
+  borderColor: string;
+  textColor: string;
+  width?: number | string;
+  height?: number;
+  disabled?: boolean;
+  flex?: number;
+  fontSize?: number;
+  style?: any;
+}) => (
+  <TouchableOpacity
+    style={{
+      padding: 12,
+      borderRadius: 10,
+      justifyContent: "center",
+      alignItems: "center",
+      borderColor: borderColor,
+      borderWidth: 1,
+      borderBottomWidth: 2,
+      maxHeight: 48,
+      width,
+      height,
+      flex,
+      ...style,
+    }}
+    disabled={disabled}
+    onPress={onPress}
+  >
+    <Text
+      style={{
+        textAlign: "center",
+        color: textColor,
+        fontWeight: "700",
+        fontSize: fontSize || 16,
+      }}
+    >
+      {title}
+    </Text>
+  </TouchableOpacity>
+);
+
 export const ActionButton = ({
   title,
   onPress,
@@ -232,14 +384,16 @@ export const ActionButton = ({
   width,
   height,
   disabled,
+  flex,
 }: {
   title: string;
   onPress: () => void;
   fillColor?: string;
   textColor?: string;
-  width?: number;
+  width?: number | string;
   height?: number;
   disabled?: boolean;
+  flex?: number;
 }) => (
   <TouchableOpacity
     style={{
@@ -252,6 +406,7 @@ export const ActionButton = ({
       maxHeight: 48,
       width,
       height,
+      flex,
     }}
     disabled={disabled}
     onPress={onPress}

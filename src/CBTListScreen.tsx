@@ -9,7 +9,7 @@ import {
 import { getExercises, deleteExercise } from "./thoughtstore";
 import { Header, Row, Container, IconButton, Label, Paragraph } from "./ui";
 import theme from "./theme";
-import { CBT_FORM_SCREEN, SETTING_SCREEN } from "./screens";
+import { CBT_FORM_SCREEN, SETTING_SCREEN, CBT_VIEW_SCREEN } from "./screens";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
 import {
   NavigationScreenProp,
@@ -17,15 +17,20 @@ import {
   NavigationAction,
 } from "react-navigation";
 import universalHaptic from "./haptic";
-import { Haptic, Constants } from "expo";
+import Constants from 'expo-constants';
+import * as Haptic from 'expo-haptics';
 import { validThoughtGroup } from "./sanitize";
 import Alerter from "./alerter";
 import alerts from "./alerts";
-import { HistoryButtonLabelSetting, getHistoryButtonLabel } from "./setting";
+import {
+  HistoryButtonLabelSetting,
+  getHistoryButtonLabel,
+} from "./SettingsScreen";
 import i18n from "./i18n";
 import { emojiForSlug } from "./distortions";
 import { take } from "lodash";
 import { recordScreenCallOnFocus } from "./navigation";
+import { FadesIn } from "./animations";
 
 const ThoughtItem = ({
   thought,
@@ -130,13 +135,13 @@ const EmptyThoughtIllustration = () => (
 interface ThoughtListProps {
   groups: ThoughtGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
-  navigateToFormWithThought: (thought: SavedThought) => void;
+  navigateToViewer: (thought: SavedThought) => void;
   onItemDelete: (thought: SavedThought) => void;
 }
 
 const ThoughtItemList = ({
   groups,
-  navigateToFormWithThought,
+  navigateToViewer,
   onItemDelete,
   historyButtonLabel,
 }: ThoughtListProps) => {
@@ -149,7 +154,7 @@ const ThoughtItemList = ({
       <ThoughtItem
         key={thought.uuid}
         thought={thought}
-        onPress={navigateToFormWithThought}
+        onPress={navigateToViewer}
         onDelete={onItemDelete}
         historyButtonLabel={historyButtonLabel}
       />
@@ -176,6 +181,7 @@ interface Props {
 interface State {
   groups: ThoughtGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
+  isReady: boolean;
 }
 
 class CBTListScreen extends React.Component<Props, State> {
@@ -185,7 +191,11 @@ class CBTListScreen extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = { groups: [], historyButtonLabel: "alternative-thought" };
+    this.state = {
+      groups: [],
+      historyButtonLabel: "alternative-thought",
+      isReady: false,
+    };
 
     this.props.navigation.addListener("willFocus", () => {
       this.loadSettings();
@@ -218,7 +228,12 @@ class CBTListScreen extends React.Component<Props, State> {
 
         this.setState({ groups });
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        this.setState({
+          isReady: true,
+        });
+      });
   };
 
   loadSettings = (): void => {
@@ -237,13 +252,14 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   navigateToForm = () => {
+    universalHaptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.props.navigation.navigate(CBT_FORM_SCREEN, {
       thought: false,
     });
   };
 
-  navigateToFormWithThought = (thought: SavedThought) => {
-    this.props.navigation.push(CBT_FORM_SCREEN, {
+  navigateToViewerWithThought = (thought: SavedThought) => {
+    this.props.navigation.push(CBT_VIEW_SCREEN, {
       thought,
     });
   };
@@ -257,7 +273,7 @@ class CBTListScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { groups, historyButtonLabel } = this.state;
+    const { groups, historyButtonLabel, isReady } = this.state;
 
     return (
       <View style={{ backgroundColor: theme.lightOffwhite }}>
@@ -282,7 +298,7 @@ class CBTListScreen extends React.Component<Props, State> {
                   style={{ marginRight: 18 }}
                 />
                 <IconButton
-                  featherIconName={"edit"}
+                  featherIconName={"x"}
                   onPress={() => this.navigateToForm()}
                   accessibilityLabel={i18n.t(
                     "accessibility.new_thought_button"
@@ -291,12 +307,14 @@ class CBTListScreen extends React.Component<Props, State> {
               </View>
             </Row>
 
-            <ThoughtItemList
-              groups={groups}
-              navigateToFormWithThought={this.navigateToFormWithThought}
-              onItemDelete={this.onItemDelete}
-              historyButtonLabel={historyButtonLabel}
-            />
+            <FadesIn pose={isReady ? "visible" : "hidden"}>
+              <ThoughtItemList
+                groups={groups}
+                navigateToViewer={this.navigateToViewerWithThought}
+                onItemDelete={this.onItemDelete}
+                historyButtonLabel={historyButtonLabel}
+              />
+            </FadesIn>
           </Container>
         </ScrollView>
         <Alerter alerts={alerts} />

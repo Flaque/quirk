@@ -1,14 +1,14 @@
 {
   "onboarding_screen": {
     "auto_thought_ex": "J'ai raté la fête de George, il doit me détester.",
-    "challenge_ex": "George sait que je ne pourrais pas venir à chaque fois, je ne le détesterais pas s'il manquait quelque chose à moi.\n\nJe devrais me traiter au moins aussi bien que je traite les autres.",
-    "alt_thought_ex": "C'est vrai que j'ai raté la fête de George, je peux m'excuser, et il me pardonnera probablement.",
+    "challenge_ex": "Georges sait que je ne peux pas venir à chaque fois et je ne le détesterais pas s'il manquait un de mes évènements.\n\nJe devrais me traiter aussi bien que je traite les autres.",
+    "alt_thought_ex": "C'est vrai que j'ai raté la fête de Georges, mais je peux m'excuser et il me pardonnera probablement.",
     "cog_distortion": { "label": "Lire dans les pensées", "slug": "mind-reading" },
     "intro": {
-      "line1": "Bienvenue",
-      "emphasis1": "quirk",
-      "line2": "est une app de",
-      "emphasis2": "Thérapie comportementale et cognitive (TCC).",
+      "line1": "Bienvenue sur",
+      "emphasis1": "quirk, ",
+      "line2": "une app de ",
+      "emphasis2": "Thérapie Comportementale et Cognitive (TCC).",
       "line3": ""
     },
     "crash_course": {
@@ -16,14 +16,14 @@
       "emphasis1": "cours accéléré",
       "line2": "en TCC et",
       "emphasis2": "n'est pas une alternative",
-      "line3": "à un.e thérapeute diplomé.e."
+      "line3": "à une thérapeute diplomée."
     },
     "mood_thoughts": {
-      "line1": "Premièrement:",
+      "line1": "Premièrement :",
       "emphasis1": "tes pensées provoquent tes humeurs."
     },
     "thoughts_arent_thoughts": {
-      "line1": "Deuxièmement: tes pensées peuvent être",
+      "line1": "Deuxièmement : tes pensées peuvent être",
       "emphasis1": "automatiques."
     },
     "your_distorted": {
@@ -35,7 +35,7 @@
       "emphasis1": "pensées déformées",
       "line2": "et",
       "emphasis2": "de les remplacer",
-      "line3": "par des pensées rationnelles."
+      "line3": "par des pensées rationnelles"
     },
     "ready": {
       "emphasis1": "Prêt-e ?",
@@ -44,7 +44,7 @@
     "catch": {
       "line1": "On commencera par",
       "emphasis1": "noter les",
-      "line2": "pensées automatiques quand elles se produiront."
+      "line2": "pensées automatiques dès leur apparition."
     },
     "bad_thought_note": {
       "line1": "Note l'idée :",
@@ -55,16 +55,16 @@
       "emphasis1": "distorsions cognitives"
     },
     "bad_distortions": {
-      "line1": "Savons-nous vraiment que George nous détestera ? Sinon, nous",
-      "emphasis1": "🧠 lisons dans les pensées",
-      "line2": "je ne suis pas allé à la fête, il doit me détester."
+      "line1": "Sais-tu vraiment que Georges te détestera ? Tu ne peux pas",
+      "emphasis1": "🧠 lire dans les pensées",
+      "line2": "Je ne suis pas allé à la fête de Georges, il doit me détester."
     },
     "challenge_screen": {
       "line1": "Pourquoi cette idée n'est-elle pas réaliste ?",
-      "emphasis1": "Met-la au défi."
+      "emphasis1": "Mets-la au défi."
     },
     "write_challenge": {
-      "line1": "On va écrire quelque chose comme ça :"
+      "line1": "Tu peux par exemple écrire :"
     },
     "alt_thought": {
       "line1": "Enfin, nous allons écrire une",
@@ -86,7 +86,7 @@
     "edit": "Modifier",
     "new": "Nouveau",
     "save": "Enregistrer",
-    "auto_thought_placeholder": "Qu'est-ce qu'il se passe ?",
+    "auto_thought_placeholder": "Que se passe-t-il ?",
     "cog_distortion": "Distorsion cognitive",
     "challenged": "Défi",
     "changed_placeholder": "Remets en question cette pensée !",
