@@ -10,12 +10,12 @@
     "ship": "./scripts/ship.sh"
   },
   "dependencies": {
-    "@assets/images": "file:assets",
-    "@expo/vector-icons": "^10.0.0",
+    "@expo/vector-icons": "^10.0.3",
     "dayjs": "^1.8.14",
     "eslint-plugin-react-native-a11y": "^1.2.0",
     "expo": "^33.0.0",
     "expo-analytics-segment": "^5.0.1",
+    "expo-asset": "^5.0.1",
     "expo-constants": "^5.0.1",
     "expo-haptics": "^5.0.1",
     "expo-localization": "^5.0.1",

@@ -9,6 +9,6 @@
 	<key>manifestUrl</key>
 	<string>exp://exp.host/@flaque/quirk</string>
 	<key>releaseChannel</key>
-	<string>testing123</string>
+	<string>v2.3</string>
 </dict>
 </plist>

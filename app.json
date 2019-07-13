@@ -15,7 +15,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#F8A5C2"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": ["assets/**"],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "tech.econn.quirk",
