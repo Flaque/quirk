@@ -16,7 +16,7 @@
     "expo": "^33.0.0",
     "expo-analytics-segment": "^5.0.1",
     "expo-asset": "^5.0.1",
-    "expo-constants": "^5.0.1",
+    "expo-constants": "~5.0.1",
     "expo-haptics": "^5.0.1",
     "expo-localization": "^5.0.1",
     "expokit": "33.0.4",
