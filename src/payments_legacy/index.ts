@@ -4,7 +4,6 @@ import * as subscriptionStore from "./subscriptionstore";
 import dayjs from "dayjs";
 import * as stats from "../stats";
 import { getAppleExpirationDateFromRecentPurchases } from "./iosReceipts";
-import { isGrandfatheredIntoFreeSubscription } from "../history/grandfatherstore";
 
 const IOS_SKU = "fyi.quirk.subscription";
 const ANDROID_ID = "basic_subscription";

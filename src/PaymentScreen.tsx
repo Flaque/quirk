@@ -49,15 +49,15 @@ import {
   getSubscriptionDefinition,
   requiresPayment,
   isProbablyFreshlyInstalledApp,
-} from "./subscriptions";
+} from "./legacy_payments";
 import theme from "./theme";
 import i18n from "./i18n";
-import { storeExpirationDate } from "./subscriptions/subscriptionstore";
+import { storeExpirationDate } from "./legacy_payments/subscriptionstore";
 import dayjs from "dayjs";
 import { SplashScreen } from "expo";
 import * as stats from "./stats";
 import { BallIndicator } from "react-native-indicators";
-import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
+import { getAppleExpirationDateFromReceipt } from "./legacy_payments/iosReceipts";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import Sentry from "./sentry";
 import { FadesIn } from "./animations";

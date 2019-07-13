@@ -25,7 +25,7 @@
  * publicly due to legal + company risk)
  */
 
-import * as Segment from 'expo-analytics-segment';
+import * as Segment from "expo-analytics-segment";
 import isInDev from "./isInDev";
 import dayjs from "dayjs";
 
@@ -120,6 +120,10 @@ export function userEncounteredPaymentError(err: string) {
   Segment.trackWithProperties("user_encountered_payment_error", {
     error: err,
   });
+}
+
+export function userCanceledPayment() {
+  Segment.track("user_canceled_payment");
 }
 
 /**
