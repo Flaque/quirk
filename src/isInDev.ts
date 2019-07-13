@@ -1,4 +1,4 @@
-import { Constants } from "expo";
+import Constants from 'expo-constants';
 
 export default () => {
   return !Constants.manifest.revisionId;

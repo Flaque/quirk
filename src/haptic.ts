@@ -4,7 +4,7 @@
  */
 
 import { Platform } from "react-native";
-import { Haptic } from "expo";
+import * as Haptic from 'expo-haptics';
 
 export default {
   notification: type => {

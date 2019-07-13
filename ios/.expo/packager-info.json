@@ -1,3 +1,4 @@
 {
-  "expoServerPort": null
+  "expoServerPort": null,
+  "devToolsPort": 19002
 }

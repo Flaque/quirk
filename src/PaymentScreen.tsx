@@ -60,6 +60,7 @@ import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import Sentry from "./sentry";
 import { FadesIn } from "./animations";
+import loadImages from "./loadImages";
 import { hasPincode } from "./lock/lockstore";
 
 const IOS_SKU = "fyi.quirk.subscription";
@@ -180,6 +181,11 @@ class PaymentScreen extends React.Component<
   purchaseErrorSubscription: EmitterSubscription;
 
   async componentDidMount() {
+    const imgs = await loadImages([
+      require("../assets/pinkbubble/pinkbubble.png"),
+      require("../assets/icecream/icecream.png"),
+    ]);
+
     SplashScreen.preventAutoHide();
 
     this.purchaseUpdateSubscription = InAppPurchases.purchaseUpdatedListener(

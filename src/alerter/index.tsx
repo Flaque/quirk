@@ -4,7 +4,7 @@ import { SubHeader, Paragraph, IconButton } from "../ui";
 import posed from "react-native-pose";
 import { TouchableWithoutFeedback, View } from "react-native";
 import universalHaptic from "../haptic";
-import { Haptic } from "expo";
+import * as Haptic from 'expo-haptics';
 import {
   hiddenAlerts,
   hide,

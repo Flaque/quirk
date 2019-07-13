@@ -17,7 +17,8 @@ import {
   NavigationAction,
 } from "react-navigation";
 import universalHaptic from "./haptic";
-import { Haptic, Constants } from "expo";
+import Constants from 'expo-constants';
+import * as Haptic from 'expo-haptics';
 import { validThoughtGroup } from "./sanitize";
 import Alerter from "./alerter";
 import alerts from "./alerts";

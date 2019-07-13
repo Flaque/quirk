@@ -1,3 +1,6 @@
+import { Asset } from "expo-asset";
+Asset;
+
 import React from "react";
 import {
   NavigationScreenProp,
@@ -9,7 +12,8 @@ import Carousel, { Pagination } from "react-native-snap-carousel";
 import { sliderWidth, itemWidth } from "../form/sizes";
 import { View, Image, Linking, Alert, Platform } from "react-native";
 import { Header, Container, Paragraph, ActionButton, Row } from "../ui";
-import { Constants, Haptic } from "expo";
+import * as Haptic from "expo-haptics";
+import Constants from "expo-constants";
 import theme from "../theme";
 import haptic from "../haptic";
 import * as stats from "../stats";
