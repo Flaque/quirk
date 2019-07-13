@@ -30,7 +30,6 @@
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-autogrow-textinput": "^5.2.0",
-    "react-native-iap": "3.0.0",
     "react-native-indicators": "^0.13.0",
     "react-native-keyboard-aware-scroll-view": "^0.7.4",
     "react-native-onesignal": "^3.2.14",

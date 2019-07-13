@@ -33,6 +33,7 @@ import {
   StatusBar,
   Linking,
   Dimensions,
+  NativeModules,
   EmitterSubscription,
 } from "react-native";
 import {
@@ -182,7 +183,13 @@ class PaymentScreen extends React.Component<
   purchaseErrorSubscription: EmitterSubscription;
 
   async componentDidMount() {
-    const imgs = await loadImages([
+    try {
+      Purchases.setDebugLogsEnabled(true);
+    } catch (err) {
+      console.error(err);
+    }
+
+    await loadImages([
       require("../assets/pinkbubble/pinkbubble.png"),
       require("../assets/icecream/icecream.png"),
     ]);

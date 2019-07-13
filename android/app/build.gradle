@@ -2,11 +2,13 @@ buildscript {
   repositories {
     google()
     maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://plugins.gradle.org/m2/' } 
   }
 
 
   dependencies {
     classpath 'io.fabric.tools:gradle:1.+'
+    classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
   }
 }
 apply plugin: 'com.android.application'
@@ -19,11 +21,12 @@ repositories {
 
 android {
   compileSdkVersion 28
+  buildToolsVersion '28.0.0'
 
   defaultConfig {
     applicationId 'tech.econn.quirk'
     minSdkVersion 21
-    targetSdkVersion 27
+    targetSdkVersion 28
     versionCode 24
     versionName '2.1.0'
     ndk {
@@ -75,12 +78,14 @@ android {
 configurations.all {
   resolutionStrategy {
     force 'org.webkit:android-jsc:r241213'
+    force 'com.android.billingclient:billing:2.0.1'
   }
 }
 
 
 apply from: 'expo.gradle'
 apply from: "../../node_modules/react-native-unimodules/gradle.groovy"
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 dependencies {
     implementation project(':react-native-purchases')
@@ -96,14 +101,14 @@ dependencies {
   // Our dependencies from ExpoView
   // DON'T ADD ANYTHING HERE THAT ISN'T IN EXPOVIEW. ONLY COPY THINGS FROM EXPOVIEW TO HERE.
   implementation 'com.android.support:appcompat-v7:28.0.0'
-  implementation 'com.facebook.android:facebook-android-sdk:4.37.0'
-  implementation('com.facebook.android:audience-network-sdk:4.99.0') {
+  implementation 'com.facebook.android:facebook-android-sdk:5.0.1'
+  implementation('com.facebook.android:audience-network-sdk:5.1.1') {
     exclude module: 'play-services-ads'
   }
   compileOnly 'org.glassfish:javax.annotation:3.1.1'
-  implementation 'com.jakewharton:butterknife:8.4.0'
+  implementation 'com.jakewharton:butterknife:9.0.0'
   implementation 'de.greenrobot:eventbus:2.4.0'
-  implementation 'com.amplitude:android-sdk:2.9.2' // Be careful when upgrading! Upgrading might break experience scoping. Check with Jesse. See Analytics.resetAmplitudeDatabaseHelper
+
   implementation 'com.squareup.picasso:picasso:2.5.2'
   implementation 'com.google.android.gms:play-services-gcm:15.0.1'
   implementation 'com.google.android.gms:play-services-analytics:16.0.1'
@@ -119,28 +124,22 @@ dependencies {
   debugImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta1'
   // debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.4-beta1'
   releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta1'
-  implementation 'com.facebook.device.yearclass:yearclass:1.0.1'
-  implementation 'commons-io:commons-io:1.3.2'
+  implementation 'com.facebook.device.yearclass:yearclass:2.1.0'
+  implementation 'commons-io:commons-io:1.4'
   implementation 'me.leolin:ShortcutBadger:1.1.4@aar'
-  implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-  implementation 'com.theartofdev.edmodo:android-image-cropper:2.4.7'
-  implementation 'com.yqritc:android-scalablevideoview:1.0.1'
+  implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
   implementation 'commons-codec:commons-codec:1.10'
   implementation 'com.segment.analytics.android:analytics:4.3.0'
-  implementation 'com.google.zxing:core:3.2.1'
+  implementation 'com.google.zxing:core:3.3.3'
   implementation 'net.openid:appauth:0.4.1'
-  implementation('com.airbnb.android:lottie:2.5.5')  {
-      exclude group: 'com.android.support', module: 'appcompat-v7'
-  }
+  implementation 'com.airbnb.android:lottie:2.5.6'
   implementation('io.nlopez.smartlocation:library:3.2.11') {
     transitive = false
   }
-  implementation 'com.android.support:exifinterface:28.0.0'
+  implementation "com.android.support:exifinterface:28.0.0"
   implementation 'com.squareup.okio:okio:1.9.0'
-  implementation 'com.facebook.soloader:soloader:0.5.1'
+  implementation 'com.facebook.soloader:soloader:0.6.0'
 
-  implementation 'com.google.android.exoplayer:exoplayer:2.6.1'
-  implementation 'com.google.android.exoplayer:extension-okhttp:2.6.1'
 
   // expo-file-system
   implementation 'com.squareup.okhttp3:okhttp:3.10.0'
