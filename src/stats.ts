@@ -130,6 +130,10 @@ export function userSawApologyNotice() {
   Segment.track("user_saw_apology_notice");
 }
 
+export function userRestoredPurchase() {
+  Segment.track("user_restored_purchase");
+}
+
 /**
  * User Subscribed
  */

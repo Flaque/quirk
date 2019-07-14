@@ -11,6 +11,7 @@ interface PurchaserInfo {
     [entitlement: string]: string;
   };
   allPurchasedProductIdentifiers: string[];
+  latestExpirationDate: string;
 }
 
 interface Product {

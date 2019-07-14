@@ -32,7 +32,7 @@ import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
-import { userSawApologyNotice } from "../stats";
+import { userSawApologyNotice, log } from "../stats";
 
 const Container = props => (
   <ScrollView
@@ -60,7 +60,6 @@ class PaymentScreen extends React.Component<
     subscription: Product | undefined;
     shouldShowLock: boolean;
     isLoading?: boolean;
-    needsLegacyMigration: boolean;
   }
 > {
   static navigationOptions = {
@@ -71,9 +70,6 @@ class PaymentScreen extends React.Component<
     shouldShowLock: false,
     isLoading: false,
     subscription: undefined,
-
-    // Remove in July 2020
-    needsLegacyMigration: false,
   };
 
   async componentDidMount() {
@@ -86,6 +82,20 @@ class PaymentScreen extends React.Component<
     }
 
     await this.refresh();
+
+    // Remove after August 14th, 2019
+    if (Platform.OS === "android" && (await isLegacySubscriber())) {
+      userSawApologyNotice();
+      Alert.alert(
+        "🤦‍ We messed up. 🤦‍",
+        `Due to a bug, your subscription was canceled without your consent. If you were charged, you were refunded!
+        
+If you'd like to continue to use Quirk, you have to resubscribe. You won't be double charged.
+
+If you think you're seeing this screen accidentally, click "restore purchases" to fix the issue.`
+      );
+    }
+
     SplashScreen.hide();
   }
 
@@ -100,19 +110,6 @@ class PaymentScreen extends React.Component<
     this.setState({
       subscription,
     });
-
-    // Remove after August 14th, 2019
-    if (Platform.OS === "android" && (await isLegacySubscriber())) {
-      userSawApologyNotice();
-      Alert.alert(
-        "🤦‍ We messed up. 🤦‍",
-        `Due to a bug, your subscription was canceled without your consent. If you were charged, you were refunded!
-        
-If you'd like to continue to use Quirk, you have to resubscribe. You won't be double charged.
-
-If you think you're seeing this screen accidentally, click "restore purchases" to fix the issue.`
-      );
-    }
   };
 
   redirectToFormScreen = async () => {
@@ -142,6 +139,8 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
       });
       await this.redirectToFormScreen();
     } else {
+      Alert.alert("Payment Failed", "Something went wrong, try again?");
+
       // This else is important to not call setState after the next screen
       this.setState({
         isLoading: false,

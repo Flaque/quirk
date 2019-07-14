@@ -1,6 +1,6 @@
 import Purchases from "react-native-purchases";
 import { REVENUECAT_API_KEY } from "react-native-dotenv";
-import { userCanceledPayment } from "../stats";
+import { userCanceledPayment, userRestoredPurchase, log } from "../stats";
 import Sentry from "../sentry";
 import { isGrandfatheredIntoFreeSubscription } from "../history/grandfatherstore";
 
@@ -41,6 +41,11 @@ export const isSubscribed = async (): Promise<boolean> => {
   return isValidPurchaserInfo(purchaserInfo);
 };
 
+export const latestExpirationDate = async (): Promise<string> => {
+  const purchaserInfo = await Purchases.getPurchaserInfo();
+  return purchaserInfo.latestExpirationDate;
+};
+
 /**
  * Attempts to purchase a subscription,
  */
@@ -63,5 +68,14 @@ export const purchaseSubscription = async (): Promise<
 };
 
 export const restoreSubscription = async (): Promise<void> => {
-  await Purchases.restoreTransactions();
+  userRestoredPurchase();
+  try {
+    await Purchases.restoreTransactions();
+  } catch (err) {
+    log("Error", err);
+    Sentry.captureBreadcrumb({
+      message: "AHHH",
+    });
+    Sentry.captureException(err);
+  }
 };
