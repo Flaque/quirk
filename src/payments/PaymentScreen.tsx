@@ -26,6 +26,7 @@ import {
   setupRevenutCat,
   purchaseSubscription,
   restoreSubscription,
+  isSubscribed,
 } from "./index";
 import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
@@ -89,11 +90,11 @@ class PaymentScreen extends React.Component<
   }
 
   refresh = async () => {
-    // if (await isSubscribed()) {
-    //   this.redirectToFormScreen();
-    //   SplashScreen.hide();
-    //   return;
-    // }
+    if (await isSubscribed()) {
+      this.redirectToFormScreen();
+      SplashScreen.hide();
+      return;
+    }
 
     const subscription = await getCurrentPurchasableSubscription();
     this.setState({
