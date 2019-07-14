@@ -78,7 +78,7 @@ android {
 configurations.all {
   resolutionStrategy {
     force 'org.webkit:android-jsc:r241213'
-    force 'com.android.billingclient:billing:2.0.1'
+    force 'com.android.billingclient:billing:1.2.2'
   }
 }
 

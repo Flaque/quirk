@@ -1,5 +1,29 @@
 interface PurchaserInfo {
   activeEntitlements: "undefined" | string[];
+  activeSubscriptions: string[];
+  allExpirationDates: {
+    [subscription: string]: string;
+  };
+  expirationsForActiveEntitlements: {
+    [entitlement: string]: string;
+  };
+  purchaseDatesForActiveEntitlements: {
+    [entitlement: string]: string;
+  };
+  allPurchasedProductIdentifiers: string[];
+}
+
+interface Product {
+  currency_code: string;
+  description: string;
+  identifier: string;
+  intro_price: string;
+  intro_price_cycles: string;
+  intro_price_period: string;
+  intro_price_string: string;
+  price: number;
+  price_string: string;
+  title: string;
 }
 
 declare module "react-native-purchases" {
@@ -29,14 +53,14 @@ declare module "react-native-purchases" {
 
   export function getEntitlements(): Promise<{
     [entitlement: string]: {
-      [offering: string]: any; // TODO: Product object
+      [offering: string]: Product;
     };
   }>;
 
   export function getProducts(
     productIdentifiers: string[],
     type?: "inapp" | "subs"
-  ): Promise<any[]>;
+  ): Promise<Product[]>;
 
   export function makePurchase(
     productIdentifier: string,

@@ -2,25 +2,25 @@ import Purchases from "react-native-purchases";
 import { REVENUECAT_API_KEY } from "react-native-dotenv";
 import { userCanceledPayment } from "../stats";
 import Sentry from "../sentry";
+import { isGrandfatheredIntoFreeSubscription } from "../history/grandfatherstore";
 
-// All entitlements that have ever existed that provide
-// a user with entrance into Quirk
-const ALL_SUBSCRIPTION_ENTITLEMENTS = ["monthly", "reduced"];
+const ALL_ENTITLEMENTS = ["subscription"]; // what you can buy
+const ALL_SUBSCRIPTION_OFFERINGS = ["monthly", "reduced"]; // how much a sub costs
 
-// The current entitlement we're selling to folks
+// The current offering we're selling to folks
 // TODO: A/B tests, deals, and other price changes can go here
-const getMainSubscriptionEntitlement = () => {
+const getMainOffering = () => {
   return "monthly";
 };
 
 const isValidPurchaserInfo = (info: PurchaserInfo) => {
+  console.log("info", info);
   if (info.activeEntitlements === "undefined") {
+    console.log("active entitlements", info);
     return false;
   }
 
-  return info.activeEntitlements.some(ent => {
-    ALL_SUBSCRIPTION_ENTITLEMENTS.includes(ent);
-  });
+  return info.activeEntitlements.some(ent => ALL_ENTITLEMENTS.includes(ent));
 };
 
 // Should be called once, likely on componentDidMount
@@ -30,11 +30,16 @@ export const setupRevenutCat = async () => {
 };
 
 // Note that subscriptions can change prices or structure all the time.
-export const getCurrentSubscription = async () => {
-  return Purchases.getEntitlements();
+export const getCurrentPurchasableSubscription = async (): Promise<Product> => {
+  const entitlements = await Purchases.getEntitlements();
+  return entitlements.subscription[getMainOffering()];
 };
 
-export const isSubscribed = async () => {
+export const isSubscribed = async (): Promise<boolean> => {
+  if (await isGrandfatheredIntoFreeSubscription()) {
+    return true;
+  }
+
   const purchaserInfo = await Purchases.getPurchaserInfo();
   return isValidPurchaserInfo(purchaserInfo);
 };
@@ -46,13 +51,8 @@ export const purchaseSubscription = async (): Promise<
   "error" | "canceled" | "success"
 > => {
   try {
-    const { purchaserInfo } = await Purchases.makePurchase(
-      getMainSubscriptionEntitlement()
-    );
-
-    if (purchaserInfo.activeEntitlements === "undefined") {
-      return "error";
-    }
+    const product = await getCurrentPurchasableSubscription();
+    const { purchaserInfo } = await Purchases.makePurchase(product.identifier);
 
     return isValidPurchaserInfo(purchaserInfo) ? "success" : "error";
   } catch (err) {
@@ -63,4 +63,8 @@ export const purchaseSubscription = async (): Promise<
     Sentry.captureException(err);
     return "error";
   }
+};
+
+export const restoreSubscription = async (): Promise<void> => {
+  await Purchases.restoreTransactions();
 };

@@ -29,7 +29,6 @@ import {
 } from "./setting";
 import i18n from "./i18n";
 import { recordScreenCallOnFocus } from "./navigation";
-import { getSubscriptionExpirationDate } from "./legacy_payments/subscriptionstore";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
@@ -180,10 +179,10 @@ class SettingScreen extends React.Component<Props, State> {
         isGrandfatheredIntoSubscription: true,
       });
     } else {
-      const subscriptionExpirationDate = await getSubscriptionExpirationDate();
-      this.setState({
-        subscriptionExpirationDate,
-      });
+      // const subscriptionExpirationDate = await getSubscriptionExpirationDate();
+      // this.setState({
+      //   subscriptionExpirationDate,
+      // });
     }
 
     // Check notification status
