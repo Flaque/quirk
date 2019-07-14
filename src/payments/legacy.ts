@@ -19,25 +19,29 @@ import {
 import { isSubscribed } from ".";
 import Purchases from "react-native-purchases";
 
-export const maybeMigrateLegacySubscription = async (): Promise<void> => {
+export const needsLegacyMigration = async (): Promise<boolean> => {
   // Don't go through all the network calls all the time
   if (await hasCheckedLegacyMigration()) {
     await setCheckedLegacyMigration();
-    return;
+    return false;
   }
 
   // If we're not in the legacy system, no need to worry
   if (!(await isLegacySubscriber())) {
     await setCheckedLegacyMigration();
-    return;
+    return false;
   }
 
   // If we're already in RevenueCat, no need to worry
   if (await isSubscribed()) {
     await setCheckedLegacyMigration();
-    return;
+    return false;
   }
 
+  return true;
+};
+
+export const migrateLegacySubscriptions = async (): Promise<void> => {
   // Otherwise, we need to migrate the user.
   await Purchases.restoreTransactions();
   await setCheckedLegacyMigration();

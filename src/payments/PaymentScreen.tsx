@@ -6,6 +6,7 @@ import {
   StatusBar,
   Linking,
   Dimensions,
+  Alert,
 } from "react-native";
 import {
   NavigationScreenProp,
@@ -24,14 +25,13 @@ import {
   getCurrentPurchasableSubscription,
   setupRevenutCat,
   purchaseSubscription,
-  isSubscribed,
   restoreSubscription,
 } from "./index";
 import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
-import Alerter from "../alerter";
 import { isLegacySubscriber } from "../payments_legacy";
-import { maybeMigrateLegacySubscription } from "./legacy";
+import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
+import { userSawApologyNotice } from "../stats";
 
 const Container = props => (
   <ScrollView
@@ -59,7 +59,7 @@ class PaymentScreen extends React.Component<
     subscription: Product | undefined;
     shouldShowLock: boolean;
     isLoading?: boolean;
-    shouldShowAndroidApology: boolean;
+    needsLegacyMigration: boolean;
   }
 > {
   static navigationOptions = {
@@ -71,8 +71,8 @@ class PaymentScreen extends React.Component<
     isLoading: false,
     subscription: undefined,
 
-    // Remove after August 14th, 2019
-    shouldShowAndroidApology: false,
+    // Remove in July 2020
+    needsLegacyMigration: false,
   };
 
   async componentDidMount() {
@@ -80,30 +80,38 @@ class PaymentScreen extends React.Component<
     await setupRevenutCat();
 
     // Remove this line after july 2020
-    await maybeMigrateLegacySubscription();
+    if (await needsLegacyMigration()) {
+      await migrateLegacySubscriptions();
+    }
 
     await this.refresh();
     SplashScreen.hide();
   }
 
   refresh = async () => {
-    if (await isSubscribed()) {
-      this.redirectToFormScreen();
-      SplashScreen.hide();
-      return;
-    }
-
-    // Remove after August 14th, 2019
-    if (Platform.OS === "android" && (await isLegacySubscriber())) {
-      this.setState({
-        shouldShowAndroidApology: true,
-      });
-    }
+    // if (await isSubscribed()) {
+    //   this.redirectToFormScreen();
+    //   SplashScreen.hide();
+    //   return;
+    // }
 
     const subscription = await getCurrentPurchasableSubscription();
     this.setState({
       subscription,
     });
+
+    // Remove after August 14th, 2019
+    if (Platform.OS === "android" && (await isLegacySubscriber())) {
+      userSawApologyNotice();
+      Alert.alert(
+        "🤦‍ We messed up. 🤦‍",
+        `Due to a bug, your subscription was canceled without your consent. If you were charged, you were refunded!
+        
+If you'd like to continue to use Quirk, you have to resubscribe. You won't be double charged.
+
+If you think you're seeing this screen accidentally, click "restore purchases" to fix the issue.`
+      );
+    }
   };
 
   redirectToFormScreen = async () => {
@@ -157,27 +165,6 @@ class PaymentScreen extends React.Component<
     return (
       <FadesIn pose={pose}>
         <Container>
-          {this.state.shouldShowAndroidApology && (
-            <Alerter
-              alerts={[
-                {
-                  body: `We screwed up!
-                  
-Over the last two weeks, your subscription and free trial were canceled without your consent.
-If you were charged and you're seeing this screen, you were refunded.
-
-Due to our mistake, we have to ask you to resubscribe. 🙏
-
-This happened due to a bug we caused and we're incredibly sorry. We've taken steps 
-to ensure something like this never happens again. If you have any questions, please 
-reach out to us at "humans@quirk.fyi"`,
-                  priority: 0,
-                  slug: "payment-mixup",
-                  title: "We had a mixup",
-                },
-              ]}
-            />
-          )}
           <StatusBar hidden={true} />
 
           {!isIPad() && (

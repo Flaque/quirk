@@ -126,6 +126,10 @@ export function userCanceledPayment() {
   Segment.track("user_canceled_payment");
 }
 
+export function userSawApologyNotice() {
+  Segment.track("user_saw_apology_notice");
+}
+
 /**
  * User Subscribed
  */
