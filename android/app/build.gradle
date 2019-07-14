@@ -7,7 +7,7 @@ buildscript {
 
 
   dependencies {
-    classpath 'io.fabric.tools:gradle:1.+'
+    classpath 'io.fabric.tools:gradle:1.26.1'
     classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
   }
 }
@@ -18,16 +18,15 @@ repositories {
   maven { url 'https://maven.fabric.io/public' }
 }
 
-
 android {
   compileSdkVersion 28
-  buildToolsVersion '28.0.0'
+  buildToolsVersion '28.0.3'
 
   defaultConfig {
     applicationId 'tech.econn.quirk'
     minSdkVersion 21
     targetSdkVersion 28
-    versionCode 24
+    versionCode 35
     versionName '2.1.0'
     ndk {
      abiFilters 'armeabi-v7a', 'x86'
@@ -66,7 +65,7 @@ android {
     pickFirst "**"
   }
   configurations.all {
-    resolutionStrategy.force 'com.android.support:design:27.1.0'
+    resolutionStrategy.force 'com.android.support:design:28.0.0'
   }
   compileOptions {
     sourceCompatibility 1.8
@@ -90,7 +89,6 @@ apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 dependencies {
     implementation project(':react-native-purchases')
     compile project(':react-native-onesignal')
-    compile project(':react-native-iap')
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
   implementation 'com.android.support:multidex:1.0.1'

@@ -16,7 +16,7 @@ import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/SettingsScreen";
 import OnboardingScreen from "./src/onboarding/OnboardingScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
-import PaymentScreen from "./src/PaymentScreen";
+import PaymentScreen from "./src/payments/PaymentScreen";
 import LockScreen from "./src/lock/LockScreen";
 
 const App = createStackNavigator(

@@ -248,8 +248,8 @@ class SettingScreen extends React.Component<Props, State> {
             <Row style={{ marginBottom: 18 }}>
               <Header>quirk*</Header>
               <IconButton
-                featherIconName={"list"}
-                accessibilityLabel={i18n.t("accessibility.list_button")}
+                featherIconName={"x"}
+                accessibilityLabel={i18n.t("accessibility.close_button")}
                 onPress={() => this.navigateToList()}
               />
             </Row>

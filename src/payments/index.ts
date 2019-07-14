@@ -5,7 +5,6 @@ import Sentry from "../sentry";
 import { isGrandfatheredIntoFreeSubscription } from "../history/grandfatherstore";
 
 const ALL_ENTITLEMENTS = ["subscription"]; // what you can buy
-const ALL_SUBSCRIPTION_OFFERINGS = ["monthly", "reduced"]; // how much a sub costs
 
 // The current offering we're selling to folks
 // TODO: A/B tests, deals, and other price changes can go here
@@ -14,9 +13,7 @@ const getMainOffering = () => {
 };
 
 const isValidPurchaserInfo = (info: PurchaserInfo) => {
-  console.log("info", info);
   if (info.activeEntitlements === "undefined") {
-    console.log("active entitlements", info);
     return false;
   }
 

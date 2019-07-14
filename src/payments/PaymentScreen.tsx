@@ -13,21 +13,25 @@ import {
   NavigationAction,
   ScrollView,
 } from "react-navigation";
-import { Paragraph, SubHeader, ActionButton } from "./ui";
-import { CBT_FORM_SCREEN, LOCK_SCREEN } from "./screens";
-import theme from "./theme";
-import i18n from "./i18n";
+import { Paragraph, SubHeader, ActionButton } from "../ui";
+import { CBT_FORM_SCREEN, LOCK_SCREEN } from "../screens";
+import theme from "../theme";
+import i18n from "../i18n";
 import { BallIndicator } from "react-native-indicators";
-import { FadesIn } from "./animations";
-import { hasPincode } from "./lock/lockstore";
+import { FadesIn } from "../animations";
+import { hasPincode } from "../lock/lockstore";
 import {
   getCurrentPurchasableSubscription,
   setupRevenutCat,
   purchaseSubscription,
   isSubscribed,
   restoreSubscription,
-} from "./payments";
-import { Product } from "./@types/purchases";
+} from "./index";
+import { Product } from "../@types/purchases";
+import { SplashScreen } from "expo";
+import Alerter from "../alerter";
+import { isLegacySubscriber } from "../payments_legacy";
+import { maybeMigrateLegacySubscription } from "./legacy";
 
 const Container = props => (
   <ScrollView
@@ -54,6 +58,8 @@ class PaymentScreen extends React.Component<
   {
     subscription: Product | undefined;
     shouldShowLock: boolean;
+    isLoading?: boolean;
+    shouldShowAndroidApology: boolean;
   }
 > {
   static navigationOptions = {
@@ -62,18 +68,36 @@ class PaymentScreen extends React.Component<
 
   state = {
     shouldShowLock: false,
+    isLoading: false,
     subscription: undefined,
+
+    // Remove after August 14th, 2019
+    shouldShowAndroidApology: false,
   };
 
   async componentDidMount() {
+    SplashScreen.preventAutoHide();
     await setupRevenutCat();
+
+    // Remove this line after july 2020
+    await maybeMigrateLegacySubscription();
+
     await this.refresh();
+    SplashScreen.hide();
   }
 
   refresh = async () => {
     if (await isSubscribed()) {
       this.redirectToFormScreen();
+      SplashScreen.hide();
       return;
+    }
+
+    // Remove after August 14th, 2019
+    if (Platform.OS === "android" && (await isLegacySubscriber())) {
+      this.setState({
+        shouldShowAndroidApology: true,
+      });
     }
 
     const subscription = await getCurrentPurchasableSubscription();
@@ -98,12 +122,33 @@ class PaymentScreen extends React.Component<
   };
 
   onContinuePress = async () => {
-    console.log(await purchaseSubscription());
+    this.setState({
+      isLoading: true,
+    });
+    const result = await purchaseSubscription();
+    if (result === "success") {
+      this.setState({
+        isLoading: false,
+        subscription: undefined,
+      });
+      await this.redirectToFormScreen();
+    } else {
+      // This else is important to not call setState after the next screen
+      this.setState({
+        isLoading: false,
+      });
+    }
   };
 
   onRestorePurchase = async () => {
+    this.setState({
+      isLoading: true,
+    });
     await restoreSubscription();
     await this.refresh();
+    this.setState({
+      isLoading: false,
+    });
   };
 
   render() {
@@ -112,6 +157,27 @@ class PaymentScreen extends React.Component<
     return (
       <FadesIn pose={pose}>
         <Container>
+          {this.state.shouldShowAndroidApology && (
+            <Alerter
+              alerts={[
+                {
+                  body: `We screwed up!
+                  
+Over the last two weeks, your subscription and free trial were canceled without your consent.
+If you were charged and you're seeing this screen, you were refunded.
+
+Due to our mistake, we have to ask you to resubscribe. 🙏
+
+This happened due to a bug we caused and we're incredibly sorry. We've taken steps 
+to ensure something like this never happens again. If you have any questions, please 
+reach out to us at "humans@quirk.fyi"`,
+                  priority: 0,
+                  slug: "payment-mixup",
+                  title: "We had a mixup",
+                },
+              ]}
+            />
+          )}
           <StatusBar hidden={true} />
 
           {!isIPad() && (
@@ -136,7 +202,7 @@ class PaymentScreen extends React.Component<
             }}
           >
             <Image
-              source={require("../assets/pinkbubble/pinkbubble.png")}
+              source={require("../../assets/pinkbubble/pinkbubble.png")}
               style={{
                 width: 67,
                 height: 75,
@@ -145,7 +211,7 @@ class PaymentScreen extends React.Component<
               }}
             />
             <Image
-              source={require("../assets/icecream/icecream.png")}
+              source={require("../../assets/icecream/icecream.png")}
               style={{
                 width: 149,
                 height: 344,
@@ -154,7 +220,7 @@ class PaymentScreen extends React.Component<
               }}
             />
             <Image
-              source={require("../assets/yellowbobble/yellowbobble.png")}
+              source={require("../../assets/yellowbobble/yellowbobble.png")}
               style={{
                 width: 67,
                 height: 75,
@@ -208,8 +274,18 @@ class PaymentScreen extends React.Component<
               justifyContent: "space-between",
             }}
           >
-            {this.state.loading ? (
-              <BallIndicator color={theme.blue} size={24} />
+            {this.state.isLoading ? (
+              <View
+                style={{
+                  height: 64,
+                  width: "100%",
+                  flex: 1,
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <BallIndicator color={theme.blue} size={24} />
+              </View>
             ) : (
               <>
                 <ActionButton
@@ -218,7 +294,7 @@ class PaymentScreen extends React.Component<
                   onPress={this.onContinuePress}
                 />
                 <Image
-                  source={require("../assets/paymentlooker/paymentlooker.png")}
+                  source={require("../../assets/paymentlooker/paymentlooker.png")}
                   style={{
                     height: 64,
                     width: 64,

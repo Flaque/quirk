@@ -11,7 +11,7 @@
  *
  * Plus, if we're still alive in 2020, holy shit.
  */
-import { requiresPayment as hasLegacySubscription } from "../payments_legacy";
+import { isLegacySubscriber } from "../payments_legacy";
 import {
   hasCheckedLegacyMigration,
   setCheckedLegacyMigration,
@@ -27,7 +27,7 @@ export const maybeMigrateLegacySubscription = async (): Promise<void> => {
   }
 
   // If we're not in the legacy system, no need to worry
-  if (!(await hasLegacySubscription())) {
+  if (!(await isLegacySubscriber())) {
     await setCheckedLegacyMigration();
     return;
   }
