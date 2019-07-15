@@ -32,7 +32,7 @@ import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
-import { userSawApologyNotice, log, userStartedPayment } from "../stats";
+import { userSawApologyNotice, userStartedPayment } from "../stats";
 
 const Container = props => (
   <ScrollView

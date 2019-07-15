@@ -34,11 +34,7 @@ import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
 import * as stats from "./stats";
 import { FadesIn } from "./animations";
-import {
-  getCurrentPurchasableSubscription,
-  isSubscribed,
-  latestExpirationDate,
-} from "./payments";
+import { latestExpirationDate } from "./payments";
 import dayjs from "dayjs";
 
 export { HistoryButtonLabelSetting };
@@ -61,6 +57,32 @@ export async function getHistoryButtonLabel(): Promise<
 
   return value;
 }
+
+const Feedback = () => (
+  <>
+    <SubHeader>*feedback</SubHeader>
+    <Paragraph
+      style={{
+        marginBottom: 16,
+      }}
+    >
+      We take your feedback extremely seriously. The email below goes directly
+      to the creators of Quirk.
+    </Paragraph>
+    <ActionButton
+      flex={1}
+      title={"Email Feedback"}
+      fillColor="#EDF0FC"
+      textColor={theme.darkBlue}
+      width={"100%"}
+      onPress={() => {
+        Linking.openURL(
+          "mailto:humans@quirk.fyi?subject=" + encodeURI("Quirk Feedback")
+        );
+      }}
+    />
+  </>
+);
 
 const CancelationInstructions = () => {
   return (
@@ -108,7 +130,7 @@ const SubscriptionExpirationDate = ({ expirationDate }) => (
     <Row>
       <Paragraph
         style={{
-          marginBottom: 9,
+          marginBottom: 16,
         }}
       >
         Thanks for supporting the development of Quirk!
@@ -116,14 +138,10 @@ const SubscriptionExpirationDate = ({ expirationDate }) => (
     </Row>
     <Row
       style={{
-        marginBottom: 9,
+        marginBottom: 16,
       }}
     >
-      <Paragraph
-        style={{
-          marginBottom: 9,
-        }}
-      >
+      <Paragraph>
         You're currently subscribed. On{" "}
         <B>{dayjs(expirationDate).format("YYYY-MM-DD")}</B> your subscription
         will renew.
@@ -132,7 +150,7 @@ const SubscriptionExpirationDate = ({ expirationDate }) => (
 
     <Row
       style={{
-        marginBottom: 9,
+        marginBottom: 16,
       }}
     >
       <CancelationInstructions />
@@ -253,7 +271,7 @@ class SettingScreen extends React.Component<Props, State> {
             }}
           >
             <StatusBar barStyle="dark-content" />
-            <Row style={{ marginBottom: 18 }}>
+            <Row style={{ marginBottom: 22 }}>
               <Header>quirk*</Header>
               <IconButton
                 featherIconName={"x"}
@@ -264,7 +282,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 18,
+                marginBottom: 22,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -272,7 +290,7 @@ class SettingScreen extends React.Component<Props, State> {
               <SubHeader>*reminders</SubHeader>
               <Paragraph
                 style={{
-                  marginBottom: 9,
+                  marginBottom: 16,
                 }}
               >
                 If you'd like, you can turn on notification reminders that help
@@ -308,7 +326,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 18,
+                marginBottom: 22,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -316,7 +334,7 @@ class SettingScreen extends React.Component<Props, State> {
               <SubHeader>*pincode lock 🔒</SubHeader>
               <Paragraph
                 style={{
-                  marginBottom: 9,
+                  marginBottom: 16,
                 }}
               >
                 You can lock the app with a pincode if you'd like. Be warned
@@ -339,7 +357,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 18,
+                marginBottom: 22,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -347,7 +365,7 @@ class SettingScreen extends React.Component<Props, State> {
               <SubHeader>*history button labels</SubHeader>
               <Paragraph
                 style={{
-                  marginBottom: 9,
+                  marginBottom: 16,
                 }}
               >
                 By default, we set the buttons in the history screen to use the
@@ -367,7 +385,17 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 18,
+                marginBottom: 22,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <Feedback />
+            </Row>
+
+            <Row
+              style={{
+                marginBottom: 22,
                 display: "flex",
                 flexDirection: "column",
               }}

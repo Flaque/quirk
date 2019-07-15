@@ -92,32 +92,6 @@ export default class extends React.Component<
           paddingBottom: 96,
         }}
       >
-        <SubHeader
-          style={{
-            alignSelf: "flex-start",
-            justifyContent: "center",
-            marginBottom: 18,
-          }}
-        >
-          {this.state.shouldShowRate ? "Something Wrong?" : "Got Feedback?"}
-        </SubHeader>
-        <Row
-          style={{
-            alignSelf: "flex-start",
-            justifyContent: "center",
-          }}
-        >
-          <ActionButton
-            fillColor={theme.lightGray}
-            textColor={theme.blue}
-            title={"Let us know"}
-            width={"100%"}
-            onPress={() => {
-              Linking.openURL("mailto:humans@quirk.fyi");
-            }}
-          />
-        </Row>
-
         {shouldShowRate && (
           <>
             <SubHeader
