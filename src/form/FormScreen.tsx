@@ -1,10 +1,10 @@
 import { Container, Row, Header, IconButton } from "../ui";
 import React from "react";
-import { View, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 import { NavigationScreenProp, NavigationAction } from "react-navigation";
 import theme from "../theme";
-import * as Haptic from 'expo-haptics';
-import Constants from 'expo-constants';
+import * as Haptic from "expo-haptics";
+import Constants from "expo-constants";
 import i18n from "../i18n";
 import {
   CBT_LIST_SCREEN,
@@ -21,7 +21,6 @@ import haptic from "../haptic";
 import { recordScreenCallOnFocus } from "../navigation";
 import * as stats from "../stats";
 import { FadesIn } from "../animations";
-import { hasPincode } from "../lock/lockstore";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<any, NavigationAction>;
@@ -144,7 +143,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
   };
 
   onChangeDistortion = (selected: string) => {
-    haptic.selection(); // iOS users get a selected buzz
+    haptic.selection();
 
     this.setState(prevState => {
       const { cognitiveDistortions } = prevState.thought;
@@ -212,6 +211,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
             paddingRight: 0,
             marginTop: Constants.statusBarHeight,
             paddingTop: 12,
+            paddingBottom: 0,
           }}
         >
           <Row

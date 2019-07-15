@@ -71,6 +71,7 @@
       android:name=".experience.ExperienceActivity"
       android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
       android:theme="@style/Theme.Exponent.Light"
+      
       android:windowSoftInputMode="adjustResize">
     </activity>
 

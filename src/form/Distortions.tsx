@@ -5,38 +5,38 @@ import i18n from "../i18n";
 import { CognitiveDistortion } from "../distortions";
 import * as stats from "../stats";
 
-export default ({
-  distortions = [],
-  onChange,
-}: {
+export default class extends React.Component<{
   distortions: CognitiveDistortion[];
   onChange: (slug: string) => void;
-}) => {
-  return (
-    <>
-      <ScrollView>
-        <View
-          style={{
-            paddingBottom: 48,
-          }}
-        >
-          <SubHeader
+}> {
+  onPressSlug = async slug => {
+    this.props.onChange(slug);
+    stats.userFilledOutFormField("distortions");
+    stats.userCheckedDistortion(slug);
+  };
+
+  render() {
+    const { distortions = [] } = this.props;
+
+    return (
+      <>
+        <ScrollView>
+          <View
             style={{
-              marginBottom: 6,
+              paddingBottom: 48,
             }}
           >
-            {i18n.t("cog_distortion")}
-          </SubHeader>
-          <RoundedSelector
-            items={distortions}
-            onPress={slug => {
-              stats.userFilledOutFormField("distortions");
-              stats.userCheckedDistortion(slug);
-              onChange(slug);
-            }}
-          />
-        </View>
-      </ScrollView>
-    </>
-  );
-};
+            <SubHeader
+              style={{
+                marginBottom: 6,
+              }}
+            >
+              {i18n.t("cog_distortion")}
+            </SubHeader>
+            <RoundedSelector items={distortions} onPress={this.onPressSlug} />
+          </View>
+        </ScrollView>
+      </>
+    );
+  }
+}

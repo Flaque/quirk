@@ -286,7 +286,7 @@ class CBTListScreen extends React.Component<Props, State> {
           }}
         >
           <Container>
-            <StatusBar barStyle="dark-content" />
+            <StatusBar barStyle="dark-content" translucent={true} />
             <Row style={{ marginBottom: 18 }}>
               <Header allowFontScaling={false}>.quirk</Header>
 
