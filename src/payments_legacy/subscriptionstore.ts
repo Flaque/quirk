@@ -12,8 +12,10 @@
  */
 import { AsyncStorage } from "react-native";
 import dayjs from "dayjs";
+import Sentry from "../sentry";
 
 const EXPIRATION_DATE = `@PaymentStore:EXPIRATION_DATE`;
+const HAS_CHECKED_MIGRATION = `@PaymentStore:HAS_CHECKED_MIGRATION`;
 
 // Records that the user subscribed today
 export async function storeExpirationDate(expirationDateInUnix: number) {
@@ -72,5 +74,22 @@ export async function hasValidSubscription(): Promise<boolean> {
     console.error(err); // TODO: Catch error
     // If there's an error here, we should attempt to restore the user's purchases
     return false;
+  }
+}
+
+export async function hasCheckedLegacyMigration(): Promise<boolean> {
+  try {
+    const hasChecked = await AsyncStorage.getItem(HAS_CHECKED_MIGRATION);
+    return !!hasChecked;
+  } catch (err) {
+    return false;
+  }
+}
+
+export async function setCheckedLegacyMigration() {
+  try {
+    await AsyncStorage.setItem(HAS_CHECKED_MIGRATION, "true");
+  } catch (err) {
+    Sentry.captureException(err);
   }
 }

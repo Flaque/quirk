@@ -7,15 +7,18 @@ import java.util.List;
 
 import okhttp3.OkHttpClient;
 
+import org.unimodules.core.interfaces.Package;
+
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNPurchasesPackage;
 import expo.loaders.provider.interfaces.AppLoaderPackagesProviderInterface;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
-import com.dooboolab.RNIap.RNIapPackage;
+
 
 import host.exp.exponent.generated.BasePackageList;
 
-public class MainApplication extends ExpoApplication implements AppLoaderPackagesProviderInterface {
+public class MainApplication extends ExpoApplication implements AppLoaderPackagesProviderInterface<ReactPackage>  {
 
   @Override
   public boolean isDebug() {
@@ -30,12 +33,12 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
 
         // Needed for `react-native link`
         // new MainReactPackage(),
-            new ReactNativeOneSignalPackage(),
-            new RNIapPackage()
+            new RNPurchasesPackage(),
+            new ReactNativeOneSignalPackage()
     );
   }
 
-  public List getExpoPackages() {
+  public List<Package> getExpoPackages() {
     return new BasePackageList().getPackageList();
   }
 

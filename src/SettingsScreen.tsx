@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, StatusBar, Platform } from "react-native";
 import theme from "./theme";
 import { Linking } from "expo";
-import Constants from 'expo-constants';
+import Constants from "expo-constants";
 import {
   Header,
   Row,
@@ -29,12 +29,17 @@ import {
 } from "./setting";
 import i18n from "./i18n";
 import { recordScreenCallOnFocus } from "./navigation";
-import { getSubscriptionExpirationDate } from "./subscriptions/subscriptionstore";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
 import * as stats from "./stats";
 import { FadesIn } from "./animations";
+import {
+  getCurrentPurchasableSubscription,
+  isSubscribed,
+  latestExpirationDate,
+} from "./payments";
+import dayjs from "dayjs";
 
 export { HistoryButtonLabelSetting };
 
@@ -56,6 +61,26 @@ export async function getHistoryButtonLabel(): Promise<
 
   return value;
 }
+
+const CancelationInstructions = () => {
+  return (
+    <ActionButton
+      flex={1}
+      title={"Cancelation Instructions"}
+      fillColor="#EDF0FC"
+      textColor={theme.darkBlue}
+      onPress={() => {
+        if (Platform.OS === "android") {
+          Linking.openURL(
+            "https://support.google.com/googleplay/answer/7018481"
+          );
+        } else {
+          Linking.openURL("https://support.apple.com/en-us/HT202039");
+        }
+      }}
+    />
+  );
+};
 
 const GrandfatheredInFreeQuirk = () => (
   <>
@@ -89,46 +114,28 @@ const SubscriptionExpirationDate = ({ expirationDate }) => (
         Thanks for supporting the development of Quirk!
       </Paragraph>
     </Row>
-    <Row>
-      <Paragraph
-        style={{
-          marginBottom: 9,
-        }}
-      >
-        You're currently subscribed to the <B>Quirk Monthly Subscription.</B> On{" "}
-        <B>{expirationDate}</B> your subscription will renew and your account
-        will be charged <B>$3.99.</B>
-      </Paragraph>
-    </Row>
     <Row
       style={{
         marginBottom: 9,
       }}
     >
-      <ActionButton
-        flex={1}
-        title={"Privacy Policy"}
-        fillColor="#EDF0FC"
-        textColor={theme.darkBlue}
-        onPress={() => {
-          Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
-            Linking.openURL("https://quirk.fyi/privacy")
-          );
+      <Paragraph
+        style={{
+          marginBottom: 9,
         }}
-      />
+      >
+        You're currently subscribed. On{" "}
+        <B>{dayjs(expirationDate).format("YYYY-MM-DD")}</B> your subscription
+        will renew.
+      </Paragraph>
     </Row>
-    <Row>
-      <ActionButton
-        flex={1}
-        title={"Terms of Service"}
-        fillColor="#EDF0FC"
-        textColor={theme.darkBlue}
-        onPress={() => {
-          Linking.canOpenURL("https://quirk.fyi/tos").then(() =>
-            Linking.openURL("https://quirk.fyi/tos")
-          );
-        }}
-      />
+
+    <Row
+      style={{
+        marginBottom: 9,
+      }}
+    >
+      <CancelationInstructions />
     </Row>
   </>
 );
@@ -180,9 +187,9 @@ class SettingScreen extends React.Component<Props, State> {
         isGrandfatheredIntoSubscription: true,
       });
     } else {
-      const subscriptionExpirationDate = await getSubscriptionExpirationDate();
+      const expDate = await latestExpirationDate();
       this.setState({
-        subscriptionExpirationDate,
+        subscriptionExpirationDate: expDate,
       });
     }
 
@@ -249,8 +256,8 @@ class SettingScreen extends React.Component<Props, State> {
             <Row style={{ marginBottom: 18 }}>
               <Header>quirk*</Header>
               <IconButton
-                featherIconName={"list"}
-                accessibilityLabel={i18n.t("accessibility.list_button")}
+                featherIconName={"x"}
+                accessibilityLabel={i18n.t("accessibility.close_button")}
                 onPress={() => this.navigateToList()}
               />
             </Row>

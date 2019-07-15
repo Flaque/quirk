@@ -252,10 +252,14 @@ export default class extends React.Component<
               justifyContent: "space-evenly",
             }}
           >
+            {/* this is a secret button, for use in resetting in the future */}
             <KeypadSideButton
               icon="help"
               accessibilityLabel="help"
               onPress={() => {}}
+              style={{
+                opacity: 0,
+              }}
             />
             <KeypadButton title="0" onPress={() => this.onEnterCode("0")} />
             <KeypadSideButton

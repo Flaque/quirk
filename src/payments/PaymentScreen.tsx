@@ -1,39 +1,12 @@
-/**
- * ## Guiding Principle: When in doubt, wave them through.
- *
- * Is there a bug on our side? Cool, they get in free.
- * Are they having connection issues? Cool, they get in free.
- * Problem with Apple/Google? Cool, they get in free.
- *
- * It's infinitely more important for someone to be able to
- * USE Quirk and record their thoughts than for us
- * to be sticklers about a couple bucks.
- *
- * ## !! HEY YOU IN THE FUTURE !!
- *
- * Look payments are an awful nightmare fueled hellscape.
- * Much of this code isn't great and probably isn't the
- * "right" way to do it.
- *
- * Apple is awful. Google is awful. They're all bad.
- *
- * If you're looking at this in the future as an example
- * of how to setup payments for your own app, just
- * go use Revenuecat. They're pretty cool I hear,
- * and if you can actual get them to work, they're
- * amazing.
- */
-
 import React from "react";
 import {
   View,
   Image,
   Platform,
-  Alert,
   StatusBar,
   Linking,
   Dimensions,
-  EmitterSubscription,
+  Alert,
 } from "react-native";
 import {
   NavigationScreenProp,
@@ -41,34 +14,25 @@ import {
   NavigationAction,
   ScrollView,
 } from "react-navigation";
-import { Paragraph, SubHeader, ActionButton } from "./ui";
-import * as InAppPurchases from "react-native-iap";
-import { CBT_FORM_SCREEN, LOCK_SCREEN } from "./screens";
-import {
-  getSubscriptionDefinition,
-  requiresPayment,
-  isProbablyFreshlyInstalledApp,
-} from "./subscriptions";
-import theme from "./theme";
-import i18n from "./i18n";
-import { storeExpirationDate } from "./subscriptions/subscriptionstore";
-import dayjs from "dayjs";
-import { SplashScreen } from "expo";
-import * as stats from "./stats";
+import { Paragraph, SubHeader, ActionButton } from "../ui";
+import { CBT_FORM_SCREEN, LOCK_SCREEN } from "../screens";
+import theme from "../theme";
+import i18n from "../i18n";
 import { BallIndicator } from "react-native-indicators";
-import { getAppleExpirationDateFromReceipt } from "./subscriptions/iosReceipts";
-import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
-import Sentry from "./sentry";
-import { FadesIn } from "./animations";
-import loadImages from "./loadImages";
-import { hasPincode } from "./lock/lockstore";
-
-const IOS_SKU = "fyi.quirk.subscription";
-const ANDROID_ID = "basic_subscription";
-const subscriptionSku = Platform.select({
-  ios: IOS_SKU,
-  android: ANDROID_ID,
-});
+import { FadesIn } from "../animations";
+import { hasPincode } from "../lock/lockstore";
+import {
+  getCurrentPurchasableSubscription,
+  setupRevenutCat,
+  purchaseSubscription,
+  restoreSubscription,
+  isSubscribed,
+} from "./index";
+import { Product } from "../@types/purchases";
+import { SplashScreen } from "expo";
+import { isLegacySubscriber } from "../payments_legacy";
+import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
+import { userSawApologyNotice, log, userStartedPayment } from "../stats";
 
 const Container = props => (
   <ScrollView
@@ -93,11 +57,9 @@ interface Props {
 class PaymentScreen extends React.Component<
   Props,
   {
-    subscription?: InAppPurchases.Subscription<string>;
-    canMakePayments: boolean;
-    isReady: boolean;
-    loading: boolean;
+    subscription: Product | undefined;
     shouldShowLock: boolean;
+    isLoading?: boolean;
   }
 > {
   static navigationOptions = {
@@ -106,10 +68,48 @@ class PaymentScreen extends React.Component<
 
   state = {
     shouldShowLock: false,
-    subscription: null,
-    canMakePayments: false,
-    isReady: false,
-    loading: false,
+    isLoading: false,
+    subscription: undefined,
+  };
+
+  async componentDidMount() {
+    SplashScreen.preventAutoHide();
+    await setupRevenutCat();
+
+    // Remove this line after july 2020
+    if (await needsLegacyMigration()) {
+      await migrateLegacySubscriptions();
+    }
+
+    await this.refresh();
+
+    // Remove after August 14th, 2019
+    if (Platform.OS === "android" && (await isLegacySubscriber())) {
+      userSawApologyNotice();
+      Alert.alert(
+        "🤦‍ We messed up. 🤦‍",
+        `Due to a bug, your subscription was canceled without your consent. If you were charged, you were refunded!
+        
+If you'd like to continue to use Quirk, you have to resubscribe. You won't be double charged.
+
+If you think you're seeing this screen accidentally, click "restore purchases" to fix the issue.`
+      );
+    }
+
+    SplashScreen.hide();
+  }
+
+  refresh = async () => {
+    if (await isSubscribed()) {
+      this.redirectToFormScreen();
+      SplashScreen.hide();
+      return;
+    }
+
+    const subscription = await getCurrentPurchasableSubscription();
+    this.setState({
+      subscription,
+    });
   };
 
   redirectToFormScreen = async () => {
@@ -127,182 +127,42 @@ class PaymentScreen extends React.Component<
     });
   };
 
-  fetchSubscriptionDefinition = async () => {
-    const subscription = await getSubscriptionDefinition();
-    await this.setState({
-      subscription,
-    });
-  };
-
-  showPaymentsScreen = async () => {
-    stats.screen("payments");
-    await this.fetchSubscriptionDefinition();
-    this.setState({
-      isReady: true,
-    });
-    SplashScreen.hide();
-  };
-
-  storePurchase = async (sub: InAppPurchases.SubscriptionPurchase) => {
-    let expirationDate;
-
-    /** iOS **/
-    if (Platform.OS === "ios") {
-      expirationDate = await getAppleExpirationDateFromReceipt(
-        sub.transactionReceipt
-      );
-      if (!expirationDate) {
-        throw new Error(
-          "Something went wrong validating your receipt, try again?"
-        );
-      }
-    } else {
-      /** Android **/
-
-      // We divide by 1000 because transactionDates are in miliseconds
-      // so we're EXTRA SUPER SPECIAL ACCURATE DUH
-      expirationDate = dayjs
-        .unix(sub.transactionDate / 1000)
-        .add(1, "month")
-        .unix();
-    }
-
-    await storeExpirationDate(expirationDate);
-    stats.userSubscribed(expirationDate);
-    this.redirectToFormScreen();
-
-    this.setState({
-      loading: false,
-    });
-  };
-
-  // See: https://github.com/dooboolab/react-native-iap#purchase
-  purchaseUpdateSubscription: EmitterSubscription;
-  purchaseErrorSubscription: EmitterSubscription;
-
-  async componentDidMount() {
-    const imgs = await loadImages([
-      require("../assets/pinkbubble/pinkbubble.png"),
-      require("../assets/icecream/icecream.png"),
-    ]);
-
-    SplashScreen.preventAutoHide();
-
-    this.purchaseUpdateSubscription = InAppPurchases.purchaseUpdatedListener(
-      (purchase: InAppPurchases.SubscriptionPurchase) => {
-        this.storePurchase(purchase);
-      }
-    );
-    this.purchaseErrorSubscription = InAppPurchases.purchaseErrorListener(
-      (error: InAppPurchases.PurchaseError) => {
-        if (
-          error.debugMessage ===
-          "Billing is unavailable. This may be a problem with your device, or the Play Store may be down."
-        ) {
-          Alert.alert("Can't connect. Are you logged into the Play Store?");
-          stats.log("Android Billing Error", { error });
-          return;
-        }
-
-        stats.log("purchaseErrorListener", { error });
-      }
-    );
-
-    try {
-      if (await isGrandfatheredIntoFreeSubscription()) {
-        stats.subscriptionVerified("grandfathered");
-        this.redirectToFormScreen();
-        SplashScreen.hide();
-        return;
-      }
-
-      // New apps don't need to spend time checking payments,
-      // let's just get to it asap
-      if (await isProbablyFreshlyInstalledApp()) {
-        await this.showPaymentsScreen();
-        return;
-      }
-
-      // If we need don't need to pay, just go to the regular app
-      if (!(await requiresPayment())) {
-        this.redirectToFormScreen();
-        SplashScreen.hide();
-        return;
-      }
-    } catch (err) {
-      stats.subscriptionGivenForFreeDueToError();
-      Sentry.captureException(err);
-
-      // If we mess something up, just send them through, it's cool.
-      this.redirectToFormScreen();
-      SplashScreen.hide();
-    }
-
-    await this.showPaymentsScreen();
-  }
-
-  componentWillMount() {
-    if (this.purchaseUpdateSubscription) {
-      this.purchaseUpdateSubscription.remove();
-      this.purchaseUpdateSubscription = null;
-    }
-    if (this.purchaseErrorSubscription) {
-      this.purchaseErrorSubscription.remove();
-      this.purchaseErrorSubscription = null;
-    }
-  }
-
-  componentWillUnmount() {
-    InAppPurchases.endConnectionAndroid(); // Important to stop bugs on android
-  }
-
-  restorePurchases = async () => {
-    this.setState({
-      loading: true,
-    });
-
-    // If we need don't need to pay, just go to the regular app
-    if (!(await requiresPayment())) {
-      this.redirectToFormScreen();
-      return;
-    }
-
-    Alert.alert("No active subscription found");
-    this.setState({
-      loading: false,
-    });
-  };
-
   onContinuePress = async () => {
-    stats.userStartedPayment(); // MUST happen first
+    userStartedPayment();
+
     this.setState({
-      loading: true,
+      isLoading: true,
     });
+    const result = await purchaseSubscription();
+    if (result === "success") {
+      this.setState({
+        isLoading: false,
+        subscription: undefined,
+      });
+      await this.redirectToFormScreen();
+    } else {
+      Alert.alert("Payment Failed", "Something went wrong, try again?");
 
-    try {
-      await InAppPurchases.initConnection();
-
-      await InAppPurchases.requestSubscription(subscriptionSku);
-    } catch (err) {
-      console.error(err);
-      // We don't send this error to Sentry because it's not typically an
-      // error on ourside. It's typically a password failure or a network
-      // error. Still, if it's happening a lot, we want to know so we can
-      // fix it.
-      stats.userEncounteredPaymentError(err.message);
-      Alert.alert(err.message);
+      // This else is important to not call setState after the next screen
+      this.setState({
+        isLoading: false,
+      });
     }
+  };
+
+  onRestorePurchase = async () => {
     this.setState({
-      loading: false,
+      isLoading: true,
+    });
+    await restoreSubscription();
+    await this.refresh();
+    this.setState({
+      isLoading: false,
     });
   };
 
   render() {
-    if (!this.state.subscription) {
-      return <Container />;
-    }
-
-    const pose = this.state.isReady ? "visible" : "hidden";
+    const pose = !!this.state.subscription ? "visible" : "hidden";
 
     return (
       <FadesIn pose={pose}>
@@ -331,7 +191,7 @@ class PaymentScreen extends React.Component<
             }}
           >
             <Image
-              source={require("../assets/pinkbubble/pinkbubble.png")}
+              source={require("../../assets/pinkbubble/pinkbubble.png")}
               style={{
                 width: 67,
                 height: 75,
@@ -340,7 +200,7 @@ class PaymentScreen extends React.Component<
               }}
             />
             <Image
-              source={require("../assets/icecream/icecream.png")}
+              source={require("../../assets/icecream/icecream.png")}
               style={{
                 width: 149,
                 height: 344,
@@ -349,7 +209,7 @@ class PaymentScreen extends React.Component<
               }}
             />
             <Image
-              source={require("../assets/yellowbobble/yellowbobble.png")}
+              source={require("../../assets/yellowbobble/yellowbobble.png")}
               style={{
                 width: 67,
                 height: 75,
@@ -387,7 +247,8 @@ class PaymentScreen extends React.Component<
                   fontWeight: "900",
                 }}
               >
-                {this.state.subscription.localizedPrice}
+                {!!this.state.subscription &&
+                  this.state.subscription.price_string}
               </SubHeader>{" "}
               a month. Try for free for 7 days.
             </Paragraph>
@@ -402,8 +263,18 @@ class PaymentScreen extends React.Component<
               justifyContent: "space-between",
             }}
           >
-            {this.state.loading ? (
-              <BallIndicator color={theme.blue} size={24} />
+            {this.state.isLoading ? (
+              <View
+                style={{
+                  height: 64,
+                  width: "100%",
+                  flex: 1,
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <BallIndicator color={theme.blue} size={24} />
+              </View>
             ) : (
               <>
                 <ActionButton
@@ -412,7 +283,7 @@ class PaymentScreen extends React.Component<
                   onPress={this.onContinuePress}
                 />
                 <Image
-                  source={require("../assets/paymentlooker/paymentlooker.png")}
+                  source={require("../../assets/paymentlooker/paymentlooker.png")}
                   style={{
                     height: 64,
                     width: 64,
@@ -488,7 +359,7 @@ class PaymentScreen extends React.Component<
                 title={"Restore Purchases"}
                 fillColor="#EDF0FC"
                 textColor={theme.darkBlue}
-                onPress={this.restorePurchases}
+                onPress={this.onRestorePurchase}
               />
             )}
           </View>

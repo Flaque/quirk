@@ -2658,13 +2658,6 @@ domexception@^1.0.1:
   dependencies:
     webidl-conversions "^4.0.2"
 
-dooboolab-welcome@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/dooboolab-welcome/-/dooboolab-welcome-1.1.0.tgz#4a0aa9d2cbc4e2b1008bf7683bc056b41caa3d0d"
-  integrity sha512-K9TKEeefzDXZiUyLZG+bIr8cy9UoYIfFMseowp/o3czVl7TfkVm3gQpeB85w+TO8xeqzWHiIcEelZbBgt5WUwQ==
-  dependencies:
-    chalk "^2.4.1"
-
 dotenv@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-2.0.0.tgz#bd759c357aaa70365e01c96b7b0bec08a6e0d949"
@@ -7037,13 +7030,6 @@ react-native-gesture-handler@1.2.1:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-iap@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-iap/-/react-native-iap-3.0.0.tgz#357d9c3b9d1e5aa3f4a76e5287d26e57b978a951"
-  integrity sha512-LoWB3k/PXaXiV5mRFTfAafJVq9momTPeYgAP7z+rBVXMYY4xuHQjxvGoToW4+bzhXKpJfYmA3I6LRIcCdc/foA==
-  dependencies:
-    dooboolab-welcome "^1.1.0"
-
 react-native-indicators@^0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/react-native-indicators/-/react-native-indicators-0.13.0.tgz#001824bba194b1ca6e654d903beaf0168d4e6ac8"
@@ -7083,6 +7069,11 @@ react-native-pose@^0.9.0:
   dependencies:
     animated-pose "^1.2.0"
     react-pose-core "^0.5.0"
+
+react-native-purchases@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-purchases/-/react-native-purchases-2.2.2.tgz#0ac44ab4634fcfb2f96ba94e77aa049f1fd1d885"
+  integrity sha512-ms8wof6X7A/tf98MHKzx3DQ4q4zGVwRp+O/SaIf25Vv7DfylI1fAVwUMw7am/TIr35hZE317rSxmNa9lzSIqAA==
 
 react-native-reanimated@1.0.1:
   version "1.0.1"

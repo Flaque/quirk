@@ -50,11 +50,11 @@ target 'quirk' do
     :podspec => "../node_modules/react-native/third-party-podspecs/glog.podspec",
     :inhibit_warnings => true
 
-
-  pod 'RNIap', :path => '../node_modules/react-native-iap'
-
   pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
   pod 'RNStoreReview', :path => '../node_modules/react-native-store-review/ios'
+
+  pod 'RNPurchases', :path => '../node_modules/react-native-purchases'
+
 
   post_install do |installer|
     installer.pods_project.main_group.tab_width = '2';
