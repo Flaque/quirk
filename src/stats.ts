@@ -134,6 +134,10 @@ export function userRestoredPurchase() {
   Segment.track("user_restored_purchase");
 }
 
+export function userSetPincode() {
+  Segment.track("user_set_pincode");
+}
+
 /**
  * User Subscribed
  */
@@ -223,6 +227,10 @@ export function userTurnedOffNotifications() {
 
 export function userReviewed() {
   Segment.track("user_reviewed");
+}
+
+export function userPromptedForReviewWhenSettingCode() {
+  Segment.track("user_prompted_for_review_when_setting_code");
 }
 
 /**

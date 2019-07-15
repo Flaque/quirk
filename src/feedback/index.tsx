@@ -13,7 +13,7 @@ const PLAY_STORE_URL =
 async function shouldShowRatingComponent() {
   // Don't show if we literally can't on this device
   if (Platform.OS === "ios" && !StoreReview.isAvailable) {
-    console.log("review isn't available");
+    stats.log("Review isn't available");
     return false;
   }
 
@@ -27,7 +27,7 @@ async function shouldShowRatingComponent() {
   // Don't show if they've rated before
   const hasRatedBefore = await flagstore.get("has-rated", "false");
   if (hasRatedBefore) {
-    console.log("has rated before isn't available");
+    stats.log("has rated before isn't available");
     return false;
   }
 

@@ -4,7 +4,7 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { StatusBar } from "react-native";
+import { StatusBar, Platform } from "react-native";
 import { Container, Row, GhostButton, Header, IconButton } from "../ui";
 import theme from "../theme";
 import { Constants, Haptic } from "expo";
@@ -13,6 +13,8 @@ import { isCorrectPincode, setPincode } from "./lockstore";
 import { CBT_FORM_SCREEN } from "../screens";
 import { get } from "lodash";
 import haptic from "../haptic";
+import { userSetPincode, userPromptedForReviewWhenSettingCode } from "../stats";
+import * as StoreReview from "react-native-store-review";
 
 interface ScreenProps {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
@@ -118,9 +120,16 @@ export default class extends React.Component<
     }
 
     if (this.state.isSettingCode) {
+      userSetPincode();
       await setPincode(this.state.code);
       haptic.notification(Haptic.NotificationFeedbackType.Success);
       this.props.navigation.replace(CBT_FORM_SCREEN);
+
+      // After they set a pincode, mayyyybe they like the app enough to give it a review?
+      if (Platform.OS === "ios" && StoreReview.isAvailable) {
+        userPromptedForReviewWhenSettingCode();
+        StoreReview.requestReview();
+      }
     }
 
     const isGood = await isCorrectPincode(this.state.code);
