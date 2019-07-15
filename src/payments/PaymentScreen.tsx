@@ -32,7 +32,7 @@ import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
-import { userSawApologyNotice, log } from "../stats";
+import { userSawApologyNotice, log, userStartedPayment } from "../stats";
 
 const Container = props => (
   <ScrollView
@@ -128,6 +128,8 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
   };
 
   onContinuePress = async () => {
+    userStartedPayment();
+
     this.setState({
       isLoading: true,
     });
