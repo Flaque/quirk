@@ -23,7 +23,7 @@ export default class extends React.Component<{
         <ScrollView>
           <View
             style={{
-              paddingBottom: 48,
+              paddingBottom: 84,
             }}
           >
             <SubHeader
