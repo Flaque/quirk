@@ -317,7 +317,8 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               justifyContent: "flex-end",
               marginLeft: 32,
               marginRight: 32,
-              marginTop: 32,
+              marginTop: 16,
+              marginBottom: 32,
             }}
           >
             <SubHeader
@@ -357,12 +358,71 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
 
           <View
             style={{
+              justifyContent: "flex-end",
+              marginLeft: 32,
+              marginRight: 32,
+              marginBottom: 32,
+            }}
+          >
+            <SubHeader
+              style={{
+                fontSize: 18,
+              }}
+            >
+              What if I want to cancel?
+            </SubHeader>
+            <Paragraph
+              style={{
+                fontSize: 18,
+                marginBottom: 18,
+              }}
+            >
+              You control your subscription and cancel at anytime through the{" "}
+              {Platform.OS === "ios" ? "App Store" : "Google Play Store"}.
+            </Paragraph>
+            <ActionButton
+              flex={1}
+              title={"Cancelation Instructions"}
+              fillColor="#EDF0FC"
+              textColor={theme.darkBlue}
+              width={"100%"}
+              onPress={() => {
+                if (Platform.OS === "android") {
+                  Linking.openURL(
+                    "https://support.google.com/googleplay/answer/7018481"
+                  );
+                } else {
+                  Linking.openURL("https://support.apple.com/en-us/HT202039");
+                }
+              }}
+            />
+          </View>
+
+          {Platform.OS === "ios" && (
+            <View
+              style={{
+                marginBottom: 32,
+                marginLeft: 32,
+                marginRight: 32,
+              }}
+            >
+              <Paragraph
+                style={{
+                  color: theme.lightText,
+                }}
+              >
+                {i18n.t("payment.ios_explanation")}
+              </Paragraph>
+            </View>
+          )}
+
+          <View
+            style={{
               display: "flex",
               flexDirection: "row",
               marginLeft: 32,
               marginRight: 32,
               marginBottom: 16,
-              marginTop: 32,
               justifyContent: "space-between",
             }}
           >
@@ -424,24 +484,6 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               }}
             />
           </View>
-
-          {Platform.OS === "ios" && (
-            <View
-              style={{
-                marginBottom: 24,
-                marginLeft: 32,
-                marginRight: 32,
-              }}
-            >
-              <Paragraph
-                style={{
-                  color: theme.lightText,
-                }}
-              >
-                {i18n.t("payment.ios_explanation")}
-              </Paragraph>
-            </View>
-          )}
         </Container>
       </FadesIn>
     );
