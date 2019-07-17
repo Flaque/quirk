@@ -3,8 +3,8 @@ import { Container, Row, Header, IconButton } from "../ui";
 import { View, StatusBar } from "react-native";
 import { NavigationScreenProp, NavigationAction } from "react-navigation";
 import theme from "../theme";
-import * as Haptic from 'expo-haptics';
-import Constants from 'expo-constants';
+import * as Haptic from "expo-haptics";
+import Constants from "expo-constants";
 import i18n from "../i18n";
 import FinishedThoughtView from "./FinishedThoughtView";
 import { SavedThought } from "../thoughts";
@@ -41,6 +41,13 @@ export default class extends React.Component<ScreenProps, ScreenState> {
     });
   };
 
+  onClose = () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    this.props.navigation.navigate(CBT_FORM_SCREEN, {
+      clear: true,
+    });
+  };
+
   render() {
     return (
       <View
@@ -69,12 +76,7 @@ export default class extends React.Component<ScreenProps, ScreenState> {
             <IconButton
               accessibilityLabel={i18n.t("accessibility.close_button")}
               featherIconName={"x"}
-              onPress={() => {
-                haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-                this.props.navigation.navigate(CBT_FORM_SCREEN, {
-                  clear: true,
-                });
-              }}
+              onPress={this.onClose}
             />
           </Row>
 

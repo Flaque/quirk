@@ -45,7 +45,7 @@ export default class extends React.Component<ScreenProps, FormScreenState> {
 
     this.props.navigation.addListener("willFocus", async payload => {
       // We've come from a list item or the viewer
-      const thought = get(payload, "state.params.thought", false);
+      const thought = get(payload, "action.params.thought", false);
       if (thought && thought.uuid) {
         // Check if we're editing a particular slide
         const slide = get(payload, "action.params.slide", undefined);

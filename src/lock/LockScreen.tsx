@@ -7,7 +7,8 @@ import {
 import { StatusBar, Platform } from "react-native";
 import { Container, Row, GhostButton, Header, IconButton } from "../ui";
 import theme from "../theme";
-import { Constants, Haptic } from "expo";
+import * as Haptic from "expo-haptics";
+import Constants from "expo-constants";
 import { FadesIn, BouncyBigOnActive } from "../animations";
 import { isCorrectPincode, setPincode } from "./lockstore";
 import { CBT_FORM_SCREEN } from "../screens";
