@@ -33,6 +33,7 @@ import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
 import { userSawApologyNotice, userStartedPayment } from "../stats";
+import dayjs from "dayjs";
 
 const Container = props => (
   <ScrollView
@@ -100,11 +101,11 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
   }
 
   refresh = async () => {
-    if (await isSubscribed()) {
-      this.redirectToFormScreen();
-      SplashScreen.hide();
-      return;
-    }
+    // if (await isSubscribed()) {
+    //   this.redirectToFormScreen();
+    //   SplashScreen.hide();
+    //   return;
+    // }
 
     const subscription = await getCurrentPurchasableSubscription();
     this.setState({
@@ -239,8 +240,11 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
                 marginBottom: 28,
               }}
             >
-              Cancel before July 16 and nothing will be billed. No questions
-              asked.
+              Cancel before{" "}
+              {dayjs()
+                .add(1, "week")
+                .format("DD-MM-YYYY")}{" "}
+              and nothing will be billed. No questions asked.
             </Paragraph>
           </View>
 
