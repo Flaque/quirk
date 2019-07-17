@@ -9,7 +9,7 @@ import {
   CBT_VIEW_SCREEN,
   LOCK_SCREEN,
 } from "./src/screens";
-import CBTListScreen from "./src/CBTListScreen";
+import CBTListScreen from "./src/list/CBTListScreen";
 import CBTFormScreen from "./src/form/FormScreen";
 import FinishedThoughtScreen from "./src/form/FinishedThoughtScreen";
 import ExplanationScreen from "./src/ExplanationScreen";
@@ -31,7 +31,7 @@ const App = createStackNavigator(
     [LOCK_SCREEN]: LockScreen,
   },
   {
-    initialRouteName: PAYMENT_SCREEN,
+    initialRouteName: CBT_LIST_SCREEN,
     mode: "modal",
   }
 );

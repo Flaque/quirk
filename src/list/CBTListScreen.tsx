@@ -6,31 +6,31 @@ import {
   View,
   Image,
 } from "react-native";
-import { getExercises, deleteExercise } from "./thoughtstore";
-import { Header, Row, Container, IconButton, Label, Paragraph } from "./ui";
-import theme from "./theme";
-import { CBT_FORM_SCREEN, SETTING_SCREEN, CBT_VIEW_SCREEN } from "./screens";
-import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "./thoughts";
+import { getExercises, deleteExercise } from "../thoughtstore";
+import { Header, Row, Container, IconButton, Label, Paragraph } from "../ui";
+import theme from "../theme";
+import { CBT_FORM_SCREEN, SETTING_SCREEN, CBT_VIEW_SCREEN } from "../screens";
+import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "../thoughts";
 import {
   NavigationScreenProp,
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import universalHaptic from "./haptic";
+import universalHaptic from "../haptic";
 import Constants from "expo-constants";
 import * as Haptic from "expo-haptics";
-import { validThoughtGroup } from "./sanitize";
-import Alerter from "./alerter";
-import alerts from "./alerts";
+import { validThoughtGroup } from "../sanitize";
+import Alerter from "../alerter";
+import alerts from "../alerts";
 import {
   HistoryButtonLabelSetting,
   getHistoryButtonLabel,
-} from "./SettingsScreen";
-import i18n from "./i18n";
-import { emojiForSlug } from "./distortions";
+} from "../SettingsScreen";
+import i18n from "../i18n";
+import { emojiForSlug } from "../distortions";
 import { take } from "lodash";
-import { recordScreenCallOnFocus } from "./navigation";
-import { FadesIn } from "./animations";
+import { recordScreenCallOnFocus } from "../navigation";
+import { FadesIn } from "../animations";
 
 const ThoughtItem = ({
   thought,
@@ -118,7 +118,7 @@ const EmptyThoughtIllustration = () => (
     }}
   >
     <Image
-      source={require("../assets/looker/Looker.png")}
+      source={require("../../assets/looker/Looker.png")}
       style={{
         width: 200,
         height: 150,
