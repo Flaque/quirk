@@ -100,11 +100,11 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
   }
 
   refresh = async () => {
-    // if (await isSubscribed()) {
-    //   this.redirectToFormScreen();
-    //   SplashScreen.hide();
-    //   return;
-    // }
+    if (await isSubscribed()) {
+      this.redirectToFormScreen();
+      SplashScreen.hide();
+      return;
+    }
 
     const subscription = await getCurrentPurchasableSubscription();
     this.setState({
