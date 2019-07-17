@@ -100,11 +100,11 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
   }
 
   refresh = async () => {
-    if (await isSubscribed()) {
-      this.redirectToFormScreen();
-      SplashScreen.hide();
-      return;
-    }
+    // if (await isSubscribed()) {
+    //   this.redirectToFormScreen();
+    //   SplashScreen.hide();
+    //   return;
+    // }
 
     const subscription = await getCurrentPurchasableSubscription();
     this.setState({
@@ -225,32 +225,22 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               marginRight: 32,
             }}
           >
-            <Paragraph
+            <SubHeader
               style={{
                 fontSize: 28,
+                marginBottom: 14,
+              }}
+            >
+              Try Quirk free for 7 days.
+            </SubHeader>
+            <Paragraph
+              style={{
+                fontSize: 20,
                 marginBottom: 28,
               }}
             >
-              Support{" "}
-              <SubHeader
-                style={{
-                  fontSize: 28,
-                  fontWeight: "900",
-                }}
-              >
-                quirk
-              </SubHeader>{" "}
-              for{" "}
-              <SubHeader
-                style={{
-                  fontSize: 28,
-                  fontWeight: "900",
-                }}
-              >
-                {!!this.state.subscription &&
-                  this.state.subscription.price_string}
-              </SubHeader>{" "}
-              a month. Try for free for 7 days.
+              Cancel before July 16 and nothing will be billed. No questions
+              asked.
             </Paragraph>
           </View>
 
@@ -279,7 +269,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               <>
                 <ActionButton
                   flex={1}
-                  title={"Get it"}
+                  title={"Start free trial"}
                   onPress={this.onContinuePress}
                 />
                 <Image
@@ -295,6 +285,27 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
                 />
               </>
             )}
+          </View>
+
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: 32,
+              marginRight: 32,
+              justifyContent: "space-between",
+            }}
+          >
+            <Paragraph
+              style={{
+                fontSize: 20,
+                marginBottom: 28,
+              }}
+            >
+              {!!this.state.subscription &&
+                this.state.subscription.price_string}{" "}
+              per month after free trial.
+            </Paragraph>
           </View>
 
           <View
