@@ -4,7 +4,6 @@ import {
   View,
   Dimensions,
   TouchableWithoutFeedback,
-  KeyboardAvoidingView,
   Keyboard,
 } from "react-native";
 import theme from "../theme";
@@ -35,6 +34,13 @@ class ThoughtCard extends React.Component<{
     view: "hidden",
   };
 
+  private textInputRef: React.RefObject<HTMLInputElement>;
+
+  constructor(props) {
+    super(props);
+    this.textInputRef = React.createRef();
+  }
+
   componentDidMount() {
     setTimeout(() => {
       this.setState({ view: "hiddenWiggle" });
@@ -58,6 +64,7 @@ class ThoughtCard extends React.Component<{
         />
         <TouchableWithoutFeedback
           onPress={() => {
+            this.textInputRef.current.focus();
             this.setState({ view: "peak" });
           }}
         >
@@ -86,6 +93,7 @@ class ThoughtCard extends React.Component<{
               What's the situation and what's your first thought?
             </HintHeader>
             <TextInput
+              ref={this.textInputRef}
               style={textInputStyle}
               placeholderTextColor={textInputPlaceholderColor}
               placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
