@@ -10,7 +10,14 @@ import theme from "../theme";
 import { getExercises } from "../thoughtstore";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "../thoughts";
 import { validThoughtGroup } from "../sanitize";
-import { MediumHeader, HintHeader } from "../ui";
+import {
+  MediumHeader,
+  HintHeader,
+  ActionButton,
+  Row,
+  GhostButtonWithGuts,
+  GhostButton,
+} from "../ui";
 import parseThoughts from "./parseThoughts";
 import { newPopsUp, newFadesIn } from "../animations";
 import ThoughtList from "./ThoughtList";
@@ -108,6 +115,24 @@ class ThoughtCard extends React.Component<{
               }}
               onBlur={() => stats.userFilledOutFormField("automatic")}
             />
+
+            <Row
+              style={{
+                marginTop: 24,
+                justifyContent: "flex-end",
+              }}
+            >
+              <GhostButton
+                borderColor={theme.lightGray}
+                textColor={theme.veryLightText}
+                title={"Learn More"}
+                style={{
+                  marginRight: 24,
+                  flex: 1,
+                }}
+              />
+              <ActionButton title={"Next"} />
+            </Row>
           </CardPopsUp>
         </TouchableWithoutFeedback>
       </>
