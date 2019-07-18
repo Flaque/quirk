@@ -79,6 +79,40 @@ Header.propTypes = {
   style: PropTypes.object,
 };
 
+export const MediumHeader = ({
+  children,
+  style,
+  allowFontScaling,
+}: ParentComponent & { allowFontScaling?: boolean }) => (
+  <Text
+    style={{
+      fontWeight: "900",
+      fontSize: 20,
+      color: theme.darkText,
+      marginBottom: 12,
+      ...style,
+    }}
+    textBreakStrategy={"simple"}
+    allowFontScaling={allowFontScaling}
+  >
+    {children}
+  </Text>
+);
+
+export const HintHeader = ({ children, style }: ParentComponent) => (
+  <Text
+    style={{
+      fontWeight: "700",
+      fontSize: 16,
+      color: theme.veryLightText,
+      marginBottom: 12,
+      ...style,
+    }}
+  >
+    {children}
+  </Text>
+);
+
 export const SubHeader = ({ children, style }: ParentComponent) => (
   <Text
     style={{

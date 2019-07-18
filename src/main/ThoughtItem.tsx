@@ -1,3 +1,4 @@
+import React from "react";
 import { SavedThought } from "../thoughts";
 import { HistoryButtonLabelSetting } from "../SettingsScreen";
 import { Row, Paragraph, IconButton } from "../ui";

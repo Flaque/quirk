@@ -10,3 +10,19 @@ export const BouncyBigOnActive = posed.View({
   inactive: { scale: 0.5 },
   upcoming: { y: -24 },
 });
+
+export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
+  posed.View({
+    peak: {
+      height: fullHeight * popUpScale,
+    },
+    full: {
+      height: fullHeight,
+      transition: { type: "spring", stiffness: 150 },
+    },
+    hiddenWiggle: {
+      height: hiddenHeight * 1.1,
+      transition: { type: "spring", stiffness: 150 },
+    },
+    hidden: { height: hiddenHeight * 0.9 },
+  });

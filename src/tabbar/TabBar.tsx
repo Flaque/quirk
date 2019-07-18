@@ -7,6 +7,8 @@ import { MAIN_SCREEN, SETTING_SCREEN, EXPLANATION_SCREEN } from "../screens";
 import haptic from "../haptic";
 import { Haptic } from "expo";
 
+export const TAB_BAR_HEIGHT = 76;
+
 export default ({ navigation }: ScreenProps) => {
   const index = navigation.state.index;
   const tab = navigation.state.routes[index].key;
@@ -15,7 +17,7 @@ export default ({ navigation }: ScreenProps) => {
     <View
       style={{
         backgroundColor: "white",
-        height: 76,
+        height: TAB_BAR_HEIGHT,
         borderTopColor: theme.lightGray,
         borderTopWidth: 1,
         paddingBottom: 24,
@@ -23,6 +25,8 @@ export default ({ navigation }: ScreenProps) => {
         paddingTop: 12,
         flexDirection: "row",
         justifyContent: "space-between",
+        zIndex: 100,
+        position: "relative",
       }}
     >
       <ActionButton

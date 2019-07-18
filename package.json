@@ -32,6 +32,7 @@
     "react-native-autogrow-textinput": "^5.2.0",
     "react-native-indicators": "^0.13.0",
     "react-native-keyboard-aware-scroll-view": "^0.7.4",
+    "react-native-modal": "^11.1.0",
     "react-native-onesignal": "^3.2.14",
     "react-native-pose": "^0.9.0",
     "react-native-purchases": "^2.2.2",

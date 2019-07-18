@@ -20,7 +20,11 @@ export default ({
   historyButtonLabel,
 }: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
-    return <EmptyThoughtIllustration />;
+    return (
+      <View style={{ marginVertical: 48 }}>
+        <EmptyThoughtIllustration />
+      </View>
+    );
   }
 
   const items = groups.map(group => {

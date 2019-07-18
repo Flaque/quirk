@@ -1,13 +1,77 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View } from "react-native";
+import { View, Dimensions, TouchableWithoutFeedback } from "react-native";
 import theme from "../theme";
 import { getExercises } from "../thoughtstore";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "../thoughts";
 import { validThoughtGroup } from "../sanitize";
+import { MediumHeader, HintHeader } from "../ui";
+import parseThoughts from "./parseThoughts";
+import { newPopsUp } from "../animations";
 import ThoughtList from "./ThoughtList";
+import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 
-export default class extends React.Component<ScreenProps> {
+const CardPopsUp = newPopsUp({
+  fullHeight: Dimensions.get("screen").height / 2,
+  hiddenHeight: 256,
+  popUpScale: 1.1,
+});
+
+class ThoughtCard extends React.Component<{
+  style?: any;
+}> {
+  state = {
+    view: "hidden",
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ view: "hiddenWiggle" });
+    }, 350);
+  }
+
+  render() {
+    const { style } = this.props;
+    const { view } = this.state;
+
+    return (
+      <TouchableWithoutFeedback
+        onPress={() => {
+          this.setState({ view: "peak" });
+        }}
+      >
+        <CardPopsUp
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: 1000,
+            padding: 24,
+            bottom: -TAB_BAR_HEIGHT,
+            borderRadius: 13,
+            backgroundColor: "white",
+            borderColor: theme.lightGray,
+            borderWidth: 2,
+            shadowColor: theme.gray,
+            shadowOffset: { width: 0, height: 1 },
+            shadowRadius: 10,
+            shadowOpacity: 0.8,
+            opacity: 1,
+            zIndex: 99,
+            ...style,
+          }}
+          pose={this.state.view}
+        >
+          <MediumHeader>Automatic Thought</MediumHeader>
+          <HintHeader>
+            What's the situation and what's your first thought?
+          </HintHeader>
+        </CardPopsUp>
+      </TouchableWithoutFeedback>
+    );
+  }
+}
+
+export default class MainScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
     header: null,
   };
@@ -18,23 +82,9 @@ export default class extends React.Component<ScreenProps> {
   };
 
   loadExercises = () => {
-    const fixTimestamps = (json): SavedThought => {
-      const createdAt: Date = new Date(json.createdAt);
-      const updatedAt: Date = new Date(json.updatedAt);
-      return {
-        createdAt,
-        updatedAt,
-        ...json,
-      };
-    };
-
     getExercises()
       .then(data => {
-        const thoughts: SavedThought[] = data
-          .map(([_, value]) => JSON.parse(value))
-          .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
-          .map(fixTimestamps);
-
+        const thoughts: SavedThought[] = parseThoughts(data);
         const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts).filter(
           validThoughtGroup
         );
@@ -59,12 +109,12 @@ export default class extends React.Component<ScreenProps> {
     return (
       <View
         style={{
-          backgroundColor: theme.lightOffwhite,
           flex: 1,
-          padding: 0,
-          margin: 0,
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
+        <ThoughtCard />
         <ThoughtList
           groups={groups}
           historyButtonLabel={"alternative-thought"}
