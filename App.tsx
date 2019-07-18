@@ -20,22 +20,40 @@ import withErrorBoundary from "./src/sentry/withErrorBoundary";
 import PaymentScreen from "./src/payments/PaymentScreen";
 import LockScreen from "./src/lock/LockScreen";
 import MainScreen from "./src/main/MainScreen";
+import { View, Text } from "react-native";
+import React from "react";
+import { createBottomTabNavigator } from "react-navigation";
+import TabBar from "./src/tabbar/TabBar";
 
-const App = createStackNavigator(
+// const App = createStackNavigator(
+// {
+//   [PAYMENT_SCREEN]: PaymentScreen,
+//   [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
+//   [CBT_LIST_SCREEN]: CBTListScreen,
+//   [CBT_FORM_SCREEN]: CBTFormScreen,
+//   [EXPLANATION_SCREEN]: ExplanationScreen,
+//   [SETTING_SCREEN]: SettingScreen,
+//   [CBT_VIEW_SCREEN]: FinishedThoughtScreen,
+//   [LOCK_SCREEN]: LockScreen,
+//   [MAIN_SCREEN]: MainScreen,
+// },
+//   {
+//     initialRouteName: MAIN_SCREEN,
+//     mode: "modal",
+//   }
+// );
+
+const App = createBottomTabNavigator(
   {
-    [PAYMENT_SCREEN]: PaymentScreen,
-    [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
-    [CBT_LIST_SCREEN]: CBTListScreen,
-    [CBT_FORM_SCREEN]: CBTFormScreen,
-    [EXPLANATION_SCREEN]: ExplanationScreen,
-    [SETTING_SCREEN]: SettingScreen,
-    [CBT_VIEW_SCREEN]: FinishedThoughtScreen,
-    [LOCK_SCREEN]: LockScreen,
     [MAIN_SCREEN]: MainScreen,
+    [SETTING_SCREEN]: SettingScreen,
+    [EXPLANATION_SCREEN]: ExplanationScreen,
   },
   {
     initialRouteName: MAIN_SCREEN,
-    mode: "modal",
+    tabBarComponent: props => {
+      return <TabBar {...props} />;
+    },
   }
 );
 

@@ -1,15 +1,61 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { ScrollView, View, Button } from "react-native";
+import { View } from "react-native";
 import theme from "../theme";
-import { ActionButton } from "../ui";
+import { getExercises } from "../thoughtstore";
+import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "../thoughts";
+import { validThoughtGroup } from "../sanitize";
+import ThoughtList from "./ThoughtList";
 
 export default class extends React.Component<ScreenProps> {
   static navigationOptions = {
     header: null,
   };
 
+  state = {
+    isReady: false,
+    groups: [],
+  };
+
+  loadExercises = () => {
+    const fixTimestamps = (json): SavedThought => {
+      const createdAt: Date = new Date(json.createdAt);
+      const updatedAt: Date = new Date(json.updatedAt);
+      return {
+        createdAt,
+        updatedAt,
+        ...json,
+      };
+    };
+
+    getExercises()
+      .then(data => {
+        const thoughts: SavedThought[] = data
+          .map(([_, value]) => JSON.parse(value))
+          .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.
+          .map(fixTimestamps);
+
+        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts).filter(
+          validThoughtGroup
+        );
+
+        this.setState({ groups });
+      })
+      .catch(console.error)
+      .finally(() => {
+        this.setState({
+          isReady: true,
+        });
+      });
+  };
+
+  navigateToViewerWithThought = (thought: SavedThought) => {
+    console.log("Navigate to", thought);
+  };
+
   render() {
+    const { groups } = this.state;
+
     return (
       <View
         style={{
@@ -19,26 +65,12 @@ export default class extends React.Component<ScreenProps> {
           margin: 0,
         }}
       >
-        <ScrollView>{/* Main Page Here */}</ScrollView>
-
-        <View
-          style={{
-            backgroundColor: "white",
-            height: 76,
-            borderTopColor: theme.lightGray,
-            borderTopWidth: 1,
-            paddingBottom: 24,
-            paddingHorizontal: 12,
-            paddingTop: 12,
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          {/* New navigation here */}
-          <ActionButton title="Settings" style={{ marginHorizontal: 4 }} />
-          <ActionButton title="Thoughts" style={{ marginHorizontal: 4 }} />
-          <ActionButton title="Help" style={{ marginHorizontal: 4 }} />
-        </View>
+        <ThoughtList
+          groups={groups}
+          historyButtonLabel={"alternative-thought"}
+          navigateToViewer={this.navigateToViewerWithThought}
+          // onItemDelete={this.onItemDelete}
+        />
       </View>
     );
   }
