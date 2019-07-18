@@ -21,6 +21,7 @@ export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
   posed.View({
     peak: {
       height: fullHeight * popUpScale,
+      transition: { type: "tween", ease: "easeOut", duration: 150 },
     },
     full: {
       height: fullHeight,

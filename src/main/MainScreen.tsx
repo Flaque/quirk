@@ -1,6 +1,12 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, Dimensions, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  Dimensions,
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView,
+  Keyboard,
+} from "react-native";
 import theme from "../theme";
 import { getExercises } from "../thoughtstore";
 import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "../thoughts";
@@ -10,9 +16,14 @@ import parseThoughts from "./parseThoughts";
 import { newPopsUp, newFadesIn } from "../animations";
 import ThoughtList from "./ThoughtList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
+import { TextInput } from "react-native-gesture-handler";
+import { textInputStyle } from "./textInputStyle";
+import { textInputPlaceholderColor } from "../form/textInputStyle";
+import i18n from "../i18n";
+import * as stats from "../stats";
 
 const CardPopsUp = newPopsUp({
-  fullHeight: Dimensions.get("screen").height / 2,
+  fullHeight: Dimensions.get("screen").height * 0.8,
   hiddenHeight: 256,
   popUpScale: 1.1,
 });
@@ -38,11 +49,12 @@ class ThoughtCard extends React.Component<{
       <>
         <BackgroundOverlay
           isVisible={view === "peak"}
-          onPress={() =>
+          onPress={() => {
+            Keyboard.dismiss();
             this.setState({
               view: "hidden",
-            })
-          }
+            });
+          }}
         />
         <TouchableWithoutFeedback
           onPress={() => {
@@ -53,7 +65,6 @@ class ThoughtCard extends React.Component<{
             style={{
               position: "absolute",
               width: "100%",
-              height: 1000,
               padding: 24,
               bottom: -TAB_BAR_HEIGHT,
               borderRadius: 13,
@@ -74,6 +85,21 @@ class ThoughtCard extends React.Component<{
             <HintHeader>
               What's the situation and what's your first thought?
             </HintHeader>
+            <TextInput
+              style={textInputStyle}
+              placeholderTextColor={textInputPlaceholderColor}
+              placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
+              value={"hey"}
+              multiline={true}
+              numberOfLines={6}
+              onChangeText={() => {}}
+              onFocus={() => {
+                this.setState({
+                  view: "peak",
+                });
+              }}
+              onBlur={() => stats.userFilledOutFormField("automatic")}
+            />
           </CardPopsUp>
         </TouchableWithoutFeedback>
       </>
