@@ -7,7 +7,7 @@ import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "../thoughts";
 import { validThoughtGroup } from "../sanitize";
 import { MediumHeader, HintHeader } from "../ui";
 import parseThoughts from "./parseThoughts";
-import { newPopsUp } from "../animations";
+import { newPopsUp, newFadesIn } from "../animations";
 import ThoughtList from "./ThoughtList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 
@@ -35,41 +35,76 @@ class ThoughtCard extends React.Component<{
     const { view } = this.state;
 
     return (
-      <TouchableWithoutFeedback
-        onPress={() => {
-          this.setState({ view: "peak" });
-        }}
-      >
-        <CardPopsUp
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: 1000,
-            padding: 24,
-            bottom: -TAB_BAR_HEIGHT,
-            borderRadius: 13,
-            backgroundColor: "white",
-            borderColor: theme.lightGray,
-            borderWidth: 2,
-            shadowColor: theme.gray,
-            shadowOffset: { width: 0, height: 1 },
-            shadowRadius: 10,
-            shadowOpacity: 0.8,
-            opacity: 1,
-            zIndex: 99,
-            ...style,
+      <>
+        <BackgroundOverlay
+          isVisible={view === "peak"}
+          onPress={() =>
+            this.setState({
+              view: "hidden",
+            })
+          }
+        />
+        <TouchableWithoutFeedback
+          onPress={() => {
+            this.setState({ view: "peak" });
           }}
-          pose={this.state.view}
         >
-          <MediumHeader>Automatic Thought</MediumHeader>
-          <HintHeader>
-            What's the situation and what's your first thought?
-          </HintHeader>
-        </CardPopsUp>
-      </TouchableWithoutFeedback>
+          <CardPopsUp
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: 1000,
+              padding: 24,
+              bottom: -TAB_BAR_HEIGHT,
+              borderRadius: 13,
+              backgroundColor: "white",
+              borderColor: theme.lightGray,
+              borderWidth: 2,
+              shadowColor: theme.gray,
+              shadowOffset: { width: 0, height: 1 },
+              shadowRadius: 10,
+              shadowOpacity: 0.8,
+              opacity: 1,
+              zIndex: 99,
+              ...style,
+            }}
+            pose={this.state.view}
+          >
+            <MediumHeader>Automatic Thought</MediumHeader>
+            <HintHeader>
+              What's the situation and what's your first thought?
+            </HintHeader>
+          </CardPopsUp>
+        </TouchableWithoutFeedback>
+      </>
     );
   }
 }
+
+const MaxFadeIn = newFadesIn({
+  maxOpacity: 0.3,
+});
+
+const BackgroundOverlay = ({ isVisible, onPress }) => (
+  <TouchableWithoutFeedback
+    onPress={onPress}
+    style={{
+      height: Dimensions.get("screen").height,
+      width: Dimensions.get("screen").width,
+    }}
+  >
+    <MaxFadeIn
+      style={{
+        position: "absolute",
+        zIndex: 2,
+        height: Dimensions.get("screen").height,
+        width: Dimensions.get("screen").width,
+        backgroundColor: theme.veryLightText,
+      }}
+      pose={isVisible ? "visible" : "hidden"}
+    />
+  </TouchableWithoutFeedback>
+);
 
 export default class MainScreen extends React.Component<ScreenProps> {
   static navigationOptions = {

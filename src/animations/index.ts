@@ -11,6 +11,12 @@ export const BouncyBigOnActive = posed.View({
   upcoming: { y: -24 },
 });
 
+export const newFadesIn = ({ maxOpacity }) =>
+  posed.View({
+    visible: { opacity: maxOpacity },
+    hidden: { opacity: 0 },
+  });
+
 export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
   posed.View({
     peak: {
@@ -21,8 +27,8 @@ export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
       transition: { type: "spring", stiffness: 150 },
     },
     hiddenWiggle: {
-      height: hiddenHeight * 1.1,
+      height: hiddenHeight * 1,
       transition: { type: "spring", stiffness: 150 },
     },
-    hidden: { height: hiddenHeight * 0.9 },
+    hidden: { height: hiddenHeight * 0.8 },
   });
