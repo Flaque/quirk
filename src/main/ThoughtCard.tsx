@@ -15,6 +15,8 @@ import { textInputStyle } from "./textInputStyle";
 import { textInputPlaceholderColor } from "../form/textInputStyle";
 import i18n from "../i18n";
 import * as stats from "../stats";
+import haptic from "../haptic";
+import { Haptic } from "expo";
 
 const MaxFadeIn = newFadesIn({
   maxOpacity: 0.3,
@@ -69,6 +71,14 @@ export default class ThoughtCard extends React.Component<{
     }, 350);
   }
 
+  popUp = () => {
+    this.setState({
+      view: "peak",
+    });
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    this.textInputRef.current.focus();
+  };
+
   render() {
     const { style } = this.props;
     const { view } = this.state;
@@ -84,12 +94,7 @@ export default class ThoughtCard extends React.Component<{
             });
           }}
         />
-        <TouchableWithoutFeedback
-          onPress={() => {
-            this.textInputRef.current.focus();
-            this.setState({ view: "peak" });
-          }}
-        >
+        <TouchableWithoutFeedback onPress={this.popUp}>
           <CardPopsUp
             style={{
               position: "absolute",

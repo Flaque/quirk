@@ -2,12 +2,19 @@ import React from "react";
 import ScreenProps from "../ScreenProps";
 import { View } from "react-native";
 import { getExercises } from "../thoughtstore";
-import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "../thoughts";
+import {
+  SavedThought,
+  ThoughtGroup,
+  groupThoughtsByDay,
+  newThought,
+} from "../thoughts";
 import { validThoughtGroup } from "../sanitize";
 import parseThoughts from "./parseThoughts";
 import ThoughtList from "./ThoughtList";
 import ThoughtCard from "./ThoughtCard";
 import { DISTORTION_SCREEN } from "./screens";
+import haptic from "../haptic";
+import { Haptic } from "expo";
 
 export default class MainScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -42,8 +49,12 @@ export default class MainScreen extends React.Component<ScreenProps> {
   };
 
   navigateToDistortionScreenWithThought = (automaticThought: string) => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+
+    const thought = newThought();
+    thought.automaticThought = automaticThought;
     this.props.navigation.push(DISTORTION_SCREEN, {
-      automaticThought,
+      thought,
     });
   };
 

@@ -1,8 +1,8 @@
 import posed from "react-native-pose";
 
 export const FadesIn = posed.View({
-  visible: { opacity: 1 },
-  hidden: { opacity: 0 },
+  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: -10 },
 });
 
 export const BouncyBigOnActive = posed.View({
