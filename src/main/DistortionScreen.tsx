@@ -12,13 +12,13 @@ import {
   GhostButton,
 } from "../ui";
 import Constants from "expo-constants";
-import { CognitiveDistortion } from "../distortions";
 import theme from "../theme";
 import { Text, ScrollView, View } from "react-native";
 import { FadesIn } from "../animations";
 import { Thought } from "../thoughts";
 import * as stats from "../stats";
 import haptic from "../haptic";
+import { CHALLENGE_SCREEN } from "./screens";
 
 export default class DistortionScreen extends React.Component<
   ScreenProps,
@@ -45,13 +45,6 @@ export default class DistortionScreen extends React.Component<
       this.setState({
         thought,
       });
-
-      // This is a bit of a hack to trigger the fade in for the thought.
-      setTimeout(async () => {
-        await this.setState({
-          shouldShowPreviousThought: true,
-        });
-      }, 50);
     });
   }
 
@@ -84,6 +77,12 @@ export default class DistortionScreen extends React.Component<
     stats.userCheckedDistortion(selected);
   };
 
+  onNext = async () => {
+    this.props.navigation.push(CHALLENGE_SCREEN, {
+      thought: this.state.thought,
+    });
+  };
+
   render() {
     return (
       <>
@@ -100,22 +99,20 @@ export default class DistortionScreen extends React.Component<
           >
             {this.state.thought && (
               <>
-                <FadesIn
-                  pose={
-                    this.state.shouldShowPreviousThought ? "visible" : "hidden"
-                  }
+                <View
+                  style={{
+                    marginBottom: 18,
+                  }}
+                >
+                  <MediumHeader>Cognitive Distortions</MediumHeader>
+                  <HintHeader>Is this thought logical?</HintHeader>
+                </View>
+
+                <View
                   style={{
                     marginBottom: 12,
                   }}
                 >
-                  <View
-                    style={{
-                      marginBottom: 18,
-                    }}
-                  >
-                    <MediumHeader>Cognitive Distortions</MediumHeader>
-                    <HintHeader>Is this thought logical?</HintHeader>
-                  </View>
                   <SubHeader>Your Thought</SubHeader>
                   <GhostButtonWithGuts
                     borderColor={theme.lightGray}
@@ -123,7 +120,7 @@ export default class DistortionScreen extends React.Component<
                   >
                     <Text>{this.state.thought.automaticThought}</Text>
                   </GhostButtonWithGuts>
-                </FadesIn>
+                </View>
 
                 <FadesIn
                   pose={this.state.shouldShowDistortions ? "visible" : "hidden"}
@@ -165,7 +162,7 @@ export default class DistortionScreen extends React.Component<
               flex: 1,
             }}
           />
-          <ActionButton title={"Next"} onPress={() => this.props.onNext()} />
+          <ActionButton title={"Next"} onPress={() => this.onNext()} />
         </View>
       </>
     );
