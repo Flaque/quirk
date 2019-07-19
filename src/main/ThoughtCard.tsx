@@ -1,26 +1,14 @@
 import React from "react";
-import ScreenProps from "../ScreenProps";
-import {
-  View,
-  Dimensions,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from "react-native";
+import { Dimensions, TouchableWithoutFeedback, Keyboard } from "react-native";
 import theme from "../theme";
-import { getExercises } from "../thoughtstore";
-import { SavedThought, ThoughtGroup, groupThoughtsByDay } from "../thoughts";
-import { validThoughtGroup } from "../sanitize";
 import {
   MediumHeader,
   HintHeader,
   ActionButton,
   Row,
-  GhostButtonWithGuts,
   GhostButton,
 } from "../ui";
-import parseThoughts from "./parseThoughts";
 import { newPopsUp, newFadesIn } from "../animations";
-import ThoughtList from "./ThoughtList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import { TextInput } from "react-native-gesture-handler";
 import { textInputStyle } from "./textInputStyle";
@@ -28,17 +16,44 @@ import { textInputPlaceholderColor } from "../form/textInputStyle";
 import i18n from "../i18n";
 import * as stats from "../stats";
 
+const MaxFadeIn = newFadesIn({
+  maxOpacity: 0.3,
+});
+
+const BackgroundOverlay = ({ isVisible, onPress }) => (
+  <TouchableWithoutFeedback
+    onPress={onPress}
+    style={{
+      height: Dimensions.get("screen").height,
+      width: Dimensions.get("screen").width,
+    }}
+  >
+    <MaxFadeIn
+      style={{
+        position: "absolute",
+        zIndex: 2,
+        height: Dimensions.get("screen").height,
+        width: Dimensions.get("screen").width,
+        backgroundColor: theme.veryLightText,
+      }}
+      pose={isVisible ? "visible" : "hidden"}
+    />
+  </TouchableWithoutFeedback>
+);
+
 const CardPopsUp = newPopsUp({
   fullHeight: Dimensions.get("screen").height * 0.8,
   hiddenHeight: 256,
   popUpScale: 1.1,
 });
 
-class ThoughtCard extends React.Component<{
+export default class ThoughtCard extends React.Component<{
   style?: any;
+  onNext: (alternativeThought: string) => void;
 }> {
   state = {
     view: "hidden",
+    alternativeThought: "",
   };
 
   private textInputRef: React.RefObject<HTMLInputElement>;
@@ -104,10 +119,14 @@ class ThoughtCard extends React.Component<{
               style={textInputStyle}
               placeholderTextColor={textInputPlaceholderColor}
               placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
-              value={"hey"}
+              value={this.state.alternativeThought}
               multiline={true}
               numberOfLines={6}
-              onChangeText={() => {}}
+              onChangeText={txt => {
+                this.setState({
+                  alternativeThought: txt,
+                });
+              }}
               onFocus={() => {
                 this.setState({
                   view: "peak",
@@ -131,91 +150,14 @@ class ThoughtCard extends React.Component<{
                   flex: 1,
                 }}
               />
-              <ActionButton title={"Next"} />
+              <ActionButton
+                title={"Next"}
+                onPress={() => this.props.onNext(this.state.alternativeThought)}
+              />
             </Row>
           </CardPopsUp>
         </TouchableWithoutFeedback>
       </>
-    );
-  }
-}
-
-const MaxFadeIn = newFadesIn({
-  maxOpacity: 0.3,
-});
-
-const BackgroundOverlay = ({ isVisible, onPress }) => (
-  <TouchableWithoutFeedback
-    onPress={onPress}
-    style={{
-      height: Dimensions.get("screen").height,
-      width: Dimensions.get("screen").width,
-    }}
-  >
-    <MaxFadeIn
-      style={{
-        position: "absolute",
-        zIndex: 2,
-        height: Dimensions.get("screen").height,
-        width: Dimensions.get("screen").width,
-        backgroundColor: theme.veryLightText,
-      }}
-      pose={isVisible ? "visible" : "hidden"}
-    />
-  </TouchableWithoutFeedback>
-);
-
-export default class MainScreen extends React.Component<ScreenProps> {
-  static navigationOptions = {
-    header: null,
-  };
-
-  state = {
-    isReady: false,
-    groups: [],
-  };
-
-  loadExercises = () => {
-    getExercises()
-      .then(data => {
-        const thoughts: SavedThought[] = parseThoughts(data);
-        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts).filter(
-          validThoughtGroup
-        );
-
-        this.setState({ groups });
-      })
-      .catch(console.error)
-      .finally(() => {
-        this.setState({
-          isReady: true,
-        });
-      });
-  };
-
-  navigateToViewerWithThought = (thought: SavedThought) => {
-    console.log("Navigate to", thought);
-  };
-
-  render() {
-    const { groups } = this.state;
-
-    return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <ThoughtCard />
-        <ThoughtList
-          groups={groups}
-          historyButtonLabel={"alternative-thought"}
-          navigateToViewer={this.navigateToViewerWithThought}
-          // onItemDelete={this.onItemDelete}
-        />
-      </View>
     );
   }
 }

@@ -19,7 +19,7 @@ import OnboardingScreen from "./src/onboarding/OnboardingScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
 import PaymentScreen from "./src/payments/PaymentScreen";
 import LockScreen from "./src/lock/LockScreen";
-import MainScreen from "./src/main/MainScreen";
+import MainScreen from "./src/main";
 import { View, Text } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
