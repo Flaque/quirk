@@ -17,7 +17,7 @@ import { TextInput } from "react-native";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import theme from "../theme";
-import { THOUGHT_SCREEN } from "./screens";
+import { THOUGHT_SCREEN, FINISHED_SCREEN } from "./screens";
 
 export default class AlternativeScreen extends React.Component<
   ScreenProps,
@@ -54,7 +54,7 @@ export default class AlternativeScreen extends React.Component<
   };
 
   onNext = () => {
-    this.props.navigation.push(THOUGHT_SCREEN, {
+    this.props.navigation.push(FINISHED_SCREEN, {
       thought: this.state.thought,
     });
   };
