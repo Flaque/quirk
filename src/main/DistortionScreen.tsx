@@ -116,7 +116,7 @@ export default class DistortionScreen extends React.Component<
                   <SubHeader>Your Thought</SubHeader>
                   <GhostButtonWithGuts
                     borderColor={theme.lightGray}
-                    onPress={() => {}}
+                    onPress={() => this.props.navigation.pop()}
                   >
                     <Text>{this.state.thought.automaticThought}</Text>
                   </GhostButtonWithGuts>
