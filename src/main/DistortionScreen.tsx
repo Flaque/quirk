@@ -8,6 +8,8 @@ import {
   RoundedSelector,
   GhostButtonWithGuts,
   SubHeader,
+  ActionButton,
+  GhostButton,
 } from "../ui";
 import Constants from "expo-constants";
 import { CognitiveDistortion } from "../distortions";
@@ -60,7 +62,7 @@ export default class DistortionScreen extends React.Component<
       this.setState({
         shouldShowDistortions: true,
       });
-    }, 700);
+    }, 400);
   }
 
   onPressSlug = async selected => {
@@ -84,55 +86,88 @@ export default class DistortionScreen extends React.Component<
 
   render() {
     return (
-      <ScrollView>
-        <Container
+      <>
+        <ScrollView
           style={{
-            marginTop: Constants.statusBarHeight,
+            backgroundColor: theme.lightOffwhite,
           }}
         >
-          {this.state.thought && (
-            <>
-              <FadesIn
-                pose={
-                  this.state.shouldShowPreviousThought ? "visible" : "hidden"
-                }
-                style={{
-                  marginBottom: 12,
-                }}
-              >
-                <View
+          <Container
+            style={{
+              marginTop: Constants.statusBarHeight,
+              backgroundColor: theme.lightOffwhite,
+            }}
+          >
+            {this.state.thought && (
+              <>
+                <FadesIn
+                  pose={
+                    this.state.shouldShowPreviousThought ? "visible" : "hidden"
+                  }
                   style={{
-                    marginBottom: 18,
+                    marginBottom: 12,
                   }}
                 >
-                  <MediumHeader>Cognitive Distortions</MediumHeader>
-                  <HintHeader>Is this thought logical?</HintHeader>
-                </View>
-                <SubHeader>Your Thought</SubHeader>
-                <GhostButtonWithGuts
-                  borderColor={theme.lightGray}
-                  onPress={() => {}}
-                >
-                  <Text>{this.state.thought.automaticThought}</Text>
-                </GhostButtonWithGuts>
-              </FadesIn>
+                  <View
+                    style={{
+                      marginBottom: 18,
+                    }}
+                  >
+                    <MediumHeader>Cognitive Distortions</MediumHeader>
+                    <HintHeader>Is this thought logical?</HintHeader>
+                  </View>
+                  <SubHeader>Your Thought</SubHeader>
+                  <GhostButtonWithGuts
+                    borderColor={theme.lightGray}
+                    onPress={() => {}}
+                  >
+                    <Text>{this.state.thought.automaticThought}</Text>
+                  </GhostButtonWithGuts>
+                </FadesIn>
 
-              <FadesIn
-                pose={this.state.shouldShowDistortions ? "visible" : "hidden"}
-              >
-                <SubHeader>Common Distortions</SubHeader>
-                <HintHeader>
-                  Tap any of these that apply to your current situation.
-                </HintHeader>
-                <RoundedSelector
-                  items={this.state.thought.cognitiveDistortions}
-                  onPress={() => {}}
-                />
-              </FadesIn>
-            </>
-          )}
-        </Container>
-      </ScrollView>
+                <FadesIn
+                  pose={this.state.shouldShowDistortions ? "visible" : "hidden"}
+                >
+                  <SubHeader>Common Distortions</SubHeader>
+                  <HintHeader>
+                    Tap any of these that apply to your current situation.
+                  </HintHeader>
+                  <RoundedSelector
+                    items={this.state.thought.cognitiveDistortions}
+                    onPress={this.onPressSlug}
+                  />
+                </FadesIn>
+              </>
+            )}
+          </Container>
+        </ScrollView>
+        <View
+          style={{
+            width: "100%",
+            backgroundColor: "white",
+            padding: 12,
+            borderTopWidth: 1,
+            borderTopColor: theme.lightGray,
+            justifyContent: "flex-end",
+            flexDirection: "row",
+            shadowColor: theme.gray,
+            shadowOffset: { width: 0, height: 1 },
+            shadowRadius: 10,
+            shadowOpacity: 0.8,
+          }}
+        >
+          <GhostButton
+            borderColor={theme.lightGray}
+            textColor={theme.veryLightText}
+            title={"Learn More"}
+            style={{
+              marginRight: 24,
+              flex: 1,
+            }}
+          />
+          <ActionButton title={"Next"} onPress={() => this.props.onNext()} />
+        </View>
+      </>
     );
   }
 }
