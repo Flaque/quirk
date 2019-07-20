@@ -18,6 +18,7 @@ import { get } from "lodash";
 import { Thought } from "../thoughts";
 import { ALTERNATIVE_SCREEN } from "./screens";
 import { TextInput } from "react-native";
+import { saveExercise } from "../thoughtstore";
 
 export default class ChallengeScreen extends React.Component<
   ScreenProps,
@@ -53,7 +54,7 @@ export default class ChallengeScreen extends React.Component<
     });
   };
 
-  onNext = () => {
+  onNext = async () => {
     this.props.navigation.push(ALTERNATIVE_SCREEN, {
       thought: this.state.thought,
     });

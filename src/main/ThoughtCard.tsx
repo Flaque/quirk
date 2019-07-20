@@ -85,7 +85,7 @@ export default class ThoughtCard extends React.Component<{
 
     return (
       <>
-        <BackgroundOverlay
+        {/* <BackgroundOverlay
           isVisible={view === "peak"}
           onPress={() => {
             Keyboard.dismiss();
@@ -93,7 +93,7 @@ export default class ThoughtCard extends React.Component<{
               view: "hidden",
             });
           }}
-        />
+        /> */}
         <TouchableWithoutFeedback onPress={this.popUp}>
           <CardPopsUp
             style={{

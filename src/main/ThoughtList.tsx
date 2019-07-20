@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import EmptyThoughtIllustration from "./EmptyThoughtIllustration";
 import ThoughtItem from "./ThoughtItem";
 import { Label } from "../ui";
@@ -42,12 +42,12 @@ export default ({
       new Date(group.date).toDateString() === new Date().toDateString();
 
     return (
-      <View key={group.date} style={{ marginBottom: 18 }}>
+      <View key={group.date} style={{ marginBottom: 18, padding: 24 }}>
         <Label>{isToday ? "Today" : group.date}</Label>
         {thoughts}
       </View>
     );
   });
 
-  return <>{items}</>;
+  return <ScrollView style={{ bottom: 256 }}>{items}</ScrollView>;
 };

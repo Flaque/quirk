@@ -18,6 +18,7 @@ import i18n from "../i18n";
 import * as stats from "../stats";
 import theme from "../theme";
 import { THOUGHT_SCREEN, FINISHED_SCREEN } from "./screens";
+import { saveExercise } from "../thoughtstore";
 
 export default class AlternativeScreen extends React.Component<
   ScreenProps,
@@ -53,9 +54,11 @@ export default class AlternativeScreen extends React.Component<
     });
   };
 
-  onNext = () => {
+  onNext = async () => {
+    stats.thoughtRecorded();
+    const thought = await saveExercise(this.state.thought);
     this.props.navigation.push(FINISHED_SCREEN, {
-      thought: this.state.thought,
+      thought,
     });
   };
 

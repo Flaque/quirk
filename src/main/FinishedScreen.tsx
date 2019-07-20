@@ -6,17 +6,22 @@ import {
   GhostButtonWithGuts,
   Paragraph,
   SubHeader,
+  Row,
+  GhostButton,
+  ActionButton,
 } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { get } from "lodash";
-import { Thought } from "../thoughts";
+import { SavedThought } from "../thoughts";
 import { View } from "react-native";
 import theme from "../theme";
+import { THOUGHT_SCREEN } from "./screens";
+
 export default class FinishedScreen extends React.Component<
   ScreenProps,
   {
-    thought?: Thought;
+    thought?: SavedThought;
   }
 > {
   static navigationOptions = {
@@ -36,6 +41,10 @@ export default class FinishedScreen extends React.Component<
     });
   }
 
+  onNext() {
+    this.props.navigation.push(THOUGHT_SCREEN);
+  }
+
   render() {
     return (
       <Container
@@ -51,7 +60,7 @@ export default class FinishedScreen extends React.Component<
               }}
             >
               <MediumHeader>Summary of Thought</MediumHeader>
-              <HintHeader>Some Date Here</HintHeader>
+              <HintHeader>{this.state.thought.createdAt.toString()}</HintHeader>
             </View>
 
             <View
@@ -86,6 +95,24 @@ export default class FinishedScreen extends React.Component<
                 <Paragraph>{this.state.thought.alternativeThought}</Paragraph>
               </GhostButtonWithGuts>
             </View>
+
+            <Row
+              style={{
+                marginTop: 24,
+                justifyContent: "flex-end",
+              }}
+            >
+              <GhostButton
+                borderColor={theme.lightGray}
+                textColor={theme.veryLightText}
+                title={"Learn More"}
+                style={{
+                  marginRight: 24,
+                  flex: 1,
+                }}
+              />
+              <ActionButton title={"Next"} onPress={() => this.onNext()} />
+            </Row>
           </>
         )}
       </Container>

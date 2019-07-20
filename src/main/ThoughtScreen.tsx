@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { getExercises } from "../thoughtstore";
 import {
   SavedThought,
@@ -26,10 +26,15 @@ export default class MainScreen extends React.Component<ScreenProps> {
     groups: [],
   };
 
+  componentDidMount() {
+    this.loadExercises();
+  }
+
   loadExercises = () => {
     getExercises()
       .then(data => {
         const thoughts: SavedThought[] = parseThoughts(data);
+        console.log("thoughts", thoughts);
         const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts).filter(
           validThoughtGroup
         );
@@ -65,8 +70,6 @@ export default class MainScreen extends React.Component<ScreenProps> {
       <View
         style={{
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <ThoughtCard onNext={this.navigateToDistortionScreenWithThought} />
