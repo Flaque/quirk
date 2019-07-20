@@ -8,6 +8,7 @@ import { HistoryButtonLabelSetting } from "../setting";
 import { THOUGHT_CARD_HIDDEN_HEIGHT } from "./ThoughtCard";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import Constants from "expo-constants";
+import dayjs from "dayjs";
 
 interface ThoughtListProps {
   groups: ThoughtGroup[];
@@ -15,6 +16,10 @@ interface ThoughtListProps {
   navigateToViewer: (thought: SavedThought) => void;
   onItemDelete: (thought: SavedThought) => void;
 }
+
+const byDate = (a, b) => (dayjs(a.date).isAfter(dayjs(b.date)) ? 1 : -1);
+const byCreatedAt = (a, b) =>
+  dayjs(a.createdAt).isAfter(dayjs(b.createdAt)) ? 1 : -1;
 
 export default ({
   groups,
@@ -30,22 +35,27 @@ export default ({
     );
   }
 
-  const items = groups.map(group => {
-    const thoughts = group.thoughts.map(thought => (
-      <ThoughtItem
-        key={thought.uuid}
-        thought={thought}
-        onPress={navigateToViewer}
-        onDelete={onItemDelete}
-        historyButtonLabel={historyButtonLabel}
-      />
-    ));
+  const items = groups.sort(byDate).map(group => {
+    const thoughts = group.thoughts
+      .sort(byCreatedAt)
+      .map(thought => (
+        <ThoughtItem
+          key={thought.uuid}
+          thought={thought}
+          onPress={navigateToViewer}
+          onDelete={onItemDelete}
+          historyButtonLabel={historyButtonLabel}
+        />
+      ));
 
     const isToday =
       new Date(group.date).toDateString() === new Date().toDateString();
 
     return (
-      <View key={group.date} style={{ padding: 24 }}>
+      <View
+        key={group.date}
+        style={{ paddingHorizontal: 24, paddingBottom: 12 }}
+      >
         <Label>{isToday ? "Today" : group.date}</Label>
         {thoughts}
       </View>

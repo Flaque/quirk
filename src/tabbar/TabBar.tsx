@@ -54,7 +54,7 @@ export default ({ navigation }: ScreenProps) => {
         }}
       />
       <ActionButton
-        title="Help"
+        title="Learn"
         width={100}
         fillColor={tab === EXPLANATION_SCREEN ? theme.lightBlue : "white"}
         textColor={

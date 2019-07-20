@@ -1,7 +1,7 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
 import { View } from "react-native";
-import { getExercises } from "../thoughtstore";
+import { getExercises, saveExercise } from "../thoughtstore";
 import {
   SavedThought,
   ThoughtGroup,
@@ -16,6 +16,7 @@ import { DISTORTION_SCREEN } from "./screens";
 import haptic from "../haptic";
 import { Haptic } from "expo";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
+import * as stats from "../stats";
 
 export default class MainScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -54,13 +55,15 @@ export default class MainScreen extends React.Component<ScreenProps> {
     console.log("Navigate to", thought);
   };
 
-  navigateToDistortionScreenWithThought = (automaticThought: string) => {
+  navigateToDistortionScreenWithThought = async (automaticThought: string) => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    stats.thoughtRecorded();
 
-    const thought = newThought();
-    thought.automaticThought = automaticThought;
+    const newbie = newThought();
+    newbie.automaticThought = automaticThought;
+    const savedThought = await saveExercise(newbie);
     this.props.navigation.push(DISTORTION_SCREEN, {
-      thought,
+      thought: savedThought,
     });
   };
 

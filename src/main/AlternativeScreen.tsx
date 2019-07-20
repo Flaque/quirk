@@ -55,7 +55,6 @@ export default class AlternativeScreen extends React.Component<
   };
 
   onNext = async () => {
-    stats.thoughtRecorded();
     const thought = await saveExercise(this.state.thought);
     this.props.navigation.push(FINISHED_SCREEN, {
       thought,

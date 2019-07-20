@@ -1,13 +1,12 @@
 import React from "react";
 import { SavedThought } from "../thoughts";
 import { HistoryButtonLabelSetting } from "../SettingsScreen";
-import { Row, Paragraph, IconButton } from "../ui";
+import { Paragraph } from "../ui";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../theme";
 import { View } from "react-native";
 import { take } from "lodash";
 import { emojiForSlug } from "../distortions";
-import i18n from "../i18n";
 
 export default ({
   thought,

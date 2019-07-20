@@ -55,8 +55,9 @@ export default class ChallengeScreen extends React.Component<
   };
 
   onNext = async () => {
+    const thought = await saveExercise(this.state.thought);
     this.props.navigation.push(ALTERNATIVE_SCREEN, {
-      thought: this.state.thought,
+      thought,
     });
   };
 

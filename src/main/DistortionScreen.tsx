@@ -19,6 +19,7 @@ import { Thought } from "../thoughts";
 import * as stats from "../stats";
 import haptic from "../haptic";
 import { CHALLENGE_SCREEN } from "./screens";
+import { saveExercise } from "../thoughtstore";
 
 export default class DistortionScreen extends React.Component<
   ScreenProps,
@@ -78,8 +79,9 @@ export default class DistortionScreen extends React.Component<
   };
 
   onNext = async () => {
+    const thought = await saveExercise(this.state.thought);
     this.props.navigation.push(CHALLENGE_SCREEN, {
-      thought: this.state.thought,
+      thought,
     });
   };
 
