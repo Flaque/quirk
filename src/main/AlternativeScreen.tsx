@@ -17,7 +17,7 @@ import { TextInput } from "react-native";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import theme from "../theme";
-import { FINISHED_SCREEN } from "./screens";
+import { FINISHED_SCREEN, CHALLENGE_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
 
 export default class AlternativeScreen extends React.Component<
@@ -102,7 +102,9 @@ export default class AlternativeScreen extends React.Component<
                   flex: 1,
                 }}
                 onPress={() => {
-                  this.props.navigation.pop();
+                  this.props.navigation.navigate(CHALLENGE_SCREEN, {
+                    thought: this.state.thought,
+                  });
                 }}
               />
               <ActionButton title={"Next"} onPress={() => this.onNext()} />

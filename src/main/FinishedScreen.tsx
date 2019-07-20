@@ -7,16 +7,23 @@ import {
   Paragraph,
   SubHeader,
   Row,
-  GhostButton,
   ActionButton,
+  GhostButton,
 } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { get } from "lodash";
 import { SavedThought } from "../thoughts";
-import { View } from "react-native";
+import { View, Alert } from "react-native";
 import theme from "../theme";
-import { THOUGHT_SCREEN } from "./screens";
+import {
+  THOUGHT_SCREEN,
+  CHALLENGE_SCREEN,
+  ALTERNATIVE_SCREEN,
+} from "./screens";
+import { NavigationActions } from "react-navigation";
+import { StackActions } from "react-navigation";
+import { deleteExercise } from "../thoughtstore";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -41,9 +48,19 @@ export default class FinishedScreen extends React.Component<
     });
   }
 
-  onNext() {
-    this.props.navigation.push(THOUGHT_SCREEN);
-  }
+  onNext = () => {
+    const reset = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: THOUGHT_SCREEN })],
+    });
+    this.props.navigation.dispatch(reset);
+  };
+
+  onDelete = async () => {
+    const uuid = this.state.thought.uuid;
+    await deleteExercise(uuid);
+    this.onNext();
+  };
 
   render() {
     return (
@@ -69,7 +86,10 @@ export default class FinishedScreen extends React.Component<
               }}
             >
               <SubHeader>Your first thought</SubHeader>
-              <GhostButtonWithGuts borderColor={theme.lightGray}>
+              <GhostButtonWithGuts
+                borderColor={theme.lightGray}
+                onPress={() => {}}
+              >
                 <Paragraph>{this.state.thought.automaticThought}</Paragraph>
               </GhostButtonWithGuts>
             </View>
@@ -80,7 +100,14 @@ export default class FinishedScreen extends React.Component<
               }}
             >
               <SubHeader>How you challenged it</SubHeader>
-              <GhostButtonWithGuts borderColor={theme.lightGray}>
+              <GhostButtonWithGuts
+                borderColor={theme.lightGray}
+                onPress={() => {
+                  this.props.navigation.push(CHALLENGE_SCREEN, {
+                    thought: this.state.thought,
+                  });
+                }}
+              >
                 <Paragraph>{this.state.thought.challenge}</Paragraph>
               </GhostButtonWithGuts>
             </View>
@@ -91,7 +118,14 @@ export default class FinishedScreen extends React.Component<
               }}
             >
               <SubHeader>What you could think</SubHeader>
-              <GhostButtonWithGuts borderColor={theme.lightGray}>
+              <GhostButtonWithGuts
+                borderColor={theme.lightGray}
+                onPress={() => {
+                  this.props.navigation.push(ALTERNATIVE_SCREEN, {
+                    thought: this.state.thought,
+                  });
+                }}
+              >
                 <Paragraph>{this.state.thought.alternativeThought}</Paragraph>
               </GhostButtonWithGuts>
             </View>
@@ -103,18 +137,33 @@ export default class FinishedScreen extends React.Component<
               }}
             >
               <GhostButton
-                borderColor={theme.lightGray}
-                textColor={theme.veryLightText}
-                title={"Edit Thought"}
+                title="Delete"
+                borderColor={theme.red}
+                textColor={theme.red}
                 style={{
                   marginRight: 24,
-                  flex: 1,
                 }}
                 onPress={() => {
-                  this.props.navigation.pop();
+                  Alert.alert("Delete your thought?", "This can't be undone.", [
+                    {
+                      text: "Cancel",
+                      style: "cancel",
+                    },
+                    {
+                      text: "Delete",
+                      onPress: this.onDelete,
+                      style: "destructive",
+                    },
+                  ]);
                 }}
               />
-              <ActionButton title={"Next"} onPress={() => this.onNext()} />
+              <ActionButton
+                title={"Finish"}
+                onPress={() => this.onNext()}
+                style={{
+                  flex: 1,
+                }}
+              />
             </Row>
           </>
         )}

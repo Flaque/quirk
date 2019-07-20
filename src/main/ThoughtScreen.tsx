@@ -12,7 +12,7 @@ import { validThoughtGroup } from "../sanitize";
 import parseThoughts from "./parseThoughts";
 import ThoughtList from "./ThoughtList";
 import ThoughtCard from "./ThoughtCard";
-import { DISTORTION_SCREEN } from "./screens";
+import { DISTORTION_SCREEN, FINISHED_SCREEN } from "./screens";
 import haptic from "../haptic";
 import { Haptic } from "expo";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
@@ -36,7 +36,6 @@ export default class MainScreen extends React.Component<ScreenProps> {
     getExercises()
       .then(data => {
         const thoughts: SavedThought[] = parseThoughts(data);
-        console.log("thoughts", thoughts);
         const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts).filter(
           validThoughtGroup
         );
@@ -52,7 +51,9 @@ export default class MainScreen extends React.Component<ScreenProps> {
   };
 
   navigateToViewerWithThought = (thought: SavedThought) => {
-    console.log("Navigate to", thought);
+    this.props.navigation.navigate(FINISHED_SCREEN, {
+      thought,
+    });
   };
 
   navigateToDistortionScreenWithThought = async (automaticThought: string) => {
@@ -68,7 +69,7 @@ export default class MainScreen extends React.Component<ScreenProps> {
   };
 
   render() {
-    const { groups } = this.state;
+    const { groups, isReady } = this.state;
 
     return (
       <View
@@ -78,14 +79,16 @@ export default class MainScreen extends React.Component<ScreenProps> {
       >
         <ThoughtCard onNext={this.navigateToDistortionScreenWithThought} />
 
-        <InvertibleScrollView inverted>
-          <ThoughtList
-            groups={groups}
-            historyButtonLabel={"alternative-thought"}
-            navigateToViewer={this.navigateToViewerWithThought}
-            // onItemDelete={this.onItemDelete}
-          />
-        </InvertibleScrollView>
+        {isReady && (
+          <InvertibleScrollView inverted>
+            <ThoughtList
+              groups={groups}
+              historyButtonLabel={"alternative-thought"}
+              navigateToViewer={this.navigateToViewerWithThought}
+              // onItemDelete={this.onItemDelete}
+            />
+          </InvertibleScrollView>
+        )}
       </View>
     );
   }

@@ -18,7 +18,7 @@ import { FadesIn } from "../animations";
 import { Thought } from "../thoughts";
 import * as stats from "../stats";
 import haptic from "../haptic";
-import { CHALLENGE_SCREEN } from "./screens";
+import { CHALLENGE_SCREEN, THOUGHT_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
 
 export default class DistortionScreen extends React.Component<
@@ -164,7 +164,9 @@ export default class DistortionScreen extends React.Component<
               flex: 1,
             }}
             onPress={() => {
-              this.props.navigation.pop();
+              this.props.navigation.navigate(THOUGHT_SCREEN, {
+                thought: this.state.thought,
+              });
             }}
           />
           <ActionButton title={"Next"} onPress={() => this.onNext()} />

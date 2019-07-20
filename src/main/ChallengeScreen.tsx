@@ -16,7 +16,7 @@ import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { get } from "lodash";
 import { Thought } from "../thoughts";
-import { ALTERNATIVE_SCREEN } from "./screens";
+import { ALTERNATIVE_SCREEN, DISTORTION_SCREEN } from "./screens";
 import { TextInput } from "react-native";
 import { saveExercise } from "../thoughtstore";
 
@@ -102,7 +102,9 @@ export default class ChallengeScreen extends React.Component<
                   flex: 1,
                 }}
                 onPress={() => {
-                  this.props.navigation.pop();
+                  this.props.navigation.navigate(DISTORTION_SCREEN, {
+                    thought: this.state.thought,
+                  });
                 }}
               />
               <ActionButton title={"Next"} onPress={() => this.onNext()} />
