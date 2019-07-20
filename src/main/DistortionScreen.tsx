@@ -87,15 +87,20 @@ export default class DistortionScreen extends React.Component<
 
   render() {
     return (
-      <>
+      <View
+        style={{
+          backgroundColor: theme.lightOffwhite,
+          flexDirection: "column",
+        }}
+      >
         <ScrollView
           style={{
             backgroundColor: theme.lightOffwhite,
+            marginTop: Constants.statusBarHeight,
           }}
         >
           <Container
             style={{
-              marginTop: Constants.statusBarHeight,
               backgroundColor: theme.lightOffwhite,
             }}
           >
@@ -153,6 +158,8 @@ export default class DistortionScreen extends React.Component<
             shadowOffset: { width: 0, height: 1 },
             shadowRadius: 10,
             shadowOpacity: 0.8,
+            flex: 1,
+            bottom: 25,
           }}
         >
           <GhostButton
@@ -171,7 +178,7 @@ export default class DistortionScreen extends React.Component<
           />
           <ActionButton title={"Next"} onPress={() => this.onNext()} />
         </View>
-      </>
+      </View>
     );
   }
 }

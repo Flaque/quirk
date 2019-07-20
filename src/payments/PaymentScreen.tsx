@@ -15,7 +15,7 @@ import {
   ScrollView,
 } from "react-navigation";
 import { Paragraph, SubHeader, ActionButton } from "../ui";
-import { CBT_FORM_SCREEN, LOCK_SCREEN } from "../screens";
+import { CBT_FORM_SCREEN, LOCK_SCREEN, MAIN_SCREEN } from "../screens";
 import theme from "../theme";
 import i18n from "../i18n";
 import { BallIndicator } from "react-native-indicators";
@@ -33,6 +33,7 @@ import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
 import { userSawApologyNotice, userStartedPayment } from "../stats";
+import { THOUGHT_SCREEN } from "../main/screens";
 
 const Container = props => (
   <ScrollView
@@ -122,9 +123,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
     }
 
     // We replace here because you shouldn't be able to go "back" to this screen
-    this.props.navigation.replace(CBT_FORM_SCREEN, {
-      thought: false,
-    });
+    this.props.navigation.navigate(MAIN_SCREEN);
   };
 
   onContinuePress = async () => {

@@ -66,6 +66,8 @@ export default class FinishedScreen extends React.Component<
     return (
       <Container
         style={{
+          backgroundColor: theme.lightOffwhite,
+          paddingTop: 24,
           marginTop: Constants.statusBarHeight,
         }}
       >

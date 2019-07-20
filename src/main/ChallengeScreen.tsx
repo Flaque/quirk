@@ -62,10 +62,13 @@ export default class ChallengeScreen extends React.Component<
   };
 
   render() {
+    console.log(Constants.statusBarHeight);
     return (
       <Container
         style={{
           marginTop: Constants.statusBarHeight,
+          paddingTop: 24 + Constants.statusBarHeight,
+          backgroundColor: theme.red,
         }}
       >
         {this.state.thought && (

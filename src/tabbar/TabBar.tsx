@@ -3,7 +3,13 @@ import { View } from "react-native";
 import theme from "../theme";
 import { ActionButton } from "../ui";
 import ScreenProps from "../ScreenProps";
-import { MAIN_SCREEN, SETTING_SCREEN, EXPLANATION_SCREEN } from "../screens";
+import {
+  MAIN_SCREEN,
+  SETTING_SCREEN,
+  EXPLANATION_SCREEN,
+  PAYMENT_SCREEN,
+  LOCK_SCREEN,
+} from "../screens";
 import haptic from "../haptic";
 import { Haptic } from "expo";
 
@@ -12,6 +18,11 @@ export const TAB_BAR_HEIGHT = 76;
 export default ({ navigation }: ScreenProps) => {
   const index = navigation.state.index;
   const tab = navigation.state.routes[index].key;
+
+  // Hide the tab bar in the payment and lock screens
+  if (tab === PAYMENT_SCREEN || tab === LOCK_SCREEN) {
+    return null;
+  }
 
   return (
     <View

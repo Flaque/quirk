@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View } from "react-native";
+import { View, StatusBar } from "react-native";
 import { getExercises, saveExercise } from "../thoughtstore";
 import {
   SavedThought,
@@ -17,6 +17,8 @@ import haptic from "../haptic";
 import { Haptic } from "expo";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
 import * as stats from "../stats";
+import Constants from "expo-constants";
+import theme from "../theme";
 
 export default class MainScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -75,12 +77,20 @@ export default class MainScreen extends React.Component<ScreenProps> {
       <View
         style={{
           flex: 1,
+          paddingTop: Constants.statusBarHeight,
+          backgroundColor: theme.lightOffwhite,
         }}
       >
+        <StatusBar barStyle="dark-content" hidden={false} />
         <ThoughtCard onNext={this.navigateToDistortionScreenWithThought} />
 
         {isReady && (
-          <InvertibleScrollView inverted>
+          <InvertibleScrollView
+            inverted
+            style={{
+              backgroundColor: theme.lightOffwhite,
+            }}
+          >
             <ThoughtList
               groups={groups}
               historyButtonLabel={"alternative-thought"}

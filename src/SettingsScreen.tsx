@@ -271,15 +271,6 @@ class SettingScreen extends React.Component<Props, State> {
             }}
           >
             <StatusBar barStyle="dark-content" />
-            <Row style={{ marginBottom: 22 }}>
-              <Header>quirk*</Header>
-              <IconButton
-                featherIconName={"x"}
-                accessibilityLabel={i18n.t("accessibility.close_button")}
-                onPress={() => this.navigateToList()}
-              />
-            </Row>
-
             <Row
               style={{
                 marginBottom: 22,

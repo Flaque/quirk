@@ -48,9 +48,11 @@ const App = createBottomTabNavigator(
     [MAIN_SCREEN]: MainScreen,
     [SETTING_SCREEN]: SettingScreen,
     [EXPLANATION_SCREEN]: ExplanationScreen,
+    [PAYMENT_SCREEN]: PaymentScreen,
+    [LOCK_SCREEN]: LockScreen,
   },
   {
-    initialRouteName: MAIN_SCREEN,
+    initialRouteName: PAYMENT_SCREEN,
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },

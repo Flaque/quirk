@@ -66,6 +66,8 @@ export default class AlternativeScreen extends React.Component<
       <Container
         style={{
           marginTop: Constants.statusBarHeight,
+          paddingTop: 24,
+          backgroundColor: theme.lightOffwhite,
         }}
       >
         {this.state.thought && (
