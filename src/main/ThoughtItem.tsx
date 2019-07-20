@@ -20,69 +20,58 @@ export default ({
   onPress: (thought: SavedThought | boolean) => void;
   onDelete: (thought: SavedThought) => void;
 }) => (
-  <Row style={{ marginBottom: 18 }}>
-    <TouchableOpacity
-      onPress={() => onPress(thought)}
+  <TouchableOpacity
+    onPress={() => onPress(thought)}
+    style={{
+      backgroundColor: "white",
+      borderColor: theme.lightGray,
+      borderBottomWidth: 2,
+      borderRadius: 8,
+      borderWidth: 1,
+      marginBottom: 18,
+      flex: 1,
+    }}
+  >
+    <Paragraph
       style={{
-        backgroundColor: "white",
-        borderColor: theme.lightGray,
-        borderBottomWidth: 2,
-        borderRadius: 8,
-        borderWidth: 1,
-        marginRight: 18,
-        flex: 1,
+        color: theme.darkText,
+        fontWeight: "400",
+        fontSize: 16,
+        marginBottom: 8,
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingTop: 12,
+        paddingBottom: 6,
       }}
     >
-      <Paragraph
-        style={{
-          color: theme.darkText,
-          fontWeight: "400",
-          fontSize: 16,
-          marginBottom: 8,
-          paddingLeft: 12,
-          paddingRight: 12,
-          paddingTop: 12,
-          paddingBottom: 6,
-        }}
-      >
-        {historyButtonLabel === "alternative-thought"
-          ? thought.alternativeThought
-          : thought.automaticThought}
-      </Paragraph>
+      {historyButtonLabel === "alternative-thought"
+        ? thought.alternativeThought
+        : thought.automaticThought}
+    </Paragraph>
 
-      <View
-        style={{
-          backgroundColor: theme.lightOffwhite,
-          paddingLeft: 12,
-          paddingRight: 12,
-          paddingBottom: 12,
-          paddingTop: 6,
-          margin: 4,
-          borderRadius: 8,
-        }}
-      >
-        <Paragraph>
-          {take(
-            thought.cognitiveDistortions
-              .filter(n => n) // Filters out any nulls or undefineds which can crop up
-              .filter(distortion => distortion.selected)
-              .map(dist => emojiForSlug(dist.slug)),
-            8 // only take a max of 8
-          )
-            .filter(n => n)
-            .join(" ")
-            .trim()}
-        </Paragraph>
-      </View>
-    </TouchableOpacity>
-
-    <IconButton
+    <View
       style={{
-        alignSelf: "flex-start",
+        backgroundColor: theme.lightOffwhite,
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingBottom: 12,
+        paddingTop: 6,
+        margin: 4,
+        borderRadius: 8,
       }}
-      accessibilityLabel={i18n.t("accessibility.delete_thought_button")}
-      featherIconName={"trash"}
-      onPress={() => onDelete(thought)}
-    />
-  </Row>
+    >
+      <Paragraph>
+        {take(
+          thought.cognitiveDistortions
+            .filter(n => n) // Filters out any nulls or undefineds which can crop up
+            .filter(distortion => distortion.selected)
+            .map(dist => emojiForSlug(dist.slug)),
+          8 // only take a max of 8
+        )
+          .filter(n => n)
+          .join(" ")
+          .trim()}
+      </Paragraph>
+    </View>
+  </TouchableOpacity>
 );

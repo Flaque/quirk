@@ -19,7 +19,7 @@ import haptic from "../haptic";
 import { Haptic } from "expo";
 
 const MaxFadeIn = newFadesIn({
-  maxOpacity: 0.3,
+  maxOpacity: 0.5,
 });
 
 const BackgroundOverlay = ({ isVisible, onPress }) => (
@@ -43,17 +43,21 @@ const BackgroundOverlay = ({ isVisible, onPress }) => (
   </TouchableWithoutFeedback>
 );
 
+export const THOUGHT_CARD_HIDDEN_HEIGHT = 256;
+
 const CardPopsUp = newPopsUp({
   fullHeight: Dimensions.get("screen").height * 0.8,
-  hiddenHeight: 256,
+  hiddenHeight: THOUGHT_CARD_HIDDEN_HEIGHT,
   popUpScale: 1.1,
 });
 
 export default class ThoughtCard extends React.Component<{
   style?: any;
   onNext: (alternativeThought: string) => void;
+  shouldFadeInBackgroundOverlay: boolean;
 }> {
   state = {
+    shouldFadeInBackgroundOverlay: false,
     view: "hidden",
     alternativeThought: "",
   };
@@ -77,23 +81,35 @@ export default class ThoughtCard extends React.Component<{
     });
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.textInputRef.current.focus();
+
+    // Trigger the fade-in effect of the background overlay
+    setTimeout(() => {
+      this.setState({
+        shouldFadeInBackgroundOverlay: true,
+      });
+    }, 200);
+  };
+
+  popDown = () => {
+    Keyboard.dismiss();
+    this.setState({
+      view: "hidden",
+      shouldFadeInBackgroundOverlay: false,
+    });
   };
 
   render() {
     const { style } = this.props;
-    const { view } = this.state;
+    const { view, shouldFadeInBackgroundOverlay } = this.state;
 
     return (
       <>
-        {/* <BackgroundOverlay
-          isVisible={view === "peak"}
-          onPress={() => {
-            Keyboard.dismiss();
-            this.setState({
-              view: "hidden",
-            });
-          }}
-        /> */}
+        {view !== "hiddenWiggle" && view !== "hidden" && (
+          <BackgroundOverlay
+            isVisible={shouldFadeInBackgroundOverlay}
+            onPress={this.popDown}
+          />
+        )}
         <TouchableWithoutFeedback onPress={this.popUp}>
           <CardPopsUp
             style={{

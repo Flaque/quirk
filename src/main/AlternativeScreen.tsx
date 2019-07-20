@@ -17,7 +17,7 @@ import { TextInput } from "react-native";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import theme from "../theme";
-import { THOUGHT_SCREEN, FINISHED_SCREEN } from "./screens";
+import { FINISHED_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
 
 export default class AlternativeScreen extends React.Component<
@@ -97,10 +97,13 @@ export default class AlternativeScreen extends React.Component<
               <GhostButton
                 borderColor={theme.lightGray}
                 textColor={theme.veryLightText}
-                title={"Learn More"}
+                title={"Back to Challenge"}
                 style={{
                   marginRight: 24,
                   flex: 1,
+                }}
+                onPress={() => {
+                  this.props.navigation.pop();
                 }}
               />
               <ActionButton title={"Next"} onPress={() => this.onNext()} />

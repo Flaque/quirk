@@ -105,10 +105,13 @@ export default class FinishedScreen extends React.Component<
               <GhostButton
                 borderColor={theme.lightGray}
                 textColor={theme.veryLightText}
-                title={"Learn More"}
+                title={"Edit Thought"}
                 style={{
                   marginRight: 24,
                   flex: 1,
+                }}
+                onPress={() => {
+                  this.props.navigation.pop();
                 }}
               />
               <ActionButton title={"Next"} onPress={() => this.onNext()} />

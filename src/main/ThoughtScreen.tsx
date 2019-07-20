@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, ScrollView } from "react-native";
+import { View } from "react-native";
 import { getExercises } from "../thoughtstore";
 import {
   SavedThought,
@@ -15,6 +15,7 @@ import ThoughtCard from "./ThoughtCard";
 import { DISTORTION_SCREEN } from "./screens";
 import haptic from "../haptic";
 import { Haptic } from "expo";
+import InvertibleScrollView from "react-native-invertible-scroll-view";
 
 export default class MainScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -73,12 +74,15 @@ export default class MainScreen extends React.Component<ScreenProps> {
         }}
       >
         <ThoughtCard onNext={this.navigateToDistortionScreenWithThought} />
-        <ThoughtList
-          groups={groups}
-          historyButtonLabel={"alternative-thought"}
-          navigateToViewer={this.navigateToViewerWithThought}
-          // onItemDelete={this.onItemDelete}
-        />
+
+        <InvertibleScrollView inverted>
+          <ThoughtList
+            groups={groups}
+            historyButtonLabel={"alternative-thought"}
+            navigateToViewer={this.navigateToViewerWithThought}
+            // onItemDelete={this.onItemDelete}
+          />
+        </InvertibleScrollView>
       </View>
     );
   }
