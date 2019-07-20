@@ -12,12 +12,10 @@ export default ({
   thought,
   historyButtonLabel,
   onPress,
-  onDelete,
 }: {
   thought: SavedThought;
   historyButtonLabel: HistoryButtonLabelSetting;
   onPress: (thought: SavedThought | boolean) => void;
-  onDelete: (thought: SavedThought) => void;
 }) => (
   <TouchableOpacity
     onPress={() => onPress(thought)}

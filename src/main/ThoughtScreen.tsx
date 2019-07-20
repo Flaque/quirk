@@ -85,7 +85,6 @@ export default class MainScreen extends React.Component<ScreenProps> {
               groups={groups}
               historyButtonLabel={"alternative-thought"}
               navigateToViewer={this.navigateToViewerWithThought}
-              // onItemDelete={this.onItemDelete}
             />
           </InvertibleScrollView>
         )}

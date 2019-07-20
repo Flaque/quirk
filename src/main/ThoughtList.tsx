@@ -9,6 +9,7 @@ import { THOUGHT_CARD_HIDDEN_HEIGHT } from "./ThoughtCard";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import Constants from "expo-constants";
 import dayjs from "dayjs";
+import NotEnoughThoughtsIllustration from "./NotEnoughThoughtsIllustration";
 
 interface ThoughtListProps {
   groups: ThoughtGroup[];
@@ -24,12 +25,15 @@ const byCreatedAt = (a, b) =>
 export default ({
   groups,
   navigateToViewer,
-  onItemDelete,
   historyButtonLabel,
 }: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
     return (
-      <View style={{ marginVertical: 48 }}>
+      <View
+        style={{
+          marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT + 48,
+        }}
+      >
         <EmptyThoughtIllustration />
       </View>
     );
@@ -43,7 +47,6 @@ export default ({
           key={thought.uuid}
           thought={thought}
           onPress={navigateToViewer}
-          onDelete={onItemDelete}
           historyButtonLabel={historyButtonLabel}
         />
       ));
@@ -69,6 +72,7 @@ export default ({
         paddingTop: Constants.statusBarHeight,
       }}
     >
+      {items.length < 8 && <NotEnoughThoughtsIllustration />}
       {items}
     </View>
   );
