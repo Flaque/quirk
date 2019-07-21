@@ -9,7 +9,10 @@ import { THOUGHT_CARD_HIDDEN_HEIGHT } from "./ThoughtCard";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import Constants from "expo-constants";
 import dayjs from "dayjs";
-import NotEnoughThoughtsIllustration from "./NotEnoughThoughtsIllustration";
+import NotEnoughThoughtsIllustration, {
+  ENOUGH_THOUGHTS,
+  ENOUGH_DAYS,
+} from "./NotEnoughThoughtsIllustration";
 
 interface ThoughtListProps {
   groups: ThoughtGroup[];
@@ -72,7 +75,9 @@ export default ({
         paddingTop: Constants.statusBarHeight,
       }}
     >
-      {items.length < 8 && <NotEnoughThoughtsIllustration />}
+      {items.length < ENOUGH_DAYS && (
+        <NotEnoughThoughtsIllustration count={items.length} />
+      )}
       {items}
     </View>
   );

@@ -1,33 +1,56 @@
 import React from "react";
 import { View } from "react-native";
-import { Label } from "../ui";
+import { Label, Row } from "../ui";
 import theme from "../theme";
 
-export default () => {
+const FilledBlop = () => (
+  <View
+    style={{
+      width: 24,
+      height: 24,
+      borderRadius: 8,
+      backgroundColor: theme.blue,
+      marginHorizontal: 4,
+    }}
+  />
+);
+
+const EmptyBlop = () => (
+  <View
+    style={{
+      width: 24,
+      height: 24,
+      borderRadius: 8,
+      backgroundColor: theme.lightGray,
+      marginHorizontal: 4,
+    }}
+  />
+);
+
+export const ENOUGH_DAYS = 6;
+
+export default ({ count }) => {
+  const blops = [];
+  for (let i = 0; i < count; i++) {
+    blops.push(<FilledBlop key={`${i}-full`} />);
+  }
+  for (let i = 0; i < ENOUGH_DAYS - count; i++) {
+    blops.push(<EmptyBlop key={`${i}-empty`} />);
+  }
+
   return (
     <View
       style={{
         alignItems: "center",
-        margin: 18,
+        margin: 32,
       }}
     >
-      <View
-        style={{
-          backgroundColor: theme.lightOffwhite,
-          borderColor: theme.lightGray,
-          borderBottomWidth: 2,
-          borderRadius: 8,
-          borderWidth: 1,
-          marginBottom: 18,
-          flex: 1,
-          minWidth: "100%",
-          minHeight: 96,
-        }}
-      />
-
       <Label marginBottom={18} textAlign={"center"}>
-        Keep going, it takes about 8 thoughts to build the habit.
+        Keep going, it takes about {ENOUGH_DAYS} days to build the healthy
+        habit.
       </Label>
+
+      <Row>{blops}</Row>
     </View>
   );
 };
