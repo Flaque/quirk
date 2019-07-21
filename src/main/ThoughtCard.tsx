@@ -162,18 +162,12 @@ export default class ThoughtCard extends React.Component<{
                 justifyContent: "flex-end",
               }}
             >
-              <GhostButton
-                borderColor={theme.lightGray}
-                textColor={theme.veryLightText}
-                title={"Learn More"}
-                style={{
-                  marginRight: 24,
-                  flex: 1,
-                }}
-              />
               <ActionButton
                 title={"Next"}
                 onPress={() => this.props.onNext(this.state.alternativeThought)}
+                style={{
+                  flex: 1,
+                }}
               />
             </Row>
           </CardPopsUp>

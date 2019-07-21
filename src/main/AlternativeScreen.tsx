@@ -17,7 +17,7 @@ import { TextInput } from "react-native";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import theme from "../theme";
-import { FINISHED_SCREEN, CHALLENGE_SCREEN } from "./screens";
+import { CHALLENGE_SCREEN, FEELING_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import { Haptic } from "expo";
@@ -59,7 +59,7 @@ export default class AlternativeScreen extends React.Component<
   onNext = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     const thought = await saveExercise(this.state.thought);
-    this.props.navigation.push(FINISHED_SCREEN, {
+    this.props.navigation.push(FEELING_SCREEN, {
       thought,
     });
   };
@@ -75,7 +75,7 @@ export default class AlternativeScreen extends React.Component<
       >
         {this.state.thought && (
           <>
-            <MediumHeader>Change your thought</MediumHeader>
+            <MediumHeader>Alternative thought</MediumHeader>
             <HintHeader>
               Given this situation again, what could you think instead?
             </HintHeader>

@@ -20,7 +20,6 @@ import * as stats from "../stats";
 import haptic from "../haptic";
 import { CHALLENGE_SCREEN, THOUGHT_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
-import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 
 export default class DistortionScreen extends React.Component<
   ScreenProps,

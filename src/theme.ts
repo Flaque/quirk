@@ -8,6 +8,7 @@ export default {
   darkText: "#303952",
   pink: "#f8a5c2",
   darkPink: "#F78FB3",
+  lightPink: "#FFF3F8",
   red: "#c44569",
   lightBlue: "#EDF0FC",
   blue: "#778beb",

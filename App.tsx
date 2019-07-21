@@ -20,24 +20,6 @@ import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
 import TabBar from "./src/tabbar/TabBar";
 
-// const App = createStackNavigator(
-// {
-//   [PAYMENT_SCREEN]: PaymentScreen,
-//   [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
-//   [CBT_LIST_SCREEN]: CBTListScreen,
-//   [CBT_FORM_SCREEN]: CBTFormScreen,
-//   [EXPLANATION_SCREEN]: ExplanationScreen,
-//   [SETTING_SCREEN]: SettingScreen,
-//   [CBT_VIEW_SCREEN]: FinishedThoughtScreen,
-//   [LOCK_SCREEN]: LockScreen,
-//   [MAIN_SCREEN]: MainScreen,
-// },
-//   {
-//     initialRouteName: MAIN_SCREEN,
-//     mode: "modal",
-//   }
-// );
-
 const App = createBottomTabNavigator(
   {
     [MAIN_SCREEN]: MainScreen,
