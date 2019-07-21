@@ -102,6 +102,7 @@ export default class FinishedScreen extends React.Component<
                 onPress={() => {
                   this.props.navigation.navigate(THOUGHT_SCREEN, {
                     thought: this.state.thought,
+                    isEditing: true,
                   });
                 }}
               >
@@ -120,6 +121,7 @@ export default class FinishedScreen extends React.Component<
                 onPress={() => {
                   this.props.navigation.push(CHALLENGE_SCREEN, {
                     thought: this.state.thought,
+                    isEditing: true,
                   });
                 }}
               >
@@ -138,6 +140,7 @@ export default class FinishedScreen extends React.Component<
                 onPress={() => {
                   this.props.navigation.push(ALTERNATIVE_SCREEN, {
                     thought: this.state.thought,
+                    isEditing: true,
                   });
                 }}
               >

@@ -17,6 +17,7 @@ import i18n from "../i18n";
 import * as stats from "../stats";
 import haptic from "../haptic";
 import { Haptic } from "expo";
+import { Thought } from "../thoughts";
 
 const MaxFadeIn = newFadesIn({
   maxOpacity: 0.5,
@@ -55,6 +56,7 @@ export default class ThoughtCard extends React.Component<{
   style?: any;
   onNext: (alternativeThought: string) => void;
   shouldFadeInBackgroundOverlay: boolean;
+  initialThought?: Thought;
 }> {
   state = {
     shouldFadeInBackgroundOverlay: false,

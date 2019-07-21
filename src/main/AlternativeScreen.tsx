@@ -17,7 +17,7 @@ import { TextInput } from "react-native";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import theme from "../theme";
-import { CHALLENGE_SCREEN, FEELING_SCREEN } from "./screens";
+import { CHALLENGE_SCREEN, FEELING_SCREEN, FINISHED_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import { Haptic } from "expo";
@@ -26,6 +26,7 @@ export default class AlternativeScreen extends React.Component<
   ScreenProps,
   {
     thought?: Thought;
+    isEditing: boolean;
   }
 > {
   static navigationOptions = {
@@ -34,13 +35,16 @@ export default class AlternativeScreen extends React.Component<
 
   state = {
     thought: undefined,
+    isEditing: false,
   };
 
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
       const thought = get(args, "state.params.thought");
+      const isEditing = get(args, "state.params.isEditing", false);
       this.setState({
         thought,
+        isEditing,
       });
     });
   }
@@ -60,6 +64,15 @@ export default class AlternativeScreen extends React.Component<
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     const thought = await saveExercise(this.state.thought);
     this.props.navigation.push(FEELING_SCREEN, {
+      thought,
+    });
+  };
+
+  // From editing
+  onFinish = async () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    const thought = await saveExercise(this.state.thought);
+    this.props.navigation.push(FINISHED_SCREEN, {
       thought,
     });
   };
@@ -98,21 +111,31 @@ export default class AlternativeScreen extends React.Component<
                 justifyContent: "flex-end",
               }}
             >
-              <GhostButton
-                borderColor={theme.lightGray}
-                textColor={theme.veryLightText}
-                title={"Back to Challenge"}
-                style={{
-                  marginRight: 24,
-                  flex: 1,
-                }}
-                onPress={() => {
-                  this.props.navigation.navigate(CHALLENGE_SCREEN, {
-                    thought: this.state.thought,
-                  });
-                }}
-              />
-              <ActionButton title={"Next"} onPress={() => this.onNext()} />
+              {this.state.isEditing ? (
+                <ActionButton
+                  title={"Save"}
+                  onPress={() => this.onFinish()}
+                  width={"100%"}
+                />
+              ) : (
+                <>
+                  <GhostButton
+                    borderColor={theme.lightGray}
+                    textColor={theme.veryLightText}
+                    title={"Back to Challenge"}
+                    style={{
+                      marginRight: 24,
+                      flex: 1,
+                    }}
+                    onPress={() => {
+                      this.props.navigation.navigate(CHALLENGE_SCREEN, {
+                        thought: this.state.thought,
+                      });
+                    }}
+                  />
+                  <ActionButton title={"Next"} onPress={() => this.onNext()} />
+                </>
+              )}
             </Row>
           </>
         )}

@@ -16,7 +16,11 @@ import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { get } from "lodash";
 import { Thought } from "../thoughts";
-import { ALTERNATIVE_SCREEN, DISTORTION_SCREEN } from "./screens";
+import {
+  ALTERNATIVE_SCREEN,
+  DISTORTION_SCREEN,
+  FINISHED_SCREEN,
+} from "./screens";
 import { TextInput } from "react-native";
 import { saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
@@ -26,6 +30,7 @@ export default class ChallengeScreen extends React.Component<
   ScreenProps,
   {
     thought?: Thought;
+    isEditing: boolean;
   }
 > {
   static navigationOptions = {
@@ -34,13 +39,16 @@ export default class ChallengeScreen extends React.Component<
 
   state = {
     thought: undefined,
+    isEditing: false,
   };
 
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
       const thought = get(args, "state.params.thought");
+      const isEditing = get(args, "state.params.isEditing", false);
       this.setState({
         thought,
+        isEditing,
       });
     });
   }
@@ -60,6 +68,15 @@ export default class ChallengeScreen extends React.Component<
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     const thought = await saveExercise(this.state.thought);
     this.props.navigation.push(ALTERNATIVE_SCREEN, {
+      thought,
+    });
+  };
+
+  // From editing
+  onFinish = async () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    const thought = await saveExercise(this.state.thought);
+    this.props.navigation.push(FINISHED_SCREEN, {
       thought,
     });
   };
@@ -98,21 +115,31 @@ export default class ChallengeScreen extends React.Component<
                 justifyContent: "flex-end",
               }}
             >
-              <GhostButton
-                borderColor={theme.lightGray}
-                textColor={theme.veryLightText}
-                title={"Back to Distortions"}
-                style={{
-                  marginRight: 24,
-                  flex: 1,
-                }}
-                onPress={() => {
-                  this.props.navigation.navigate(DISTORTION_SCREEN, {
-                    thought: this.state.thought,
-                  });
-                }}
-              />
-              <ActionButton title={"Next"} onPress={() => this.onNext()} />
+              {this.state.isEditing ? (
+                <ActionButton
+                  title={"Save"}
+                  onPress={() => this.onFinish()}
+                  width={"100%"}
+                />
+              ) : (
+                <>
+                  <GhostButton
+                    borderColor={theme.lightGray}
+                    textColor={theme.veryLightText}
+                    title={"Back to Distortions"}
+                    style={{
+                      marginRight: 24,
+                      flex: 1,
+                    }}
+                    onPress={() => {
+                      this.props.navigation.navigate(DISTORTION_SCREEN, {
+                        thought: this.state.thought,
+                      });
+                    }}
+                  />
+                  <ActionButton title={"Next"} onPress={() => this.onNext()} />
+                </>
+              )}
             </Row>
           </>
         )}
