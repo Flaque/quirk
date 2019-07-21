@@ -7,6 +7,7 @@ import {
   Linking,
   Dimensions,
   Alert,
+  AlertIOS,
 } from "react-native";
 import {
   NavigationScreenProp,
@@ -27,6 +28,7 @@ import {
   purchaseSubscription,
   restoreSubscription,
   isSubscribed,
+  identify,
 } from "./index";
 import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
@@ -468,7 +470,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               flexDirection: "row",
               marginLeft: 32,
               marginRight: 32,
-              marginBottom: 32,
+              marginBottom: 16,
               justifyContent: "space-between",
             }}
           >
@@ -484,6 +486,35 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               }}
             />
           </View>
+
+          {Platform.OS === "ios" && (
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: 32,
+                marginRight: 32,
+                marginBottom: 32,
+                justifyContent: "space-between",
+              }}
+            >
+              <ActionButton
+                flex={1}
+                title="Alias your Account"
+                fillColor="#EDF0FC"
+                textColor={theme.darkBlue}
+                onPress={() => {
+                  AlertIOS.prompt(
+                    "Enter your email",
+                    "This lets support know who you are",
+                    txt => {
+                      identify(txt);
+                    }
+                  );
+                }}
+              />
+            </View>
+          )}
         </Container>
       </FadesIn>
     );

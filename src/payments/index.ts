@@ -53,6 +53,10 @@ export const latestExpirationDate = async (): Promise<string> => {
   return purchaserInfo.latestExpirationDate;
 };
 
+export const alias = (txt: string) => {
+  Purchases.createAlias(txt);
+};
+
 /**
  * Attempts to purchase a subscription,
  */
