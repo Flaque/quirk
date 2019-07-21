@@ -10,7 +10,6 @@ import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import Constants from "expo-constants";
 import dayjs from "dayjs";
 import NotEnoughThoughtsIllustration, {
-  ENOUGH_THOUGHTS,
   ENOUGH_DAYS,
 } from "./NotEnoughThoughtsIllustration";
 
