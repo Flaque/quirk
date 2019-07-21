@@ -55,7 +55,6 @@ const CardPopsUp = newPopsUp({
 export default class ThoughtCard extends React.Component<{
   style?: any;
   onNext: (alternativeThought: string) => void;
-  shouldFadeInBackgroundOverlay: boolean;
   initialThought?: Thought;
 }> {
   state = {
