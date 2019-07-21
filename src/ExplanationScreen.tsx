@@ -5,7 +5,7 @@ import {
   NavigationAction,
 } from "react-navigation";
 import { SubHeader, Paragraph, Header, IconButton, GhostButton } from "./ui";
-import { ScrollView, View } from "react-native";
+import { ScrollView, View, StatusBar } from "react-native";
 import * as Haptic from "expo-haptics";
 import Constants from "expo-constants";
 import theme from "./theme";
@@ -223,6 +223,7 @@ class ExplanationScreen extends React.Component<Props> {
           backgroundColor: "white",
         }}
       >
+        <StatusBar barStyle="dark-content" hidden={false} />
         <View
           style={{
             marginBottom: Constants.statusBarHeight + 24,

@@ -1,7 +1,12 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
 import { View, StatusBar } from "react-native";
-import { getExercises, saveExercise } from "../thoughtstore";
+import {
+  getExercises,
+  saveExercise,
+  getIsExistingUser,
+  setIsExistingUser,
+} from "../thoughtstore";
 import {
   SavedThought,
   ThoughtGroup,
@@ -45,6 +50,15 @@ export default class MainScreen extends React.Component<
   };
 
   componentDidMount() {
+    // Record new users
+    getIsExistingUser().then(isExisting => {
+      // New Users
+      if (!isExisting) {
+        stats.newuser();
+        setIsExistingUser();
+      }
+    });
+
     this.loadExercises();
 
     this.props.navigation.addListener("willFocus", args => {

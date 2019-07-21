@@ -16,7 +16,7 @@ import {
   ScrollView,
 } from "react-navigation";
 import { Paragraph, SubHeader, ActionButton } from "../ui";
-import { LOCK_SCREEN, MAIN_SCREEN } from "../screens";
+import { LOCK_SCREEN, MAIN_SCREEN, CBT_ON_BOARDING_SCREEN } from "../screens";
 import theme from "../theme";
 import i18n from "../i18n";
 import { BallIndicator } from "react-native-indicators";
@@ -36,6 +36,7 @@ import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
 import { userSawApologyNotice, userStartedPayment } from "../stats";
 import dayjs from "dayjs";
+import { getIsExistingUser } from "../thoughtstore";
 
 const Container = props => (
   <ScrollView
@@ -124,8 +125,13 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
       return;
     }
 
+    if (await getIsExistingUser()) {
+      this.props.navigation.navigate(MAIN_SCREEN);
+      return;
+    }
+
     // We replace here because you shouldn't be able to go "back" to this screen
-    this.props.navigation.navigate(MAIN_SCREEN);
+    this.props.navigation.navigate(CBT_ON_BOARDING_SCREEN);
   };
 
   onContinuePress = async () => {

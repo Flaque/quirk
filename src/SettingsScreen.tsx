@@ -250,7 +250,7 @@ class SettingScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { historyButtonLabel, isReady } = this.state;
+    const { isReady } = this.state;
 
     return (
       <FadesIn
@@ -260,7 +260,7 @@ class SettingScreen extends React.Component<Props, State> {
         <ScrollView
           style={{
             backgroundColor: theme.lightOffwhite,
-            marginTop: Constants.statusBarHeight,
+            marginTop: Constants.statusBarHeight + 24,
             paddingTop: 24,
             height: "100%",
           }}
@@ -270,7 +270,7 @@ class SettingScreen extends React.Component<Props, State> {
               paddingBottom: 128,
             }}
           >
-            <StatusBar barStyle="dark-content" />
+            <StatusBar barStyle="dark-content" hidden={false} />
             <Row
               style={{
                 marginBottom: 22,

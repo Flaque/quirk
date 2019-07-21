@@ -1,12 +1,9 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createAppContainer } from "react-navigation";
 import {
-  CBT_LIST_SCREEN,
-  CBT_FORM_SCREEN,
   EXPLANATION_SCREEN,
   SETTING_SCREEN,
   CBT_ON_BOARDING_SCREEN,
   PAYMENT_SCREEN,
-  CBT_VIEW_SCREEN,
   LOCK_SCREEN,
   MAIN_SCREEN,
 } from "./src/screens";
@@ -19,6 +16,7 @@ import MainScreen from "./src/main";
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
 import TabBar from "./src/tabbar/TabBar";
+import OnboardingScreen from "./src/onboarding/OnboardingScreen";
 
 const App = createBottomTabNavigator(
   {
@@ -27,6 +25,7 @@ const App = createBottomTabNavigator(
     [EXPLANATION_SCREEN]: ExplanationScreen,
     [PAYMENT_SCREEN]: PaymentScreen,
     [LOCK_SCREEN]: LockScreen,
+    [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
   },
   {
     initialRouteName: PAYMENT_SCREEN,

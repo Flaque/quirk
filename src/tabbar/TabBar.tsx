@@ -9,6 +9,7 @@ import {
   EXPLANATION_SCREEN,
   PAYMENT_SCREEN,
   LOCK_SCREEN,
+  CBT_ON_BOARDING_SCREEN,
 } from "../screens";
 import haptic from "../haptic";
 import { Haptic } from "expo";
@@ -19,8 +20,12 @@ export default ({ navigation }: ScreenProps) => {
   const index = navigation.state.index;
   const tab = navigation.state.routes[index].key;
 
-  // Hide the tab bar in the payment and lock screens
-  if (tab === PAYMENT_SCREEN || tab === LOCK_SCREEN) {
+  // Hide the tab bar in the payment, lock screen, and onboarding
+  if (
+    tab === PAYMENT_SCREEN ||
+    tab === LOCK_SCREEN ||
+    tab === CBT_ON_BOARDING_SCREEN
+  ) {
     return null;
   }
 

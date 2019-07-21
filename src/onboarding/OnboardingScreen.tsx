@@ -17,7 +17,7 @@ import Constants from "expo-constants";
 import theme from "../theme";
 import haptic from "../haptic";
 import * as stats from "../stats";
-import { CBT_FORM_SCREEN } from "../screens";
+import { CBT_FORM_SCREEN, MAIN_SCREEN } from "../screens";
 import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
 import { FadesIn } from "../animations";
@@ -272,7 +272,7 @@ export default class extends React.Component<ScreenProps> {
   stopOnBoarding = () => {
     haptic.notification(Haptic.NotificationFeedbackType.Success);
     stats.endedOnboarding();
-    this.props.navigation.replace(CBT_FORM_SCREEN, {
+    this.props.navigation.navigate(MAIN_SCREEN, {
       fromOnboarding: true,
     });
   };
