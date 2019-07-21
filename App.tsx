@@ -10,17 +10,12 @@ import {
   LOCK_SCREEN,
   MAIN_SCREEN,
 } from "./src/screens";
-import CBTListScreen from "./src/list/CBTListScreen";
-import CBTFormScreen from "./src/form/FormScreen";
-import FinishedThoughtScreen from "./src/form/FinishedThoughtScreen";
 import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/SettingsScreen";
-import OnboardingScreen from "./src/onboarding/OnboardingScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
 import PaymentScreen from "./src/payments/PaymentScreen";
 import LockScreen from "./src/lock/LockScreen";
 import MainScreen from "./src/main";
-import { View, Text } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
 import TabBar from "./src/tabbar/TabBar";
