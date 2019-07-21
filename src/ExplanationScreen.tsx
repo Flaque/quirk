@@ -235,7 +235,6 @@ class ExplanationScreen extends React.Component<Props> {
               justifyContent: "space-between",
             }}
           >
-            <Header allowFontScaling={false}>quirk.</Header>
             <View
               style={{
                 display: "flex",
@@ -243,7 +242,7 @@ class ExplanationScreen extends React.Component<Props> {
                 alignItems: "center",
               }}
             >
-              {__DEV__ && (
+              {!__DEV__ && (
                 <View
                   style={{
                     marginRight: 8,

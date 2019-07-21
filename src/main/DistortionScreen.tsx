@@ -20,6 +20,7 @@ import * as stats from "../stats";
 import haptic from "../haptic";
 import { CHALLENGE_SCREEN, THOUGHT_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
+import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 
 export default class DistortionScreen extends React.Component<
   ScreenProps,
@@ -90,7 +91,7 @@ export default class DistortionScreen extends React.Component<
       <View
         style={{
           backgroundColor: theme.lightOffwhite,
-          flexDirection: "column",
+          flex: 1,
         }}
       >
         <ScrollView
@@ -158,8 +159,6 @@ export default class DistortionScreen extends React.Component<
             shadowOffset: { width: 0, height: 1 },
             shadowRadius: 10,
             shadowOpacity: 0.8,
-            flex: 1,
-            bottom: 25,
           }}
         >
           <GhostButton

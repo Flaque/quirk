@@ -53,6 +53,7 @@ export default class MainScreen extends React.Component<ScreenProps> {
   };
 
   navigateToViewerWithThought = (thought: SavedThought) => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.props.navigation.navigate(FINISHED_SCREEN, {
       thought,
     });

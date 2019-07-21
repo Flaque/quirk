@@ -15,7 +15,7 @@ import {
   ScrollView,
 } from "react-navigation";
 import { Paragraph, SubHeader, ActionButton } from "../ui";
-import { CBT_FORM_SCREEN, LOCK_SCREEN, MAIN_SCREEN } from "../screens";
+import { LOCK_SCREEN, MAIN_SCREEN } from "../screens";
 import theme from "../theme";
 import i18n from "../i18n";
 import { BallIndicator } from "react-native-indicators";
@@ -118,7 +118,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
     // Check if we should show a pincode
     const isLocked = await hasPincode();
     if (isLocked) {
-      this.props.navigation.replace(LOCK_SCREEN);
+      this.props.navigation.navigate(LOCK_SCREEN);
       return;
     }
 

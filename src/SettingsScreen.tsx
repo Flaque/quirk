@@ -339,38 +339,10 @@ class SettingScreen extends React.Component<Props, State> {
                 fillColor="#EDF0FC"
                 textColor={theme.darkBlue}
                 onPress={() => {
-                  this.props.navigation.push(LOCK_SCREEN, {
+                  this.props.navigation.navigate(LOCK_SCREEN, {
                     isSettingCode: true,
                   });
                 }}
-              />
-            </Row>
-
-            <Row
-              style={{
-                marginBottom: 22,
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SubHeader>*history button labels</SubHeader>
-              <Paragraph
-                style={{
-                  marginBottom: 16,
-                }}
-              >
-                By default, we set the buttons in the history screen to use the
-                Alternative Thought. This helps cement the thought as "changed."
-              </Paragraph>
-              <RoundedSelectorButton
-                title={"Alternative Thought"}
-                selected={historyButtonLabel === "alternative-thought"}
-                onPress={() => this.toggleHistoryButtonLabels()}
-              />
-              <RoundedSelectorButton
-                title={"Automatic Thought"}
-                selected={historyButtonLabel === "automatic-thought"}
-                onPress={() => this.toggleHistoryButtonLabels()}
               />
             </Row>
 

@@ -24,6 +24,8 @@ import {
 import { NavigationActions } from "react-navigation";
 import { StackActions } from "react-navigation";
 import { deleteExercise } from "../thoughtstore";
+import haptic from "../haptic";
+import { Haptic } from "expo";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -54,12 +56,14 @@ export default class FinishedScreen extends React.Component<
       actions: [NavigationActions.navigate({ routeName: THOUGHT_SCREEN })],
     });
     this.props.navigation.dispatch(reset);
+    haptic.notification(Haptic.NotificationFeedbackType.Success);
   };
 
   onDelete = async () => {
     const uuid = this.state.thought.uuid;
     await deleteExercise(uuid);
     this.onNext();
+    haptic.impact(Haptic.ImpactFeedbackStyle.Heavy);
   };
 
   render() {
@@ -69,6 +73,7 @@ export default class FinishedScreen extends React.Component<
           backgroundColor: theme.lightOffwhite,
           paddingTop: 24,
           marginTop: Constants.statusBarHeight,
+          flex: 1,
         }}
       >
         {this.state.thought && (
@@ -90,7 +95,11 @@ export default class FinishedScreen extends React.Component<
               <SubHeader>Your first thought</SubHeader>
               <GhostButtonWithGuts
                 borderColor={theme.lightGray}
-                onPress={() => {}}
+                onPress={() => {
+                  this.props.navigation.navigate(THOUGHT_SCREEN, {
+                    thought: this.state.thought,
+                  });
+                }}
               >
                 <Paragraph>{this.state.thought.automaticThought}</Paragraph>
               </GhostButtonWithGuts>
