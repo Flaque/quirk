@@ -17,7 +17,7 @@ import i18n from "../i18n";
 import * as stats from "../stats";
 import haptic from "../haptic";
 import { Haptic } from "expo";
-import { Thought } from "../thoughts";
+import { Thought, newThought } from "../thoughts";
 
 const MaxFadeIn = newFadesIn({
   maxOpacity: 0.5,
@@ -52,28 +52,33 @@ const CardPopsUp = newPopsUp({
   popUpScale: 1.1,
 });
 
-export default class ThoughtCard extends React.Component<{
-  style?: any;
-  onNext: (alternativeThought: string) => void;
-  initialThought?: Thought;
-}> {
-  state = {
-    shouldFadeInBackgroundOverlay: false,
-    view: "hidden",
-    alternativeThought: "",
-  };
-
+export default class ThoughtCard extends React.Component<
+  {
+    onNext: (thought: Thought) => void;
+    onFinish: (thought: Thought) => void;
+    onChange: (txt: string) => void;
+    thought: Thought;
+    isEditing: boolean;
+    style?: any;
+  },
+  {
+    shouldFadeInBackgroundOverlay: boolean;
+    view: "hidden" | "hiddenWiggle" | "peak" | "full";
+  }
+> {
   private textInputRef: React.RefObject<HTMLInputElement>;
 
   constructor(props) {
     super(props);
     this.textInputRef = React.createRef();
+
+    this.state = {
+      shouldFadeInBackgroundOverlay: false,
+      view: "hidden",
+    };
   }
 
   componentDidMount() {
-    if (this.props.initialThought) {
-    }
-
     setTimeout(() => {
       this.setState({ view: "hiddenWiggle" });
     }, 250);
@@ -103,7 +108,7 @@ export default class ThoughtCard extends React.Component<{
   };
 
   render() {
-    const { style } = this.props;
+    const { style, isEditing } = this.props;
     const { view, shouldFadeInBackgroundOverlay } = this.state;
 
     return (
@@ -144,14 +149,12 @@ export default class ThoughtCard extends React.Component<{
               style={textInputStyle}
               placeholderTextColor={textInputPlaceholderColor}
               placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
-              value={this.state.alternativeThought}
+              value={
+                this.props.thought ? this.props.thought.automaticThought : ""
+              }
               multiline={true}
               numberOfLines={6}
-              onChangeText={txt => {
-                this.setState({
-                  alternativeThought: txt,
-                });
-              }}
+              onChangeText={this.props.onChange}
               onFocus={() => {
                 this.setState({
                   view: "peak",
@@ -166,13 +169,25 @@ export default class ThoughtCard extends React.Component<{
                 justifyContent: "flex-end",
               }}
             >
-              <ActionButton
-                title={"Next"}
-                onPress={() => this.props.onNext(this.state.alternativeThought)}
-                style={{
-                  flex: 1,
-                }}
-              />
+              {isEditing ? (
+                <ActionButton
+                  title={"Finished"}
+                  onPress={() => {
+                    this.props.onFinish(this.props.thought);
+                  }}
+                  style={{
+                    flex: 1,
+                  }}
+                />
+              ) : (
+                <ActionButton
+                  title={"Next"}
+                  onPress={() => this.props.onNext(this.props.thought)}
+                  style={{
+                    flex: 1,
+                  }}
+                />
+              )}
             </Row>
           </CardPopsUp>
         </TouchableWithoutFeedback>

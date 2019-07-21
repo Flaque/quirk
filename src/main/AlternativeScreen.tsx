@@ -102,7 +102,7 @@ export default class AlternativeScreen extends React.Component<
               numberOfLines={6}
               autoFocus={true}
               onChangeText={this.onChange}
-              onBlur={() => stats.userFilledOutFormField("challenge")}
+              onBlur={() => stats.userFilledOutFormField("alternative")}
             />
 
             <Row

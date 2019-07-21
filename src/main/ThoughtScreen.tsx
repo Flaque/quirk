@@ -7,6 +7,7 @@ import {
   ThoughtGroup,
   groupThoughtsByDay,
   newThought,
+  Thought,
 } from "../thoughts";
 import { validThoughtGroup } from "../sanitize";
 import parseThoughts from "./parseThoughts";
@@ -19,20 +20,42 @@ import InvertibleScrollView from "react-native-invertible-scroll-view";
 import * as stats from "../stats";
 import Constants from "expo-constants";
 import theme from "../theme";
+import { get } from "lodash";
 
-export default class MainScreen extends React.Component<ScreenProps> {
+export default class MainScreen extends React.Component<
+  ScreenProps,
+  {
+    areExercisesLoaded: boolean;
+    hasCheckedEditing: boolean;
+    isEditing: boolean;
+    groups: ThoughtGroup[];
+    thought?: Thought;
+  }
+> {
   static navigationOptions = {
     header: null,
   };
 
   state = {
-    isReady: false,
-    shouldFadeInThoughts: false,
+    areExercisesLoaded: false,
+    hasCheckedEditing: false,
+    isEditing: false,
     groups: [],
+    thought: undefined,
   };
 
   componentDidMount() {
     this.loadExercises();
+
+    this.props.navigation.addListener("willFocus", args => {
+      const thought = get(args, "state.params.thought", newThought());
+      const isEditing = get(args, "state.params.isEditing", false);
+      this.setState({
+        thought,
+        isEditing,
+        hasCheckedEditing: true,
+      });
+    });
   }
 
   loadExercises = () => {
@@ -48,7 +71,7 @@ export default class MainScreen extends React.Component<ScreenProps> {
       .catch(console.error)
       .finally(() => {
         this.setState({
-          isReady: true,
+          areExercisesLoaded: true,
         });
       });
   };
@@ -60,20 +83,42 @@ export default class MainScreen extends React.Component<ScreenProps> {
     });
   };
 
-  navigateToDistortionScreenWithThought = async (automaticThought: string) => {
+  navigateToDistortionScreenWithThought = async (thought: Thought) => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     stats.thoughtRecorded();
 
-    const newbie = newThought();
-    newbie.automaticThought = automaticThought;
-    const savedThought = await saveExercise(newbie);
+    const savedThought = await saveExercise(thought);
     this.props.navigation.push(DISTORTION_SCREEN, {
       thought: savedThought,
     });
   };
 
+  onChangeAutomaticThought = (txt: string) => {
+    this.setState(prevState => {
+      if (!prevState.thought) {
+        return prevState;
+      }
+
+      prevState.thought.automaticThought = txt;
+      return prevState;
+    });
+  };
+
+  onFinishEditing = async (thought: Thought) => {
+    const savedThought = await saveExercise(thought);
+    this.props.navigation.push(FINISHED_SCREEN, {
+      thought: savedThought,
+    });
+  };
+
   render() {
-    const { groups, isReady, shouldFadeInThoughts } = this.state;
+    const {
+      groups,
+      areExercisesLoaded,
+      hasCheckedEditing,
+      thought,
+      isEditing,
+    } = this.state;
 
     return (
       <View
@@ -84,21 +129,29 @@ export default class MainScreen extends React.Component<ScreenProps> {
         }}
       >
         <StatusBar barStyle="dark-content" hidden={false} />
-        <ThoughtCard onNext={this.navigateToDistortionScreenWithThought} />
 
-        {isReady && (
-          <InvertibleScrollView
-            inverted
-            style={{
-              backgroundColor: theme.lightOffwhite,
-            }}
-          >
-            <ThoughtList
-              groups={groups}
-              historyButtonLabel={"alternative-thought"}
-              navigateToViewer={this.navigateToViewerWithThought}
+        {areExercisesLoaded && hasCheckedEditing && (
+          <>
+            <ThoughtCard
+              onNext={this.navigateToDistortionScreenWithThought}
+              thought={thought}
+              onChange={this.onChangeAutomaticThought}
+              isEditing={isEditing}
+              onFinish={this.onFinishEditing}
             />
-          </InvertibleScrollView>
+            <InvertibleScrollView
+              inverted
+              style={{
+                backgroundColor: theme.lightOffwhite,
+              }}
+            >
+              <ThoughtList
+                groups={groups}
+                historyButtonLabel={"alternative-thought"}
+                navigateToViewer={this.navigateToViewerWithThought}
+              />
+            </InvertibleScrollView>
+          </>
         )}
       </View>
     );
