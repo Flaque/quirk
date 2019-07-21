@@ -26,6 +26,7 @@ import { StackActions } from "react-navigation";
 import { deleteExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import { Haptic } from "expo";
+import dayjs from "dayjs";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -83,7 +84,11 @@ export default class FinishedScreen extends React.Component<
               }}
             >
               <MediumHeader>Summary of Thought</MediumHeader>
-              <HintHeader>{this.state.thought.createdAt.toString()}</HintHeader>
+              <HintHeader>
+                {dayjs(this.state.thought.createdAt.toString()).format(
+                  "D MMM YYYY, h:mm a"
+                )}
+              </HintHeader>
             </View>
 
             <View
