@@ -19,6 +19,7 @@ import InvertibleScrollView from "react-native-invertible-scroll-view";
 import * as stats from "../stats";
 import Constants from "expo-constants";
 import theme from "../theme";
+import { FadesIn } from "../animations";
 
 export default class MainScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -27,6 +28,7 @@ export default class MainScreen extends React.Component<ScreenProps> {
 
   state = {
     isReady: false,
+    shouldFadeInThoughts: false,
     groups: [],
   };
 
@@ -72,7 +74,7 @@ export default class MainScreen extends React.Component<ScreenProps> {
   };
 
   render() {
-    const { groups, isReady } = this.state;
+    const { groups, isReady, shouldFadeInThoughts } = this.state;
 
     return (
       <View

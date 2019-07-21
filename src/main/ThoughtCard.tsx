@@ -44,7 +44,7 @@ const BackgroundOverlay = ({ isVisible, onPress }) => (
   </TouchableWithoutFeedback>
 );
 
-export const THOUGHT_CARD_HIDDEN_HEIGHT = 256;
+export const THOUGHT_CARD_HIDDEN_HEIGHT = 278;
 
 const CardPopsUp = newPopsUp({
   fullHeight: Dimensions.get("screen").height * 0.8,
@@ -72,9 +72,12 @@ export default class ThoughtCard extends React.Component<{
   }
 
   componentDidMount() {
+    if (this.props.initialThought) {
+    }
+
     setTimeout(() => {
       this.setState({ view: "hiddenWiggle" });
-    }, 350);
+    }, 250);
   }
 
   popUp = () => {
