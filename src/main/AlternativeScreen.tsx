@@ -88,7 +88,7 @@ export default class AlternativeScreen extends React.Component<
       >
         {this.state.thought && (
           <>
-            <MediumHeader>Alternative thought</MediumHeader>
+            <MediumHeader> {i18n.t("alt_thought")}</MediumHeader>
             <HintHeader>
               Given this situation again, what could you think instead?
             </HintHeader>

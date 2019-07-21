@@ -92,7 +92,7 @@ export default class ChallengeScreen extends React.Component<
       >
         {this.state.thought && (
           <>
-            <MediumHeader>Challenge your thought</MediumHeader>
+            <MediumHeader>{i18n.t("challenge")}</MediumHeader>
             <HintHeader>
               In your own words, write out what about your thought is distorted.
             </HintHeader>

@@ -20,6 +20,7 @@ import * as stats from "../stats";
 import haptic from "../haptic";
 import { CHALLENGE_SCREEN, THOUGHT_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
+import i18n from "../i18n";
 
 export default class DistortionScreen extends React.Component<
   ScreenProps,
@@ -111,7 +112,9 @@ export default class DistortionScreen extends React.Component<
                     marginBottom: 18,
                   }}
                 >
-                  <MediumHeader>Cognitive Distortions</MediumHeader>
+                  <MediumHeader>
+                    {i18n.t("cbt_form.cog_distortion")}
+                  </MediumHeader>
                   <HintHeader>Is this thought logical?</HintHeader>
                 </View>
 

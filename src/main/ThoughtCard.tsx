@@ -140,7 +140,7 @@ export default class ThoughtCard extends React.Component<
             }}
             pose={this.state.view}
           >
-            <MediumHeader>Automatic Thought</MediumHeader>
+            <MediumHeader>{i18n.t("auto_thought")}</MediumHeader>
             <HintHeader>
               What's the situation and what's your first thought?
             </HintHeader>
