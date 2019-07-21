@@ -7,6 +7,7 @@ import {
   Linking,
   Dimensions,
   Alert,
+  AlertIOS,
 } from "react-native";
 import {
   NavigationScreenProp,
@@ -27,13 +28,14 @@ import {
   purchaseSubscription,
   restoreSubscription,
   isSubscribed,
+  alias,
 } from "./index";
 import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
 import { userSawApologyNotice, userStartedPayment } from "../stats";
-import { THOUGHT_SCREEN } from "../main/screens";
+import dayjs from "dayjs";
 
 const Container = props => (
   <ScrollView
@@ -238,8 +240,11 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
                 marginBottom: 28,
               }}
             >
-              Cancel before July 16 and nothing will be billed. No questions
-              asked.
+              Cancel before{" "}
+              {dayjs()
+                .add(1, "week")
+                .format("DD-MM-YYYY")}{" "}
+              and nothing will be billed. No questions asked.
             </Paragraph>
           </View>
 
@@ -312,7 +317,8 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               justifyContent: "flex-end",
               marginLeft: 32,
               marginRight: 32,
-              marginTop: 32,
+              marginTop: 16,
+              marginBottom: 32,
             }}
           >
             <SubHeader
@@ -352,12 +358,71 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
 
           <View
             style={{
+              justifyContent: "flex-end",
+              marginLeft: 32,
+              marginRight: 32,
+              marginBottom: 32,
+            }}
+          >
+            <SubHeader
+              style={{
+                fontSize: 18,
+              }}
+            >
+              What if I want to cancel?
+            </SubHeader>
+            <Paragraph
+              style={{
+                fontSize: 18,
+                marginBottom: 18,
+              }}
+            >
+              You control your subscription and cancel at anytime through the{" "}
+              {Platform.OS === "ios" ? "App Store" : "Google Play Store"}.
+            </Paragraph>
+            <ActionButton
+              flex={1}
+              title={"Cancelation Instructions"}
+              fillColor="#EDF0FC"
+              textColor={theme.darkBlue}
+              width={"100%"}
+              onPress={() => {
+                if (Platform.OS === "android") {
+                  Linking.openURL(
+                    "https://support.google.com/googleplay/answer/7018481"
+                  );
+                } else {
+                  Linking.openURL("https://support.apple.com/en-us/HT202039");
+                }
+              }}
+            />
+          </View>
+
+          {Platform.OS === "ios" && (
+            <View
+              style={{
+                marginBottom: 32,
+                marginLeft: 32,
+                marginRight: 32,
+              }}
+            >
+              <Paragraph
+                style={{
+                  color: theme.lightText,
+                }}
+              >
+                {i18n.t("payment.ios_explanation")}
+              </Paragraph>
+            </View>
+          )}
+
+          <View
+            style={{
               display: "flex",
               flexDirection: "row",
               marginLeft: 32,
               marginRight: 32,
               marginBottom: 16,
-              marginTop: 32,
               justifyContent: "space-between",
             }}
           >
@@ -403,7 +468,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               flexDirection: "row",
               marginLeft: 32,
               marginRight: 32,
-              marginBottom: 32,
+              marginBottom: 16,
               justifyContent: "space-between",
             }}
           >
@@ -423,18 +488,29 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
           {Platform.OS === "ios" && (
             <View
               style={{
-                marginBottom: 24,
+                display: "flex",
+                flexDirection: "row",
                 marginLeft: 32,
                 marginRight: 32,
+                marginBottom: 32,
+                justifyContent: "space-between",
               }}
             >
-              <Paragraph
-                style={{
-                  color: theme.lightText,
+              <ActionButton
+                flex={1}
+                title="Alias your Account"
+                fillColor="#EDF0FC"
+                textColor={theme.darkBlue}
+                onPress={() => {
+                  AlertIOS.prompt(
+                    "Enter your email",
+                    "This lets support know who you are",
+                    txt => {
+                      alias(txt);
+                    }
+                  );
                 }}
-              >
-                {i18n.t("payment.ios_explanation")}
-              </Paragraph>
+              />
             </View>
           )}
         </Container>

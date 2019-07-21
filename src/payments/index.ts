@@ -13,6 +13,7 @@ const getMainOffering = () => {
 };
 
 const isValidPurchaserInfo = (info: PurchaserInfo) => {
+  log("purchaserInfo", info);
   if (info.activeEntitlements === "undefined") {
     return false;
   }
@@ -33,17 +34,27 @@ export const getCurrentPurchasableSubscription = async (): Promise<Product> => {
 };
 
 export const isSubscribed = async (): Promise<boolean> => {
-  if (await isGrandfatheredIntoFreeSubscription()) {
-    return true;
-  }
+  try {
+    if (await isGrandfatheredIntoFreeSubscription()) {
+      return true;
+    }
 
-  const purchaserInfo = await Purchases.getPurchaserInfo();
-  return isValidPurchaserInfo(purchaserInfo);
+    const purchaserInfo = await Purchases.getPurchaserInfo();
+    return isValidPurchaserInfo(purchaserInfo);
+  } catch (err) {
+    log("User let in on error", err);
+    Sentry.captureException(err);
+    return true; // TODO set this to false once you figure out the error
+  }
 };
 
 export const latestExpirationDate = async (): Promise<string> => {
   const purchaserInfo = await Purchases.getPurchaserInfo();
   return purchaserInfo.latestExpirationDate;
+};
+
+export const alias = (txt: string) => {
+  Purchases.createAlias(txt);
 };
 
 /**
