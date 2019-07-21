@@ -19,6 +19,8 @@ import * as stats from "../stats";
 import theme from "../theme";
 import { FINISHED_SCREEN, CHALLENGE_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
+import haptic from "../haptic";
+import { Haptic } from "expo";
 
 export default class AlternativeScreen extends React.Component<
   ScreenProps,
@@ -55,6 +57,7 @@ export default class AlternativeScreen extends React.Component<
   };
 
   onNext = async () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     const thought = await saveExercise(this.state.thought);
     this.props.navigation.push(FINISHED_SCREEN, {
       thought,

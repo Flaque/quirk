@@ -19,6 +19,8 @@ import { Thought } from "../thoughts";
 import { ALTERNATIVE_SCREEN, DISTORTION_SCREEN } from "./screens";
 import { TextInput } from "react-native";
 import { saveExercise } from "../thoughtstore";
+import haptic from "../haptic";
+import { Haptic } from "expo";
 
 export default class ChallengeScreen extends React.Component<
   ScreenProps,
@@ -55,6 +57,7 @@ export default class ChallengeScreen extends React.Component<
   };
 
   onNext = async () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     const thought = await saveExercise(this.state.thought);
     this.props.navigation.push(ALTERNATIVE_SCREEN, {
       thought,
