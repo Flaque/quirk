@@ -250,7 +250,7 @@ class SettingScreen extends React.Component<Props, State> {
   };
 
   render() {
-    const { historyButtonLabel, isReady } = this.state;
+    const { isReady } = this.state;
 
     return (
       <FadesIn
@@ -260,7 +260,7 @@ class SettingScreen extends React.Component<Props, State> {
         <ScrollView
           style={{
             backgroundColor: theme.lightOffwhite,
-            marginTop: Constants.statusBarHeight,
+            marginTop: Constants.statusBarHeight + 24,
             paddingTop: 24,
             height: "100%",
           }}
@@ -270,16 +270,7 @@ class SettingScreen extends React.Component<Props, State> {
               paddingBottom: 128,
             }}
           >
-            <StatusBar barStyle="dark-content" />
-            <Row style={{ marginBottom: 22 }}>
-              <Header>quirk*</Header>
-              <IconButton
-                featherIconName={"x"}
-                accessibilityLabel={i18n.t("accessibility.close_button")}
-                onPress={() => this.navigateToList()}
-              />
-            </Row>
-
+            <StatusBar barStyle="dark-content" hidden={false} />
             <Row
               style={{
                 marginBottom: 22,
@@ -348,38 +339,10 @@ class SettingScreen extends React.Component<Props, State> {
                 fillColor="#EDF0FC"
                 textColor={theme.darkBlue}
                 onPress={() => {
-                  this.props.navigation.push(LOCK_SCREEN, {
+                  this.props.navigation.navigate(LOCK_SCREEN, {
                     isSettingCode: true,
                   });
                 }}
-              />
-            </Row>
-
-            <Row
-              style={{
-                marginBottom: 22,
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SubHeader>*history button labels</SubHeader>
-              <Paragraph
-                style={{
-                  marginBottom: 16,
-                }}
-              >
-                By default, we set the buttons in the history screen to use the
-                Alternative Thought. This helps cement the thought as "changed."
-              </Paragraph>
-              <RoundedSelectorButton
-                title={"Alternative Thought"}
-                selected={historyButtonLabel === "alternative-thought"}
-                onPress={() => this.toggleHistoryButtonLabels()}
-              />
-              <RoundedSelectorButton
-                title={"Automatic Thought"}
-                selected={historyButtonLabel === "automatic-thought"}
-                onPress={() => this.toggleHistoryButtonLabels()}
               />
             </Row>
 

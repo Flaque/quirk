@@ -234,6 +234,22 @@ export function userPromptedForReviewWhenSettingCode() {
 }
 
 /**
+ * Effectiveness metrics
+ */
+
+export function userFeltBetter() {
+  Segment.track("user_felt_better");
+}
+
+export function userFeltWorse() {
+  Segment.track("user_felt_worse");
+}
+
+export function userFeltTheSame() {
+  Segment.track("user_felt_the_same");
+}
+
+/**
  * Basically production logs
  * @param properties
  */

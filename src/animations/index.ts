@@ -1,8 +1,8 @@
 import posed from "react-native-pose";
 
 export const FadesIn = posed.View({
-  visible: { opacity: 1 },
-  hidden: { opacity: 0 },
+  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: -10 },
 });
 
 export const BouncyBigOnActive = posed.View({
@@ -10,3 +10,26 @@ export const BouncyBigOnActive = posed.View({
   inactive: { scale: 0.5 },
   upcoming: { y: -24 },
 });
+
+export const newFadesIn = ({ maxOpacity }) =>
+  posed.View({
+    visible: { opacity: maxOpacity },
+    hidden: { opacity: 0 },
+  });
+
+export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
+  posed.View({
+    peak: {
+      height: fullHeight * popUpScale,
+      transition: { type: "spring", duration: 200 },
+    },
+    full: {
+      height: fullHeight,
+      transition: { type: "spring", stiffness: 150 },
+    },
+    hiddenWiggle: {
+      height: hiddenHeight * 1,
+      transition: { type: "spring", stiffness: 150 },
+    },
+    hidden: { height: hiddenHeight * 0.8 },
+  });

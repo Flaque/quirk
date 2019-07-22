@@ -11,7 +11,7 @@ import * as Haptic from "expo-haptics";
 import Constants from "expo-constants";
 import { FadesIn, BouncyBigOnActive } from "../animations";
 import { isCorrectPincode, setPincode } from "./lockstore";
-import { CBT_FORM_SCREEN } from "../screens";
+import { CBT_FORM_SCREEN, MAIN_SCREEN } from "../screens";
 import { get } from "lodash";
 import haptic from "../haptic";
 import { userSetPincode, userPromptedForReviewWhenSettingCode } from "../stats";
@@ -124,7 +124,7 @@ export default class extends React.Component<
       userSetPincode();
       await setPincode(this.state.code);
       haptic.notification(Haptic.NotificationFeedbackType.Success);
-      this.props.navigation.replace(CBT_FORM_SCREEN);
+      this.props.navigation.navigate(MAIN_SCREEN);
 
       // After they set a pincode, mayyyybe they like the app enough to give it a review?
       if (Platform.OS === "ios" && StoreReview.isAvailable) {
@@ -136,7 +136,7 @@ export default class extends React.Component<
     const isGood = await isCorrectPincode(this.state.code);
     if (isGood) {
       haptic.notification(Haptic.NotificationFeedbackType.Success);
-      this.props.navigation.replace(CBT_FORM_SCREEN);
+      this.props.navigation.navigate(MAIN_SCREEN);
     } else {
       this.setState({
         code: "",
@@ -168,7 +168,7 @@ export default class extends React.Component<
         }}
         pose={this.state.isReady ? "visible" : "hidden"}
       >
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="dark-content" hidden={false} />
         <Container
           style={{
             flex: 1,

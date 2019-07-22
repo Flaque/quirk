@@ -84,9 +84,6 @@ export const restoreSubscription = async (): Promise<void> => {
     await Purchases.restoreTransactions();
   } catch (err) {
     log("Error", err);
-    Sentry.captureBreadcrumb({
-      message: "AHHH",
-    });
     Sentry.captureException(err);
   }
 };

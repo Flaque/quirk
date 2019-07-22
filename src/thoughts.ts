@@ -5,6 +5,7 @@ export interface Thought {
   alternativeThought: string;
   cognitiveDistortions: CognitiveDistortion[];
   challenge: string;
+  immediateCheckup?: "better" | "worse" | "same";
 }
 
 export interface SavedThought extends Thought {

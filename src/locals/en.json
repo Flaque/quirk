@@ -81,13 +81,13 @@
   "auto_thought": "Automatic Thought",
   "cog_distortion": "Select any distortions that apply.",
   "challenge": "Challenge the thought.",
-  "alt_thought": "Write an alternative thought.",
+  "alt_thought": "Alternative Thought",
   "cbt_form": {
     "edit": "Edit",
     "new": "New",
     "save": "Save",
     "auto_thought_placeholder": "ex: 'The plane might crash'",
-    "cog_distortion": "Cognitive Distortion",
+    "cog_distortion": "Cognitive Distortions",
     "challenged": "Challenge",
     "changed_placeholder": "It might not be true that...",
     "alt_thought_placeholder": "What could we think instead?"

@@ -9,6 +9,7 @@ export const textInputStyle = {
   fontSize: 16,
   borderColor: theme.lightGray,
   borderWidth: 1,
+  borderBottomWidth: 2,
   color: theme.darkText,
   textAlignVertical: "top",
 };

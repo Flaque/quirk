@@ -16,7 +16,7 @@ import {
   ScrollView,
 } from "react-navigation";
 import { Paragraph, SubHeader, ActionButton } from "../ui";
-import { CBT_FORM_SCREEN, LOCK_SCREEN } from "../screens";
+import { LOCK_SCREEN, MAIN_SCREEN, CBT_ON_BOARDING_SCREEN } from "../screens";
 import theme from "../theme";
 import i18n from "../i18n";
 import { BallIndicator } from "react-native-indicators";
@@ -28,7 +28,7 @@ import {
   purchaseSubscription,
   restoreSubscription,
   isSubscribed,
-  identify,
+  alias,
 } from "./index";
 import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
@@ -36,6 +36,7 @@ import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
 import { userSawApologyNotice, userStartedPayment } from "../stats";
 import dayjs from "dayjs";
+import { getIsExistingUser } from "../thoughtstore";
 
 const Container = props => (
   <ScrollView
@@ -120,14 +121,17 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
     // Check if we should show a pincode
     const isLocked = await hasPincode();
     if (isLocked) {
-      this.props.navigation.replace(LOCK_SCREEN);
+      this.props.navigation.navigate(LOCK_SCREEN);
+      return;
+    }
+
+    if (await getIsExistingUser()) {
+      this.props.navigation.navigate(MAIN_SCREEN);
       return;
     }
 
     // We replace here because you shouldn't be able to go "back" to this screen
-    this.props.navigation.replace(CBT_FORM_SCREEN, {
-      thought: false,
-    });
+    this.props.navigation.navigate(CBT_ON_BOARDING_SCREEN);
   };
 
   onContinuePress = async () => {
@@ -508,7 +512,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
                     "Enter your email",
                     "This lets support know who you are",
                     txt => {
-                      identify(txt);
+                      alias(txt);
                     }
                   );
                 }}
