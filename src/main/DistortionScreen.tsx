@@ -194,7 +194,7 @@ export default class DistortionScreen extends React.Component<
                   flex: 1,
                 }}
                 onPress={() => {
-                  this.props.navigation.navigate(CHALLENGE_SCREEN, {
+                  this.props.navigation.navigate(THOUGHT_SCREEN, {
                     thought: this.state.thought,
                   });
                 }}
