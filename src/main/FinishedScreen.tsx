@@ -2,7 +2,6 @@ import React from "react";
 import {
   MediumHeader,
   HintHeader,
-  Container,
   GhostButtonWithGuts,
   Paragraph,
   SubHeader,
