@@ -1,4 +1,5 @@
 import posed from "react-native-pose";
+import { Platform } from "react-native";
 
 export const FadesIn = posed.View({
   visible: { opacity: 1, y: 0 },
@@ -20,7 +21,8 @@ export const newFadesIn = ({ maxOpacity }) =>
 export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
   posed.View({
     peak: {
-      height: fullHeight * popUpScale,
+      height:
+        Platform.OS === "ios" ? fullHeight * popUpScale : fullHeight * 0.6,
       transition: { type: "spring", duration: 200 },
     },
     full: {
@@ -29,7 +31,7 @@ export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
     },
     hiddenWiggle: {
       height: hiddenHeight * 1,
-      transition: { type: "spring", stiffness: 150 },
+      transition: { type: "spring", stiffness: 100 },
     },
     hidden: { height: hiddenHeight * 0.8 },
   });

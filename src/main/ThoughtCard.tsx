@@ -1,8 +1,15 @@
 import React from "react";
-import { Dimensions, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  Dimensions,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
+  KeyboardAvoidingView,
+  View,
+} from "react-native";
 import theme from "../theme";
-import { MediumHeader, HintHeader, ActionButton, Row } from "../ui";
-import { newPopsUp, newFadesIn } from "../animations";
+import { MediumHeader, HintHeader, ActionButton, Row, IconButton } from "../ui";
+import { newPopsUp, newFadesIn, FadesIn } from "../animations";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import { TextInput } from "react-native-gesture-handler";
 import { textInputStyle } from "./textInputStyle";
@@ -79,11 +86,11 @@ export default class ThoughtCard extends React.Component<
   }
 
   popUp = () => {
+    this.textInputRef.current.focus();
     this.setState({
       view: "peak",
     });
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    this.textInputRef.current.focus();
 
     // Trigger the fade-in effect of the background overlay
     setTimeout(() => {
@@ -94,9 +101,10 @@ export default class ThoughtCard extends React.Component<
   };
 
   popDown = () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     Keyboard.dismiss();
     this.setState({
-      view: "hidden",
+      view: "hiddenWiggle",
       shouldFadeInBackgroundOverlay: false,
     });
   };
@@ -130,59 +138,86 @@ export default class ThoughtCard extends React.Component<
               shadowOpacity: 0.8,
               opacity: 1,
               zIndex: 99,
+              flex: 1,
               ...style,
             }}
             pose={this.state.view}
           >
-            <MediumHeader>{i18n.t("auto_thought")}</MediumHeader>
-            <HintHeader>
-              What's the situation and what's your first thought?
-            </HintHeader>
-            <TextInput
-              ref={this.textInputRef}
-              style={textInputStyle}
-              placeholderTextColor={textInputPlaceholderColor}
-              placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
-              value={
-                this.props.thought ? this.props.thought.automaticThought : ""
-              }
-              multiline={true}
-              numberOfLines={6}
-              onChangeText={this.props.onChange}
-              onFocus={() => {
-                this.setState({
-                  view: "peak",
-                });
-              }}
-              onBlur={() => stats.userFilledOutFormField("automatic")}
-            />
+            <KeyboardAvoidingView>
+              <Row>
+                <View
+                  style={{
+                    flex: 1,
+                  }}
+                >
+                  <MediumHeader>{i18n.t("auto_thought")}</MediumHeader>
+                  <HintHeader>
+                    What's the situation and what's your first thought?
+                  </HintHeader>
+                </View>
 
-            <Row
-              style={{
-                marginTop: 24,
-                justifyContent: "flex-end",
-              }}
-            >
-              {isEditing ? (
-                <ActionButton
-                  title={"Finished"}
-                  onPress={() => {
-                    this.props.onFinish(this.props.thought);
-                  }}
-                  style={{
-                    flex: 1,
-                  }}
-                />
-              ) : (
-                <ActionButton
-                  title={"Next"}
-                  onPress={() => this.props.onNext(this.props.thought)}
-                  style={{
-                    flex: 1,
-                  }}
-                />
-              )}
-            </Row>
+                <FadesIn
+                  pose={
+                    view === "peak" || view === "full" ? "visible" : "hidden"
+                  }
+                >
+                  <IconButton
+                    style={{
+                      alignSelf: "flex-start",
+                      marginLeft: 24,
+                    }}
+                    accessibilityLabel={"close"}
+                    featherIconName="x"
+                    onPress={this.popDown}
+                  />
+                </FadesIn>
+              </Row>
+              <TextInput
+                ref={this.textInputRef}
+                style={textInputStyle}
+                placeholderTextColor={textInputPlaceholderColor}
+                placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
+                value={
+                  this.props.thought ? this.props.thought.automaticThought : ""
+                }
+                multiline={true}
+                numberOfLines={6}
+                onChangeText={this.props.onChange}
+                onFocus={() => {
+                  this.setState({
+                    view: "peak",
+                  });
+                }}
+                onBlur={() => stats.userFilledOutFormField("automatic")}
+              />
+
+              <Row
+                style={{
+                  marginTop: 24,
+                  justifyContent: "flex-end",
+                }}
+              >
+                {isEditing ? (
+                  <ActionButton
+                    title={"Finished"}
+                    onPress={() => {
+                      this.props.onFinish(this.props.thought);
+                    }}
+                    style={{
+                      flex: 1,
+                    }}
+                  />
+                ) : (
+                  <ActionButton
+                    title={"Next"}
+                    onPress={() => this.props.onNext(this.props.thought)}
+                    style={{
+                      flex: 1,
+                    }}
+                  />
+                )}
+              </Row>
+            </KeyboardAvoidingView>
           </CardPopsUp>
         </TouchableWithoutFeedback>
       </>
