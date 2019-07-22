@@ -20,6 +20,7 @@ import {
   THOUGHT_SCREEN,
   CHALLENGE_SCREEN,
   ALTERNATIVE_SCREEN,
+  DISTORTION_SCREEN,
 } from "./screens";
 import { NavigationActions } from "react-navigation";
 import { StackActions } from "react-navigation";
@@ -27,6 +28,7 @@ import { deleteExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import { Haptic } from "expo";
 import dayjs from "dayjs";
+import EmojiList from "./EmojiList";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -116,6 +118,21 @@ export default class FinishedScreen extends React.Component<
               }}
             >
               <SubHeader>How you challenged it</SubHeader>
+              <GhostButtonWithGuts
+                borderColor={theme.lightGray}
+                onPress={() => {
+                  this.props.navigation.push(DISTORTION_SCREEN, {
+                    thought: this.state.thought,
+                    isEditing: true,
+                  });
+                }}
+                style={{
+                  marginBottom: 6,
+                }}
+              >
+                <EmojiList thought={this.state.thought} />
+              </GhostButtonWithGuts>
+
               <GhostButtonWithGuts
                 borderColor={theme.lightGray}
                 onPress={() => {

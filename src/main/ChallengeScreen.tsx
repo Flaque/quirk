@@ -9,7 +9,7 @@ import {
   Container,
 } from "../ui";
 import { textInputStyle } from "./textInputStyle";
-import { textInputPlaceholderColor } from "../form/textInputStyle";
+import { textInputPlaceholderColor } from "./textInputStyle";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import ScreenProps from "../ScreenProps";
@@ -94,7 +94,8 @@ export default class ChallengeScreen extends React.Component<
           <>
             <MediumHeader>{i18n.t("challenge")}</MediumHeader>
             <HintHeader>
-              In your own words, write out what about your thought is distorted.
+              What could you be wrong about? Is there something you don't have
+              enough evidence for?
             </HintHeader>
 
             <TextInput

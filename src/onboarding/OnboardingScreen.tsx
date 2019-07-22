@@ -9,7 +9,7 @@ import {
 } from "react-navigation";
 import { recordScreenCallOnFocus } from "../navigation";
 import Carousel, { Pagination } from "react-native-snap-carousel";
-import { sliderWidth, itemWidth } from "../form/sizes";
+import { sliderWidth, itemWidth } from "./sizes";
 import { View, Image, Linking, Alert, Platform } from "react-native";
 import { Header, Container, Paragraph, ActionButton, Row } from "../ui";
 import * as Haptic from "expo-haptics";
@@ -17,7 +17,7 @@ import Constants from "expo-constants";
 import theme from "../theme";
 import haptic from "../haptic";
 import * as stats from "../stats";
-import { CBT_FORM_SCREEN, MAIN_SCREEN } from "../screens";
+import { MAIN_SCREEN } from "../screens";
 import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
 import { FadesIn } from "../animations";

@@ -8,6 +8,7 @@ import { View, Text } from "react-native";
 import { take } from "lodash";
 import { emojiForSlug } from "../distortions";
 import { Feather } from "@expo/vector-icons";
+import EmojiList from "./EmojiList";
 
 export default ({
   thought,
@@ -58,18 +59,7 @@ export default ({
         borderRadius: 8,
       }}
     >
-      <Paragraph>
-        {take(
-          thought.cognitiveDistortions
-            .filter(n => n) // Filters out any nulls or undefineds which can crop up
-            .filter(distortion => distortion.selected)
-            .map(dist => emojiForSlug(dist.slug)),
-          8 // only take a max of 8
-        )
-          .filter(n => n)
-          .join(" ")
-          .trim()}
-      </Paragraph>
+      <EmojiList thought={thought} />
     </View>
     {thought.immediateCheckup === "better" && (
       <View

@@ -12,7 +12,7 @@ import { newPopsUp, newFadesIn } from "../animations";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import { TextInput } from "react-native-gesture-handler";
 import { textInputStyle } from "./textInputStyle";
-import { textInputPlaceholderColor } from "../form/textInputStyle";
+import { textInputPlaceholderColor } from "./textInputStyle";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import haptic from "../haptic";

@@ -12,7 +12,7 @@ import Constants from "expo-constants";
 import { Thought } from "../thoughts";
 import { get } from "lodash";
 import { textInputStyle } from "./textInputStyle";
-import { textInputPlaceholderColor } from "../form/textInputStyle";
+import { textInputPlaceholderColor } from "./textInputStyle";
 import { TextInput } from "react-native";
 import i18n from "../i18n";
 import * as stats from "../stats";
@@ -88,7 +88,7 @@ export default class AlternativeScreen extends React.Component<
       >
         {this.state.thought && (
           <>
-            <MediumHeader> {i18n.t("alt_thought")}</MediumHeader>
+            <MediumHeader>{i18n.t("alt_thought")}</MediumHeader>
             <HintHeader>
               Given this situation again, what could you think instead?
             </HintHeader>
