@@ -243,7 +243,7 @@ class ExplanationScreen extends React.Component<Props> {
                 alignItems: "center",
               }}
             >
-              {!__DEV__ && (
+              {__DEV__ && (
                 <View
                   style={{
                     marginRight: 8,
