@@ -1,13 +1,7 @@
 import React from "react";
 import { Dimensions, TouchableWithoutFeedback, Keyboard } from "react-native";
 import theme from "../theme";
-import {
-  MediumHeader,
-  HintHeader,
-  ActionButton,
-  Row,
-  GhostButton,
-} from "../ui";
+import { MediumHeader, HintHeader, ActionButton, Row } from "../ui";
 import { newPopsUp, newFadesIn } from "../animations";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import { TextInput } from "react-native-gesture-handler";
@@ -17,7 +11,7 @@ import i18n from "../i18n";
 import * as stats from "../stats";
 import haptic from "../haptic";
 import { Haptic } from "expo";
-import { Thought, newThought } from "../thoughts";
+import { Thought } from "../thoughts";
 
 const MaxFadeIn = newFadesIn({
   maxOpacity: 0.5,

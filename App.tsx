@@ -28,7 +28,7 @@ const App = createBottomTabNavigator(
     [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
   },
   {
-    initialRouteName: PAYMENT_SCREEN,
+    initialRouteName: MAIN_SCREEN,
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },

@@ -1,7 +1,8 @@
 import theme from "../theme";
+import { Dimensions } from "react-native";
 
 export const textInputStyle = {
-  height: 156,
+  height: Dimensions.get("screen").height * 0.15,
   backgroundColor: "white",
   padding: 12,
   paddingTop: 14,

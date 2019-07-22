@@ -22,13 +22,14 @@ import {
   ALTERNATIVE_SCREEN,
   DISTORTION_SCREEN,
 } from "./screens";
-import { NavigationActions } from "react-navigation";
+import { NavigationActions, ScrollView } from "react-navigation";
 import { StackActions } from "react-navigation";
 import { deleteExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import { Haptic } from "expo";
 import dayjs from "dayjs";
 import EmojiList from "./EmojiList";
+import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -71,15 +72,21 @@ export default class FinishedScreen extends React.Component<
 
   render() {
     return (
-      <Container
+      <ScrollView
         style={{
           backgroundColor: theme.lightOffwhite,
           paddingTop: Constants.statusBarHeight + 24,
-          flex: 1,
+          paddingLeft: 24,
+          paddingRight: 24,
+          paddingBottom: 50,
         }}
       >
         {this.state.thought && (
-          <>
+          <View
+            style={{
+              paddingBottom: 50 + TAB_BAR_HEIGHT,
+            }}
+          >
             <View
               style={{
                 marginBottom: 18,
@@ -200,9 +207,9 @@ export default class FinishedScreen extends React.Component<
                 }}
               />
             </Row>
-          </>
+          </View>
         )}
-      </Container>
+      </ScrollView>
     );
   }
 }
