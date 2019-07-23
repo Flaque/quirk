@@ -316,6 +316,7 @@ export default class extends React.Component<ScreenProps> {
           alignItems: "center",
           flex: 1,
           paddingBottom: 0,
+          backgroundColor: "white",
         }}
       >
         <FadesIn pose={this.state.isReady ? "visible" : "hidden"}>

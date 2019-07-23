@@ -3,7 +3,6 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
   Keyboard,
-  Platform,
   KeyboardAvoidingView,
   View,
 } from "react-native";
@@ -48,7 +47,7 @@ const BackgroundOverlay = ({ isVisible, onPress }) => (
 export const THOUGHT_CARD_HIDDEN_HEIGHT = 278;
 
 const CardPopsUp = newPopsUp({
-  fullHeight: Dimensions.get("screen").height * 0.8,
+  fullHeight: Dimensions.get("screen").height * 0.85,
   hiddenHeight: THOUGHT_CARD_HIDDEN_HEIGHT,
   popUpScale: 1.1,
 });
