@@ -4,7 +4,7 @@ import { ScreenProps } from "react-navigation";
 import { Container, MediumHeader, GhostButton } from "../ui";
 import Constants from "expo-constants";
 import theme from "../theme";
-import { StatusBar } from "react-native";
+import { StatusBar, Platform } from "react-native";
 import * as stats from "../stats";
 import { FINISHED_SCREEN } from "./screens";
 import { get } from "lodash";
@@ -43,12 +43,15 @@ export default class FeelingScreen extends React.Component<
     haptic.selection();
     const thought = await this.saveCheckup("better");
 
-    // We load this BEFORE navigating so there's no weird lag
-    const numPreviousThoughts = await countThoughts();
-    if (numPreviousThoughts > 3) {
-      // tfw when your function calls are anime-weapon-size
-      stats.userPromptedForReviewWhenRecordingPositiveThought();
-      StoreReview.requestReview();
+    if (Platform.OS === "ios") {
+      // We load this BEFORE navigating so there's no weird lag
+      const numPreviousThoughts = await countThoughts();
+      if (numPreviousThoughts > 3) {
+        // tfw when your function calls are anime-weapon-size
+        stats.userPromptedForReviewWhenRecordingPositiveThought();
+
+        StoreReview.requestReview();
+      }
     }
 
     stats.userFeltBetter();
