@@ -45,7 +45,9 @@ export default class FeelingScreen extends React.Component<
 
     // We load this BEFORE navigating so there's no weird lag
     const numPreviousThoughts = await countThoughts();
-    if (numPreviousThoughts > 2) {
+    if (numPreviousThoughts > 3) {
+      // tfw when your function calls are anime-weapon-size
+      stats.userPromptedForReviewWhenRecordingPositiveThought();
       StoreReview.requestReview();
     }
 

@@ -233,6 +233,10 @@ export function userPromptedForReviewWhenSettingCode() {
   Segment.track("user_prompted_for_review_when_setting_code");
 }
 
+export function userPromptedForReviewWhenRecordingPositiveThought() {
+  Segment.track("user_prompted_for_review_when_recording_positive_thought");
+}
+
 /**
  * Effectiveness metrics
  */
