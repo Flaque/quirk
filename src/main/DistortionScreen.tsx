@@ -21,7 +21,7 @@ import haptic from "../haptic";
 import { CHALLENGE_SCREEN, THOUGHT_SCREEN, FINISHED_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
 import i18n from "../i18n";
-import { Haptic } from "expo";
+import * as Haptic from "expo-haptics";
 
 export default class DistortionScreen extends React.Component<
   ScreenProps,

@@ -8,8 +8,9 @@ import { StatusBar } from "react-native";
 import * as stats from "../stats";
 import { FINISHED_SCREEN } from "./screens";
 import { get } from "lodash";
-import { saveExercise } from "../thoughtstore";
+import { saveExercise, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
+import * as StoreReview from "react-native-store-review";
 
 export default class FeelingScreen extends React.Component<
   ScreenProps,
@@ -41,6 +42,12 @@ export default class FeelingScreen extends React.Component<
   onFeltBetter = async () => {
     haptic.selection();
     const thought = await this.saveCheckup("better");
+
+    // We load this BEFORE navigating so there's no weird lag
+    const numPreviousThoughts = await countThoughts();
+    if (numPreviousThoughts > 2) {
+      StoreReview.requestReview();
+    }
 
     stats.userFeltBetter();
     this.props.navigation.navigate(FINISHED_SCREEN, {

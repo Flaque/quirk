@@ -9,7 +9,7 @@ function fixTimestamps(json): SavedThought {
     ...json,
   };
 }
-export default function(data) {
+export default function(data): SavedThought[] {
   return data
     .map(([_, value]) => JSON.parse(value))
     .filter(n => n) // Worst case scenario, if bad data gets in we don't show it.

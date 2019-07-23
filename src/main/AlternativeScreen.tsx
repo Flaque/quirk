@@ -20,7 +20,7 @@ import theme from "../theme";
 import { CHALLENGE_SCREEN, FEELING_SCREEN, FINISHED_SCREEN } from "./screens";
 import { saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
-import { Haptic } from "expo";
+import * as Haptic from "expo-haptics";
 
 export default class AlternativeScreen extends React.Component<
   ScreenProps,

@@ -25,7 +25,7 @@ import { NavigationActions, ScrollView } from "react-navigation";
 import { StackActions } from "react-navigation";
 import { deleteExercise } from "../thoughtstore";
 import haptic from "../haptic";
-import { Haptic } from "expo";
+import * as Haptic from "expo-haptics";
 import dayjs from "dayjs";
 import EmojiList from "./EmojiList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";

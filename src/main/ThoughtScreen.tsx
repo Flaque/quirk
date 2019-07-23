@@ -20,7 +20,7 @@ import ThoughtList from "./ThoughtList";
 import ThoughtCard from "./ThoughtCard";
 import { DISTORTION_SCREEN, FINISHED_SCREEN } from "./screens";
 import haptic from "../haptic";
-import { Haptic } from "expo";
+import * as Haptic from "expo-haptics";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
 import * as stats from "../stats";
 import Constants from "expo-constants";

@@ -16,7 +16,8 @@ import { textInputPlaceholderColor } from "./textInputStyle";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import haptic from "../haptic";
-import { Haptic } from "expo";
+import * as Haptic from "expo-haptics";
+
 import { Thought } from "../thoughts";
 
 const MaxFadeIn = newFadesIn({

@@ -12,7 +12,7 @@ import {
   CBT_ON_BOARDING_SCREEN,
 } from "../screens";
 import haptic from "../haptic";
-import { Haptic } from "expo";
+import * as Haptic from "expo-haptics";
 import { Platform } from "@unimodules/core";
 
 export const TAB_BAR_HEIGHT = 76;

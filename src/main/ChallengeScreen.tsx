@@ -24,7 +24,7 @@ import {
 import { TextInput } from "react-native";
 import { saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
-import { Haptic } from "expo";
+import * as Haptic from "expo-haptics";
 
 export default class ChallengeScreen extends React.Component<
   ScreenProps,
