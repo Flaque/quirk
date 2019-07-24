@@ -1,11 +1,11 @@
 import { createStackNavigator } from "react-navigation";
-import { INDEX_LEARN_SCREEN, DISTORTION_LEARN_SCREEN } from "./screens";
-import DistortionLearnScreen from "./DistortionLearnScreen";
+import { INDEX_LEARN_SCREEN, ARTICLE_SCREEN } from "./screens";
+import ArticleScreen from "./ArticleScreen";
 import IndexLearnScreen from "./IndexLearnScreen";
 
 export default createStackNavigator(
   {
-    [DISTORTION_LEARN_SCREEN]: DistortionLearnScreen,
+    [ARTICLE_SCREEN]: ArticleScreen,
     [INDEX_LEARN_SCREEN]: IndexLearnScreen,
   },
   {

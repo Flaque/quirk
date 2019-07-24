@@ -7,7 +7,6 @@ import {
   LOCK_SCREEN,
   MAIN_SCREEN,
 } from "./src/screens";
-import ExplanationScreen from "./src/ExplanationScreen";
 import SettingScreen from "./src/SettingsScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
 import PaymentScreen from "./src/payments/PaymentScreen";
@@ -17,12 +16,13 @@ import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
 import TabBar from "./src/tabbar/TabBar";
 import OnboardingScreen from "./src/onboarding/OnboardingScreen";
+import IndexLearnScreen from "./src/learn";
 
 const App = createBottomTabNavigator(
   {
     [MAIN_SCREEN]: MainScreen,
     [SETTING_SCREEN]: SettingScreen,
-    [EXPLANATION_SCREEN]: ExplanationScreen,
+    [EXPLANATION_SCREEN]: IndexLearnScreen,
     [PAYMENT_SCREEN]: PaymentScreen,
     [LOCK_SCREEN]: LockScreen,
     [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
