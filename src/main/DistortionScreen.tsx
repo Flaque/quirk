@@ -111,7 +111,7 @@ export default class DistortionScreen extends React.Component<
         <ScrollView
           style={{
             backgroundColor: theme.lightOffwhite,
-            marginTop: Constants.statusBarHeight,
+            marginTop: Constants.statusBarHeight + 24,
           }}
         >
           <Container
