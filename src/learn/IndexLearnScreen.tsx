@@ -20,6 +20,7 @@ import {
 } from "./images";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import { ARTICLE_SCREEN } from "./screens";
+import * as stats from "../stats";
 
 const Article = ({
   title,
@@ -43,6 +44,7 @@ const Article = ({
     <HintHeader>{subheader}</HintHeader>
     <TouchableOpacity
       onPress={() => {
+        stats.userReadArticle(title);
         navigation.navigate(ARTICLE_SCREEN, {
           url,
         });

@@ -237,6 +237,10 @@ export function userPromptedForReviewWhenRecordingPositiveThought() {
   Segment.track("user_prompted_for_review_when_recording_positive_thought");
 }
 
+export function userReadArticle(article: string) {
+  Segment.track("user_read_article " + article);
+}
+
 /**
  * Effectiveness metrics
  */
