@@ -1215,6 +1215,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.134.tgz#9032b440122db3a2a56200e91191996161dde5b9"
   integrity sha512-2/O0khFUCFeDlbi7sZ7ZFRCcT812fAeOLm7Ev4KbwASkZ575TDrDcY7YyaoHdTOzKcNbfiwLYZqPmoC4wadrsw==
 
+"@types/node@*":
+  version "12.6.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.8.tgz#e469b4bf9d1c9832aee4907ba8a051494357c12c"
+  integrity sha512-aX+gFgA5GHcDi89KG5keey2zf0WfZk/HAQotEamsK2kbey+8yGKcson0hbK8E+v0NArlCJQCqMP161YhV6ZXLg==
+
 "@types/node@^10.0.5":
   version "10.14.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.8.tgz#fe444203ecef1162348cd6deb76c62477b2cc6e9"
@@ -1267,10 +1272,32 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
+"@types/unist@*", "@types/unist@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
+  integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
+
 "@types/uuid-js@^0.7.1":
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/@types/uuid-js/-/uuid-js-0.7.2.tgz#5b5552fcbaaf4acf026fb6dc66f7e5bd6b4be92f"
   integrity sha512-9R+mA6mMXkFVQnXEeX5fMQDR2SYND7cafJTqbeMpLhgsL7qr7MF4ZBxWpLexml3lZsBsyAmqVWbOiB0N10m15w==
+
+"@types/vfile-message@*":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/vfile-message/-/vfile-message-1.0.1.tgz#e1e9895cc6b36c462d4244e64e6d0b6eaf65355a"
+  integrity sha512-mlGER3Aqmq7bqR1tTTIVHq8KSAFFRyGbrxuM8C/H82g6k7r2fS+IMEkIu3D7JHzG10NvPdR8DNx0jr0pwpp4dA==
+  dependencies:
+    "@types/node" "*"
+    "@types/unist" "*"
+
+"@types/vfile@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@types/vfile/-/vfile-3.0.2.tgz#19c18cd232df11ce6fa6ad80259bc86c366b09b9"
+  integrity sha512-b3nLFGaGkJ9rzOcuXRfHkZMdjsawuDD0ENL9fzTophtBg8FJHSGbH7daXkEpcwy3v7Xol3pAvsmlYyFhR4pqJw==
+  dependencies:
+    "@types/node" "*"
+    "@types/unist" "*"
+    "@types/vfile-message" "*"
 
 "@types/websql@^0.0.27":
   version "0.0.27"
@@ -7080,6 +7107,11 @@ react-native-modal@^11.1.0:
     prop-types "^15.6.2"
     react-native-animatable "^1.3.1"
 
+react-native-offline-cache-webview@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-offline-cache-webview/-/react-native-offline-cache-webview-0.1.2.tgz#3cd1d95d27a5187bb8e113c3b289e9dd3932ecab"
+  integrity sha512-0B7YNm2dAm1Rwl7BbdH2VddiiZKoSjWZd8vC8XqkwOj22m5RlF4/A3iycMKtiI4LX/rDINjcjWb//k+pdS84Qw==
+
 react-native-onesignal@^3.2.14:
   version "3.2.14"
   resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.2.14.tgz#421a3b34c226e5b6ea9e801b7b3f914d8e3c0abb"
@@ -7214,6 +7246,14 @@ react-native-webview@5.8.1:
   version "5.8.1"
   resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.8.1.tgz#6f5a83dec55bbc02700155b1a16a668870f14de0"
   integrity sha512-b6pSvmjoiWtcz6YspggW02X+BRXJWuquHwkh37BRx1NMW1iwMZA31SnFQvTpPzWYYIb9WF/mRsy2nGtt9C6NIg==
+  dependencies:
+    escape-string-regexp "1.0.5"
+    invariant "2.2.4"
+
+react-native-webview@~5.8.1:
+  version "5.8.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-5.8.2.tgz#dcc9c802f145183cfc828944350bd43f968aa72c"
+  integrity sha512-WvB5vH3xaxwXbk0RFGDIkM+MEeMfrfkhXdgYW1qj/xUuioeH5lduCpR+sID8+OR35zx+pBuamQ9jSlRGuREJrw==
   dependencies:
     escape-string-regexp "1.0.5"
     invariant "2.2.4"
@@ -8532,6 +8572,13 @@ unicode-property-aliases-ecmascript@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.0.5.tgz#a9cc6cc7ce63a0a3023fc99e341b94431d405a57"
   integrity sha512-L5RAqCfXqAwR3RriF8pM0lU0w4Ryf/GgzONwi6KnL1taJQa7x1TCxdJnILX59WIGOwR57IVxn7Nej0fz1Ny6fw==
+
+unified-stream@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/unified-stream/-/unified-stream-1.0.5.tgz#31e325476fd7b3250a1a59230094033240d2d47b"
+  integrity sha512-f9FBfodbh/ExFos/Ep8huePamJeoY6FsXYyH11U6ryWQEgpAMd22j8ej9GqL4k0H/NIhrJIDPl2EfdrG14jhQQ==
+  dependencies:
+    once "^1.4.0"
 
 unimodules-barcode-scanner-interface@~2.0.0, unimodules-barcode-scanner-interface@~2.0.1:
   version "2.0.1"
