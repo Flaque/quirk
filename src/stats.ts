@@ -257,6 +257,10 @@ export function userFeltTheSame() {
   Segment.track("user_felt_the_same");
 }
 
+export function identify(userID: string) {
+  Segment.identify(userID);
+}
+
 /**
  * Basically production logs
  * @param properties

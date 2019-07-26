@@ -37,6 +37,7 @@ import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
 import { userSawApologyNotice, userStartedPayment } from "../stats";
 import dayjs from "dayjs";
 import { getIsExistingUser } from "../thoughtstore";
+import { identify } from "../id";
 
 const Container = props => (
   <ScrollView
@@ -79,6 +80,9 @@ class PaymentScreen extends React.Component<
   async componentDidMount() {
     SplashScreen.preventAutoHide();
     await setupRevenutCat();
+
+    // This is basically our bare-bones "login"
+    await identify();
 
     // Remove this line after july 2020
     if (await needsLegacyMigration()) {
