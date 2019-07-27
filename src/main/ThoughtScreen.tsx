@@ -18,7 +18,11 @@ import { validThoughtGroup } from "../sanitize";
 import parseThoughts from "./parseThoughts";
 import ThoughtList from "./ThoughtList";
 import ThoughtCard from "./ThoughtCard";
-import { DISTORTION_SCREEN, FINISHED_SCREEN } from "./screens";
+import {
+  DISTORTION_SCREEN,
+  FINISHED_SCREEN,
+  FOLLOW_UP_FEELING_SCREEN,
+} from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
@@ -26,6 +30,7 @@ import * as stats from "../stats";
 import Constants from "expo-constants";
 import theme from "../theme";
 import { get } from "lodash";
+import followUpState from "./followups/followUpState";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -92,6 +97,16 @@ export default class MainScreen extends React.Component<
 
   navigateToViewerWithThought = (thought: SavedThought) => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+
+    // Follow-ups
+    if (followUpState(thought) === "ready") {
+      this.props.navigation.navigate(FOLLOW_UP_FEELING_SCREEN, {
+        thought,
+      });
+      return;
+    }
+
+    // Regular finished screen
     this.props.navigation.navigate(FINISHED_SCREEN, {
       thought,
     });

@@ -1,21 +1,21 @@
 import React from "react";
-import ScreenProps from "../ScreenProps";
+import ScreenProps from "../../ScreenProps";
 import {
   Container,
   MediumHeader,
   HintHeader,
   ActionButton,
   GhostButton,
-} from "../ui";
+} from "../../ui";
 import Constants from "expo-constants";
-import theme from "../theme";
+import theme from "../../theme";
 import { StatusBar } from "react-native";
-import { identify } from "../id";
-import { FINISHED_SCREEN } from "./screens";
-import { Thought } from "../thoughts";
+import { identify } from "../../id";
+import { FINISHED_SCREEN } from "../screens";
+import { Thought } from "../../thoughts";
 import { get } from "lodash";
 import dayjs from "dayjs";
-import { saveExercise } from "../thoughtstore";
+import { saveExercise } from "../../thoughtstore";
 
 export default class FollowUpScreen extends React.Component<
   ScreenProps,
@@ -48,7 +48,7 @@ export default class FollowUpScreen extends React.Component<
     // Tell the user/app we've got a followup scheduled
     const thought = this.state.thought;
     thought.followUpDate = dayjs()
-      .add(2, "hour")
+      .add(1, "second")
       .toISOString();
     await saveExercise(thought);
 
@@ -79,7 +79,7 @@ export default class FollowUpScreen extends React.Component<
             textAlign: "center",
           }}
         >
-          Want to follow up later
+          Want to follow up later?
         </MediumHeader>
         <HintHeader
           style={{

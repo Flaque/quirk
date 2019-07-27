@@ -6,7 +6,11 @@ export interface Thought {
   cognitiveDistortions: CognitiveDistortion[];
   challenge: string;
   immediateCheckup?: "better" | "worse" | "same";
+
+  // Followup Stuff
   followUpDate?: string;
+  followUpCompleted?: boolean;
+  followUpCheckup?: "better" | "worse" | "same";
 }
 
 export interface SavedThought extends Thought {

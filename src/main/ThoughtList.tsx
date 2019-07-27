@@ -17,7 +17,6 @@ interface ThoughtListProps {
   groups: ThoughtGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
   navigateToViewer: (thought: SavedThought) => void;
-  onItemDelete: (thought: SavedThought) => void;
 }
 
 const byDate = (a, b) => (dayjs(a.date).isAfter(dayjs(b.date)) ? 1 : -1);

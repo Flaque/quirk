@@ -1,18 +1,23 @@
 import React from "react";
-import { Thought } from "../thoughts";
+import { Thought } from "../../thoughts";
 import { ScreenProps } from "react-navigation";
-import { Container, MediumHeader, GhostButton } from "../ui";
+import {
+  Container,
+  MediumHeader,
+  GhostButton,
+  HintHeader,
+  SubHeader,
+} from "../../ui";
 import Constants from "expo-constants";
-import theme from "../theme";
-import { StatusBar, Platform } from "react-native";
-import * as stats from "../stats";
-import { FINISHED_SCREEN, FOLLOW_UP_REQUEST_SCREEN } from "./screens";
+import theme from "../../theme";
+import { StatusBar } from "react-native";
+import * as stats from "../../stats";
+import { FINISHED_SCREEN } from "../screens";
 import { get } from "lodash";
-import { saveExercise, countThoughts } from "../thoughtstore";
-import haptic from "../haptic";
-import * as StoreReview from "react-native-store-review";
+import { saveExercise } from "../../thoughtstore";
+import haptic from "../../haptic";
 
-export default class FeelingScreen extends React.Component<
+export default class FollowUpFeelingScreen extends React.Component<
   ScreenProps,
   {
     thought?: Thought;
@@ -35,7 +40,7 @@ export default class FeelingScreen extends React.Component<
     feeling: "better" | "worse" | "same"
   ): Promise<Thought> => {
     const thought = this.state.thought;
-    thought.immediateCheckup = feeling;
+    thought.followUpCheckup = feeling;
     return saveExercise(this.state.thought);
   };
 
@@ -43,18 +48,6 @@ export default class FeelingScreen extends React.Component<
     haptic.selection();
     const thought = await this.saveCheckup("better");
 
-    if (Platform.OS === "ios") {
-      // We load this BEFORE navigating so there's no weird lag
-      const numPreviousThoughts = await countThoughts();
-      if (numPreviousThoughts > 3) {
-        // tfw when your function calls are anime-weapon-size
-        stats.userPromptedForReviewWhenRecordingPositiveThought();
-
-        StoreReview.requestReview();
-      }
-    }
-
-    stats.userFeltBetter();
     this.props.navigation.navigate(FINISHED_SCREEN, {
       thought,
     });
@@ -64,8 +57,7 @@ export default class FeelingScreen extends React.Component<
     haptic.selection();
     const thought = await this.saveCheckup("same");
 
-    stats.userFeltTheSame();
-    this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
+    this.props.navigation.navigate(FINISHED_SCREEN, {
       thought,
     });
   };
@@ -74,8 +66,7 @@ export default class FeelingScreen extends React.Component<
     haptic.selection();
     const thought = await this.saveCheckup("worse");
 
-    stats.userFeltWorse();
-    this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
+    this.props.navigation.navigate(FINISHED_SCREEN, {
       thought,
     });
   };
@@ -87,19 +78,33 @@ export default class FeelingScreen extends React.Component<
           paddingTop: Constants.statusBarHeight + 24,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <StatusBar barStyle="dark-content" hidden={false} />
+
         <MediumHeader
           style={{
-            marginBottom: 24,
-            textAlign: "center",
+            marginBottom: 12,
           }}
         >
-          How are you feeling now?
+          Let's start your follow up.
         </MediumHeader>
+        <HintHeader
+          style={{
+            marginBottom: 24,
+          }}
+        >
+          This is a chance for you to re-evaluate your thoughts with a clearer
+          perspective or to get closure on anything that happened.
+        </HintHeader>
+
+        <SubHeader
+          style={{
+            marginBottom: 12,
+          }}
+        >
+          How are you doing now?
+        </SubHeader>
 
         <GhostButton
           title="Better than before 👍"

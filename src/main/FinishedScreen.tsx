@@ -30,6 +30,7 @@ import * as Haptic from "expo-haptics";
 import dayjs from "dayjs";
 import EmojiList from "./EmojiList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
+import followUpState from "./followups/followUpState";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -92,18 +93,33 @@ export default class FinishedScreen extends React.Component<
                 marginBottom: 18,
               }}
             >
-              {this.state.thought.followUpDate &&
-                dayjs(this.state.thought.followUpDate).isAfter(dayjs()) && (
-                  <Badge
-                    text="Follow up scheduled"
-                    featherIconName="clipboard"
-                    style={{
-                      marginBottom: 18,
-                    }}
-                  />
-                )}
-              <MediumHeader>Summary of Thought</MediumHeader>
+              {followUpState(this.state.thought) === "scheduled" && (
+                <Badge
+                  text="Follow up scheduled"
+                  featherIconName="clipboard"
+                  style={{
+                    marginBottom: 18,
+                  }}
+                />
+              )}
+              {followUpState(this.state.thought) === "ready" && (
+                <Badge
+                  text="Reviewing Thought"
+                  featherIconName="clipboard"
+                  backgroundColor={theme.lightPink}
+                  style={{
+                    marginBottom: 18,
+                  }}
+                />
+              )}
+              <MediumHeader>
+                {followUpState(this.state.thought) === "ready"
+                  ? "Does this still seem correct?"
+                  : "Summary of Thought"}
+              </MediumHeader>
               <HintHeader>
+                {followUpState(this.state.thought) === "ready" &&
+                  "Thought recorded on"}{" "}
                 {dayjs(this.state.thought.createdAt.toString()).format(
                   "D MMM YYYY, h:mm a"
                 )}
