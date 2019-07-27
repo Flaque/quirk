@@ -1,7 +1,7 @@
 import React from "react";
 import { SavedThought } from "../thoughts";
 import { HistoryButtonLabelSetting } from "../SettingsScreen";
-import { Paragraph, Label } from "../ui";
+import { Paragraph, Label, Badge } from "../ui";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../theme";
 import { View, Text } from "react-native";
@@ -9,6 +9,7 @@ import { take } from "lodash";
 import { emojiForSlug } from "../distortions";
 import { Feather } from "@expo/vector-icons";
 import EmojiList from "./EmojiList";
+import dayjs from "dayjs";
 
 export default ({
   thought,
@@ -62,31 +63,23 @@ export default ({
       <EmojiList thought={thought} />
     </View>
     {thought.immediateCheckup === "better" && (
-      <View
+      <Badge
+        featherIconName="trending-up"
+        text="Felt better afterwards"
         style={{
-          backgroundColor: theme.lightBlue,
-          paddingLeft: 12,
-          paddingRight: 12,
-          paddingBottom: 12,
-          paddingTop: 12,
           margin: 4,
-          borderRadius: 8,
-          justifyContent: "space-between",
-          flex: 1,
-          flexDirection: "row",
         }}
-      >
-        <Text
-          style={{
-            fontWeight: "700",
-            color: theme.lightText,
-            fontSize: 14,
-          }}
-        >
-          Felt better afterwards
-        </Text>
-        <Feather name={"trending-up"} size={16} color={theme.lightText} />
-      </View>
+      />
+    )}
+
+    {thought.followUpDate && dayjs(thought.followUpDate).isAfter(dayjs()) && (
+      <Badge
+        featherIconName="clipboard"
+        text="Follow up scheduled"
+        style={{
+          margin: 4,
+        }}
+      />
     )}
   </TouchableOpacity>
 );

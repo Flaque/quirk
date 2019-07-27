@@ -6,7 +6,7 @@ import Constants from "expo-constants";
 import theme from "../theme";
 import { StatusBar, Platform } from "react-native";
 import * as stats from "../stats";
-import { FINISHED_SCREEN } from "./screens";
+import { FINISHED_SCREEN, CHECKUP_SCREEN, FOLLOW_UP_SCREEN } from "./screens";
 import { get } from "lodash";
 import { saveExercise, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
@@ -65,7 +65,7 @@ export default class FeelingScreen extends React.Component<
     const thought = await this.saveCheckup("same");
 
     stats.userFeltTheSame();
-    this.props.navigation.navigate(FINISHED_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_SCREEN, {
       thought,
     });
   };
@@ -75,7 +75,7 @@ export default class FeelingScreen extends React.Component<
     const thought = await this.saveCheckup("worse");
 
     stats.userFeltWorse();
-    this.props.navigation.navigate(FINISHED_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_SCREEN, {
       thought,
     });
   };

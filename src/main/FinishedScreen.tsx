@@ -8,6 +8,7 @@ import {
   Row,
   ActionButton,
   GhostButton,
+  Badge,
 } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
@@ -91,6 +92,16 @@ export default class FinishedScreen extends React.Component<
                 marginBottom: 18,
               }}
             >
+              {this.state.thought.followUpDate &&
+                dayjs(this.state.thought.followUpDate).isAfter(dayjs()) && (
+                  <Badge
+                    text="Follow up scheduled"
+                    featherIconName="clipboard"
+                    style={{
+                      marginBottom: 18,
+                    }}
+                  />
+                )}
               <MediumHeader>Summary of Thought</MediumHeader>
               <HintHeader>
                 {dayjs(this.state.thought.createdAt.toString()).format(

@@ -594,3 +594,41 @@ export const I = ({ children }) => (
 export const B = ({ children }) => (
   <Text style={{ fontWeight: "bold" }}>{children}</Text>
 );
+
+export const Badge = ({
+  text,
+  backgroundColor,
+  featherIconName,
+  style,
+}: {
+  text: string;
+  backgroundColor?: string;
+  featherIconName: string;
+  style?: any;
+}) => (
+  <View
+    style={{
+      backgroundColor: backgroundColor || theme.lightBlue,
+      paddingLeft: 12,
+      paddingRight: 12,
+      paddingBottom: 12,
+      paddingTop: 12,
+      borderRadius: 8,
+      justifyContent: "space-between",
+      flex: 1,
+      flexDirection: "row",
+      ...style,
+    }}
+  >
+    <Text
+      style={{
+        fontWeight: "700",
+        color: theme.lightText,
+        fontSize: 14,
+      }}
+    >
+      {text}
+    </Text>
+    <Feather name={featherIconName} size={16} color={theme.lightText} />
+  </View>
+);
