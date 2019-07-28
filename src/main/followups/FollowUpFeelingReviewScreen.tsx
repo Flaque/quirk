@@ -1,29 +1,43 @@
 import React from "react";
-import { Thought } from "../../thoughts";
+import { Thought, newThought } from "../../thoughts";
 import { ScreenProps } from "react-navigation";
 import {
   Container,
   MediumHeader,
   GhostButton,
   HintHeader,
-  SubHeader,
+  ActionButton,
 } from "../../ui";
 import Constants from "expo-constants";
 import theme from "../../theme";
 import { StatusBar } from "react-native";
-import { FINISHED_SCREEN } from "../screens";
+import { THOUGHT_SCREEN, FINISHED_SCREEN } from "../screens";
 import { get } from "lodash";
-import { saveExercise } from "../../thoughtstore";
 import haptic from "../../haptic";
+import { saveExercise } from "../../thoughtstore";
+
+const POSITIVE_HEADER = "Great! We'll write that down.";
+const NEUTRAL_OR_NEGATIVE_HEADER = "Let's check-in.";
+
+const POSITIVE_HINT =
+  "Would you still like to review your thought? You can also can finish now and go about your day.";
+const NEUTRAL_OR_NEGATIVE_HINT =
+  "If you're dealing with something new or want to walk through the process again, record a new thought. Otherwise, you should review what you wrote before; is it accurate? ";
 
 export default class FollowUpFeelingReviewScreen extends React.Component<
   ScreenProps,
   {
     thought?: Thought;
+    isReady: boolean;
   }
 > {
   static navigationOptions = {
     header: null,
+  };
+
+  state = {
+    isReady: false,
+    thought: undefined,
   };
 
   componentDidMount() {
@@ -31,46 +45,46 @@ export default class FollowUpFeelingReviewScreen extends React.Component<
       const thought = get(args, "state.params.thought");
       this.setState({
         thought,
+        isReady: true,
       });
     });
   }
 
-  private saveCheckup = async (
-    feeling: "better" | "worse" | "same"
-  ): Promise<Thought> => {
-    const thought = this.state.thought;
-    thought.followUpCheckup = feeling;
-    return saveExercise(this.state.thought);
+  completeFollowUp = async () => {
+    // Mark this followup as completed
+    const oldThought = this.state.thought;
+    oldThought.followUpCompleted = true;
+    await saveExercise(oldThought);
   };
 
-  onFeltBetter = async () => {
+  onFinish = async () => {
     haptic.selection();
-    const thought = await this.saveCheckup("better");
+    await this.completeFollowUp();
+    this.props.navigation.navigate(THOUGHT_SCREEN);
+  };
 
+  onReviewThought = async () => {
+    haptic.selection();
     this.props.navigation.navigate(FINISHED_SCREEN, {
-      thought,
+      thought: this.state.thought,
     });
   };
 
-  onFeltTheSame = async () => {
+  onNewThought = async () => {
     haptic.selection();
-    const thought = await this.saveCheckup("same");
+    await this.completeFollowUp();
 
-    this.props.navigation.navigate(FINISHED_SCREEN, {
-      thought,
-    });
-  };
-
-  onFeltWorse = async () => {
-    haptic.selection();
-    const thought = await this.saveCheckup("worse");
-
-    this.props.navigation.navigate(FINISHED_SCREEN, {
-      thought,
+    this.props.navigation.navigate(THOUGHT_SCREEN, {
+      thought: newThought(),
+      isRequestingPopUp: true,
     });
   };
 
   render() {
+    if (!this.state.isReady) {
+      return <Container />;
+    }
+
     return (
       <Container
         style={{
@@ -81,63 +95,53 @@ export default class FollowUpFeelingReviewScreen extends React.Component<
       >
         <StatusBar barStyle="dark-content" hidden={false} />
 
-        <MediumHeader
-          style={{
-            marginBottom: 12,
-          }}
-        >
-          Let's start your follow up.
+        <MediumHeader>
+          {this.state.thought.followUpCheckup === "better"
+            ? POSITIVE_HEADER
+            : NEUTRAL_OR_NEGATIVE_HEADER}
         </MediumHeader>
         <HintHeader
           style={{
-            marginBottom: 24,
+            marginBottom: 12,
           }}
         >
-          This is a chance for you to re-evaluate your thoughts with a clearer
-          perspective or to get closure on anything that happened.
+          {this.state.thought.followUpCheckup === "better"
+            ? POSITIVE_HINT
+            : NEUTRAL_OR_NEGATIVE_HINT}
         </HintHeader>
 
-        <SubHeader
-          style={{
-            marginBottom: 12,
-          }}
-        >
-          How are you doing now?
-        </SubHeader>
+        {this.state.thought.followUpCheckup === "better" && (
+          <>
+            <ActionButton
+              title="Finish"
+              style={{
+                marginBottom: 12,
+              }}
+              width={"100%"}
+              onPress={this.onFinish}
+            />
+            <GhostButton
+              title="Review Thought"
+              onPress={this.onReviewThought}
+            />
+          </>
+        )}
 
-        <GhostButton
-          title="Better than before 👍"
-          width={"100%"}
-          borderColor={theme.lightGray}
-          textColor={theme.darkText}
-          style={{
-            marginBottom: 12,
-            backgroundColor: "white",
-          }}
-          onPress={this.onFeltBetter}
-        />
-        <GhostButton
-          title="About the same 🤷‍"
-          width={"100%"}
-          borderColor={theme.lightGray}
-          textColor={theme.darkText}
-          style={{
-            marginBottom: 12,
-            backgroundColor: "white",
-          }}
-          onPress={this.onFeltTheSame}
-        />
-        <GhostButton
-          title="Worse than before 👎"
-          width={"100%"}
-          borderColor={theme.lightGray}
-          textColor={theme.darkText}
-          style={{
-            marginBottom: 12,
-            backgroundColor: "white",
-          }}
-          onPress={this.onFeltWorse}
-        />
+        {this.state.thought.followUpCheckup !== "better" && (
+          <>
+            <GhostButton
+              title="Record a new thought"
+              style={{
+                marginBottom: 12,
+              }}
+              onPress={this.onNewThought}
+            />
+            <GhostButton
+              title="Review thought"
+              onPress={this.onReviewThought}
+            />
+          </>
+        )}
       </Container>
     );
   }

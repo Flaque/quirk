@@ -12,7 +12,7 @@ import Constants from "expo-constants";
 import theme from "../../theme";
 import { StatusBar } from "react-native";
 import * as stats from "../../stats";
-import { FINISHED_SCREEN } from "../screens";
+import { FINISHED_SCREEN, FOLLOW_UP_FEELING_REVIEW_SCREEN } from "../screens";
 import { get } from "lodash";
 import { saveExercise } from "../../thoughtstore";
 import haptic from "../../haptic";
@@ -48,7 +48,7 @@ export default class FollowUpFeelingScreen extends React.Component<
     haptic.selection();
     const thought = await this.saveCheckup("better");
 
-    this.props.navigation.navigate(FINISHED_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,
     });
   };
@@ -57,7 +57,7 @@ export default class FollowUpFeelingScreen extends React.Component<
     haptic.selection();
     const thought = await this.saveCheckup("same");
 
-    this.props.navigation.navigate(FINISHED_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,
     });
   };
@@ -66,7 +66,7 @@ export default class FollowUpFeelingScreen extends React.Component<
     haptic.selection();
     const thought = await this.saveCheckup("worse");
 
-    this.props.navigation.navigate(FINISHED_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,
     });
   };

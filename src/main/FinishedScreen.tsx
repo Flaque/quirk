@@ -24,7 +24,7 @@ import {
 } from "./screens";
 import { NavigationActions, ScrollView } from "react-navigation";
 import { StackActions } from "react-navigation";
-import { deleteExercise } from "../thoughtstore";
+import { deleteExercise, saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import dayjs from "dayjs";
@@ -49,13 +49,20 @@ export default class FinishedScreen extends React.Component<
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
       const thought = get(args, "state.params.thought");
+      console.log(thought);
       this.setState({
         thought,
       });
     });
   }
 
-  onNext = () => {
+  onNext = async () => {
+    if (followUpState(this.state.thought) === "ready") {
+      const oldThought = this.state.thought;
+      oldThought.followUpCompleted = true;
+      await saveExercise(oldThought);
+    }
+
     const reset = StackActions.reset({
       index: 0,
       actions: [NavigationActions.navigate({ routeName: THOUGHT_SCREEN })],

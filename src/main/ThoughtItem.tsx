@@ -82,7 +82,17 @@ export default ({
       {thought.immediateCheckup === "better" && (
         <Badge
           featherIconName="trending-up"
-          text="Felt better afterwards"
+          text="Felt better after recording"
+          style={{
+            margin: 4,
+          }}
+        />
+      )}
+
+      {thought.followUpCheckup === "better" && (
+        <Badge
+          featherIconName="trending-up"
+          text="Felt better later on"
           style={{
             margin: 4,
           }}

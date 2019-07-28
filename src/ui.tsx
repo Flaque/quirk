@@ -370,8 +370,8 @@ export const GhostButton = ({
 }: {
   title: string;
   onPress: () => void;
-  borderColor: string;
-  textColor: string;
+  borderColor?: string;
+  textColor?: string;
   width?: number | string;
   height?: number;
   disabled?: boolean;
@@ -385,7 +385,7 @@ export const GhostButton = ({
       borderRadius: 10,
       justifyContent: "center",
       alignItems: "center",
-      borderColor: borderColor,
+      borderColor: borderColor || theme.gray,
       borderWidth: 1,
       borderBottomWidth: 2,
       maxHeight: 48,
@@ -400,7 +400,7 @@ export const GhostButton = ({
     <Text
       style={{
         textAlign: "center",
-        color: textColor,
+        color: textColor || theme.darkText,
         fontWeight: "700",
         fontSize: fontSize || 16,
       }}

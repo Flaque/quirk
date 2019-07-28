@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, StatusBar } from "react-native";
+import { View, StatusBar, Keyboard } from "react-native";
 import {
   getExercises,
   saveExercise,
@@ -37,22 +37,29 @@ export default class MainScreen extends React.Component<
   {
     areExercisesLoaded: boolean;
     hasCheckedEditing: boolean;
-    isEditing: boolean;
     groups: ThoughtGroup[];
     thought?: Thought;
+    isEditing: boolean;
+    cardPosition: "hidden" | "hiddenWiggle" | "peak" | "full";
+    shouldFadeInBackgroundOverlay: boolean;
   }
 > {
   static navigationOptions = {
     header: null,
   };
 
-  state = {
-    areExercisesLoaded: false,
-    hasCheckedEditing: false,
-    isEditing: false,
-    groups: [],
-    thought: undefined,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      areExercisesLoaded: false,
+      hasCheckedEditing: false,
+      groups: [],
+      thought: undefined,
+      cardPosition: "hidden",
+      isEditing: false,
+      shouldFadeInBackgroundOverlay: false,
+    };
+  }
 
   componentDidMount() {
     // Record new users
@@ -67,14 +74,28 @@ export default class MainScreen extends React.Component<
     this.loadExercises();
 
     this.props.navigation.addListener("willFocus", args => {
-      const thought = get(args, "state.params.thought", newThought());
-      const isEditing = get(args, "state.params.isEditing", false);
+      const thought = get(args, "action.params.thought", newThought());
+      const isEditing = get(args, "action.params.isEditing", false);
       this.setState({
         thought,
         isEditing,
         hasCheckedEditing: true,
       });
+
+      const isRequestingPopUp = get(
+        args,
+        "action.params.isRequestingPopUp",
+        false
+      );
+      if (isEditing || isRequestingPopUp) {
+        this.popUp();
+      }
     });
+
+    /// wiggle card
+    setTimeout(() => {
+      this.setState({ cardPosition: "hiddenWiggle" });
+    }, 250);
   }
 
   loadExercises = () => {
@@ -140,13 +161,38 @@ export default class MainScreen extends React.Component<
     });
   };
 
+  popUp = () => {
+    this.setState({
+      cardPosition: "peak",
+    });
+
+    // Trigger the fade-in effect of the background overlay
+    setTimeout(() => {
+      this.setState({
+        shouldFadeInBackgroundOverlay: true,
+      });
+    }, 200);
+  };
+
+  popDown = () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    Keyboard.dismiss();
+    this.setState({
+      cardPosition: "hiddenWiggle",
+      shouldFadeInBackgroundOverlay: false,
+      isEditing: false,
+    });
+  };
+
   render() {
     const {
       groups,
       areExercisesLoaded,
       hasCheckedEditing,
       thought,
+      cardPosition,
       isEditing,
+      shouldFadeInBackgroundOverlay,
     } = this.state;
 
     return (
@@ -167,6 +213,10 @@ export default class MainScreen extends React.Component<
               onChange={this.onChangeAutomaticThought}
               isEditing={isEditing}
               onFinish={this.onFinishEditing}
+              cardPosition={cardPosition}
+              shouldFadeInBackgroundOverlay={shouldFadeInBackgroundOverlay}
+              onPopUp={this.popUp}
+              onPopDown={this.popDown}
             />
             <InvertibleScrollView
               inverted
