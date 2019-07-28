@@ -7,12 +7,18 @@ import {
   GhostButton,
   HintHeader,
   SubHeader,
+  Row,
+  IconButton,
 } from "../../ui";
 import Constants from "expo-constants";
 import theme from "../../theme";
-import { StatusBar } from "react-native";
+import { StatusBar, View } from "react-native";
 import * as stats from "../../stats";
-import { FINISHED_SCREEN, FOLLOW_UP_FEELING_REVIEW_SCREEN } from "../screens";
+import {
+  FINISHED_SCREEN,
+  FOLLOW_UP_FEELING_REVIEW_SCREEN,
+  THOUGHT_SCREEN,
+} from "../screens";
 import { get } from "lodash";
 import { saveExercise } from "../../thoughtstore";
 import haptic from "../../haptic";
@@ -71,6 +77,11 @@ export default class FollowUpFeelingScreen extends React.Component<
     });
   };
 
+  onClose = async () => {
+    haptic.selection();
+    this.props.navigation.navigate(THOUGHT_SCREEN);
+  };
+
   render() {
     return (
       <Container
@@ -82,21 +93,45 @@ export default class FollowUpFeelingScreen extends React.Component<
       >
         <StatusBar barStyle="dark-content" hidden={false} />
 
-        <MediumHeader
+        <Row
           style={{
             marginBottom: 12,
+            justifyContent: "space-between",
           }}
         >
-          Let's start your follow up.
-        </MediumHeader>
-        <HintHeader
-          style={{
-            marginBottom: 24,
-          }}
-        >
-          This is a chance for you to re-evaluate your thoughts with a clearer
-          perspective or to get closure on anything that happened.
-        </HintHeader>
+          <View
+            style={{
+              flex: 1,
+            }}
+          >
+            <MediumHeader
+              style={{
+                marginBottom: 12,
+                marginLeft: 0,
+              }}
+            >
+              Let's start your follow up.
+            </MediumHeader>
+            <HintHeader
+              style={{
+                marginBottom: 24,
+              }}
+            >
+              This is a chance for you to re-evaluate your thoughts with a
+              clearer perspective or to get closure on anything that happened.
+            </HintHeader>
+          </View>
+
+          <IconButton
+            style={{
+              alignSelf: "flex-start",
+              marginLeft: 24,
+            }}
+            accessibilityLabel={"close"}
+            featherIconName="x"
+            onPress={this.onClose}
+          />
+        </Row>
 
         <SubHeader
           style={{

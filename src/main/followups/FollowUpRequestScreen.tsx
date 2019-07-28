@@ -17,6 +17,16 @@ import { get } from "lodash";
 import dayjs from "dayjs";
 import { saveExercise } from "../../thoughtstore";
 
+function getFollowUpTime() {
+  const inAFewHours = dayjs().add(2, "hour");
+
+  // If we're before 7am or after 9pm, then schedule it for tomorrow.
+  if (inAFewHours.hour() < 7 || inAFewHours.hour() > 21) {
+    return inAFewHours.add(12, "hour").toISOString();
+  }
+  return inAFewHours.toISOString();
+}
+
 export default class FollowUpScreen extends React.Component<
   ScreenProps,
   {
@@ -43,13 +53,14 @@ export default class FollowUpScreen extends React.Component<
   }
 
   onSetCheckup = async () => {
+    const followUpDate = getFollowUpTime();
+    console.log(followUpDate);
+
     // TODO tell api that there's a follow-up scheduled
 
     // Tell the user/app we've got a followup scheduled
     const thought = this.state.thought;
-    thought.followUpDate = dayjs()
-      .add(1, "second")
-      .toISOString();
+    thought.followUpDate = followUpDate;
     await saveExercise(thought);
 
     this.onContinue();
