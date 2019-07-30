@@ -1,6 +1,6 @@
 import React from "react";
 import { Thought } from "../thoughts";
-import { ScreenProps } from "react-navigation";
+import { ScreenProps, StackActions } from "react-navigation";
 import { Container, MediumHeader, GhostButton } from "../ui";
 import Constants from "expo-constants";
 import theme from "../theme";
@@ -22,8 +22,22 @@ export default class FeelingScreen extends React.Component<
     header: null,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      thought: undefined, // yes, really. Trust me this fixed a bug.
+    };
+  }
+
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
+      const thought = get(args, "state.params.thought");
+      this.setState({
+        thought,
+      });
+    });
+
+    this.props.navigation.addListener("didFocus", args => {
       const thought = get(args, "state.params.thought");
       this.setState({
         thought,
@@ -81,6 +95,10 @@ export default class FeelingScreen extends React.Component<
   };
 
   render() {
+    if (!this.state.thought) {
+      return <Container />;
+    }
+
     return (
       <Container
         style={{
