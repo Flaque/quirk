@@ -22,7 +22,7 @@ import base64 from "react-native-base64";
 import Sentry from "../../sentry";
 
 function getFollowUpTime() {
-  const inAFewHours = dayjs().add(10, "second");
+  const inAFewHours = dayjs().add(2, "hour");
 
   // If we're before 7am or after 9pm, then schedule it for tomorrow.
   if (inAFewHours.hour() < 7 || inAFewHours.hour() > 21) {
