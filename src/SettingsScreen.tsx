@@ -4,10 +4,8 @@ import theme from "./theme";
 import { Linking } from "expo";
 import Constants from "expo-constants";
 import {
-  Header,
   Row,
   Container,
-  IconButton,
   SubHeader,
   Paragraph,
   RoundedSelectorButton,
@@ -27,7 +25,6 @@ import {
   HistoryButtonLabelSetting,
   isHistoryButtonLabelSetting,
 } from "./setting";
-import i18n from "./i18n";
 import { recordScreenCallOnFocus } from "./navigation";
 import { isGrandfatheredIntoFreeSubscription } from "./history/grandfatherstore";
 import OneSignal from "react-native-onesignal";

@@ -1,0 +1,2 @@
+export const FOLLOW_UP_ONESIGNAL_TEMPLATE =
+  "5b9b46cc-e652-45d9-9f98-41405b5ebe82";

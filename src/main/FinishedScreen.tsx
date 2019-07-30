@@ -49,7 +49,6 @@ export default class FinishedScreen extends React.Component<
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
       const thought = get(args, "state.params.thought");
-      console.log(thought);
       this.setState({
         thought,
       });

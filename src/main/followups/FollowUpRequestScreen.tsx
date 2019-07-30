@@ -10,15 +10,19 @@ import {
 import Constants from "expo-constants";
 import theme from "../../theme";
 import { StatusBar } from "react-native";
-import { identify } from "../../id";
+import { identify, getUserID } from "../../id";
 import { FINISHED_SCREEN } from "../screens";
 import { Thought } from "../../thoughts";
 import { get } from "lodash";
 import dayjs from "dayjs";
 import { saveExercise } from "../../thoughtstore";
+import { FOLLOW_UP_ONESIGNAL_TEMPLATE } from "./templates";
+import { QUIRK_API_SECRET } from "react-native-dotenv";
+import base64 from "react-native-base64";
+import Sentry from "../../sentry";
 
 function getFollowUpTime() {
-  const inAFewHours = dayjs().add(2, "hour");
+  const inAFewHours = dayjs().add(10, "second");
 
   // If we're before 7am or after 9pm, then schedule it for tomorrow.
   if (inAFewHours.hour() < 7 || inAFewHours.hour() > 21) {
@@ -54,14 +58,37 @@ export default class FollowUpScreen extends React.Component<
 
   onSetCheckup = async () => {
     const followUpDate = getFollowUpTime();
-    console.log(followUpDate);
-
-    // TODO tell api that there's a follow-up scheduled
 
     // Tell the user/app we've got a followup scheduled
     const thought = this.state.thought;
     thought.followUpDate = followUpDate;
     await saveExercise(thought);
+
+    // Tell our api to queue up a followup notification
+    //
+    // HEADS UP WE DO NOT WAIT FOR THIS TO COMPLETE.
+    // Zeit can be a bit slow to wake up sometimes,
+    // it's much better we just continue about our day first.
+    const userID = await getUserID();
+    try {
+      fetch("https://api.quirk.fyi/notification/new", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `basic ${base64.encode("user:" + QUIRK_API_SECRET)}`,
+        },
+        body: JSON.stringify({
+          userID,
+          sendAfter: followUpDate,
+          templateID: FOLLOW_UP_ONESIGNAL_TEMPLATE,
+        }),
+      });
+    } catch (err) {
+      Sentry.captureBreadcrumb({
+        message: "Attempting to setup a followup reminder",
+      });
+      Sentry.captureException(err);
+    }
 
     this.onContinue();
   };
