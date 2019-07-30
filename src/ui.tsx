@@ -370,8 +370,8 @@ export const GhostButton = ({
 }: {
   title: string;
   onPress: () => void;
-  borderColor: string;
-  textColor: string;
+  borderColor?: string;
+  textColor?: string;
   width?: number | string;
   height?: number;
   disabled?: boolean;
@@ -385,7 +385,7 @@ export const GhostButton = ({
       borderRadius: 10,
       justifyContent: "center",
       alignItems: "center",
-      borderColor: borderColor,
+      borderColor: borderColor || theme.gray,
       borderWidth: 1,
       borderBottomWidth: 2,
       maxHeight: 48,
@@ -400,7 +400,7 @@ export const GhostButton = ({
     <Text
       style={{
         textAlign: "center",
-        color: textColor,
+        color: textColor || theme.darkText,
         fontWeight: "700",
         fontSize: fontSize || 16,
       }}
@@ -593,4 +593,42 @@ export const I = ({ children }) => (
 
 export const B = ({ children }) => (
   <Text style={{ fontWeight: "bold" }}>{children}</Text>
+);
+
+export const Badge = ({
+  text,
+  backgroundColor,
+  featherIconName,
+  style,
+}: {
+  text: string;
+  backgroundColor?: string;
+  featherIconName: string;
+  style?: any;
+}) => (
+  <View
+    style={{
+      backgroundColor: backgroundColor || theme.lightBlue,
+      paddingLeft: 12,
+      paddingRight: 12,
+      paddingBottom: 12,
+      paddingTop: 12,
+      borderRadius: 8,
+      justifyContent: "space-between",
+      flex: 1,
+      flexDirection: "row",
+      ...style,
+    }}
+  >
+    <Text
+      style={{
+        fontWeight: "700",
+        color: theme.lightText,
+        fontSize: 14,
+      }}
+    >
+      {text}
+    </Text>
+    <Feather name={featherIconName} size={16} color={theme.lightText} />
+  </View>
 );

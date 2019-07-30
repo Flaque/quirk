@@ -262,6 +262,45 @@ export function identify(userID: string) {
 }
 
 /**
+ * Follow Ups
+ */
+export function userScheduledFollowUp() {
+  Segment.track("user_scheduled_follow_up");
+}
+
+export function userDidNotScheduleFollowUp() {
+  Segment.track("user_did_not_schedule_follow_up");
+}
+
+export function userStartedFollowUp() {
+  Segment.track("user_started_follow_up");
+}
+
+export function userCompletedFollowUp() {
+  Segment.track("user_completed_follow_up");
+}
+
+export function userFeltBetterOnFollowUp() {
+  Segment.track("user_felt_better_on_follow_up");
+}
+
+export function userFeltTheSameOnFollowUp() {
+  Segment.track("user_felt_the_same_on_follow_up");
+}
+
+export function userFeltWorseOnFollowUp() {
+  Segment.track("user_felt_worse_on_follow_up");
+}
+
+export function userReviewedThoughtOnFollowUp() {
+  Segment.track("user_reviewed_thought_on_follow_up");
+}
+
+export function userRecordedNewThoughtOnFollowUp() {
+  Segment.track("user_recorded_new_thought_on_follow_up");
+}
+
+/**
  * Basically production logs
  * @param properties
  */

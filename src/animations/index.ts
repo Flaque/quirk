@@ -25,6 +25,11 @@ export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
         Platform.OS === "ios" ? fullHeight * popUpScale : fullHeight * 0.6,
       transition: { type: "spring", duration: 200 },
     },
+    peakNoBounce: {
+      height:
+        Platform.OS === "ios" ? fullHeight * popUpScale : fullHeight * 0.6,
+      transition: { duration: 0, ease: "easeOut" },
+    },
     full: {
       height: fullHeight,
       transition: { type: "spring", stiffness: 150 },

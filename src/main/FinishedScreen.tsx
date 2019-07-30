@@ -8,6 +8,7 @@ import {
   Row,
   ActionButton,
   GhostButton,
+  Badge,
 } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
@@ -23,12 +24,13 @@ import {
 } from "./screens";
 import { NavigationActions, ScrollView } from "react-navigation";
 import { StackActions } from "react-navigation";
-import { deleteExercise } from "../thoughtstore";
+import { deleteExercise, saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import dayjs from "dayjs";
 import EmojiList from "./EmojiList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
+import followUpState from "./followups/followUpState";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -53,7 +55,13 @@ export default class FinishedScreen extends React.Component<
     });
   }
 
-  onNext = () => {
+  onNext = async () => {
+    if (followUpState(this.state.thought) === "ready") {
+      const oldThought = this.state.thought;
+      oldThought.followUpCompleted = true;
+      await saveExercise(oldThought);
+    }
+
     const reset = StackActions.reset({
       index: 0,
       actions: [NavigationActions.navigate({ routeName: THOUGHT_SCREEN })],
@@ -91,8 +99,33 @@ export default class FinishedScreen extends React.Component<
                 marginBottom: 18,
               }}
             >
-              <MediumHeader>Summary of Thought</MediumHeader>
+              {followUpState(this.state.thought) === "scheduled" && (
+                <Badge
+                  text="Follow up scheduled"
+                  featherIconName="clipboard"
+                  style={{
+                    marginBottom: 18,
+                  }}
+                />
+              )}
+              {followUpState(this.state.thought) === "ready" && (
+                <Badge
+                  text="Reviewing Thought"
+                  featherIconName="clipboard"
+                  backgroundColor={theme.lightPink}
+                  style={{
+                    marginBottom: 18,
+                  }}
+                />
+              )}
+              <MediumHeader>
+                {followUpState(this.state.thought) === "ready"
+                  ? "Does this still seem correct?"
+                  : "Summary of Thought"}
+              </MediumHeader>
               <HintHeader>
+                {followUpState(this.state.thought) === "ready" &&
+                  "Thought recorded on"}{" "}
                 {dayjs(this.state.thought.createdAt.toString()).format(
                   "D MMM YYYY, h:mm a"
                 )}

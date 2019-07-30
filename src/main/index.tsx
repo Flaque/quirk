@@ -7,12 +7,18 @@ import {
   ALTERNATIVE_SCREEN,
   FINISHED_SCREEN,
   FEELING_SCREEN,
+  FOLLOW_UP_REQUEST_SCREEN,
+  FOLLOW_UP_FEELING_SCREEN,
+  FOLLOW_UP_FEELING_REVIEW_SCREEN,
 } from "./screens";
 import ChallengeScreen from "./ChallengeScreen";
 import DistortionScreen from "./DistortionScreen";
 import AlternativeScreen from "./AlternativeScreen";
 import FinishedScreen from "./FinishedScreen";
 import FeelingScreen from "./FeelingScreen";
+import FollowUpRequestScreen from "./followups/FollowUpRequestScreen";
+import FollowUpFeelingScreen from "./followups/FollowUpFeelingScreen";
+import FollowUpFeelingReviewScreen from "./followups/FollowUpFeelingReviewScreen";
 
 export default createStackNavigator(
   {
@@ -22,6 +28,9 @@ export default createStackNavigator(
     [ALTERNATIVE_SCREEN]: AlternativeScreen,
     [FINISHED_SCREEN]: FinishedScreen,
     [FEELING_SCREEN]: FeelingScreen,
+    [FOLLOW_UP_REQUEST_SCREEN]: FollowUpRequestScreen,
+    [FOLLOW_UP_FEELING_SCREEN]: FollowUpFeelingScreen,
+    [FOLLOW_UP_FEELING_REVIEW_SCREEN]: FollowUpFeelingReviewScreen,
   },
   {
     initialRouteName: THOUGHT_SCREEN,

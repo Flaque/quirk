@@ -3,7 +3,7 @@ import * as Payments from "../payments";
 import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
 import * as stats from "../stats";
-import { getUserID, storeUserID } from "./idstore";
+import * as idstore from "./idstore";
 import Sentry from "../sentry";
 
 /**
@@ -21,11 +21,11 @@ import Sentry from "../sentry";
  */
 export async function identify() {
   try {
-    let userID = await getUserID();
+    let userID = await idstore.getUserID();
     if (!userID) {
       userID = "user-" + uuidv4();
     }
-    await storeUserID(userID);
+    await idstore.storeUserID(userID);
 
     // Identify in RevenueCat
     Payments.alias(userID);
@@ -43,4 +43,8 @@ export async function identify() {
     // Just capture the exception and continue, don't :rip:
     Sentry.captureException(err);
   }
+}
+
+export async function getUserID(): Promise<string> {
+  return idstore.getUserID();
 }

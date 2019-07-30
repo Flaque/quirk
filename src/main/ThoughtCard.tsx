@@ -2,7 +2,6 @@ import React from "react";
 import {
   Dimensions,
   TouchableWithoutFeedback,
-  Keyboard,
   KeyboardAvoidingView,
   View,
 } from "react-native";
@@ -15,10 +14,9 @@ import { textInputStyle } from "./textInputStyle";
 import { textInputPlaceholderColor } from "./textInputStyle";
 import i18n from "../i18n";
 import * as stats from "../stats";
-import haptic from "../haptic";
-import * as Haptic from "expo-haptics";
 
 import { Thought } from "../thoughts";
+import haptic from "../haptic";
 
 const MaxFadeIn = newFadesIn({
   maxOpacity: 0.5,
@@ -58,13 +56,16 @@ export default class ThoughtCard extends React.Component<
     onNext: (thought: Thought) => void;
     onFinish: (thought: Thought) => void;
     onChange: (txt: string) => void;
-    thought: Thought;
+    onPopUp: () => void;
+    onPopDown: () => void;
     isEditing: boolean;
+    thought: Thought;
     style?: any;
+    cardPosition: "hidden" | "hiddenWiggle" | "peak" | "full";
+    shouldFadeInBackgroundOverlay: boolean;
   },
   {
     shouldFadeInBackgroundOverlay: boolean;
-    view: "hidden" | "hiddenWiggle" | "peak" | "full";
   }
 > {
   private textInputRef: React.RefObject<HTMLInputElement>;
@@ -72,53 +73,35 @@ export default class ThoughtCard extends React.Component<
   constructor(props) {
     super(props);
     this.textInputRef = React.createRef();
-
-    this.state = {
-      shouldFadeInBackgroundOverlay: false,
-      view: "hidden",
-    };
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ view: "hiddenWiggle" });
-    }, 250);
+  componentDidUpdate(prevProps) {
+    // If we just switched to editing, focus the input
+    if (!prevProps.isEditing && this.props.isEditing) {
+      this.textInputRef.current.focus();
+    }
   }
 
   popUp = () => {
+    haptic.selection();
     this.textInputRef.current.focus();
-    this.setState({
-      view: "peak",
-    });
-    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-
-    // Trigger the fade-in effect of the background overlay
-    setTimeout(() => {
-      this.setState({
-        shouldFadeInBackgroundOverlay: true,
-      });
-    }, 200);
-  };
-
-  popDown = () => {
-    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    Keyboard.dismiss();
-    this.setState({
-      view: "hiddenWiggle",
-      shouldFadeInBackgroundOverlay: false,
-    });
+    this.props.onPopUp();
   };
 
   render() {
-    const { style, isEditing } = this.props;
-    const { view, shouldFadeInBackgroundOverlay } = this.state;
+    const {
+      style,
+      isEditing,
+      cardPosition,
+      shouldFadeInBackgroundOverlay,
+    } = this.props;
 
     return (
       <>
-        {view !== "hiddenWiggle" && view !== "hidden" && (
+        {cardPosition !== "hiddenWiggle" && cardPosition !== "hidden" && (
           <BackgroundOverlay
             isVisible={shouldFadeInBackgroundOverlay}
-            onPress={this.popDown}
+            onPress={this.props.onPopDown}
           />
         )}
         <TouchableWithoutFeedback onPress={this.popUp}>
@@ -141,7 +124,7 @@ export default class ThoughtCard extends React.Component<
               flex: 1,
               ...style,
             }}
-            pose={this.state.view}
+            pose={this.props.cardPosition}
           >
             <KeyboardAvoidingView>
               <Row>
@@ -158,7 +141,9 @@ export default class ThoughtCard extends React.Component<
 
                 <FadesIn
                   pose={
-                    view === "peak" || view === "full" ? "visible" : "hidden"
+                    cardPosition === "peak" || cardPosition === "full"
+                      ? "visible"
+                      : "hidden"
                   }
                 >
                   <IconButton
@@ -168,7 +153,7 @@ export default class ThoughtCard extends React.Component<
                     }}
                     accessibilityLabel={"close"}
                     featherIconName="x"
-                    onPress={this.popDown}
+                    onPress={this.props.onPopDown}
                   />
                 </FadesIn>
               </Row>
@@ -183,11 +168,7 @@ export default class ThoughtCard extends React.Component<
                 multiline={true}
                 numberOfLines={6}
                 onChangeText={this.props.onChange}
-                onFocus={() => {
-                  this.setState({
-                    view: "peak",
-                  });
-                }}
+                onFocus={this.props.onPopUp}
                 onBlur={() => stats.userFilledOutFormField("automatic")}
               />
 

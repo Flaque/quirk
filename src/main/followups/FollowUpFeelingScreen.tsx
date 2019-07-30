@@ -1,18 +1,29 @@
 import React from "react";
-import { Thought } from "../thoughts";
-import { ScreenProps, StackActions } from "react-navigation";
-import { Container, MediumHeader, GhostButton } from "../ui";
+import { Thought } from "../../thoughts";
+import { ScreenProps } from "react-navigation";
+import {
+  Container,
+  MediumHeader,
+  GhostButton,
+  HintHeader,
+  SubHeader,
+  Row,
+  IconButton,
+} from "../../ui";
 import Constants from "expo-constants";
-import theme from "../theme";
-import { StatusBar, Platform } from "react-native";
-import * as stats from "../stats";
-import { FINISHED_SCREEN, FOLLOW_UP_REQUEST_SCREEN } from "./screens";
+import theme from "../../theme";
+import { StatusBar, View } from "react-native";
+import * as stats from "../../stats";
+import {
+  FINISHED_SCREEN,
+  FOLLOW_UP_FEELING_REVIEW_SCREEN,
+  THOUGHT_SCREEN,
+} from "../screens";
 import { get } from "lodash";
-import { saveExercise, countThoughts } from "../thoughtstore";
-import haptic from "../haptic";
-import * as StoreReview from "react-native-store-review";
+import { saveExercise } from "../../thoughtstore";
+import haptic from "../../haptic";
 
-export default class FeelingScreen extends React.Component<
+export default class FollowUpFeelingScreen extends React.Component<
   ScreenProps,
   {
     thought?: Thought;
@@ -22,22 +33,8 @@ export default class FeelingScreen extends React.Component<
     header: null,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      thought: undefined, // yes, really. Trust me this fixed a bug.
-    };
-  }
-
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
-      const thought = get(args, "state.params.thought");
-      this.setState({
-        thought,
-      });
-    });
-
-    this.props.navigation.addListener("didFocus", args => {
       const thought = get(args, "state.params.thought");
       this.setState({
         thought,
@@ -49,75 +46,106 @@ export default class FeelingScreen extends React.Component<
     feeling: "better" | "worse" | "same"
   ): Promise<Thought> => {
     const thought = this.state.thought;
-    thought.immediateCheckup = feeling;
+    thought.followUpCheckup = feeling;
     return saveExercise(this.state.thought);
   };
 
   onFeltBetter = async () => {
+    stats.userFeltBetterOnFollowUp();
+
     haptic.selection();
     const thought = await this.saveCheckup("better");
 
-    if (Platform.OS === "ios") {
-      // We load this BEFORE navigating so there's no weird lag
-      const numPreviousThoughts = await countThoughts();
-      if (numPreviousThoughts > 3) {
-        // tfw when your function calls are anime-weapon-size
-        stats.userPromptedForReviewWhenRecordingPositiveThought();
-
-        StoreReview.requestReview();
-      }
-    }
-
-    stats.userFeltBetter();
-    this.props.navigation.navigate(FINISHED_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,
     });
   };
 
   onFeltTheSame = async () => {
+    stats.userFeltTheSameOnFollowUp();
+
     haptic.selection();
     const thought = await this.saveCheckup("same");
 
-    stats.userFeltTheSame();
-    this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,
     });
   };
 
   onFeltWorse = async () => {
+    stats.userFeltWorseOnFollowUp();
+
     haptic.selection();
     const thought = await this.saveCheckup("worse");
 
-    stats.userFeltWorse();
-    this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,
     });
   };
 
-  render() {
-    if (!this.state.thought) {
-      return <Container />;
-    }
+  onClose = async () => {
+    haptic.selection();
+    this.props.navigation.navigate(THOUGHT_SCREEN);
+  };
 
+  render() {
     return (
       <Container
         style={{
           paddingTop: Constants.statusBarHeight + 24,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <StatusBar barStyle="dark-content" hidden={false} />
-        <MediumHeader
+
+        <Row
           style={{
-            marginBottom: 24,
-            textAlign: "center",
+            marginBottom: 12,
+            justifyContent: "space-between",
           }}
         >
-          How are you feeling now?
-        </MediumHeader>
+          <View
+            style={{
+              flex: 1,
+            }}
+          >
+            <MediumHeader
+              style={{
+                marginBottom: 12,
+                marginLeft: 0,
+              }}
+            >
+              Let's start your follow up.
+            </MediumHeader>
+            <HintHeader
+              style={{
+                marginBottom: 24,
+              }}
+            >
+              This is a chance for you to re-evaluate your thoughts with a
+              clearer perspective or to get closure on anything that happened.
+            </HintHeader>
+          </View>
+
+          <IconButton
+            style={{
+              alignSelf: "flex-start",
+              marginLeft: 24,
+            }}
+            accessibilityLabel={"close"}
+            featherIconName="x"
+            onPress={this.onClose}
+          />
+        </Row>
+
+        <SubHeader
+          style={{
+            marginBottom: 12,
+          }}
+        >
+          How are you doing now?
+        </SubHeader>
 
         <GhostButton
           title="Better than before 👍"

@@ -44,14 +44,22 @@ export default class ChallengeScreen extends React.Component<
 
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
-      const thought = get(args, "state.params.thought");
-      const isEditing = get(args, "state.params.isEditing", false);
-      this.setState({
-        thought,
-        isEditing,
-      });
+      this.refreshFromNavigation(args);
+    });
+
+    this.props.navigation.addListener("didFocus", args => {
+      this.refreshFromNavigation(args);
     });
   }
+
+  refreshFromNavigation = args => {
+    const thought = get(args, "state.params.thought");
+    const isEditing = get(args, "state.params.isEditing", false);
+    this.setState({
+      thought,
+      isEditing,
+    });
+  };
 
   onChange = (txt: string) => {
     this.setState(prevState => {
