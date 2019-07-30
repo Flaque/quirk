@@ -121,6 +121,7 @@ export default class MainScreen extends React.Component<
 
     // Follow-ups
     if (followUpState(thought) === "ready") {
+      stats.userStartedFollowUp();
       this.props.navigation.navigate(FOLLOW_UP_FEELING_SCREEN, {
         thought,
       });

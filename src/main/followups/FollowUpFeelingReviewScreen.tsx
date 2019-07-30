@@ -15,6 +15,7 @@ import { THOUGHT_SCREEN, FINISHED_SCREEN } from "../screens";
 import { get } from "lodash";
 import haptic from "../../haptic";
 import { saveExercise } from "../../thoughtstore";
+import * as stats from "../../stats";
 
 const POSITIVE_HEADER = "Great! We'll write that down.";
 const NEUTRAL_OR_NEGATIVE_HEADER = "Let's check-in.";
@@ -51,6 +52,8 @@ export default class FollowUpFeelingReviewScreen extends React.Component<
   }
 
   completeFollowUp = async () => {
+    stats.userCompletedFollowUp();
+
     // Mark this followup as completed
     const oldThought = this.state.thought;
     oldThought.followUpCompleted = true;
@@ -64,6 +67,8 @@ export default class FollowUpFeelingReviewScreen extends React.Component<
   };
 
   onReviewThought = async () => {
+    stats.userReviewedThoughtOnFollowUp();
+
     haptic.selection();
     this.props.navigation.navigate(FINISHED_SCREEN, {
       thought: this.state.thought,
@@ -71,6 +76,8 @@ export default class FollowUpFeelingReviewScreen extends React.Component<
   };
 
   onNewThought = async () => {
+    stats.userRecordedNewThoughtOnFollowUp();
+
     haptic.selection();
     await this.completeFollowUp();
 

@@ -51,6 +51,8 @@ export default class FollowUpFeelingScreen extends React.Component<
   };
 
   onFeltBetter = async () => {
+    stats.userFeltBetterOnFollowUp();
+
     haptic.selection();
     const thought = await this.saveCheckup("better");
 
@@ -60,6 +62,8 @@ export default class FollowUpFeelingScreen extends React.Component<
   };
 
   onFeltTheSame = async () => {
+    stats.userFeltTheSameOnFollowUp();
+
     haptic.selection();
     const thought = await this.saveCheckup("same");
 
@@ -69,6 +73,8 @@ export default class FollowUpFeelingScreen extends React.Component<
   };
 
   onFeltWorse = async () => {
+    stats.userFeltWorseOnFollowUp();
+
     haptic.selection();
     const thought = await this.saveCheckup("worse");
 

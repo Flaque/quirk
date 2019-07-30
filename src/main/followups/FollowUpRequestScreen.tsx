@@ -20,6 +20,7 @@ import { FOLLOW_UP_ONESIGNAL_TEMPLATE } from "./templates";
 import { QUIRK_API_SECRET } from "react-native-dotenv";
 import base64 from "react-native-base64";
 import Sentry from "../../sentry";
+import * as stats from "../../stats";
 
 function getFollowUpTime() {
   const inAFewHours = dayjs().add(2, "hour");
@@ -57,6 +58,7 @@ export default class FollowUpScreen extends React.Component<
   }
 
   onSetCheckup = async () => {
+    stats.userScheduledFollowUp();
     const followUpDate = getFollowUpTime();
 
     // Tell the user/app we've got a followup scheduled
@@ -142,7 +144,10 @@ export default class FollowUpScreen extends React.Component<
           width={"100%"}
           borderColor={theme.gray}
           textColor={theme.lightText}
-          onPress={this.onContinue}
+          onPress={() => {
+            stats.userDidNotScheduleFollowUp();
+            this.onContinue();
+          }}
         />
       </Container>
     );
