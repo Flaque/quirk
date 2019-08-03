@@ -95,3 +95,10 @@ export const ShouldStatementsImage = () => (
     style={ImageStyles}
   />
 );
+
+export const HowToQuirkImage = () => (
+  <Image
+    source={require("../../assets/learnheaders/HowToQuirk.png")}
+    style={ImageStyles}
+  />
+);

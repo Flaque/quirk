@@ -1,6 +1,6 @@
 import React from "react";
 import { Thought } from "../thoughts";
-import { ScreenProps, StackActions } from "react-navigation";
+import { ScreenProps } from "react-navigation";
 import { Container, MediumHeader, GhostButton } from "../ui";
 import Constants from "expo-constants";
 import theme from "../theme";

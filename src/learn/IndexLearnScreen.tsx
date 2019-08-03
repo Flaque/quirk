@@ -1,7 +1,7 @@
 import React from "react";
 import { View, ScrollView, TouchableOpacity } from "react-native";
 import ScreenProps from "../ScreenProps";
-import { Container, MediumHeader, HintHeader } from "../ui";
+import { Container, MediumHeader, HintHeader, SubHeader } from "../ui";
 import Constants from "expo-constants";
 import theme from "../theme";
 import {
@@ -17,6 +17,7 @@ import {
   OverGeneralizationImage,
   SelfBlamingImage,
   ShouldStatementsImage,
+  HowToQuirkImage,
 } from "./images";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import { ARTICLE_SCREEN } from "./screens";
@@ -36,11 +37,11 @@ const Article = ({
 }) => (
   <View
     style={{
-      alignSelf: "center",
       marginTop: 24,
+      padding: 0,
     }}
   >
-    <MediumHeader>{title}</MediumHeader>
+    <SubHeader>{title}</SubHeader>
     <HintHeader>{subheader}</HintHeader>
     <TouchableOpacity
       onPress={() => {
@@ -73,90 +74,120 @@ export default class IndexLearnScreen extends React.Component<ScreenProps> {
             paddingBottom: TAB_BAR_HEIGHT * 2 + 24,
           }}
         >
+          <MediumHeader>Read This First</MediumHeader>
+          <HintHeader
+            style={{
+              marginBottom: 0,
+            }}
+          >
+            Learn the basics of CBT and how to use Quirk.
+          </HintHeader>
           <Article
-            title="All or Nothing Thinking"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={AllOrNothingThinkingImage}
+            title="How to use Quirk"
+            subheader={"8 min read"}
+            HeroImage={HowToQuirkImage}
             navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/all-or-nothing"}
+            url={"https://embedded.quirk.fyi/how-to-quirk"}
           />
-          <Article
-            title="Catastrophizing"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={CatastrophizingImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/catastrophizing"}
-          />
-          <Article
-            title="Emotional Reasoning"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={EmotionalReasoningImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/emotional-reasoning"}
-          />
-          <Article
-            title="Fortune Telling"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={FortuneTellingImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/fortune-telling"}
-          />
-          <Article
-            title="Labeling"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={LabelingImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/labeling"}
-          />
-          <Article
-            title="Magnification of the Negative"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={MaxNegativeImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/magnification-of-the-negative"}
-          />
-          <Article
-            title="Mind Reading"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={MindReadingImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/mind-reading"}
-          />
-          <Article
-            title="Minimization of the Positive"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={MinPositiveImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/minimization-of-the-positive"}
-          />
-          <Article
-            title="Other Blaming"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={OtherBlamingImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/other-blaming"}
-          />
-          <Article
-            title="Overgeneralization"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={OverGeneralizationImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/overgeneralization"}
-          />
-          <Article
-            title="Self Blaming"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={SelfBlamingImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/self-blaming"}
-          />
-          <Article
-            title="Should Statements"
-            subheader={"1 min read - Cognitive Distortion"}
-            HeroImage={ShouldStatementsImage}
-            navigation={this.props.navigation}
-            url={"https://embedded.quirk.fyi/should-statements"}
-          />
+
+          <View
+            style={{
+              marginTop: 48,
+            }}
+          >
+            <MediumHeader>Cognitive Distortions</MediumHeader>
+            <HintHeader
+              style={{
+                marginBottom: 0,
+              }}
+            >
+              Learn the most common ways your thoughts can be distorted.
+            </HintHeader>
+            <Article
+              title="All or Nothing Thinking"
+              subheader={"1 min read "}
+              HeroImage={AllOrNothingThinkingImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/all-or-nothing"}
+            />
+            <Article
+              title="Catastrophizing"
+              subheader={"1 min read "}
+              HeroImage={CatastrophizingImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/catastrophizing"}
+            />
+            <Article
+              title="Emotional Reasoning"
+              subheader={"1 min read "}
+              HeroImage={EmotionalReasoningImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/emotional-reasoning"}
+            />
+            <Article
+              title="Fortune Telling"
+              subheader={"1 min read "}
+              HeroImage={FortuneTellingImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/fortune-telling"}
+            />
+            <Article
+              title="Labeling"
+              subheader={"1 min read "}
+              HeroImage={LabelingImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/labeling"}
+            />
+            <Article
+              title="Magnification of the Negative"
+              subheader={"1 min read "}
+              HeroImage={MaxNegativeImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/magnification-of-the-negative"}
+            />
+            <Article
+              title="Mind Reading"
+              subheader={"1 min read "}
+              HeroImage={MindReadingImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/mind-reading"}
+            />
+            <Article
+              title="Minimization of the Positive"
+              subheader={"1 min read "}
+              HeroImage={MinPositiveImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/minimization-of-the-positive"}
+            />
+            <Article
+              title="Other Blaming"
+              subheader={"1 min read "}
+              HeroImage={OtherBlamingImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/other-blaming"}
+            />
+            <Article
+              title="Overgeneralization"
+              subheader={"1 min read "}
+              HeroImage={OverGeneralizationImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/overgeneralization"}
+            />
+            <Article
+              title="Self Blaming"
+              subheader={"1 min read "}
+              HeroImage={SelfBlamingImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/self-blaming"}
+            />
+            <Article
+              title="Should Statements"
+              subheader={"1 min read "}
+              HeroImage={ShouldStatementsImage}
+              navigation={this.props.navigation}
+              url={"https://embedded.quirk.fyi/should-statements"}
+            />
+          </View>
         </Container>
       </ScrollView>
     );
