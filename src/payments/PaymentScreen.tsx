@@ -392,7 +392,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
             </Paragraph>
             <ActionButton
               flex={1}
-              title={"Cancelation Instructions"}
+              title={"Cancellation Instructions"}
               fillColor="#EDF0FC"
               textColor={theme.darkBlue}
               width={"100%"}

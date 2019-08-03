@@ -85,7 +85,7 @@ const CancelationInstructions = () => {
   return (
     <ActionButton
       flex={1}
-      title={"Cancelation Instructions"}
+      title={"Cancellation Instructions"}
       fillColor="#EDF0FC"
       textColor={theme.darkBlue}
       onPress={() => {
