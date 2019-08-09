@@ -134,9 +134,7 @@ export default class ThoughtCard extends React.Component<
                   }}
                 >
                   <MediumHeader>{i18n.t("auto_thought")}</MediumHeader>
-                  <HintHeader>
-                    What's the situation and what's your first thought?
-                  </HintHeader>
+                  <HintHeader>What's going on?</HintHeader>
                 </View>
 
                 <FadesIn

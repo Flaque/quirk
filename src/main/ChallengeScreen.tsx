@@ -109,7 +109,7 @@ export default class ChallengeScreen extends React.Component<
             <TextInput
               style={textInputStyle}
               placeholderTextColor={textInputPlaceholderColor}
-              placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
+              placeholder={i18n.t("cbt_form.changed_placeholder")}
               value={this.state.thought.challenge}
               multiline={true}
               numberOfLines={6}

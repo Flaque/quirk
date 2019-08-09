@@ -41,11 +41,11 @@ export default ({ count }) => {
   return (
     <View
       style={{
-        alignItems: "center",
+        alignItems: "flex-start",
         margin: 32,
       }}
     >
-      <Label marginBottom={18} textAlign={"center"}>
+      <Label marginBottom={18} textAlign={"left"}>
         Keep going, it takes about {ENOUGH_DAYS} days to build the healthy
         habit.
       </Label>

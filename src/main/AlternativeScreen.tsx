@@ -96,7 +96,7 @@ export default class AlternativeScreen extends React.Component<
             <TextInput
               style={textInputStyle}
               placeholderTextColor={textInputPlaceholderColor}
-              placeholder={i18n.t("cbt_form.auto_thought_placeholder")}
+              placeholder={i18n.t("cbt_form.alt_thought_placeholder")}
               value={this.state.thought.alternativeThought}
               multiline={true}
               numberOfLines={6}
