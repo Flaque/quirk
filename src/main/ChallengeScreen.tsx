@@ -21,7 +21,7 @@ import {
   DISTORTION_SCREEN,
   FINISHED_SCREEN,
 } from "./screens";
-import { TextInput, ScrollView, KeyboardAvoidingView } from "react-native";
+import { TextInput, KeyboardAvoidingView } from "react-native";
 import { saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
