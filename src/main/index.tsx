@@ -11,6 +11,8 @@ import {
   FOLLOW_UP_FEELING_SCREEN,
   FOLLOW_UP_FEELING_REVIEW_SCREEN,
   FOLLOW_UP_NOTE_SCREEN,
+  FEEDBACK_SCREEN,
+  FEEDBACK_LEAVE_REVIEW,
 } from "./screens";
 import ChallengeScreen from "./ChallengeScreen";
 import DistortionScreen from "./DistortionScreen";
@@ -21,6 +23,8 @@ import FollowUpRequestScreen from "./followups/FollowUpRequestScreen";
 import FollowUpFeelingScreen from "./followups/FollowUpFeelingScreen";
 import FollowUpFeelingReviewScreen from "./followups/FollowUpFeelingReviewScreen";
 import FollowUpNoteScreen from "./followups/FollowUpNoteScreen";
+import FeedbackScreen from "./androidFeedback/FeedbackScreen";
+import LeaveReview from "./androidFeedback/LeaveAReview";
 
 export default createStackNavigator(
   {
@@ -34,6 +38,8 @@ export default createStackNavigator(
     [FOLLOW_UP_FEELING_SCREEN]: FollowUpFeelingScreen,
     [FOLLOW_UP_FEELING_REVIEW_SCREEN]: FollowUpFeelingReviewScreen,
     [FOLLOW_UP_NOTE_SCREEN]: FollowUpNoteScreen,
+    [FEEDBACK_SCREEN]: FeedbackScreen,
+    [FEEDBACK_LEAVE_REVIEW]: LeaveReview,
   },
   {
     initialRouteName: THOUGHT_SCREEN,

@@ -14,7 +14,7 @@ import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { get } from "lodash";
 import { SavedThought } from "../thoughts";
-import { View, Alert } from "react-native";
+import { View, Alert, Platform } from "react-native";
 import theme from "../theme";
 import {
   THOUGHT_SCREEN,
@@ -22,16 +22,19 @@ import {
   ALTERNATIVE_SCREEN,
   DISTORTION_SCREEN,
   FOLLOW_UP_NOTE_SCREEN,
+  FEEDBACK_SCREEN,
 } from "./screens";
 import { NavigationActions, ScrollView } from "react-navigation";
 import { StackActions } from "react-navigation";
-import { deleteExercise, saveExercise } from "../thoughtstore";
+import { deleteExercise, saveExercise, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import dayjs from "dayjs";
 import EmojiList from "./EmojiList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
+import * as flagstore from "../flagstore";
+import { O_SYMLINK } from "constants";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -56,11 +59,31 @@ export default class FinishedScreen extends React.Component<
     });
   }
 
+  shouldSendToAndroidReview = async (): Promise<boolean> => {
+    if (Platform.OS !== "android") {
+      return false;
+    }
+
+    if (await flagstore.get("has-rated", "false")) {
+      return false;
+    }
+
+    if ((await countThoughts()) < 2) {
+      return false;
+    }
+    return true;
+  };
+
   onNext = async () => {
     if (followUpState(this.state.thought) === "ready") {
       const oldThought = this.state.thought;
       oldThought.followUpCompleted = true;
       await saveExercise(oldThought);
+    }
+
+    if (await this.shouldSendToAndroidReview()) {
+      this.props.navigation.push(FEEDBACK_SCREEN);
+      return;
     }
 
     const reset = StackActions.reset({

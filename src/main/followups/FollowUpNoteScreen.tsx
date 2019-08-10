@@ -16,7 +16,7 @@ import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
 import { get } from "lodash";
 import { Thought } from "../../thoughts";
-import { FINISHED_SCREEN, FOLLOW_UP_FEELING_SCREEN } from "../screens";
+import { FOLLOW_UP_FEELING_SCREEN } from "../screens";
 import { TextInput, KeyboardAvoidingView, View } from "react-native";
 import { saveExercise } from "../../thoughtstore";
 import haptic from "../../haptic";
