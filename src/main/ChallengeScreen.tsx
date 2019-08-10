@@ -21,7 +21,7 @@ import {
   DISTORTION_SCREEN,
   FINISHED_SCREEN,
 } from "./screens";
-import { TextInput } from "react-native";
+import { TextInput, ScrollView, KeyboardAvoidingView } from "react-native";
 import { saveExercise } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -98,60 +98,69 @@ export default class ChallengeScreen extends React.Component<
           flex: 1,
         }}
       >
-        {this.state.thought && (
-          <>
-            <MediumHeader>{i18n.t("challenge")}</MediumHeader>
-            <HintHeader>
-              What could you be wrong about? Is there something you don't have
-              enough evidence for?
-            </HintHeader>
+        <KeyboardAvoidingView
+          behavior="position"
+          style={{
+            paddingBottom: 24,
+          }}
+        >
+          {this.state.thought && (
+            <>
+              <MediumHeader>{i18n.t("challenge")}</MediumHeader>
+              <HintHeader>
+                What could you be wrong about? Is there something you don't have
+                enough evidence for?
+              </HintHeader>
 
-            <TextInput
-              style={textInputStyle}
-              placeholderTextColor={textInputPlaceholderColor}
-              placeholder={i18n.t("cbt_form.changed_placeholder")}
-              value={this.state.thought.challenge}
-              multiline={true}
-              numberOfLines={6}
-              autoFocus={true}
-              onChangeText={this.onChange}
-              onBlur={() => stats.userFilledOutFormField("challenge")}
-            />
+              <TextInput
+                style={textInputStyle}
+                placeholderTextColor={textInputPlaceholderColor}
+                placeholder={i18n.t("cbt_form.changed_placeholder")}
+                value={this.state.thought.challenge}
+                multiline={true}
+                numberOfLines={6}
+                onChangeText={this.onChange}
+                onBlur={() => stats.userFilledOutFormField("challenge")}
+              />
 
-            <Row
-              style={{
-                marginTop: 24,
-                justifyContent: "flex-end",
-              }}
-            >
-              {this.state.isEditing ? (
-                <ActionButton
-                  title={"Save"}
-                  onPress={() => this.onFinish()}
-                  width={"100%"}
-                />
-              ) : (
-                <>
-                  <GhostButton
-                    borderColor={theme.lightGray}
-                    textColor={theme.veryLightText}
-                    title={"Back to Distortions"}
-                    style={{
-                      marginRight: 24,
-                      flex: 1,
-                    }}
-                    onPress={() => {
-                      this.props.navigation.navigate(DISTORTION_SCREEN, {
-                        thought: this.state.thought,
-                      });
-                    }}
+              <Row
+                style={{
+                  marginTop: 24,
+                  justifyContent: "flex-end",
+                }}
+              >
+                {this.state.isEditing ? (
+                  <ActionButton
+                    title={"Save"}
+                    onPress={() => this.onFinish()}
+                    width={"100%"}
                   />
-                  <ActionButton title={"Next"} onPress={() => this.onNext()} />
-                </>
-              )}
-            </Row>
-          </>
-        )}
+                ) : (
+                  <>
+                    <GhostButton
+                      borderColor={theme.lightGray}
+                      textColor={theme.veryLightText}
+                      title={"Back to Distortions"}
+                      style={{
+                        marginRight: 24,
+                        flex: 1,
+                      }}
+                      onPress={() => {
+                        this.props.navigation.navigate(DISTORTION_SCREEN, {
+                          thought: this.state.thought,
+                        });
+                      }}
+                    />
+                    <ActionButton
+                      title={"Next"}
+                      onPress={() => this.onNext()}
+                    />
+                  </>
+                )}
+              </Row>
+            </>
+          )}
+        </KeyboardAvoidingView>
       </Container>
     );
   }

@@ -4,6 +4,7 @@ import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   View,
+  ScrollView,
 } from "react-native";
 import theme from "../theme";
 import { MediumHeader, HintHeader, ActionButton, Row, IconButton } from "../ui";
@@ -46,7 +47,7 @@ const BackgroundOverlay = ({ isVisible, onPress }) => (
 export const THOUGHT_CARD_HIDDEN_HEIGHT = 278;
 
 const CardPopsUp = newPopsUp({
-  fullHeight: Dimensions.get("screen").height * 0.85,
+  fullHeight: Dimensions.get("screen").height * 0.86,
   hiddenHeight: THOUGHT_CARD_HIDDEN_HEIGHT,
   popUpScale: 1.1,
 });
@@ -126,7 +127,12 @@ export default class ThoughtCard extends React.Component<
             }}
             pose={this.props.cardPosition}
           >
-            <KeyboardAvoidingView>
+            <KeyboardAvoidingView
+              behavior="position"
+              style={{
+                paddingBottom: 24,
+              }}
+            >
               <Row>
                 <View
                   style={{
