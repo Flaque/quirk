@@ -18,7 +18,7 @@ import { saveExercise } from "../../thoughtstore";
 import * as stats from "../../stats";
 
 const POSITIVE_HEADER = "Great! We'll write that down.";
-const NEUTRAL_OR_NEGATIVE_HEADER = "Let's check-in.";
+const NEUTRAL_OR_NEGATIVE_HEADER = "Here's your next steps.";
 
 const POSITIVE_HINT =
   "Would you still like to review your thought? You can also can finish now and go about your day.";
@@ -136,15 +136,16 @@ export default class FollowUpFeelingReviewScreen extends React.Component<
 
         {this.state.thought.followUpCheckup !== "better" && (
           <>
-            <GhostButton
+            <ActionButton
               title="Record a new thought"
               style={{
                 marginBottom: 12,
               }}
+              width={"100%"}
               onPress={this.onNewThought}
             />
             <GhostButton
-              title="Review thought"
+              title="Review Thought"
               onPress={this.onReviewThought}
             />
           </>

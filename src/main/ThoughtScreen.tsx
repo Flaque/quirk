@@ -21,7 +21,7 @@ import ThoughtCard from "./ThoughtCard";
 import {
   DISTORTION_SCREEN,
   FINISHED_SCREEN,
-  FOLLOW_UP_FEELING_SCREEN,
+  FOLLOW_UP_NOTE_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -122,7 +122,7 @@ export default class MainScreen extends React.Component<
     // Follow-ups
     if (followUpState(thought) === "ready") {
       stats.userStartedFollowUp();
-      this.props.navigation.navigate(FOLLOW_UP_FEELING_SCREEN, {
+      this.props.navigation.navigate(FOLLOW_UP_NOTE_SCREEN, {
         thought,
       });
       return;

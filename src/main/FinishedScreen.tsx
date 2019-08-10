@@ -21,6 +21,7 @@ import {
   CHALLENGE_SCREEN,
   ALTERNATIVE_SCREEN,
   DISTORTION_SCREEN,
+  FOLLOW_UP_NOTE_SCREEN,
 } from "./screens";
 import { NavigationActions, ScrollView } from "react-navigation";
 import { StackActions } from "react-navigation";
@@ -203,6 +204,27 @@ export default class FinishedScreen extends React.Component<
                 <Paragraph>{this.state.thought.alternativeThought}</Paragraph>
               </GhostButtonWithGuts>
             </View>
+
+            {this.state.thought.followUpNote && (
+              <View
+                style={{
+                  marginBottom: 12,
+                }}
+              >
+                <SubHeader>Follow-up Note</SubHeader>
+                <GhostButtonWithGuts
+                  borderColor={theme.lightGray}
+                  onPress={() => {
+                    this.props.navigation.push(FOLLOW_UP_NOTE_SCREEN, {
+                      thought: this.state.thought,
+                      isEditing: true,
+                    });
+                  }}
+                >
+                  <Paragraph>{this.state.thought.followUpNote}</Paragraph>
+                </GhostButtonWithGuts>
+              </View>
+            )}
 
             <Row
               style={{

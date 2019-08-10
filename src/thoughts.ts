@@ -11,6 +11,7 @@ export interface Thought {
   followUpDate?: string;
   followUpCompleted?: boolean;
   followUpCheckup?: "better" | "worse" | "same";
+  followUpNote?: string;
 }
 
 export interface SavedThought extends Thought {

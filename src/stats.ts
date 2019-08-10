@@ -194,7 +194,12 @@ export function subscriptionFoundInCache(value: string) {
  * and if people actually understand how the app works.
  */
 export function userFilledOutFormField(
-  value: "automatic" | "distortions" | "challenge" | "alternative"
+  value:
+    | "automatic"
+    | "distortions"
+    | "challenge"
+    | "alternative"
+    | "followup_note"
 ) {
   Segment.track("user_filled_out_" + value);
 }
