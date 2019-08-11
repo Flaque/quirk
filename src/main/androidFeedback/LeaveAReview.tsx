@@ -102,7 +102,7 @@ export default class LeaveReview extends React.Component<
             >
               <GhostButton
                 title={"No Thanks."}
-                onPress={() => {}}
+                onPress={() => this.continue()}
                 width={"100%"}
               />
             </Row>

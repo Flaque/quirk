@@ -71,6 +71,14 @@ export default class FinishedScreen extends React.Component<
     if ((await countThoughts()) < 2) {
       return false;
     }
+
+    if (
+      this.state.thought &&
+      this.state.thought.immediateCheckup !== "better"
+    ) {
+      return false;
+    }
+
     return true;
   };
 

@@ -25,6 +25,10 @@ const isValidPurchaserInfo = (info: PurchaserInfo) => {
 export const setupRevenutCat = async () => {
   Purchases.setDebugLogsEnabled(!!__DEV__);
   Purchases.setup(REVENUECAT_API_KEY);
+
+  // if (Platform.OS === "ios") {
+  //   Purchases.automaticAppleSearchAdsAttributionCollection = true;
+  // }
 };
 
 // Note that subscriptions can change prices or structure all the time.

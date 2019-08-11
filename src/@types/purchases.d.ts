@@ -34,6 +34,8 @@ declare module "react-native-purchases" {
     observerMode?: boolean
   ): Promise<void>;
 
+  let automaticAppleSearchAdsAttributionCollection: boolean;
+
   export function setAllowSharingStoreAccount(allowSharing: boolean);
 
   export function setFinishTransactions(finishTransactions: boolean);
