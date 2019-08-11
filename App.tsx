@@ -17,6 +17,16 @@ import { createBottomTabNavigator } from "react-navigation";
 import TabBar from "./src/tabbar/TabBar";
 import OnboardingScreen from "./src/onboarding";
 import IndexLearnScreen from "./src/learn";
+import { setCustomText } from "react-native-global-props";
+import { Platform } from "react-native";
+
+if (Platform.OS === "android") {
+  setCustomText({
+    style: {
+      fontFamily: "Roboto",
+    },
+  });
+}
 
 const App = createBottomTabNavigator(
   {
