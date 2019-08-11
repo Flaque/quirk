@@ -308,7 +308,7 @@ export const FloatingCard = ({
     style={{
       backgroundColor: "white",
       borderWidth: 2,
-      borderColor: theme.blue,
+      borderColor: theme.lightGray,
       borderRadius: 8,
       padding: 24,
       elevation: 1,
@@ -316,7 +316,6 @@ export const FloatingCard = ({
       shadowOffset: { width: 0, height: 1 },
       shadowRadius: 10,
       shadowOpacity: 0.8,
-      width: "100%",
       ...style,
     }}
   >
@@ -472,12 +471,14 @@ export const IconButton = ({
   accessibilityLabel,
   onPress,
   style,
+  iconSize,
   hasBadge,
 }: {
   featherIconName: string;
   accessibilityLabel: string;
   onPress: () => void;
   style?: object;
+  iconSize?: number;
   hasBadge?: boolean;
 }) => (
   <TouchableOpacity
@@ -508,7 +509,11 @@ export const IconButton = ({
         }}
       />
     )}
-    <Feather name={featherIconName} size={24} color={theme.veryLightText} />
+    <Feather
+      name={featherIconName}
+      size={iconSize || 24}
+      color={theme.veryLightText}
+    />
   </TouchableOpacity>
 );
 

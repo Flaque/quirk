@@ -6,6 +6,11 @@ export const FadesIn = posed.View({
   hidden: { opacity: 0, y: -10 },
 });
 
+export const FadesInAndShrinks = posed.View({
+  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: -100 },
+});
+
 export const BouncyBigOnActive = posed.View({
   active: { scale: 1, transition: { type: "spring", stiffness: 200 } },
   inactive: { scale: 0.5 },

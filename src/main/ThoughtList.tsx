@@ -29,15 +29,7 @@ export default ({
   historyButtonLabel,
 }: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
-    return (
-      <View
-        style={{
-          marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT + 48,
-        }}
-      >
-        <EmptyThoughtIllustration />
-      </View>
-    );
+    return <EmptyThoughtIllustration />;
   }
 
   const items = groups.sort(byDate).map(group => {
@@ -69,7 +61,6 @@ export default ({
   return (
     <View
       style={{
-        marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT,
         paddingTop: Constants.statusBarHeight,
       }}
     >

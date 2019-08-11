@@ -17,7 +17,7 @@ import {
 import { validThoughtGroup } from "../sanitize";
 import parseThoughts from "./parseThoughts";
 import ThoughtList from "./ThoughtList";
-import ThoughtCard from "./ThoughtCard";
+import ThoughtCard, { THOUGHT_CARD_HIDDEN_HEIGHT } from "./ThoughtCard";
 import {
   DISTORTION_SCREEN,
   FINISHED_SCREEN,
@@ -31,6 +31,8 @@ import Constants from "expo-constants";
 import theme from "../theme";
 import { get } from "lodash";
 import followUpState from "./followups/followUpState";
+import HintCard from "./hints/HintList";
+import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -223,8 +225,10 @@ export default class MainScreen extends React.Component<
               inverted
               style={{
                 backgroundColor: theme.lightOffwhite,
+                marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT,
               }}
             >
+              <HintCard />
               <ThoughtList
                 groups={groups}
                 historyButtonLabel={"alternative-thought"}
