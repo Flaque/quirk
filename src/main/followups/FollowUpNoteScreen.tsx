@@ -9,8 +9,10 @@ import {
   Paragraph,
   SubHeader,
 } from "../../ui";
-import { textInputStyle } from "../textInputStyle";
-import { textInputPlaceholderColor } from "../textInputStyle";
+import {
+  textInputStyle,
+  textInputPlaceholderColor,
+} from "../../textInputStyle";
 import * as stats from "../../stats";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";

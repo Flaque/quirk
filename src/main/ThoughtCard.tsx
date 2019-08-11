@@ -4,15 +4,13 @@ import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   View,
-  ScrollView,
 } from "react-native";
 import theme from "../theme";
 import { MediumHeader, HintHeader, ActionButton, Row, IconButton } from "../ui";
 import { newPopsUp, newFadesIn, FadesIn } from "../animations";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import { TextInput } from "react-native-gesture-handler";
-import { textInputStyle } from "./textInputStyle";
-import { textInputPlaceholderColor } from "./textInputStyle";
+import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
 import i18n from "../i18n";
 import * as stats from "../stats";
 

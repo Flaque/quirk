@@ -15,7 +15,7 @@ import MainScreen from "./src/main";
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
 import TabBar from "./src/tabbar/TabBar";
-import OnboardingScreen from "./src/onboarding/OnboardingScreen";
+import OnboardingScreen from "./src/onboarding";
 import IndexLearnScreen from "./src/learn";
 
 const App = createBottomTabNavigator(
@@ -28,7 +28,7 @@ const App = createBottomTabNavigator(
     [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
   },
   {
-    initialRouteName: PAYMENT_SCREEN,
+    initialRouteName: CBT_ON_BOARDING_SCREEN,
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },

@@ -8,8 +8,7 @@ import {
   GhostButton,
   Container,
 } from "../ui";
-import { textInputStyle } from "./textInputStyle";
-import { textInputPlaceholderColor } from "./textInputStyle";
+import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import ScreenProps from "../ScreenProps";

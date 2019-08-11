@@ -21,6 +21,7 @@ import { QUIRK_API_SECRET } from "react-native-dotenv";
 import base64 from "react-native-base64";
 import Sentry from "../../sentry";
 import * as stats from "../../stats";
+import { post } from "../../api";
 
 function getFollowUpTime() {
   const inAFewHours = dayjs().add(2, "hour");
@@ -73,17 +74,10 @@ export default class FollowUpScreen extends React.Component<
     // it's much better we just continue about our day first.
     const userID = await getUserID();
     try {
-      fetch("https://api.quirk.fyi/notification/new", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `basic ${base64.encode("user:" + QUIRK_API_SECRET)}`,
-        },
-        body: JSON.stringify({
-          userID,
-          sendAfter: followUpDate,
-          templateID: FOLLOW_UP_ONESIGNAL_TEMPLATE,
-        }),
+      post("/notification/new", {
+        userID,
+        sendAfter: followUpDate,
+        templateID: FOLLOW_UP_ONESIGNAL_TEMPLATE,
       });
     } catch (err) {
       Sentry.captureBreadcrumb({

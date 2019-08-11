@@ -3,7 +3,7 @@ export default {
   offwhite: "#f2f5fa",
   lightGray: "#EAEDF8",
   gray: "#dadfeb",
-  veryLightText: "#a7b0c4",
+  veryLightText: "#8894af",
   lightText: "#596275",
   darkText: "#303952",
   pink: "#f8a5c2",

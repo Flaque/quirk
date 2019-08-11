@@ -29,10 +29,15 @@ import * as Segment from "expo-analytics-segment";
 import isInDev from "./isInDev";
 import dayjs from "dayjs";
 
-Segment.initialize({
-  androidWriteKey: "ZivFALGI9FH1L4WiAEY3o5PDtKwvLLxB",
-  iosWriteKey: "BpLkO0nXEQJUJyjQCqZk5TWawTQN83QC",
-});
+export function initSegment() {
+  Segment.initialize({
+    androidWriteKey: "ZivFALGI9FH1L4WiAEY3o5PDtKwvLLxB",
+    iosWriteKey: "BpLkO0nXEQJUJyjQCqZk5TWawTQN83QC",
+  });
+  return Segment;
+}
+
+initSegment();
 
 // Don't rename these; it can mess a bunch of stuff down the pipe
 export type ScreenType =

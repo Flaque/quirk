@@ -1,4 +1,4 @@
-import theme from "../theme";
+import theme from "./theme";
 import { Dimensions } from "react-native";
 
 export const textInputStyle = {
