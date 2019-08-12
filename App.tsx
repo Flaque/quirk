@@ -6,6 +6,7 @@ import {
   PAYMENT_SCREEN,
   LOCK_SCREEN,
   MAIN_SCREEN,
+  CHECKUP_SCREEN,
 } from "./src/screens";
 import SettingScreen from "./src/SettingsScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
@@ -17,6 +18,7 @@ import { createBottomTabNavigator } from "react-navigation";
 import TabBar from "./src/tabbar/TabBar";
 import OnboardingScreen from "./src/onboarding";
 import IndexLearnScreen from "./src/learn";
+import CheckupScreen from "./src/checkups";
 import { setCustomText } from "react-native-global-props";
 import { Platform } from "react-native";
 
@@ -36,9 +38,10 @@ const App = createBottomTabNavigator(
     [PAYMENT_SCREEN]: PaymentScreen,
     [LOCK_SCREEN]: LockScreen,
     [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
+    [CHECKUP_SCREEN]: CheckupScreen,
   },
   {
-    initialRouteName: PAYMENT_SCREEN,
+    initialRouteName: CHECKUP_SCREEN,
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },

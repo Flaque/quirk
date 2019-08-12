@@ -1,32 +1,25 @@
 import React from "react";
 import theme from "../theme";
-import { Container, MediumHeader, HintHeader, ActionButton, Row } from "../ui";
+import { Container, MediumHeader, HintHeader, GhostButton } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { ScrollView, KeyboardAvoidingView } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
+import { PREDICT_THE_FUTURE_SCREEN } from "./screens";
 
-export default class PredictTheFutureScreen extends React.Component<
-  ScreenProps
-> {
+export default class HowYaDoinScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
     header: null,
   };
 
-  state = {
-    goal: "",
-  };
-
-  onChange = async txt => {
-    this.setState({
-      goal: txt,
-    });
+  onFeeling = async (felt: "good" | "neutral" | "bad") => {
+    console.log(felt);
   };
 
   onNext = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    this.props.navigation.push(CONDITION_SCREEN);
+    this.props.navigation.push(PREDICT_THE_FUTURE_SCREEN);
   };
 
   render() {
@@ -45,27 +38,48 @@ export default class PredictTheFutureScreen extends React.Component<
               paddingBottom: 24,
             }}
           >
-            <MediumHeader>Welcome to Quirk! 👋</MediumHeader>
+            <MediumHeader>How has it been going?</MediumHeader>
             <HintHeader
               style={{
                 marginBottom: 24,
               }}
             >
-              We'll get you started in a moment, but first we have some
-              questions.
+              Be honest, Quirk adapts based on how you're doing.
             </HintHeader>
 
-            <Row
+            <GhostButton
+              title="It's going well 👍"
+              width={"100%"}
+              borderColor={theme.lightGray}
+              textColor={theme.darkText}
               style={{
-                marginTop: 24,
+                marginBottom: 12,
+                backgroundColor: "white",
               }}
-            >
-              <ActionButton
-                title={"Next"}
-                width="100%"
-                onPress={() => this.onNext()}
-              />
-            </Row>
+              onPress={() => this.onFeeling("good")}
+            />
+            <GhostButton
+              title="It's going okay 🤷‍"
+              width={"100%"}
+              borderColor={theme.lightGray}
+              textColor={theme.darkText}
+              style={{
+                marginBottom: 12,
+                backgroundColor: "white",
+              }}
+              onPress={() => this.onFeeling("neutral")}
+            />
+            <GhostButton
+              title="It's going poorly 👎"
+              width={"100%"}
+              borderColor={theme.lightGray}
+              textColor={theme.darkText}
+              style={{
+                marginBottom: 12,
+                backgroundColor: "white",
+              }}
+              onPress={() => this.onFeeling("bad")}
+            />
           </KeyboardAvoidingView>
         </ScrollView>
       </Container>

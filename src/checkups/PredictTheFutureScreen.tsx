@@ -6,6 +6,7 @@ import Constants from "expo-constants";
 import { ScrollView, KeyboardAvoidingView } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
+import { CHECKUP_SUMMARY_SCREEN } from "./screens";
 
 export default class PredictTheFutureScreen extends React.Component<
   ScreenProps
@@ -26,7 +27,7 @@ export default class PredictTheFutureScreen extends React.Component<
 
   onNext = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    this.props.navigation.push(CONDITION_SCREEN);
+    this.props.navigation.push(CHECKUP_SUMMARY_SCREEN);
   };
 
   render() {

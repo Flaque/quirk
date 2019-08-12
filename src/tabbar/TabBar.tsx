@@ -10,6 +10,7 @@ import {
   PAYMENT_SCREEN,
   LOCK_SCREEN,
   CBT_ON_BOARDING_SCREEN,
+  CHECKUP_SCREEN,
 } from "../screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -67,7 +68,8 @@ export default class extends React.Component<ScreenProps> {
     if (
       tab === PAYMENT_SCREEN ||
       tab === LOCK_SCREEN ||
-      tab === CBT_ON_BOARDING_SCREEN
+      tab === CBT_ON_BOARDING_SCREEN ||
+      tab === CHECKUP_SCREEN
     ) {
       return null;
     }
