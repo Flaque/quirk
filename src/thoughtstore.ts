@@ -2,7 +2,6 @@ import { AsyncStorage } from "react-native";
 import stringify from "json-stringify-safe";
 import uuidv4 from "uuid/v4";
 import { Thought, SavedThought } from "./thoughts";
-import parseThoughts from "./main/parseThoughts";
 
 const EXISTING_USER_KEY = "@Quirk:existing-user";
 const THOUGHTS_KEY_PREFIX = `@Quirk:thoughts:`;
