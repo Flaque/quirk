@@ -15,9 +15,6 @@ import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import { CONDITION_SCREEN } from "./screens";
 import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
-import { initSegment } from "../stats";
-
-const Segment = initSegment();
 
 export default class GoalScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
