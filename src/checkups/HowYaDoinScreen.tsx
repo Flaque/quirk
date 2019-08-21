@@ -7,7 +7,7 @@ import { ScrollView, KeyboardAvoidingView } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import { CHECKUP_SUMMARY_SCREEN } from "./screens";
-import { newCheckup, saveCheckup } from "./checkupstore";
+import { newCheckup, saveCheckup, getMostRecentCheckup } from "./checkupstore";
 
 export default class HowYaDoinScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -19,6 +19,8 @@ export default class HowYaDoinScreen extends React.Component<ScreenProps> {
 
     const checkup = newCheckup(felt);
     await saveCheckup(checkup);
+
+    await getMostRecentCheckup();
 
     this.props.navigation.navigate(CHECKUP_SUMMARY_SCREEN, {
       checkup,
