@@ -34,7 +34,6 @@ import EmojiList from "./EmojiList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
 import * as flagstore from "../flagstore";
-import { O_SYMLINK } from "constants";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
