@@ -1,11 +1,12 @@
 import React from "react";
 import theme from "../theme";
-import { Container, MediumHeader, HintHeader, ActionButton, Row } from "../ui";
+import { Container, MediumHeader, ActionButton, Row } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { ScrollView, KeyboardAvoidingView } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
+import { CONDITION_SCREEN } from "../onboarding/screens";
 
 export default class CheckUpSummaryScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -43,15 +44,13 @@ export default class CheckUpSummaryScreen extends React.Component<ScreenProps> {
               paddingBottom: 24,
             }}
           >
-            <MediumHeader>Welcome to Quirk! 👋</MediumHeader>
-            <HintHeader
+            <MediumHeader
               style={{
                 marginBottom: 24,
               }}
             >
-              We'll get you started in a moment, but first we have some
-              questions.
-            </HintHeader>
+              Summary
+            </MediumHeader>
 
             <Row
               style={{

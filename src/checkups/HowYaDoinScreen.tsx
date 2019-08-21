@@ -6,7 +6,8 @@ import Constants from "expo-constants";
 import { ScrollView, KeyboardAvoidingView } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
-import { PREDICT_THE_FUTURE_SCREEN } from "./screens";
+import { CHECKUP_SUMMARY_SCREEN } from "./screens";
+import { newCheckup, saveCheckup } from "./checkupstore";
 
 export default class HowYaDoinScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -14,12 +15,14 @@ export default class HowYaDoinScreen extends React.Component<ScreenProps> {
   };
 
   onFeeling = async (felt: "good" | "neutral" | "bad") => {
-    console.log(felt);
-  };
-
-  onNext = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    this.props.navigation.push(PREDICT_THE_FUTURE_SCREEN);
+
+    const checkup = newCheckup(felt);
+    await saveCheckup(checkup);
+
+    this.props.navigation.navigate(CHECKUP_SUMMARY_SCREEN, {
+      checkup,
+    });
   };
 
   render() {

@@ -46,7 +46,9 @@ export default class PredictTheFutureScreen extends React.Component<
               paddingBottom: 24,
             }}
           >
-            <MediumHeader>Welcome to Quirk! 👋</MediumHeader>
+            <MediumHeader>
+              How do you think you'll be the next time you check-in?
+            </MediumHeader>
             <HintHeader
               style={{
                 marginBottom: 24,
