@@ -31,7 +31,6 @@ import Constants from "expo-constants";
 import theme from "../theme";
 import { get } from "lodash";
 import followUpState from "./followups/followUpState";
-import HintCard from "./hints/HintList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 
 export default class MainScreen extends React.Component<
@@ -228,7 +227,6 @@ export default class MainScreen extends React.Component<
                 marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT,
               }}
             >
-              <HintCard />
               <ThoughtList
                 groups={groups}
                 historyButtonLabel={"alternative-thought"}

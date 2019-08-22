@@ -2,6 +2,7 @@ import { AsyncStorage } from "react-native";
 import stringify from "json-stringify-safe";
 import uuidv4 from "uuid/v4";
 import { Thought, SavedThought } from "./thoughts";
+import dayjs from "dayjs";
 
 const EXISTING_USER_KEY = "@Quirk:existing-user";
 const THOUGHTS_KEY_PREFIX = `@Quirk:thoughts:`;
@@ -108,4 +109,23 @@ export const getExercises = async () => {
 export const countThoughts = async (): Promise<number> => {
   const exercises = await getExercises();
   return exercises.length;
+};
+
+export const thoughtsBetweenRange = async (
+  firstDate: string,
+  secondDate: string
+): Promise<SavedThought[]> => {
+  const exercises = await getExercises();
+
+  return exercises
+    .map(([key, value]) => value)
+    .map(data => JSON.parse(data))
+    .filter((thought: SavedThought) => {
+      const date = thought.createdAt;
+
+      return (
+        dayjs(date).isAfter(dayjs(firstDate)) &&
+        dayjs(date).isBefore(dayjs(secondDate))
+      );
+    });
 };

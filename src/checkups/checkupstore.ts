@@ -4,12 +4,13 @@ import Sentry from "../sentry";
 import uuidv4 from "uuid/v4";
 import dayjs from "dayjs";
 
-type Mood = "good" | "neutral" | "bad";
+type Mood = "good" | "neutral" | "bad" | "unselected";
 
 export interface Checkup {
   currentMood: Mood;
   predictedMood?: Mood;
   note?: string;
+  goal?: string;
   uuid: string;
   date: string;
 }
@@ -20,9 +21,9 @@ function getKey(uuid: string) {
   return THOUGHTS_KEY_PREFIX + uuid;
 }
 
-export function newCheckup(currentMood: Mood): Checkup {
+export function newCheckup(): Checkup {
   return {
-    currentMood,
+    currentMood: "unselected",
     uuid: uuidv4(),
     date: new Date().toISOString(),
   };
@@ -51,25 +52,31 @@ export async function getCheckup(uuid: string): Promise<Checkup> {
   }
 }
 
-export async function getAllCheckups(): Promise<Checkup[]> {
+export async function getOrderedCheckups(): Promise<Checkup[]> {
   try {
     const keys = await AsyncStorage.getAllKeys();
     const checkupKeys = keys.filter(key => key.startsWith(THOUGHTS_KEY_PREFIX));
-    console.log("keys", checkupKeys);
-    const checkups = await AsyncStorage.multiGet(checkupKeys);
-    return checkups.map(([_, value]) => JSON.parse(value));
+
+    const data = await AsyncStorage.multiGet(checkupKeys);
+    const checkups = data.map(([_, value]) => JSON.parse(value));
+
+    return checkups.sort((a, b) =>
+      dayjs(a.date).isAfter(dayjs(b.date)) ? 1 : -1
+    );
   } catch (err) {
     Sentry.captureException(err);
     return [];
   }
 }
 
-export async function getMostRecentCheckup(): Promise<Checkup> {
+export async function getMostRecentCheckup(): Promise<Checkup | null> {
   try {
-    const checkups = await getAllCheckups();
-    console.log(
-      checkups.sort((a, b) => (dayjs(a.date).isAfter(dayjs(b.date)) ? 1 : -1))
-    );
+    const orderedCheckups = await getOrderedCheckups();
+    if (orderedCheckups.length === 0) {
+      return null;
+    }
+
+    return orderedCheckups[0];
   } catch (err) {
     Sentry.captureException(err);
     return null;

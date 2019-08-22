@@ -269,8 +269,8 @@ export const RoundedSelectorButton = ({
       backgroundColor: selected ? theme.blue : "white",
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
-      paddingTop: 8,
-      paddingBottom: 8,
+      paddingTop: 12,
+      paddingBottom: 12,
       paddingRight: 12,
       borderRadius: 8,
       borderWidth: 1,
@@ -283,7 +283,7 @@ export const RoundedSelectorButton = ({
     <View style={{ flexDirection: "row" }}>
       <Text
         style={{
-          fontWeight: "400",
+          fontWeight: "700",
           fontSize: 16,
           color: selected ? "white" : theme.darkText,
           marginLeft: 12,
@@ -442,6 +442,7 @@ export const ActionButton = ({
       width,
       height,
       flex,
+      opacity: disabled ? 0.3 : 1,
       ...style,
     }}
     disabled={disabled}

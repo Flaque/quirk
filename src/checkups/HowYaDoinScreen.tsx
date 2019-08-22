@@ -1,28 +1,69 @@
 import React from "react";
 import theme from "../theme";
-import { Container, MediumHeader, HintHeader, GhostButton } from "../ui";
+import {
+  Container,
+  MediumHeader,
+  HintHeader,
+  RoundedSelectorButton,
+  SubHeader,
+  ActionButton,
+} from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
-import { ScrollView, KeyboardAvoidingView } from "react-native";
+import {
+  ScrollView,
+  KeyboardAvoidingView,
+  TextInput,
+  View,
+} from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
+import { newCheckup, saveCheckup } from "./checkupstore";
+import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
 import { CHECKUP_SUMMARY_SCREEN } from "./screens";
-import { newCheckup, saveCheckup, getMostRecentCheckup } from "./checkupstore";
+import { get } from "lodash";
 
 export default class HowYaDoinScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
     header: null,
   };
 
+  state = {
+    checkup: null,
+  };
+
+  componentDidMount() {
+    this.props.navigation.addListener("willFocus", args => {
+      const checkup = get(args, "action.params.checkup", newCheckup());
+
+      this.setState({
+        checkup,
+      });
+    });
+  }
+
+  onNext = async () => {
+    if (this.state.checkup.mood === "unselected") {
+      return;
+    }
+
+    await saveCheckup(this.state.checkup);
+
+    this.props.navigation.navigate(CHECKUP_SUMMARY_SCREEN, {
+      checkup: this.state.checkup
+    });
+  };
+
   onFeeling = async (felt: "good" | "neutral" | "bad") => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
 
-    const checkup = newCheckup(felt);
-    await saveCheckup(checkup);
+    this.setState({
+      mood: felt,
+    });
+  };
 
-    await getMostRecentCheckup();
-
-    this.props.navigation.navigate(CHECKUP_SUMMARY_SCREEN, {
+  onChangeNote = (note: string) => {
+    this.setState(({checkup}) => {
       checkup,
     });
   };
@@ -40,7 +81,7 @@ export default class HowYaDoinScreen extends React.Component<ScreenProps> {
           <KeyboardAvoidingView
             behavior="position"
             style={{
-              paddingBottom: 24,
+              paddingBottom: 128,
             }}
           >
             <MediumHeader>How has it been going?</MediumHeader>
@@ -52,38 +93,51 @@ export default class HowYaDoinScreen extends React.Component<ScreenProps> {
               Be honest, Quirk adapts based on how you're doing.
             </HintHeader>
 
-            <GhostButton
+            <RoundedSelectorButton
               title="It's going well 👍"
-              width={"100%"}
-              borderColor={theme.lightGray}
-              textColor={theme.darkText}
-              style={{
-                marginBottom: 12,
-                backgroundColor: "white",
-              }}
               onPress={() => this.onFeeling("good")}
+              selected={this.state.mood === "good"}
             />
-            <GhostButton
+            <RoundedSelectorButton
               title="It's going okay 🤷‍"
-              width={"100%"}
-              borderColor={theme.lightGray}
-              textColor={theme.darkText}
-              style={{
-                marginBottom: 12,
-                backgroundColor: "white",
-              }}
               onPress={() => this.onFeeling("neutral")}
+              selected={this.state.mood === "neutral"}
             />
-            <GhostButton
+            <RoundedSelectorButton
               title="It's going poorly 👎"
-              width={"100%"}
-              borderColor={theme.lightGray}
-              textColor={theme.darkText}
-              style={{
-                marginBottom: 12,
-                backgroundColor: "white",
-              }}
               onPress={() => this.onFeeling("bad")}
+              selected={this.state.mood === "bad"}
+            />
+
+            <SubHeader
+              style={{
+                marginTop: 24,
+              }}
+            >
+              Add a note (optional)
+            </SubHeader>
+
+            <View
+              style={{
+                marginBottom: 24,
+              }}
+            >
+              <TextInput
+                style={textInputStyle}
+                placeholderTextColor={textInputPlaceholderColor}
+                placeholder={"The past few days have been..."}
+                value={this.state.note}
+                multiline={true}
+                numberOfLines={6}
+                onChangeText={this.onChangeNote}
+              />
+            </View>
+
+            <ActionButton
+              title="Next"
+              width="100%"
+              disabled={this.state.mood === ""}
+              onPress={this.onNext}
             />
           </KeyboardAvoidingView>
         </ScrollView>

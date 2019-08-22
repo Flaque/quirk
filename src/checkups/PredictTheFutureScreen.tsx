@@ -7,7 +7,6 @@ import { ScrollView, KeyboardAvoidingView } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import { CHECKUP_SUMMARY_SCREEN } from "./screens";
-import { getMostRecentCheckup } from "./checkupstore";
 
 export default class PredictTheFutureScreen extends React.Component<
   ScreenProps
