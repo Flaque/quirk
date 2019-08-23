@@ -18,53 +18,69 @@ import {
 } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
-import { newCheckup, saveCheckup } from "./checkupstore";
+import { newCheckup, saveCheckup, Checkup } from "./checkupstore";
 import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
 import { CHECKUP_SUMMARY_SCREEN } from "./screens";
 import { get } from "lodash";
 
-export default class HowYaDoinScreen extends React.Component<ScreenProps> {
+export default class HowYaDoinScreen extends React.Component<
+  ScreenProps,
+  {
+    checkup: Checkup | null;
+  }
+> {
   static navigationOptions = {
     header: null,
   };
 
   state = {
-    checkup: null,
+    checkup: newCheckup(),
   };
 
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
-      const checkup = get(args, "action.params.checkup", newCheckup());
-
-      this.setState({
-        checkup,
-      });
+      const checkup = get(args, "action.params.checkup");
+      if (checkup) {
+        this.setState({
+          checkup,
+        });
+      }
     });
   }
 
   onNext = async () => {
-    if (this.state.checkup.mood === "unselected") {
+    if (this.state.checkup.currentMood === "unselected") {
       return;
     }
 
     await saveCheckup(this.state.checkup);
 
     this.props.navigation.navigate(CHECKUP_SUMMARY_SCREEN, {
-      checkup: this.state.checkup
+      checkup: this.state.checkup,
     });
   };
 
-  onFeeling = async (felt: "good" | "neutral" | "bad") => {
+  onFeeling = async (mood: "good" | "neutral" | "bad") => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
 
-    this.setState({
-      mood: felt,
+    this.setState(prevState => {
+      if (!prevState.checkup) {
+        return prevState;
+      }
+
+      prevState.checkup.currentMood = mood;
+      return prevState;
     });
   };
 
   onChangeNote = (note: string) => {
-    this.setState(({checkup}) => {
-      checkup,
+    this.setState(prevState => {
+      if (!prevState.checkup) {
+        return prevState;
+      }
+
+      prevState.checkup.note = note;
+      return prevState;
     });
   };
 
@@ -96,17 +112,17 @@ export default class HowYaDoinScreen extends React.Component<ScreenProps> {
             <RoundedSelectorButton
               title="It's going well 👍"
               onPress={() => this.onFeeling("good")}
-              selected={this.state.mood === "good"}
+              selected={this.state.checkup.currentMood === "good"}
             />
             <RoundedSelectorButton
               title="It's going okay 🤷‍"
               onPress={() => this.onFeeling("neutral")}
-              selected={this.state.mood === "neutral"}
+              selected={this.state.checkup.currentMood === "neutral"}
             />
             <RoundedSelectorButton
               title="It's going poorly 👎"
               onPress={() => this.onFeeling("bad")}
-              selected={this.state.mood === "bad"}
+              selected={this.state.checkup.currentMood === "bad"}
             />
 
             <SubHeader
@@ -126,7 +142,7 @@ export default class HowYaDoinScreen extends React.Component<ScreenProps> {
                 style={textInputStyle}
                 placeholderTextColor={textInputPlaceholderColor}
                 placeholder={"The past few days have been..."}
-                value={this.state.note}
+                value={this.state.checkup.note}
                 multiline={true}
                 numberOfLines={6}
                 onChangeText={this.onChangeNote}
@@ -136,7 +152,7 @@ export default class HowYaDoinScreen extends React.Component<ScreenProps> {
             <ActionButton
               title="Next"
               width="100%"
-              disabled={this.state.mood === ""}
+              disabled={this.state.checkup.currentMood === "unselected"}
               onPress={this.onNext}
             />
           </KeyboardAvoidingView>
