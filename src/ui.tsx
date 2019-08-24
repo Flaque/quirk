@@ -332,7 +332,7 @@ export const GhostButtonWithGuts = ({
   style,
 }: {
   onPress: () => void;
-  borderColor: string;
+  borderColor?: string;
   disabled?: boolean;
   flex?: number;
   children: any;
@@ -342,7 +342,7 @@ export const GhostButtonWithGuts = ({
     style={{
       padding: 12,
       borderRadius: 10,
-      borderColor: borderColor,
+      borderColor: borderColor || theme.lightGray,
       borderWidth: 1,
       borderBottomWidth: 2,
       flex,

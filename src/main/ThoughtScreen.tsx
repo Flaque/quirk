@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, StatusBar, Keyboard } from "react-native";
+import { View, StatusBar, Keyboard, TouchableOpacity } from "react-native";
 import {
   getExercises,
   saveExercise,
@@ -32,6 +32,12 @@ import theme from "../theme";
 import { get } from "lodash";
 import followUpState from "./followups/followUpState";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
+import {
+  SubHeader,
+  HintHeader,
+  FloatingCard,
+  GhostButtonWithGuts,
+} from "../ui";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -227,6 +233,19 @@ export default class MainScreen extends React.Component<
                 marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT,
               }}
             >
+              <GhostButtonWithGuts
+                style={{
+                  margin: 24,
+                  backgroundColor: "white",
+                }}
+                onPress={() => {}}
+              >
+                <SubHeader>Start Checkup</SubHeader>
+                <HintHeader>
+                  Checking in helps you see your progress over time.
+                </HintHeader>
+              </GhostButtonWithGuts>
+
               <ThoughtList
                 groups={groups}
                 historyButtonLabel={"alternative-thought"}

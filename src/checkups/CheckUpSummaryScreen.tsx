@@ -127,7 +127,7 @@ export default class CheckUpSummaryScreen extends React.Component<
                 }
               />
               <ActionButton
-                title={"Next"}
+                title={"Finish"}
                 style={{
                   flex: 1,
                   marginLeft: 12,

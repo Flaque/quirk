@@ -41,7 +41,7 @@ const App = createBottomTabNavigator(
     [CHECKUP_SCREEN]: CheckupScreen,
   },
   {
-    initialRouteName: CHECKUP_SCREEN,
+    initialRouteName: PAYMENT_SCREEN,
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },
