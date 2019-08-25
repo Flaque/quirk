@@ -37,15 +37,18 @@ export default class HowYaDoinScreen extends React.Component<
     checkup: newCheckup(),
   };
 
+  refresh = args => {
+    const checkup = get(args, "action.params.checkup");
+    if (checkup) {
+      this.setState({
+        checkup,
+      });
+    }
+  };
+
   componentDidMount() {
-    this.props.navigation.addListener("willFocus", args => {
-      const checkup = get(args, "action.params.checkup");
-      if (checkup) {
-        this.setState({
-          checkup,
-        });
-      }
-    });
+    this.props.navigation.addListener("willFocus", this.refresh);
+    this.props.navigation.addListener("didFocus", this.refresh);
   }
 
   onNext = async () => {

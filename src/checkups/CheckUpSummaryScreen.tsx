@@ -9,6 +9,7 @@ import {
   FloatingCard,
   SubHeader,
   GhostButton,
+  HintHeader,
 } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
@@ -82,36 +83,30 @@ export default class CheckUpSummaryScreen extends React.Component<
               paddingBottom: 24,
             }}
           >
-            <MediumHeader
+            <MediumHeader>Checkup Summary</MediumHeader>
+            <HintHeader
               style={{
                 marginBottom: 24,
               }}
             >
-              Checkup Summary
-            </MediumHeader>
+              {dayjs().format("DD-MM-YYYY")}
+            </HintHeader>
 
-            <FloatingCard>
-              <View style={{ marginBottom: 24 }}>
-                <SubHeader>Today's date</SubHeader>
-                <Paragraph>{dayjs().format("DD-MM-YYYY")}</Paragraph>
+            <View
+              style={{
+                marginBottom: 24,
+              }}
+            >
+              <SubHeader>How things are going</SubHeader>
+              <MoodText mood={this.state.checkup.currentMood} />
+            </View>
+
+            {this.state.checkup.note && (
+              <View>
+                <SubHeader>Notes</SubHeader>
+                <Paragraph>{this.state.checkup.note}</Paragraph>
               </View>
-
-              <View
-                style={{
-                  marginBottom: 24,
-                }}
-              >
-                <SubHeader>How things are going</SubHeader>
-                <MoodText mood={this.state.checkup.currentMood} />
-              </View>
-
-              {this.state.checkup.note && (
-                <View>
-                  <SubHeader>Notes</SubHeader>
-                  <Paragraph>{this.state.checkup.note}</Paragraph>
-                </View>
-              )}
-            </FloatingCard>
+            )}
 
             <Row
               style={{

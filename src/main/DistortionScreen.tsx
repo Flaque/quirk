@@ -19,7 +19,7 @@ import { Thought } from "../thoughts";
 import * as stats from "../stats";
 import haptic from "../haptic";
 import { CHALLENGE_SCREEN, THOUGHT_SCREEN, FINISHED_SCREEN } from "./screens";
-import { saveExercise } from "../thoughtstore";
+import { saveThought } from "../thoughtstore";
 import i18n from "../i18n";
 import * as Haptic from "expo-haptics";
 
@@ -76,7 +76,7 @@ export default class DistortionScreen extends React.Component<
   // From editing
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    const thought = await saveExercise(this.state.thought);
+    const thought = await saveThought(this.state.thought);
     this.props.navigation.push(FINISHED_SCREEN, {
       thought,
     });
@@ -102,7 +102,7 @@ export default class DistortionScreen extends React.Component<
   };
 
   onNext = async () => {
-    const thought = await saveExercise(this.state.thought);
+    const thought = await saveThought(this.state.thought);
     this.props.navigation.push(CHALLENGE_SCREEN, {
       thought,
     });

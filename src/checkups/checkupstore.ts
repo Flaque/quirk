@@ -12,7 +12,8 @@ export interface Checkup {
   note?: string;
   goal?: string;
   uuid: string;
-  date: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const THOUGHTS_KEY_PREFIX = `@Quirk:checkups:`;
@@ -22,10 +23,12 @@ function getKey(uuid: string) {
 }
 
 export function newCheckup(): Checkup {
+  const date = new Date();
   return {
     currentMood: "unselected",
     uuid: uuidv4(),
-    date: new Date().toISOString(),
+    createdAt: date,
+    updatedAt: date,
   };
 }
 
@@ -34,6 +37,7 @@ export async function saveCheckup(checkup: Checkup) {
     if (!checkup.uuid) {
       throw new Error("No uuid on checkup, not storing");
     }
+    checkup.updatedAt = new Date();
 
     await AsyncStorage.setItem(getKey(checkup.uuid), stringify(checkup));
   } catch (err) {

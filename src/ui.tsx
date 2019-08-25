@@ -597,8 +597,8 @@ export const I = ({ children }) => (
   <Text style={{ fontStyle: "italic" }}>{children}</Text>
 );
 
-export const B = ({ children }) => (
-  <Text style={{ fontWeight: "bold" }}>{children}</Text>
+export const B = ({ children, style }: { children: any; style?: any }) => (
+  <Text style={{ fontWeight: "bold", ...style }}>{children}</Text>
 );
 
 export const Badge = ({

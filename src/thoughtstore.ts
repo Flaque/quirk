@@ -3,6 +3,7 @@ import stringify from "json-stringify-safe";
 import uuidv4 from "uuid/v4";
 import { Thought, SavedThought } from "./thoughts";
 import dayjs from "dayjs";
+import parseThoughts from "./main/parseThoughts";
 
 const EXISTING_USER_KEY = "@Quirk:existing-user";
 const THOUGHTS_KEY_PREFIX = `@Quirk:thoughts:`;
@@ -39,7 +40,7 @@ export async function setIsExistingUser() {
   }
 }
 
-export const saveExercise = async (
+export const saveThought = async (
   thought: SavedThought | Thought
 ): Promise<Thought> => {
   let saveableThought: SavedThought;
@@ -74,7 +75,7 @@ export const saveExercise = async (
   }
 };
 
-export const deleteExercise = async (uuid: string) => {
+export const deleteThought = async (uuid: string) => {
   try {
     await AsyncStorage.removeItem(uuid);
   } catch (error) {
@@ -82,7 +83,7 @@ export const deleteExercise = async (uuid: string) => {
   }
 };
 
-export const getExercises = async () => {
+export const getThoughts = async () => {
   try {
     const keys = (await AsyncStorage.getAllKeys()).filter(key =>
       key.startsWith(THOUGHTS_KEY_PREFIX)
@@ -106,8 +107,18 @@ export const getExercises = async () => {
   }
 };
 
+export const getOrderedThoughts = async (): Promise<SavedThought[]> => {
+  const data = await getThoughts();
+  const thoughts = parseThoughts(data);
+
+  return thoughts.sort(
+    (first, second) =>
+      new Date(second.createdAt).getTime() - new Date(first.createdAt).getTime()
+  );
+};
+
 export const countThoughts = async (): Promise<number> => {
-  const exercises = await getExercises();
+  const exercises = await getThoughts();
   return exercises.length;
 };
 
@@ -115,7 +126,7 @@ export const thoughtsBetweenRange = async (
   firstDate: string,
   secondDate: string
 ): Promise<SavedThought[]> => {
-  const exercises = await getExercises();
+  const exercises = await getThoughts();
 
   return exercises
     .map(([key, value]) => value)

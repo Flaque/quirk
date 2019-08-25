@@ -1,22 +1,12 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, StatusBar, Keyboard, TouchableOpacity } from "react-native";
+import { View, StatusBar, Keyboard } from "react-native";
 import {
-  getExercises,
-  saveExercise,
+  saveThought,
   getIsExistingUser,
   setIsExistingUser,
 } from "../thoughtstore";
-import {
-  SavedThought,
-  ThoughtGroup,
-  groupThoughtsByDay,
-  newThought,
-  Thought,
-} from "../thoughts";
-import { validThoughtGroup } from "../sanitize";
-import parseThoughts from "./parseThoughts";
-import ThoughtList from "./ThoughtList";
+import { SavedThought, newThought, Thought } from "../thoughts";
 import ThoughtCard, { THOUGHT_CARD_HIDDEN_HEIGHT } from "./ThoughtCard";
 import {
   DISTORTION_SCREEN,
@@ -32,19 +22,19 @@ import theme from "../theme";
 import { get } from "lodash";
 import followUpState from "./followups/followUpState";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
-import {
-  SubHeader,
-  HintHeader,
-  FloatingCard,
-  GhostButtonWithGuts,
-} from "../ui";
+import { newCheckup, saveCheckup } from "../checkups/checkupstore";
+import ExerciseList from "./ExerciseList";
+import { getSortedExerciseGroups, ExerciseGroup } from "../exercises/exercises";
+import CheckupPrompt from "./CheckupPrompt";
+import { CHECKUP_SCREEN } from "../screens";
+import dayjs from "dayjs";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
   {
     areExercisesLoaded: boolean;
     hasCheckedEditing: boolean;
-    groups: ThoughtGroup[];
+    groups: ExerciseGroup[];
     thought?: Thought;
     isEditing: boolean;
     cardPosition: "hidden" | "hiddenWiggle" | "peak" | "full";
@@ -106,13 +96,8 @@ export default class MainScreen extends React.Component<
   }
 
   loadExercises = () => {
-    getExercises()
-      .then(data => {
-        const thoughts: SavedThought[] = parseThoughts(data);
-        const groups: ThoughtGroup[] = groupThoughtsByDay(thoughts).filter(
-          validThoughtGroup
-        );
-
+    getSortedExerciseGroups()
+      .then(groups => {
         this.setState({ groups });
       })
       .catch(console.error)
@@ -145,7 +130,7 @@ export default class MainScreen extends React.Component<
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     stats.thoughtRecorded();
 
-    const savedThought = await saveExercise(thought);
+    const savedThought = await saveThought(thought);
     this.props.navigation.push(DISTORTION_SCREEN, {
       thought: savedThought,
     });
@@ -163,7 +148,7 @@ export default class MainScreen extends React.Component<
   };
 
   onFinishEditing = async (thought: Thought) => {
-    const savedThought = await saveExercise(thought);
+    const savedThought = await saveThought(thought);
     this.props.navigation.push(FINISHED_SCREEN, {
       thought: savedThought,
     });
@@ -233,20 +218,14 @@ export default class MainScreen extends React.Component<
                 marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT,
               }}
             >
-              <GhostButtonWithGuts
-                style={{
-                  margin: 24,
-                  backgroundColor: "white",
+              <CheckupPrompt
+                onPress={() => {
+                  this.props.navigation.navigate(CHECKUP_SCREEN);
+                  haptic.impact(Haptic.ImpactFeedbackStyle.Medium);
                 }}
-                onPress={() => {}}
-              >
-                <SubHeader>Start Checkup</SubHeader>
-                <HintHeader>
-                  Checking in helps you see your progress over time.
-                </HintHeader>
-              </GhostButtonWithGuts>
+              />
 
-              <ThoughtList
+              <ExerciseList
                 groups={groups}
                 historyButtonLabel={"alternative-thought"}
                 navigateToViewer={this.navigateToViewerWithThought}

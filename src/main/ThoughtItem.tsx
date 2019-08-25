@@ -1,12 +1,18 @@
 import React from "react";
 import { SavedThought } from "../thoughts";
 import { HistoryButtonLabelSetting } from "../SettingsScreen";
-import { Paragraph, Badge } from "../ui";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../theme";
 import { View } from "react-native";
 import EmojiList from "./EmojiList";
 import followUpState from "./followups/followUpState";
+import {
+  CardAttentionDot,
+  TouchableCardContainer,
+  CardCrown,
+  CardTextContent,
+  CardMutedContent,
+  CardBadge,
+} from "../card/TouchableCard";
 
 export default ({
   thought,
@@ -22,103 +28,44 @@ export default ({
       flex: 1,
     }}
   >
-    {followUpState(thought) === "ready" && (
-      <View
-        style={{
-          backgroundColor: theme.pink,
-          position: "relative",
-          top: 12,
-          right: -6,
-          width: 18,
-          height: 18,
-          zIndex: 999,
-          borderRadius: 18,
-          alignSelf: "flex-end",
-        }}
-      />
-    )}
-    <TouchableOpacity
-      onPress={() => onPress(thought)}
-      style={{
-        backgroundColor: "white",
-        borderColor: theme.lightGray,
-        borderBottomWidth: 2,
-        borderRadius: 8,
-        borderWidth: 1,
-        marginBottom: 18,
-        flex: 1,
-      }}
-    >
-      <Paragraph
-        style={{
-          color: theme.darkText,
-          fontWeight: "400",
-          fontSize: 16,
-          marginBottom: 8,
-          paddingLeft: 12,
-          paddingRight: 12,
-          paddingTop: 12,
-          paddingBottom: 6,
-        }}
-      >
-        {historyButtonLabel === "alternative-thought"
-          ? thought.alternativeThought
-          : thought.automaticThought}
-      </Paragraph>
+    {followUpState(thought) === "ready" && <CardAttentionDot />}
+    <TouchableCardContainer onPress={() => onPress(thought)}>
+      <CardCrown text="THOUGHT" featherIconName="message-square" />
 
-      <View
-        style={{
-          backgroundColor: theme.lightOffwhite,
-          paddingLeft: 12,
-          paddingRight: 12,
-          paddingBottom: 12,
-          paddingTop: 6,
-          margin: 4,
-          borderRadius: 8,
-        }}
-      >
+      <CardTextContent
+        text={
+          historyButtonLabel === "alternative-thought"
+            ? thought.alternativeThought
+            : thought.automaticThought
+        }
+      />
+
+      <CardMutedContent>
         <EmojiList thought={thought} />
-      </View>
+      </CardMutedContent>
+
       {thought.immediateCheckup === "better" && (
-        <Badge
+        <CardBadge
           featherIconName="trending-up"
           text="Felt better after recording"
-          style={{
-            margin: 4,
-          }}
         />
       )}
 
       {thought.followUpCheckup === "better" && (
-        <Badge
-          featherIconName="trending-up"
-          text="Felt better later on"
-          style={{
-            margin: 4,
-          }}
-        />
+        <CardBadge featherIconName="trending-up" text="Felt better later on" />
       )}
 
       {followUpState(thought) === "scheduled" && (
-        <Badge
-          featherIconName="clipboard"
-          text="Follow up scheduled"
-          style={{
-            margin: 4,
-          }}
-        />
+        <CardBadge featherIconName="clipboard" text="Follow up scheduled" />
       )}
 
       {followUpState(thought) === "ready" && (
-        <Badge
+        <CardBadge
           featherIconName="play"
           text="Tap to start follow up"
           backgroundColor={theme.lightPink}
-          style={{
-            margin: 4,
-          }}
         />
       )}
-    </TouchableOpacity>
+    </TouchableCardContainer>
   </View>
 );

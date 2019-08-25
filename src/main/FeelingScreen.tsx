@@ -8,7 +8,7 @@ import { StatusBar, Platform } from "react-native";
 import * as stats from "../stats";
 import { FINISHED_SCREEN, FOLLOW_UP_REQUEST_SCREEN } from "./screens";
 import { get } from "lodash";
-import { saveExercise, countThoughts } from "../thoughtstore";
+import { saveThought, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
 import * as StoreReview from "react-native-store-review";
 
@@ -50,7 +50,7 @@ export default class FeelingScreen extends React.Component<
   ): Promise<Thought> => {
     const thought = this.state.thought;
     thought.immediateCheckup = feeling;
-    return saveExercise(this.state.thought);
+    return saveThought(this.state.thought);
   };
 
   onFeltBetter = async () => {

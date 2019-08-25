@@ -26,7 +26,7 @@ import {
 } from "./screens";
 import { NavigationActions, ScrollView } from "react-navigation";
 import { StackActions } from "react-navigation";
-import { deleteExercise, saveExercise, countThoughts } from "../thoughtstore";
+import { deleteExercise, saveThought, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import dayjs from "dayjs";
@@ -35,6 +35,7 @@ import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
 import * as flagstore from "../flagstore";
 import { O_SYMLINK } from "constants";
+import { resetNavigationTo } from "../resetNavigationTo";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -86,7 +87,7 @@ export default class FinishedScreen extends React.Component<
     if (followUpState(this.state.thought) === "ready") {
       const oldThought = this.state.thought;
       oldThought.followUpCompleted = true;
-      await saveExercise(oldThought);
+      await saveThought(oldThought);
     }
 
     if (await this.shouldSendToAndroidReview()) {
@@ -94,11 +95,7 @@ export default class FinishedScreen extends React.Component<
       return;
     }
 
-    const reset = StackActions.reset({
-      index: 0,
-      actions: [NavigationActions.navigate({ routeName: THOUGHT_SCREEN })],
-    });
-    this.props.navigation.dispatch(reset);
+    resetNavigationTo(this.props.navigation, THOUGHT_SCREEN);
     haptic.notification(Haptic.NotificationFeedbackType.Success);
   };
 

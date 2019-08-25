@@ -6,7 +6,7 @@ import {
   View,
   Image,
 } from "react-native";
-import { getExercises, deleteExercise } from "../thoughtstore";
+import { getThoughts, deleteThought } from "../thoughtstore";
 import { Header, Row, Container, IconButton, Label, Paragraph } from "../ui";
 import theme from "../theme";
 import { CBT_FORM_SCREEN, SETTING_SCREEN, CBT_VIEW_SCREEN } from "../screens";
@@ -215,7 +215,7 @@ class CBTListScreen extends React.Component<Props, State> {
       };
     };
 
-    getExercises()
+    getThoughts()
       .then(data => {
         const thoughts: SavedThought[] = data
           .map(([_, value]) => JSON.parse(value))
@@ -269,7 +269,7 @@ class CBTListScreen extends React.Component<Props, State> {
     // Upgrade to 32 when it's released to fix
     universalHaptic.notification(Haptic.NotificationFeedbackType.Success);
 
-    deleteExercise(thought.uuid).then(() => this.loadExercises());
+    deleteThought(thought.uuid).then(() => this.loadExercises());
   };
 
   render() {
