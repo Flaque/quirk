@@ -20,8 +20,9 @@ import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import { newCheckup, saveCheckup, Checkup } from "./checkupstore";
 import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
-import { CHECKUP_SUMMARY_SCREEN } from "./screens";
 import { get } from "lodash";
+import { MAIN_SCREEN } from "../screens";
+import { resetNavigationTo } from "../resetNavigationTo";
 
 export default class HowYaDoinScreen extends React.Component<
   ScreenProps,
@@ -58,9 +59,8 @@ export default class HowYaDoinScreen extends React.Component<
 
     await saveCheckup(this.state.checkup);
 
-    this.props.navigation.navigate(CHECKUP_SUMMARY_SCREEN, {
-      checkup: this.state.checkup,
-    });
+    haptic.notification(Haptic.NotificationFeedbackType.Success);
+    this.props.navigation.navigate(MAIN_SCREEN);
   };
 
   onFeeling = async (mood: "good" | "neutral" | "bad") => {
@@ -153,7 +153,7 @@ export default class HowYaDoinScreen extends React.Component<
             </View>
 
             <ActionButton
-              title="Next"
+              title="Finish"
               width="100%"
               disabled={this.state.checkup.currentMood === "unselected"}
               onPress={this.onNext}

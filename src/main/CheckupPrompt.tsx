@@ -11,7 +11,7 @@ export default ({ onPress }) => (
       marginVertical: 48,
     }}
   >
-    <SubHeader>It's time for a checkup. 👋</SubHeader>
+    <SubHeader>You've hit a milestone 👋</SubHeader>
     <HintHeader>
       See your progress over time and prepare for the next week.
     </HintHeader>
@@ -33,7 +33,7 @@ export default ({ onPress }) => (
           fontSize: 14,
         }}
       >
-        Start Checkup
+        Record Milestone
       </B>
       <Feather name="play" size={16} color={theme.blue} />
     </GhostButtonWithGuts>

@@ -83,7 +83,7 @@ export default class CheckUpSummaryScreen extends React.Component<
               paddingBottom: 24,
             }}
           >
-            <MediumHeader>Checkup Summary</MediumHeader>
+            <MediumHeader>Milestone Summary</MediumHeader>
             <HintHeader
               style={{
                 marginBottom: 24,
