@@ -26,6 +26,8 @@ import ExerciseList from "./ExerciseList";
 import { getSortedExerciseGroups, ExerciseGroup } from "../exercises/exercises";
 import CheckupPrompt from "./CheckupPrompt";
 import { CHECKUP_SCREEN } from "../screens";
+import { getNextCheckupDate } from "../checkups/checkupstore";
+import dayjs from "dayjs";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -37,6 +39,7 @@ export default class MainScreen extends React.Component<
     isEditing: boolean;
     cardPosition: "hidden" | "hiddenWiggle" | "peak" | "full";
     shouldFadeInBackgroundOverlay: boolean;
+    shouldPromptCheckup: boolean;
   }
 > {
   static navigationOptions = {
@@ -53,6 +56,7 @@ export default class MainScreen extends React.Component<
       cardPosition: "hidden",
       isEditing: false,
       shouldFadeInBackgroundOverlay: false,
+      shouldPromptCheckup: false,
     };
   }
 
@@ -67,8 +71,12 @@ export default class MainScreen extends React.Component<
     });
 
     this.loadExercises();
+    this.loadShouldPromptCheckup();
 
     this.props.navigation.addListener("willFocus", args => {
+      this.loadExercises();
+      this.loadShouldPromptCheckup();
+
       const thought = get(args, "action.params.thought", newThought());
       const isEditing = get(args, "action.params.isEditing", false);
       this.setState({
@@ -92,6 +100,13 @@ export default class MainScreen extends React.Component<
       this.setState({ cardPosition: "hiddenWiggle" });
     }, 250);
   }
+
+  loadShouldPromptCheckup = async () => {
+    const date = await getNextCheckupDate();
+    this.setState({
+      shouldPromptCheckup: dayjs().isAfter(dayjs(date)),
+    });
+  };
 
   loadExercises = () => {
     getSortedExerciseGroups()
@@ -216,12 +231,14 @@ export default class MainScreen extends React.Component<
                 marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT,
               }}
             >
-              <CheckupPrompt
-                onPress={() => {
-                  this.props.navigation.navigate(CHECKUP_SCREEN);
-                  haptic.impact(Haptic.ImpactFeedbackStyle.Medium);
-                }}
-              />
+              {this.state.shouldPromptCheckup && (
+                <CheckupPrompt
+                  onPress={() => {
+                    this.props.navigation.navigate(CHECKUP_SCREEN);
+                    haptic.impact(Haptic.ImpactFeedbackStyle.Medium);
+                  }}
+                />
+              )}
 
               <ExerciseList
                 groups={groups}

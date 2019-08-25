@@ -16,10 +16,11 @@ export interface Checkup {
   updatedAt: Date;
 }
 
-const THOUGHTS_KEY_PREFIX = `@Quirk:checkups:`;
+const CHECKUP_SCHEDULE_KEY = "@Quirk:next-checkup-date";
+const CHECKUP_KEY_PREFIX = `@Quirk:checkups:`;
 
 function getKey(uuid: string) {
-  return THOUGHTS_KEY_PREFIX + uuid;
+  return CHECKUP_KEY_PREFIX + uuid;
 }
 
 export function newCheckup(): Checkup {
@@ -59,7 +60,7 @@ export async function getCheckup(uuid: string): Promise<Checkup> {
 export async function getOrderedCheckups(): Promise<Checkup[]> {
   try {
     const keys = await AsyncStorage.getAllKeys();
-    const checkupKeys = keys.filter(key => key.startsWith(THOUGHTS_KEY_PREFIX));
+    const checkupKeys = keys.filter(key => key.startsWith(CHECKUP_KEY_PREFIX));
 
     const data = await AsyncStorage.multiGet(checkupKeys);
     const checkups = data.map(([_, value]) => JSON.parse(value));
@@ -84,5 +85,33 @@ export async function getMostRecentCheckup(): Promise<Checkup | null> {
   } catch (err) {
     Sentry.captureException(err);
     return null;
+  }
+}
+
+export async function getNextCheckupDate(): Promise<string> {
+  try {
+    const date = await AsyncStorage.getItem(CHECKUP_SCHEDULE_KEY);
+    if (!date) {
+      // If we haven't had a checkup yet, schedule it for an hour ago
+      return dayjs()
+        .subtract(1, "h")
+        .toISOString();
+    }
+
+    return date;
+  } catch (err) {
+    Sentry.captureException(err);
+    return dayjs()
+      .add(1, "week")
+      .toISOString();
+  }
+}
+
+export async function saveNextCheckupDate(date: string) {
+  try {
+    const isoString = dayjs(date).toISOString();
+    await AsyncStorage.setItem(CHECKUP_SCHEDULE_KEY, isoString);
+  } catch (err) {
+    Sentry.captureException(err);
   }
 }

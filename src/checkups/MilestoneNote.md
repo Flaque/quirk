@@ -1,3 +1,4 @@
 # Checkups => Milestones
 
-We're renaming "Checkups" to "Milestones" so that they don't get confused with follow-ups. They also make more sense and sound a little bit more positive.
+For customers, we're renaming "Checkups" to "Milestones". For sanity's sake, everything
+in the code is called Checkups; no combining.

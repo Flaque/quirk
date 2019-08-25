@@ -30,7 +30,10 @@ const CheckUpCard = ({
             color: theme.veryLightText,
           }}
         >
-          Recorded on {dayjs(currentCheckup.createdAt).format("DD-MM-YYYY")}
+          Recorded on{" "}
+          {dayjs(currentCheckup.createdAt)
+            .toDate()
+            .toDateString()}
         </Text>
       </CardMutedContent>
 

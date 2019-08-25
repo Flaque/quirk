@@ -18,11 +18,16 @@ import {
 } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
-import { newCheckup, saveCheckup, Checkup } from "./checkupstore";
+import {
+  newCheckup,
+  saveCheckup,
+  Checkup,
+  saveNextCheckupDate,
+} from "./checkupstore";
 import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
 import { get } from "lodash";
 import { MAIN_SCREEN } from "../screens";
-import { resetNavigationTo } from "../resetNavigationTo";
+import dayjs from "dayjs";
 
 export default class HowYaDoinScreen extends React.Component<
   ScreenProps,
@@ -56,10 +61,15 @@ export default class HowYaDoinScreen extends React.Component<
     if (this.state.checkup.currentMood === "unselected") {
       return;
     }
-
+    haptic.notification(Haptic.NotificationFeedbackType.Success);
     await saveCheckup(this.state.checkup);
 
-    haptic.notification(Haptic.NotificationFeedbackType.Success);
+    const nextCheckupDate = dayjs()
+      .add(1, "week")
+      .toISOString();
+
+    await saveNextCheckupDate(nextCheckupDate);
+
     this.props.navigation.navigate(MAIN_SCREEN);
   };
 
