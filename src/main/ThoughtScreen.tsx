@@ -22,12 +22,10 @@ import theme from "../theme";
 import { get } from "lodash";
 import followUpState from "./followups/followUpState";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
-import { newCheckup, saveCheckup } from "../checkups/checkupstore";
 import ExerciseList from "./ExerciseList";
 import { getSortedExerciseGroups, ExerciseGroup } from "../exercises/exercises";
 import CheckupPrompt from "./CheckupPrompt";
 import { CHECKUP_SCREEN } from "../screens";
-import dayjs from "dayjs";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
