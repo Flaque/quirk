@@ -130,5 +130,28 @@
   "should_statements": "'Zou moeten'-denken",
   "should_statements_explanation_1": "Als je mensen (inclusief jezelf) vaardigheden toeschrijft die ze niet hebben, dan maak je de denkfout van het 'zou moeten'-denken. Als je bijvoorbeeld bang bent om te vliegen en tegen jezelf zegt: \"Ik moet hier niet bang voor zijn, er is niets mis met het vliegtuig\". Maar hiermee leg je een te zware last op jezelf. Het is normaal dat mensen met vliegangst bang zijn om te vliegen!",
   "should_statements_explanation_2": "Mochten deze 'zou moeten'-uitspraken je onzinnig klinken, dat is het punt! Ze zijn onlogisch!",
-  "should_statements_thought": "Ik ben een volwassene, ik zou deze mentale problemen niet moeten hebben."
+  "should_statements_thought": "Ik ben een volwassene, ik zou deze mentale problemen niet moeten hebben.",
+  "accessibility": {
+    "help_button": "help",
+    "list_button": "overzicht gedachten",
+    "new_thought_button": "nieuwe gedachte",
+    "settings_button": "instellingen",
+    "delete_thought_button": "verwijder gedachte",
+    "close_button": "sluit"
+  },
+  "payment": {
+    "ios_explanation": "De kosten worden verrekend met je Apple ID account zodra je de aankoop bevestigd. Het abonnement verlengt zich automatisch, tenzij je minstens 24 uur voor het einde van je huidige periode opzegt. Je kunt je abonnementen beheren en annuleren in de instellingen van je App Store account."
+  },
+  "all_or_nothing_thinking_one_liner": "bv: \"Dat was echt een volkomen tijdsverspilling\"",
+  "overgeneralization_one_liner": "bv: \"Iedereen zal me in de steek laten\"",
+  "mind_reading_one_liner": "bv: \"Ik wed dat hij nu een hekel aan me heeft\"",
+  "fortune_telling_one_liner": "bv: \"Ik zal vast ziek worden op dat feestje\"",
+  "magnification_of_the_negative_one_liner": "Alleen focussen op wat er verkeerd ging",
+  "minimization_of_the_positive_one_liner": "Het negeren van alle goede dingen die zijn gebeurd",
+  "catastrophizing_one_liner": "Focussen op het ergste scenario",
+  "emotional_reasoning_one_liner": "bv: \"Ik ben bang, dus ik zal vast een paniekaanval krijgen\"",
+  "should_statements_one_liner": "bv: \"Ik had dat veel beter moeten doen\"",
+  "labeling_one_liner": "bv: \"Hij is een eikel\"",
+  "self_blaming_one_liner": "Alle schuld op jezelf nemen",
+  "other_blaming_one_liner": "Alle schuld toewijzen aan iemand anders"
 }
