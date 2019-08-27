@@ -15,9 +15,6 @@ import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import { CONDITION_SCREEN } from "./screens";
 import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
-import { initSegment } from "../stats";
-
-const Segment = initSegment();
 
 export default class GoalScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -35,12 +32,6 @@ export default class GoalScreen extends React.Component<ScreenProps> {
   };
 
   onNext = async () => {
-    if (this.state.goal && this.state.goal.length > 0) {
-      Segment.trackWithProperties("user_submitted_goal", {
-        message: this.state.goal,
-      });
-    }
-
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.props.navigation.push(CONDITION_SCREEN);
   };
@@ -73,9 +64,7 @@ export default class GoalScreen extends React.Component<ScreenProps> {
 
             <SubHeader>What are your goals for Quirk?</SubHeader>
             <HintHeader>
-              This gets shared with directly with the creators of Quirk so we
-              know how we can best help you. If you're not comfortable sharing,
-              feel free to leave this blank.
+              If you're not comfortable sharing, feel free to leave this blank.
             </HintHeader>
 
             <TextInput

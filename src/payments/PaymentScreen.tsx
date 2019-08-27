@@ -16,7 +16,12 @@ import {
   ScrollView,
 } from "react-navigation";
 import { Paragraph, SubHeader, ActionButton } from "../ui";
-import { LOCK_SCREEN, MAIN_SCREEN, CBT_ON_BOARDING_SCREEN } from "../screens";
+import {
+  LOCK_SCREEN,
+  MAIN_SCREEN,
+  CBT_ON_BOARDING_SCREEN,
+  SUPPORT_SCREEN,
+} from "../screens";
 import theme from "../theme";
 import i18n from "../i18n";
 import { BallIndicator } from "react-native-indicators";
@@ -494,35 +499,26 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               }}
             />
           </View>
-
-          {Platform.OS === "ios" && (
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                marginLeft: 32,
-                marginRight: 32,
-                marginBottom: 32,
-                justifyContent: "space-between",
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: 32,
+              marginRight: 32,
+              marginBottom: 32,
+              justifyContent: "space-between",
+            }}
+          >
+            <ActionButton
+              flex={1}
+              title="Alias your Account"
+              fillColor="#EDF0FC"
+              textColor={theme.darkBlue}
+              onPress={() => {
+                this.props.navigation.navigate(SUPPORT_SCREEN);
               }}
-            >
-              <ActionButton
-                flex={1}
-                title="Alias your Account"
-                fillColor="#EDF0FC"
-                textColor={theme.darkBlue}
-                onPress={() => {
-                  AlertIOS.prompt(
-                    "Enter your email",
-                    "This lets support know who you are",
-                    txt => {
-                      alias(txt);
-                    }
-                  );
-                }}
-              />
-            </View>
-          )}
+            />
+          </View>
         </Container>
       </FadesIn>
     );

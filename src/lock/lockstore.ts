@@ -17,6 +17,16 @@ export async function setPincode(code: string): Promise<boolean> {
   }
 }
 
+export async function getPincode(): Promise<string> {
+  try {
+    const code = await AsyncStorage.getItem(KEY_PINCODE);
+    return code || "";
+  } catch (err) {
+    Sentry.captureException(err);
+    return "";
+  }
+}
+
 export async function isCorrectPincode(code: string): Promise<boolean> {
   if (code.length !== 4) {
     return false;

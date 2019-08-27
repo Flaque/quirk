@@ -101,6 +101,13 @@ export default class DistortionScreen extends React.Component<
     stats.userCheckedDistortion(selected);
   };
 
+  onBackToThought = async () => {
+    const thought = await saveExercise(this.state.thought);
+    this.props.navigation.navigate(THOUGHT_SCREEN, {
+      thought: thought,
+    });
+  };
+
   onNext = async () => {
     const thought = await saveThought(this.state.thought);
     this.props.navigation.push(CHALLENGE_SCREEN, {
@@ -148,7 +155,7 @@ export default class DistortionScreen extends React.Component<
                   <SubHeader>Your Thought</SubHeader>
                   <GhostButtonWithGuts
                     borderColor={theme.lightGray}
-                    onPress={() => this.props.navigation.pop()}
+                    onPress={() => this.onBackToThought()}
                   >
                     <Text>{this.state.thought.automaticThought}</Text>
                   </GhostButtonWithGuts>
