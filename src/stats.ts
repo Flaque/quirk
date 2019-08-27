@@ -324,6 +324,12 @@ export function userRequestedPincodeReset(code: string) {
   });
 }
 
+export function userFinishedCheckup(mood: "good" | "neutral" | "bad") {
+  Segment.trackWithProperties("user_finished_checkup", {
+    mood,
+  });
+}
+
 /**
  * Basically production logs
  * @param properties

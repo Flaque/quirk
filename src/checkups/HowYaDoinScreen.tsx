@@ -28,6 +28,11 @@ import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
 import { get } from "lodash";
 import { MAIN_SCREEN } from "../screens";
 import dayjs from "dayjs";
+import { getUserID } from "../id";
+import { post } from "../api";
+import { CHECKUP_ONESIGNAL_TEMPLATE } from "../main/followups/templates";
+import Sentry from "../sentry";
+import { userFinishedCheckup } from "../stats";
 
 export default class HowYaDoinScreen extends React.Component<
   ScreenProps,
@@ -67,9 +72,23 @@ export default class HowYaDoinScreen extends React.Component<
     const nextCheckupDate = dayjs()
       .add(1, "week")
       .toISOString();
-
     await saveNextCheckupDate(nextCheckupDate);
 
+    const userID = await getUserID();
+    try {
+      post("/notification/new", {
+        userID,
+        sendAfter: nextCheckupDate,
+        templateID: CHECKUP_ONESIGNAL_TEMPLATE,
+      });
+    } catch (err) {
+      Sentry.captureBreadcrumb({
+        message: "Attempting to setup a checkup reminder",
+      });
+      Sentry.captureException(err);
+    }
+
+    userFinishedCheckup(this.state.checkup.currentMood);
     this.props.navigation.navigate(MAIN_SCREEN);
   };
 

@@ -1,15 +1,7 @@
 import React from "react";
 import { Thought } from "../../thoughts";
 import { ScreenProps } from "react-navigation";
-import {
-  Container,
-  MediumHeader,
-  GhostButton,
-  HintHeader,
-  SubHeader,
-  Row,
-  IconButton,
-} from "../../ui";
+import { Container, GhostButton, HintHeader, SubHeader } from "../../ui";
 import Constants from "expo-constants";
 import theme from "../../theme";
 import { StatusBar, View } from "react-native";
