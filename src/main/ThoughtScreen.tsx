@@ -12,6 +12,7 @@ import {
   DISTORTION_SCREEN,
   FINISHED_SCREEN,
   FOLLOW_UP_NOTE_SCREEN,
+  CHECKUP_SUMMARY_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -26,7 +27,7 @@ import ExerciseList from "./ExerciseList";
 import { getSortedExerciseGroups, ExerciseGroup } from "../exercises/exercises";
 import CheckupPrompt from "./CheckupPrompt";
 import { CHECKUP_SCREEN } from "../screens";
-import { getNextCheckupDate } from "../checkups/checkupstore";
+import { getNextCheckupDate, Checkup } from "../checkups/checkupstore";
 import dayjs from "dayjs";
 
 export default class MainScreen extends React.Component<
@@ -149,6 +150,12 @@ export default class MainScreen extends React.Component<
     });
   };
 
+  navigateToCheckupViewer = async (checkup: Checkup) => {
+    this.props.navigation.push(CHECKUP_SUMMARY_SCREEN, {
+      checkup,
+    });
+  };
+
   onChangeAutomaticThought = (txt: string) => {
     this.setState(prevState => {
       if (!prevState.thought) {
@@ -243,7 +250,8 @@ export default class MainScreen extends React.Component<
               <ExerciseList
                 groups={groups}
                 historyButtonLabel={"alternative-thought"}
-                navigateToViewer={this.navigateToViewerWithThought}
+                navigateToThoughtViewer={this.navigateToViewerWithThought}
+                navigateToCheckupViewer={this.navigateToCheckupViewer}
               />
             </InvertibleScrollView>
           </>

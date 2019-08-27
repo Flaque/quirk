@@ -24,9 +24,8 @@ import {
   FOLLOW_UP_NOTE_SCREEN,
   FEEDBACK_SCREEN,
 } from "./screens";
-import { NavigationActions, ScrollView } from "react-navigation";
-import { StackActions } from "react-navigation";
-import { deleteExercise, saveThought, countThoughts } from "../thoughtstore";
+import { ScrollView } from "react-navigation";
+import { deleteThought, saveThought, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import dayjs from "dayjs";
@@ -34,7 +33,6 @@ import EmojiList from "./EmojiList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
 import * as flagstore from "../flagstore";
-import { O_SYMLINK } from "constants";
 import { resetNavigationTo } from "../resetNavigationTo";
 
 export default class FinishedScreen extends React.Component<
@@ -101,7 +99,7 @@ export default class FinishedScreen extends React.Component<
 
   onDelete = async () => {
     const uuid = this.state.thought.uuid;
-    await deleteExercise(uuid);
+    await deleteThought(uuid);
     this.onNext();
     haptic.impact(Haptic.ImpactFeedbackStyle.Heavy);
   };

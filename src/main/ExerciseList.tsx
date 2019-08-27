@@ -11,11 +11,13 @@ import NotEnoughThoughtsIllustration, {
 } from "./NotEnoughThoughtsIllustration";
 import { ExerciseGroup, isThought } from "../exercises/exercises";
 import CheckUpCard from "../checkups/CheckUpCard";
+import { Checkup } from "../checkups/checkupstore";
 
 interface ThoughtListProps {
   groups: ExerciseGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
-  navigateToViewer: (thought: SavedThought) => void;
+  navigateToThoughtViewer: (thought: SavedThought) => void;
+  navigateToCheckupViewer: (checkup: Checkup) => void;
 }
 
 const byReverseCreatedAt = (first, second) =>
@@ -23,7 +25,8 @@ const byReverseCreatedAt = (first, second) =>
 
 export default ({
   groups,
-  navigateToViewer,
+  navigateToThoughtViewer,
+  navigateToCheckupViewer,
   historyButtonLabel,
 }: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
@@ -37,13 +40,17 @@ export default ({
           <ThoughtItem
             key={ex.uuid}
             thought={ex}
-            onPress={navigateToViewer}
+            onPress={navigateToThoughtViewer}
             historyButtonLabel={historyButtonLabel}
           />
         );
       } else {
         return (
-          <CheckUpCard key={ex.uuid} currentCheckup={ex} onPress={() => {}} />
+          <CheckUpCard
+            key={ex.uuid}
+            currentCheckup={ex}
+            onPress={() => navigateToCheckupViewer(ex)}
+          />
         );
       }
     });

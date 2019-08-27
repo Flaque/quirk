@@ -33,7 +33,7 @@ export default ({ onPress }) => (
           fontSize: 14,
         }}
       >
-        Record Milestone
+        Start Milestone
       </B>
       <Feather name="play" size={16} color={theme.blue} />
     </GhostButtonWithGuts>
