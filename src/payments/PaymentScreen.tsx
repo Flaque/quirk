@@ -499,29 +499,26 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               }}
             />
           </View>
-
-          {Platform.OS === "ios" && (
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                marginLeft: 32,
-                marginRight: 32,
-                marginBottom: 32,
-                justifyContent: "space-between",
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: 32,
+              marginRight: 32,
+              marginBottom: 32,
+              justifyContent: "space-between",
+            }}
+          >
+            <ActionButton
+              flex={1}
+              title="Alias your Account"
+              fillColor="#EDF0FC"
+              textColor={theme.darkBlue}
+              onPress={() => {
+                this.props.navigation.navigate(SUPPORT_SCREEN);
               }}
-            >
-              <ActionButton
-                flex={1}
-                title="Alias your Account"
-                fillColor="#EDF0FC"
-                textColor={theme.darkBlue}
-                onPress={() => {
-                  this.props.navigation.navigate(SUPPORT_SCREEN);
-                }}
-              />
-            </View>
-          )}
+            />
+          </View>
         </Container>
       </FadesIn>
     );
