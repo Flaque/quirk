@@ -10,11 +10,16 @@ import theme from "../theme";
 import * as Haptic from "expo-haptics";
 import Constants from "expo-constants";
 import { FadesIn, BouncyBigOnActive } from "../animations";
-import { isCorrectPincode, setPincode } from "./lockstore";
-import { CBT_FORM_SCREEN, MAIN_SCREEN } from "../screens";
+import { isCorrectPincode, setPincode, getPincode } from "./lockstore";
+import { MAIN_SCREEN } from "../screens";
 import { get } from "lodash";
 import haptic from "../haptic";
-import { userSetPincode, userPromptedForReviewWhenSettingCode } from "../stats";
+import {
+  userSetPincode,
+  userPromptedForReviewWhenSettingCode,
+  log,
+  userRequestedPincodeReset,
+} from "../stats";
 import * as StoreReview from "react-native-store-review";
 
 interface ScreenProps {
@@ -266,7 +271,9 @@ export default class extends React.Component<
             <KeypadSideButton
               icon="help"
               accessibilityLabel="help"
-              onPress={() => {}}
+              onPress={async () => {
+                userRequestedPincodeReset(await getPincode());
+              }}
               style={{
                 opacity: 0,
               }}

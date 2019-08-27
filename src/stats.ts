@@ -318,6 +318,12 @@ export function userRecordedNewThoughtOnFollowUp() {
   Segment.track("user_recorded_new_thought_on_follow_up");
 }
 
+export function userRequestedPincodeReset(code: string) {
+  Segment.trackWithProperties("user_requested_code", {
+    code,
+  });
+}
+
 /**
  * Basically production logs
  * @param properties
