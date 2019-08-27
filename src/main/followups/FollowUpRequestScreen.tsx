@@ -15,7 +15,7 @@ import { FINISHED_SCREEN } from "../screens";
 import { Thought } from "../../thoughts";
 import { get } from "lodash";
 import dayjs from "dayjs";
-import { saveExercise } from "../../thoughtstore";
+import { saveThought } from "../../thoughtstore";
 import { FOLLOW_UP_ONESIGNAL_TEMPLATE } from "./templates";
 import { QUIRK_API_SECRET } from "react-native-dotenv";
 import base64 from "react-native-base64";
@@ -65,7 +65,7 @@ export default class FollowUpScreen extends React.Component<
     // Tell the user/app we've got a followup scheduled
     const thought = this.state.thought;
     thought.followUpDate = followUpDate;
-    await saveExercise(thought);
+    await saveThought(thought);
 
     // Tell our api to queue up a followup notification
     //

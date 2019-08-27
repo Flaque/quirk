@@ -17,7 +17,7 @@ import i18n from "../i18n";
 import * as stats from "../stats";
 import theme from "../theme";
 import { CHALLENGE_SCREEN, FEELING_SCREEN, FINISHED_SCREEN } from "./screens";
-import { saveExercise } from "../thoughtstore";
+import { saveThought } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 
@@ -61,7 +61,7 @@ export default class AlternativeScreen extends React.Component<
 
   onNext = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    const thought = await saveExercise(this.state.thought);
+    const thought = await saveThought(this.state.thought);
     this.props.navigation.push(FEELING_SCREEN, {
       thought,
     });
@@ -70,7 +70,7 @@ export default class AlternativeScreen extends React.Component<
   // From editing
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    const thought = await saveExercise(this.state.thought);
+    const thought = await saveThought(this.state.thought);
     this.props.navigation.push(FINISHED_SCREEN, {
       thought,
     });

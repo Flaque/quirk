@@ -14,7 +14,7 @@ import { StatusBar } from "react-native";
 import { THOUGHT_SCREEN, FINISHED_SCREEN } from "../screens";
 import { get } from "lodash";
 import haptic from "../../haptic";
-import { saveExercise } from "../../thoughtstore";
+import { saveThought } from "../../thoughtstore";
 import * as stats from "../../stats";
 
 const POSITIVE_HEADER = "Great! We'll write that down.";
@@ -57,7 +57,7 @@ export default class FollowUpFeelingReviewScreen extends React.Component<
     // Mark this followup as completed
     const oldThought = this.state.thought;
     oldThought.followUpCompleted = true;
-    await saveExercise(oldThought);
+    await saveThought(oldThought);
   };
 
   onFinish = async () => {

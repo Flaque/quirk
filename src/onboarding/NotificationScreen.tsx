@@ -6,7 +6,7 @@ import Constants from "expo-constants";
 import { ScrollView, Image } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
-import { FAMILIARITY_SCREEN } from "./screens";
+import { FAMILIARITY_SCREEN, CHECKUP_PROMPT_SCREEN } from "./screens";
 import { initSegment, userTurnedOnNotifications } from "../stats";
 import { Platform } from "@unimodules/core";
 import OneSignal from "react-native-onesignal";
@@ -25,14 +25,6 @@ export default class NotificationScreen extends React.Component<
     header: null,
   };
 
-  onSelect = async (slug: string) => {
-    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    Segment.trackWithProperties("user_recorded_familiarity", {
-      familiarity: slug,
-    });
-    this.props.navigation.push(FAMILIARITY_SCREEN);
-  };
-
   componentDidMount() {
     OneSignal.init(ONESIGNAL_SECRET, {
       kOSSettingsKeyAutoPrompt: false,
@@ -41,7 +33,7 @@ export default class NotificationScreen extends React.Component<
   }
 
   onContinue = () => {
-    this.props.navigation.navigate(THOUGHT_SCREEN);
+    this.props.navigation.navigate(CHECKUP_PROMPT_SCREEN);
   };
 
   render() {

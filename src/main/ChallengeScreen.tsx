@@ -21,7 +21,7 @@ import {
   FINISHED_SCREEN,
 } from "./screens";
 import { TextInput, KeyboardAvoidingView } from "react-native";
-import { saveExercise } from "../thoughtstore";
+import { saveThought } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 
@@ -73,7 +73,7 @@ export default class ChallengeScreen extends React.Component<
 
   onNext = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    const thought = await saveExercise(this.state.thought);
+    const thought = await saveThought(this.state.thought);
     this.props.navigation.push(ALTERNATIVE_SCREEN, {
       thought,
     });
@@ -82,7 +82,7 @@ export default class ChallengeScreen extends React.Component<
   // From editing
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    const thought = await saveExercise(this.state.thought);
+    const thought = await saveThought(this.state.thought);
     this.props.navigation.push(FINISHED_SCREEN, {
       thought,
     });

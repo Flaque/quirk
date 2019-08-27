@@ -16,7 +16,7 @@ import { StatusBar, View } from "react-native";
 import * as stats from "../../stats";
 import { FOLLOW_UP_FEELING_REVIEW_SCREEN, THOUGHT_SCREEN } from "../screens";
 import { get } from "lodash";
-import { saveExercise } from "../../thoughtstore";
+import { saveThought } from "../../thoughtstore";
 import haptic from "../../haptic";
 
 export default class FollowUpFeelingScreen extends React.Component<
@@ -43,7 +43,7 @@ export default class FollowUpFeelingScreen extends React.Component<
   ): Promise<Thought> => {
     const thought = this.state.thought;
     thought.followUpCheckup = feeling;
-    return saveExercise(this.state.thought);
+    return saveThought(this.state.thought);
   };
 
   onFeltBetter = async () => {
