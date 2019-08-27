@@ -16,7 +16,12 @@ import {
   ScrollView,
 } from "react-navigation";
 import { Paragraph, SubHeader, ActionButton } from "../ui";
-import { LOCK_SCREEN, MAIN_SCREEN, CBT_ON_BOARDING_SCREEN } from "../screens";
+import {
+  LOCK_SCREEN,
+  MAIN_SCREEN,
+  CBT_ON_BOARDING_SCREEN,
+  SUPPORT_SCREEN,
+} from "../screens";
 import theme from "../theme";
 import i18n from "../i18n";
 import { BallIndicator } from "react-native-indicators";
@@ -512,13 +517,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
                 fillColor="#EDF0FC"
                 textColor={theme.darkBlue}
                 onPress={() => {
-                  AlertIOS.prompt(
-                    "Enter your email",
-                    "This lets support know who you are",
-                    txt => {
-                      alias(txt);
-                    }
-                  );
+                  this.props.navigation.navigate(SUPPORT_SCREEN);
                 }}
               />
             </View>

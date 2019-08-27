@@ -6,6 +6,7 @@ import {
   PAYMENT_SCREEN,
   LOCK_SCREEN,
   MAIN_SCREEN,
+  SUPPORT_SCREEN,
 } from "./src/screens";
 import SettingScreen from "./src/SettingsScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
@@ -19,6 +20,7 @@ import OnboardingScreen from "./src/onboarding";
 import IndexLearnScreen from "./src/learn";
 import { setCustomText } from "react-native-global-props";
 import { Platform } from "react-native";
+import SupportScreen from "./src/payments/SupportScreen";
 
 if (Platform.OS === "android") {
   setCustomText({
@@ -36,6 +38,7 @@ const App = createBottomTabNavigator(
     [PAYMENT_SCREEN]: PaymentScreen,
     [LOCK_SCREEN]: LockScreen,
     [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
+    [SUPPORT_SCREEN]: SupportScreen,
   },
   {
     initialRouteName: PAYMENT_SCREEN,
