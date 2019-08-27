@@ -14,7 +14,6 @@ import Constants from "expo-constants";
 import { ScrollView, KeyboardAvoidingView, View } from "react-native";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
-import { MAIN_SCREEN } from "../screens";
 import dayjs from "dayjs";
 import { get } from "lodash";
 import { Checkup } from "./checkupstore";
@@ -86,12 +85,12 @@ export default class CheckUpSummaryScreen extends React.Component<
                 marginBottom: 24,
               }}
             >
-              Checkup Summary
+              Milestone Summary
             </MediumHeader>
 
             <FloatingCard>
               <View style={{ marginBottom: 24 }}>
-                <SubHeader>Today's date</SubHeader>
+                <SubHeader>Milestone date</SubHeader>
                 <Paragraph>{dayjs().format("DD-MM-YYYY")}</Paragraph>
               </View>
 
