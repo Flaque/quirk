@@ -45,6 +45,10 @@ export async function identify() {
   }
 }
 
+export async function addTagsToUser(tags: { [key: string]: string }) {
+  stats.identifyWithTraits(await getUserID(), tags);
+}
+
 export async function getUserID(): Promise<string> {
   return idstore.getUserID();
 }

@@ -279,6 +279,16 @@ export function identify(userID: string) {
   Segment.identify(userID);
 }
 
+export function identifyWithTraits(userID: string, traits) {
+  Segment.identifyWithTraits(userID, traits);
+}
+
+export function userRecordedDisappointedSurvey(answer: string) {
+  Segment.trackWithProperties("user_recorded_disappointed_survey", {
+    disappointedAnswer: answer,
+  });
+}
+
 /**
  * Follow Ups
  */
