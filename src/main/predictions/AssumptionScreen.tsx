@@ -1,12 +1,6 @@
 import React from "react";
 import theme from "../../theme";
-import {
-  MediumHeader,
-  HintHeader,
-  SubHeader,
-  RoundedSelectorButton,
-  ActionButton,
-} from "../../ui";
+import { MediumHeader, HintHeader, SubHeader, ActionButton } from "../../ui";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";

@@ -1,19 +1,24 @@
 import React from "react";
 import theme from "../../theme";
-import { MediumHeader, HintHeader, SubHeader, ActionButton } from "../../ui";
+import {
+  MediumHeader,
+  HintHeader,
+  ActionButton,
+  RoundedSelectorButton,
+} from "../../ui";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
-import { TextInput } from "../../textInputStyle";
-import { ASSUMPTION_NOTE_SCREEN } from "../screens";
+import { ASSUMPTION_NOTE_SCREEN, THOUGHT_SCREEN } from "../screens";
+
+type FollowUpSelections = "+3 hours" | "+1 day" | "+5 days" | string;
 
 export default class PredictionScheduleFollowUpScreen extends React.Component<
   ScreenProps,
   {
-    event: string;
-    felt: string;
+    followUpOn: FollowUpSelections;
   }
 > {
   static navigationOptions = {
@@ -21,18 +26,17 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
   };
 
   state = {
-    event: "",
-    felt: "",
+    followUpOn: "+5 day",
   };
 
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    this.props.navigation.navigate(ASSUMPTION_NOTE_SCREEN);
+    this.props.navigation.navigate(THOUGHT_SCREEN);
   };
 
-  onFelt = async (felt: string) => {
+  onSelect = async (followUpOn: FollowUpSelections) => {
     this.setState({
-      felt,
+      followUpOn,
     });
   };
 
@@ -53,29 +57,25 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
             paddingBottom: 24,
           }}
         >
-          <MediumHeader>New Prediction 🔮</MediumHeader>
+          <MediumHeader>Schedule Follow Up</MediumHeader>
           <HintHeader>
-            Predict your experience of an upcoming event and we’ll follow-up
-            later to see if you were correct.
+            We'll follow up in the future to see if your prediction came true.
           </HintHeader>
 
-          <SubHeader
-            style={{
-              marginTop: 24,
-            }}
-          >
-            Event or Task
-          </SubHeader>
-          <TextInput
-            onChangeText={event => {
-              this.setState({
-                event,
-              });
-            }}
-            value={this.state.event}
-            placeholder="ex: giving a presentation in front of..."
-            multiline={true}
-            numberOfLines={6}
+          <RoundedSelectorButton
+            title="+3 hours from now"
+            onPress={() => this.onSelect("+3 hours")}
+            selected={this.state.followUpOn === "+3 hours"}
+          />
+          <RoundedSelectorButton
+            title="Tomorrow"
+            onPress={() => this.onSelect("+1 day")}
+            selected={this.state.followUpOn === "+1 day"}
+          />
+          <RoundedSelectorButton
+            title="+5 days from now"
+            onPress={() => this.onSelect("+5 days")}
+            selected={this.state.followUpOn === "+5 days"}
           />
 
           <ActionButton

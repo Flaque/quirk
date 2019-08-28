@@ -13,10 +13,7 @@ import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { TextInput } from "../../textInputStyle";
-
-const FeelingButton = ({ title, onPress, selected }) => (
-  <RoundedSelectorButton title={title} onPress={onPress} selected={selected} />
-);
+import { PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN } from "../screens";
 
 export default class AssumptionNoteScreen extends React.Component<
   ScreenProps,
@@ -71,17 +68,17 @@ export default class AssumptionNoteScreen extends React.Component<
           >
             Expected Experience
           </SubHeader>
-          <FeelingButton
+          <RoundedSelectorButton
             title="Going to go well 👍"
             onPress={() => this.onFelt("good")}
             selected={this.state.felt === "good"}
           />
-          <FeelingButton
+          <RoundedSelectorButton
             title="Going to go okay 🤷‍"
             onPress={() => this.onFelt("neutral")}
             selected={this.state.felt === "neutral"}
           />
-          <FeelingButton
+          <RoundedSelectorButton
             title="Going to go poorly 👎"
             onPress={() => this.onFelt("bad")}
             selected={this.state.felt === "bad"}
@@ -115,7 +112,11 @@ export default class AssumptionNoteScreen extends React.Component<
               marginBottom: 24,
             }}
             title="Continue"
-            onPress={() => {}}
+            onPress={() => {
+              this.props.navigation.navigate(
+                PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN
+              );
+            }}
             width={"100%"}
           />
         </KeyboardAvoidingView>
