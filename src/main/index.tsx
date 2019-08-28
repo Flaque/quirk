@@ -17,6 +17,7 @@ import {
   ASSUMPTION_SCREEN,
   ASSUMPTION_NOTE_SCREEN,
   SURVEY_SCREEN,
+  PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
 } from "./screens";
 import ChallengeScreen from "./ChallengeScreen";
 import DistortionScreen from "./DistortionScreen";
@@ -33,6 +34,7 @@ import CheckUpSummaryScreen from "../checkups/CheckupSummaryScreen";
 import AssumptionScreen from "./predictions/AssumptionScreen";
 import AssumptionNoteScreen from "./predictions/AssumptionNoteScreen";
 import SurveyScreen from "./survey/SurveyScreen";
+import PredictionScheduleFollowUpScreen from "./predictions/PredictionScheduleFollowUpScreen";
 
 export default createStackNavigator(
   {
@@ -54,6 +56,7 @@ export default createStackNavigator(
     // Predictions
     [ASSUMPTION_SCREEN]: AssumptionScreen,
     [ASSUMPTION_NOTE_SCREEN]: AssumptionNoteScreen,
+    [PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN]: PredictionScheduleFollowUpScreen,
   },
   {
     initialRouteName: ASSUMPTION_SCREEN,

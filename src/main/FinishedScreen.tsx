@@ -35,7 +35,6 @@ import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
 import * as flagstore from "../flagstore";
 import { resetNavigationTo } from "../resetNavigationTo";
-import { getUserID } from "../id";
 import { passesFeatureFlag } from "../featureflags";
 
 export default class FinishedScreen extends React.Component<
