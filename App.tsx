@@ -44,7 +44,7 @@ const App = createBottomTabNavigator(
     [SUPPORT_SCREEN]: SupportScreen,
   },
   {
-    initialRouteName: PAYMENT_SCREEN,
+    initialRouteName: MAIN_SCREEN,
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },
