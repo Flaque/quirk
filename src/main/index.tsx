@@ -16,6 +16,7 @@ import {
   CHECKUP_SUMMARY_SCREEN,
   ASSUMPTION_SCREEN,
   ASSUMPTION_NOTE_SCREEN,
+  SURVEY_SCREEN,
 } from "./screens";
 import ChallengeScreen from "./ChallengeScreen";
 import DistortionScreen from "./DistortionScreen";
@@ -31,6 +32,7 @@ import LeaveReview from "./androidFeedback/LeaveAReview";
 import CheckUpSummaryScreen from "../checkups/CheckupSummaryScreen";
 import AssumptionScreen from "./predictions/AssumptionScreen";
 import AssumptionNoteScreen from "./predictions/AssumptionNoteScreen";
+import SurveyScreen from "./survey/SurveyScreen";
 
 export default createStackNavigator(
   {
@@ -46,6 +48,7 @@ export default createStackNavigator(
     [FOLLOW_UP_NOTE_SCREEN]: FollowUpNoteScreen,
     [FEEDBACK_SCREEN]: FeedbackScreen,
     [FEEDBACK_LEAVE_REVIEW]: LeaveReview,
+    [SURVEY_SCREEN]: SurveyScreen,
     [CHECKUP_SUMMARY_SCREEN]: CheckUpSummaryScreen,
 
     // Predictions

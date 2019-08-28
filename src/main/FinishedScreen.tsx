@@ -23,6 +23,7 @@ import {
   DISTORTION_SCREEN,
   FOLLOW_UP_NOTE_SCREEN,
   FEEDBACK_SCREEN,
+  SURVEY_SCREEN,
 } from "./screens";
 import { ScrollView } from "react-navigation";
 import { deleteThought, saveThought, countThoughts } from "../thoughtstore";
@@ -34,6 +35,8 @@ import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
 import * as flagstore from "../flagstore";
 import { resetNavigationTo } from "../resetNavigationTo";
+import { getUserID } from "../id";
+import { passesFeatureFlag } from "../featureflags";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -81,6 +84,20 @@ export default class FinishedScreen extends React.Component<
     return true;
   };
 
+  shouldSendToSurvey = async (): Promise<boolean> => {
+    const passes = await passesFeatureFlag("disappointed-survey", 4);
+    if (!passes) {
+      return false;
+    }
+
+    if (await flagstore.get("has-been-surveyed", "false")) {
+      return false;
+    }
+
+    await flagstore.setTrue("has-been-surveyed");
+    return true;
+  };
+
   onNext = async () => {
     if (followUpState(this.state.thought) === "ready") {
       const oldThought = this.state.thought;
@@ -90,6 +107,11 @@ export default class FinishedScreen extends React.Component<
 
     if (await this.shouldSendToAndroidReview()) {
       this.props.navigation.push(FEEDBACK_SCREEN);
+      return;
+    }
+
+    if (await this.shouldSendToSurvey()) {
+      this.props.navigation.push(SURVEY_SCREEN);
       return;
     }
 
