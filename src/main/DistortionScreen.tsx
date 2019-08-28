@@ -18,7 +18,12 @@ import { FadesIn } from "../animations";
 import { Thought } from "../thoughts";
 import * as stats from "../stats";
 import haptic from "../haptic";
-import { CHALLENGE_SCREEN, THOUGHT_SCREEN, FINISHED_SCREEN } from "./screens";
+import {
+  CHALLENGE_SCREEN,
+  THOUGHT_SCREEN,
+  FINISHED_SCREEN,
+  AUTOMATIC_THOUGHT_SCREEN,
+} from "./screens";
 import { saveThought } from "../thoughtstore";
 import i18n from "../i18n";
 import * as Haptic from "expo-haptics";
@@ -102,8 +107,8 @@ export default class DistortionScreen extends React.Component<
   };
 
   onBackToThought = async () => {
-    const thought = await saveExercise(this.state.thought);
-    this.props.navigation.navigate(THOUGHT_SCREEN, {
+    const thought = await saveThought(this.state.thought);
+    this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN, {
       thought: thought,
     });
   };

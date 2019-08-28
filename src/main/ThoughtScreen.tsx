@@ -14,6 +14,7 @@ import {
   FOLLOW_UP_NOTE_SCREEN,
   CHECKUP_SUMMARY_SCREEN,
   ASSUMPTION_SCREEN,
+  AUTOMATIC_THOUGHT_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -242,6 +243,9 @@ export default class MainScreen extends React.Component<
                   title="New Automatic Thought"
                   hint="Challenge your in-the-moment automatic negative thoughts."
                   featherIconName="message-square"
+                  onPress={() => {
+                    this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN);
+                  }}
                 />
               </View>
               {this.state.shouldPromptCheckup && (

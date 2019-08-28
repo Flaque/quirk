@@ -18,6 +18,7 @@ import {
   ASSUMPTION_NOTE_SCREEN,
   SURVEY_SCREEN,
   PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
+  AUTOMATIC_THOUGHT_SCREEN,
 } from "./screens";
 import ChallengeScreen from "./ChallengeScreen";
 import DistortionScreen from "./DistortionScreen";
@@ -35,10 +36,12 @@ import AssumptionScreen from "./predictions/AssumptionScreen";
 import AssumptionNoteScreen from "./predictions/AssumptionNoteScreen";
 import SurveyScreen from "./survey/SurveyScreen";
 import PredictionScheduleFollowUpScreen from "./predictions/PredictionScheduleFollowUpScreen";
+import AutomaticThoughtScreen from "./AutomaticThoughtScreen";
 
 export default createStackNavigator(
   {
     [THOUGHT_SCREEN]: ThoughtScreen,
+    [AUTOMATIC_THOUGHT_SCREEN]: AutomaticThoughtScreen,
     [DISTORTION_SCREEN]: DistortionScreen,
     [CHALLENGE_SCREEN]: ChallengeScreen,
     [ALTERNATIVE_SCREEN]: AlternativeScreen,

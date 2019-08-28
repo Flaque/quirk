@@ -9,7 +9,7 @@ import Constants from "expo-constants";
 import NotEnoughThoughtsIllustration, {
   ENOUGH_DAYS,
 } from "./NotEnoughThoughtsIllustration";
-import { ExerciseGroup, isThought } from "../exercises/exercises";
+import { ExerciseGroup, isCheckup } from "../exercises/exercises";
 import CheckUpCard from "../checkups/CheckUpCard";
 import { Checkup } from "../checkups/checkupstore";
 
@@ -35,21 +35,21 @@ export default ({
 
   const items = groups.map(group => {
     const exercises = group.exercises.sort(byReverseCreatedAt).map(ex => {
-      if (isThought(ex)) {
+      if (isCheckup(ex)) {
+        return (
+          <CheckUpCard
+            key={ex.uuid}
+            currentCheckup={ex}
+            onPress={() => navigateToCheckupViewer(ex)}
+          />
+        );
+      } else {
         return (
           <ThoughtItem
             key={ex.uuid}
             thought={ex}
             onPress={navigateToThoughtViewer}
             historyButtonLabel={historyButtonLabel}
-          />
-        );
-      } else {
-        return (
-          <CheckUpCard
-            key={ex.uuid}
-            currentCheckup={ex}
-            onPress={() => navigateToCheckupViewer(ex)}
           />
         );
       }

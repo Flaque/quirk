@@ -24,6 +24,7 @@ import {
   FOLLOW_UP_NOTE_SCREEN,
   FEEDBACK_SCREEN,
   SURVEY_SCREEN,
+  AUTOMATIC_THOUGHT_SCREEN,
 } from "./screens";
 import { ScrollView } from "react-navigation";
 import { deleteThought, saveThought, countThoughts } from "../thoughtstore";
@@ -189,7 +190,7 @@ export default class FinishedScreen extends React.Component<
               <GhostButtonWithGuts
                 borderColor={theme.lightGray}
                 onPress={() => {
-                  this.props.navigation.navigate(THOUGHT_SCREEN, {
+                  this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN, {
                     thought: this.state.thought,
                     isEditing: true,
                   });
