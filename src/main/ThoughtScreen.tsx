@@ -13,6 +13,7 @@ import {
   FINISHED_SCREEN,
   FOLLOW_UP_NOTE_SCREEN,
   CHECKUP_SUMMARY_SCREEN,
+  ASSUMPTION_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -29,6 +30,9 @@ import CheckupPrompt from "./CheckupPrompt";
 import { CHECKUP_SCREEN } from "../screens";
 import { getNextCheckupDate, Checkup } from "../checkups/checkupstore";
 import dayjs from "dayjs";
+import { TouchableCardContainer } from "../card/TouchableCard";
+import shadowStyle from "../shadowStyle";
+import ExerciseButton from "./ExerciseButton";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -198,15 +202,7 @@ export default class MainScreen extends React.Component<
   };
 
   render() {
-    const {
-      groups,
-      areExercisesLoaded,
-      hasCheckedEditing,
-      thought,
-      cardPosition,
-      isEditing,
-      shouldFadeInBackgroundOverlay,
-    } = this.state;
+    const { groups, areExercisesLoaded, hasCheckedEditing } = this.state;
 
     return (
       <View
@@ -220,24 +216,34 @@ export default class MainScreen extends React.Component<
 
         {areExercisesLoaded && hasCheckedEditing && (
           <>
-            <ThoughtCard
-              onNext={this.navigateToDistortionScreenWithThought}
-              thought={thought}
-              onChange={this.onChangeAutomaticThought}
-              isEditing={isEditing}
-              onFinish={this.onFinishEditing}
-              cardPosition={cardPosition}
-              shouldFadeInBackgroundOverlay={shouldFadeInBackgroundOverlay}
-              onPopUp={this.popUp}
-              onPopDown={this.popDown}
-            />
             <InvertibleScrollView
               inverted
               style={{
                 backgroundColor: theme.lightOffwhite,
-                marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT,
               }}
             >
+              <View
+                style={{
+                  backgroundColor: theme.offwhite,
+                  padding: 24,
+                  borderTopColor: theme.lightGray,
+                  borderTopWidth: 1,
+                }}
+              >
+                <ExerciseButton
+                  title="New Prediction"
+                  hint="Manage anxiety around upcoming events or tasks."
+                  featherIconName="cloud-drizzle"
+                  onPress={() => {
+                    this.props.navigation.navigate(ASSUMPTION_SCREEN);
+                  }}
+                />
+                <ExerciseButton
+                  title="New Automatic Thought"
+                  hint="Challenge your in-the-moment automatic negative thoughts."
+                  featherIconName="message-square"
+                />
+              </View>
               {this.state.shouldPromptCheckup && (
                 <CheckupPrompt
                   onPress={() => {

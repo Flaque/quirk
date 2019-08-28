@@ -4,7 +4,15 @@ import { TouchableOpacity, View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Paragraph, Badge } from "../ui";
 
-export const TouchableCardContainer = ({ onPress, children }) => (
+export const TouchableCardContainer = ({
+  onPress,
+  children,
+  style,
+}: {
+  onPress: () => {};
+  children: any;
+  style?: any;
+}) => (
   <TouchableOpacity
     onPress={onPress}
     style={{
@@ -15,6 +23,7 @@ export const TouchableCardContainer = ({ onPress, children }) => (
       borderWidth: 1,
       marginBottom: 18,
       flex: 1,
+      ...style,
     }}
   >
     {children}

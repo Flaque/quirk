@@ -11,7 +11,7 @@ import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
-import { ASSUMPTION_NOTE_SCREEN, THOUGHT_SCREEN } from "../screens";
+import { THOUGHT_SCREEN } from "../screens";
 
 type FollowUpSelections = "+3 hours" | "+1 day" | "+5 days" | string;
 

@@ -59,6 +59,6 @@ export default createStackNavigator(
     [PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN]: PredictionScheduleFollowUpScreen,
   },
   {
-    initialRouteName: ASSUMPTION_SCREEN,
+    initialRouteName: THOUGHT_SCREEN,
   }
 );
