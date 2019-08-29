@@ -6,8 +6,8 @@ export default async function scheduleNotification(
   sendAfter: string,
   templateID: string
 ) {
-  const userID = await getUserID();
   try {
+    const userID = await getUserID();
     post("/notification/new", {
       userID,
       sendAfter,

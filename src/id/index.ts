@@ -50,5 +50,11 @@ export async function addTagsToUser(tags: { [key: string]: string }) {
 }
 
 export async function getUserID(): Promise<string> {
-  return idstore.getUserID();
+  const id = await idstore.getUserID();
+  if (!id) {
+    await identify();
+    return idstore.getUserID();
+  }
+
+  return id;
 }
