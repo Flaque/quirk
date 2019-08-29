@@ -7,7 +7,6 @@ import {
   setIsExistingUser,
 } from "../thoughtstore";
 import { SavedThought, newThought, Thought } from "../thoughts";
-import ThoughtCard, { THOUGHT_CARD_HIDDEN_HEIGHT } from "./ThoughtCard";
 import {
   DISTORTION_SCREEN,
   FINISHED_SCREEN,
@@ -24,15 +23,12 @@ import Constants from "expo-constants";
 import theme from "../theme";
 import { get } from "lodash";
 import followUpState from "./followups/followUpState";
-import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import ExerciseList from "./ExerciseList";
 import { getSortedExerciseGroups, ExerciseGroup } from "../exercises/exercises";
 import CheckupPrompt from "./CheckupPrompt";
 import { CHECKUP_SCREEN } from "../screens";
 import { getNextCheckupDate, Checkup } from "../checkups/checkupstore";
 import dayjs from "dayjs";
-import { TouchableCardContainer } from "../card/TouchableCard";
-import shadowStyle from "../shadowStyle";
 import ExerciseButton from "./ExerciseButton";
 
 export default class MainScreen extends React.Component<
