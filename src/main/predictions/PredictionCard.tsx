@@ -2,12 +2,13 @@ import React from "react";
 import {
   TouchableCardContainer,
   CardCrown,
+  CardTextContent,
   CardMutedContent,
 } from "../../card/TouchableCard";
-import dayjs from "dayjs";
+import { Prediction } from "./predictionstore";
 import { Text } from "react-native";
 import theme from "../../theme";
-import { Prediction } from "./predictionstore";
+import dayjs from "dayjs";
 
 const PredictionCard = ({
   prediction,
@@ -20,6 +21,8 @@ const PredictionCard = ({
     <TouchableCardContainer onPress={() => onPress(prediction)}>
       <CardCrown text={"PREDICTION"} featherIconName={"cloud-drizzle"} />
 
+      <CardTextContent text={prediction.eventLabel} />
+
       <CardMutedContent>
         <Text
           style={{
@@ -28,10 +31,11 @@ const PredictionCard = ({
             color: theme.veryLightText,
           }}
         >
-          Recorded on{" "}
-          {dayjs(prediction.createdAt)
+          *Result revealed on{" "}
+          {dayjs(prediction.followUpAt)
             .toDate()
             .toDateString()}
+          *
         </Text>
       </CardMutedContent>
     </TouchableCardContainer>

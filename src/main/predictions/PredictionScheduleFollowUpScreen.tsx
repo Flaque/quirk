@@ -76,7 +76,12 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
 
     const followUpDate = this.getFollowUpDate();
-    scheduleNotification(followUpDate, PREDICTION_ONESIGNAL_TEMPLATE);
+    scheduleNotification(
+      dayjs()
+        .add(3, "s")
+        .toISOString(),
+      PREDICTION_ONESIGNAL_TEMPLATE
+    );
 
     const prediction = this.state.prediction;
     prediction.followUpAt = followUpDate;
