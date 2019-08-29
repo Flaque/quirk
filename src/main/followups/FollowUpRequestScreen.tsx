@@ -109,7 +109,7 @@ export default class FollowUpScreen extends React.Component<
           }}
         >
           This is a chance to re-examine your thoughts with a different
-          perspective.
+          perspective and cement your changed view.
         </HintHeader>
 
         <ActionButton

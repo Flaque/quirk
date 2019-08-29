@@ -69,7 +69,7 @@ export default class FeelingScreen extends React.Component<
     }
 
     stats.userFeltBetter();
-    this.props.navigation.navigate(FINISHED_SCREEN, {
+    this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
       thought,
     });
   };
