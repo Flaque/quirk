@@ -3,27 +3,23 @@ import theme from "../../theme";
 import {
   MediumHeader,
   HintHeader,
-  ActionButton,
+  SubHeader,
   RoundedSelectorButton,
+  ActionButton,
 } from "../../ui";
+import { get } from "lodash";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
-import { THOUGHT_SCREEN } from "../screens";
+import { TextInput } from "../../textInputStyle";
+import { PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN } from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
-import { get } from "lodash";
-import scheduleNotification from "../../notifications/scheduleNotification";
-import { PREDICTION_ONESIGNAL_TEMPLATE } from "../followups/templates";
-import dayjs from "dayjs";
-
-type FollowUpSelections = "+3 hours" | "+1 day" | "+5 days" | string;
 
 export default class PredictionFollowUpScreen extends React.Component<
   ScreenProps,
   {
-    followUpOn: FollowUpSelections;
     prediction?: Prediction;
   }
 > {
@@ -32,7 +28,6 @@ export default class PredictionFollowUpScreen extends React.Component<
   };
 
   state = {
-    followUpOn: "+5 day",
     prediction: undefined,
   };
 
@@ -47,53 +42,33 @@ export default class PredictionFollowUpScreen extends React.Component<
     });
   }
 
-  getFollowUpDate = (): string => {
-    if (this.state.followUpOn === "+3 hours") {
-      return dayjs()
-        .add(3, "hour")
-        .toISOString();
-    }
-
-    if (this.state.followUpOn === "+1 day") {
-      return dayjs()
-        .add(1, "day")
-        .toISOString();
-    }
-
-    if (this.state.followUpOn === "+5 days") {
-      return dayjs()
-        .add(5, "day")
-        .toISOString();
-    }
-
-    return dayjs(this.state.followUpOn).toISOString();
-  };
-
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-
-    const followUpDate = this.getFollowUpDate();
-    scheduleNotification(
-      dayjs()
-        .add(3, "s")
-        .toISOString(),
-      PREDICTION_ONESIGNAL_TEMPLATE
-    );
-
-    const prediction = this.state.prediction;
-    prediction.followUpAt = followUpDate;
-    await savePrediction(prediction);
-
-    this.props.navigation.navigate(THOUGHT_SCREEN);
+    await savePrediction(this.state.prediction);
+    this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN, {
+      prediction: this.state.prediction,
+    });
   };
 
-  onSelect = async (followUpOn: FollowUpSelections) => {
-    this.setState({
-      followUpOn,
+  onFelt = async (felt: "bad" | "neutral" | "good") => {
+    this.setState(prevState => {
+      prevState.prediction.predictedExperience = felt;
+      return prevState;
+    });
+  };
+
+  onChangeNote = async (note: string) => {
+    this.setState(prevState => {
+      prevState.prediction.predictedExperienceNote = note;
+      return prevState;
     });
   };
 
   render() {
+    if (!this.state.prediction) {
+      return null;
+    }
+
     return (
       <ScrollView
         style={{
@@ -107,33 +82,57 @@ export default class PredictionFollowUpScreen extends React.Component<
         <KeyboardAvoidingView
           behavior="position"
           style={{
-            paddingBottom: 24,
+            paddingBottom: 48,
           }}
         >
-          <MediumHeader>Schedule Follow Up</MediumHeader>
-          <HintHeader>
-            We'll follow up in the future to see if your prediction came true.
-          </HintHeader>
+          <MediumHeader>Predicted Experience</MediumHeader>
+          <HintHeader>How do you think this will go?</HintHeader>
 
+          <SubHeader
+            style={{
+              marginTop: 12,
+            }}
+          >
+            Expected Experience
+          </SubHeader>
           <RoundedSelectorButton
-            title="+3 hours from now"
-            onPress={() => this.onSelect("+3 hours")}
-            selected={this.state.followUpOn === "+3 hours"}
+            title="Going to go well 👍"
+            onPress={() => this.onFelt("good")}
+            selected={this.state.prediction.predictedExperience === "good"}
           />
           <RoundedSelectorButton
-            title="Tomorrow"
-            onPress={() => this.onSelect("+1 day")}
-            selected={this.state.followUpOn === "+1 day"}
+            title="Going to go okay 🤷‍"
+            onPress={() => this.onFelt("neutral")}
+            selected={this.state.prediction.predictedExperience === "neutral"}
           />
           <RoundedSelectorButton
-            title="+5 days from now"
-            onPress={() => this.onSelect("+5 days")}
-            selected={this.state.followUpOn === "+5 days"}
+            title="Going to go poorly 👎"
+            onPress={() => this.onFelt("bad")}
+            selected={this.state.prediction.predictedExperience === "bad"}
+          />
+
+          <SubHeader
+            style={{
+              marginTop: 12,
+            }}
+          >
+            Thought
+          </SubHeader>
+          <HintHeader>
+            In your own words, describe what you think might happen.
+          </HintHeader>
+          <TextInput
+            onChangeText={this.onChangeNote}
+            value={this.state.prediction.predictedExperienceNote}
+            placeholder="ex: giving a presentation in front of..."
+            multiline={true}
+            numberOfLines={6}
           />
 
           <ActionButton
             style={{
               marginTop: 12,
+              marginBottom: 24,
             }}
             title="Continue"
             onPress={this.onFinish}
