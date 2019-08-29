@@ -12,6 +12,14 @@ import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { THOUGHT_SCREEN } from "../screens";
+import { Prediction, savePrediction } from "./predictionstore";
+import { get } from "lodash";
+import scheduleNotification from "../../notifications/scheduleNotification";
+import {
+  CHECKUP_ONESIGNAL_TEMPLATE,
+  PREDICTION_ONESIGNAL_TEMPLATE,
+} from "../followups/templates";
+import dayjs from "dayjs";
 
 type FollowUpSelections = "+3 hours" | "+1 day" | "+5 days" | string;
 
@@ -19,6 +27,7 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
   ScreenProps,
   {
     followUpOn: FollowUpSelections;
+    prediction?: Prediction;
   }
 > {
   static navigationOptions = {
@@ -27,10 +36,52 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
 
   state = {
     followUpOn: "+5 day",
+    prediction: undefined,
+  };
+
+  componentDidMount() {
+    this.props.navigation.addListener("willFocus", args => {
+      const prediction = get(args, "state.params.prediction");
+      if (prediction) {
+        this.setState({
+          prediction,
+        });
+      }
+    });
+  }
+
+  getFollowUpDate = (): string => {
+    if (this.state.followUpOn === "+3 hours") {
+      return dayjs()
+        .add(3, "hour")
+        .toISOString();
+    }
+
+    if (this.state.followUpOn === "+1 day") {
+      return dayjs()
+        .add(1, "day")
+        .toISOString();
+    }
+
+    if (this.state.followUpOn === "+5 days") {
+      return dayjs()
+        .add(5, "day")
+        .toISOString();
+    }
+
+    return dayjs(this.state.followUpOn).toISOString();
   };
 
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+
+    const followUpDate = this.getFollowUpDate();
+    scheduleNotification(followUpDate, PREDICTION_ONESIGNAL_TEMPLATE);
+
+    const prediction = this.state.prediction;
+    prediction.followUpAt = followUpDate;
+    await savePrediction(prediction);
+
     this.props.navigation.navigate(THOUGHT_SCREEN);
   };
 

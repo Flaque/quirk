@@ -1,10 +1,8 @@
 import React from "react";
-
 import {
   TouchableCardContainer,
   CardCrown,
   CardMutedContent,
-  CardBadge,
 } from "../../card/TouchableCard";
 import dayjs from "dayjs";
 import { Text } from "react-native";

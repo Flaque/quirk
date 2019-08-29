@@ -106,12 +106,12 @@ export default class FinishedScreen extends React.Component<
     }
 
     if (await this.shouldSendToAndroidReview()) {
-      this.props.navigation.push(FEEDBACK_SCREEN);
+      this.props.navigation.navigate(FEEDBACK_SCREEN);
       return;
     }
 
     if (await this.shouldSendToSurvey()) {
-      this.props.navigation.push(SURVEY_SCREEN);
+      this.props.navigation.navigate(SURVEY_SCREEN);
       return;
     }
 

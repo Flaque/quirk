@@ -284,6 +284,9 @@ export function identifyWithTraits(userID: string, traits) {
 }
 
 export function userRecordedDisappointedSurvey(answer: string) {
+  if (isInDev()) {
+    return;
+  }
   Segment.trackWithProperties("user_recorded_disappointed_survey", {
     disappointedAnswer: answer,
   });

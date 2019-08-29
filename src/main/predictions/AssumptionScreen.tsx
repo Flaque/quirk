@@ -41,6 +41,14 @@ export default class AssumptionScreen extends React.Component<
   }
 
   onFinish = async () => {
+    // Don't continue if we don't have an event label
+    if (
+      !this.state.prediction.eventLabel ||
+      this.state.prediction.eventLabel === ""
+    ) {
+      return;
+    }
+
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     await savePrediction(this.state.prediction);
     this.props.navigation.navigate(ASSUMPTION_NOTE_SCREEN, {
@@ -98,6 +106,7 @@ export default class AssumptionScreen extends React.Component<
             title="Continue"
             onPress={this.onFinish}
             width={"100%"}
+            disabled={!this.state.prediction.eventLabel}
           />
         </KeyboardAvoidingView>
       </ScrollView>
