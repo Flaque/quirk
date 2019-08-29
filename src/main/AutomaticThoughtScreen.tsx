@@ -1,5 +1,12 @@
 import React from "react";
-import { MediumHeader, HintHeader, Container, Row, ActionButton } from "../ui";
+import {
+  MediumHeader,
+  HintHeader,
+  Container,
+  Row,
+  ActionButton,
+  GhostButton,
+} from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { Thought, newThought } from "../thoughts";
@@ -9,7 +16,7 @@ import { TextInput, KeyboardAvoidingView, View } from "react-native";
 import i18n from "../i18n";
 import * as stats from "../stats";
 import theme from "../theme";
-import { FINISHED_SCREEN, DISTORTION_SCREEN } from "./screens";
+import { FINISHED_SCREEN, DISTORTION_SCREEN, THOUGHT_SCREEN } from "./screens";
 import { saveThought } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -127,13 +134,24 @@ export default class AutomaticThoughtScreen extends React.Component<
                     }}
                   />
                 ) : (
-                  <ActionButton
-                    title={"Next"}
-                    onPress={() => this.onNext()}
-                    style={{
-                      flex: 1,
-                    }}
-                  />
+                  <>
+                    <GhostButton
+                      title="Back"
+                      onPress={() => {
+                        this.props.navigation.navigate(THOUGHT_SCREEN);
+                      }}
+                      style={{
+                        marginRight: 12,
+                      }}
+                    />
+                    <ActionButton
+                      title={"Next"}
+                      onPress={() => this.onNext()}
+                      style={{
+                        flex: 1,
+                      }}
+                    />
+                  </>
                 )}
               </Row>
             </>

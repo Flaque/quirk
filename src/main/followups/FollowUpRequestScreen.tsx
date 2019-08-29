@@ -10,16 +10,14 @@ import {
 import Constants from "expo-constants";
 import theme from "../../theme";
 import { StatusBar } from "react-native";
-import { identify, getUserID } from "../../id";
+import { identify } from "../../id";
 import { FINISHED_SCREEN } from "../screens";
 import { Thought } from "../../thoughts";
 import { get } from "lodash";
 import dayjs from "dayjs";
 import { saveThought } from "../../thoughtstore";
 import { FOLLOW_UP_ONESIGNAL_TEMPLATE } from "./templates";
-import Sentry from "../../sentry";
 import * as stats from "../../stats";
-import { post } from "../../api";
 import scheduleNotification from "../../notifications/scheduleNotification";
 
 function getFollowUpTime() {
