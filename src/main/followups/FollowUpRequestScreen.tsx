@@ -17,8 +17,6 @@ import { get } from "lodash";
 import dayjs from "dayjs";
 import { saveThought } from "../../thoughtstore";
 import { FOLLOW_UP_ONESIGNAL_TEMPLATE } from "./templates";
-import { QUIRK_API_SECRET } from "react-native-dotenv";
-import base64 from "react-native-base64";
 import Sentry from "../../sentry";
 import * as stats from "../../stats";
 import { post } from "../../api";
@@ -122,7 +120,7 @@ export default class FollowUpScreen extends React.Component<
           }}
         >
           This is a chance to re-examine your thoughts with a different
-          perspective.
+          perspective and cement your changed view.
         </HintHeader>
 
         <ActionButton
