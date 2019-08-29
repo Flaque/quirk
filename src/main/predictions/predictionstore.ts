@@ -1,22 +1,32 @@
 import { AsyncStorage } from "react-native";
 import Sentry from "../../sentry";
 import stringify from "json-stringify-safe";
-import dayjs = require("dayjs");
+import dayjs from "dayjs";
+import uuidv4 from "uuid/v4";
 
 export interface Prediction {
   uuid: string;
   createdAt: Date;
   updatedAt: Date;
 
-  eventLabel: string;
+  eventLabel?: string;
 
-  predictedExperience: "bad" | "neutral" | "good";
+  predictedExperience?: "bad" | "neutral" | "good";
   actualExperience?: "bad" | "neutral" | "good";
 
   predictedExperienceNote?: string;
   actualExperienceNote?: string;
 
-  followUpAt: Date;
+  followUpAt?: Date;
+}
+
+export function newPrediction() {
+  const date = new Date();
+  return {
+    uuid: uuidv4(),
+    createdAt: date,
+    updatedAt: date,
+  };
 }
 
 const PREDICTION_KEY_PREFIX = `@Quirk:predictions:`;

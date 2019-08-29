@@ -8,12 +8,13 @@ import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { TextInput } from "../../textInputStyle";
 import { ASSUMPTION_NOTE_SCREEN } from "../screens";
+import { Prediction, newPrediction, savePrediction } from "./predictionstore";
+import { get } from "lodash";
 
 export default class AssumptionScreen extends React.Component<
   ScreenProps,
   {
-    event: string;
-    felt: string;
+    prediction?: Prediction;
   }
 > {
   static navigationOptions = {
@@ -21,22 +22,44 @@ export default class AssumptionScreen extends React.Component<
   };
 
   state = {
-    event: "",
-    felt: "",
+    prediction: undefined,
   };
+
+  componentDidMount() {
+    this.setState({
+      prediction: newPrediction(),
+    });
+
+    this.props.navigation.addListener("willFocus", args => {
+      const prediction = get(args, "state.params.prediction");
+      if (prediction) {
+        this.setState({
+          prediction,
+        });
+      }
+    });
+  }
 
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    this.props.navigation.navigate(ASSUMPTION_NOTE_SCREEN);
+    await savePrediction(this.state.prediction);
+    this.props.navigation.navigate(ASSUMPTION_NOTE_SCREEN, {
+      prediction: this.state.prediction,
+    });
   };
 
-  onFelt = async (felt: string) => {
-    this.setState({
-      felt,
+  onChange = async (label: string) => {
+    this.setState(prevState => {
+      prevState.prediction.eventLabel = label;
+      return prevState;
     });
   };
 
   render() {
+    if (!this.state.prediction) {
+      return null;
+    }
+
     return (
       <ScrollView
         style={{
@@ -59,20 +82,10 @@ export default class AssumptionScreen extends React.Component<
             later to see if you were correct.
           </HintHeader>
 
-          <SubHeader
-            style={{
-              marginTop: 24,
-            }}
-          >
-            Event or Task
-          </SubHeader>
+          <SubHeader>Event or Task</SubHeader>
           <TextInput
-            onChangeText={event => {
-              this.setState({
-                event,
-              });
-            }}
-            value={this.state.event}
+            onChangeText={this.onChange}
+            value={this.state.prediction.eventLabel}
             placeholder="ex: giving a presentation in front of..."
             multiline={true}
             numberOfLines={6}

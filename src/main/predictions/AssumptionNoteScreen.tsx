@@ -7,6 +7,7 @@ import {
   RoundedSelectorButton,
   ActionButton,
 } from "../../ui";
+import { get } from "lodash";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
@@ -14,12 +15,12 @@ import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { TextInput } from "../../textInputStyle";
 import { PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN } from "../screens";
+import { Prediction, savePrediction } from "./predictionstore";
 
 export default class AssumptionNoteScreen extends React.Component<
   ScreenProps,
   {
-    event: string;
-    felt: string;
+    prediction?: Prediction;
   }
 > {
   static navigationOptions = {
@@ -27,21 +28,47 @@ export default class AssumptionNoteScreen extends React.Component<
   };
 
   state = {
-    event: "",
-    felt: "",
+    prediction: undefined,
   };
+
+  componentDidMount() {
+    this.props.navigation.addListener("willFocus", args => {
+      const prediction = get(args, "state.params.prediction");
+      if (prediction) {
+        this.setState({
+          prediction,
+        });
+      }
+    });
+  }
 
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    await savePrediction(this.state.prediction);
+    this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN, {
+      prediction: this.state.prediction,
+    });
   };
 
-  onFelt = async (felt: string) => {
-    this.setState({
-      felt,
+  onFelt = async (felt: "bad" | "neutral" | "good") => {
+    this.setState(prevState => {
+      prevState.prediction.predictedExperience = felt;
+      return prevState;
+    });
+  };
+
+  onChangeNote = async (note: string) => {
+    this.setState(prevState => {
+      prevState.prediction.predictedExperienceNote = note;
+      return prevState;
     });
   };
 
   render() {
+    if (!this.state.prediction) {
+      return null;
+    }
+
     return (
       <ScrollView
         style={{
@@ -71,17 +98,17 @@ export default class AssumptionNoteScreen extends React.Component<
           <RoundedSelectorButton
             title="Going to go well 👍"
             onPress={() => this.onFelt("good")}
-            selected={this.state.felt === "good"}
+            selected={this.state.prediction.predictedExperience === "good"}
           />
           <RoundedSelectorButton
             title="Going to go okay 🤷‍"
             onPress={() => this.onFelt("neutral")}
-            selected={this.state.felt === "neutral"}
+            selected={this.state.prediction.predictedExperience === "neutral"}
           />
           <RoundedSelectorButton
             title="Going to go poorly 👎"
             onPress={() => this.onFelt("bad")}
-            selected={this.state.felt === "bad"}
+            selected={this.state.prediction.predictedExperience === "bad"}
           />
 
           <SubHeader
@@ -95,12 +122,8 @@ export default class AssumptionNoteScreen extends React.Component<
             In your own words, describe what you think might happen.
           </HintHeader>
           <TextInput
-            onChangeText={event => {
-              this.setState({
-                event,
-              });
-            }}
-            value={this.state.event}
+            onChangeText={this.onChangeNote}
+            value={this.state.prediction.predictedExperienceNote}
             placeholder="ex: giving a presentation in front of..."
             multiline={true}
             numberOfLines={6}
@@ -112,11 +135,7 @@ export default class AssumptionNoteScreen extends React.Component<
               marginBottom: 24,
             }}
             title="Continue"
-            onPress={() => {
-              this.props.navigation.navigate(
-                PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN
-              );
-            }}
+            onPress={this.onFinish}
             width={"100%"}
           />
         </KeyboardAvoidingView>

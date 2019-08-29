@@ -9,9 +9,15 @@ import Constants from "expo-constants";
 import NotEnoughThoughtsIllustration, {
   ENOUGH_DAYS,
 } from "./NotEnoughThoughtsIllustration";
-import { ExerciseGroup, isCheckup } from "../exercises/exercises";
+import {
+  ExerciseGroup,
+  isCheckup,
+  isThought,
+  isPrediction,
+} from "../exercises/exercises";
 import CheckUpCard from "../checkups/CheckUpCard";
 import { Checkup } from "../checkups/checkupstore";
+import PredictionCard from "./predictions/PredictionCard";
 
 interface ThoughtListProps {
   groups: ExerciseGroup[];
@@ -43,7 +49,13 @@ export default ({
             onPress={() => navigateToCheckupViewer(ex)}
           />
         );
-      } else {
+      }
+      if (isPrediction(ex)) {
+        return (
+          <PredictionCard key={ex.uuid} prediction={ex} onPress={() => {}} />
+        );
+      }
+      if (isThought(ex)) {
         return (
           <ThoughtItem
             key={ex.uuid}

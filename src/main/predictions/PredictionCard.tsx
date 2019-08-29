@@ -5,22 +5,22 @@ import {
   CardCrown,
   CardMutedContent,
   CardBadge,
-} from "../card/TouchableCard";
-import { Checkup } from "./checkupstore";
+} from "../../card/TouchableCard";
 import dayjs from "dayjs";
 import { Text } from "react-native";
-import theme from "../theme";
+import theme from "../../theme";
+import { Prediction } from "./predictionstore";
 
-const CheckUpCard = ({
-  currentCheckup,
+const PredictionCard = ({
+  prediction,
   onPress,
 }: {
-  currentCheckup: Checkup;
-  onPress: (checkup: Checkup) => any;
+  prediction: Prediction;
+  onPress: (checkup: Prediction) => any;
 }) => {
   return (
-    <TouchableCardContainer onPress={() => onPress(currentCheckup)}>
-      <CardCrown text={"MILESTONE"} featherIconName={"compass"} />
+    <TouchableCardContainer onPress={() => onPress(prediction)}>
+      <CardCrown text={"PREDICTION"} featherIconName={"cloud-drizzle"} />
 
       <CardMutedContent>
         <Text
@@ -31,17 +31,13 @@ const CheckUpCard = ({
           }}
         >
           Recorded on{" "}
-          {dayjs(currentCheckup.createdAt)
+          {dayjs(prediction.createdAt)
             .toDate()
             .toDateString()}
         </Text>
       </CardMutedContent>
-
-      {currentCheckup.currentMood === "good" && (
-        <CardBadge featherIconName="trending-up" text="Doing well" />
-      )}
     </TouchableCardContainer>
   );
 };
 
-export default CheckUpCard;
+export default PredictionCard;
