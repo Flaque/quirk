@@ -285,7 +285,7 @@ export default class FinishedScreen extends React.Component<
                 borderColor={theme.red}
                 textColor={theme.red}
                 style={{
-                  marginRight: 24,
+                  marginRight: 12,
                 }}
                 onPress={() => {
                   Alert.alert("Delete your thought?", "This can't be undone.", [

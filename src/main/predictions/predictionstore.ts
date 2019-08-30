@@ -59,6 +59,14 @@ export async function getPrediction(uuid: string): Promise<Prediction> {
   }
 }
 
+export async function deletePrediction(uuid: string): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(getKey(uuid));
+  } catch (err) {
+    Sentry.captureException(err);
+  }
+}
+
 export async function getOrderedPredictions(): Promise<Prediction[]> {
   try {
     const keys = await AsyncStorage.getAllKeys();

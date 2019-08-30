@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, StatusBar, Keyboard } from "react-native";
+import { View, StatusBar } from "react-native";
 import {
   saveThought,
   getIsExistingUser,
@@ -14,7 +14,6 @@ import {
   CHECKUP_SUMMARY_SCREEN,
   ASSUMPTION_SCREEN,
   AUTOMATIC_THOUGHT_SCREEN,
-  PREDICTION_FOLLOW_UP_SCREEN,
   PREDICTION_SUMMARY_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
@@ -89,21 +88,7 @@ export default class MainScreen extends React.Component<
         isEditing,
         hasCheckedEditing: true,
       });
-
-      const isRequestingPopUp = get(
-        args,
-        "action.params.isRequestingPopUp",
-        false
-      );
-      if (isEditing || isRequestingPopUp) {
-        this.popUp();
-      }
     });
-
-    /// wiggle card
-    setTimeout(() => {
-      this.setState({ cardPosition: "hiddenWiggle" });
-    }, 250);
   }
 
   loadShouldPromptCheckup = async () => {
@@ -181,29 +166,6 @@ export default class MainScreen extends React.Component<
     const savedThought = await saveThought(thought);
     this.props.navigation.push(FINISHED_SCREEN, {
       thought: savedThought,
-    });
-  };
-
-  popUp = () => {
-    this.setState({
-      cardPosition: "peak",
-    });
-
-    // Trigger the fade-in effect of the background overlay
-    setTimeout(() => {
-      this.setState({
-        shouldFadeInBackgroundOverlay: true,
-      });
-    }, 200);
-  };
-
-  popDown = () => {
-    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    Keyboard.dismiss();
-    this.setState({
-      cardPosition: "hiddenWiggle",
-      shouldFadeInBackgroundOverlay: false,
-      isEditing: false,
     });
   };
 

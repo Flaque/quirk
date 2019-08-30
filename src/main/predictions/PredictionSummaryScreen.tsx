@@ -8,6 +8,8 @@ import {
   GhostButtonWithGuts,
   Paragraph,
   Badge,
+  GhostButton,
+  Row,
 } from "../../ui";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
@@ -16,10 +18,11 @@ import {
   StatusBar,
   ScrollView,
   View,
+  Alert,
 } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
-import { Prediction } from "./predictionstore";
+import { Prediction, deletePrediction } from "./predictionstore";
 import { get } from "lodash";
 import dayjs from "dayjs";
 import {
@@ -62,8 +65,26 @@ export default class PredictionSummaryScreen extends React.Component<
   }
 
   onFinish = async () => {
-    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    haptic.notification(Haptic.NotificationFeedbackType.Success);
     resetNavigationTo(this.props.navigation, THOUGHT_SCREEN);
+  };
+
+  onDelete = async () => {
+    Alert.alert("Delete your prediction?", "This can't be undone.", [
+      {
+        text: "Cancel",
+        style: "cancel",
+      },
+      {
+        text: "Delete",
+        onPress: async () => {
+          await deletePrediction(this.state.prediction.uuid);
+          haptic.impact(Haptic.ImpactFeedbackStyle.Heavy);
+          resetNavigationTo(this.props.navigation, THOUGHT_SCREEN);
+        },
+        style: "destructive",
+      },
+    ]);
   };
 
   render() {
@@ -192,14 +213,29 @@ export default class PredictionSummaryScreen extends React.Component<
             </GhostButtonWithGuts>
           </View>
 
-          <ActionButton
+          <Row
             style={{
-              marginTop: 18,
+              marginTop: 24,
             }}
-            title="Finish"
-            onPress={this.onFinish}
-            width={"100%"}
-          />
+          >
+            <GhostButton
+              title="Delete"
+              borderColor={theme.red}
+              textColor={theme.red}
+              style={{
+                marginRight: 12,
+              }}
+              onPress={this.onDelete}
+            />
+
+            <ActionButton
+              style={{
+                flex: 1,
+              }}
+              title="Finish"
+              onPress={this.onFinish}
+            />
+          </Row>
         </KeyboardAvoidingView>
       </ScrollView>
     );
