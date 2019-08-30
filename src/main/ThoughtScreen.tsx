@@ -14,6 +14,7 @@ import {
   CHECKUP_SUMMARY_SCREEN,
   ASSUMPTION_SCREEN,
   AUTOMATIC_THOUGHT_SCREEN,
+  PREDICTION_FOLLOW_UP_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -30,6 +31,7 @@ import { CHECKUP_SCREEN } from "../screens";
 import { getNextCheckupDate, Checkup } from "../checkups/checkupstore";
 import dayjs from "dayjs";
 import ExerciseButton from "./ExerciseButton";
+import { Prediction } from "./predictions/predictionstore";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -157,6 +159,12 @@ export default class MainScreen extends React.Component<
     });
   };
 
+  navigateToPredictionViewer = async (prediction: Prediction) => {
+    this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
+      prediction,
+    });
+  };
+
   onChangeAutomaticThought = (txt: string) => {
     this.setState(prevState => {
       if (!prevState.thought) {
@@ -258,6 +266,7 @@ export default class MainScreen extends React.Component<
                 historyButtonLabel={"alternative-thought"}
                 navigateToThoughtViewer={this.navigateToViewerWithThought}
                 navigateToCheckupViewer={this.navigateToCheckupViewer}
+                navigateToPredictionViewer={this.navigateToPredictionViewer}
               />
             </InvertibleScrollView>
           </>

@@ -18,12 +18,14 @@ import {
 import CheckUpCard from "../checkups/CheckUpCard";
 import { Checkup } from "../checkups/checkupstore";
 import PredictionCard from "./predictions/PredictionCard";
+import { Prediction } from "./predictions/predictionstore";
 
 interface ThoughtListProps {
   groups: ExerciseGroup[];
   historyButtonLabel: HistoryButtonLabelSetting;
   navigateToThoughtViewer: (thought: SavedThought) => void;
   navigateToCheckupViewer: (checkup: Checkup) => void;
+  navigateToPredictionViewer: (prediction: Prediction) => void;
 }
 
 const byReverseCreatedAt = (first, second) =>
@@ -33,6 +35,7 @@ export default ({
   groups,
   navigateToThoughtViewer,
   navigateToCheckupViewer,
+  navigateToPredictionViewer,
   historyButtonLabel,
 }: ThoughtListProps) => {
   if (!groups || groups.length === 0) {
@@ -52,7 +55,11 @@ export default ({
       }
       if (isPrediction(ex)) {
         return (
-          <PredictionCard key={ex.uuid} prediction={ex} onPress={() => {}} />
+          <PredictionCard
+            key={ex.uuid}
+            prediction={ex}
+            onPress={navigateToPredictionViewer}
+          />
         );
       }
       if (isThought(ex)) {
