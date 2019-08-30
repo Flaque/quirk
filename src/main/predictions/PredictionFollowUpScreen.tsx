@@ -14,7 +14,10 @@ import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { TextInput } from "../../textInputStyle";
-import { PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN } from "../screens";
+import {
+  PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
+  PREDICTION_SUMMARY_SCREEN,
+} from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
 
 export default class PredictionFollowUpScreen extends React.Component<
@@ -45,7 +48,7 @@ export default class PredictionFollowUpScreen extends React.Component<
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     await savePrediction(this.state.prediction);
-    this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN, {
+    this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
       prediction: this.state.prediction,
     });
   };

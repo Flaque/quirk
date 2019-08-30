@@ -11,6 +11,7 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
+import shadowStyle from "./shadowStyle";
 
 export interface ParentComponent {
   children: any;
@@ -307,15 +308,11 @@ export const FloatingCard = ({
   <View
     style={{
       backgroundColor: "white",
-      borderWidth: 2,
+      borderWidth: 1,
       borderColor: theme.lightGray,
       borderRadius: 8,
       padding: 24,
-      elevation: 1,
-      shadowColor: theme.lightGray,
-      shadowOffset: { width: 0, height: 1 },
-      shadowRadius: 10,
-      shadowOpacity: 0.8,
+      ...shadowStyle,
       ...style,
     }}
   >

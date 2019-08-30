@@ -1,5 +1,4 @@
 // Copy/pasted from the from the Uchiha clan's jutsu
-// See: Yin Release
 import theme from "./theme";
 
 export default {
@@ -7,4 +6,5 @@ export default {
   shadowOffset: { width: 0, height: 1 },
   shadowRadius: 3,
   shadowOpacity: 0.05,
+  elevation: 1,
 };

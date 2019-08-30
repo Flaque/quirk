@@ -11,15 +11,13 @@ import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
-import { THOUGHT_SCREEN } from "../screens";
+import { THOUGHT_SCREEN, PREDICTION_SUMMARY_SCREEN } from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
 import { get } from "lodash";
 import scheduleNotification from "../../notifications/scheduleNotification";
-import {
-  CHECKUP_ONESIGNAL_TEMPLATE,
-  PREDICTION_ONESIGNAL_TEMPLATE,
-} from "../followups/templates";
+import { PREDICTION_ONESIGNAL_TEMPLATE } from "../followups/templates";
 import dayjs from "dayjs";
+import { resetNavigationTo } from "../../resetNavigationTo";
 
 type FollowUpSelections = "+3 hours" | "+1 day" | "+5 days" | string;
 
@@ -87,7 +85,9 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
     prediction.followUpAt = followUpDate;
     await savePrediction(prediction);
 
-    this.props.navigation.navigate(THOUGHT_SCREEN);
+    this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
+      prediction,
+    });
   };
 
   onSelect = async (followUpOn: FollowUpSelections) => {

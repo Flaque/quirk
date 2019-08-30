@@ -15,6 +15,7 @@ import {
   ASSUMPTION_SCREEN,
   AUTOMATIC_THOUGHT_SCREEN,
   PREDICTION_FOLLOW_UP_SCREEN,
+  PREDICTION_SUMMARY_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -160,7 +161,7 @@ export default class MainScreen extends React.Component<
   };
 
   navigateToPredictionViewer = async (prediction: Prediction) => {
-    this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
+    this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
       prediction,
     });
   };

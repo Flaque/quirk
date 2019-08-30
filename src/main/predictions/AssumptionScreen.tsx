@@ -1,13 +1,20 @@
 import React from "react";
 import theme from "../../theme";
-import { MediumHeader, HintHeader, SubHeader, ActionButton } from "../../ui";
+import {
+  MediumHeader,
+  HintHeader,
+  SubHeader,
+  ActionButton,
+  Row,
+  GhostButton,
+} from "../../ui";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { TextInput } from "../../textInputStyle";
-import { ASSUMPTION_NOTE_SCREEN } from "../screens";
+import { ASSUMPTION_NOTE_SCREEN, THOUGHT_SCREEN } from "../screens";
 import { Prediction, newPrediction, savePrediction } from "./predictionstore";
 import { get } from "lodash";
 
@@ -99,15 +106,27 @@ export default class AssumptionScreen extends React.Component<
             numberOfLines={6}
           />
 
-          <ActionButton
+          <Row
             style={{
               marginTop: 12,
             }}
-            title="Continue"
-            onPress={this.onFinish}
-            width={"100%"}
-            disabled={!this.state.prediction.eventLabel}
-          />
+          >
+            <GhostButton
+              onPress={() => this.props.navigation.navigate(THOUGHT_SCREEN)}
+              title="Back"
+              style={{
+                marginRight: 12,
+              }}
+            />
+            <ActionButton
+              style={{
+                flex: 1,
+              }}
+              title="Continue"
+              onPress={this.onFinish}
+              disabled={!this.state.prediction.eventLabel}
+            />
+          </Row>
         </KeyboardAvoidingView>
       </ScrollView>
     );
