@@ -102,7 +102,7 @@ export default class DistortionScreen extends React.Component<
   };
 
   onBackToThought = async () => {
-    const thought = await saveExercise(this.state.thought);
+    const thought = await saveThought(this.state.thought);
     this.props.navigation.navigate(THOUGHT_SCREEN, {
       thought: thought,
     });
