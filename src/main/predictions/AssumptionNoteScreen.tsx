@@ -22,6 +22,10 @@ import {
   PREDICTION_SUMMARY_SCREEN,
 } from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
+import {
+  userRecordedExpectedExperience,
+  userRecordedExpectedExperienceNote,
+} from "./stats";
 
 export default class AssumptionNoteScreen extends React.Component<
   ScreenProps,
@@ -61,6 +65,14 @@ export default class AssumptionNoteScreen extends React.Component<
         prediction: this.state.prediction,
       });
       return;
+    }
+
+    userRecordedExpectedExperience(this.state.prediction.expectedExperience);
+    if (
+      this.state.prediction.expectedExperienceNote &&
+      this.state.prediction.expectedExperienceNote !== ""
+    ) {
+      userRecordedExpectedExperienceNote();
     }
 
     this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN, {

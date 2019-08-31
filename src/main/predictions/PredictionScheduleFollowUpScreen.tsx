@@ -17,6 +17,7 @@ import { get } from "lodash";
 import scheduleNotification from "../../notifications/scheduleNotification";
 import { PREDICTION_ONESIGNAL_TEMPLATE } from "../followups/templates";
 import dayjs from "dayjs";
+import { userScheduledPredictionFollowUp } from "./stats";
 
 type FollowUpSelections = "+3 hours" | "+1 day" | "+5 days" | string;
 
@@ -78,6 +79,8 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
     const prediction = this.state.prediction;
     prediction.followUpAt = followUpDate;
     await savePrediction(prediction);
+
+    userScheduledPredictionFollowUp(this.state.followUpOn);
 
     this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
       prediction,

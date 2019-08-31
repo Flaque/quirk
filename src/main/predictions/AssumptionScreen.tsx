@@ -21,6 +21,7 @@ import {
 } from "../screens";
 import { Prediction, newPrediction, savePrediction } from "./predictionstore";
 import { get } from "lodash";
+import { userRecordedPredictionEvent } from "./stats";
 
 export default class AssumptionScreen extends React.Component<
   ScreenProps,
@@ -82,6 +83,7 @@ export default class AssumptionScreen extends React.Component<
       return;
     }
 
+    userRecordedPredictionEvent();
     this.props.navigation.navigate(ASSUMPTION_NOTE_SCREEN, {
       prediction: this.state.prediction,
     });

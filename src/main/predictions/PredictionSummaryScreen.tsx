@@ -32,12 +32,19 @@ import {
   PREDICTION_FOLLOW_UP_SCREEN,
 } from "../screens";
 import { resetNavigationTo } from "../../resetNavigationTo";
-import { getPredictionState } from "./results";
+import { getPredictionState, getPredictionResult } from "./results";
+import { userFollowedUpOnPrediction } from "./stats";
 
 const predictedExperienceText = {
   good: "Going to go well 👍",
   neutral: "Going to go okay 🤷‍",
   bad: "Going to go poorly 👎",
+};
+
+const actualExperienceText = {
+  good: "Went well 👍",
+  neutral: "Went okay 🤷‍",
+  bad: "Went poorly 👎",
 };
 
 export default class PredictionSummaryScreen extends React.Component<
@@ -88,6 +95,61 @@ export default class PredictionSummaryScreen extends React.Component<
     ]);
   };
 
+  renderActualExperience() {
+    return (
+      <View
+        style={{
+          marginBottom: 12,
+        }}
+      >
+        <SubHeader>Actual Experience</SubHeader>
+        <GhostButtonWithGuts
+          borderColor={theme.lightGray}
+          onPress={() => {
+            this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
+              prediction: this.state.prediction,
+              isEditing: true,
+            });
+          }}
+        >
+          <Paragraph>
+            {actualExperienceText[this.state.prediction.actualExperience]}
+          </Paragraph>
+        </GhostButtonWithGuts>
+      </View>
+    );
+  }
+
+  renderFollowUp() {
+    return (
+      <View
+        style={{
+          marginBottom: 12,
+        }}
+      >
+        <SubHeader>Following up at</SubHeader>
+        <Paragraph
+          style={{
+            marginBottom: 12,
+          }}
+        >
+          {dayjs(this.state.prediction.followUpAt).format("D MMM YYYY, h:mm a")}
+        </Paragraph>
+
+        <GhostButton
+          title="Follow up now"
+          borderColor={theme.lightGray}
+          onPress={() => {
+            userFollowedUpOnPrediction(true);
+            this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
+              prediction: this.state.prediction,
+            });
+          }}
+        />
+      </View>
+    );
+  }
+
   render() {
     if (!this.state.prediction) {
       return null;
@@ -113,6 +175,16 @@ export default class PredictionSummaryScreen extends React.Component<
             <Badge
               text="Follow up scheduled"
               featherIconName="clipboard"
+              style={{
+                marginBottom: 18,
+              }}
+            />
+          )}
+
+          {getPredictionResult(this.state.prediction) === "better" && (
+            <Badge
+              text="Better than expected"
+              featherIconName="trending-up"
               style={{
                 marginBottom: 18,
               }}
@@ -188,37 +260,16 @@ export default class PredictionSummaryScreen extends React.Component<
             >
               <Paragraph>
                 {this.state.prediction.predictedExperienceNote ||
-                  "🤷‍ Left blank 🤷‍"}
+                  "* Left blank *"}
               </Paragraph>
             </GhostButtonWithGuts>
           </View>
 
-          <View
-            style={{
-              marginBottom: 12,
-            }}
-          >
-            <SubHeader>Following up at</SubHeader>
-            <Paragraph
-              style={{
-                marginBottom: 12,
-              }}
-            >
-              {dayjs(this.state.prediction.followUpAt).format(
-                "D MMM YYYY, h:mm a"
-              )}
-            </Paragraph>
+          {getPredictionState(this.state.prediction) === "complete" &&
+            this.renderActualExperience()}
 
-            <GhostButton
-              title="Follow up now"
-              borderColor={theme.lightGray}
-              onPress={() => {
-                this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
-                  prediction: this.state.prediction,
-                });
-              }}
-            />
-          </View>
+          {getPredictionState(this.state.prediction) === "waiting" &&
+            this.renderFollowUp()}
 
           <Row
             style={{

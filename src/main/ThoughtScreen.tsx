@@ -34,6 +34,10 @@ import dayjs from "dayjs";
 import ExerciseButton from "./ExerciseButton";
 import { Prediction } from "./predictions/predictionstore";
 import { getPredictionState } from "./predictions/results";
+import {
+  userStartedPrediction,
+  userFollowedUpOnPrediction,
+} from "./predictions/stats";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -149,6 +153,7 @@ export default class MainScreen extends React.Component<
 
   navigateToPredictionViewer = async (prediction: Prediction) => {
     if (getPredictionState(prediction) === "ready") {
+      userFollowedUpOnPrediction(false);
       this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
         prediction,
       });
@@ -212,6 +217,7 @@ export default class MainScreen extends React.Component<
                   hint="Manage anxiety around upcoming events or tasks."
                   featherIconName="cloud-drizzle"
                   onPress={() => {
+                    userStartedPrediction();
                     this.props.navigation.navigate(ASSUMPTION_SCREEN);
                   }}
                 />

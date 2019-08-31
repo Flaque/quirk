@@ -14,9 +14,12 @@ import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
-
 import { PREDICTION_SUMMARY_SCREEN } from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
+import {
+  userRecordedActualExperience,
+  userFollowedUpOnPrediction,
+} from "./stats";
 
 export default class PredictionFollowUpScreen extends React.Component<
   ScreenProps,
@@ -46,6 +49,9 @@ export default class PredictionFollowUpScreen extends React.Component<
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     await savePrediction(this.state.prediction);
+
+    userRecordedActualExperience(this.state.prediction.actualExperience);
+
     this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
       prediction: this.state.prediction,
     });
