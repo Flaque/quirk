@@ -20,6 +20,7 @@ import {
   userRecordedActualExperience,
   userFollowedUpOnPrediction,
 } from "./stats";
+import { TextInput } from "../../textInputStyle";
 
 export default class PredictionFollowUpScreen extends React.Component<
   ScreenProps,
@@ -60,6 +61,13 @@ export default class PredictionFollowUpScreen extends React.Component<
   onFelt = async (felt: "bad" | "neutral" | "good") => {
     this.setState(prevState => {
       prevState.prediction.actualExperience = felt;
+      return prevState;
+    });
+  };
+
+  onChangeNote = async (note: string) => {
+    this.setState(prevState => {
+      prevState.prediction.actualExperienceNote = note;
       return prevState;
     });
   };
@@ -118,6 +126,22 @@ export default class PredictionFollowUpScreen extends React.Component<
             title="It went poorly 👎"
             onPress={() => this.onFelt("bad")}
             selected={this.state.prediction.actualExperience === "bad"}
+          />
+
+          <SubHeader
+            style={{
+              marginTop: 12,
+            }}
+          >
+            Actual Description
+          </SubHeader>
+          <HintHeader>What happened?</HintHeader>
+          <TextInput
+            onChangeText={this.onChangeNote}
+            value={this.state.prediction.actualExperienceNote}
+            placeholder="ex: It was actually..."
+            multiline={true}
+            numberOfLines={6}
           />
 
           <ActionButton

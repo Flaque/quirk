@@ -22,6 +22,7 @@ import {
   PREDICTION_FOLLOW_UP_SCREEN,
   PREDICTION_SUMMARY_SCREEN,
   PREDICTION_ONBOARDING_SCREEN,
+  PREDICTION_REDIRECT_SCREEN,
 } from "./screens";
 import ChallengeScreen from "./ChallengeScreen";
 import DistortionScreen from "./DistortionScreen";
@@ -43,6 +44,7 @@ import AutomaticThoughtScreen from "./AutomaticThoughtScreen";
 import PredictionFollowUpScreen from "./predictions/PredictionFollowUpScreen";
 import PredictionSummaryScreen from "./predictions/PredictionSummaryScreen";
 import PredictionOnboardingScreen from "./predictions/PredictionOnboardingScreen";
+import PredictionThoughtRedirectScreen from "./predictions/PredictionThoughtRedirectScreen";
 
 export default createStackNavigator(
   {
@@ -69,6 +71,7 @@ export default createStackNavigator(
     [PREDICTION_FOLLOW_UP_SCREEN]: PredictionFollowUpScreen,
     [PREDICTION_SUMMARY_SCREEN]: PredictionSummaryScreen,
     [PREDICTION_ONBOARDING_SCREEN]: PredictionOnboardingScreen,
+    [PREDICTION_REDIRECT_SCREEN]: PredictionThoughtRedirectScreen,
   },
   {
     initialRouteName: THOUGHT_SCREEN,

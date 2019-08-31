@@ -105,6 +105,9 @@ export default class PredictionSummaryScreen extends React.Component<
         <SubHeader>Actual Experience</SubHeader>
         <GhostButtonWithGuts
           borderColor={theme.lightGray}
+          style={{
+            marginBottom: 6,
+          }}
           onPress={() => {
             this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
               prediction: this.state.prediction,
@@ -114,6 +117,20 @@ export default class PredictionSummaryScreen extends React.Component<
         >
           <Paragraph>
             {actualExperienceText[this.state.prediction.actualExperience]}
+          </Paragraph>
+        </GhostButtonWithGuts>
+
+        <GhostButtonWithGuts
+          borderColor={theme.lightGray}
+          onPress={() => {
+            this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
+              prediction: this.state.prediction,
+              isEditing: true,
+            });
+          }}
+        >
+          <Paragraph>
+            {this.state.prediction.actualExperienceNote || "* Left Blank *"}
           </Paragraph>
         </GhostButtonWithGuts>
       </View>
