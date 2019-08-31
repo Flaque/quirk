@@ -85,7 +85,15 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
 
     userScheduledPredictionFollowUp(this.state.followUpOn);
 
-    this.props.navigation.navigate(PREDICTION_REDIRECT_SCREEN, {
+    console.log("prediction", prediction);
+    if (prediction.predictedExperience === "bad") {
+      this.props.navigation.navigate(PREDICTION_REDIRECT_SCREEN, {
+        prediction,
+      });
+      return;
+    }
+
+    this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
       prediction,
     });
   };
