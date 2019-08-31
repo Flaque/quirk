@@ -19,7 +19,12 @@ import Constants from "expo-constants";
 import { get } from "lodash";
 import { Thought } from "../../thoughts";
 import { FOLLOW_UP_FEELING_SCREEN } from "../screens";
-import { TextInput, KeyboardAvoidingView, View } from "react-native";
+import {
+  TextInput,
+  KeyboardAvoidingView,
+  View,
+  ScrollView,
+} from "react-native";
 import { saveThought } from "../../thoughtstore";
 import haptic from "../../haptic";
 import * as Haptic from "expo-haptics";
@@ -76,9 +81,10 @@ export default class FollowUpNoteScreen extends React.Component<
 
   render() {
     return (
-      <Container
+      <ScrollView
         style={{
           paddingTop: 24 + Constants.statusBarHeight,
+          paddingHorizontal: 24,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
         }}
@@ -150,7 +156,7 @@ export default class FollowUpNoteScreen extends React.Component<
             </>
           )}
         </KeyboardAvoidingView>
-      </Container>
+      </ScrollView>
     );
   }
 }

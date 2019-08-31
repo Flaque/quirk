@@ -20,7 +20,6 @@ import * as stats from "../stats";
 import haptic from "../haptic";
 import {
   CHALLENGE_SCREEN,
-  THOUGHT_SCREEN,
   FINISHED_SCREEN,
   AUTOMATIC_THOUGHT_SCREEN,
 } from "./screens";
