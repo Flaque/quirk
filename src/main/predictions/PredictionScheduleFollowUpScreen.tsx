@@ -11,7 +11,7 @@ import Constants from "expo-constants";
 import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
-import { THOUGHT_SCREEN, PREDICTION_SUMMARY_SCREEN } from "../screens";
+import { PREDICTION_SUMMARY_SCREEN } from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
 import { get } from "lodash";
 import scheduleNotification from "../../notifications/scheduleNotification";

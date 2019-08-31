@@ -4,14 +4,14 @@ import { Prediction } from "./predictionstore";
 export const getPredictionState = (
   prediction: Prediction
 ): "waiting" | "ready" | "complete" => {
-  const isAfterFollowUp = dayjs().isAfter(dayjs(prediction.followUpAt));
-  if (!isAfterFollowUp) {
-    return "waiting";
-  }
-
   const hasCompletedActual = !!prediction.actualExperience;
   if (hasCompletedActual) {
     return "complete";
+  }
+
+  const isAfterFollowUp = dayjs().isAfter(dayjs(prediction.followUpAt));
+  if (!isAfterFollowUp) {
+    return "waiting";
   }
 
   return "ready";

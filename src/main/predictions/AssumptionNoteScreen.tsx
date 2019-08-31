@@ -96,6 +96,7 @@ export default class AssumptionNoteScreen extends React.Component<
             }}
             title="Finish"
             onPress={this.onFinish}
+            disabled={!this.state.prediction.predictedExperience}
           />
         </Row>
       );
@@ -120,6 +121,7 @@ export default class AssumptionNoteScreen extends React.Component<
           }}
           title="Continue"
           onPress={this.onFinish}
+          disabled={!this.state.prediction.predictedExperience}
         />
       </Row>
     );

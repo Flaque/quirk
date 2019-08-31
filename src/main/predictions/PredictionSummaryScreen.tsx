@@ -28,11 +28,11 @@ import dayjs from "dayjs";
 import {
   ASSUMPTION_SCREEN,
   ASSUMPTION_NOTE_SCREEN,
-  PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
   THOUGHT_SCREEN,
   PREDICTION_FOLLOW_UP_SCREEN,
 } from "../screens";
 import { resetNavigationTo } from "../../resetNavigationTo";
+import { getPredictionState } from "./results";
 
 const predictedExperienceText = {
   good: "Going to go well 👍",
@@ -109,7 +109,7 @@ export default class PredictionSummaryScreen extends React.Component<
             paddingBottom: 64,
           }}
         >
-          {dayjs().isBefore(this.state.prediction.followUpAt) && (
+          {getPredictionState(this.state.prediction) === "waiting" && (
             <Badge
               text="Follow up scheduled"
               featherIconName="clipboard"
@@ -187,7 +187,8 @@ export default class PredictionSummaryScreen extends React.Component<
               }}
             >
               <Paragraph>
-                {this.state.prediction.predictedExperienceNote}
+                {this.state.prediction.predictedExperienceNote ||
+                  "🤷‍ Left blank 🤷‍"}
               </Paragraph>
             </GhostButtonWithGuts>
           </View>
