@@ -136,7 +136,7 @@ export default class AutomaticThoughtScreen extends React.Component<
                 ) : (
                   <>
                     <GhostButton
-                      title="Back"
+                      title="Cancel"
                       onPress={() => {
                         this.props.navigation.navigate(THOUGHT_SCREEN);
                       }}

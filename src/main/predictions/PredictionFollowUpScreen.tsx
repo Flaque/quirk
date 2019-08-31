@@ -16,10 +16,7 @@ import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { PREDICTION_SUMMARY_SCREEN } from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
-import {
-  userRecordedActualExperience,
-  userFollowedUpOnPrediction,
-} from "./stats";
+import { userRecordedActualExperience } from "./stats";
 import { TextInput } from "../../textInputStyle";
 
 export default class PredictionFollowUpScreen extends React.Component<
