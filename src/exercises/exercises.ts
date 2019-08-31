@@ -2,6 +2,10 @@ import { SavedThought } from "../thoughts";
 import { Checkup, getOrderedCheckups } from "../checkups/checkupstore";
 import { getOrderedThoughts } from "../thoughtstore";
 import dayjs from "dayjs";
+import {
+  Prediction,
+  getOrderedPredictions,
+} from "../main/predictions/predictionstore";
 
 export type Exercise = SavedThought | Checkup;
 
@@ -26,6 +30,14 @@ export function isCheckup(obj: Exercise): obj is Checkup {
   return false;
 }
 
+export function isPrediction(obj: Prediction): obj is Prediction {
+  if ((obj as Prediction).eventLabel) {
+    return true;
+  }
+
+  return false;
+}
+
 function isSameDay(a: string | Date, b: string | Date) {
   return dayjs(a).format("DD-MM-YYYY") === dayjs(b).format("DD-MM-YYYY");
 }
@@ -33,9 +45,10 @@ function isSameDay(a: string | Date, b: string | Date) {
 export async function getSortedExerciseGroups(): Promise<ExerciseGroup[]> {
   const thoughts = await getOrderedThoughts();
   const checkups = await getOrderedCheckups();
+  const predictions = await getOrderedPredictions();
 
   // Combine existing exercises and sort them by days
-  const exercises: Exercise[] = [].concat(thoughts, checkups);
+  const exercises: Exercise[] = [].concat(thoughts, checkups, predictions);
   const sortedExercises = exercises.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );

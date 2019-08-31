@@ -33,6 +33,7 @@ import { post } from "../api";
 import { CHECKUP_ONESIGNAL_TEMPLATE } from "../main/followups/templates";
 import Sentry from "../sentry";
 import { userFinishedCheckup } from "../stats";
+import scheduleNotification from "../notifications/scheduleNotification";
 
 export default class HowYaDoinScreen extends React.Component<
   ScreenProps,
@@ -74,19 +75,7 @@ export default class HowYaDoinScreen extends React.Component<
       .toISOString();
     await saveNextCheckupDate(nextCheckupDate);
 
-    const userID = await getUserID();
-    try {
-      post("/notification/new", {
-        userID,
-        sendAfter: nextCheckupDate,
-        templateID: CHECKUP_ONESIGNAL_TEMPLATE,
-      });
-    } catch (err) {
-      Sentry.captureBreadcrumb({
-        message: "Attempting to setup a checkup reminder",
-      });
-      Sentry.captureException(err);
-    }
+    scheduleNotification(nextCheckupDate, CHECKUP_ONESIGNAL_TEMPLATE);
 
     userFinishedCheckup(this.state.checkup.currentMood);
     this.props.navigation.navigate(MAIN_SCREEN);

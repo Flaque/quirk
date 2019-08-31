@@ -10,16 +10,15 @@ import {
 import Constants from "expo-constants";
 import theme from "../../theme";
 import { StatusBar } from "react-native";
-import { identify, getUserID } from "../../id";
+import { identify } from "../../id";
 import { FINISHED_SCREEN } from "../screens";
 import { Thought } from "../../thoughts";
 import { get } from "lodash";
 import dayjs from "dayjs";
 import { saveThought } from "../../thoughtstore";
 import { FOLLOW_UP_ONESIGNAL_TEMPLATE } from "./templates";
-import Sentry from "../../sentry";
 import * as stats from "../../stats";
-import { post } from "../../api";
+import scheduleNotification from "../../notifications/scheduleNotification";
 
 function getFollowUpTime() {
   const inAFewHours = dayjs().add(2, "hour");
@@ -70,19 +69,7 @@ export default class FollowUpScreen extends React.Component<
     // HEADS UP WE DO NOT WAIT FOR THIS TO COMPLETE.
     // Zeit can be a bit slow to wake up sometimes,
     // it's much better we just continue about our day first.
-    const userID = await getUserID();
-    try {
-      post("/notification/new", {
-        userID,
-        sendAfter: followUpDate,
-        templateID: FOLLOW_UP_ONESIGNAL_TEMPLATE,
-      });
-    } catch (err) {
-      Sentry.captureBreadcrumb({
-        message: "Attempting to setup a followup reminder",
-      });
-      Sentry.captureException(err);
-    }
+    scheduleNotification(followUpDate, FOLLOW_UP_ONESIGNAL_TEMPLATE);
 
     this.onContinue();
   };

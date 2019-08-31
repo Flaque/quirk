@@ -120,7 +120,6 @@ export default class CheckUpSummaryScreen extends React.Component<
                 title={"Finish"}
                 style={{
                   flex: 1,
-                  marginLeft: 12,
                 }}
                 onPress={() => this.onNext()}
               />

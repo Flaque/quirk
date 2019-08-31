@@ -21,7 +21,7 @@ export default ({
 }: {
   thought: SavedThought;
   historyButtonLabel: HistoryButtonLabelSetting;
-  onPress: (thought: SavedThought | boolean) => void;
+  onPress: (thought: SavedThought | boolean) => any;
 }) => (
   <View
     style={{

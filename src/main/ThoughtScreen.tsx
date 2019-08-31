@@ -1,18 +1,22 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, StatusBar, Keyboard } from "react-native";
+import { View, StatusBar } from "react-native";
 import {
   saveThought,
   getIsExistingUser,
   setIsExistingUser,
 } from "../thoughtstore";
 import { SavedThought, newThought, Thought } from "../thoughts";
-import ThoughtCard, { THOUGHT_CARD_HIDDEN_HEIGHT } from "./ThoughtCard";
 import {
   DISTORTION_SCREEN,
   FINISHED_SCREEN,
   FOLLOW_UP_NOTE_SCREEN,
   CHECKUP_SUMMARY_SCREEN,
+  ASSUMPTION_SCREEN,
+  AUTOMATIC_THOUGHT_SCREEN,
+  PREDICTION_SUMMARY_SCREEN,
+  PREDICTION_FOLLOW_UP_SCREEN,
+  PREDICTION_ONBOARDING_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -22,13 +26,21 @@ import Constants from "expo-constants";
 import theme from "../theme";
 import { get } from "lodash";
 import followUpState from "./followups/followUpState";
-import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import ExerciseList from "./ExerciseList";
 import { getSortedExerciseGroups, ExerciseGroup } from "../exercises/exercises";
 import CheckupPrompt from "./CheckupPrompt";
 import { CHECKUP_SCREEN } from "../screens";
 import { getNextCheckupDate, Checkup } from "../checkups/checkupstore";
 import dayjs from "dayjs";
+import ExerciseButton from "./ExerciseButton";
+import { Prediction } from "./predictions/predictionstore";
+import { getPredictionState } from "./predictions/results";
+import {
+  userStartedPrediction,
+  userFollowedUpOnPrediction,
+} from "./predictions/stats";
+import { HintHeader, Label } from "../ui";
+import * as flagstore from "../flagstore";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -85,21 +97,7 @@ export default class MainScreen extends React.Component<
         isEditing,
         hasCheckedEditing: true,
       });
-
-      const isRequestingPopUp = get(
-        args,
-        "action.params.isRequestingPopUp",
-        false
-      );
-      if (isEditing || isRequestingPopUp) {
-        this.popUp();
-      }
     });
-
-    /// wiggle card
-    setTimeout(() => {
-      this.setState({ cardPosition: "hiddenWiggle" });
-    }, 250);
   }
 
   loadShouldPromptCheckup = async () => {
@@ -156,6 +154,20 @@ export default class MainScreen extends React.Component<
     });
   };
 
+  navigateToPredictionViewer = async (prediction: Prediction) => {
+    if (getPredictionState(prediction) === "ready") {
+      userFollowedUpOnPrediction(false);
+      this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
+        prediction,
+      });
+      return;
+    }
+
+    this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
+      prediction,
+    });
+  };
+
   onChangeAutomaticThought = (txt: string) => {
     this.setState(prevState => {
       if (!prevState.thought) {
@@ -174,39 +186,8 @@ export default class MainScreen extends React.Component<
     });
   };
 
-  popUp = () => {
-    this.setState({
-      cardPosition: "peak",
-    });
-
-    // Trigger the fade-in effect of the background overlay
-    setTimeout(() => {
-      this.setState({
-        shouldFadeInBackgroundOverlay: true,
-      });
-    }, 200);
-  };
-
-  popDown = () => {
-    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-    Keyboard.dismiss();
-    this.setState({
-      cardPosition: "hiddenWiggle",
-      shouldFadeInBackgroundOverlay: false,
-      isEditing: false,
-    });
-  };
-
   render() {
-    const {
-      groups,
-      areExercisesLoaded,
-      hasCheckedEditing,
-      thought,
-      cardPosition,
-      isEditing,
-      shouldFadeInBackgroundOverlay,
-    } = this.state;
+    const { groups, areExercisesLoaded, hasCheckedEditing } = this.state;
 
     return (
       <View
@@ -220,24 +201,53 @@ export default class MainScreen extends React.Component<
 
         {areExercisesLoaded && hasCheckedEditing && (
           <>
-            <ThoughtCard
-              onNext={this.navigateToDistortionScreenWithThought}
-              thought={thought}
-              onChange={this.onChangeAutomaticThought}
-              isEditing={isEditing}
-              onFinish={this.onFinishEditing}
-              cardPosition={cardPosition}
-              shouldFadeInBackgroundOverlay={shouldFadeInBackgroundOverlay}
-              onPopUp={this.popUp}
-              onPopDown={this.popDown}
-            />
             <InvertibleScrollView
               inverted
               style={{
                 backgroundColor: theme.lightOffwhite,
-                marginBottom: THOUGHT_CARD_HIDDEN_HEIGHT - TAB_BAR_HEIGHT,
               }}
             >
+              <View
+                style={{
+                  backgroundColor: theme.offwhite,
+                  padding: 24,
+                  borderTopColor: theme.lightGray,
+                  borderTopWidth: 1,
+                }}
+              >
+                <Label>Exercises</Label>
+                <ExerciseButton
+                  title="New Prediction"
+                  hint="Manage anxiety around upcoming events or tasks."
+                  featherIconName="cloud-drizzle"
+                  onPress={async () => {
+                    userStartedPrediction();
+
+                    if (
+                      !(await flagstore.get(
+                        "has-seen-prediction-onboarding",
+                        "false"
+                      ))
+                    ) {
+                      this.props.navigation.navigate(
+                        PREDICTION_ONBOARDING_SCREEN
+                      );
+                      flagstore.setTrue("has-seen-prediction-onboarding");
+                      return;
+                    }
+
+                    this.props.navigation.navigate(ASSUMPTION_SCREEN);
+                  }}
+                />
+                <ExerciseButton
+                  title="New Automatic Thought"
+                  hint="Challenge your in-the-moment automatic negative thoughts."
+                  featherIconName="message-square"
+                  onPress={() => {
+                    this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN);
+                  }}
+                />
+              </View>
               {this.state.shouldPromptCheckup && (
                 <CheckupPrompt
                   onPress={() => {
@@ -252,6 +262,7 @@ export default class MainScreen extends React.Component<
                 historyButtonLabel={"alternative-thought"}
                 navigateToThoughtViewer={this.navigateToViewerWithThought}
                 navigateToCheckupViewer={this.navigateToCheckupViewer}
+                navigateToPredictionViewer={this.navigateToPredictionViewer}
               />
             </InvertibleScrollView>
           </>

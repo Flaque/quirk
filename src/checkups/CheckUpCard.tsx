@@ -16,7 +16,7 @@ const CheckUpCard = ({
   onPress,
 }: {
   currentCheckup: Checkup;
-  onPress: (checkup: Checkup) => void;
+  onPress: (checkup: Checkup) => any;
 }) => {
   return (
     <TouchableCardContainer onPress={() => onPress(currentCheckup)}>

@@ -10,7 +10,11 @@ const FLAG_KEY = "@Quirk:flags";
 // store things in strings
 export type bool = "true" | "false";
 
-export type Flag = "start-help-badge" | "has-rated" | "has-been-surveyed";
+export type Flag =
+  | "start-help-badge"
+  | "has-rated"
+  | "has-been-surveyed"
+  | "has-seen-prediction-onboarding";
 
 function getKey(flag: Flag): string {
   return FLAG_KEY + flag;

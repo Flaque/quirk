@@ -24,6 +24,7 @@ import {
   FOLLOW_UP_NOTE_SCREEN,
   FEEDBACK_SCREEN,
   SURVEY_SCREEN,
+  AUTOMATIC_THOUGHT_SCREEN,
 } from "./screens";
 import { ScrollView } from "react-navigation";
 import { deleteThought, saveThought, countThoughts } from "../thoughtstore";
@@ -35,7 +36,6 @@ import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
 import * as flagstore from "../flagstore";
 import { resetNavigationTo } from "../resetNavigationTo";
-import { getUserID } from "../id";
 import { passesFeatureFlag } from "../featureflags";
 
 export default class FinishedScreen extends React.Component<
@@ -106,12 +106,12 @@ export default class FinishedScreen extends React.Component<
     }
 
     if (await this.shouldSendToAndroidReview()) {
-      this.props.navigation.push(FEEDBACK_SCREEN);
+      this.props.navigation.navigate(FEEDBACK_SCREEN);
       return;
     }
 
     if (await this.shouldSendToSurvey()) {
-      this.props.navigation.push(SURVEY_SCREEN);
+      this.props.navigation.navigate(SURVEY_SCREEN);
       return;
     }
 
@@ -190,7 +190,7 @@ export default class FinishedScreen extends React.Component<
               <GhostButtonWithGuts
                 borderColor={theme.lightGray}
                 onPress={() => {
-                  this.props.navigation.navigate(THOUGHT_SCREEN, {
+                  this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN, {
                     thought: this.state.thought,
                     isEditing: true,
                   });
@@ -285,7 +285,7 @@ export default class FinishedScreen extends React.Component<
                 borderColor={theme.red}
                 textColor={theme.red}
                 style={{
-                  marginRight: 24,
+                  marginRight: 12,
                 }}
                 onPress={() => {
                   Alert.alert("Delete your thought?", "This can't be undone.", [

@@ -13,7 +13,6 @@ const getMainOffering = () => {
 };
 
 const isValidPurchaserInfo = (info: PurchaserInfo) => {
-  log("purchaserInfo", info);
   if (info.activeEntitlements === "undefined") {
     return false;
   }
