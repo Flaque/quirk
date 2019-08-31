@@ -38,6 +38,7 @@ import {
   userStartedPrediction,
   userFollowedUpOnPrediction,
 } from "./predictions/stats";
+import { HintHeader } from "../ui";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -212,6 +213,7 @@ export default class MainScreen extends React.Component<
                   borderTopWidth: 1,
                 }}
               >
+                <HintHeader>Exercises</HintHeader>
                 <ExerciseButton
                   title="New Prediction"
                   hint="Manage anxiety around upcoming events or tasks."
