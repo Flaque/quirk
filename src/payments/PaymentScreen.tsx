@@ -83,9 +83,6 @@ class PaymentScreen extends React.Component<
   };
 
   async componentDidMount() {
-    this.redirectToFormScreen();
-    return;
-
     SplashScreen.preventAutoHide();
     await setupRevenutCat();
 
