@@ -30,6 +30,7 @@ import {
   ASSUMPTION_NOTE_SCREEN,
   PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
   THOUGHT_SCREEN,
+  PREDICTION_FOLLOW_UP_SCREEN,
 } from "../screens";
 import { resetNavigationTo } from "../../resetNavigationTo";
 
@@ -105,7 +106,7 @@ export default class PredictionSummaryScreen extends React.Component<
         <KeyboardAvoidingView
           behavior="position"
           style={{
-            paddingBottom: 24,
+            paddingBottom: 64,
           }}
         >
           {dayjs().isBefore(this.state.prediction.followUpAt) && (
@@ -197,24 +198,25 @@ export default class PredictionSummaryScreen extends React.Component<
             }}
           >
             <SubHeader>Following up at</SubHeader>
-            <GhostButtonWithGuts
-              borderColor={theme.lightGray}
-              onPress={() => {
-                this.props.navigation.navigate(
-                  PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
-                  {
-                    prediction: this.state.prediction,
-                    isEditing: true,
-                  }
-                );
+            <Paragraph
+              style={{
+                marginBottom: 12,
               }}
             >
-              <Paragraph>
-                {dayjs(this.state.prediction.followUpAt).format(
-                  "D MMM YYYY, h:mm a"
-                )}
-              </Paragraph>
-            </GhostButtonWithGuts>
+              {dayjs(this.state.prediction.followUpAt).format(
+                "D MMM YYYY, h:mm a"
+              )}
+            </Paragraph>
+
+            <GhostButton
+              title="Follow up now"
+              borderColor={theme.lightGray}
+              onPress={() => {
+                this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
+                  prediction: this.state.prediction,
+                });
+              }}
+            />
           </View>
 
           <Row

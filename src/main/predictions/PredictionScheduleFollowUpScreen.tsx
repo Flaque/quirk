@@ -17,7 +17,6 @@ import { get } from "lodash";
 import scheduleNotification from "../../notifications/scheduleNotification";
 import { PREDICTION_ONESIGNAL_TEMPLATE } from "../followups/templates";
 import dayjs from "dayjs";
-import { resetNavigationTo } from "../../resetNavigationTo";
 
 type FollowUpSelections = "+3 hours" | "+1 day" | "+5 days" | string;
 
@@ -33,7 +32,7 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
   };
 
   state = {
-    followUpOn: "+5 day",
+    followUpOn: "+1 day",
     prediction: undefined,
   };
 
@@ -49,10 +48,6 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
   }
 
   getFollowUpDate = (): string => {
-    return dayjs()
-      .add(3, "second")
-      .toISOString();
-
     if (this.state.followUpOn === "+3 hours") {
       return dayjs()
         .add(3, "hour")
@@ -96,6 +91,10 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
   };
 
   render() {
+    if (!this.state.prediction) {
+      return null;
+    }
+
     return (
       <ScrollView
         style={{

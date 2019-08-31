@@ -150,6 +150,7 @@ export default class AutomaticThoughtScreen extends React.Component<
                       style={{
                         flex: 1,
                       }}
+                      disabled={!this.state.thought.automaticThought}
                     />
                   </>
                 )}

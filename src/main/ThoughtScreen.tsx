@@ -33,7 +33,7 @@ import { getNextCheckupDate, Checkup } from "../checkups/checkupstore";
 import dayjs from "dayjs";
 import ExerciseButton from "./ExerciseButton";
 import { Prediction } from "./predictions/predictionstore";
-import { getPredictionResult, getPredictionState } from "./predictions/results";
+import { getPredictionState } from "./predictions/results";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
