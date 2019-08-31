@@ -49,6 +49,10 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
   }
 
   getFollowUpDate = (): string => {
+    return dayjs()
+      .add(3, "second")
+      .toISOString();
+
     if (this.state.followUpOn === "+3 hours") {
       return dayjs()
         .add(3, "hour")
@@ -74,12 +78,7 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
 
     const followUpDate = this.getFollowUpDate();
-    scheduleNotification(
-      dayjs()
-        .add(3, "s")
-        .toISOString(),
-      PREDICTION_ONESIGNAL_TEMPLATE
-    );
+    scheduleNotification(followUpDate, PREDICTION_ONESIGNAL_TEMPLATE);
 
     const prediction = this.state.prediction;
     prediction.followUpAt = followUpDate;

@@ -6,6 +6,8 @@ import {
   SubHeader,
   RoundedSelectorButton,
   ActionButton,
+  Row,
+  GhostButton,
 } from "../../ui";
 import { get } from "lodash";
 import ScreenProps from "../../ScreenProps";
@@ -14,13 +16,18 @@ import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { TextInput } from "../../textInputStyle";
-import { PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN } from "../screens";
+import {
+  PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
+  ASSUMPTION_SCREEN,
+  PREDICTION_SUMMARY_SCREEN,
+} from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
 
 export default class AssumptionNoteScreen extends React.Component<
   ScreenProps,
   {
     prediction?: Prediction;
+    isEditing?: boolean;
   }
 > {
   static navigationOptions = {
@@ -29,14 +36,17 @@ export default class AssumptionNoteScreen extends React.Component<
 
   state = {
     prediction: undefined,
+    isEditing: false,
   };
 
   componentDidMount() {
     this.props.navigation.addListener("willFocus", args => {
       const prediction = get(args, "state.params.prediction");
+      const isEditing = get(args, "action.params.isEditing", false);
       if (prediction) {
         this.setState({
           prediction,
+          isEditing,
         });
       }
     });
@@ -45,6 +55,14 @@ export default class AssumptionNoteScreen extends React.Component<
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     await savePrediction(this.state.prediction);
+
+    if (this.state.isEditing) {
+      this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
+        prediction: this.state.prediction,
+      });
+      return;
+    }
+
     this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN, {
       prediction: this.state.prediction,
     });
@@ -62,6 +80,49 @@ export default class AssumptionNoteScreen extends React.Component<
       prevState.prediction.predictedExperienceNote = note;
       return prevState;
     });
+  };
+
+  renderButtons = () => {
+    if (this.state.isEditing) {
+      return (
+        <Row
+          style={{
+            marginTop: 12,
+          }}
+        >
+          <ActionButton
+            style={{
+              flex: 1,
+            }}
+            title="Finish"
+            onPress={this.onFinish}
+          />
+        </Row>
+      );
+    }
+
+    return (
+      <Row
+        style={{
+          marginTop: 12,
+        }}
+      >
+        <GhostButton
+          onPress={() => this.props.navigation.navigate(ASSUMPTION_SCREEN)}
+          title="Back"
+          style={{
+            marginRight: 12,
+          }}
+        />
+        <ActionButton
+          style={{
+            flex: 1,
+          }}
+          title="Continue"
+          onPress={this.onFinish}
+        />
+      </Row>
+    );
   };
 
   render() {
@@ -129,15 +190,7 @@ export default class AssumptionNoteScreen extends React.Component<
             numberOfLines={6}
           />
 
-          <ActionButton
-            style={{
-              marginTop: 12,
-              marginBottom: 24,
-            }}
-            title="Continue"
-            onPress={this.onFinish}
-            width={"100%"}
-          />
+          {this.renderButtons()}
         </KeyboardAvoidingView>
       </ScrollView>
     );

@@ -4,11 +4,14 @@ import {
   CardCrown,
   CardTextContent,
   CardMutedContent,
+  CardBadge,
+  CardAttentionDot,
 } from "../../card/TouchableCard";
 import { Prediction } from "./predictionstore";
 import { Text } from "react-native";
 import theme from "../../theme";
 import dayjs from "dayjs";
+import { getPredictionResult, getPredictionState } from "./results";
 
 const PredictionCard = ({
   prediction,
@@ -18,27 +21,64 @@ const PredictionCard = ({
   onPress: (checkup: Prediction) => any;
 }) => {
   return (
-    <TouchableCardContainer onPress={() => onPress(prediction)}>
-      <CardCrown text={"PREDICTION"} featherIconName={"cloud-drizzle"} />
+    <>
+      {getPredictionState(prediction) === "ready" && <CardAttentionDot />}
 
-      <CardTextContent text={prediction.eventLabel} />
+      <TouchableCardContainer onPress={() => onPress(prediction)}>
+        <CardCrown text={"PREDICTION"} featherIconName={"cloud-drizzle"} />
 
-      <CardMutedContent>
-        <Text
-          style={{
-            fontWeight: "700",
-            fontSize: 14,
-            color: theme.veryLightText,
-          }}
-        >
-          *Result revealed on{" "}
-          {dayjs(prediction.followUpAt)
-            .toDate()
-            .toDateString()}
-          *
-        </Text>
-      </CardMutedContent>
-    </TouchableCardContainer>
+        <CardTextContent text={prediction.eventLabel} />
+
+        {getPredictionState(prediction) === "ready" && (
+          <CardBadge
+            featherIconName="play"
+            text="Tap to start follow up"
+            backgroundColor={theme.lightPink}
+          />
+        )}
+
+        {getPredictionState(prediction) === "waiting" && (
+          <CardMutedContent>
+            <Text
+              style={{
+                fontWeight: "700",
+                fontSize: 14,
+                color: theme.veryLightText,
+              }}
+            >
+              *Result revealed on{" "}
+              {dayjs(prediction.followUpAt)
+                .toDate()
+                .toDateString()}
+              *
+            </Text>
+          </CardMutedContent>
+        )}
+
+        {getPredictionState(prediction) === "complete" &&
+          getPredictionResult(prediction) === "correct" && (
+            <CardMutedContent>
+              <Text
+                style={{
+                  fontWeight: "700",
+                  fontSize: 14,
+                  color: theme.veryLightText,
+                }}
+              >
+                Went as expected
+              </Text>
+            </CardMutedContent>
+          )}
+
+        {getPredictionState(prediction) === "complete" &&
+          getPredictionResult(prediction) === "better" && (
+            <CardBadge
+              text="Better than expected"
+              featherIconName="trending-up"
+            />
+          )}
+      </TouchableCardContainer>
+    </>
   );
 };
 

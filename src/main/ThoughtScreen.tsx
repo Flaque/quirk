@@ -15,6 +15,7 @@ import {
   ASSUMPTION_SCREEN,
   AUTOMATIC_THOUGHT_SCREEN,
   PREDICTION_SUMMARY_SCREEN,
+  PREDICTION_FOLLOW_UP_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -32,6 +33,7 @@ import { getNextCheckupDate, Checkup } from "../checkups/checkupstore";
 import dayjs from "dayjs";
 import ExerciseButton from "./ExerciseButton";
 import { Prediction } from "./predictions/predictionstore";
+import { getPredictionResult, getPredictionState } from "./predictions/results";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -146,6 +148,13 @@ export default class MainScreen extends React.Component<
   };
 
   navigateToPredictionViewer = async (prediction: Prediction) => {
+    if (getPredictionState(prediction) === "ready") {
+      this.props.navigation.navigate(PREDICTION_FOLLOW_UP_SCREEN, {
+        prediction,
+      });
+      return;
+    }
+
     this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
       prediction,
     });

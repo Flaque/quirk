@@ -6,6 +6,7 @@ import {
   SubHeader,
   RoundedSelectorButton,
   ActionButton,
+  Paragraph,
 } from "../../ui";
 import { get } from "lodash";
 import ScreenProps from "../../ScreenProps";
@@ -14,10 +15,7 @@ import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { TextInput } from "../../textInputStyle";
-import {
-  PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
-  PREDICTION_SUMMARY_SCREEN,
-} from "../screens";
+import { PREDICTION_SUMMARY_SCREEN } from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
 
 export default class PredictionFollowUpScreen extends React.Component<
@@ -55,14 +53,7 @@ export default class PredictionFollowUpScreen extends React.Component<
 
   onFelt = async (felt: "bad" | "neutral" | "good") => {
     this.setState(prevState => {
-      prevState.prediction.predictedExperience = felt;
-      return prevState;
-    });
-  };
-
-  onChangeNote = async (note: string) => {
-    this.setState(prevState => {
-      prevState.prediction.predictedExperienceNote = note;
+      prevState.prediction.actualExperience = felt;
       return prevState;
     });
   };
@@ -88,48 +79,39 @@ export default class PredictionFollowUpScreen extends React.Component<
             paddingBottom: 48,
           }}
         >
-          <MediumHeader>Predicted Experience</MediumHeader>
-          <HintHeader>How do you think this will go?</HintHeader>
+          <MediumHeader>Actual Experience</MediumHeader>
+          <HintHeader>How did it go?</HintHeader>
 
           <SubHeader
             style={{
               marginTop: 12,
             }}
           >
-            Expected Experience
+            Event or Task
+          </SubHeader>
+          <Paragraph>{this.state.prediction.eventLabel}</Paragraph>
+
+          <SubHeader
+            style={{
+              marginTop: 12,
+            }}
+          >
+            Actual Experience
           </SubHeader>
           <RoundedSelectorButton
-            title="Going to go well 👍"
+            title="It went well 👍"
             onPress={() => this.onFelt("good")}
-            selected={this.state.prediction.predictedExperience === "good"}
+            selected={this.state.prediction.actualExperience === "good"}
           />
           <RoundedSelectorButton
-            title="Going to go okay 🤷‍"
+            title="It went okay 🤷‍"
             onPress={() => this.onFelt("neutral")}
-            selected={this.state.prediction.predictedExperience === "neutral"}
+            selected={this.state.prediction.actualExperience === "neutral"}
           />
           <RoundedSelectorButton
-            title="Going to go poorly 👎"
+            title="It went poorly 👎"
             onPress={() => this.onFelt("bad")}
-            selected={this.state.prediction.predictedExperience === "bad"}
-          />
-
-          <SubHeader
-            style={{
-              marginTop: 12,
-            }}
-          >
-            Thought
-          </SubHeader>
-          <HintHeader>
-            In your own words, describe what you think might happen.
-          </HintHeader>
-          <TextInput
-            onChangeText={this.onChangeNote}
-            value={this.state.prediction.predictedExperienceNote}
-            placeholder="ex: giving a presentation in front of..."
-            multiline={true}
-            numberOfLines={6}
+            selected={this.state.prediction.actualExperience === "bad"}
           />
 
           <ActionButton
@@ -137,9 +119,10 @@ export default class PredictionFollowUpScreen extends React.Component<
               marginTop: 12,
               marginBottom: 24,
             }}
-            title="Continue"
+            title="Finish"
             onPress={this.onFinish}
             width={"100%"}
+            disabled={!this.state.prediction.actualExperience}
           />
         </KeyboardAvoidingView>
       </ScrollView>

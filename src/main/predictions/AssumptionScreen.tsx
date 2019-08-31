@@ -14,7 +14,11 @@ import { KeyboardAvoidingView, StatusBar, ScrollView } from "react-native";
 import * as Haptic from "expo-haptics";
 import haptic from "../../haptic";
 import { TextInput } from "../../textInputStyle";
-import { ASSUMPTION_NOTE_SCREEN, THOUGHT_SCREEN } from "../screens";
+import {
+  ASSUMPTION_NOTE_SCREEN,
+  THOUGHT_SCREEN,
+  PREDICTION_SUMMARY_SCREEN,
+} from "../screens";
 import { Prediction, newPrediction, savePrediction } from "./predictionstore";
 import { get } from "lodash";
 
@@ -22,6 +26,7 @@ export default class AssumptionScreen extends React.Component<
   ScreenProps,
   {
     prediction?: Prediction;
+    isEditing?: boolean;
   }
 > {
   static navigationOptions = {
@@ -30,22 +35,33 @@ export default class AssumptionScreen extends React.Component<
 
   state = {
     prediction: undefined,
+    isEditing: false,
   };
 
   componentDidMount() {
     this.setState({
       prediction: newPrediction(),
+      isEditing: false,
     });
 
     this.props.navigation.addListener("willFocus", args => {
-      const prediction = get(args, "state.params.prediction");
+      const prediction = get(args, "action.params.prediction");
+      const isEditing = get(args, "action.params.isEditing", false);
       if (prediction) {
         this.setState({
           prediction,
+          isEditing,
         });
       }
     });
   }
+
+  onChange = async (label: string) => {
+    this.setState(prevState => {
+      prevState.prediction.eventLabel = label;
+      return prevState;
+    });
+  };
 
   onFinish = async () => {
     // Don't continue if we don't have an event label
@@ -58,16 +74,62 @@ export default class AssumptionScreen extends React.Component<
 
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     await savePrediction(this.state.prediction);
+
+    if (this.state.isEditing) {
+      this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
+        prediction: this.state.prediction,
+      });
+      return;
+    }
+
     this.props.navigation.navigate(ASSUMPTION_NOTE_SCREEN, {
       prediction: this.state.prediction,
     });
   };
 
-  onChange = async (label: string) => {
-    this.setState(prevState => {
-      prevState.prediction.eventLabel = label;
-      return prevState;
-    });
+  renderButtons = () => {
+    if (this.state.isEditing) {
+      return (
+        <Row
+          style={{
+            marginTop: 12,
+          }}
+        >
+          <ActionButton
+            style={{
+              flex: 1,
+            }}
+            title="Finish"
+            onPress={this.onFinish}
+            disabled={!this.state.prediction.eventLabel}
+          />
+        </Row>
+      );
+    }
+
+    return (
+      <Row
+        style={{
+          marginTop: 12,
+        }}
+      >
+        <GhostButton
+          onPress={() => this.props.navigation.navigate(THOUGHT_SCREEN)}
+          title="Back"
+          style={{
+            marginRight: 12,
+          }}
+        />
+        <ActionButton
+          style={{
+            flex: 1,
+          }}
+          title="Continue"
+          onPress={this.onFinish}
+          disabled={!this.state.prediction.eventLabel}
+        />
+      </Row>
+    );
   };
 
   render() {
@@ -106,27 +168,7 @@ export default class AssumptionScreen extends React.Component<
             numberOfLines={6}
           />
 
-          <Row
-            style={{
-              marginTop: 12,
-            }}
-          >
-            <GhostButton
-              onPress={() => this.props.navigation.navigate(THOUGHT_SCREEN)}
-              title="Back"
-              style={{
-                marginRight: 12,
-              }}
-            />
-            <ActionButton
-              style={{
-                flex: 1,
-              }}
-              title="Continue"
-              onPress={this.onFinish}
-              disabled={!this.state.prediction.eventLabel}
-            />
-          </Row>
+          {this.renderButtons()}
         </KeyboardAvoidingView>
       </ScrollView>
     );

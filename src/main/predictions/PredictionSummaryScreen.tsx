@@ -140,6 +140,7 @@ export default class PredictionSummaryScreen extends React.Component<
               onPress={() => {
                 this.props.navigation.navigate(ASSUMPTION_SCREEN, {
                   prediction: this.state.prediction,
+                  isEditing: true,
                 });
               }}
             >
@@ -159,6 +160,7 @@ export default class PredictionSummaryScreen extends React.Component<
               onPress={() => {
                 this.props.navigation.navigate(ASSUMPTION_NOTE_SCREEN, {
                   prediction: this.state.prediction,
+                  isEditing: true,
                 });
               }}
               style={{
@@ -179,6 +181,7 @@ export default class PredictionSummaryScreen extends React.Component<
               onPress={() => {
                 this.props.navigation.navigate(ASSUMPTION_SCREEN, {
                   prediction: this.state.prediction,
+                  isEditing: true,
                 });
               }}
             >
@@ -201,6 +204,7 @@ export default class PredictionSummaryScreen extends React.Component<
                   PREDICTION_FOLLOW_UP_SCHEDULE_SCREEN,
                   {
                     prediction: this.state.prediction,
+                    isEditing: true,
                   }
                 );
               }}
