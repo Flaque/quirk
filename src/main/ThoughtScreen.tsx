@@ -16,6 +16,7 @@ import {
   AUTOMATIC_THOUGHT_SCREEN,
   PREDICTION_SUMMARY_SCREEN,
   PREDICTION_FOLLOW_UP_SCREEN,
+  PREDICTION_ONBOARDING_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -39,6 +40,7 @@ import {
   userFollowedUpOnPrediction,
 } from "./predictions/stats";
 import { HintHeader } from "../ui";
+import * as flagstore from "../flagstore";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -218,8 +220,22 @@ export default class MainScreen extends React.Component<
                   title="New Prediction"
                   hint="Manage anxiety around upcoming events or tasks."
                   featherIconName="cloud-drizzle"
-                  onPress={() => {
+                  onPress={async () => {
                     userStartedPrediction();
+
+                    if (
+                      !(await flagstore.get(
+                        "has-seen-prediction-onboarding",
+                        "false"
+                      ))
+                    ) {
+                      this.props.navigation.navigate(
+                        PREDICTION_ONBOARDING_SCREEN
+                      );
+                      flagstore.setTrue("has-seen-prediction-onboarding");
+                      return;
+                    }
+
                     this.props.navigation.navigate(ASSUMPTION_SCREEN);
                   }}
                 />

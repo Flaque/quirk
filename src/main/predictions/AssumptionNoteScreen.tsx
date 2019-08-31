@@ -199,7 +199,7 @@ export default class AssumptionNoteScreen extends React.Component<
           <TextInput
             onChangeText={this.onChangeNote}
             value={this.state.prediction.predictedExperienceNote}
-            placeholder="ex: giving a presentation in front of..."
+            placeholder="ex: I think it will go like..."
             multiline={true}
             numberOfLines={6}
           />

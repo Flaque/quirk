@@ -598,6 +598,16 @@ export const B = ({ children, style }: { children: any; style?: any }) => (
   <Text style={{ fontWeight: "bold", ...style }}>{children}</Text>
 );
 
+export const LI = ({ children }) => (
+  <Text
+    style={{
+      fontSize: 16,
+      color: theme.lightText,
+      marginBottom: 4,
+    }}
+  >{`\u2022 ${children}`}</Text>
+);
+
 export const Badge = ({
   text,
   backgroundColor,
