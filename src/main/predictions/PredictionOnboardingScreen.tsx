@@ -77,6 +77,7 @@ export default class PredictionOnboardingScreen extends React.Component<
         <ActionButton
           style={{
             marginTop: 12,
+            marginBottom: 48,
           }}
           width="100%"
           title="Continue"

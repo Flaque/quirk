@@ -182,10 +182,9 @@ export default class PredictionSummaryScreen extends React.Component<
         }}
       >
         <StatusBar hidden={false} />
-        <KeyboardAvoidingView
-          behavior="position"
+        <View
           style={{
-            paddingBottom: 64,
+            marginBottom: 64,
           }}
         >
           {getPredictionState(this.state.prediction) === "waiting" && (
@@ -291,6 +290,7 @@ export default class PredictionSummaryScreen extends React.Component<
           <Row
             style={{
               marginTop: 24,
+              marginBottom: 48,
             }}
           >
             <GhostButton
@@ -311,7 +311,7 @@ export default class PredictionSummaryScreen extends React.Component<
               onPress={this.onFinish}
             />
           </Row>
-        </KeyboardAvoidingView>
+        </View>
       </ScrollView>
     );
   }
