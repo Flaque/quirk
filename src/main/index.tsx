@@ -74,6 +74,6 @@ export default createStackNavigator(
     [PREDICTION_REDIRECT_SCREEN]: PredictionThoughtRedirectScreen,
   },
   {
-    initialRouteName: THOUGHT_SCREEN,
+    initialRouteName: SURVEY_SCREEN,
   }
 );

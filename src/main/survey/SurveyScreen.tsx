@@ -8,6 +8,7 @@ import {
   HintHeader,
   RoundedSelectorButton,
   SubHeader,
+  ActionButton,
 } from "../../ui";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
@@ -19,10 +20,24 @@ import { THOUGHT_SCREEN } from "../screens";
 import { addTagsToUser } from "../../id";
 import { userRecordedDisappointedSurvey } from "../../stats";
 import { resetNavigationTo } from "../../resetNavigationTo";
+import SinglePageForm from "../../SinglePageForm";
+import { TextInput } from "../../textInputStyle";
 
-export default class SurveyScreen extends React.Component<ScreenProps> {
+export default class SurveyScreen extends React.Component<
+  ScreenProps,
+  {
+    index: number;
+  }
+> {
   static navigationOptions = {
     header: null,
+  };
+
+  state = {
+    index: 0,
+    typeOfPersonValue: "",
+    benefitOfQuirkValue: "",
+    improveQuirkValue: "",
   };
 
   onChange = async (answer: string) => {
@@ -34,13 +49,147 @@ export default class SurveyScreen extends React.Component<ScreenProps> {
       disappointedAnswer: answer,
     });
 
-    resetNavigationTo(this.props.navigation, THOUGHT_SCREEN);
+    this.onNext();
   };
 
   // From editing
   onFinish = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
   };
+
+  onNext = async () => {
+    if (this.state.index === 3) {
+      resetNavigationTo(this.props.navigation, THOUGHT_SCREEN);
+      return;
+    }
+
+    this.setState(prevState => {
+      return {
+        index: prevState.index + 1,
+      };
+    });
+  };
+
+  renderDisappointedStep() {
+    return (
+      <>
+        <MediumHeader
+          style={{
+            marginBottom: 24,
+          }}
+        >
+          Question 1 of 4
+        </MediumHeader>
+
+        <SubHeader>
+          How would you feel if you could no longer use Quirk?
+        </SubHeader>
+        <HintHeader>
+          This is just for feedback purposes; Quirk isn't going anywhere.
+        </HintHeader>
+
+        <RoundedSelectorButton
+          title="Very Disappointed"
+          onPress={() => this.onChange("very")}
+        />
+        <RoundedSelectorButton
+          title="Somewhat Disappointed"
+          onPress={() => this.onChange("somewhat")}
+        />
+        <RoundedSelectorButton
+          title="Not Disappointed"
+          onPress={() => this.onChange("not")}
+        />
+      </>
+    );
+  }
+
+  renderKindOfPeople() {
+    return (
+      <>
+        <MediumHeader
+          style={{
+            marginBottom: 24,
+          }}
+        >
+          Question 2 of 4
+        </MediumHeader>
+
+        <SubHeader>
+          What type of people do you think would most benefit from Quirk?
+        </SubHeader>
+
+        <TextInput
+          multiline={true}
+          numberOfLines={6}
+          placeholder="..."
+          onChangeText={() => {}}
+          value={""}
+        />
+        <ActionButton
+          width={"100%"}
+          title="Next"
+          onPress={() => this.onNext()}
+        />
+      </>
+    );
+  }
+
+  renderMainBenefit() {
+    return (
+      <>
+        <MediumHeader
+          style={{
+            marginBottom: 24,
+          }}
+        >
+          Question 3 of 4
+        </MediumHeader>
+
+        <SubHeader>What's the main benefit you receive from Quirk?</SubHeader>
+        <TextInput
+          multiline={true}
+          numberOfLines={6}
+          placeholder="..."
+          onChangeText={() => {}}
+          value={""}
+        />
+        <ActionButton
+          width={"100%"}
+          title="Next"
+          onPress={() => this.onNext()}
+        />
+      </>
+    );
+  }
+
+  renderImproveQuirk() {
+    return (
+      <>
+        <MediumHeader
+          style={{
+            marginBottom: 24,
+          }}
+        >
+          Question 4 of 4
+        </MediumHeader>
+
+        <SubHeader>How can we improve Quirk for you?</SubHeader>
+        <TextInput
+          multiline={true}
+          numberOfLines={6}
+          placeholder="... type something ehre"
+          onChangeText={() => {}}
+          value={""}
+        />
+        <ActionButton
+          width={"100%"}
+          title="Finish"
+          onPress={() => this.onNext()}
+        />
+      </>
+    );
+  }
 
   render() {
     return (
@@ -59,32 +208,15 @@ export default class SurveyScreen extends React.Component<ScreenProps> {
           }}
         >
           <StatusBar hidden={false} />
-          <MediumHeader
-            style={{
-              marginBottom: 24,
-            }}
-          >
-            One last thing...
-          </MediumHeader>
 
-          <SubHeader>
-            How would you feel if you could no longer use Quirk?
-          </SubHeader>
-          <HintHeader>
-            This is just for feedback purposes; Quirk isn't going anywhere.
-          </HintHeader>
-
-          <RoundedSelectorButton
-            title="Very Disappointed"
-            onPress={() => this.onChange("very")}
-          />
-          <RoundedSelectorButton
-            title="Somewhat Disappointed"
-            onPress={() => this.onChange("somewhat")}
-          />
-          <RoundedSelectorButton
-            title="Not Disappointed"
-            onPress={() => this.onChange("not")}
+          <SinglePageForm
+            steps={[
+              this.renderDisappointedStep(),
+              this.renderKindOfPeople(),
+              this.renderMainBenefit(),
+              this.renderImproveQuirk(),
+            ]}
+            index={this.state.index}
           />
         </KeyboardAvoidingView>
       </ScrollView>
