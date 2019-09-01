@@ -137,7 +137,7 @@ export default class FollowUpFeelingReviewScreen extends React.Component<
         {this.state.thought.followUpCheckup !== "better" && (
           <>
             <ActionButton
-              title="Record a new thought"
+              title="Finish"
               style={{
                 marginBottom: 12,
               }}
