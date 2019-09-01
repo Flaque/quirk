@@ -1,5 +1,6 @@
 import { getUserID } from "./id";
 import { identifyWithTraits } from "./stats";
+import dayjs from "dayjs";
 
 function toHash(str: string) {
   var hash = 0;
@@ -33,4 +34,15 @@ export async function passesFeatureFlag(
   });
 
   return passes;
+}
+
+// Only shows one in so many days. Useful for giving
+// not just new folks surveys.
+export async function passesDayFilter(oneIn: number): Promise<boolean> {
+  if (oneIn > 31) {
+    throw new Error("oneIn should be lower than 31");
+  }
+
+  const diceRoll = dayjs().date() % (oneIn - 1);
+  return diceRoll === 0;
 }

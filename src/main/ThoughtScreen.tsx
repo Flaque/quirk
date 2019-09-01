@@ -17,6 +17,7 @@ import {
   PREDICTION_SUMMARY_SCREEN,
   PREDICTION_FOLLOW_UP_SCREEN,
   PREDICTION_ONBOARDING_SCREEN,
+  SURVEY_SCREEN,
 } from "./screens";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -39,8 +40,10 @@ import {
   userStartedPrediction,
   userFollowedUpOnPrediction,
 } from "./predictions/stats";
-import { HintHeader, Label } from "../ui";
+import { Label } from "../ui";
 import * as flagstore from "../flagstore";
+import SurveyPrompt from "./survey/SurveyPrompt";
+import { passesFeatureFlag, passesDayFilter } from "../featureflags";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -53,6 +56,7 @@ export default class MainScreen extends React.Component<
     cardPosition: "hidden" | "hiddenWiggle" | "peak" | "full";
     shouldFadeInBackgroundOverlay: boolean;
     shouldPromptCheckup: boolean;
+    shouldPromptSurvey: boolean;
   }
 > {
   static navigationOptions = {
@@ -70,6 +74,7 @@ export default class MainScreen extends React.Component<
       isEditing: false,
       shouldFadeInBackgroundOverlay: false,
       shouldPromptCheckup: false,
+      shouldPromptSurvey: false,
     };
   }
 
@@ -85,10 +90,12 @@ export default class MainScreen extends React.Component<
 
     this.loadExercises();
     this.loadShouldPromptCheckup();
+    this.loadShouldShowSurveyPrompt();
 
     this.props.navigation.addListener("willFocus", args => {
       this.loadExercises();
       this.loadShouldPromptCheckup();
+      this.loadShouldShowSurveyPrompt();
 
       const thought = get(args, "action.params.thought", newThought());
       const isEditing = get(args, "action.params.isEditing", false);
@@ -165,6 +172,47 @@ export default class MainScreen extends React.Component<
 
     this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
       prediction,
+    });
+  };
+
+  navigateToSurveyScreen = async () => {
+    await flagstore.setTrue("has-been-surveyed");
+    this.props.navigation.navigate(SURVEY_SCREEN);
+  };
+
+  dismissSurveyPrompt = async () => {
+    await flagstore.setTrue("has-been-surveyed");
+    this.setState({
+      shouldPromptSurvey: false,
+    });
+  };
+
+  loadShouldShowSurveyPrompt = async () => {
+    const isDayToShow = await passesDayFilter(5);
+    if (!isDayToShow) {
+      this.setState({
+        shouldPromptSurvey: false,
+      });
+      return;
+    }
+
+    const passes = await passesFeatureFlag("disappointed-survey", 2);
+    if (!passes) {
+      this.setState({
+        shouldPromptSurvey: false,
+      });
+      return;
+    }
+
+    if (await flagstore.get("has-been-surveyed", "false")) {
+      this.setState({
+        shouldPromptSurvey: false,
+      });
+      return;
+    }
+
+    this.setState({
+      shouldPromptSurvey: true,
     });
   };
 
@@ -256,6 +304,14 @@ export default class MainScreen extends React.Component<
                   }}
                 />
               )}
+
+              {this.state.shouldPromptSurvey &&
+                !this.state.shouldPromptCheckup && (
+                  <SurveyPrompt
+                    onPressYes={this.navigateToSurveyScreen}
+                    onPressNo={this.dismissSurveyPrompt}
+                  />
+                )}
 
               <ExerciseList
                 groups={groups}
