@@ -126,7 +126,7 @@ export default class AlternativeScreen extends React.Component<
                     <GhostButton
                       borderColor={theme.lightGray}
                       textColor={theme.veryLightText}
-                      title={"Back to Challenge"}
+                      title={"Back"}
                       style={{
                         marginRight: 24,
                         flex: 1,

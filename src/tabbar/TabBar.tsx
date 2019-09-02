@@ -89,7 +89,7 @@ export default class extends React.Component<ScreenProps> {
           borderTopColor: theme.lightGray,
           borderTopWidth: 1,
           paddingBottom: 24,
-          paddingHorizontal: 12,
+
           paddingTop: 12,
           flexDirection: "row",
           justifyContent: "space-between",

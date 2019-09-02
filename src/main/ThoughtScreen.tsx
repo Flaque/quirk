@@ -188,7 +188,7 @@ export default class MainScreen extends React.Component<
   };
 
   loadShouldShowSurveyPrompt = async () => {
-    const isDayToShow = await passesDayFilter(5);
+    const isDayToShow = await passesDayFilter(3);
     if (!isDayToShow) {
       this.setState({
         shouldPromptSurvey: false,

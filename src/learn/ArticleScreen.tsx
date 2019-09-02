@@ -52,7 +52,7 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
           }}
         >
           <GhostButton
-            title="Back to list"
+            title="Back"
             borderColor={theme.lightGray}
             textColor={theme.lightText}
             onPress={() => {

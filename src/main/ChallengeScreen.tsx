@@ -139,7 +139,7 @@ export default class ChallengeScreen extends React.Component<
                     <GhostButton
                       borderColor={theme.lightGray}
                       textColor={theme.veryLightText}
-                      title={"Back to Distortions"}
+                      title={"Back"}
                       style={{
                         marginRight: 24,
                         flex: 1,

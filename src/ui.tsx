@@ -452,6 +452,7 @@ export const ActionButton = ({
         fontWeight: "700",
         fontSize: 16,
       }}
+      maxFontSizeMultiplier={1.2}
     >
       {title}
     </Text>
@@ -639,6 +640,7 @@ export const Badge = ({
         color: theme.lightText,
         fontSize: 14,
       }}
+      maxFontSizeMultiplier={1.2}
     >
       {text}
     </Text>

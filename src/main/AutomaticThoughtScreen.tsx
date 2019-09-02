@@ -61,6 +61,7 @@ export default class AutomaticThoughtScreen extends React.Component<
 
   onNext = async () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
+    stats.thoughtRecorded();
     const thought = await saveThought(this.state.thought);
     this.props.navigation.push(DISTORTION_SCREEN, {
       thought,
