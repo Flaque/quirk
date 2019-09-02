@@ -6,11 +6,13 @@ import {
   FAMILIARITY_SCREEN,
   NOTIFICATION_SCREEN,
   CHECKUP_PROMPT_SCREEN,
+  WELCOME_SCREEN,
 } from "./screens";
 import ConditionScreen from "./ConditionScreen";
 import FamiliarityScreen from "./FamiliarityScreen";
 import NotificationScreen from "./NotificationScreen";
 import CheckupPromptScreen from "./CheckupPromptScreen";
+import WelcomeScreen from "./WelcomeScreen";
 
 export default createStackNavigator(
   {
@@ -19,8 +21,9 @@ export default createStackNavigator(
     [FAMILIARITY_SCREEN]: FamiliarityScreen,
     [NOTIFICATION_SCREEN]: NotificationScreen,
     [CHECKUP_PROMPT_SCREEN]: CheckupPromptScreen,
+    [WELCOME_SCREEN]: WelcomeScreen,
   },
   {
-    initialRouteName: GOAL_SCREEN,
+    initialRouteName: WELCOME_SCREEN,
   }
 );
