@@ -207,7 +207,7 @@ export default class DistortionScreen extends React.Component<
               <GhostButton
                 borderColor={theme.lightGray}
                 textColor={theme.veryLightText}
-                title={"Back to Thought"}
+                title={"Back"}
                 style={{
                   marginRight: 24,
                   flex: 1,
