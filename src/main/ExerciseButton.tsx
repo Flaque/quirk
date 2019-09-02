@@ -5,7 +5,7 @@ import {
 } from "../card/TouchableCard";
 import shadowStyle from "../shadowStyle";
 import { SubHeader, HintHeader } from "../ui";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import theme from "../theme";
 
@@ -29,6 +29,7 @@ const ExerciseButton = ({
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "space-between",
+        marginBottom: 12,
         ...shadowStyle,
       }}
       onPress={onPress}

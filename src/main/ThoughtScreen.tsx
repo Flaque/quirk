@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, StatusBar } from "react-native";
+import { View, StatusBar, Text } from "react-native";
 import {
   saveThought,
   getIsExistingUser,
@@ -40,7 +40,7 @@ import {
   userStartedPrediction,
   userFollowedUpOnPrediction,
 } from "./predictions/stats";
-import { Label } from "../ui";
+import { Label, HintHeader } from "../ui";
 import * as flagstore from "../flagstore";
 import SurveyPrompt from "./survey/SurveyPrompt";
 import { passesFeatureFlag, passesDayFilter } from "../featureflags";
@@ -216,6 +216,8 @@ export default class MainScreen extends React.Component<
     });
   };
 
+  loadSocialProofStats = async () => {};
+
   onChangeAutomaticThought = (txt: string) => {
     this.setState(prevState => {
       if (!prevState.thought) {
@@ -263,7 +265,30 @@ export default class MainScreen extends React.Component<
                   borderTopWidth: 1,
                 }}
               >
-                <Label>Exercises</Label>
+                <Label
+                  style={{
+                    marginBottom: 6,
+                  }}
+                >
+                  Exercises
+                </Label>
+                <Text
+                  style={{
+                    color: theme.veryLightText,
+                    fontWeight: "700",
+                    marginBottom: 12,
+                  }}
+                >
+                  ~
+                  <Text
+                    style={{
+                      color: theme.blue,
+                    }}
+                  >
+                    84
+                  </Text>{" "}
+                  people recently felt better with Quirk.
+                </Text>
                 <ExerciseButton
                   title="New Prediction"
                   hint="Manage anxiety around upcoming events or tasks."
