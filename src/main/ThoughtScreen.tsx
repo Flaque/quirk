@@ -40,10 +40,13 @@ import {
   userStartedPrediction,
   userFollowedUpOnPrediction,
 } from "./predictions/stats";
-import { Label, HintHeader } from "../ui";
+import { Label } from "../ui";
 import * as flagstore from "../flagstore";
 import SurveyPrompt from "./survey/SurveyPrompt";
 import { passesFeatureFlag, passesDayFilter } from "../featureflags";
+import PseudoLiveCounter from "../animations/PseudoLiveCounter";
+import * as api from "../api";
+import Sentry from "../sentry";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -57,6 +60,7 @@ export default class MainScreen extends React.Component<
     shouldFadeInBackgroundOverlay: boolean;
     shouldPromptCheckup: boolean;
     shouldPromptSurvey: boolean;
+    numberOfFolksWhoFeltBetter: number;
   }
 > {
   static navigationOptions = {
@@ -75,6 +79,7 @@ export default class MainScreen extends React.Component<
       shouldFadeInBackgroundOverlay: false,
       shouldPromptCheckup: false,
       shouldPromptSurvey: false,
+      numberOfFolksWhoFeltBetter: 0,
     };
   }
 
@@ -88,14 +93,10 @@ export default class MainScreen extends React.Component<
       }
     });
 
-    this.loadExercises();
-    this.loadShouldPromptCheckup();
-    this.loadShouldShowSurveyPrompt();
+    this.refresh();
 
     this.props.navigation.addListener("willFocus", args => {
-      this.loadExercises();
-      this.loadShouldPromptCheckup();
-      this.loadShouldShowSurveyPrompt();
+      this.refresh();
 
       const thought = get(args, "action.params.thought", newThought());
       const isEditing = get(args, "action.params.isEditing", false);
@@ -105,6 +106,13 @@ export default class MainScreen extends React.Component<
         hasCheckedEditing: true,
       });
     });
+  }
+
+  refresh() {
+    this.loadExercises();
+    this.loadShouldPromptCheckup();
+    this.loadShouldShowSurveyPrompt();
+    this.loadFeelingGoodNumbers();
   }
 
   loadShouldPromptCheckup = async () => {
@@ -125,6 +133,19 @@ export default class MainScreen extends React.Component<
           areExercisesLoaded: true,
         });
       });
+  };
+
+  loadFeelingGoodNumbers = async () => {
+    try {
+      const data = await api.get("/happyfolks");
+      const { result } = await data.json();
+
+      this.setState({
+        numberOfFolksWhoFeltBetter: result,
+      });
+    } catch (err) {
+      Sentry.captureException(err);
+    }
   };
 
   navigateToViewerWithThought = (thought: SavedThought) => {
@@ -216,8 +237,6 @@ export default class MainScreen extends React.Component<
     });
   };
 
-  loadSocialProofStats = async () => {};
-
   onChangeAutomaticThought = (txt: string) => {
     this.setState(prevState => {
       if (!prevState.thought) {
@@ -280,14 +299,13 @@ export default class MainScreen extends React.Component<
                   }}
                 >
                   ~
-                  <Text
+                  <PseudoLiveCounter
                     style={{
                       color: theme.blue,
                     }}
-                  >
-                    84
-                  </Text>{" "}
-                  people recently felt better with Quirk.
+                    value={84}
+                  />{" "}
+                  people recently reported feeling better with Quirk.
                 </Text>
                 <ExerciseButton
                   title="New Prediction"
