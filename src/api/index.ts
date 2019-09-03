@@ -23,10 +23,10 @@ function api(method: string, path: string, body?: any) {
   return fetch("https://api.quirk.fyi" + path, options);
 }
 
-export function post(path: string, body: any) {
+export function apiPost(path: string, body: any) {
   return api("post", path, body);
 }
 
-export function get(path: string) {
+export function apiGet(path: string) {
   return api("get", path);
 }

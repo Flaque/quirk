@@ -45,7 +45,7 @@ import * as flagstore from "../flagstore";
 import SurveyPrompt from "./survey/SurveyPrompt";
 import { passesFeatureFlag, passesDayFilter } from "../featureflags";
 import PseudoLiveCounter from "../animations/PseudoLiveCounter";
-import * as api from "../api";
+import { apiGet } from "../api";
 import Sentry from "../sentry";
 
 export default class MainScreen extends React.Component<
@@ -60,6 +60,7 @@ export default class MainScreen extends React.Component<
     shouldFadeInBackgroundOverlay: boolean;
     shouldPromptCheckup: boolean;
     shouldPromptSurvey: boolean;
+    shouldShowFeelingGood: boolean;
     numberOfFolksWhoFeltBetter: number;
   }
 > {
@@ -79,6 +80,7 @@ export default class MainScreen extends React.Component<
       shouldFadeInBackgroundOverlay: false,
       shouldPromptCheckup: false,
       shouldPromptSurvey: false,
+      shouldShowFeelingGood: false,
       numberOfFolksWhoFeltBetter: 0,
     };
   }
@@ -109,6 +111,7 @@ export default class MainScreen extends React.Component<
   }
 
   refresh() {
+    this.loadShouldShowFeelingGood();
     this.loadExercises();
     this.loadShouldPromptCheckup();
     this.loadShouldShowSurveyPrompt();
@@ -137,7 +140,7 @@ export default class MainScreen extends React.Component<
 
   loadFeelingGoodNumbers = async () => {
     try {
-      const data = await api.get("/happyfolks");
+      const data = await apiGet("/happyfolks");
       const { result } = await data.json();
 
       this.setState({
@@ -146,6 +149,13 @@ export default class MainScreen extends React.Component<
     } catch (err) {
       Sentry.captureException(err);
     }
+  };
+
+  loadShouldShowFeelingGood = async () => {
+    const passes = await passesFeatureFlag("social-proof-mvp", 2);
+    this.setState({
+      shouldShowFeelingGood: passes,
+    });
   };
 
   navigateToViewerWithThought = (thought: SavedThought) => {
@@ -291,22 +301,24 @@ export default class MainScreen extends React.Component<
                 >
                   Exercises
                 </Label>
-                <Text
-                  style={{
-                    color: theme.veryLightText,
-                    fontWeight: "700",
-                    marginBottom: 12,
-                  }}
-                >
-                  ~
-                  <PseudoLiveCounter
+                {this.state.shouldShowFeelingGood && (
+                  <Text
                     style={{
-                      color: theme.blue,
+                      color: theme.veryLightText,
+                      fontWeight: "700",
+                      marginBottom: 12,
                     }}
-                    value={84}
-                  />{" "}
-                  people recently reported feeling better with Quirk.
-                </Text>
+                  >
+                    ~
+                    <PseudoLiveCounter
+                      style={{
+                        color: theme.blue,
+                      }}
+                      value={84}
+                    />{" "}
+                    people recently reported feeling better with Quirk.
+                  </Text>
+                )}
                 <ExerciseButton
                   title="New Prediction"
                   hint="Manage anxiety around upcoming events or tasks."
