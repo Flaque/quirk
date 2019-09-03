@@ -14,7 +14,6 @@ import {
 import Constants from "expo-constants";
 import theme from "../theme";
 import { Text, ScrollView, View } from "react-native";
-import { FadesIn } from "../animations";
 import { Thought } from "../thoughts";
 import * as stats from "../stats";
 import haptic from "../haptic";
@@ -66,16 +65,6 @@ export default class DistortionScreen extends React.Component<
       isEditing,
     });
   };
-
-  componentDidMount() {
-    // We fade this in slightly AFTER the thought, so the user
-    // sees them as seperate entities.
-    setTimeout(() => {
-      this.setState({
-        shouldShowDistortions: true,
-      });
-    }, 400);
-  }
 
   // From editing
   onFinish = async () => {
@@ -165,18 +154,14 @@ export default class DistortionScreen extends React.Component<
                   </GhostButtonWithGuts>
                 </View>
 
-                <FadesIn
-                  pose={this.state.shouldShowDistortions ? "visible" : "hidden"}
-                >
-                  <SubHeader>Common Distortions</SubHeader>
-                  <HintHeader>
-                    Tap any of these that apply to your current situation.
-                  </HintHeader>
-                  <RoundedSelector
-                    items={this.state.thought.cognitiveDistortions}
-                    onPress={this.onPressSlug}
-                  />
-                </FadesIn>
+                <SubHeader>Common Distortions</SubHeader>
+                <HintHeader>
+                  Tap any of these that apply to your current situation.
+                </HintHeader>
+                <RoundedSelector
+                  items={this.state.thought.cognitiveDistortions}
+                  onPress={this.onPressSlug}
+                />
               </>
             )}
           </Container>

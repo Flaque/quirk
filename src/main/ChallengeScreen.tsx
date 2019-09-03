@@ -7,6 +7,8 @@ import {
   Row,
   GhostButton,
   Container,
+  SubHeader,
+  GhostButtonWithGuts,
 } from "../ui";
 import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
 import i18n from "../i18n";
@@ -19,8 +21,15 @@ import {
   ALTERNATIVE_SCREEN,
   DISTORTION_SCREEN,
   FINISHED_SCREEN,
+  AUTOMATIC_THOUGHT_SCREEN,
 } from "./screens";
-import { TextInput, KeyboardAvoidingView } from "react-native";
+import {
+  TextInput,
+  KeyboardAvoidingView,
+  View,
+  Text,
+  ScrollView,
+} from "react-native";
 import { saveThought } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -90,9 +99,10 @@ export default class ChallengeScreen extends React.Component<
 
   render() {
     return (
-      <Container
+      <ScrollView
         style={{
           paddingTop: 24 + Constants.statusBarHeight,
+          paddingHorizontal: 24,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
         }}
@@ -100,7 +110,8 @@ export default class ChallengeScreen extends React.Component<
         <KeyboardAvoidingView
           behavior="position"
           style={{
-            paddingBottom: 24,
+            paddingBottom: 48,
+            marginBottom: 24,
           }}
         >
           {this.state.thought && (
@@ -110,6 +121,26 @@ export default class ChallengeScreen extends React.Component<
                 What could you be wrong about? Is there something you don't have
                 enough evidence for?
               </HintHeader>
+
+              <View
+                style={{
+                  marginBottom: 12,
+                }}
+              >
+                <SubHeader>Your Thought</SubHeader>
+                <GhostButtonWithGuts
+                  borderColor={theme.lightGray}
+                  onPress={() =>
+                    this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN, {
+                      thought: this.state.thought,
+                    })
+                  }
+                >
+                  <Text>{this.state.thought.automaticThought}</Text>
+                </GhostButtonWithGuts>
+              </View>
+
+              <SubHeader>Your Challenge</SubHeader>
 
               <TextInput
                 style={textInputStyle}
@@ -160,7 +191,7 @@ export default class ChallengeScreen extends React.Component<
             </>
           )}
         </KeyboardAvoidingView>
-      </Container>
+      </ScrollView>
     );
   }
 }
