@@ -34,6 +34,7 @@ import { CHECKUP_ONESIGNAL_TEMPLATE } from "../main/followups/templates";
 import Sentry from "../sentry";
 import { userFinishedCheckup } from "../stats";
 import scheduleNotification from "../notifications/scheduleNotification";
+import { CHECKUP_REDIRECT_SCREEN } from "./screens";
 
 export default class HowYaDoinScreen extends React.Component<
   ScreenProps,
@@ -74,10 +75,14 @@ export default class HowYaDoinScreen extends React.Component<
       .add(1, "week")
       .toISOString();
     await saveNextCheckupDate(nextCheckupDate);
-
     scheduleNotification(nextCheckupDate, CHECKUP_ONESIGNAL_TEMPLATE);
-
     userFinishedCheckup(this.state.checkup.currentMood);
+
+    if (this.state.checkup.currentMood === "bad") {
+      this.props.navigation.navigate(CHECKUP_REDIRECT_SCREEN);
+      return;
+    }
+
     this.props.navigation.navigate(MAIN_SCREEN);
   };
 
