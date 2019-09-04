@@ -143,6 +143,14 @@ export function userSetPincode() {
   Segment.track("user_set_pincode");
 }
 
+export function userSharedSuccess() {
+  Segment.track("user_shared_success");
+}
+
+export function userDidNotShareSuccess() {
+  Segment.track("user_did_not_shared_success");
+}
+
 /**
  * User Subscribed
  */

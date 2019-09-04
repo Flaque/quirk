@@ -14,7 +14,7 @@ import { Thought } from "../thoughts";
 import { get } from "lodash";
 import * as stats from "../stats";
 import { FINISHED_SCREEN } from "./screens";
-import { apiGet, apiPost } from "../api";
+import { apiGet } from "../api";
 import Sentry from "../sentry";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
@@ -67,6 +67,8 @@ export default class ShareSuccessScreen extends React.Component<
         .add(1, "day")
         .toISOString()
     );
+
+    stats.userSharedSuccess();
 
     haptic.notification(Haptic.NotificationFeedbackType.Success);
     setTimeout(() => {
@@ -134,7 +136,7 @@ export default class ShareSuccessScreen extends React.Component<
           borderColor={theme.gray}
           textColor={theme.lightText}
           onPress={() => {
-            stats.userDidNotScheduleFollowUp();
+            stats.userDidNotShareSuccess();
             this.onContinue();
           }}
         />
