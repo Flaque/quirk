@@ -152,7 +152,7 @@ export default class MainScreen extends React.Component<
   };
 
   loadShouldShowFeelingGood = async () => {
-    const passes = await passesFeatureFlag("social-proof-mvp", 2);
+    const passes = await passesFeatureFlag("social-proof-mvp", 3);
     this.setState({
       shouldShowFeelingGood: passes,
     });

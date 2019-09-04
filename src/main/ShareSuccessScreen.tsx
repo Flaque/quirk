@@ -64,11 +64,9 @@ export default class ShareSuccessScreen extends React.Component<
 
     await scheduleHappyFolksNotification(
       dayjs()
-        .add(40, "second")
+        .add(1, "day")
         .toISOString()
     );
-
-    // await apiPost("/happyfolks/new", {});
 
     haptic.notification(Haptic.NotificationFeedbackType.Success);
     setTimeout(() => {

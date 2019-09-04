@@ -23,9 +23,7 @@ export default async function scheduleNotification(
 
 export async function scheduleHappyFolksNotification(sendAfter: string) {
   try {
-    console.log("HAPPPY FOLKS", sendAfter);
     const userID = await getUserID();
-    console.log(userID, sendAfter);
     await apiPost("/notification/happy/new", {
       userID,
       sendAfter,

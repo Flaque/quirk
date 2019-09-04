@@ -74,7 +74,7 @@ export default class FeelingScreen extends React.Component<
       }
     }
 
-    if (await passesFeatureFlag("social-proof-mvp", 2)) {
+    if (await passesFeatureFlag("social-proof-mvp", 3)) {
       this.props.navigation.navigate(SHARE_SUCCESS_SCREEN, {
         thought,
       });
