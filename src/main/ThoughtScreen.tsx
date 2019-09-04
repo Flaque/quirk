@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import { View, StatusBar } from "react-native";
+import { View, StatusBar, Text } from "react-native";
 import {
   saveThought,
   getIsExistingUser,
@@ -44,6 +44,9 @@ import { Label } from "../ui";
 import * as flagstore from "../flagstore";
 import SurveyPrompt from "./survey/SurveyPrompt";
 import { passesFeatureFlag, passesDayFilter } from "../featureflags";
+import PseudoLiveCounter from "../animations/PseudoLiveCounter";
+import { apiGet } from "../api";
+import Sentry from "../sentry";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -57,6 +60,8 @@ export default class MainScreen extends React.Component<
     shouldFadeInBackgroundOverlay: boolean;
     shouldPromptCheckup: boolean;
     shouldPromptSurvey: boolean;
+    shouldShowFeelingGood: boolean;
+    numberOfFolksWhoFeltBetter: number;
   }
 > {
   static navigationOptions = {
@@ -75,6 +80,8 @@ export default class MainScreen extends React.Component<
       shouldFadeInBackgroundOverlay: false,
       shouldPromptCheckup: false,
       shouldPromptSurvey: false,
+      shouldShowFeelingGood: false,
+      numberOfFolksWhoFeltBetter: 0,
     };
   }
 
@@ -88,14 +95,10 @@ export default class MainScreen extends React.Component<
       }
     });
 
-    this.loadExercises();
-    this.loadShouldPromptCheckup();
-    this.loadShouldShowSurveyPrompt();
+    this.refresh();
 
     this.props.navigation.addListener("willFocus", args => {
-      this.loadExercises();
-      this.loadShouldPromptCheckup();
-      this.loadShouldShowSurveyPrompt();
+      this.refresh();
 
       const thought = get(args, "action.params.thought", newThought());
       const isEditing = get(args, "action.params.isEditing", false);
@@ -105,6 +108,14 @@ export default class MainScreen extends React.Component<
         hasCheckedEditing: true,
       });
     });
+  }
+
+  refresh() {
+    this.loadShouldShowFeelingGood();
+    this.loadExercises();
+    this.loadShouldPromptCheckup();
+    this.loadShouldShowSurveyPrompt();
+    this.loadFeelingGoodNumbers();
   }
 
   loadShouldPromptCheckup = async () => {
@@ -125,6 +136,26 @@ export default class MainScreen extends React.Component<
           areExercisesLoaded: true,
         });
       });
+  };
+
+  loadFeelingGoodNumbers = async () => {
+    try {
+      const data = await apiGet("/happyfolks");
+      const { result } = await data.json();
+
+      this.setState({
+        numberOfFolksWhoFeltBetter: result,
+      });
+    } catch (err) {
+      Sentry.captureException(err);
+    }
+  };
+
+  loadShouldShowFeelingGood = async () => {
+    const passes = await passesFeatureFlag("social-proof-mvp", 3);
+    this.setState({
+      shouldShowFeelingGood: passes,
+    });
   };
 
   navigateToViewerWithThought = (thought: SavedThought) => {
@@ -263,7 +294,31 @@ export default class MainScreen extends React.Component<
                   borderTopWidth: 1,
                 }}
               >
-                <Label>Exercises</Label>
+                <Label
+                  style={{
+                    marginBottom: 6,
+                  }}
+                >
+                  Exercises
+                </Label>
+                {this.state.shouldShowFeelingGood && (
+                  <Text
+                    style={{
+                      color: theme.veryLightText,
+                      fontWeight: "700",
+                      marginBottom: 12,
+                    }}
+                  >
+                    ~
+                    <PseudoLiveCounter
+                      style={{
+                        color: theme.blue,
+                      }}
+                      value={84}
+                    />{" "}
+                    people recently reported feeling better with Quirk.
+                  </Text>
+                )}
                 <ExerciseButton
                   title="New Prediction"
                   hint="Manage anxiety around upcoming events or tasks."

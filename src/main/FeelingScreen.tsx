@@ -6,11 +6,16 @@ import Constants from "expo-constants";
 import theme from "../theme";
 import { StatusBar, Platform } from "react-native";
 import * as stats from "../stats";
-import { FINISHED_SCREEN, FOLLOW_UP_REQUEST_SCREEN } from "./screens";
+import {
+  FINISHED_SCREEN,
+  FOLLOW_UP_REQUEST_SCREEN,
+  SHARE_SUCCESS_SCREEN,
+} from "./screens";
 import { get } from "lodash";
 import { saveThought, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
 import * as StoreReview from "react-native-store-review";
+import { passesFeatureFlag } from "../featureflags";
 
 export default class FeelingScreen extends React.Component<
   ScreenProps,
@@ -55,6 +60,7 @@ export default class FeelingScreen extends React.Component<
 
   onFeltBetter = async () => {
     haptic.selection();
+    stats.userFeltBetter();
     const thought = await this.saveCheckup("better");
 
     if (Platform.OS === "ios") {
@@ -68,7 +74,13 @@ export default class FeelingScreen extends React.Component<
       }
     }
 
-    stats.userFeltBetter();
+    if (await passesFeatureFlag("social-proof-mvp", 3)) {
+      this.props.navigation.navigate(SHARE_SUCCESS_SCREEN, {
+        thought,
+      });
+      return;
+    }
+
     this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
       thought,
     });

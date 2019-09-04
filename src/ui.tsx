@@ -558,7 +558,7 @@ Container.propTypes = {
   children: PropTypes.any,
 };
 
-export const Label = ({ children, ...style }) => (
+export const Label = ({ children, style }) => (
   <Text
     style={{
       fontWeight: "700",
