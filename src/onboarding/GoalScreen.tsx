@@ -1,13 +1,6 @@
 import React from "react";
 import theme from "../theme";
-import {
-  Container,
-  MediumHeader,
-  HintHeader,
-  SubHeader,
-  ActionButton,
-  Row,
-} from "../ui";
+import { Container, HintHeader, SubHeader, ActionButton, Row } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { ScrollView, KeyboardAvoidingView, TextInput } from "react-native";
@@ -52,19 +45,11 @@ export default class GoalScreen extends React.Component<ScreenProps> {
               paddingBottom: 24,
             }}
           >
-            <MediumHeader>Welcome to Quirk! 👋</MediumHeader>
-            <HintHeader
-              style={{
-                marginBottom: 24,
-              }}
-            >
-              We'll get you started in a moment, but first we have some
-              questions.
-            </HintHeader>
-
             <SubHeader>What are your goals for Quirk?</SubHeader>
             <HintHeader>
-              If you're not comfortable sharing, feel free to leave this blank.
+              This is just for you. We take your privacy extremely seriously.
+              Your thoughts can never be read by a Quirk employee; your thoughts
+              are only stored on this device.
             </HintHeader>
 
             <TextInput
