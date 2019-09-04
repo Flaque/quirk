@@ -22,7 +22,12 @@ import { PREDICTION_ONESIGNAL_TEMPLATE } from "../followups/templates";
 import dayjs from "dayjs";
 import { userScheduledPredictionFollowUp } from "./stats";
 
-type FollowUpSelections = "+3 hours" | "+1 day" | "+5 days" | string;
+type FollowUpSelections =
+  | "+3 hours"
+  | "+1 day"
+  | "+5 days"
+  | "+30 days"
+  | string;
 
 export default class PredictionScheduleFollowUpScreen extends React.Component<
   ScreenProps,
@@ -67,6 +72,12 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
     if (this.state.followUpOn === "+5 days") {
       return dayjs()
         .add(5, "day")
+        .toISOString();
+    }
+
+    if (this.state.followUpOn === "+30 days") {
+      return dayjs()
+        .add(30, "day")
         .toISOString();
     }
 
@@ -143,6 +154,11 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
             title="+5 days from now"
             onPress={() => this.onSelect("+5 days")}
             selected={this.state.followUpOn === "+5 days"}
+          />
+          <RoundedSelectorButton
+            title="+30 days from now"
+            onPress={() => this.onSelect("+30 days")}
+            selected={this.state.followUpOn === "+30 days"}
           />
 
           <ActionButton
