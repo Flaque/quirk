@@ -151,6 +151,10 @@ export function userDidNotShareSuccess() {
   Segment.track("user_did_not_shared_success");
 }
 
+export function userRepeatedThought() {
+  Segment.track("user_repeated_thought");
+}
+
 /**
  * User Subscribed
  */
