@@ -87,8 +87,9 @@ apply from: "../../node_modules/react-native-unimodules/gradle.groovy"
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 dependencies {
-    implementation project(':react-native-purchases')
-    compile project(':react-native-onesignal')
+  implementation project(':react-native-purchases')
+  implementation project(':react-native-datetimepicker')
+  compile project(':react-native-onesignal')
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 
   implementation 'com.android.support:multidex:1.0.1'

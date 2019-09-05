@@ -15,6 +15,7 @@ import com.reactlibrary.RNPurchasesPackage;
 import expo.loaders.provider.interfaces.AppLoaderPackagesProviderInterface;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 
+import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 
 import host.exp.exponent.generated.BasePackageList;
 
@@ -34,7 +35,8 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
         // Needed for `react-native link`
         // new MainReactPackage(),
             new RNPurchasesPackage(),
-            new ReactNativeOneSignalPackage()
+            new ReactNativeOneSignalPackage(),
+            new RNDateTimePickerPackage()
     );
   }
 

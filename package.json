@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.3",
+    "@react-native-community/datetimepicker": "^2.0.0",
     "dayjs": "^1.8.14",
     "eslint-plugin-react-native-a11y": "^1.2.0",
     "expo": "^33.0.0",

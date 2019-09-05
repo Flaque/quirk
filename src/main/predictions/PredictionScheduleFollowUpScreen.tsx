@@ -5,6 +5,10 @@ import {
   HintHeader,
   ActionButton,
   RoundedSelectorButton,
+  GhostButton,
+  GhostButtonWithGuts,
+  Paragraph,
+  Label,
 } from "../../ui";
 import ScreenProps from "../../ScreenProps";
 import Constants from "expo-constants";
@@ -21,6 +25,7 @@ import scheduleNotification from "../../notifications/scheduleNotification";
 import { PREDICTION_ONESIGNAL_TEMPLATE } from "../followups/templates";
 import dayjs from "dayjs";
 import { userScheduledPredictionFollowUp } from "./stats";
+import { Feather } from "@expo/vector-icons";
 
 type FollowUpSelections =
   | "+3 hours"
@@ -34,6 +39,7 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
   {
     followUpOn: FollowUpSelections;
     prediction?: Prediction;
+    customDate?: string;
   }
 > {
   static navigationOptions = {
@@ -43,6 +49,7 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
   state = {
     followUpOn: "+1 day",
     prediction: undefined,
+    customDate: "2016-05-15",
   };
 
   componentDidMount() {
@@ -114,6 +121,10 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
     });
   };
 
+  onSelectCustomDate = async () => {
+    console.log("hey");
+  };
+
   render() {
     if (!this.state.prediction) {
       return null;
@@ -160,6 +171,26 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
             onPress={() => this.onSelect("+30 days")}
             selected={this.state.followUpOn === "+30 days"}
           />
+          <GhostButtonWithGuts
+            onPress={this.onSelectCustomDate}
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              backgroundColor: "white",
+            }}
+          >
+            <Paragraph
+              style={{
+                fontWeight: "700",
+                color: theme.darkText,
+              }}
+            >
+              Select a Date
+            </Paragraph>
+            <Feather name="calendar" color={theme.blue} size={16} />
+          </GhostButtonWithGuts>
 
           <ActionButton
             style={{
