@@ -71,6 +71,10 @@ const Feedback = () => (
       title={"Email Feedback"}
       fillColor="#EDF0FC"
       textColor={theme.darkBlue}
+      style={{
+        borderWidth: 0,
+        borderBottomWidth: 0,
+      }}
       width={"100%"}
       onPress={() => {
         Linking.openURL(
@@ -88,6 +92,10 @@ const CancelationInstructions = () => {
       title={"Cancellation Instructions"}
       fillColor="#EDF0FC"
       textColor={theme.darkBlue}
+      style={{
+        borderWidth: 0,
+        borderBottomWidth: 0,
+      }}
       onPress={() => {
         if (Platform.OS === "android") {
           Linking.openURL(
@@ -335,6 +343,10 @@ class SettingScreen extends React.Component<Props, State> {
                 width={"100%"}
                 fillColor="#EDF0FC"
                 textColor={theme.darkBlue}
+                style={{
+                  borderWidth: 0,
+                  borderBottomWidth: 0,
+                }}
                 onPress={() => {
                   this.props.navigation.navigate(LOCK_SCREEN, {
                     isSettingCode: true,

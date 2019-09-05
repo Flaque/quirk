@@ -436,6 +436,9 @@ export const ActionButton = ({
       justifyContent: "center",
       alignItems: "center",
       maxHeight: 48,
+      borderColor: theme.darkBlue,
+      borderWidth: 1,
+      borderBottomWidth: 2,
       width,
       height,
       flex,
@@ -558,7 +561,7 @@ Container.propTypes = {
   children: PropTypes.any,
 };
 
-export const Label = ({ children, style }) => (
+export const Label = ({ children, style }: { children: any; style?: any }) => (
   <Text
     style={{
       fontWeight: "700",

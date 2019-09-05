@@ -9,11 +9,12 @@ import {
   ActionButton,
   GhostButton,
   Badge,
+  Label,
 } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { get } from "lodash";
-import { SavedThought } from "../thoughts";
+import { SavedThought, newThought } from "../thoughts";
 import { View, Alert, Platform } from "react-native";
 import theme from "../theme";
 import {
@@ -35,6 +36,7 @@ import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
 import * as flagstore from "../flagstore";
 import { resetNavigationTo } from "../resetNavigationTo";
+import { Feather } from "@expo/vector-icons";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -103,6 +105,15 @@ export default class FinishedScreen extends React.Component<
     await deleteThought(uuid);
     this.onNext();
     haptic.impact(Haptic.ImpactFeedbackStyle.Heavy);
+  };
+
+  onRepeat = async () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Heavy);
+    const thought = newThought();
+    thought.automaticThought = this.state.thought.automaticThought;
+    this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN, {
+      thought,
+    });
   };
 
   render() {
@@ -256,6 +267,7 @@ export default class FinishedScreen extends React.Component<
             <Row
               style={{
                 marginTop: 24,
+                marginBottom: 12,
                 justifyContent: "flex-end",
               }}
             >
@@ -280,14 +292,35 @@ export default class FinishedScreen extends React.Component<
                   ]);
                 }}
               />
-              <ActionButton
-                title={"Finish"}
-                onPress={() => this.onNext()}
+              <GhostButtonWithGuts
+                onPress={this.onRepeat}
                 style={{
                   flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "row",
                 }}
-              />
+              >
+                <Label
+                  style={{
+                    fontSize: 16,
+                    flex: 1,
+                    marginBottom: 0,
+                  }}
+                >
+                  Repeat
+                </Label>
+                <Feather name="refresh-cw" color={theme.blue} />
+              </GhostButtonWithGuts>
             </Row>
+            <ActionButton
+              title={"Finish"}
+              onPress={() => this.onNext()}
+              width={"100%"}
+              style={{
+                flex: 1,
+              }}
+            />
           </View>
         )}
       </ScrollView>

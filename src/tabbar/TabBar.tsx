@@ -104,7 +104,12 @@ export default class extends React.Component<ScreenProps> {
           textColor={
             tab === SETTING_SCREEN ? theme.darkBlue : theme.veryLightText
           }
-          style={{ marginHorizontal: 4, padding: 0 }}
+          style={{
+            marginHorizontal: 4,
+            padding: 0,
+            borderWidth: 0,
+            borderBottomWidth: 0,
+          }}
           onPress={() => {
             haptic.impact(Haptic.ImpactFeedbackStyle.Light);
             navigation.navigate(SETTING_SCREEN);
@@ -115,7 +120,12 @@ export default class extends React.Component<ScreenProps> {
           width={100}
           fillColor={tab === MAIN_SCREEN ? theme.lightBlue : "white"}
           textColor={tab === MAIN_SCREEN ? theme.darkBlue : theme.veryLightText}
-          style={{ marginHorizontal: 4, padding: 0 }}
+          style={{
+            marginHorizontal: 4,
+            padding: 0,
+            borderWidth: 0,
+            borderBottomWidth: 0,
+          }}
           onPress={() => {
             haptic.impact(Haptic.ImpactFeedbackStyle.Light);
             navigation.navigate(MAIN_SCREEN);
@@ -128,7 +138,12 @@ export default class extends React.Component<ScreenProps> {
           textColor={
             tab === EXPLANATION_SCREEN ? theme.darkBlue : theme.veryLightText
           }
-          style={{ marginHorizontal: 4, padding: 0 }}
+          style={{
+            marginHorizontal: 4,
+            padding: 0,
+            borderWidth: 0,
+            borderBottomWidth: 0,
+          }}
           onPress={() => {
             haptic.impact(Haptic.ImpactFeedbackStyle.Light);
             navigation.navigate(EXPLANATION_SCREEN);
