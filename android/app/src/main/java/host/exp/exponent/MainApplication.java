@@ -11,6 +11,7 @@ import org.unimodules.core.interfaces.Package;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 import com.reactlibrary.RNPurchasesPackage;
 import expo.loaders.provider.interfaces.AppLoaderPackagesProviderInterface;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
@@ -34,6 +35,7 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
 
         // Needed for `react-native link`
         // new MainReactPackage(),
+            new RNDateTimePickerPackage(),
             new RNPurchasesPackage(),
             new ReactNativeOneSignalPackage(),
             new RNDateTimePickerPackage()

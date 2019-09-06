@@ -87,6 +87,7 @@ apply from: "../../node_modules/react-native-unimodules/gradle.groovy"
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 dependencies {
+    implementation project(':@react-native-community_datetimepicker')
   implementation project(':react-native-purchases')
   implementation project(':react-native-datetimepicker')
   compile project(':react-native-onesignal')
