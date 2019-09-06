@@ -96,7 +96,14 @@ export default class extends React.Component<
 
   async componentDidMount() {
     this.props.navigation.addListener("willFocus", async payload => {
-      const isSettingCode = get(payload, "state.params.isSettingCode", false);
+      const isSettingCode = get(payload, "action.params.isSettingCode", false);
+      this.setState({
+        isSettingCode: isSettingCode,
+      });
+    });
+
+    this.props.navigation.addListener("didFocus", async payload => {
+      const isSettingCode = get(payload, "action.params.isSettingCode", false);
       this.setState({
         isSettingCode: isSettingCode,
       });
@@ -142,6 +149,9 @@ export default class extends React.Component<
     if (isGood) {
       haptic.notification(Haptic.NotificationFeedbackType.Success);
       this.props.navigation.navigate(MAIN_SCREEN);
+      this.setState({
+        code: "",
+      });
     } else {
       this.setState({
         code: "",
