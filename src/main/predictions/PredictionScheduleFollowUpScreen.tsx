@@ -33,15 +33,14 @@ type FollowUpSelections =
   | "+1 day"
   | "+5 days"
   | "+30 days"
-  | string;
+  | "custom";
 
 export default class PredictionScheduleFollowUpScreen extends React.Component<
   ScreenProps,
   {
     followUpOn: FollowUpSelections;
-    prediction?: Prediction;
     customDate?: string;
-    showCustomDate: boolean;
+    prediction?: Prediction;
   }
 > {
   static navigationOptions = {
@@ -52,7 +51,6 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
     followUpOn: "+1 day",
     prediction: undefined,
     customDate: "2016-05-15",
-    showCustomDate: false,
   };
 
   componentDidMount() {
@@ -91,7 +89,7 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
         .toISOString();
     }
 
-    return dayjs(this.state.followUpOn).toISOString();
+    return dayjs(this.state.customDate).toISOString();
   };
 
   onFinish = async () => {
@@ -120,14 +118,20 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
 
   onSelectAdditionDate = async (followUpOn: FollowUpSelections) => {
     this.setState({
-      showCustomDate: false,
       followUpOn,
     });
   };
 
-  onSelectCustomDate = async () => {
+  onSelectCustomDate = async (_, date: Date) => {
     this.setState({
-      showCustomDate: true,
+      customDate: date.toISOString(),
+    });
+  };
+
+  onShowCustomDate = async () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Medium);
+    this.setState({
+      followUpOn: "custom",
     });
   };
 
@@ -160,63 +164,62 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
           <RoundedSelectorButton
             title="+3 hours from now"
             onPress={() => this.onSelectAdditionDate("+3 hours")}
-            selected={
-              this.state.followUpOn === "+3 hours" && !this.state.showCustomDate
-            }
+            selected={this.state.followUpOn === "+3 hours"}
           />
           <RoundedSelectorButton
             title="+24 hours from now"
             onPress={() => this.onSelectAdditionDate("+1 day")}
-            selected={
-              this.state.followUpOn === "+1 day" && !this.state.showCustomDate
-            }
+            selected={this.state.followUpOn === "+1 day"}
           />
           <RoundedSelectorButton
             title="+5 days from now"
             onPress={() => this.onSelectAdditionDate("+5 days")}
-            selected={
-              this.state.followUpOn === "+5 days" && !this.state.showCustomDate
-            }
+            selected={this.state.followUpOn === "+5 days"}
           />
           <RoundedSelectorButton
             title="+30 days from now"
             onPress={() => this.onSelectAdditionDate("+30 days")}
-            selected={
-              this.state.followUpOn === "+30 days" && !this.state.showCustomDate
-            }
+            selected={this.state.followUpOn === "+30 days"}
           />
           <GhostButtonWithGuts
-            onPress={this.onSelectCustomDate}
+            onPress={this.onShowCustomDate}
             style={{
               flex: 1,
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              backgroundColor: this.state.showCustomDate ? theme.blue : "white",
-              borderColor: this.state.showCustomDate
-                ? theme.darkBlue
-                : theme.lightGray,
+              backgroundColor:
+                this.state.followUpOn === "custom" ? theme.blue : "white",
+              borderColor:
+                this.state.followUpOn === "custom"
+                  ? theme.darkBlue
+                  : theme.lightGray,
             }}
           >
             <Paragraph
               style={{
                 fontWeight: "700",
-                color: this.state.showCustomDate ? "white" : theme.darkText,
+                color:
+                  this.state.followUpOn === "custom" ? "white" : theme.darkText,
               }}
             >
               Select a Date
             </Paragraph>
             <Feather
-              name={this.state.showCustomDate ? "check" : "calendar"}
-              color={this.state.showCustomDate ? "white" : theme.blue}
+              name={this.state.followUpOn === "custom" ? "check" : "calendar"}
+              color={this.state.followUpOn === "custom" ? "white" : theme.blue}
               size={16}
             />
           </GhostButtonWithGuts>
 
-          {this.state.showCustomDate && (
+          {this.state.followUpOn === "custom" && (
             <DateTimePicker
-              onChange={() => {}}
-              value={new Date("2020-06-12T14:42:42")}
+              onChange={this.onSelectCustomDate}
+              value={
+                this.state.customDate
+                  ? new Date(this.state.customDate)
+                  : new Date()
+              }
               minimumDate={new Date()}
             />
           )}
