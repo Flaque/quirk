@@ -1,0 +1,145 @@
+{
+    "onboarding_screen": {
+        "auto_thought_ex": "Elfelejtettrm Gyuri buliját, biztos utál engem.",
+        "challenge_ex": "Gyuri tudja, hogy van más dolgom is, én sem utálnám, ha ő nem jönne el egy bulimra.\n\nLegalább annyira jól kéne viszonyulnom magamhoz, mint másokhoz.",
+        "alt_thought_ex": "Az igaz, hogy lekéstem Gyuri buliját. Bocsánatot kérhetek és valószínűleg megbocsájt.",
+        "cog_distortion": {
+            "label": "Gondolatolvasás",
+            "slug": "mind-reading"
+        },
+        "intro": {
+            "line1": "Üdvözlünk a",
+            "emphasis1": "quirk",
+            "line2": ", a",
+            "emphasis2": "Kognitív Viselkedés Terápia (CBT)",
+            "line3": "alkalmazásban."
+        },
+        "crash_course": {
+            "line1": "Ez egy",
+            "emphasis1": "gyorstalpaló",
+            "line2": "a CBT-ről",
+            "emphasis2": "nem helyettesíti",
+            "line3": "a képzettséghez kötött pszchihoterápiát."
+        },
+        "mood_thoughts": {
+            "line1": "Először is:",
+            "emphasis1": "a gondolataid is okozzák a hangulatodat."
+        },
+        "thoughts_arent_thoughts": {
+            "line1": "Másodszor: a gondolataid lehetnek",
+            "emphasis1": "automatikusak."
+        },
+        "your_distorted": {
+            "line1": "Harmadszor: az automatikus gondolataid sokszor ",
+            "emphasis1": "zavartak."
+        },
+        "cbt_overview": {
+            "line1": "A célja a KVT-nek, hogy észrevedd a",
+            "emphasis1": "zavart gondolatokat.",
+            "line2": "valamint, hogy",
+            "emphasis2": "helyettesítsd",
+            "line3": "racionális gondolatokkal."
+        },
+        "ready": {
+            "emphasis1": "Készen állsz?",
+            "line1": "Vegyük sorra a lépéseket!"
+        },
+        "catch": {
+            "line1": "Kezdjük azzal, hogy",
+            "emphasis1": "leírod a gondolataid",
+            "line2": "az automatikus gondolataidat, akkor amikor történnek."
+        },
+        "bad_thought_note": {
+            "line1": "Jegyzeteld le, pl:",
+            "line2": "Nem mentem el Gyuri bulijára."
+        },
+        "identify_distortions": {
+            "line1": "Keress",
+            "emphasis1": "kognitív torzítást"
+        },
+        "bad_distortions": {
+            "line1": "Biztosan tudjuk, hogy Gyuri utál minket? Ha nem, akkor",
+            "emphasis1": " Gondolatot olvasunk",
+            "line2": "Elfelejtettrm Gyuri buliját, biztos utál engem."
+        },
+        "challenge_screen": {
+            "line1": "Miért nem racionális ez a gondolat?",
+            "emphasis1": "Szállj harcba vele!"
+        },
+        "write_challenge": {
+            "line1": "Valami ilyesmit írhatnánk:"
+        },
+        "alt_thought": {
+            "line1": "Végül írunk egy",
+            "emphasis1": "Helyettesítő gondolatot."
+        },
+        "show_off": {
+            "line1": "Találd meg később is:"
+        },
+        "got_it": {
+            "line1": "Tényleg csak ennyi",
+            "btn_title": "Uccu neki!"
+        }
+    },
+    "auto_thought": "Automatikus gondolat",
+    "cog_distortion": "Kognitív Torzítás",
+    "challenge": "Challenge",
+    "alt_thought": "Helyettesítő gondolat",
+    "cbt_form": {
+        "edit": "Szerkeszt",
+        "new": "Új",
+        "save": "Ment",
+        "auto_thought_placeholder": "Mi történik most a fejedben?",
+        "cog_distortion": "Kognitív torzítás",
+        "challenged": "Vitat",
+        "changed_placeholder": "Vitasd meg a gondolatot!",
+        "alt_thought_placeholder": "Mire gondolhatnánk helyette?"
+    },
+    "all_or_nothing_thinking": "Mindent vagy semmit gondolkogás.",
+    "all_or_nothing_thinking_explanation": "Ez a torzítás akkor történik, amikor nem tudunk árnyalatokban gondolkodni. Ha egy kis hibát fedezünk fel magunkban és emiatt az gondoljuk velejünkig romlottak vagyunk, akkor a végletekben való gondolkozás torzítását éljük át.",
+    "all_or_nothing_thinking_thought": "Elbaltáztam az interjúmat, sehova se fognak felvenni.",
+    "catastrophizing": "Katasztrófizálunk",
+    "catastrophizing_explanation": "Ha a bolhából is elefántots csinálunk, akkor katasztofizálunk. Ha egy kis hibát ejtettél a munkahelyeden, még nem biztos, hogy csak a miatt kirúgnak.",
+    "catastrophizing_thought": "Ideges vagyok, biztos szívrohamom van.",
+    "emotional_reasoning": "Érzelmi érvelés",
+    "emotional_reasoning_explanation_1": "\"Érzem, tehát biztos igaz is.\" Ha jogosnak érzed a \"veszélyt\" azért, mert te félsz tőle, akkor elképzelhető, hogy érzelmi érvelést alkalmazol. A dolgok nem azért veszélyesek, mert mi félünk tőle vagy azt gondoljuk, hogy rossz.",
+    "emotional_reasoning_explanation_2": "Ezt sokszor nehéz érzékelni. Nehéz összeszedned magad annyira, hogy logikusan tudj gondolkozni az érzelmeidről is.",
+    "emotional_reasoning_thought": "Bűnösnek érzem magam, ezért biztos, hogy rosz fát tettem a tűzre.",
+    "fortune_telling": "Jövendőmondás",
+    "fortune_telling_explanation": "Amikor ki akarjuk találni a jövőt. Sokszor túlbecsüljük a jövendőmondó képességünket. Sokszor erős előfeltételezésekkel élünk és csak az azt alátámasztó bizonyítékokat vesszük figyelembe.",
+    "fortune_telling_thought": "Le fog zuhanni a repülő, amin ülök.",
+    "labeling": "Címkézés",
+    "labeling_explanation": "Ha egy jellegzetes tulajdonsággal azonosítunk egy embert, akkor címkézünk. Ha valaki bevágott eléng, attól még nem biztos, hogy ő \"*eggfej,\" lehet, hogy csak siet. Ez ránk is vonatkozik; csak azért, mert hibázunk még nem vagyunk \"hibásak.\"",    
+    "labeling_thought": "Elrontottam a ZH-t/TZ-t, biztos rossz tanuló vagyok.",
+    "magnification_of_the_negative": "A Negatívumok felerősítése",
+    "magnification_of_the_negative_explanation": "Ha figyelmen kívül hagyod a sikereket, akkor lehet, hogy \"rontóc\" vagy. Hogyha folyton az elbaltázott interjúkon rágódsz, akkor lehet, hogy nem jut eszedbe, hogy mennyi új tudásra tettél szert általuk.",
+    "magnification_of_the_negative_thought": "Figyeltem a kajálásra a héten, de kihagytam a futást.",
+    "mind_reading": "Gondolatolvasás",
+    "mind_reading_explanation": "Ha azon rágódunk, hogy mások mit gondolnak rólunk, akkor valószínűleg gondolatot szeretnénk olvasni. Ameddig nem mondják meg, hogy mit gondolnak rólunk, addig nem tudhatjuk, hogy tényleg az-e a helyzet, amit mi feltételeztünk. Miért is kéne mindig a legrosszabbra felkészülni?",
+    "mind_reading_thought": "Bunkó voltam Gyurival, mert nem mentem el a bulijára, most biztos utál engem.",
+    "minimization_of_the_positive": "A Sikerek elhallgatása",
+    "minimization_of_the_positive_explanation": "Ha lebecsüljük a sikereinket, akkor minimalizáljuk a (dopamint-tüzelést) [ez hogy mondjuk magyarul? ¿Öröm?]. Akkor is, ha az első napunk nem ment 100%-ig a tervnek megfelelően, nem jelenti azt, hogy pl. 60% ami jól ment azt ignorálhatjuk.",
+    "minimization_of_the_positive_thought": "Sok embernek tetszett az előadásom, de elbaltáztam a bevezetést, szóval biztos elcsettintettem.",
+    "other_blaming": "Mások hibáztatása",
+    "other_blaming_explanation_1": "Ha egy rossz helyzetet mindig valaki másnak a hibájának gondolunk, akkor másokat hibáztatunk. Ha megbuktál egy vizsgán és a tanárt hibáztatod, akkor rossz irányba feccölöd a megoldásra szánt energiáidat. Valaki eléd vágott, az autópályán? Ha rádudálsz, rátapadsz, az segít? Most közveszélyes és ideges is vagy egyszerre!",
+    "other_blaming_explanation_2": "Ez nem jelenti azt, hogy minden negatívumért csak magadat kell okolnod. Nem kell senkit sem hibáztatni. Senkinek sem kell hibáznia ahhoz, hogy hiba történjen. Engedd el, hibáztatás nélkül.",
+    "other_blaming_thought": "Ez a genya előttem túl sokat vacakol a sorban!",
+    "over_generalization": "Túl-álltalánosítás",
+    "over_generalization_explanation": "Ha csak egy példa alapján messzemenő következtetéseket vonunk le, akkor túl-állatlánosítunk. Ha elbaltáztad a prezidet és emiatt azt gondolod, hogy \"rossz\" vagy az előadásban, akkor te túl-álltalánosítasz.",
+    "over_generalization_thought": "Senki sem kért-fel táncolni, szal' biztos nem is fog.",
+    "self_blaming": "Önvád",
+    "self_blaming_explanation": "Ha csak magadat okolod egy kialakult szituációért, az az önvád. Nem kell minden rossz dologért felelősnek lenned. Ha a dugóban ragadsz és azon őrlődsz, hogy miért nem indultál el korábban, az önvád. Mással is így bánnál ebben a szituációban?",
+    "self_blaming_thought": "A fiam rosszalkodik az iskolában, biztos rosszul nevelem őt.",
+    "should_statements": "Hibás Biztos állítások",
+    "should_statements_explanation_1": "Ha valakiket felruházol olyan tulajdonságokkal, amikkel valójában nem rendelkeznek, akkor te helytelenül használod a \"biztos\" szót. Ha pl. félsz a repüléstől és a belső monológod a \"Nem kéne ettől félnem, biztos nincs semmi baja a gépnek!\" akkor csak feleslegesen terheled magad. Repülési fóbiád van! Repülési fóbiában szenvedőknél normális, ha félnek a repüléstől!",
+    "should_statements_explanation_2": 
+    "A hibás biztos állítások nagyon hülyén vehetik ki magukat, amikor hangosan kimondod; ez a lényeg! Nem illogikusak!",
+    "should_statements_thought": "Felnőtt ember vagyok, nem kéne így hisztiznem.",
+    "accessibility": {
+        "help_button": "Súgó",
+        "list_button": "Gondolatok listázása",
+        "new_thought_button": "Új gondolat",
+        "settings_button": "Beállítások",
+        "delete_thought_button": "Gondolat elfelejtése"
+    }
+}
