@@ -4,11 +4,12 @@ import { Container, MediumHeader, HintHeader, Row, ActionButton } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { ScrollView, Image } from "react-native";
-import { CHECKUP_PROMPT_SCREEN } from "./screens";
+import { CHECKUP_PROMPT_SCREEN, ANXIETY_CHECK_SCREEN } from "./screens";
 import { userTurnedOnNotifications } from "../stats";
 import { Platform } from "@unimodules/core";
 import OneSignal from "react-native-onesignal";
 import { ONESIGNAL_SECRET } from "react-native-dotenv";
+import { passesFeatureFlag } from "../featureflags";
 
 export default class NotificationScreen extends React.Component<
   ScreenProps,
@@ -27,7 +28,13 @@ export default class NotificationScreen extends React.Component<
     });
   }
 
-  onContinue = () => {
+  onContinue = async () => {
+    const passes = await passesFeatureFlag("prediction-onboarding", 3);
+    if (passes) {
+      this.props.navigation.navigate(ANXIETY_CHECK_SCREEN);
+      return;
+    }
+
     this.props.navigation.navigate(CHECKUP_PROMPT_SCREEN);
   };
 

@@ -117,7 +117,7 @@ export default class AssumptionScreen extends React.Component<
       >
         <GhostButton
           onPress={() => this.props.navigation.navigate(THOUGHT_SCREEN)}
-          title="Back"
+          title="Cancel"
           style={{
             marginRight: 12,
           }}

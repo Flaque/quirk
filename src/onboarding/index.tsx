@@ -7,12 +7,16 @@ import {
   NOTIFICATION_SCREEN,
   CHECKUP_PROMPT_SCREEN,
   WELCOME_SCREEN,
+  ANXIETY_CHECK_SCREEN,
+  PREDICTION_PROMPT_SCREEN,
 } from "./screens";
 import ConditionScreen from "./ConditionScreen";
 import FamiliarityScreen from "./FamiliarityScreen";
 import NotificationScreen from "./NotificationScreen";
 import CheckupPromptScreen from "./CheckupPromptScreen";
 import WelcomeScreen from "./WelcomeScreen";
+import AnxietyCheckScreen from "./AnxietyCheckScreen";
+import PredictionPromptScreen from "./PredictionPromptScreen";
 
 export default createStackNavigator(
   {
@@ -22,6 +26,8 @@ export default createStackNavigator(
     [NOTIFICATION_SCREEN]: NotificationScreen,
     [CHECKUP_PROMPT_SCREEN]: CheckupPromptScreen,
     [WELCOME_SCREEN]: WelcomeScreen,
+    [ANXIETY_CHECK_SCREEN]: AnxietyCheckScreen,
+    [PREDICTION_PROMPT_SCREEN]: PredictionPromptScreen,
   },
   {
     initialRouteName: WELCOME_SCREEN,
