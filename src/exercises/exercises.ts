@@ -42,6 +42,14 @@ function isSameDay(a: string | Date, b: string | Date) {
   return dayjs(a).format("DD-MM-YYYY") === dayjs(b).format("DD-MM-YYYY");
 }
 
+export async function countExercises(): Promise<number> {
+  const thoughts = await getOrderedThoughts();
+  const checkups = await getOrderedCheckups();
+  const predictions = await getOrderedPredictions();
+
+  return thoughts.length + checkups.length + predictions.length;
+}
+
 export async function getSortedExerciseGroups(): Promise<ExerciseGroup[]> {
   const thoughts = await getOrderedThoughts();
   const checkups = await getOrderedCheckups();

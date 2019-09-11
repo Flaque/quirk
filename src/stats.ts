@@ -1,25 +1,28 @@
 /**
- * This is Quirk's public stats file and is part of
- * how we do things.
+ * This is Quirk's stats file and it's how we collect
+ * anonymous telemetry.
  *
- * Quirk should be open; code _and_ stats. Typically,
- * a developer gets stats through the app stores, and even
- * if the app is open source, those stats tend to be kept
- * private.
+ * We do this to check that the lights are on and that
+ * we didn't break anything. Sometimes when we release
+ * a new feature, we'll also use this to see if anyone
+ * actually uses it.
  *
- * Quirk's not gonna be like that. Instead, aggregate stats
- * will be shared publicly, as long as it protects the privacy
- * of the user.
+ * We also record an aggregate success of each exercise
+ * here so we know that we're not making people
+ * unhappy or otherwise causing harm to people.
  *
- * That let's community members:
- * - understand the status of the project
- * - see the fruits of their support
+ * The stats here should never be connected to personally
+ * identifiable information. They might seem harmless,
+ * but for the privacy of the user, we don't ever want
+ * "foobar@example.org" to be connected to 4 thoughts
+ * a day or something.
  *
- * Plus, it allows researchers and mental health professionals
- * access the info in order to develop better treatments.
- *
- * These stats were created by you, the user.
- * **So you, the user, should have access to it.**
+ * On the other hand, we try to release some of this
+ * information publicly in aggregate. Things like user counts,
+ * happiness metrics, etc. We only do this if it
+ * preserves the privacy of user though; we shouldn't
+ * release info in such a small N that it could potentially
+ * identify someone.
  *
  * (Note: we don't necessarily share all financial info
  * publicly due to legal + company risk)
@@ -344,6 +347,10 @@ export function userFinishedCheckup(mood: "good" | "neutral" | "bad") {
   Segment.trackWithProperties("user_finished_checkup", {
     mood,
   });
+}
+
+export function userDismissedSurvey() {
+  Segment.track("user_dismissed_survey");
 }
 
 /**

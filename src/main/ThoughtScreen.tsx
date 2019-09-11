@@ -28,7 +28,11 @@ import theme from "../theme";
 import { get } from "lodash";
 import followUpState from "./followups/followUpState";
 import ExerciseList from "./ExerciseList";
-import { getSortedExerciseGroups, ExerciseGroup } from "../exercises/exercises";
+import {
+  getSortedExerciseGroups,
+  ExerciseGroup,
+  countExercises,
+} from "../exercises/exercises";
 import CheckupPrompt from "./CheckupPrompt";
 import { CHECKUP_SCREEN } from "../screens";
 import { getNextCheckupDate, Checkup } from "../checkups/checkupstore";
@@ -39,11 +43,13 @@ import { getPredictionState } from "./predictions/results";
 import {
   userStartedPrediction,
   userFollowedUpOnPrediction,
+  userDismissedSurvey,
 } from "./predictions/stats";
 import { Label } from "../ui";
 import * as flagstore from "../flagstore";
 import SurveyPrompt from "./survey/SurveyPrompt";
 import { passesFeatureFlag, passesDayFilter } from "../featureflags";
+import { addTagsToUser } from "../id";
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -99,6 +105,13 @@ export default class MainScreen extends React.Component<
         thought,
         isEditing,
         hasCheckedEditing: true,
+      });
+    });
+
+    // Count number exercises so we know when things are breaking
+    countExercises().then(exerciseCount => {
+      addTagsToUser({
+        exerciseCount: `${exerciseCount}`,
       });
     });
   }
@@ -183,6 +196,7 @@ export default class MainScreen extends React.Component<
   };
 
   dismissSurveyPrompt = async () => {
+    userDismissedSurvey();
     await flagstore.setTrue("has-been-surveyed");
     this.setState({
       shouldPromptSurvey: false,
