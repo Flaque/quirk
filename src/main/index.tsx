@@ -46,7 +46,6 @@ import PredictionFollowUpScreen from "./predictions/PredictionFollowUpScreen";
 import PredictionSummaryScreen from "./predictions/PredictionSummaryScreen";
 import PredictionOnboardingScreen from "./predictions/PredictionOnboardingScreen";
 import PredictionThoughtRedirectScreen from "./predictions/PredictionThoughtRedirectScreen";
-import ShareSuccessScreen from "./ShareSuccessScreen";
 
 export default createStackNavigator(
   {
@@ -65,7 +64,6 @@ export default createStackNavigator(
     [FEEDBACK_LEAVE_REVIEW]: LeaveReview,
     [SURVEY_SCREEN]: SurveyScreen,
     [CHECKUP_SUMMARY_SCREEN]: CheckUpSummaryScreen,
-    [SHARE_SUCCESS_SCREEN]: ShareSuccessScreen,
 
     // Predictions
     [ASSUMPTION_SCREEN]: AssumptionScreen,
