@@ -43,7 +43,6 @@ import { getPredictionState } from "./predictions/results";
 import {
   userStartedPrediction,
   userFollowedUpOnPrediction,
-  userDismissedSurvey,
 } from "./predictions/stats";
 import { Label } from "../ui";
 import * as flagstore from "../flagstore";
@@ -196,11 +195,11 @@ export default class MainScreen extends React.Component<
   };
 
   dismissSurveyPrompt = async () => {
-    userDismissedSurvey();
     await flagstore.setTrue("has-been-surveyed");
     this.setState({
       shouldPromptSurvey: false,
     });
+    stats.userDismissedSurvey();
   };
 
   loadShouldShowSurveyPrompt = async () => {
