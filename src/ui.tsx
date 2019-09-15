@@ -70,6 +70,7 @@ export const Header = ({
     }}
     textBreakStrategy={"simple"}
     allowFontScaling={allowFontScaling}
+    maxFontSizeMultiplier={1}
   >
     {children}
   </Text>

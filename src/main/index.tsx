@@ -24,6 +24,7 @@ import {
   PREDICTION_ONBOARDING_SCREEN,
   PREDICTION_REDIRECT_SCREEN,
   SHARE_SUCCESS_SCREEN,
+  MARKDOWN_ARTICLE_SCREEN,
 } from "./screens";
 import ChallengeScreen from "./ChallengeScreen";
 import DistortionScreen from "./DistortionScreen";

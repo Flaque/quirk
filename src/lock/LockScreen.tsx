@@ -17,7 +17,6 @@ import haptic from "../haptic";
 import {
   userSetPincode,
   userPromptedForReviewWhenSettingCode,
-  log,
   userRequestedPincodeReset,
 } from "../stats";
 import * as StoreReview from "react-native-store-review";

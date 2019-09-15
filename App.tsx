@@ -8,6 +8,7 @@ import {
   MAIN_SCREEN,
   CHECKUP_SCREEN,
   SUPPORT_SCREEN,
+  MARKDOWN_ARTICLE_SCREEN,
 } from "./src/screens";
 import SettingScreen from "./src/SettingsScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
@@ -23,6 +24,7 @@ import CheckupScreen from "./src/checkups";
 import { setCustomText } from "react-native-global-props";
 import { Platform } from "react-native";
 import SupportScreen from "./src/payments/SupportScreen";
+import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 
 // Fixes a bug on OnePlus phones which have some buggy font by default
 if (Platform.OS === "android") {
@@ -43,9 +45,10 @@ const App = createBottomTabNavigator(
     [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
     [CHECKUP_SCREEN]: CheckupScreen,
     [SUPPORT_SCREEN]: SupportScreen,
+    [MARKDOWN_ARTICLE_SCREEN]: MarkdownArticleScreen,
   },
   {
-    initialRouteName: PAYMENT_SCREEN,
+    initialRouteName: MARKDOWN_ARTICLE_SCREEN,
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },
