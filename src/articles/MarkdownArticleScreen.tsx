@@ -1,25 +1,7 @@
 import React from "react";
 import ScreenProps from "../ScreenProps";
-import theme from "../theme";
-import {
-  ScrollView,
-  StatusBar,
-  View,
-  TouchableWithoutFeedback,
-  Dimensions,
-} from "react-native";
-import Markdown from "react-native-markdown-renderer";
-import ArticleTopBar, { TAB_BAR_HEIGHT, TitleTopBar } from "./ArticleTopBar";
-import styles from "./styles";
-import haptic from "../haptic";
-import * as Haptic from "expo-haptics";
-import Constants from "expo-constants";
-import clamp from "./clamp";
-import shadowStyle from "../shadowStyle";
-import { Feather } from "@expo/vector-icons";
-import { Header, HintHeader } from "../ui";
 import { THOUGHT_SCREEN } from "../main/screens";
-import CircleFlasher from "./CircleFlasher";
+import MarkdownArticle from "./MarkdownArticle";
 
 const pageOne = `
 # CBT is well studied
@@ -52,212 +34,8 @@ const pageThree = `
 
 In some cases, you can cause a thought to happen. For example, if you say the words "I'm a purple elephant bear" in your head, you're causing that thought to happen. When you do that, you can pretty clearly tell that you're *not* a purple elephant bear, not only because it's absurd, but because you *chose* to think it. 
 
-In our interview example, it's likely that you didn't set out to think each of these thoughts. Instead, they just "happened." Mental health professionals call these "automatic thoughts."
+In our interview example, it's likely that you didn't set out to think each of these thoughts. Instead, they just "happened." Mental health professionals call these "automatic thoughts."  
 `;
-
-class MarkdownArticle extends React.Component<
-  {
-    pages: string[];
-    title: string;
-    description: string;
-    onFinish: () => any;
-  },
-  {
-    index: number;
-    rightFlasherPose: string;
-    articleTopBarPose: string;
-  }
-> {
-  state = {
-    index: -1,
-    rightFlasherPose: "hidden",
-    articleTopBarPose: "hidden",
-  };
-
-  _renderPage = () => {
-    if (this.state.index === -1) {
-      return (
-        <View
-          style={{
-            alignItems: "flex-start",
-            justifyContent: "flex-end",
-            height:
-              Dimensions.get("window").height -
-              TAB_BAR_HEIGHT -
-              Constants.statusBarHeight -
-              48,
-            paddingBottom: 24,
-          }}
-        >
-          <Header>{this.props.title}</Header>
-          <HintHeader
-            style={{
-              width: "72%",
-            }}
-          >
-            {this.props.description}
-          </HintHeader>
-        </View>
-      );
-    }
-
-    return (
-      <Markdown style={styles}>
-        {(this.props.pages[this.state.index] || "").trim()}
-      </Markdown>
-    );
-  };
-
-  flickerRightFlasher = () => {
-    this.setState(prevState => {
-      if (prevState.rightFlasherPose === "hidden") {
-        return {
-          ...prevState,
-          rightFlasherPose: "visible",
-        };
-      }
-      return {
-        ...prevState,
-        rightFlasherPose: "hidden",
-      };
-    });
-  };
-
-  _rightFlicker: NodeJS.Timeout;
-
-  componentDidMount() {
-    this.flickerRightFlasher();
-    this._rightFlicker = setInterval(this.flickerRightFlasher, 800);
-  }
-
-  onNext = () => {
-    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-
-    // Title screen => Article Screen
-    if (this.state.index === -1) {
-      setTimeout(() => this.setState({ articleTopBarPose: "visible" }), 100);
-    }
-
-    // Article screen => Finish
-    if (this.state.index >= this.props.pages.length - 1) {
-      haptic.notification(Haptic.NotificationFeedbackType.Success);
-      this.props.onFinish();
-      return;
-    }
-
-    this.setState(prevState => {
-      if (prevState.index + 1 >= this.props.pages.length) {
-        return prevState;
-      }
-
-      return {
-        ...prevState,
-        rightFlasherPose: "hidden",
-        index: prevState.index + 1,
-      };
-    });
-    clearInterval(this._rightFlicker);
-  };
-
-  onBack = () => {
-    haptic.impact(Haptic.ImpactFeedbackStyle.Light);
-
-    if (this.state.index === 0) {
-      this._rightFlicker = setInterval(this.flickerRightFlasher, 800);
-    }
-
-    this.setState(prevState => {
-      if (prevState.index - 1 < -1) {
-        return prevState;
-      }
-
-      if (prevState.index - 1 === -1) {
-        return {
-          ...prevState,
-          articleTopBarPose: "hidden",
-          index: prevState.index - 1,
-        };
-      }
-
-      return {
-        ...prevState,
-        index: prevState.index - 1,
-      };
-    });
-  };
-
-  render() {
-    // Don't start the progress bar at absolute 0 or you'll chop the head
-    // off the little Quirk bubble 😱
-    const progress = clamp(
-      (this.state.index / (this.props.pages.length - 1)) * 100,
-      20,
-      100
-    );
-
-    return (
-      <>
-        <StatusBar hidden={false} />
-        <ScrollView
-          style={{
-            backgroundColor: "white",
-            height: "100%",
-            flexGrow: 1,
-          }}
-        >
-          {/* index === -1 is the title page */}
-          {this.state.index === -1 && <TitleTopBar onExit={this.onBack} />}
-          {this.state.index !== -1 && (
-            <ArticleTopBar
-              onExit={this.onBack}
-              progress={progress}
-              pose={this.state.articleTopBarPose as "hidden" | "visible"}
-            />
-          )}
-
-          <View
-            style={{
-              padding: 24,
-              height: "100%",
-            }}
-          >
-            {this._renderPage()}
-          </View>
-        </ScrollView>
-        <TouchableWithoutFeedback onPress={this.onNext}>
-          <View
-            style={{
-              position: "absolute",
-              height: "100%",
-              width: "18%",
-              right: 0,
-              top: TAB_BAR_HEIGHT + Constants.statusBarHeight,
-              alignItems: "flex-end",
-              justifyContent: "flex-end",
-              paddingBottom: TAB_BAR_HEIGHT + Constants.statusBarHeight + 24,
-            }}
-          >
-            <CircleFlasher pose={this.state.rightFlasherPose} />
-          </View>
-        </TouchableWithoutFeedback>
-
-        <TouchableWithoutFeedback onPress={this.onBack}>
-          <View
-            style={{
-              position: "absolute",
-              height: "100%",
-              width: "18%",
-              left: 0,
-              justifyContent: "center",
-              alignItems: "center",
-              top: TAB_BAR_HEIGHT + Constants.statusBarHeight,
-            }}
-          />
-        </TouchableWithoutFeedback>
-      </>
-    );
-  }
-}
 
 export default class MarkdownArticleScreen extends React.Component<
   ScreenProps
@@ -273,6 +51,9 @@ export default class MarkdownArticleScreen extends React.Component<
         title="Cognitive Behavioral Therapy 101"
         description="An introduction to Cognitive Behavioral Therapy."
         onFinish={() => {
+          this.props.navigation.navigate(THOUGHT_SCREEN);
+        }}
+        onExit={() => {
           this.props.navigation.navigate(THOUGHT_SCREEN);
         }}
       />

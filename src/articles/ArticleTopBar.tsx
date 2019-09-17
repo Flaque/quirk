@@ -51,7 +51,7 @@ export const TitleTopBar = ({ onExit }) => (
         borderRadius: 48,
       }}
       onPress={() => {
-        this.props.onExit();
+        onExit();
       }}
     >
       <Feather name="x" color={theme.blue} size={16} />
