@@ -12,19 +12,21 @@ import * as stats from "../stats";
 import Constants from "expo-constants";
 import theme from "../theme";
 import { get } from "lodash";
-import { countExercises } from "../exercises/exercises";
+import { countExercises } from "./exercises/exercises";
 import { userStartedPrediction } from "./predictions/stats";
 import * as flagstore from "../flagstore";
 import { addTagsToUser } from "../id";
 import Feed from "./feed/Feed";
 import { Label } from "../ui";
-import ExerciseButton from "./ExerciseButton";
+import ExerciseButton from "./exercises/ExerciseButton";
 import {
   NavigationScreenProp,
   NavigationAction,
   NavigationState,
 } from "react-navigation";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
+import * as cbt101 from "../articles/content/cbt101";
+import { MARKDOWN_ARTICLE_SCREEN } from "../screens";
 
 const ExerciseButtons = ({
   navigation,
@@ -46,6 +48,19 @@ const ExerciseButtons = ({
     >
       Exercises
     </Label>
+    <ExerciseButton
+      hasYourAttention={true}
+      title="Do this first!"
+      hint="Learn about CBT and how it can help you."
+      featherIconName="book-open"
+      onPress={() =>
+        navigation.navigate(MARKDOWN_ARTICLE_SCREEN, {
+          pages: cbt101.pages,
+          title: cbt101.title,
+          description: cbt101.description,
+        })
+      }
+    />
     <ExerciseButton
       title="New Prediction"
       hint="Manage anxiety around upcoming events or tasks."

@@ -1,4 +1,4 @@
-export default [
+export const pages = [
   // One
   `# Quirk is a Cognitive Behavioral Therapy app.
 
@@ -42,8 +42,11 @@ And after that, it's a small monthly subscription about the price of a ham sandw
 
 This helps us create a long-term, sustainable product without ads or one-off in-app purchases.
 
-If Quirk helps you feel better, then it's likely worth the price. If not, there's cancelation instructions within the app. 
+If Quirk helps you feel better, then it's likely worth the price. If not, there's cancellation instructions within the app. 
 
 We hope you'll love Quirk as much as we do. ❤️
 `,
 ];
+
+export const title = "Hey there 👋";
+export const description = "Welcome to Quirk, let's slow down for a moment.";

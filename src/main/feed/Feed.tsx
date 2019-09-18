@@ -9,7 +9,7 @@ import {
 } from "../screens";
 import haptic from "../../haptic";
 import * as Haptic from "expo-haptics";
-import ExerciseList from "../ExerciseList";
+import ExerciseList from "../exercises/ExerciseList";
 import CheckupPrompt from "../CheckupPrompt";
 import { CHECKUP_SCREEN } from "../../screens";
 import { userFollowedUpOnPrediction } from "../predictions/stats";
@@ -23,21 +23,20 @@ import {
 import { getNextCheckupDate, Checkup } from "../../checkups/checkupstore";
 import dayjs from "dayjs";
 import { passesDayFilter, passesFeatureFlag } from "../../featureflags";
-import {
-  getSortedExerciseGroups,
-  ExerciseGroup,
-} from "../../exercises/exercises";
+import { getSortedExerciseGroups, ExerciseGroup } from "../exercises/exercises";
 import { Prediction } from "../predictions/predictionstore";
 import { getPredictionState } from "../predictions/results";
 import followUpState from "../followups/followUpState";
 import { SavedThought } from "../../thoughts";
 import { userStartedFollowUp, userDismissedSurvey } from "../../stats";
+import { FadesIn } from "../../animations";
 
 export default class Feed extends React.Component<
   {
     navigation: NavigationScreenProp<NavigationState, NavigationAction>;
   },
   {
+    shouldFadeIn: boolean;
     shouldPromptSurvey: boolean;
     shouldPromptCheckup: boolean;
     groups: ExerciseGroup[];
@@ -45,6 +44,7 @@ export default class Feed extends React.Component<
   }
 > {
   state = {
+    shouldFadeIn: false,
     shouldPromptSurvey: false,
     shouldPromptCheckup: false,
     groups: [],
@@ -55,6 +55,14 @@ export default class Feed extends React.Component<
     this.loadExercises();
     this.loadShouldPromptCheckup();
     this.loadShouldShowSurveyPrompt();
+
+    setTimeout(
+      () =>
+        this.setState({
+          shouldFadeIn: true,
+        }),
+      150
+    );
   }
 
   loadExercises = () => {
@@ -159,7 +167,7 @@ export default class Feed extends React.Component<
 
   render() {
     return (
-      <>
+      <FadesIn pose={this.state.shouldFadeIn ? "visible" : "hidden"}>
         {this.state.shouldPromptCheckup && (
           <CheckupPrompt
             onPress={() => {
@@ -183,7 +191,7 @@ export default class Feed extends React.Component<
           navigateToCheckupViewer={this.navigateToCheckupViewer}
           navigateToPredictionViewer={this.navigateToPredictionViewer}
         />
-      </>
+      </FadesIn>
     );
   }
 }

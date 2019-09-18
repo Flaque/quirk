@@ -1,11 +1,11 @@
-import { SavedThought } from "../thoughts";
-import { Checkup, getOrderedCheckups } from "../checkups/checkupstore";
-import { getOrderedThoughts } from "../thoughtstore";
+import { SavedThought } from "../../thoughts";
+import { Checkup, getOrderedCheckups } from "../../checkups/checkupstore";
+import { getOrderedThoughts } from "../../thoughtstore";
 import dayjs from "dayjs";
 import {
   Prediction,
   getOrderedPredictions,
-} from "../main/predictions/predictionstore";
+} from "../predictions/predictionstore";
 
 export type Exercise = SavedThought | Checkup;
 

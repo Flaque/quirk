@@ -2,34 +2,35 @@ import React from "react";
 import {
   TouchableCardContainer,
   CardAttentionDot,
-} from "../card/TouchableCard";
-import shadowStyle from "../shadowStyle";
-import { SubHeader, HintHeader } from "../ui";
-import { View, Text } from "react-native";
+} from "../../card/TouchableCard";
+import shadowStyle from "../../shadowStyle";
+import { SubHeader, HintHeader } from "../../ui";
+import { View } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import theme from "../theme";
+import theme from "../../theme";
 
 const ExerciseButton = ({
   title,
   hint,
   featherIconName,
-  hasDot,
+  hasYourAttention,
   onPress,
 }: {
   title: string;
   hint: string;
   featherIconName: string;
-  hasDot?: boolean;
+  hasYourAttention?: boolean;
   onPress: () => any;
 }) => (
   <>
-    {hasDot && <CardAttentionDot />}
+    {hasYourAttention && <CardAttentionDot />}
     <TouchableCardContainer
       style={{
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 12,
+        borderColor: hasYourAttention ? theme.pink : theme.lightGray,
         ...shadowStyle,
       }}
       onPress={onPress}
@@ -59,7 +60,9 @@ const ExerciseButton = ({
 
       <View
         style={{
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: hasYourAttention
+            ? theme.lightPink
+            : theme.lightOffwhite,
           height: "100%",
           width: 64,
           borderTopRightRadius: 8,
@@ -68,7 +71,11 @@ const ExerciseButton = ({
           alignItems: "center",
         }}
       >
-        <Feather name={featherIconName} color={theme.darkBlue} size={16} />
+        <Feather
+          name={featherIconName}
+          color={hasYourAttention ? theme.darkPink : theme.darkBlue}
+          size={16}
+        />
       </View>
     </TouchableCardContainer>
   </>

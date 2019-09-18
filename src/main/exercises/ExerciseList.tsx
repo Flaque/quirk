@@ -1,24 +1,19 @@
 import React from "react";
 import { View } from "react-native";
-import EmptyThoughtIllustration from "./EmptyThoughtIllustration";
-import ThoughtItem from "./ThoughtItem";
-import { Label } from "../ui";
-import { SavedThought } from "../thoughts";
-import { HistoryButtonLabelSetting } from "../setting";
+import EmptyThoughtIllustration from "../EmptyThoughtIllustration";
+import ThoughtItem from "../ThoughtItem";
+import { Label } from "../../ui";
+import { SavedThought } from "../../thoughts";
+import { HistoryButtonLabelSetting } from "../../setting";
 import Constants from "expo-constants";
 import NotEnoughThoughtsIllustration, {
   ENOUGH_DAYS,
-} from "./NotEnoughThoughtsIllustration";
-import {
-  ExerciseGroup,
-  isCheckup,
-  isThought,
-  isPrediction,
-} from "../exercises/exercises";
-import CheckUpCard from "../checkups/CheckUpCard";
-import { Checkup } from "../checkups/checkupstore";
-import PredictionCard from "./predictions/PredictionCard";
-import { Prediction } from "./predictions/predictionstore";
+} from "../NotEnoughThoughtsIllustration";
+import { ExerciseGroup, isCheckup, isThought, isPrediction } from "./exercises";
+import CheckUpCard from "../../checkups/CheckUpCard";
+import { Checkup } from "../../checkups/checkupstore";
+import PredictionCard from "../predictions/PredictionCard";
+import { Prediction } from "../predictions/predictionstore";
 
 interface ThoughtListProps {
   groups: ExerciseGroup[];
