@@ -1,3 +1,5 @@
+import Content from "../Content";
+
 export const pages = [
   `
 # CBT is well studied
@@ -52,3 +54,12 @@ In our interview example, it's likely that you didn't set out to think each of t
 export const title = "First timer?";
 export const description =
   "Let's learn a bit about CBT before you get started.";
+
+const content: Content = {
+  pages,
+  title,
+  description,
+  slug: "cbt101",
+};
+
+export default content;

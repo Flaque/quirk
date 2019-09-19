@@ -1,3 +1,5 @@
+import Content from "../Content";
+
 export const pages = [
   // One
   `# Quirk is a Cognitive Behavioral Therapy app.
@@ -50,3 +52,12 @@ We hope you'll love Quirk as much as we do. ❤️
 
 export const title = "Hey there 👋";
 export const description = "Welcome to Quirk, let's slow down for a moment.";
+
+const content: Content = {
+  pages,
+  title,
+  description,
+  slug: "intro",
+};
+
+export default content;

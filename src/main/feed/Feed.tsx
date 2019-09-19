@@ -168,6 +168,14 @@ export default class Feed extends React.Component<
   render() {
     return (
       <FadesIn pose={this.state.shouldFadeIn ? "visible" : "hidden"}>
+        <ExerciseList
+          groups={this.state.groups}
+          historyButtonLabel={"alternative-thought"}
+          navigateToThoughtViewer={this.navigateToViewerWithThought}
+          navigateToCheckupViewer={this.navigateToCheckupViewer}
+          navigateToPredictionViewer={this.navigateToPredictionViewer}
+        />
+
         {this.state.shouldPromptCheckup && (
           <CheckupPrompt
             onPress={() => {
@@ -183,14 +191,6 @@ export default class Feed extends React.Component<
             onPressNo={this.dismissSurveyPrompt}
           />
         )}
-
-        <ExerciseList
-          groups={this.state.groups}
-          historyButtonLabel={"alternative-thought"}
-          navigateToThoughtViewer={this.navigateToViewerWithThought}
-          navigateToCheckupViewer={this.navigateToCheckupViewer}
-          navigateToPredictionViewer={this.navigateToPredictionViewer}
-        />
       </FadesIn>
     );
   }
