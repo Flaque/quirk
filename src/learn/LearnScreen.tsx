@@ -12,6 +12,7 @@ import {
 import Content from "../articles/Content";
 import { MARKDOWN_ARTICLE_SCREEN } from "../screens";
 import cbt101 from "../articles/content/cbt101";
+import howToUseQuirk from "../articles/content/howToUseQuirk";
 import { HowToQuirkImage } from "./images";
 
 const ArticleWithImageCard = ({
@@ -82,7 +83,7 @@ export default class LearnScreen extends React.Component<ScreenProps> {
         <MediumHeader>To Read</MediumHeader>
 
         <ArticleWithImageCard content={cbt101} onPress={this._openContent} />
-        <ArticleCard content={cbt101} onPress={this._openContent} />
+        <ArticleCard content={howToUseQuirk} onPress={this._openContent} />
         <ArticleCard content={cbt101} onPress={this._openContent} />
       </ScrollView>
     );
