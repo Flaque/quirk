@@ -21,6 +21,8 @@ import {
   MAIN_SCREEN,
   CBT_ON_BOARDING_SCREEN,
   SUPPORT_SCREEN,
+  MARKDOWN_ARTICLE_SCREEN,
+  PAYMENT_SCREEN,
 } from "../screens";
 import theme from "../theme";
 import i18n from "../i18n";
@@ -35,7 +37,6 @@ import {
   isSubscribed,
   alias,
 } from "./index";
-import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
@@ -47,6 +48,8 @@ import {
 import dayjs from "dayjs";
 import { getIsExistingUser } from "../thoughtstore";
 import { identify } from "../id";
+import { passesFeatureFlag } from "../featureflags";
+import intro from "../articles/content/intro";
 
 const Container = props => (
   <ScrollView
@@ -122,6 +125,16 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
       this.redirectToFormScreen();
       SplashScreen.hide();
       return;
+    }
+
+    if (await passesFeatureFlag("intro-before-payment-screen", 2)) {
+      this.props.navigation.navigate(MARKDOWN_ARTICLE_SCREEN, {
+        pages: intro.pages,
+        title: intro.title,
+        description: intro.description,
+        nextScreen: PAYMENT_SCREEN,
+        shouldHideExitButton: true,
+      });
     }
 
     const subscription = await getCurrentPurchasableSubscription();

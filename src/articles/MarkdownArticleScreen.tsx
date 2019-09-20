@@ -6,6 +6,7 @@ import { NavigationEventCallback } from "react-navigation";
 import { get } from "lodash";
 import { FadesIn } from "../animations";
 import { INDEX_LEARN_SCREEN } from "../learn/screens";
+import { StatusBar } from "react-native";
 
 export default class MarkdownArticleScreen extends React.Component<
   ScreenProps,
@@ -16,6 +17,7 @@ export default class MarkdownArticleScreen extends React.Component<
     title: string;
     description: string;
     nextScreen: string;
+    shouldHideExitButton: boolean;
   }
 > {
   static navigationOptions = {
@@ -29,6 +31,7 @@ export default class MarkdownArticleScreen extends React.Component<
     title: "",
     description: "",
     nextScreen: INDEX_LEARN_SCREEN,
+    shouldHideExitButton: false,
   };
 
   componentDidMount() {
@@ -47,6 +50,11 @@ export default class MarkdownArticleScreen extends React.Component<
       "action.params.nextScreen",
       INDEX_LEARN_SCREEN
     );
+    const shouldHideExitButton = get(
+      payload,
+      "action.params.shouldHideExitButton",
+      false
+    );
 
     this.setState({
       isReady: true,
@@ -54,6 +62,7 @@ export default class MarkdownArticleScreen extends React.Component<
       title,
       description,
       nextScreen,
+      shouldHideExitButton,
     });
   };
 
@@ -64,6 +73,7 @@ export default class MarkdownArticleScreen extends React.Component<
 
     return (
       <FadesIn pose={this.state.shouldFadeIn ? "visible" : "hidden"}>
+        <StatusBar hidden={false} />
         <MarkdownArticle
           pages={this.state.pages}
           title={this.state.title}
@@ -72,8 +82,9 @@ export default class MarkdownArticleScreen extends React.Component<
             this.props.navigation.navigate(this.state.nextScreen);
           }}
           onExit={() => {
-            this.props.navigation.navigate(THOUGHT_SCREEN);
+            this.props.navigation.navigate(this.state.nextScreen);
           }}
+          shouldHideExitButton={this.state.shouldHideExitButton}
         />
       </FadesIn>
     );

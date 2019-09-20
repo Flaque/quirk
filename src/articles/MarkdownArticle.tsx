@@ -23,6 +23,7 @@ export default class MarkdownArticle extends React.Component<
     description: string;
     onFinish: () => any;
     onExit: () => any;
+    shouldHideExitButton: boolean;
   },
   {
     index: number;
@@ -173,12 +174,18 @@ export default class MarkdownArticle extends React.Component<
           }}
         >
           {/* index === -1 is the title page */}
-          {this.state.index === -1 && <TitleTopBar onExit={this.onExit} />}
+          {this.state.index === -1 && (
+            <TitleTopBar
+              onExit={this.onExit}
+              shouldShowExitButton={!this.props.shouldHideExitButton}
+            />
+          )}
           {this.state.index !== -1 && (
             <ArticleTopBar
               onExit={this.onExit}
               progress={progress}
               pose={this.state.articleTopBarPose as "hidden" | "visible"}
+              shouldShowExitButton={!this.props.shouldHideExitButton}
             />
           )}
 

@@ -34,28 +34,30 @@ const TopBarContainer = ({
   </View>
 );
 
-export const TitleTopBar = ({ onExit }) => (
+export const TitleTopBar = ({ onExit, shouldShowExitButton }) => (
   <TopBarContainer>
-    <GhostButtonWithGuts
-      style={{
-        borderWidth: 0,
-        borderBottomWidth: 0,
-        textColor: theme.darkText,
-        padding: 0,
-        height: 32,
-        width: 32,
-        backgroundColor: theme.lightGray,
-        alignItems: "center",
-        justifyContent: "center",
-        marginRight: 24,
-        borderRadius: 48,
-      }}
-      onPress={() => {
-        onExit();
-      }}
-    >
-      <Feather name="x" color={theme.blue} size={16} />
-    </GhostButtonWithGuts>
+    {shouldShowExitButton && (
+      <GhostButtonWithGuts
+        style={{
+          borderWidth: 0,
+          borderBottomWidth: 0,
+          textColor: theme.darkText,
+          padding: 0,
+          height: 32,
+          width: 32,
+          backgroundColor: theme.lightGray,
+          alignItems: "center",
+          justifyContent: "center",
+          marginRight: 24,
+          borderRadius: 48,
+        }}
+        onPress={() => {
+          onExit();
+        }}
+      >
+        <Feather name="x" color={theme.blue} size={16} />
+      </GhostButtonWithGuts>
+    )}
   </TopBarContainer>
 );
 
@@ -63,30 +65,34 @@ export default class ArticleTopBar extends React.Component<{
   onExit: () => any;
   pose: "visible" | "hidden";
   progress: number;
+  shouldShowExitButton?: boolean;
 }> {
   render() {
+    const showExit = this.props.shouldShowExitButton ? true : false;
     return (
       <TopBarContainer>
-        <GhostButtonWithGuts
-          style={{
-            borderWidth: 0,
-            borderBottomWidth: 0,
-            textColor: theme.darkText,
-            padding: 0,
-            height: 32,
-            width: 32,
-            backgroundColor: theme.lightGray,
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: 24,
-            borderRadius: 48,
-          }}
-          onPress={() => {
-            this.props.onExit();
-          }}
-        >
-          <Feather name="x" color={theme.blue} size={16} />
-        </GhostButtonWithGuts>
+        {showExit && (
+          <GhostButtonWithGuts
+            style={{
+              borderWidth: 0,
+              borderBottomWidth: 0,
+              textColor: theme.darkText,
+              padding: 0,
+              height: 32,
+              width: 32,
+              backgroundColor: theme.lightGray,
+              alignItems: "center",
+              justifyContent: "center",
+              marginRight: 24,
+              borderRadius: 48,
+            }}
+            onPress={() => {
+              this.props.onExit();
+            }}
+          >
+            <Feather name="x" color={theme.blue} size={16} />
+          </GhostButtonWithGuts>
+        )}
         <FadesIn
           pose={this.props.pose}
           style={{

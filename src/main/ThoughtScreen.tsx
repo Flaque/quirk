@@ -25,8 +25,6 @@ import {
   NavigationState,
 } from "react-navigation";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
-import * as cbt101 from "../articles/content/cbt101";
-import { MARKDOWN_ARTICLE_SCREEN } from "../screens";
 
 const ExerciseButtons = ({
   navigation,
@@ -48,7 +46,7 @@ const ExerciseButtons = ({
     >
       Exercises
     </Label>
-    <ExerciseButton
+    {/* <ExerciseButton
       hasYourAttention={true}
       title="Do this first!"
       hint="Learn about CBT and how it can help you."
@@ -60,7 +58,7 @@ const ExerciseButtons = ({
           description: cbt101.description,
         })
       }
-    />
+    /> */}
     <ExerciseButton
       title="New Prediction"
       hint="Manage anxiety around upcoming events or tasks."
