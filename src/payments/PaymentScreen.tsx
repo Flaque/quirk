@@ -39,7 +39,11 @@ import { Product } from "../@types/purchases";
 import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
 import { needsLegacyMigration, migrateLegacySubscriptions } from "./legacy";
-import { userSawApologyNotice, userStartedPayment } from "../stats";
+import {
+  userSawApologyNotice,
+  userStartedPayment,
+  userDownloaded,
+} from "../stats";
 import dayjs from "dayjs";
 import { getIsExistingUser } from "../thoughtstore";
 import { identify } from "../id";
@@ -88,6 +92,7 @@ class PaymentScreen extends React.Component<
 
     // This is basically our bare-bones "login"
     await identify();
+    userDownloaded();
 
     // Remove this line after july 2020
     if (await needsLegacyMigration()) {

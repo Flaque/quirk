@@ -67,6 +67,10 @@ export function screen(val: ScreenType) {
   Segment.screen(val);
 }
 
+export function userDownloaded() {
+  Segment.track("user_downloaded_quirk");
+}
+
 export function userGrandfathered() {
   if (isInDev()) {
     return;

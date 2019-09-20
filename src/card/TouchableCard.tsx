@@ -2,14 +2,14 @@ import React from "react";
 import theme from "../theme";
 import { TouchableOpacity, View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { Paragraph, Badge } from "../ui";
+import { Paragraph, Badge, SubHeader, HintHeader } from "../ui";
 
 export const TouchableCardContainer = ({
   onPress,
   children,
   style,
 }: {
-  onPress: () => {};
+  onPress: () => any;
   children: any;
   style?: any;
 }) => (
@@ -35,9 +35,11 @@ export const TouchableCardContainer = ({
 export const CardCrown = ({
   text,
   featherIconName,
+  color,
 }: {
   text: string;
   featherIconName: string;
+  color?: string;
 }) => (
   <View
     style={{
@@ -62,7 +64,36 @@ export const CardCrown = ({
     >
       {text}
     </Text>
-    <Feather name={featherIconName} color={theme.veryLightText} size={12} />
+    <Feather
+      name={featherIconName}
+      color={color || theme.veryLightText}
+      size={12}
+    />
+  </View>
+);
+
+export const CardTitleAndSubtitleContent = ({ title, subtitle }) => (
+  <View
+    style={{
+      padding: 12,
+      flex: 1,
+    }}
+  >
+    <SubHeader
+      style={{
+        fontSize: 16,
+      }}
+    >
+      {title}
+    </SubHeader>
+    <HintHeader
+      style={{
+        fontSize: 14,
+        marginBottom: 0,
+      }}
+    >
+      {subtitle}
+    </HintHeader>
   </View>
 );
 

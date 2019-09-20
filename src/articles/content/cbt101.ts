@@ -12,17 +12,6 @@ It takes time.
 `,
 
   `
-# Core Concepts
-
-In this mini-article, you'll learn the basics of CBT:
-- Your negative thoughts cause your moods.
-- Negative thoughts can compound on each other.
-- These thoughts are "automatic"
-- These thoughts aren't very trust worthy.
-- These 
-`,
-
-  `
 # Negative thoughts cause your mood
 
 The primary premise of CBT is that your thoughts cause your mood. They're obviously not the *only* cause;  sleep, diet, and exercise can all have quite significant effects. But your thoughts and world view are powerful forces in shaping your day-to-day mood.

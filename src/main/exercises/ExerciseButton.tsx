@@ -2,6 +2,8 @@ import React from "react";
 import {
   TouchableCardContainer,
   CardAttentionDot,
+  TitleAndSubtitleContent,
+  CardTitleAndSubtitleContent,
 } from "../../card/TouchableCard";
 import shadowStyle from "../../shadowStyle";
 import { SubHeader, HintHeader } from "../../ui";
@@ -35,28 +37,7 @@ const ExerciseButton = ({
       }}
       onPress={onPress}
     >
-      <View
-        style={{
-          padding: 12,
-          flex: 1,
-        }}
-      >
-        <SubHeader
-          style={{
-            fontSize: 16,
-          }}
-        >
-          {title}
-        </SubHeader>
-        <HintHeader
-          style={{
-            fontSize: 14,
-            marginBottom: 0,
-          }}
-        >
-          {hint}
-        </HintHeader>
-      </View>
+      <CardTitleAndSubtitleContent title={title} subtitle={hint} />
 
       <View
         style={{
