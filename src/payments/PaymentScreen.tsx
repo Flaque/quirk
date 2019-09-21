@@ -127,7 +127,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
       return;
     }
 
-    if (await passesFeatureFlag("intro-before-payment-screen", 2)) {
+    if (await passesFeatureFlag("intro-before-payment-screen", 4)) {
       this.props.navigation.navigate(MARKDOWN_ARTICLE_SCREEN, {
         pages: intro.pages,
         title: intro.title,
