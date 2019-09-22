@@ -8,6 +8,7 @@ import {
   TouchableCardContainer,
   CardCrown,
   CardTitleAndSubtitleContent,
+  CardAttentionDot,
 } from "../card/TouchableCard";
 import Content from "../articles/Content";
 import { MARKDOWN_ARTICLE_SCREEN } from "../screens";
@@ -46,13 +47,16 @@ const ArticleCard = ({
   content: Content;
   onPress: (content: Content) => any;
 }) => (
-  <TouchableCardContainer onPress={() => onPress(content)}>
-    <CardCrown text="ARTICLE" featherIconName="circle" color={theme.blue} />
-    <CardTitleAndSubtitleContent
-      title={content.title}
-      subtitle={content.description}
-    />
-  </TouchableCardContainer>
+  <>
+    <CardAttentionDot />
+    <TouchableCardContainer onPress={() => onPress(content)}>
+      <CardCrown text="ARTICLE" featherIconName="book" color={theme.blue} />
+      <CardTitleAndSubtitleContent
+        title={content.title}
+        subtitle={content.description}
+      />
+    </TouchableCardContainer>
+  </>
 );
 
 export default class LearnScreen extends React.Component<ScreenProps> {

@@ -7,11 +7,7 @@ const ImageStyles: any = {
   width: "100%",
   height: 120,
   resizeMode: "cover",
-  borderRadius: 8,
-  borderWidth: 1,
-  borderBottomWidth: 2,
   borderColor: theme.gray,
-  backgroundColor: theme.lightGray,
 };
 export const AllOrNothingThinkingImage = () => (
   <Image

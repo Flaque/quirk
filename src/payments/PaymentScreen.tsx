@@ -7,7 +7,6 @@ import {
   Linking,
   Dimensions,
   Alert,
-  AlertIOS,
 } from "react-native";
 import {
   NavigationScreenProp,

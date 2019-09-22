@@ -15,16 +15,19 @@ import Constants from "expo-constants";
 import clamp from "./clamp";
 import { Header, HintHeader } from "../ui";
 import CircleFlasher from "./CircleFlasher";
+import { isEqual } from "lodash";
+
+interface Props {
+  pages: string[];
+  title: string;
+  description: string;
+  onFinish: () => any;
+  onExit: () => any;
+  shouldHideExitButton: boolean;
+}
 
 export default class MarkdownArticle extends React.Component<
-  {
-    pages: string[];
-    title: string;
-    description: string;
-    onFinish: () => any;
-    onExit: () => any;
-    shouldHideExitButton: boolean;
-  },
+  Props,
   {
     index: number;
     rightFlasherPose: string;
@@ -36,6 +39,14 @@ export default class MarkdownArticle extends React.Component<
     rightFlasherPose: "hidden",
     articleTopBarPose: "hidden",
   };
+
+  componentDidUpdate(prevProps: Props) {
+    if (!isEqual(prevProps.pages, this.props.pages)) {
+      this.setState({
+        index: -1,
+      });
+    }
+  }
 
   _renderPage = () => {
     if (this.state.index === -1) {
