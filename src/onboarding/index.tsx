@@ -9,6 +9,7 @@ import {
   WELCOME_SCREEN,
   ANXIETY_CHECK_SCREEN,
   PREDICTION_PROMPT_SCREEN,
+  IOS_CALENDAR_ONBOARDING,
 } from "./screens";
 import ConditionScreen from "./ConditionScreen";
 import FamiliarityScreen from "./FamiliarityScreen";
@@ -17,6 +18,7 @@ import CheckupPromptScreen from "./CheckupPromptScreen";
 import WelcomeScreen from "./WelcomeScreen";
 import AnxietyCheckScreen from "./AnxietyCheckScreen";
 import PredictionPromptScreen from "./PredictionPromptScreen";
+import IOSCalendarOnboarding from "./iOSCalendarOnboarding";
 
 export default createStackNavigator(
   {
@@ -28,8 +30,9 @@ export default createStackNavigator(
     [WELCOME_SCREEN]: WelcomeScreen,
     [ANXIETY_CHECK_SCREEN]: AnxietyCheckScreen,
     [PREDICTION_PROMPT_SCREEN]: PredictionPromptScreen,
+    [IOS_CALENDAR_ONBOARDING]: IOSCalendarOnboarding,
   },
   {
-    initialRouteName: WELCOME_SCREEN,
+    initialRouteName: IOS_CALENDAR_ONBOARDING,
   }
 );
