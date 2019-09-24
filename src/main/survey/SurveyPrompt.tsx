@@ -12,7 +12,7 @@ export default ({ onPressYes, onPressNo }) => (
     }}
   >
     <SubHeader>We'd love your feedback! 🙏</SubHeader>
-    <HintHeader>Answer some questions to make Quirk better.</HintHeader>
+    <HintHeader>Answer 4 questions to make Quirk better.</HintHeader>
     <GhostButtonWithGuts
       style={{
         marginTop: 12,

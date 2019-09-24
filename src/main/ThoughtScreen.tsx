@@ -24,87 +24,100 @@ import {
 } from "react-navigation";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
 import { Label, CapsLabel, GhostButton } from "../ui";
+import Feed from "./feed/Feed";
+import { MARKDOWN_ARTICLE_SCREEN } from "../screens";
+import { AreaChart } from "react-native-svg-charts";
+import * as shape from "d3-shape";
+import { Path } from "react-native-svg";
+import pulse from "../articles/content/pulse";
 
-const Progress = () => (
-  <View
-    style={{
-      marginTop: 12,
-      marginBottom: 24,
-      paddingHorizontal: 24,
-    }}
-  >
+const Chart = ({ data }) => {
+  const Line = ({ line }) => (
+    <Path key={"line"} d={line} stroke={theme.blue} fill={"none"} />
+  );
+
+  return (
+    <AreaChart
+      style={{ height: 100 }}
+      data={data}
+      contentInset={{ top: 30, bottom: 30 }}
+      curve={shape.curveNatural}
+      svg={{ fill: "rgba(119, 139, 235, 0.1)" }}
+    >
+      <Line line={data} />
+    </AreaChart>
+  );
+};
+
+const Progress = ({ navigation }: ScreenProps) => {
+  const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, 100];
+  return (
     <View
       style={{
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-between",
+        marginTop: 12,
+        marginBottom: 24,
       }}
     >
-      <View>
-        <CapsLabel
-          style={{
-            fontSize: 12,
-            marginBottom: 6,
-            color: theme.veryLightText,
-          }}
-        >
-          BEGINNER
-        </CapsLabel>
-
-        <Label
-          style={{
-            color: theme.lightText,
-          }}
-        >
-          150/400
-        </Label>
-      </View>
-
       <View
         style={{
-          flexDirection: "column",
-          alignItems: "flex-end",
-          justifyContent: "flex-end",
-          marginBottom: 12,
+          flex: 1,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          paddingHorizontal: 24,
         }}
       >
-        <GhostButton
-          title="what is this?"
-          onPress={() => {}}
-          textColor={theme.blue}
+        <View>
+          <CapsLabel
+            style={{
+              fontSize: 12,
+              marginBottom: 6,
+              color: theme.veryLightText,
+            }}
+          >
+            PULSE
+          </CapsLabel>
+
+          <Label
+            style={{
+              color: theme.lightText,
+            }}
+          >
+            80
+          </Label>
+        </View>
+
+        <View
           style={{
-            padding: 0,
-            borderWidth: 0,
-            borderBottomWidth: 0,
-            marginTop: 6,
+            flexDirection: "column",
+            alignItems: "flex-end",
+            justifyContent: "flex-start",
+            marginBottom: 12,
           }}
-        />
+        >
+          <GhostButton
+            title="what is this?"
+            onPress={() => {
+              navigation.navigate(MARKDOWN_ARTICLE_SCREEN, {
+                title: pulse.title,
+                description: pulse.description,
+                pages: pulse.pages,
+              });
+            }}
+            textColor={theme.blue}
+            style={{
+              padding: 0,
+              borderWidth: 0,
+              borderBottomWidth: 0,
+              marginTop: 6,
+            }}
+          />
+        </View>
       </View>
+
+      <Chart data={data} />
     </View>
-    <View
-      style={{
-        height: 20,
-        width: "100%",
-        backgroundColor: theme.lightOffwhite,
-        borderColor: theme.lightGray,
-        borderWidth: 1,
-        flex: 1,
-        flexDirection: "row",
-        borderRadius: 8,
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: theme.blue,
-          width: "30%",
-          height: 18,
-          borderTopLeftRadius: 8,
-          borderBottomLeftRadius: 8,
-        }}
-      />
-    </View>
-  </View>
-);
+  );
+};
 
 const ExerciseButtons = ({
   navigation,
@@ -133,7 +146,7 @@ const ExerciseButtons = ({
         })
       }
     /> */}
-    <Progress />
+    <Progress navigation={navigation} />
     <ExerciseButton
       title="New Prediction"
       hint="Manage anxiety around upcoming events or tasks."
@@ -220,8 +233,8 @@ export default class MainScreen extends React.Component<
           }}
         >
           <ExerciseButtons navigation={this.props.navigation} />
+          <Feed navigation={this.props.navigation} />
         </InvertibleScrollView>
-        {/* <Feed navigation={this.props.navigation} /> */}
       </View>
     );
   }
