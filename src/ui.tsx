@@ -651,3 +651,17 @@ export const Badge = ({
     <Feather name={featherIconName} size={16} color={theme.lightText} />
   </View>
 );
+
+export const CapsLabel = ({ children, style }) => (
+  <Text
+    style={{
+      fontSize: 10,
+      fontWeight: "700",
+      color: theme.lightText,
+      letterSpacing: 1,
+      ...style,
+    }}
+  >
+    {children}
+  </Text>
+);

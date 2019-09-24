@@ -16,8 +16,6 @@ import { countExercises } from "./exercises/exercises";
 import { userStartedPrediction } from "./predictions/stats";
 import * as flagstore from "../flagstore";
 import { addTagsToUser } from "../id";
-import Feed from "./feed/Feed";
-import { Label } from "../ui";
 import ExerciseButton from "./exercises/ExerciseButton";
 import {
   NavigationScreenProp,
@@ -25,6 +23,88 @@ import {
   NavigationState,
 } from "react-navigation";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
+import { Label, CapsLabel, GhostButton } from "../ui";
+
+const Progress = () => (
+  <View
+    style={{
+      marginTop: 12,
+      marginBottom: 24,
+      paddingHorizontal: 24,
+    }}
+  >
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+      }}
+    >
+      <View>
+        <CapsLabel
+          style={{
+            fontSize: 12,
+            marginBottom: 6,
+            color: theme.veryLightText,
+          }}
+        >
+          BEGINNER
+        </CapsLabel>
+
+        <Label
+          style={{
+            color: theme.lightText,
+          }}
+        >
+          150/400
+        </Label>
+      </View>
+
+      <View
+        style={{
+          flexDirection: "column",
+          alignItems: "flex-end",
+          justifyContent: "flex-end",
+          marginBottom: 12,
+        }}
+      >
+        <GhostButton
+          title="what is this?"
+          onPress={() => {}}
+          textColor={theme.blue}
+          style={{
+            padding: 0,
+            borderWidth: 0,
+            borderBottomWidth: 0,
+            marginTop: 6,
+          }}
+        />
+      </View>
+    </View>
+    <View
+      style={{
+        height: 20,
+        width: "100%",
+        backgroundColor: theme.lightOffwhite,
+        borderColor: theme.lightGray,
+        borderWidth: 1,
+        flex: 1,
+        flexDirection: "row",
+        borderRadius: 8,
+      }}
+    >
+      <View
+        style={{
+          backgroundColor: theme.blue,
+          width: "30%",
+          height: 18,
+          borderTopLeftRadius: 8,
+          borderBottomLeftRadius: 8,
+        }}
+      />
+    </View>
+  </View>
+);
 
 const ExerciseButtons = ({
   navigation,
@@ -34,18 +114,12 @@ const ExerciseButtons = ({
   <View
     style={{
       backgroundColor: theme.offwhite,
-      padding: 24,
-      borderTopColor: theme.lightGray,
       borderTopWidth: 1,
+      borderColor: theme.lightGray,
+      paddingTop: 12,
+      paddingBottom: 24,
     }}
   >
-    <Label
-      style={{
-        marginBottom: 6,
-      }}
-    >
-      Exercises
-    </Label>
     {/* <ExerciseButton
       hasYourAttention={true}
       title="Do this first!"
@@ -59,6 +133,7 @@ const ExerciseButtons = ({
         })
       }
     /> */}
+    <Progress />
     <ExerciseButton
       title="New Prediction"
       hint="Manage anxiety around upcoming events or tasks."
@@ -130,9 +205,10 @@ export default class MainScreen extends React.Component<
     return (
       <View
         style={{
-          flex: 1,
           paddingTop: Constants.statusBarHeight,
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: "white",
+          flex: 1,
+          justifyContent: "space-between",
         }}
       >
         <StatusBar barStyle="dark-content" hidden={false} />
@@ -140,12 +216,12 @@ export default class MainScreen extends React.Component<
         <InvertibleScrollView
           inverted
           style={{
-            backgroundColor: theme.lightOffwhite,
+            flex: 1,
           }}
         >
           <ExerciseButtons navigation={this.props.navigation} />
-          <Feed navigation={this.props.navigation} />
         </InvertibleScrollView>
+        {/* <Feed navigation={this.props.navigation} /> */}
       </View>
     );
   }
