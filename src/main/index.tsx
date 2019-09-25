@@ -1,4 +1,4 @@
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import ThoughtScreen from "./ThoughtScreen";
 import {
   THOUGHT_SCREEN,

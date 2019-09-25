@@ -14,7 +14,7 @@
 	<key>STANDALONE_CONTEXT_TYPE</key>
 	<string>user</string>
 	<key>TEMPORARY_SDK_VERSION</key>
-	<string>33.0.0</string>
+	<string>35.0.0</string>
 	<key>developmentUrl</key>
 	<string>exp4d07d66c4b23470393769aad813cee0c://192.168.86.40:19000</string>
 </dict>
