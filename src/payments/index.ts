@@ -3,6 +3,7 @@ import { REVENUECAT_API_KEY } from "react-native-dotenv";
 import { userCanceledPayment, userRestoredPurchase, log } from "../stats";
 import Sentry from "../sentry";
 import { isGrandfatheredIntoFreeSubscription } from "../history/grandfatherstore";
+import { Platform } from "react-native";
 
 const ALL_ENTITLEMENTS = ["subscription"]; // what you can buy
 
@@ -25,9 +26,9 @@ export const setupRevenutCat = async () => {
   Purchases.setDebugLogsEnabled(!!__DEV__);
   Purchases.setup(REVENUECAT_API_KEY);
 
-  // if (Platform.OS === "ios") {
-  //   Purchases.automaticAppleSearchAdsAttributionCollection = true;
-  // }
+  if (Platform.OS === "ios") {
+    Purchases.automaticAppleSearchAdsAttributionCollection = true;
+  }
 };
 
 // Note that subscriptions can change prices or structure all the time.

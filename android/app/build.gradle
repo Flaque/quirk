@@ -87,6 +87,8 @@ apply from: "../../node_modules/react-native-unimodules/gradle.groovy"
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 dependencies {
+    implementation project(':react-native-reanimated')
+    implementation project(':react-native-gesture-handler')
     implementation project(':react-native-purchases')
     compile project(':react-native-onesignal')
   implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -114,9 +116,6 @@ dependencies {
   implementation 'com.google.android.gms:play-services-auth:15.0.1'
   implementation 'com.google.android.gms:play-services-location:15.0.1'
   implementation 'com.google.android.gms:play-services-ads:15.0.1'
-  annotationProcessor 'com.raizlabs.android:DBFlow-Compiler:2.2.1'
-  implementation "com.raizlabs.android:DBFlow-Core:2.2.1"
-  implementation "com.raizlabs.android:DBFlow:2.2.1"
   implementation "com.madgag.spongycastle:core:1.53.0.0"
   implementation "com.madgag.spongycastle:prov:1.53.0.0"
   debugImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta1'
