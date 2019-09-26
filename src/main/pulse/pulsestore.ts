@@ -20,11 +20,13 @@ export async function getCurrentPulse(): Promise<number> {
   return history[history.length - 1] ? history[history.length - 1].score : 0;
 }
 
-export async function addScoreToHistory(score: number) {
+export async function addScoreToHistory(score: number): Promise<PulseStamp[]> {
   try {
     const history = pushScore(await getPulseHistory(), score);
     await AsyncStorage.setItem(KEY_PULSE_HISTORY, JSON.stringify(history));
+    return getCompleteHistory(history);
   } catch (err) {
     Sentry.captureException(err);
+    return [];
   }
 }

@@ -1,13 +1,38 @@
+export interface Boost {
+  score: number;
+  label: string;
+}
+
 // How much your score degrades every day
 export const DAILY_LOSS = 1;
 
 // Thoughts
-export const START_THOUGHT = 4;
-export const FINISH_THOUGHT = 3;
-export const SCHEDULED_FOLLOW_UP = 1;
-export const FINISHED_FOLLOW_UP = 4;
-export const FELT_BETTER = 1;
+export const START_THOUGHT: Boost = {
+  score: 7,
+  label: "Thought Recorded",
+};
+
+export const SCHEDULED_FOLLOW_UP: Boost = {
+  score: 1,
+  label: "Scheduled Follow-up",
+};
+
+export const FINISHED_FOLLOW_UP: Boost = {
+  score: 4,
+  label: "Finished Follow-up",
+};
+
+export const FELT_BETTER: Boost = {
+  score: 1,
+  label: "Felt better",
+};
 
 // Predictions
-export const START_PREDICTION = 3;
-export const FINISH_PREDICTION = 4;
+export const START_PREDICTION: Boost = {
+  score: 3,
+  label: "Prediction Started",
+};
+export const FINISH_PREDICTION: Boost = {
+  score: 4,
+  label: "Finished Prediction",
+};
