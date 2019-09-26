@@ -12,7 +12,7 @@ import styles from "./styles";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import Constants from "expo-constants";
-import clamp from "./clamp";
+import clamp from "../math/clamp";
 import { Header, HintHeader } from "../ui";
 import CircleFlasher from "./CircleFlasher";
 

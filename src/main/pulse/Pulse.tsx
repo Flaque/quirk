@@ -1,19 +1,24 @@
 import React from "react";
-import { ScreenProps } from "react-navigation";
 import { View } from "react-native";
 import { CapsLabel, Label, GhostButton } from "../../ui";
 import theme from "../../theme";
 import { MARKDOWN_ARTICLE_SCREEN } from "../../screens";
 import pulse from "../../articles/content/pulse";
-import { AreaChart } from "react-native-svg-charts";
+import { AreaChart, Path } from "react-native-svg-charts";
 import * as shape from "d3-shape";
-import { Path } from "react-native-svg";
+import { fill } from "lodash";
+
+const Line = ({ line }) => (
+  <Path
+    key={"line"}
+    d={line}
+    stroke={theme.blue}
+    fill={"none"}
+    animate={true}
+  />
+);
 
 const Chart = ({ data }) => {
-  const Line = ({ line }) => (
-    <Path key={"line"} d={line} stroke={theme.blue} fill={"none"} />
-  );
-
   return (
     <AreaChart
       style={{ height: 100 }}
@@ -21,33 +26,35 @@ const Chart = ({ data }) => {
       contentInset={{ top: 30, bottom: 30 }}
       curve={shape.curveNatural}
       svg={{ fill: "rgba(119, 139, 235, 0.1)" }}
+      animate={true}
     >
       <Line line={data} />
     </AreaChart>
   );
 };
 
-export default class Pulse extends React.Component<ScreenProps> {
+export default class Pulse extends React.Component<
+  ScreenProps,
+  {
+    data: number[];
+  }
+> {
+  state = {
+    data: fill(Array(10), 0),
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        data: [0, 100],
+      });
+    }, 1000);
+  }
+
   render() {
     const { navigation } = this.props;
+    const { data } = this.state;
 
-    const data = [
-      50,
-      10,
-      40,
-      95,
-      -4,
-      -24,
-      85,
-      91,
-      35,
-      53,
-      -53,
-      24,
-      50,
-      -20,
-      100,
-    ];
     return (
       <View
         style={{
