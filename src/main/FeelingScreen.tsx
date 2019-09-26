@@ -11,6 +11,8 @@ import { get } from "lodash";
 import { saveThought, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
 import * as StoreReview from "react-native-store-review";
+import { scheduleBoost } from "./pulse/pulsestore";
+import { START_THOUGHT } from "./pulse/constants";
 
 export default class FeelingScreen extends React.Component<
   ScreenProps,
@@ -68,6 +70,8 @@ export default class FeelingScreen extends React.Component<
         StoreReview.requestReview();
       }
     }
+
+    await scheduleBoost(START_THOUGHT);
 
     this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
       thought,

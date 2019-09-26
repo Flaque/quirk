@@ -7,7 +7,11 @@ import pulse from "../../articles/content/pulse";
 import { AreaChart, Path } from "react-native-svg-charts";
 import * as shape from "d3-shape";
 import { fill } from "lodash";
-import { getPulseHistory, addScoreToHistory } from "./pulsestore";
+import {
+  getPulseHistory,
+  addScoreToHistory,
+  consumeBoosts,
+} from "./pulsestore";
 import { Boost, START_PREDICTION } from "./constants";
 import { FadesIn } from "../../animations";
 import AnimatedCounter from "./AnimatedCounter";
@@ -74,9 +78,15 @@ export default class Pulse extends React.Component<
       this._refreshScore();
     }, 100);
 
-    setTimeout(() => {
-      this._addBoost(START_PREDICTION);
-    }, 1000);
+    this.props.navigation.addListener("didFocus", () => {
+      consumeBoosts().then(boosts => {
+        if (boosts.length === 0) {
+          return;
+        }
+
+        this._addBoost(boosts[0]);
+      });
+    });
   }
 
   _addBoost = async (boost: Boost) => {
@@ -128,7 +138,7 @@ export default class Pulse extends React.Component<
                 color: theme.veryLightText,
               }}
             >
-              PULSE
+              AWARENESS
             </CapsLabel>
 
             <Row>
@@ -177,7 +187,6 @@ export default class Pulse extends React.Component<
                 padding: 0,
                 borderWidth: 0,
                 borderBottomWidth: 0,
-                marginTop: 6,
               }}
             />
           </View>
