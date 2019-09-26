@@ -70,7 +70,7 @@ export function pad30DayHistory(history: PulseStamp[]): Array<number | "NONE"> {
     paddedHistory.push("NONE");
   }
 
-  return paddedHistory;
+  return paddedHistory.reverse();
 }
 
 // Given an incomplete history, calculates dropoff and returns the last 30 days of history
