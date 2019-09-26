@@ -7,6 +7,7 @@ import pulse from "../../articles/content/pulse";
 import { AreaChart, Path } from "react-native-svg-charts";
 import * as shape from "d3-shape";
 import { fill } from "lodash";
+import { getPulseHistory } from "./pulsestore";
 
 const Line = ({ line }) => (
   <Path
@@ -40,15 +41,24 @@ export default class Pulse extends React.Component<
   }
 > {
   state = {
-    data: fill(Array(10), 0),
+    data: fill(Array(30), 0),
   };
 
-  componentDidMount() {
+  _refreshScore = async () => {
+    let history = await getPulseHistory();
+    if (history.length === 0) {
+      return;
+    }
+
+    this.setState({
+      data: history.map(h => h.score),
+    });
+  };
+
+  async componentDidMount() {
     setTimeout(() => {
-      this.setState({
-        data: [0, 100],
-      });
-    }, 1000);
+      this._refreshScore();
+    }, 100);
   }
 
   render() {
@@ -86,7 +96,7 @@ export default class Pulse extends React.Component<
                 color: theme.lightText,
               }}
             >
-              80
+              {data[data.length - 1]}
             </Label>
           </View>
 

@@ -1,11 +1,7 @@
 // import { fill } from "lodash";
 import dayjs from "dayjs";
 import clamp from "../../math/clamp";
-
-interface PulseStamp {
-  score: number;
-  date: string;
-}
+import { PulseStamp } from "./types";
 
 function isSameDay(timeOne: Date | string, timeTwo: Date | string) {
   return new Date(timeOne).toDateString() === new Date(timeTwo).toDateString();
@@ -28,13 +24,8 @@ export function pushScore(history: PulseStamp[], score: number): PulseStamp[] {
   // Add to the current day's pulse
   const lastStamp = history[history.length - 1];
   if (isToday(lastStamp.date)) {
-    return [
-      ...history,
-      {
-        date: lastStamp.date,
-        score: lastStamp.score + score,
-      },
-    ];
+    history[history.length - 1].score += score;
+    return [...history];
   }
 
   // Add to the end
