@@ -11,8 +11,6 @@ import { getPulseHistory, addScoreToHistory } from "./pulsestore";
 import { Boost, START_PREDICTION } from "./constants";
 import { FadesIn } from "../../animations";
 import AnimatedCounter from "./AnimatedCounter";
-import { pushScore } from "./score";
-import { number } from "prop-types";
 
 const Line = ({ line, stroke }) => (
   <Path key={"line"} d={line} stroke={stroke} fill={"none"} animate={true} />
@@ -32,6 +30,9 @@ const Chart = ({ data }: { data: number[] }) => {
       curve={shape.curveCardinal}
       svg={{ fill: "rgba(119, 139, 235, 0.1)" }}
       animate={true}
+      // if the person hasn't been using it for more than 3 days, give a low yMax so
+      // the graph moves and they get some sort of progression
+      yMax={data.filter(d => d !== 0).length <= 3 ? 13 : undefined}
     >
       <Line line={data} stroke={theme.blue} />
     </AreaChart>
