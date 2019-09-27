@@ -134,18 +134,22 @@ export default class Pulse extends React.Component<
       this._refreshScore();
     }, 10);
 
-    this.props.navigation.addListener("didFocus", () => {
-      consumeBoosts().then(boosts => {
-        if (boosts.length === 0) {
-          return;
-        }
+    await this._refreshBoosts();
 
-        for (let i = 0; i < boosts.length; i++) {
-          delay(() => this._addBoost(boosts[i]), i * 1100);
-        }
-      });
-    });
+    this.props.navigation.addListener("didFocus", this._refreshBoosts());
   }
+
+  _refreshBoosts = async () => {
+    const boosts = await consumeBoosts();
+
+    if (boosts.length === 0) {
+      return;
+    }
+
+    for (let i = 0; i < boosts.length; i++) {
+      delay(() => this._addBoost(boosts[i]), i * 1100);
+    }
+  };
 
   _addBoost = async (boost: Boost) => {
     const history = await addScoreToHistory(boost.score);
