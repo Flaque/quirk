@@ -136,7 +136,7 @@ export default class Pulse extends React.Component<
 
     await this._refreshBoosts();
 
-    this.props.navigation.addListener("didFocus", this._refreshBoosts());
+    this.props.navigation.addListener("didFocus", this._refreshBoosts);
   }
 
   _refreshBoosts = async () => {
