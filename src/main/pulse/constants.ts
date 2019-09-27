@@ -27,6 +27,21 @@ export const FELT_BETTER: Boost = {
   label: "Felt better",
 };
 
+export const FIVE_THOUGHTS: Boost = {
+  score: 8,
+  label: "Five Thoughts",
+};
+
+export const TEN_THOUGHTS: Boost = {
+  score: 9,
+  label: "Ten Thoughts",
+};
+
+export const TWENTY_THOUGHTS: Boost = {
+  score: 8,
+  label: "Twenty Thoughts",
+};
+
 // Predictions
 export const START_PREDICTION: Boost = {
   score: 3,
