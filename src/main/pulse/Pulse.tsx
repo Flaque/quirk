@@ -17,6 +17,7 @@ import { FadesIn } from "../../animations";
 import AnimatedCounter from "./AnimatedCounter";
 import { delay } from "lodash";
 import { addTagsToUser } from "../../id";
+import { THOUGHT_SCREEN } from "../screens";
 
 const Line = ({ line, stroke }) => (
   <Path key={"line"} d={line} stroke={stroke} fill={"none"} animate={true} />
@@ -36,9 +37,9 @@ const Chart = ({ data }: { data: number[] }) => {
       curve={shape.curveCardinal}
       svg={{ fill: "rgba(119, 139, 235, 0.1)" }}
       animate={true}
-      // if the person hasn't been using it for more than 3 days, give a low yMax so
+      // if the person hasn't been using it for more than 3 days, give a set yMax so
       // the graph moves and they get some sort of progression
-      yMax={data.filter(d => d !== 0).length <= 3 ? 13 : undefined}
+      yMax={data.filter(d => d !== 0).length <= 3 ? 50 : undefined}
     >
       <Line line={data} stroke={theme.blue} />
     </AreaChart>
@@ -240,6 +241,7 @@ export default class Pulse extends React.Component<
                   title: pulse.title,
                   description: pulse.description,
                   pages: pulse.pages,
+                  nextScreen: THOUGHT_SCREEN,
                 });
               }}
               textColor={theme.blue}

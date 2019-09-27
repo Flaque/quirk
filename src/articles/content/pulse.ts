@@ -18,6 +18,12 @@ When you challenge thoughts, make predictions, or follow-up later, your awarenes
 
 Like any skill, Awareness will naturally drop over time without regular practice. This is natural and just part of the experience. 
 `,
+
+  `# This is a new feature
+
+So let us know what you think. Feel free to send us an email by pressing the "feedback" button in the settings screen.
+
+`,
 ];
 
 export const title = "Awareness";
