@@ -12,9 +12,11 @@ import {
   addScoreToHistory,
   consumeBoosts,
 } from "./pulsestore";
-import { Boost, START_PREDICTION } from "./constants";
+import { Boost } from "./constants";
 import { FadesIn } from "../../animations";
 import AnimatedCounter from "./AnimatedCounter";
+import { delay } from "lodash";
+import { addTagsToUser } from "../../id";
 
 const Line = ({ line, stroke }) => (
   <Path key={"line"} d={line} stroke={stroke} fill={"none"} animate={true} />
@@ -43,6 +45,53 @@ const Chart = ({ data }: { data: number[] }) => {
   );
 };
 
+class BoostLabel extends React.Component<
+  { boost: Boost },
+  {
+    isVisible: boolean;
+  }
+> {
+  state = {
+    isVisible: false,
+  };
+
+  componentDidMount() {
+    this.setState({ isVisible: true });
+    setTimeout(() => {
+      this.setState({
+        isVisible: false,
+      });
+    }, 800);
+  }
+
+  render() {
+    const { boost } = this.props;
+
+    return (
+      <FadesIn pose={this.state.isVisible ? "visible" : "hidden"}>
+        <Row
+          style={{
+            position: "relative",
+            zIndex: 5,
+          }}
+        >
+          <Label
+            style={{
+              color: theme.blue,
+              backgroundColor: theme.offwhite,
+              borderRadius: 8,
+              padding: 2,
+            }}
+          >
+            +{boost.score}
+            {" " + boost.label}
+          </Label>
+        </Row>
+      </FadesIn>
+    );
+  }
+}
+
 export default class Pulse extends React.Component<
   ScreenProps,
   {
@@ -51,6 +100,7 @@ export default class Pulse extends React.Component<
     showBoost: boolean;
     boostLabel: string;
     boostEffect: string;
+    boosts: Boost[];
   }
 > {
   state = {
@@ -59,6 +109,7 @@ export default class Pulse extends React.Component<
     showBoost: false,
     boostLabel: "",
     boostEffect: "",
+    boosts: [],
   };
 
   _refreshScore = async () => {
@@ -71,12 +122,16 @@ export default class Pulse extends React.Component<
     this.setState({
       data: scores,
     });
+
+    addTagsToUser({
+      awareness: `${scores[scores.length - 1]}`,
+    });
   };
 
   async componentDidMount() {
     setTimeout(() => {
       this._refreshScore();
-    }, 100);
+    }, 10);
 
     this.props.navigation.addListener("didFocus", () => {
       consumeBoosts().then(boosts => {
@@ -84,7 +139,9 @@ export default class Pulse extends React.Component<
           return;
         }
 
-        this._addBoost(boosts[0]);
+        for (let i = 0; i < boosts.length; i++) {
+          delay(() => this._addBoost(boosts[i]), i * 1100);
+        }
       });
     });
   }
@@ -92,28 +149,36 @@ export default class Pulse extends React.Component<
   _addBoost = async (boost: Boost) => {
     const history = await addScoreToHistory(boost.score);
 
-    this.setState({
-      showBoost: true,
-      boostLabel: boost.label,
-      boostEffect: `${boost.score}`,
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        boosts: [...prevState.boosts, boost],
+      };
     });
 
     setTimeout(() => {
       this.setState({
         data: history.map(h => h.score),
       });
-    }, 600);
+    }, 150);
 
+    // Pop boosts
     setTimeout(() => {
-      this.setState({
-        showBoost: false,
+      this.setState(prevState => {
+        const b = [...prevState.boosts];
+        b.pop();
+
+        return {
+          ...prevState,
+          boosts: b,
+        };
       });
-    }, 1000);
+    }, 950); // Don't make this more than 1000
   };
 
   render() {
     const { navigation } = this.props;
-    const { data, showBoost, boostEffect, boostLabel } = this.state;
+    const { data, boosts } = this.state;
 
     return (
       <View
@@ -148,21 +213,16 @@ export default class Pulse extends React.Component<
                 keyFrames={8}
               />
             </Row>
-            <FadesIn pose={showBoost ? "visible" : "hidden"}>
-              <Row>
-                <Label
-                  style={{
-                    color: theme.blue,
-                    backgroundColor: theme.offwhite,
-                    borderRadius: 8,
-                    padding: 2,
-                  }}
-                >
-                  +{boostEffect}
-                  {" " + boostLabel}
-                </Label>
-              </Row>
-            </FadesIn>
+
+            <View
+              style={{
+                height: 48,
+              }}
+            >
+              {boosts.map(b => (
+                <BoostLabel boost={b} />
+              ))}
+            </View>
           </View>
 
           <View

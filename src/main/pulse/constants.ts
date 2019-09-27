@@ -8,7 +8,7 @@ export const DAILY_LOSS = 1;
 
 // Thoughts
 export const START_THOUGHT: Boost = {
-  score: 7,
+  score: 6,
   label: "Thought Recorded",
 };
 
