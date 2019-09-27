@@ -3,6 +3,7 @@ import Sentry from "../../sentry";
 import { PulseStamp } from "./types";
 import { pushScore, getCompleteHistory } from "./score";
 import { Boost } from "./constants";
+import { passesFeatureFlag } from "../../featureflags";
 
 const KEY_PULSE_HISTORY = `@Quirk:pulse:history`;
 const KEY_BOOST_QUEUE = `@Quirk:pulse:boost-queue`;
@@ -45,6 +46,11 @@ async function getBoostQueue(): Promise<Array<Boost>> {
 
 export async function scheduleBoost(boost: Boost) {
   try {
+    // REMOVE AFTER A/B TEST
+    if (!(await passesFeatureFlag("awareness-1", 3))) {
+      return;
+    }
+
     const queue = await getBoostQueue();
     queue.push(boost);
     await AsyncStorage.setItem(KEY_BOOST_QUEUE, JSON.stringify(queue));

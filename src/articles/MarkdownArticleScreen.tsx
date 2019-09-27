@@ -42,6 +42,10 @@ export default class MarkdownArticleScreen extends React.Component<
   }
 
   refresh: NavigationEventCallback = async payload => {
+    this.setState({
+      isReady: false,
+    });
+
     const pages = get(payload, "action.params.pages", []);
     const title = get(payload, "action.params.title", "");
     const description = get(payload, "action.params.description", "");
@@ -66,6 +70,13 @@ export default class MarkdownArticleScreen extends React.Component<
     });
   };
 
+  onFinish = () => {
+    this.setState({
+      isReady: false,
+    });
+    this.props.navigation.navigate(this.state.nextScreen);
+  };
+
   render() {
     if (!this.state.isReady) {
       return null;
@@ -78,12 +89,8 @@ export default class MarkdownArticleScreen extends React.Component<
           pages={this.state.pages}
           title={this.state.title}
           description={this.state.description}
-          onFinish={() => {
-            this.props.navigation.navigate(this.state.nextScreen);
-          }}
-          onExit={() => {
-            this.props.navigation.navigate(this.state.nextScreen);
-          }}
+          onFinish={this.onFinish}
+          onExit={this.onFinish}
           shouldHideExitButton={this.state.shouldHideExitButton}
         />
       </FadesIn>

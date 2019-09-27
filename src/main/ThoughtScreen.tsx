@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ScreenProps from "../ScreenProps";
 import { View, StatusBar } from "react-native";
 import { getIsExistingUser, setIsExistingUser } from "../thoughtstore";
@@ -23,27 +23,33 @@ import {
   NavigationState,
 } from "react-navigation";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
-import { Label, CapsLabel, GhostButton } from "../ui";
 import Feed from "./feed/Feed";
-import { MARKDOWN_ARTICLE_SCREEN } from "../screens";
-import pulse from "../articles/content/pulse";
 import Pulse from "./pulse/Pulse";
+import { passesFeatureFlag } from "../featureflags";
 
 const ExerciseButtons = ({
   navigation,
 }: {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
-}) => (
-  <View
-    style={{
-      backgroundColor: theme.offwhite,
-      borderTopWidth: 1,
-      borderColor: theme.lightGray,
-      paddingTop: 12,
-      paddingBottom: 24,
-    }}
-  >
-    {/* <ExerciseButton
+}) => {
+  const [showProgression, setShowProgression] = useState(false);
+  useEffect(() => {
+    passesFeatureFlag("awareness-1", 3).then(passes => {
+      setShowProgression(!!passes);
+    });
+  });
+
+  return (
+    <View
+      style={{
+        backgroundColor: theme.offwhite,
+        borderTopWidth: 1,
+        borderColor: theme.lightGray,
+        paddingTop: 12,
+        paddingBottom: 24,
+      }}
+    >
+      {/* <ExerciseButton
       hasYourAttention={true}
       title="Do this first!"
       hint="Learn about CBT and how it can help you."
@@ -56,31 +62,34 @@ const ExerciseButtons = ({
         })
       }
     /> */}
-    <Pulse navigation={navigation} />
-    <ExerciseButton
-      title="New Prediction"
-      hint="Manage anxiety around upcoming events or tasks."
-      featherIconName="cloud-drizzle"
-      onPress={async () => {
-        userStartedPrediction();
+      {showProgression && <Pulse navigation={navigation} />}
+      <ExerciseButton
+        title="New Prediction"
+        hint="Manage anxiety around upcoming events or tasks."
+        featherIconName="cloud-drizzle"
+        onPress={async () => {
+          userStartedPrediction();
 
-        if (!(await flagstore.get("has-seen-prediction-onboarding", "false"))) {
-          navigation.navigate(PREDICTION_ONBOARDING_SCREEN);
-          flagstore.setTrue("has-seen-prediction-onboarding");
-          return;
-        }
+          if (
+            !(await flagstore.get("has-seen-prediction-onboarding", "false"))
+          ) {
+            navigation.navigate(PREDICTION_ONBOARDING_SCREEN);
+            flagstore.setTrue("has-seen-prediction-onboarding");
+            return;
+          }
 
-        navigation.navigate(ASSUMPTION_SCREEN);
-      }}
-    />
-    <ExerciseButton
-      title="New Automatic Thought"
-      hint="Challenge your in-the-moment automatic negative thoughts."
-      featherIconName="message-square"
-      onPress={() => navigation.navigate(AUTOMATIC_THOUGHT_SCREEN)}
-    />
-  </View>
-);
+          navigation.navigate(ASSUMPTION_SCREEN);
+        }}
+      />
+      <ExerciseButton
+        title="New Automatic Thought"
+        hint="Challenge your in-the-moment automatic negative thoughts."
+        featherIconName="message-square"
+        onPress={() => navigation.navigate(AUTOMATIC_THOUGHT_SCREEN)}
+      />
+    </View>
+  );
+};
 
 export default class MainScreen extends React.Component<
   ScreenProps,
