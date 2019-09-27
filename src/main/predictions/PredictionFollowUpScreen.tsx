@@ -18,6 +18,8 @@ import { PREDICTION_SUMMARY_SCREEN } from "../screens";
 import { Prediction, savePrediction } from "./predictionstore";
 import { userRecordedActualExperience } from "./stats";
 import { TextInput } from "../../textInputStyle";
+import { FINISH_PREDICTION } from "../pulse/constants";
+import { scheduleBoost } from "../pulse/pulsestore";
 
 export default class PredictionFollowUpScreen extends React.Component<
   ScreenProps,
@@ -49,6 +51,8 @@ export default class PredictionFollowUpScreen extends React.Component<
     await savePrediction(this.state.prediction);
 
     userRecordedActualExperience(this.state.prediction.actualExperience);
+
+    await scheduleBoost(FINISH_PREDICTION);
 
     this.props.navigation.navigate(PREDICTION_SUMMARY_SCREEN, {
       prediction: this.state.prediction,

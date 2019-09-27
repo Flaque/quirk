@@ -21,6 +21,8 @@ import scheduleNotification from "../../notifications/scheduleNotification";
 import { PREDICTION_ONESIGNAL_TEMPLATE } from "../followups/templates";
 import dayjs from "dayjs";
 import { userScheduledPredictionFollowUp } from "./stats";
+import { scheduleBoost } from "../pulse/pulsestore";
+import { START_PREDICTION } from "../pulse/constants";
 
 type FollowUpSelections =
   | "+3 hours"
@@ -95,6 +97,8 @@ export default class PredictionScheduleFollowUpScreen extends React.Component<
     await savePrediction(prediction);
 
     userScheduledPredictionFollowUp(this.state.followUpOn);
+
+    await scheduleBoost(START_PREDICTION);
 
     if (prediction.predictedExperience === "bad") {
       this.props.navigation.navigate(PREDICTION_REDIRECT_SCREEN, {

@@ -89,9 +89,6 @@ export default ({
         paddingTop: Constants.statusBarHeight,
       }}
     >
-      {items.length < ENOUGH_DAYS && (
-        <NotEnoughThoughtsIllustration count={items.length} />
-      )}
       {items}
     </View>
   );

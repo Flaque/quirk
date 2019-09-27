@@ -2,7 +2,6 @@ import React from "react";
 import {
   TouchableCardContainer,
   CardAttentionDot,
-  TitleAndSubtitleContent,
   CardTitleAndSubtitleContent,
 } from "../../card/TouchableCard";
 import shadowStyle from "../../shadowStyle";
@@ -33,6 +32,8 @@ const ExerciseButton = ({
         justifyContent: "space-between",
         marginBottom: 12,
         borderColor: hasYourAttention ? theme.pink : theme.lightGray,
+        borderRadius: 0,
+        paddingLeft: 12,
         ...shadowStyle,
       }}
       onPress={onPress}
@@ -46,10 +47,9 @@ const ExerciseButton = ({
             : theme.lightOffwhite,
           height: "100%",
           width: 64,
-          borderTopRightRadius: 8,
-          borderBottomRightRadius: 8,
           justifyContent: "center",
           alignItems: "center",
+          paddingRight: 12,
         }}
       >
         <Feather

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ScreenProps from "../ScreenProps";
 import { View, StatusBar } from "react-native";
 import { getIsExistingUser, setIsExistingUser } from "../thoughtstore";
@@ -16,8 +16,6 @@ import { countExercises } from "./exercises/exercises";
 import { userStartedPrediction } from "./predictions/stats";
 import * as flagstore from "../flagstore";
 import { addTagsToUser } from "../id";
-import Feed from "./feed/Feed";
-import { Label } from "../ui";
 import ExerciseButton from "./exercises/ExerciseButton";
 import {
   NavigationScreenProp,
@@ -25,28 +23,33 @@ import {
   NavigationState,
 } from "react-navigation";
 import InvertibleScrollView from "react-native-invertible-scroll-view";
+import Feed from "./feed/Feed";
+import Pulse from "./pulse/Pulse";
+import { passesFeatureFlag } from "../featureflags";
 
 const ExerciseButtons = ({
   navigation,
 }: {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
-}) => (
-  <View
-    style={{
-      backgroundColor: theme.offwhite,
-      padding: 24,
-      borderTopColor: theme.lightGray,
-      borderTopWidth: 1,
-    }}
-  >
-    <Label
+}) => {
+  const [showProgression, setShowProgression] = useState(false);
+  useEffect(() => {
+    passesFeatureFlag("awareness-1", 3).then(passes => {
+      setShowProgression(!!passes);
+    });
+  });
+
+  return (
+    <View
       style={{
-        marginBottom: 6,
+        backgroundColor: theme.offwhite,
+        borderTopWidth: 1,
+        borderColor: theme.lightGray,
+        paddingTop: 12,
+        paddingBottom: 24,
       }}
     >
-      Exercises
-    </Label>
-    {/* <ExerciseButton
+      {/* <ExerciseButton
       hasYourAttention={true}
       title="Do this first!"
       hint="Learn about CBT and how it can help you."
@@ -59,30 +62,34 @@ const ExerciseButtons = ({
         })
       }
     /> */}
-    <ExerciseButton
-      title="New Prediction"
-      hint="Manage anxiety around upcoming events or tasks."
-      featherIconName="cloud-drizzle"
-      onPress={async () => {
-        userStartedPrediction();
+      {showProgression && <Pulse navigation={navigation} />}
+      <ExerciseButton
+        title="New Prediction"
+        hint="Manage anxiety around upcoming events or tasks."
+        featherIconName="cloud-drizzle"
+        onPress={async () => {
+          userStartedPrediction();
 
-        if (!(await flagstore.get("has-seen-prediction-onboarding", "false"))) {
-          navigation.navigate(PREDICTION_ONBOARDING_SCREEN);
-          flagstore.setTrue("has-seen-prediction-onboarding");
-          return;
-        }
+          if (
+            !(await flagstore.get("has-seen-prediction-onboarding", "false"))
+          ) {
+            navigation.navigate(PREDICTION_ONBOARDING_SCREEN);
+            flagstore.setTrue("has-seen-prediction-onboarding");
+            return;
+          }
 
-        navigation.navigate(ASSUMPTION_SCREEN);
-      }}
-    />
-    <ExerciseButton
-      title="New Automatic Thought"
-      hint="Challenge your in-the-moment automatic negative thoughts."
-      featherIconName="message-square"
-      onPress={() => navigation.navigate(AUTOMATIC_THOUGHT_SCREEN)}
-    />
-  </View>
-);
+          navigation.navigate(ASSUMPTION_SCREEN);
+        }}
+      />
+      <ExerciseButton
+        title="New Automatic Thought"
+        hint="Challenge your in-the-moment automatic negative thoughts."
+        featherIconName="message-square"
+        onPress={() => navigation.navigate(AUTOMATIC_THOUGHT_SCREEN)}
+      />
+    </View>
+  );
+};
 
 export default class MainScreen extends React.Component<
   ScreenProps,
@@ -130,9 +137,10 @@ export default class MainScreen extends React.Component<
     return (
       <View
         style={{
-          flex: 1,
           paddingTop: Constants.statusBarHeight,
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: "white",
+          flex: 1,
+          justifyContent: "space-between",
         }}
       >
         <StatusBar barStyle="dark-content" hidden={false} />
@@ -140,7 +148,7 @@ export default class MainScreen extends React.Component<
         <InvertibleScrollView
           inverted
           style={{
-            backgroundColor: theme.lightOffwhite,
+            flex: 1,
           }}
         >
           <ExerciseButtons navigation={this.props.navigation} />

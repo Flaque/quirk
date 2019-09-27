@@ -11,6 +11,14 @@ import { get } from "lodash";
 import { saveThought, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
 import * as StoreReview from "react-native-store-review";
+import { scheduleBoost } from "./pulse/pulsestore";
+import {
+  START_THOUGHT,
+  FELT_BETTER,
+  FIVE_THOUGHTS,
+  TEN_THOUGHTS,
+  TWENTY_THOUGHTS,
+} from "./pulse/constants";
 
 export default class FeelingScreen extends React.Component<
   ScreenProps,
@@ -53,6 +61,21 @@ export default class FeelingScreen extends React.Component<
     return saveThought(this.state.thought);
   };
 
+  _sendStandardBoosts = async () => {
+    await scheduleBoost(START_THOUGHT);
+
+    const numPreviousThoughts = await countThoughts();
+    if (numPreviousThoughts === 5) {
+      await scheduleBoost(FIVE_THOUGHTS);
+    }
+    if (numPreviousThoughts === 10) {
+      await scheduleBoost(TEN_THOUGHTS);
+    }
+    if (numPreviousThoughts === 20) {
+      await scheduleBoost(TWENTY_THOUGHTS);
+    }
+  };
+
   onFeltBetter = async () => {
     haptic.selection();
     stats.userFeltBetter();
@@ -69,6 +92,9 @@ export default class FeelingScreen extends React.Component<
       }
     }
 
+    await scheduleBoost(FELT_BETTER);
+    await this._sendStandardBoosts();
+
     this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
       thought,
     });
@@ -77,6 +103,8 @@ export default class FeelingScreen extends React.Component<
   onFeltTheSame = async () => {
     haptic.selection();
     const thought = await this.saveCheckup("same");
+
+    await this._sendStandardBoosts();
 
     stats.userFeltTheSame();
     this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
@@ -87,6 +115,8 @@ export default class FeelingScreen extends React.Component<
   onFeltWorse = async () => {
     haptic.selection();
     const thought = await this.saveCheckup("worse");
+
+    await this._sendStandardBoosts();
 
     stats.userFeltWorse();
     this.props.navigation.navigate(FOLLOW_UP_REQUEST_SCREEN, {
