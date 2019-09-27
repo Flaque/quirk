@@ -46,11 +46,6 @@ async function getBoostQueue(): Promise<Array<Boost>> {
 
 export async function scheduleBoost(boost: Boost) {
   try {
-    // REMOVE AFTER A/B TEST
-    if (!(await passesFeatureFlag("awareness-1", 3))) {
-      return;
-    }
-
     const queue = await getBoostQueue();
     queue.push(boost);
     await AsyncStorage.setItem(KEY_BOOST_QUEUE, JSON.stringify(queue));
