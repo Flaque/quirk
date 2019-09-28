@@ -17,6 +17,16 @@ import howToUseQuirk from "../articles/content/howToUseQuirk";
 import allOrNothing from "../articles/content/all-or-nothing";
 import catastrophizing from "../articles/content/catastrophizing";
 import emotionalReasoning from "../articles/content/emotional-reasoning";
+import fortuneTelling from "../articles/content/fortune-telling";
+import labeling from "../articles/content/labeling";
+import magnification from "../articles/content/magnification-of-the-negative";
+import mindReading from "../articles/content/mind-reading";
+import minimization from "../articles/content/minimization-of-the-positive";
+import otherBlaming from "../articles/content/other-blaming";
+import overgeneralization from "../articles/content/overgeneralization";
+import predictions from "../articles/content/predictions";
+import selfBlaming from "../articles/content/self-blaming";
+import shouldStatements from "../articles/content/should-statements";
 
 const ArticleWithImageCard = ({
   content,
@@ -83,22 +93,44 @@ export default class LearnScreen extends React.Component<ScreenProps> {
           backgroundColor: theme.lightOffwhite,
         }}
       >
-        <MediumHeader
+        <View
           style={{
-            marginBottom: 24,
+            marginBottom: 128,
           }}
         >
-          To Read
-        </MediumHeader>
+          <MediumHeader
+            style={{
+              marginBottom: 24,
+            }}
+          >
+            To Read
+          </MediumHeader>
 
-        <SubHeader>Start Here</SubHeader>
-        <ArticleWithImageCard content={cbt101} onPress={this._openContent} />
-        <ArticleCard content={howToUseQuirk} onPress={this._openContent} />
+          <SubHeader>Start Here</SubHeader>
+          <ArticleWithImageCard content={cbt101} onPress={this._openContent} />
+          <ArticleCard content={howToUseQuirk} onPress={this._openContent} />
 
-        <SubHeader>Cognitive Distortions</SubHeader>
-        <ArticleCard content={allOrNothing} onPress={this._openContent} />
-        <ArticleCard content={catastrophizing} onPress={this._openContent} />
-        <ArticleCard content={emotionalReasoning} onPress={this._openContent} />
+          <SubHeader>Cognitive Distortions</SubHeader>
+          <ArticleCard content={allOrNothing} onPress={this._openContent} />
+          <ArticleCard content={catastrophizing} onPress={this._openContent} />
+          <ArticleCard
+            content={emotionalReasoning}
+            onPress={this._openContent}
+          />
+          <ArticleCard content={fortuneTelling} onPress={this._openContent} />
+          <ArticleCard content={labeling} onPress={this._openContent} />
+          <ArticleCard content={magnification} onPress={this._openContent} />
+          <ArticleCard content={mindReading} onPress={this._openContent} />
+          <ArticleCard content={minimization} onPress={this._openContent} />
+          <ArticleCard content={otherBlaming} onPress={this._openContent} />
+          <ArticleCard
+            content={overgeneralization}
+            onPress={this._openContent}
+          />
+          <ArticleCard content={predictions} onPress={this._openContent} />
+          <ArticleCard content={selfBlaming} onPress={this._openContent} />
+          <ArticleCard content={shouldStatements} onPress={this._openContent} />
+        </View>
       </ScrollView>
     );
   }
