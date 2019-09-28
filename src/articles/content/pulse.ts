@@ -4,12 +4,12 @@ export const pages = [
   // One
   `# What's Awareness? 
 
-  Challenging thoughts in the moment is hard. It requires an awareness of your thoughts that takes practice to build up. 
-  
-  To help, we've created the Awareness score. It shows you the rough likelihood that you'll challenge any negative thought in the moment. You can also think about it as the "strength" of your thought-challenging habit. 
+Challenging thoughts in the moment is hard. It requires an awareness of your thoughts that takes practice to build up. 
 
-  This really is a _skill_ you have to build up and the Awareness graph will help you see your progress over time.
-  `,
+To help, we've created the Awareness score. It shows you the rough likelihood that you'll challenge any negative thought in the moment. You can also think about it as the "strength" of your thought-challenging habit. 
+
+This really is a _skill_ you have to build up and the Awareness graph will help you see your progress over time.
+`,
 
   // Two
   `# How Awareness works 

@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
-import { MediumHeader } from "../ui";
+import { MediumHeader, SubHeader } from "../ui";
 import ScreenProps from "../ScreenProps";
 import theme from "../theme";
 import Constants from "expo-constants";
@@ -11,9 +11,12 @@ import {
 } from "../card/TouchableCard";
 import Content from "../articles/Content";
 import { MARKDOWN_ARTICLE_SCREEN } from "../screens";
+import { HowToQuirkImage } from "./images";
 import cbt101 from "../articles/content/cbt101";
 import howToUseQuirk from "../articles/content/howToUseQuirk";
-import { HowToQuirkImage } from "./images";
+import allOrNothing from "../articles/content/all-or-nothing";
+import catastrophizing from "../articles/content/catastrophizing";
+import emotionalReasoning from "../articles/content/emotional-reasoning";
 
 const ArticleWithImageCard = ({
   content,
@@ -80,11 +83,22 @@ export default class LearnScreen extends React.Component<ScreenProps> {
           backgroundColor: theme.lightOffwhite,
         }}
       >
-        <MediumHeader>To Read</MediumHeader>
+        <MediumHeader
+          style={{
+            marginBottom: 24,
+          }}
+        >
+          To Read
+        </MediumHeader>
 
+        <SubHeader>Start Here</SubHeader>
         <ArticleWithImageCard content={cbt101} onPress={this._openContent} />
         <ArticleCard content={howToUseQuirk} onPress={this._openContent} />
-        <ArticleCard content={cbt101} onPress={this._openContent} />
+
+        <SubHeader>Cognitive Distortions</SubHeader>
+        <ArticleCard content={allOrNothing} onPress={this._openContent} />
+        <ArticleCard content={catastrophizing} onPress={this._openContent} />
+        <ArticleCard content={emotionalReasoning} onPress={this._openContent} />
       </ScrollView>
     );
   }
