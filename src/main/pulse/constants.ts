@@ -51,3 +51,9 @@ export const FINISH_PREDICTION: Boost = {
   score: 4,
   label: "Finished Prediction",
 };
+
+// Checkups
+export const COMPLETE_CHECKUP: Boost = {
+  score: 3,
+  label: "Completed Checkup",
+};

@@ -32,6 +32,8 @@ import { CHECKUP_ONESIGNAL_TEMPLATE } from "../main/followups/templates";
 import { userFinishedCheckup } from "../stats";
 import scheduleNotification from "../notifications/scheduleNotification";
 import { CHECKUP_REDIRECT_SCREEN } from "./screens";
+import { scheduleBoost } from "../main/pulse/pulsestore";
+import { COMPLETE_CHECKUP, FELT_BETTER } from "../main/pulse/constants";
 
 export default class HowYaDoinScreen extends React.Component<
   ScreenProps,
@@ -67,6 +69,11 @@ export default class HowYaDoinScreen extends React.Component<
     }
     haptic.notification(Haptic.NotificationFeedbackType.Success);
     await saveCheckup(this.state.checkup);
+
+    await scheduleBoost(COMPLETE_CHECKUP);
+    if (this.state.checkup.currentMood === "good") {
+      await scheduleBoost(FELT_BETTER);
+    }
 
     const nextCheckupDate = dayjs()
       .add(1, "week")
