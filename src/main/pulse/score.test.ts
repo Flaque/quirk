@@ -71,8 +71,8 @@ test("pushScore correctly adds something to the end of the history", () => {
 
   const newHistory = pushScore(history, 30);
   expect(newHistory[newHistory.length - 1].score).toBe(35);
-  expect(newHistory[newHistory.length - 3].score).toBe(10);
-  expect(newHistory[newHistory.length - 25].score).toBe(40);
+  expect(newHistory[newHistory.length - 3].score).toBe(0);
+  expect(newHistory[newHistory.length - 24].score).toBe(40);
 });
 
 test("completeHistory correctly gives a history", () => {
