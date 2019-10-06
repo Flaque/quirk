@@ -59,6 +59,9 @@ Quirk is built on React Native and therefore assumes you have [node](https://nod
 # clone the project and cd into it
 git clone git@github.com:Flaque/quirk.git; cd ./quirk
 
+# copy the sample .env (edit as required)
+cp .env.sample .env
+
 # install dependencies
 yarn
 
