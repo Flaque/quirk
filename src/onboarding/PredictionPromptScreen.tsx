@@ -184,6 +184,7 @@ export default class PredictionPromptScreen extends React.Component<
           width="100%"
           style={{
             marginTop: 24,
+            marginBottom: 48
           }}
         />
       </ScrollView>
