@@ -1,3 +1,4 @@
+//this has main code for the program
 import { createAppContainer } from "react-navigation";
 import {
   EXPLANATION_SCREEN,
