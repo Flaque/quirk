@@ -33,6 +33,7 @@ if (Platform.OS === "android") {
       fontFamily: "Roboto",
       textAlign:'center',
       justifyContent:'center',
+      backgroundColor:'white',
     },
   });
 }
