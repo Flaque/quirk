@@ -31,7 +31,7 @@ If you want to fork Quirk, you should fork off of [this commit](https://github.c
 <h1 align="center">✨🐙 quirk. </h1>
 </p>
 <p align="center">
-  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
+  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact us</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
 <br><br>
 </p>
 
