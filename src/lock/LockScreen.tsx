@@ -273,7 +273,7 @@ export default class extends React.Component<
 
           <Row
             style={{
-              justifyContent: "space-evenly",
+              justifyContent: "center",
             }}
           >
             {/* this is a secret button, for use in resetting in the future */}
