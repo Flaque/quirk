@@ -5,32 +5,32 @@ import theme from "../theme";
 
 const PurpleBubble = () => (
   <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    style={{ marginRight: 8, marginLeft: 8, width: 40, height: 40 }}
     source={require("../../assets/pink/Dook.png")}
   />
 );
 
 const YellowBubble = () => (
   <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    style={{ marginRight: 8, marginLeft: 8, width: 40, height: 40}}
     source={require("../../assets/yellow/Dook.png")}
   />
 );
 
 const PinkBubble = () => (
   <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    style={{ marginRight: 8, marginLeft: 8, width: 40, height: 40 }}
     source={require("../../assets/pink/Dook.png")}
   />
 );
 
 export const BubbleThought = ({
   children,
-  color = "yellow",
+  color = "#4cbdac",
   style,
 }: {
   children: any;
-  color?: "yellow" | "purple" | "pink";
+  color?: "#4cbdac" | "red" | "pink";
   style?: any;
 }) => {
   const bubbles = {
@@ -51,9 +51,9 @@ export const BubbleThought = ({
       {bubbles[color]}
       <View
         style={{
-          backgroundColor: theme.offwhite,
-          borderRadius: 8,
-          padding: 8,
+          backgroundColor: theme.lightGray,
+          borderRadius: 25,
+          padding: 10,
         }}
       >
         <Paragraph>{children}</Paragraph>
