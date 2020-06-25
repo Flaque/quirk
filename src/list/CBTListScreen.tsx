@@ -76,12 +76,12 @@ const ThoughtItem = ({
       <View
         style={{
           backgroundColor: theme.lightOffwhite,
-          paddingLeft: 12,
-          paddingRight: 12,
-          paddingBottom: 12,
-          paddingTop: 6,
-          margin: 4,
-          borderRadius: 8,
+          paddingLeft: 20,
+          paddingRight: 20,
+          paddingBottom: 20,
+          paddingTop: 10,
+          margin: 8,
+          borderRadius: 26,
         }}
       >
         <Paragraph>
@@ -281,7 +281,7 @@ class CBTListScreen extends React.Component<Props, State> {
           style={{
             backgroundColor: theme.lightOffwhite,
             marginTop: Constants.statusBarHeight,
-            paddingTop: 24,
+            paddingTop: 30,
             height: "100%",
           }}
         >
