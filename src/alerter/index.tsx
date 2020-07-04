@@ -57,12 +57,12 @@ class AlertView extends React.Component<AlertViewProps> {
             position: "absolute",
             width: "100%",
             height: 256,
-            padding: 24,
-            bottom: 24,
-            borderRadius: 13,
+            padding: 25,
+            bottom: 25,
+            borderRadius: 12,
             backgroundColor: "white",
             borderColor: theme.lightGray,
-            borderWidth: 2,
+            borderWidth: 1.5,
             shadowColor: theme.lightGray,
             shadowOffset: { width: 0, height: 1 },
             shadowRadius: 10,
@@ -84,9 +84,9 @@ class AlertView extends React.Component<AlertViewProps> {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-end",
-                lineHeight: 48,
+                lineHeight: 50,
                 marginBottom: 0,
-                fontSize: 24,
+                fontSize: 26,
               }}
             >
               {title}
