@@ -118,7 +118,7 @@ export default class extends React.Component<
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
 
     await this.setState(prevState => {
-      if (prevState.code.length === 4) {
+      if (prevState.code.length === 8) {
         return prevState;
       }
       return {
@@ -127,7 +127,7 @@ export default class extends React.Component<
       };
     });
 
-    if (this.state.code.length !== 4) {
+    if (this.state.code.length !== 8) {
       return;
     }
 
@@ -237,6 +237,10 @@ export default class extends React.Component<
             <Notifier isActive={code.length >= 2} />
             <Notifier isActive={code.length >= 3} />
             <Notifier isActive={code.length >= 4} />
+            <Notifier isActive={code.length >= 5} />
+            <Notifier isActive={code.length >= 6} />
+            <Notifier isActive={code.length >= 7} />
+            <Notifier isActive={code.length >= 8} />
           </Row>
           <Row
             style={{
