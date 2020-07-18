@@ -1,3 +1,4 @@
+// import files.
 import { createAppContainer } from "react-navigation";
 import {
   EXPLANATION_SCREEN,
@@ -35,6 +36,7 @@ if (Platform.OS === "android") {
   });
 }
 
+//Contains all the tabs and screens
 const App = createBottomTabNavigator(
   {
     [MAIN_SCREEN]: MainScreen,
@@ -54,5 +56,5 @@ const App = createBottomTabNavigator(
     },
   }
 );
-
+//exporting
 export default withErrorBoundary(createAppContainer(App));
