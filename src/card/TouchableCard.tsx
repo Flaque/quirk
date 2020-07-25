@@ -19,7 +19,7 @@ export const TouchableCardContainer = ({
       backgroundColor: "white",
       borderColor: theme.lightGray,
       borderBottomWidth: 2,
-      borderRadius: 8,
+      borderRadius: 10,
       borderWidth: 1,
       marginBottom: 18,
       flex: 1,
@@ -67,7 +67,7 @@ export const CardCrown = ({
     <Feather
       name={featherIconName}
       color={color || theme.veryLightText}
-      size={12}
+      size={15}
     />
   </View>
 );
