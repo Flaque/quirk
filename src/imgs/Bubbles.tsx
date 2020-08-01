@@ -5,21 +5,21 @@ import theme from "../theme";
 
 const PurpleBubble = () => (
   <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    style={{ marginRight: 8, marginLeft: 4, width: 30, height: 30 }}
     source={require("../../assets/pink/Dook.png")}
   />
 );
 
 const YellowBubble = () => (
   <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    style={{ marginRight: 8, marginLeft: 4, width: 30, height: 30 }}
     source={require("../../assets/yellow/Dook.png")}
   />
 );
 
 const PinkBubble = () => (
   <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    style={{ marginRight: 8, marginLeft: 4, width: 30, height: 30 }}
     source={require("../../assets/pink/Dook.png")}
   />
 );

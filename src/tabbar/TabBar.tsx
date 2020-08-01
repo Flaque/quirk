@@ -86,13 +86,13 @@ export default class extends React.Component<ScreenProps> {
     return (
       <View
         style={{
-          backgroundColor: "white",
+          backgroundColor: "grey",
           height: TAB_BAR_HEIGHT,
           borderTopColor: theme.lightGray,
           borderTopWidth: 1,
           paddingBottom: 24,
 
-          paddingTop: 12,
+          paddingTop: 8,
           flexDirection: "row",
           justifyContent: "space-between",
           zIndex: 100,
@@ -102,7 +102,7 @@ export default class extends React.Component<ScreenProps> {
         <ActionButton
           title="Settings"
           width={100}
-          fillColor={tab === SETTING_SCREEN ? theme.lightBlue : "white"}
+          fillColor={tab === SETTING_SCREEN ? theme.lightBlue : "yellow"}
           textColor={
             tab === SETTING_SCREEN ? theme.darkBlue : theme.veryLightText
           }

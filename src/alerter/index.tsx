@@ -16,7 +16,7 @@ import { sortBy } from "lodash";
 const PopsUp = posed.View({
   full: { height: 380, paddingTop: 18, paddingBottom: 18 },
   peak: {
-    height: 156,
+    height: 160,
     paddingTop: 18,
     paddingBottom: 18,
     transition: { type: "spring", stiffness: 150 },

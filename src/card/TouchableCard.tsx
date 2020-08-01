@@ -19,7 +19,7 @@ export const TouchableCardContainer = ({
       backgroundColor: "white",
       borderColor: theme.lightGray,
       borderBottomWidth: 2,
-      borderRadius: 8,
+      borderRadius: 15,
       borderWidth: 1,
       marginBottom: 18,
       flex: 1,
@@ -102,7 +102,7 @@ export const CardTextContent = ({ text }: { text: string }) => (
     style={{
       color: theme.darkText,
       fontWeight: "400",
-      fontSize: 16,
+      fontSize: 20,
       marginBottom: 8,
       paddingLeft: 12,
       paddingRight: 12,
@@ -118,7 +118,7 @@ export const CardTextContent = ({ text }: { text: string }) => (
 export const CardMutedContent = ({ children }) => (
   <View
     style={{
-      backgroundColor: theme.lightOffwhite,
+      backgroundColor: "lightgreen",
       paddingLeft: 12,
       paddingRight: 12,
       paddingBottom: 12,

@@ -62,8 +62,8 @@ export const Header = ({
 }: ParentComponent & { allowFontScaling?: boolean }) => (
   <Text
     style={{
-      fontWeight: "900",
-      fontSize: 48,
+      fontWeight: "90",
+      fontSize: 50,
       color: theme.darkText,
       marginBottom: 12,
       ...style,
@@ -142,8 +142,8 @@ export const SelectorTextItem = ({
       backgroundColor: selected ? theme.blue : "white",
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
-      paddingTop: 8,
-      paddingBottom: 4,
+      paddingTop: 10,
+      paddingBottom: 5,
       borderRadius: 8,
       borderWidth: 1,
       marginBottom: 4,
