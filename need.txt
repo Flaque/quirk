@@ -1,0 +1,5 @@
+To help with this problem, a few developers designed an App called “Quirk”.
+“Quirk” is designed to be an aid in recording, becoming more aware of and
+changing your thought patterns - techniques used in CBT.
+Quirk is designed using expo and react-native. The code is also open source.
+i hope that all peple understsand
