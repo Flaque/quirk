@@ -16,6 +16,7 @@ import ptBR from "./locals/pt-br.json";
 import nb from "./locals/nb.json";
 import sv from "./locals/sv.json";
 import ro from "./locals/ro.json";
+import hi from "./locals/hi.json";
 
 i18n.fallbacks = true;
 i18n.translations = {
@@ -35,6 +36,7 @@ i18n.translations = {
   nb,
   sv,
   ro,
+  hi
 };
 i18n.locale = Localization.locale;
 
