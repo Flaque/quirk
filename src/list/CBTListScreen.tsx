@@ -1,3 +1,4 @@
+//importing the necesary libraries and creating the var and const
 import React from "react";
 import {
   TouchableOpacity,
@@ -184,10 +185,14 @@ interface State {
   isReady: boolean;
 }
 
+//creating the class
+
 class CBTListScreen extends React.Component<Props, State> {
   static navigationOptions = {
     header: null,
   };
+
+  //initializing the state and created few state
 
   constructor(props) {
     super(props);
@@ -204,6 +209,8 @@ class CBTListScreen extends React.Component<Props, State> {
     recordScreenCallOnFocus(this.props.navigation, "list");
   }
 
+  //creating a void function to get the date
+
   loadExercises = (): void => {
     const fixTimestamps = (json): SavedThought => {
       const createdAt: Date = new Date(json.createdAt);
@@ -214,6 +221,8 @@ class CBTListScreen extends React.Component<Props, State> {
         ...json,
       };
     };
+
+    //calling the api
 
     getThoughts()
       .then(data => {
@@ -236,17 +245,21 @@ class CBTListScreen extends React.Component<Props, State> {
       });
   };
 
+  //creating a void function to get the history and setting it to the state
+
   loadSettings = (): void => {
     getHistoryButtonLabel().then(historyButtonLabel => {
       this.setState({ historyButtonLabel });
     });
   };
 
+  //calling the loading of exercise and settings when the component lifecycle is mounted
+
   componentDidMount = () => {
     this.loadExercises();
     this.loadSettings();
   };
-
+  //navigations
   navigateToSettings = () => {
     this.props.navigation.push(SETTING_SCREEN);
   };
@@ -264,6 +277,8 @@ class CBTListScreen extends React.Component<Props, State> {
     });
   };
 
+  //creating the delete item in the list function
+
   onItemDelete = (thought: SavedThought) => {
     // Ignore the typescript error here, Expo's v31 has a bug
     // Upgrade to 32 when it's released to fix
@@ -271,6 +286,8 @@ class CBTListScreen extends React.Component<Props, State> {
 
     deleteThought(thought.uuid).then(() => this.loadExercises());
   };
+
+  //rendering it
 
   render() {
     const { groups, historyButtonLabel, isReady } = this.state;
