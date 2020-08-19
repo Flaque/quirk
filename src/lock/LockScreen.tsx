@@ -32,9 +32,9 @@ const KeypadButton = ({ title, onPress, style = {} }) => (
     textColor={theme.darkText}
     width={BUTTON_SIZE}
     height={BUTTON_SIZE}
-    fontSize={18}
+    fontSize={20}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "red",
       ...style,
     }}
     onPress={onPress}
@@ -51,7 +51,7 @@ const KeypadSideButton = ({
     accessibilityLabel={accessibilityLabel}
     featherIconName={icon}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "red",
       width: BUTTON_SIZE,
       ...style,
     }}
@@ -67,7 +67,8 @@ const Notifier = ({ isActive }) => (
       borderRadius: 32,
       backgroundColor: theme.pink,
       borderColor: theme.darkPink,
-      borderWidth: 2,
+      borderWidth: 3,
+      borderColor: 'black'
     }}
     pose={isActive ? "active" : "inactive"}
   />
