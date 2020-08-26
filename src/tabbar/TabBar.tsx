@@ -102,7 +102,7 @@ export default class extends React.Component<ScreenProps> {
         <ActionButton
           title="Settings"
           width={100}
-          fillColor={tab === SETTING_SCREEN ? theme.lightBlue : "white"}
+          fillColor={tab === SETTING_SCREEN ? theme.lightBlue : "#dfedd8"}
           textColor={
             tab === SETTING_SCREEN ? theme.darkBlue : theme.veryLightText
           }
@@ -120,7 +120,7 @@ export default class extends React.Component<ScreenProps> {
         <ActionButton
           title="Thoughts"
           width={100}
-          fillColor={tab === MAIN_SCREEN ? theme.lightBlue : "white"}
+          fillColor={tab === MAIN_SCREEN ? theme.lightBlue : "dfedd8"}
           textColor={tab === MAIN_SCREEN ? theme.darkBlue : theme.veryLightText}
           style={{
             marginHorizontal: 4,
@@ -136,7 +136,7 @@ export default class extends React.Component<ScreenProps> {
         <ActionButton
           title="Learn"
           width={100}
-          fillColor={tab === EXPLANATION_SCREEN ? theme.lightBlue : "white"}
+          fillColor={tab === EXPLANATION_SCREEN ? theme.lightBlue : "dfedd8"}
           textColor={
             tab === EXPLANATION_SCREEN ? theme.darkBlue : theme.veryLightText
           }
