@@ -34,7 +34,7 @@ if (Platform.OS === "android") {
     },
   });
 }
-
+//Creating the navigation between the screens through the bottom tab navigator 
 const App = createBottomTabNavigator(
   {
     [MAIN_SCREEN]: MainScreen,
