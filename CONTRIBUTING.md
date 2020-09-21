@@ -15,6 +15,7 @@ humans @ usequirk.com
 ```
 
 ## Versioning and Beta Testing
+## Versioning and Beta Testing k
 
 Quirk follows semver, but not every version is actually released.
 
