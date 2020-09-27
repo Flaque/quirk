@@ -5,6 +5,6 @@ export default {
   shadowColor: theme.darkText,
   shadowOffset: { width: 0, height: 1 },
   shadowRadius: 3,
-  shadowOpacity: 0.05,
-  elevation: 1,
+  shadowOpacity: 0.75,
+  elevation: 2,
 };
