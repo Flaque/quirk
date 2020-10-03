@@ -37,15 +37,15 @@ if (Platform.OS === "android") {
 
 const App = createBottomTabNavigator(
   {
-    [MAIN_SCREEN]: MainScreen,
-    [SETTING_SCREEN]: SettingScreen,
-    [EXPLANATION_SCREEN]: IndexLearnScreen,
-    [PAYMENT_SCREEN]: PaymentScreen,
-    [LOCK_SCREEN]: LockScreen,
-    [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
-    [CHECKUP_SCREEN]: CheckupScreen,
-    [SUPPORT_SCREEN]: SupportScreen,
-    [MARKDOWN_ARTICLE_SCREEN]: MarkdownArticleScreen,
+    [MAINSCREEN]: MainScreen,
+    [SETTINGSCREEN]: SettingScreen,
+    [EXPLANATIONSCREEN]: IndexLearnScreen,
+    [PAYMENTSCREEN]: PaymentScreen,
+    [LOCKSCREEN]: LockScreen,
+    [CBTONBOARDINGSCREEN]: OnboardingScreen,
+    [CHECKUPSCREEN]: CheckupScreen,
+    [SUPPORTSCREEN]: SupportScreen,
+    [MARKDOWNARTICLESCREEN]: MarkdownArticleScreen,
   },
   {
     initialRouteName: PAYMENT_SCREEN,
