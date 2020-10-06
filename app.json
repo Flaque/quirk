@@ -1,8 +1,8 @@
 {
   "expo": {
     "icon": "./assets/ios.png",
-    "name": "quirk",
-    "slug": "quirk",
+    "name": "quirk.INC",
+    "slug": "quirk.INC",
     "privacy": "unlisted",
     "sdkVersion": "35.0.0",
     "platforms": ["ios", "android"],
