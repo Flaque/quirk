@@ -4,23 +4,23 @@
     "name": "quirk",
     "slug": "quirk",
     "privacy": "unlisted",
-    "sdkVersion": "35.0.0",
+    "sdkVersion": "35.0.1",
     "platforms": ["ios", "android"],
     "version": "2.4.0",
     "orientation": "portrait",
     "githubUrl": "https://github.com/Flaque/quirk",
-    "primaryColor": "#F8A5C2",
+    "primaryColor": "grey",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#F8A5C2"
+      "backgroundColor": "grey"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["assets/**"],
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "tech.econn.quirk",
       "icon": "./assets/ios.png",
       "publishBundlePath": "ios/quirk/Supporting/shell-app.bundle",
@@ -30,12 +30,12 @@
       "package": "tech.econn.quirk",
       "permissions": [],
       "icon": "./assets/android.png",
-      "versionCode": 17,
+      "versionCode": 18,
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
     "androidStatusBar": {
-      "backgroundColor": "#fbfcfe"
+      "backgroundColor": "cyan"
     },
     "hooks": {
       "postPublish": [
