@@ -63,7 +63,7 @@ const Notifier = ({ isActive }) => (
   <BouncyBigOnActive
     style={{
       width: 32,
-      height: 32,
+      height: 35,
       borderRadius: 32,
       backgroundColor: theme.pink,
       borderColor: theme.darkPink,
@@ -188,7 +188,7 @@ export default class extends React.Component<
             flex: 1,
             paddingLeft: 12,
             paddingRight: 12,
-            paddingTop: 24,
+            paddingTop: 23,
             marginTop: Constants.statusBarHeight,
             backgroundColor: theme.pink,
             justifyContent: "center",
@@ -201,7 +201,7 @@ export default class extends React.Component<
           >
             <Header
               style={{
-                fontSize: 32,
+                fontSize: 30,
                 color: "white",
                 marginHorizontal: 24,
                 textAlign: "center",
