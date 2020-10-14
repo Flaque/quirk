@@ -16,11 +16,11 @@ export const TouchableCardContainer = ({
   <TouchableOpacity
     onPress={onPress}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "black",
       borderColor: theme.lightGray,
       borderBottomWidth: 2,
-      borderRadius: 8,
-      borderWidth: 1,
+      borderRadius: 15,
+      borderWidth: 3,
       marginBottom: 18,
       flex: 1,
       ...style,
@@ -49,7 +49,7 @@ export const CardCrown = ({
       backgroundColor: theme.lightOffwhite,
       borderTopEndRadius: 8,
       borderTopStartRadius: 8,
-      justifyContent: "space-between",
+      justifyContent: "space-evenly",
       flex: 1,
       flexDirection: "row",
     }}
@@ -57,7 +57,7 @@ export const CardCrown = ({
     <Text
       style={{
         fontSize: 10,
-        fontWeight: "700",
+        fontWeight: 'bold',
         color: theme.lightText,
         letterSpacing: 1,
       }}
@@ -81,7 +81,7 @@ export const CardTitleAndSubtitleContent = ({ title, subtitle }) => (
   >
     <SubHeader
       style={{
-        fontSize: 16,
+        fontSize: 18,
       }}
     >
       {title}
@@ -104,10 +104,7 @@ export const CardTextContent = ({ text }: { text: string }) => (
       fontWeight: "400",
       fontSize: 16,
       marginBottom: 8,
-      paddingLeft: 12,
-      paddingRight: 12,
-      paddingTop: 12,
-      paddingBottom: 6,
+      padding:12,
     }}
   >
     {text}
