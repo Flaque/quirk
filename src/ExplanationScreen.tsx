@@ -23,6 +23,7 @@ const Distortion = ({ children }) => (
   <View
     style={{
       marginBottom: 48,
+      alignItems:"center",
     }}
   >
     {children}
