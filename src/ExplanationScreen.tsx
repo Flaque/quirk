@@ -4,7 +4,7 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, GhostButton } from "./ui";
+import { SubHeader, Paragraph,GhostButton} from "./ui";
 import { ScrollView, View, StatusBar } from "react-native";
 import Constants from "expo-constants";
 import theme from "./theme";
