@@ -7,7 +7,6 @@ import {
   Linking,
   Dimensions,
   Alert,
-  AlertIOS,
 } from "react-native";
 import {
   NavigationScreenProp,
@@ -35,7 +34,6 @@ import {
   purchaseSubscription,
   restoreSubscription,
   isSubscribed,
-  alias,
 } from "./index";
 import { SplashScreen } from "expo";
 import { isLegacySubscriber } from "../payments_legacy";
@@ -459,7 +457,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               justifyContent: "space-between",
             }}
           >
-            {this.state.loading ? (
+            {this.state.isLoading ? (
               <BallIndicator color={theme.blue} size={24} />
             ) : (
               <ActionButton
