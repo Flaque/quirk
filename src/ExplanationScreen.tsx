@@ -4,16 +4,15 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, Header, IconButton, GhostButton } from "./ui";
+import { SubHeader, Paragraph, GhostButton } from "./ui";
 import { ScrollView, View, StatusBar } from "react-native";
-import * as Haptic from "expo-haptics";
 import Constants from "expo-constants";
 import theme from "./theme";
 import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
 import { BubbleThought } from "./imgs/Bubbles";
 import { recordScreenCallOnFocus } from "./navigation";
-import haptic from "./haptic";
+
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
