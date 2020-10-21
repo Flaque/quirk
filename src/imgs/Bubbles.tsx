@@ -5,7 +5,7 @@ import theme from "../theme";
 
 const PurpleBubble = () => (
   <ThoughtDook
-    style={{ marginRight: 8, marginLeft: 4, width: 24, height: 24 }}
+    style={{ marginRight: 18, marginLeft: 4, width: 34, height: 24 }}
     source={require("../../assets/pink/Dook.png")}
   />
 );
