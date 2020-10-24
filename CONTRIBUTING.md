@@ -1,4 +1,4 @@
-# Contributing to Quirk
+# Contributing to Quirk by forking it
 
 If you like Quirk, you're welcome to submit a PR, throw down an issue, or otherwise contribute to the project.
 
