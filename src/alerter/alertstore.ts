@@ -9,7 +9,7 @@ export async function hiddenAlerts(): Promise<string[]> {
     const value = await AsyncStorage.getItem(HIDDEN_KEY);
     return value ? JSON.parse(value) : []; // empty is fine and not an error
   } catch (err) {
-    console.error(err);
+    console.error("error"+err);
     return [];
   }
 }
