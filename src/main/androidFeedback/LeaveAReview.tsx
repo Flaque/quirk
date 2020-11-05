@@ -51,7 +51,7 @@ export default class LeaveReview extends React.Component<
     return (
       <Container
         style={{
-          paddingTop: 24 + Constants.statusBarHeight,
+          paddingTop: 25 + Constants.statusBarHeight,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
         }}
@@ -101,7 +101,7 @@ export default class LeaveReview extends React.Component<
               }}
             >
               <GhostButton
-                title={"No Thanks."}
+                title={"No Thanks. Hehehehehehe"}
                 onPress={() => this.continue()}
                 width={"100%"}
               />

@@ -88,13 +88,14 @@ export default class FeedbackScreen extends React.Component<
             </MediumHeader>
             <HintHeader
               style={{
-                marginBottom: 24,
+                marginBottom: 27,
               }}
             >
               Quirk is run by two brothers with deep personal experiences with
               mental health. But we don't know all the answers. We let you
               decide what we build, so if there's anything you'd like to change
               or a feature you'd like to see, please let us know!
+              Check our github page at https://github.com/Flaque/quirk!
             </HintHeader>
 
             <Row

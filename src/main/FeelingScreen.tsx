@@ -132,7 +132,7 @@ export default class FeelingScreen extends React.Component<
     return (
       <Container
         style={{
-          paddingTop: Constants.statusBarHeight + 24,
+          paddingTop: Constants.statusBarHeight + 25,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
           alignItems: "center",
@@ -152,7 +152,7 @@ export default class FeelingScreen extends React.Component<
         <GhostButton
           title="Better than before 👍"
           width={"100%"}
-          borderColor={theme.lightGray}
+          borderColor={theme.gray}
           textColor={theme.darkText}
           style={{
             marginBottom: 12,
