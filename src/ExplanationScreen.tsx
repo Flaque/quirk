@@ -226,6 +226,7 @@ class ExplanationScreen extends React.Component<Props> {
         <View
           style={{
             marginBottom: Constants.statusBarHeight + 24,
+            flex:1
           }}
         >
           <View

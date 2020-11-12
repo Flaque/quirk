@@ -110,6 +110,7 @@ export default class AnxietyCheckScreen extends React.Component<ScreenProps> {
                 style={{
                   fontSize: 16,
                   marginBottom: 0,
+                  backgroundColor:'lightgreen'
                 }}
               >
                 {"None of these."}
