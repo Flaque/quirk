@@ -15,7 +15,7 @@ import withErrorBoundary from "./src/sentry/withErrorBoundary";
 import PaymentScreen from "./src/payments/PaymentScreen";
 import LockScreen from "./src/lock/LockScreen";
 import MainScreen from "./src/main";
-import React from "react";
+import React from 'react';
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import TabBar from "./src/tabbar/TabBar";
 import OnboardingScreen from "./src/onboarding";
