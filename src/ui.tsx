@@ -62,7 +62,7 @@ export const Header = ({
 }: ParentComponent & { allowFontScaling?: boolean }) => (
   <Text
     style={{
-      fontWeight: "900",
+      fontWeight: "bold",
       fontSize: 48,
       color: theme.darkText,
       marginBottom: 12,
