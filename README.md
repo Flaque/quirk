@@ -28,10 +28,10 @@ If you want to fork Quirk, you should fork off of [this commit](https://github.c
 ---
 
 <p align="center">
-<h1 align="center">✨🐙 quirk. </h1>
+<h1 align="center">Quirk App </h1>
 </p>
 <p align="center">
-  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
+  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact Us</a> • <a href="https://tinyletter.com/quirk">Subscribe to our Newsletter</a>
 <br><br>
 </p>
 
@@ -103,15 +103,16 @@ If you already have XCode installed with a simulator, you can just press `i` to 
 
 # Can I help?
 
-Of course!
+Yeah for sure !
+We would really like your help in making this app better.
 
-**If you like the app,** go give it 5 stars! It helps more people find the app.
+**If you like the app,** go give it 5 stars! It helps people finding our app.
 
-**If you're a mental health professional,** audit [the descriptions](https://github.com/Flaque/quirk/blob/master/src/locals/en.json) of the cognitive distortions. If you have suggestions, let me know and we'll change stuff!
+**If you're a mental health professional,** audit [the descriptions](https://github.com/Flaque/quirk/blob/master/src/locals/en.json) of the cognitive distortions. If you have suggestions, let us know and we'll surely update our app to meet the needs of more and more people!
 
-**If you can draw** and can make digital illustrations of the little blobs, let me know and I'll find a place to stick them in the app!
+**If you can draw** and can make digital illustrations of the little blobs, let us know and we'll find a place to stick them in the app!
 
-**If you know a language other than English,** help [us translate the app!](/TRANSLATIONS.md)
+**If you know a language other than English,** help [us translate the app,](/TRANSLATIONS.md) in this way we can let more people use and understand the app.
 
 # Design
 
@@ -128,15 +129,15 @@ Quirk is built with two main goals in mind:
 
 **Don't include features for one particular condition at the expense of other conditions.** For example, don't couple mood tracking to thought tracking. If a user _has_ to enter a mood in order to track a thought, then the entire app is ruined for people who use it for panic, OCD or another condition where mood isn't the primary focus.
 
-**Don't include non-CBT related treatments without good reason.** No relaxation audio tracks or meditation guides. It's a CBT app, keep it focused on CBT.
+**Don't include non-CBT related treatments without good reason.** No relaxation audio tracks or meditation guides. It's a CBT app, keep it focused on CBT. No miscellaneous treatments will be accepted by our app. If any such treatments are found in the near future, they will be immediately erased.
 
-**Don't include things that could be better accomplished by another app.** No one needs an in-app diary when a diary works just fine. No one needs an in-app heart rate tracker when a heart rate tracker works just fine.
+**Don't include things that could be better accomplished by another app.** No one needs an in-app diary when a diary works just fine. No one needs an in-app heart rate tracker when a heart rate tracker works just fine. Just try to keep the app focused on it main use other than using it for some other use.
 
 **Be quick and efficient.** Thoughts shouldn't take 5 minutes to enter and you should be able to skip fields if it's reasonable. Don't let the perfect be the enemy of the good.
 
 ### Don't be Evil
 
-**Thoughts are more valuable than passwords, treat them that way.** Most people would rather give over their passwords than their CBT thoughts. They're incredibly private, occasionally involve other people, and frequently are embarrassing.
+**Thoughts are more valuable than passwords, treat them that way.** Most people would rather give over their passwords than their CBT thoughts. They're incredibly private, occasionally involve other people, and frequently are embarrassing. We encourage people to be able to express their thoughts without having to feel any kind of embarrasement.
 
 **Don't have \$200 dollar in app purchases.** I'm looking at you CBT Thought Diary. I get it, developers need to make money. It costs a lot to just keep the app on the app store. But you're preying on vulnerable people. Very few people of rational mind will purposely spend \$200s for a dark mode.
 
@@ -144,7 +145,7 @@ Quirk is built with two main goals in mind:
 
 **Be open.** Not every app has to be open source; it's a hard choice to make. But be clear and obvious within the app about what's going on with the user's data. Don't be sending it to some server without making that clear within the app, especially if it's not providing any extra utility to the user.
 
-**Don't push people to be unhappy.** Do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state their unhappy in order to access a feature. It's easy for this to sneak up in the design, if a user has to rate their happiness below average in order to access the CBT features, you're asking them to be unhappy to use your app.
+**Don't push people to be unhappy.** Do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state their unhappy in order to access a feature. It's easy for this to sneak up in the design, if a user has to rate their happiness below average in order to access the CBT features, you're asking them to be unhappy to use your app. Let the app be user-friendly and that everybody should be able to use it.
 
 **Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in the help. But holy moly becareful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._
 
