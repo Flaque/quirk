@@ -1,4 +1,4 @@
-//ADD Test comment to check pull request
+//ADD Test comment to check pull request - 18/11/2020
 import { createAppContainer } from "react-navigation";
 import {
   EXPLANATION_SCREEN,
