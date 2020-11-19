@@ -16,7 +16,7 @@ So in order to continue Quirk, Quirk needed to make people feel worse for longer
 
 Now-a-days, we're making [Room Service](https://www.roomservice.dev/), which helps folks build multiplayer stuff, like what Figma or Google Docs have. Multiple cursors, CRDTs, sockets, lots of people editing the same thing, that sort of thing. We're still the same commercial entity and such, just making a different product now. If you think multiplayer systems are cool and want to join us, send me an email: `evan @ roomservice . dev`. 
 
-**Make your own Quirk.**
+**Make your own Quirk !!.**
 
 If you like Quirk and want it to continue, feel free to fork it. We'd ask that you change the name to avoid confusion. Just heed our warning, becareful about the way you keep yourself afloat. 
 
@@ -181,3 +181,21 @@ A small amount of data has been corrupted in a recoverable way. The user still h
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
 
 Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
+
+Depression is classified as a mood disorder. It may be described as feelings of sadness, loss, or anger that interfere with a person’s everyday activities.
+
+It’s also fairly common. The Centers for Disease Control and Prevention (CDC)Trusted Source estimates that 8.1 percent of American adults ages 20 and over had depression in any given 2-week period from 2013 to 2016.
+
+People experience depression in different ways. It may interfere with your daily work, resulting in lost time and lower productivity. It can also influence relationships and some chronic health conditions.
+
+Conditions that can get worse due to depression include:
+
+arthritis
+asthma
+cardiovascular disease
+cancer
+diabetes
+obesity
+It’s important to realize that feeling down at times is a normal part of life. Sad and upsetting events happen to everyone. But, if you’re feeling down or hopeless on a regular basis, you could be dealing with depression.
+
+Depression is considered a serious medical condition that can get worse without proper treatment. Those who seek treatment often see improvements in symptoms in just a few weeks.
