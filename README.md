@@ -1,5 +1,9 @@
 🚧🚧🚧
 
+**We are thankful to the contributers**
+We are very much thankful to the contributers that are trying to make it more better than it was before. And we are very lucky that they have picked up our project. And thank you all once again for making this project much better.
+
+
 **Quirk is no longer being maintained.**
 
 Quirk started as a little thing I made for myself as I started doing CBT. As I got better, I needed Quirk less. But at the same time, lots of other people had discovered Quirk and started picking it up. That meant more bug fixes, more features, and just more work to be done. I really couldn't keep it up well, especially with my main focus at the time (my day job). 
@@ -10,7 +14,8 @@ For awhile, Quirk was going quite well. Lots of people subscribed, we got backed
 
 Unfortunately, in order for the business to work and for us to pay ourselves, we needed folks to be subscribed for a fair amount of time. But that wasn't the case and we honestly should have predicted it given my own experience: as people did better, they unsubscribed. Unfortunately, the opposite was true as well, if folks weren't doing better, but were giving it a good shot, they would stay subscribed longer. 
 
-So in order to continue Quirk, Quirk needed to make people feel worse for longer. We didn't want to do that, so we pivoted the company. 
+So in order to continue Quirk, Quirk needed to make people feel worse for longer. We didn't want to do that, so we pivoted the company.
+
 
 **Quirk (the company) is now Room Service.**
 
