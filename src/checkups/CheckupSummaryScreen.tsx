@@ -21,13 +21,13 @@ import { THOUGHT_SCREEN } from "../main/screens";
 
 const MoodText = ({ mood }: { mood: "good" | "bad" | "neutral" }) => {
   if (mood === "good") {
-    return <Paragraph>Going well 👍</Paragraph>;
+    return <Paragraph>Your mood is alright 👍</Paragraph>;
   }
   if (mood === "neutral") {
-    return <Paragraph>Going okay 🤷‍</Paragraph>;
+    return <Paragraph>Your mood is... okay 🤷‍</Paragraph>;
   }
   if (mood === "bad") {
-    return <Paragraph>Going poorly 👎</Paragraph>;
+    return <Paragraph>Your mood is bad 👎</Paragraph>;
   }
   return null;
 };

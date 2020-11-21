@@ -27,10 +27,16 @@ import SupportScreen from "./src/payments/SupportScreen";
 import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 
 // Fixes a bug on OnePlus phones which have some buggy font by default
-if (Platform.OS === "android") {
+if (Platform.OS !== "android") {
   setCustomText({
     style: {
-      fontFamily: "Roboto",
+      fontFamily: "Impact, Charcoal, sans-serif"
+    },
+  });
+} else if(Platform.OS === "android") {
+  setCustomText({
+    style: {
+      fontFamily: "Roboto"
     },
   });
 }

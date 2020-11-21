@@ -31,8 +31,7 @@ export default class CheckupToThoughtScreen extends React.Component<
 
         <MediumHeader>Let's work through it right now.</MediumHeader>
         <HintHeader>
-          It's likely your thoughts are distorted. Practicing challenging your
-          negative thoughts can help you feel a lot better.
+          Negative thoughts might be clouding your mind at the moment. Challenging your negative thoughts can help you feel a lot better!
         </HintHeader>
 
         <ActionButton
@@ -40,7 +39,7 @@ export default class CheckupToThoughtScreen extends React.Component<
             marginTop: 12,
           }}
           width="100%"
-          title="Okay, let's challenge it."
+          title="Okay, let's challenge my negative thoughts! 👍🏻"
           onPress={this.onChallenge}
         />
 
@@ -49,7 +48,7 @@ export default class CheckupToThoughtScreen extends React.Component<
             marginTop: 6,
           }}
           width="100%"
-          title="No thanks."
+          title="Not very enthusiastic about it. 🙄"
           onPress={() => {
             this.props.navigation.navigate(THOUGHT_SCREEN);
           }}

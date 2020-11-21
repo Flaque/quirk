@@ -7,13 +7,12 @@ export const textInputStyle = {
   backgroundColor: "white",
   padding: 12,
   paddingTop: 14,
-  borderRadius: 8,
+  borderRadius: 20,
   fontSize: 16,
   borderColor: theme.lightGray,
   borderWidth: 1,
   borderBottomWidth: 2,
-  color: theme.darkText,
-  textAlignVertical: "top",
+  color: theme.darkText
 };
 export const textInputPlaceholderColor = theme.veryLightText;
 

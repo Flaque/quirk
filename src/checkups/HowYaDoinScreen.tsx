@@ -136,7 +136,7 @@ export default class HowYaDoinScreen extends React.Component<
                 marginBottom: 24,
               }}
             >
-              Be honest, Quirk adapts based on how you're doing.
+              Please be honest, Quirk adapts based on how you're doing.
             </HintHeader>
 
             <RoundedSelectorButton
@@ -160,7 +160,7 @@ export default class HowYaDoinScreen extends React.Component<
                 marginTop: 24,
               }}
             >
-              Add a note (optional)
+              Add a note about how you've been feeling (optional)
             </SubHeader>
 
             <View
