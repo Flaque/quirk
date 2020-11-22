@@ -21,13 +21,13 @@ import { THOUGHT_SCREEN } from "../main/screens";
 
 const MoodText = ({ mood }: { mood: "good" | "bad" | "neutral" }) => {
   if (mood === "good") {
-    return <Paragraph>Going well 👍</Paragraph>;
+    return <Paragraph>Going Great 👍!</Paragraph>;
   }
   if (mood === "neutral") {
-    return <Paragraph>Going okay 🤷‍</Paragraph>;
+    return <Paragraph>Going Okay 🤷‍!</Paragraph>;
   }
   if (mood === "bad") {
-    return <Paragraph>Going poorly 👎</Paragraph>;
+    return <Paragraph>Going Poorly 👎!</Paragraph>;
   }
   return null;
 };
@@ -77,12 +77,12 @@ export default class CheckUpSummaryScreen extends React.Component<
           <KeyboardAvoidingView
             behavior="position"
             style={{
-              paddingBottom: 24,
+              paddingBottom: 24.2,
             }}
           >
             <MediumHeader
               style={{
-                marginBottom: 24,
+                marginBottom: 23.8,
               }}
             >
               Milestone Summary
