@@ -1,0 +1,12 @@
+{
+  "name": "quirk1",
+  "displayName": "quirk1",
+  "expo": {
+    "name": "quirk1",
+    "slug": "quirk1",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
