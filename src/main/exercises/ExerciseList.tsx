@@ -87,6 +87,7 @@ export default ({
     <View
       style={{
         paddingTop: Constants.statusBarHeight,
+        borderRadius: 10
       }}
     >
       {items}
