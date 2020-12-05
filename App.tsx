@@ -28,6 +28,8 @@ import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 
 // Fixes a bug on OnePlus phones which have some buggy font by default
 if (Platform.OS === "android") {
+  console.log("vansh");
+  
   setCustomText({
     style: {
       fontFamily: "Roboto",
