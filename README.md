@@ -7,7 +7,7 @@ Quirk started as a little thing I made for myself as I started doing CBT. As I g
 So in order to work on it full time, my brother and I tried to turn it into a company. That way we could continue to develop Quirk as a primary focus, even if we didn't need it anymore. 
 
 For awhile, Quirk was going quite well. Lots of people subscribed, we got backed by [Y Combinator](https://www.ycombinator.com/), and we were growing _very_ quickly. 
-
+ 
 Unfortunately, in order for the business to work and for us to pay ourselves, we needed folks to be subscribed for a fair amount of time. But that wasn't the case and we honestly should have predicted it given my own experience: as people did better, they unsubscribed. Unfortunately, the opposite was true as well, if folks weren't doing better, but were giving it a good shot, they would stay subscribed longer. 
 
 So in order to continue Quirk, Quirk needed to make people feel worse for longer. We didn't want to do that, so we pivoted the company. 
