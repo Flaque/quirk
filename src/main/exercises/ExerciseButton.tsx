@@ -30,10 +30,10 @@ const ExerciseButton = ({
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: 12,
+        marginBottom: 10,
         borderColor: hasYourAttention ? theme.pink : theme.lightGray,
         borderRadius: 0,
-        paddingLeft: 12,
+        paddingLeft: 10,
         ...shadowStyle,
       }}
       onPress={onPress}
@@ -49,13 +49,13 @@ const ExerciseButton = ({
           width: 64,
           justifyContent: "center",
           alignItems: "center",
-          paddingRight: 12,
+          paddingRight: 10,
         }}
       >
         <Feather
           name={featherIconName}
           color={hasYourAttention ? theme.darkPink : theme.darkBlue}
-          size={16}
+          size={14}
         />
       </View>
     </TouchableCardContainer>
