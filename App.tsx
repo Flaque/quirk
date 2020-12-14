@@ -55,4 +55,6 @@ const App = createBottomTabNavigator(
   }
 );
 
-export default withErrorBoundary(createAppContainer(App));
+const Container = createAppContainer(App);
+
+export default withErrorBoundary(Container);
