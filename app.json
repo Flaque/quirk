@@ -13,7 +13,11 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#F8A5C2"
+      "backgroundColor": "#F8A5C2",
+      "borderLeft":10,
+      "borderRight":20,
+      "borderColorLeft":"red",
+      "borderColorRight":"blue"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -35,7 +39,10 @@
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
     "androidStatusBar": {
-      "backgroundColor": "#fbfcfe"
+      "backgroundColor": "#fbfcfe",
+      "border":10,
+      "borderColor":"yellow"
+      
     },
     "hooks": {
       "postPublish": [
