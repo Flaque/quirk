@@ -208,7 +208,7 @@ export default class SurveyScreen extends React.Component<
       <>
         <MediumHeader
           style={{
-            marginBottom: 24,
+            marginBottom: 25,
           }}
         >
           Question 4 of 4
@@ -224,7 +224,7 @@ export default class SurveyScreen extends React.Component<
         />
         <ActionButton
           style={{
-            marginTop: 12,
+            marginTop: 15,
           }}
           width={"100%"}
           title="Finish"
@@ -241,13 +241,13 @@ export default class SurveyScreen extends React.Component<
           paddingTop: Constants.statusBarHeight + 24,
           paddingHorizontal: 24,
           backgroundColor: theme.lightOffwhite,
-          flex: 1,
+          flex: 2,
         }}
       >
         <KeyboardAvoidingView
           behavior="position"
           style={{
-            paddingBottom: 24,
+            paddingBottom: 25,
           }}
         >
           <StatusBar hidden={false} />
