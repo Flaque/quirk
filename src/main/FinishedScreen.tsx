@@ -124,9 +124,9 @@ export default class FinishedScreen extends React.Component<
         style={{
           backgroundColor: theme.lightOffwhite,
           paddingTop: Constants.statusBarHeight + 24,
-          paddingLeft: 24,
-          paddingRight: 24,
-          paddingBottom: 50,
+          paddingLeft: 25,
+          paddingRight: 25,
+          paddingBottom: 52,
         }}
       >
         {this.state.thought && (
@@ -194,7 +194,7 @@ export default class FinishedScreen extends React.Component<
 
             <View
               style={{
-                marginBottom: 12,
+                marginBottom: 15,
               }}
             >
               <SubHeader>How you challenged it</SubHeader>
@@ -305,7 +305,7 @@ export default class FinishedScreen extends React.Component<
               >
                 <Label
                   style={{
-                    fontSize: 16,
+                    fontSize: 18,
                     flex: 1,
                     marginBottom: 0,
                   }}
