@@ -20,7 +20,7 @@ export const BouncyBigOnActive = posed.View({
 export const newFadesIn = ({ maxOpacity }) =>
   posed.View({
     visible: { opacity: maxOpacity },
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0.9 },
   });
 
 export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
