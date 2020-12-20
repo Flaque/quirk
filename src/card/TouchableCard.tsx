@@ -16,10 +16,10 @@ export const TouchableCardContainer = ({
   <TouchableOpacity
     onPress={onPress}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "#f5f5f5",
       borderColor: theme.lightGray,
       borderBottomWidth: 2,
-      borderRadius: 8,
+      borderRadius: 7,
       borderWidth: 1,
       marginBottom: 18,
       flex: 1,
@@ -75,7 +75,7 @@ export const CardCrown = ({
 export const CardTitleAndSubtitleContent = ({ title, subtitle }) => (
   <View
     style={{
-      padding: 12,
+      padding: 10,
       flex: 1,
     }}
   >
@@ -106,8 +106,9 @@ export const CardTextContent = ({ text }: { text: string }) => (
       marginBottom: 8,
       paddingLeft: 12,
       paddingRight: 12,
-      paddingTop: 12,
+      paddingTop: 15,
       paddingBottom: 6,
+      color:"black"
     }}
   >
     {text}
