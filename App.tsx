@@ -1,3 +1,5 @@
+//this file is not understood by me
+
 import { createAppContainer } from "react-navigation";
 import {
   EXPLANATION_SCREEN,
