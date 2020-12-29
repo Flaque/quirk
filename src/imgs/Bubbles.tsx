@@ -51,7 +51,7 @@ export const BubbleThought = ({
       {bubbles[color]}
       <View
         style={{
-          backgroundColor: theme.offwhite,
+          backgroundColor: theme.offgreen,
           borderRadius: 8,
           padding: 8,
         }}
