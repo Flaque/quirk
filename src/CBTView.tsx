@@ -12,7 +12,7 @@ const cognitiveDistortionsToText = cognitiveDistortions => {
       <Paragraph
         key={slug}
         style={{
-          marginBottom: 8,
+          marginBottom: 9,
         }}
       >
         {emojiForSlug(slug)} {label}
@@ -37,7 +37,7 @@ export default ({ thought }: ThoughtComponent) => (
       {thought.automaticThought ? (
         <BubbleThought
           style={{
-            marginTop: 0,
+            marginTop: 2,
           }}
         >
           {thought.automaticThought}
@@ -62,7 +62,7 @@ export default ({ thought }: ThoughtComponent) => (
       {thought.alternativeThought ? (
         <BubbleThought
           style={{
-            marginTop: 0,
+            marginTop: 2,
           }}
           color="pink"
         >
