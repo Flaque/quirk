@@ -16,7 +16,7 @@ So in order to continue Quirk, Quirk needed to make people feel worse for longer
 
 Now-a-days, we're making [Room Service](https://www.roomservice.dev/), which helps folks build multiplayer stuff, like what Figma or Google Docs have. Multiple cursors, CRDTs, sockets, lots of people editing the same thing, that sort of thing. We're still the same commercial entity and such, just making a different product now. 
 
-**Make your own Quirk.**
+**Make Your Own Quirk.**
 
 If you like Quirk and want it to continue, feel free to fork it. We'd ask that you change the name to avoid confusion. Just heed our warning, becareful about the way you keep yourself afloat. 
 
@@ -28,7 +28,7 @@ If you want to fork Quirk, you should fork off of [this commit](https://github.c
 ---
 
 <p align="center">
-<h1 align="center">✨🐙 quirk. </h1>
+<h2 align="center">✨🐙 quirk. </h2>
 </p>
 <p align="center">
   <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
@@ -107,11 +107,11 @@ Of course!
 
 **If you like the app,** go give it 5 stars! It helps more people find the app.
 
-**If you're a mental health professional,** audit [the descriptions](https://github.com/Flaque/quirk/blob/master/src/locals/en.json) of the cognitive distortions. If you have suggestions, let me know and we'll change stuff!
+**If You're a Mental Health Professional,** audit [the descriptions](https://github.com/Flaque/quirk/blob/master/src/locals/en.json) of the cognitive distortions. If you have suggestions, let me know and we'll change stuff!
 
 **If you can draw** and can make digital illustrations of the little blobs, let me know and I'll find a place to stick them in the app!
 
-**If you know a language other than English,** help [us translate the app!](/TRANSLATIONS.md)
+**If You Know a Language Other Than English,** help [us translate the app!](/TRANSLATIONS.md)
 
 # Design
 
@@ -180,4 +180,4 @@ A small amount of data has been corrupted in a recoverable way. The user still h
 
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
 
-Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
+Note that this license **doesn't** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
