@@ -10,7 +10,7 @@ For awhile, Quirk was going quite well. Lots of people subscribed, we got backed
 
 Unfortunately, in order for the business to work and for us to pay ourselves, we needed folks to be subscribed for a fair amount of time. But that wasn't the case and we honestly should have predicted it given my own experience: as people did better, they unsubscribed. Unfortunately, the opposite was true as well, if folks weren't doing better, but were giving it a good shot, they would stay subscribed longer. 
 
-So in order to continue Quirk, Quirk needed to make people feel worse for longer. We didn't want to do that, so we pivoted the company. 
+So in order to continue Quirk, a future Quirk would need to make people feel worse for longer, or otherwise not help the people we signed up to help. If the incentives of the business weren't aligned with the people, it would have been naive to assume that we could easily fix it as the organization grew. We didn't want to go down that path, so we pivoted the company. 
 
 **Quirk (the company) is now Room Service.**
 
