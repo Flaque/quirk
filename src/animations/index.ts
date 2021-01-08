@@ -43,5 +43,5 @@ export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
       height: hiddenHeight * 1,
       transition: { type: "spring", stiffness: 100 },
     },
-    hidden: { height: hiddenHeight * 0.8 },
+    hidden: { height: hiddenHeight * 0.7 },
   });
