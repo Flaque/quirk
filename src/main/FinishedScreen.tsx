@@ -180,7 +180,7 @@ export default class FinishedScreen extends React.Component<
             >
               <SubHeader>Your first thought</SubHeader>
               <GhostButtonWithGuts
-                borderColor={theme.lightGray}
+                borderColor={theme.lightBlue}
                 onPress={() => {
                   this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN, {
                     thought: this.state.thought,
@@ -199,7 +199,7 @@ export default class FinishedScreen extends React.Component<
             >
               <SubHeader>How you challenged it</SubHeader>
               <GhostButtonWithGuts
-                borderColor={theme.lightGray}
+                borderColor={theme.lightBlue}
                 onPress={() => {
                   this.props.navigation.push(DISTORTION_SCREEN, {
                     thought: this.state.thought,
@@ -214,7 +214,7 @@ export default class FinishedScreen extends React.Component<
               </GhostButtonWithGuts>
 
               <GhostButtonWithGuts
-                borderColor={theme.lightGray}
+                borderColor={theme.lightBlue}
                 onPress={() => {
                   this.props.navigation.push(CHALLENGE_SCREEN, {
                     thought: this.state.thought,
@@ -233,7 +233,7 @@ export default class FinishedScreen extends React.Component<
             >
               <SubHeader>What you could think</SubHeader>
               <GhostButtonWithGuts
-                borderColor={theme.lightGray}
+                borderColor={theme.lightBlue}
                 onPress={() => {
                   this.props.navigation.push(ALTERNATIVE_SCREEN, {
                     thought: this.state.thought,
@@ -253,7 +253,7 @@ export default class FinishedScreen extends React.Component<
               >
                 <SubHeader>Follow-up Note</SubHeader>
                 <GhostButtonWithGuts
-                  borderColor={theme.lightGray}
+                  borderColor={theme.lightBlue}
                   onPress={() => {
                     this.props.navigation.push(FOLLOW_UP_NOTE_SCREEN, {
                       thought: this.state.thought,
