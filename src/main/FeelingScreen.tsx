@@ -174,7 +174,7 @@ export default class FeelingScreen extends React.Component<
         <GhostButton
           title="Worse than before 👎"
           width={"100%"}
-          borderColor={theme.lightGray}
+          borderColor={theme.lightBlue}
           textColor={theme.darkText}
           style={{
             marginBottom: 12,
