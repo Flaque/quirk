@@ -28,8 +28,8 @@ interface ScreenProps {
 const KeypadButton = ({ title, onPress, style = {} }) => (
   <GhostButton
     title={title}
-    borderColor={theme.gray}
-    textColor={theme.darkText}
+    borderColor={theme.blue}
+    textColor={theme.lightText}
     width={BUTTON_SIZE}
     height={BUTTON_SIZE}
     fontSize={18}
@@ -51,7 +51,7 @@ const KeypadSideButton = ({
     accessibilityLabel={accessibilityLabel}
     featherIconName={icon}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "Red",
       width: BUTTON_SIZE,
       ...style,
     }}
@@ -65,9 +65,9 @@ const Notifier = ({ isActive }) => (
       width: 32,
       height: 32,
       borderRadius: 32,
-      backgroundColor: theme.pink,
-      borderColor: theme.darkPink,
-      borderWidth: 2,
+      backgroundColor: theme.blue,
+      borderColor: theme.darkBlue,
+      borderWidth: 4,
     }}
     pose={isActive ? "active" : "inactive"}
   />
@@ -177,7 +177,7 @@ export default class extends React.Component<
     return (
       <FadesIn
         style={{
-          backgroundColor: theme.pink,
+          backgroundColor: theme.blue,
           height: "100%",
         }}
         pose={this.state.isReady ? "visible" : "hidden"}
@@ -190,7 +190,7 @@ export default class extends React.Component<
             paddingRight: 12,
             paddingTop: 24,
             marginTop: Constants.statusBarHeight,
-            backgroundColor: theme.pink,
+            backgroundColor: theme.blue,
             justifyContent: "center",
           }}
         >
@@ -222,7 +222,7 @@ export default class extends React.Component<
             paddingTop: 24,
             backgroundColor: "white",
             borderTopWidth: 2,
-            borderColor: theme.darkPink,
+            borderColor: theme.darkBlue,
           }}
         >
           <Row
