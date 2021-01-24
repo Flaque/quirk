@@ -141,7 +141,7 @@ export const SelectorTextItem = ({
     style={{
       backgroundColor: selected ? theme.blue : "white",
       borderColor: selected ? theme.darkBlue : theme.lightGray,
-      borderBottomWidth: 2,
+      borderBottomWidth: 5,
       paddingTop: 8,
       paddingBottom: 4,
       borderRadius: 8,
@@ -154,8 +154,8 @@ export const SelectorTextItem = ({
       <View style={{ flexDirection: "row", marginBottom: 12 }}>
         <Text
           style={{
-            marginRight: 12,
-            marginLeft: 12,
+            marginRight: 10,
+            marginLeft: 10,
           }}
         >
           {emoji}
