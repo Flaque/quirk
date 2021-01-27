@@ -109,7 +109,7 @@ class PaymentScreen extends React.Component<
       userSawApologyNotice();
       Alert.alert(
         "🤦‍ We messed up. 🤦‍",
-        `Due to a bug, your subscription was canceled without your consent. If you were charged, you were refunded!
+        `Oh!Due to a bug, your subscription was canceled without your consent. If you were charged, you were refunded!
         
 If you'd like to continue to use Quirk, you have to resubscribe. You won't be double charged.
 
