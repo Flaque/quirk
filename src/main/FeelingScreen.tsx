@@ -133,7 +133,7 @@ export default class FeelingScreen extends React.Component<
       <Container
         style={{
           paddingTop: Constants.statusBarHeight + 24,
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: '#f7f4eb',
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
@@ -150,7 +150,7 @@ export default class FeelingScreen extends React.Component<
         </MediumHeader>
 
         <GhostButton
-          title="Better than before 👍"
+          title="Better than before"
           width={"100%"}
           borderColor={theme.lightGray}
           textColor={theme.darkText}
@@ -161,7 +161,7 @@ export default class FeelingScreen extends React.Component<
           onPress={this.onFeltBetter}
         />
         <GhostButton
-          title="About the same 🤷‍"
+          title="About the same"
           width={"100%"}
           borderColor={theme.lightGray}
           textColor={theme.darkText}
@@ -172,7 +172,7 @@ export default class FeelingScreen extends React.Component<
           onPress={this.onFeltTheSame}
         />
         <GhostButton
-          title="Worse than before 👎"
+          title="Worse than before"
           width={"100%"}
           borderColor={theme.lightGray}
           textColor={theme.darkText}
