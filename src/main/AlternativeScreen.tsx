@@ -81,7 +81,7 @@ export default class AlternativeScreen extends React.Component<
       <Container
         style={{
           paddingTop: Constants.statusBarHeight + 24,
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: '#f7f4eb',
           flex: 1,
         }}
       >
