@@ -8,8 +8,8 @@ const FilledBlop = () => (
     style={{
       width: 24,
       height: 24,
-      borderRadius: 8,
-      backgroundColor: theme.blue,
+      borderRadius: 4,
+      backgroundColor: '#81a8f0',
       marginHorizontal: 4,
     }}
   />
@@ -20,8 +20,8 @@ const EmptyBlop = () => (
     style={{
       width: 24,
       height: 24,
-      borderRadius: 8,
-      backgroundColor: theme.lightGray,
+      borderRadius: 4,
+      backgroundColor: '#dadde3',
       marginHorizontal: 4,
     }}
   />
