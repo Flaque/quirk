@@ -42,26 +42,14 @@ const ExerciseButtons = ({
   return (
     <View
       style={{
-        backgroundColor: theme.offwhite,
+        backgroundColor: '#f5efe9',
         borderTopWidth: 1,
-        borderColor: theme.lightGray,
+        borderColor: '#dadde3',
         paddingTop: 12,
         paddingBottom: 24,
       }}
     >
-      {/* <ExerciseButton
-      hasYourAttention={true}
-      title="Do this first!"
-      hint="Learn about CBT and how it can help you."
-      featherIconName="book-open"
-      onPress={() =>
-        navigation.navigate(MARKDOWN_ARTICLE_SCREEN, {
-          pages: cbt101.pages,
-          title: cbt101.title,
-          description: cbt101.description,
-        })
-      }
-    /> */}
+      
       {showProgression && <Pulse navigation={navigation} />}
       <ExerciseButton
         title="New Prediction"
