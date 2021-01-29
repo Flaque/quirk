@@ -30,7 +30,7 @@ export default class ProgressBar extends React.Component<
     return (
       <View
         style={{
-          backgroundColor: theme.lightGray,
+          backgroundColor: '#e3e1da',
           height: 32,
           borderRadius: 34,
         }}
