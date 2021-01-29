@@ -122,10 +122,9 @@ export default class FinishedScreen extends React.Component<
     return (
       <ScrollView
         style={{
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: '#f7f4eb',
           paddingTop: Constants.statusBarHeight + 24,
           paddingLeft: 24,
-          paddingRight: 24,
           paddingBottom: 50,
         }}
       >
@@ -145,7 +144,7 @@ export default class FinishedScreen extends React.Component<
                   text="Follow up scheduled"
                   featherIconName="clipboard"
                   style={{
-                    marginBottom: 18,
+                    marginBottom: 14,
                   }}
                 />
               )}
@@ -155,7 +154,7 @@ export default class FinishedScreen extends React.Component<
                   featherIconName="clipboard"
                   backgroundColor={theme.lightPink}
                   style={{
-                    marginBottom: 18,
+                    marginBottom: 14,
                   }}
                 />
               )}
@@ -207,7 +206,7 @@ export default class FinishedScreen extends React.Component<
                   });
                 }}
                 style={{
-                  marginBottom: 6,
+                  marginBottom: 4,
                 }}
               >
                 <EmojiList thought={this.state.thought} />
