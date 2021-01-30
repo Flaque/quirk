@@ -108,7 +108,7 @@ export default class extends React.Component<ScreenProps> {
           }
           style={{
             marginHorizontal: 4,
-            padding: 0,
+            padding: 0.1,
             borderWidth: 0,
             borderBottomWidth: 0,
           }}
