@@ -1,4 +1,4 @@
-🚧🚧🚧
+
 
 **Quirk is no longer being maintained.**
 
@@ -22,13 +22,10 @@ If you like Quirk and want it to continue, feel free to fork it. We'd ask that y
 
 If you want to fork Quirk, you should fork off of [this commit](https://github.com/Flaque/quirk/commit/7a4eabe48414de5edfefcd693e79178120eae142), it's right before we added payments and when the code was the cleanest. 
 
-🚧🚧🚧
-
-
 ---
 
 <p align="center">
-<h1 align="center">✨🐙 quirk. </h1>
+<h2 align="center">✨🐙 quirk. </h2>
 </p>
 <p align="center">
   <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
