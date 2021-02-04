@@ -4,21 +4,21 @@
 
 Quirk started as a little thing I made for myself as I started doing CBT. As I got better, I needed Quirk less. But at the same time, lots of other people had discovered Quirk and started picking it up. That meant more bug fixes, more features, and just more work to be done. I really couldn't keep it up well, especially with my main focus at the time (my day job). 
 
-So in order to work on it full time, my brother and I tried to turn it into a company. That way we could continue to develop Quirk as a primary focus, even if we didn't need it anymore. 
+So to work on it full time, my brother and I tried to turn it into a company. That way we could continue to develop Quirk as a primary focus, even if we didn't need it anymore. 
 
 For awhile, Quirk was going quite well. Lots of people subscribed, we got backed by [Y Combinator](https://www.ycombinator.com/), and we were growing _very_ quickly. 
 
-Unfortunately, in order for the business to work and for us to pay ourselves, we needed folks to be subscribed for a fair amount of time. But in general, most people fell into three camps: didn't use the app at all (and weren't getting value for what they paid), felt better and then unsubscribed, or didn't feel better but persisted anyway. That meant the business model treated successes as failures and failures as successes. So a future Quirk would need to make people feel worse for longer or otherwise not help people we signed up to help. If the incentives of the business weren't aligned with the people, it would have been naive to assume that we could easily fix it as the organization grew and we held less control. We didn't want to go down that path, so we pivoted the company. 
+Unfortunately, for the business to work and for us to pay ourselves, we needed folks to be subscribed for a fair amount of time. But in general, most people fell into three camps: didn't use the app at all (and weren't getting value for what they paid), felt better and then unsubscribed, or didn't feel better but persisted anyway. That meant the business model treated successes as failures and failures as successes. So a future Quirk would need to make people feel worse for longer or otherwise not help people we signed up to help. If the incentives of the business weren't aligned with the people, it would have been naive to assume that we could easily fix it as the organization grew and we held less control. We didn't want to go down that path, so we pivoted the company. 
 
-Anyone who's followed this project will know that we explored multiple paths towards sustainability. Much of it was discussed in the PRs and issues of this repo. We've investigated a completely free model, an indie open source model, a community open source model, a donation model, a pay-up-front model, an ad model, a tele-therapy model, and a subscription model. 
+Anyone who's followed this project will know that we explored multiple paths towards sustainability. Much of it was discussed in the PRs and issues of this repo. We've investigated a completely free model, an indie open-source model, a community open-source model, a donation model, a pay-up-front model, an ad model, a teletherapy model, and a subscription model. 
 
 **Quirk (the company) is now Room Service.**
 
-Now-a-days, we're making [Room Service](https://www.roomservice.dev/), which helps folks build multiplayer stuff, like what Figma or Google Docs have. Multiple cursors, CRDTs, sockets, lots of people editing the same thing, that sort of thing. We're still the same commercial entity and such, just making a different product now. If you think multiplayer systems are cool and want to join us, send me an email: `evan @ roomservice . dev`. 
+Nowadays, we're making [Room Service](https://www.roomservice.dev/), which helps folks build multiplayer stuff, like what Figma or Google Docs have. Multiple cursors, CRDTs, sockets, lots of people editing the same thing, that sort of thing. We're still the same commercial entity and such, just making a different product now. If you think multiplayer systems are cool and want to join us, send me an email: `evan @ roomservice . dev`. 
 
 **Make your own Quirk.**
 
-If you like Quirk and want it to continue, feel free to fork it. We'd ask that you change the name to avoid confusion. Just heed our warning, becareful about the way you keep yourself afloat and becareful about your desire to work on this full-time. There's [more of a write up about this here.](https://evanjconrad.com/posts/moral-competence) 
+If you like Quirk and want it to continue, feel free to fork it. We'd ask that you change the name to avoid confusion. Just heed our warning, be careful about the way you keep yourself afloat and be careful about your desire to work on this full-time. There's [more of a write up about this here.](https://evanjconrad.com/posts/moral-competence) 
 
 If you want to fork Quirk, you should fork off of [this commit](https://github.com/Flaque/quirk/commit/7a4eabe48414de5edfefcd693e79178120eae142), it's right before we added payments and when the code was the cleanest. 
 
@@ -35,7 +35,7 @@ If you want to fork Quirk, you should fork off of [this commit](https://github.c
 <br><br>
 </p>
 
-Quirk is a crossplatform, GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy)
+Quirk is a cross-platform, GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy)
 app built in React Native / Expo.
 
 Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't ask about you
@@ -46,13 +46,13 @@ setting.
 
 ## How Quirk Supports Itself
 
-In order for Quirk to support itself, **it charges a small subscription fee.** Currently it's $5.99 / month in the US, which is roughly the cost of a cup of coffee. This helps pay for a full-time developer to make Quirk not-dead and generally good. 
+For Quirk to support itself, **it charges a small subscription fee.** Currently it's $5.99 / month in the US, which is roughly the cost of a cup of coffee. This helps pay for a full-time developer to make Quirk not-dead and generally good. 
 
 ### The Survival Law of Product Design
 
 To understand _why_ we do a subscription, we can look to the Survival Law of Product Design, a fancy term I just made up. When you make a product, whatever keeps that product alive becomes the primary force of design. 
 
-For example, facebook.com is not Facebook's product, facebook.com/business/ads is Facebook's product. Because 0 dollars are made from facebook accounts, only from advertisers that pay to get access to those facebook accounts. The way you keep the lights on ultimately shapes the product you make. 
+For example, facebook.com is not Facebook's product, facebook.com/business/ads is Facebook's product. Because 0 dollars are made from Facebook accounts, only from advertisers that pay to get access to those Facebook accounts. The way you keep the lights on ultimately shapes the product you make. 
 
 So if you want to make a good product that helps folks, you should pick a model of sustainability where the financial incentives of the organization are aligned with the individual interests of the users.
 
@@ -66,14 +66,14 @@ Some amazing folks have helped build the Quirk you see today.
 
 - [@devinroche](https://github.com/devinroche) for setting up translation and stepping up as a core maintainer 🔥
 - [@devilcius](https://github.com/devilcius) for the amazing Spanish translation 🇪🇸
-- [@idnovic](https://github.com/idnovic) for the amazing German translation 🇩🇪 (and the iPad support!)
+- [@idnovic](https://github.com/idnovic) for the amazing German translation 🇩🇪 (and iPad support!)
 - [@kwierbol](https://github.com/kwierbol) for the amazing Polish translation 🇵🇱
 - [@Walther](https://github.com/Walther) for the amazing Finnish translation 🇫🇮
 - [@Jos512](https://github.com/Jos512) for the amazing Dutch translation 🇳🇱
 - [@jinto](https://github.com/jinto) for the amazing Korean translation 🇰🇷
-- [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and helping guide the entire translation effort. 🎉
+- [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and help guide the entire translation effort. 🎉
 - [@akinariobi](https://github.com/akinariobi) for the Russian translation 🇷🇺 
-- [@miguelmf](https://github.com/miguelmf) for the Portugese translation 🇵🇹
+- [@miguelmf](https://github.com/miguelmf) for the Portuguese translation 🇵🇹
 - [@comradekingu](https://github.com/comradekingu) for the Norweigan Bokmål translation 🇳🇴
 - [@micheleriva](https://github.com/micheleriva) for the Italian translation 🇮🇹
 - [@Jolg42](https://github.com/jolg42) for the French translation 🇫🇷
@@ -94,7 +94,7 @@ cp .env.sample .env
 # install dependencies
 yarn
 
-# start development environment
+# start the development environment
 yarn start
 ```
 
@@ -115,7 +115,7 @@ Of course!
 
 # Design
 
-Quirk's goal is to be both inviting and focused. It should be _really_ easy to enter in a thought; people frequently enter these in public settings and need to do it fairly quickly. It also should not cause any increased frustration.
+Quirk's goal is to be both inviting and focused. It should be easy to enter in a thought; people frequently enter these in public settings and need to do it fairly quickly. It also should not cause any increased frustration.
 
 ## Design Logic
 
@@ -126,7 +126,7 @@ Quirk is built with two main goals in mind:
 
 ### Don't be bloated
 
-**Don't include features for one particular condition at the expense of other conditions.** For example, don't couple mood tracking to thought tracking. If a user _has_ to enter a mood in order to track a thought, then the entire app is ruined for people who use it for panic, OCD or another condition where mood isn't the primary focus.
+**Don't include features for one particular condition at the expense of other conditions.** For example, don't couple mood tracking to thought tracking. If a user _has_ to enter a mood to track a thought, then the entire app is ruined for people who use it for panic, OCD or another condition where the mood isn't the primary focus.
 
 **Don't include non-CBT related treatments without good reason.** No relaxation audio tracks or meditation guides. It's a CBT app, keep it focused on CBT.
 
@@ -138,27 +138,27 @@ Quirk is built with two main goals in mind:
 
 **Thoughts are more valuable than passwords, treat them that way.** Most people would rather give over their passwords than their CBT thoughts. They're incredibly private, occasionally involve other people, and frequently are embarrassing.
 
-**Don't have \$200 dollar in app purchases.** I'm looking at you CBT Thought Diary. I get it, developers need to make money. It costs a lot to just keep the app on the app store. But you're preying on vulnerable people. Very few people of rational mind will purposely spend \$200s for a dark mode.
+**Don't have \ $200 in-app purchases.** I'm looking at you CBT Thought Diary. I get it, developers need to make money. It costs a lot to just keep the app on the app store. But you're preying on vulnerable people. Very few people of rational mind will purposely spend \$200s for a dark mode.
 
 **Don't have dumb notifications.** Scheduling is fine, abusing push notifications so your app has better traffic is scummy and gross.
 
-**Be open.** Not every app has to be open source; it's a hard choice to make. But be clear and obvious within the app about what's going on with the user's data. Don't be sending it to some server without making that clear within the app, especially if it's not providing any extra utility to the user.
+**Be open.** Not every app has to be open-source; it's a hard choice to make. But be clear and obvious within the app about what's going on with the user's data. Don't be sending it to some server without making that clear within the app, especially if it's not providing any extra utility to the user.
 
-**Don't push people to be unhappy.** Do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state their unhappy in order to access a feature. It's easy for this to sneak up in the design, if a user has to rate their happiness below average in order to access the CBT features, you're asking them to be unhappy to use your app.
+**Don't push people to be unhappy.** Do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state their unhappy to access a feature. It's easy for this to sneak up in the design, if a user has to rate their happiness below average to access the CBT features, you're asking them to be unhappy to use your app.
 
-**Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in the help. But holy moly becareful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._
+**Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in help. But holy moly be careful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._
 
 # Engineering Logic
 
 Quirk _must not_ lose user data. The entire point of the app is to record your thoughts, so if you lost them it would be pretty bad. As stated in [one study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6010839/):
 
-> While an app failure in general can be inconvenient and annoying, it can have serious consequences in the context of mental health apps—someone who has come to rely on an app for emotional support can find a failure “devastating.”
+> While an app failure, in general, can be inconvenient and annoying, it can have serious consequences in the context of mental health apps—someone who has come to rely on an app for emotional support can find a failure “devastating.”
 
 Therefore, data management should be given a higher priority than any other part of the app.
 
 ## Taxonomy and Order of Data Failure Cases
 
-The following is a list of extremely _bad_ behaviors and states that could happen in order of severity.
+The following is a list of extremely _bad_ behaviours and states that could happen in order of severity.
 
 ### 1 - Large Scale Data Corruption
 
@@ -180,4 +180,4 @@ A small amount of data has been corrupted in a recoverable way. The user still h
 
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
 
-Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
+Note that this license **does not** give free rein to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
