@@ -32,7 +32,7 @@ export default class WelcomeScreen extends React.Component<ScreenProps> {
       <Container
         style={{
           paddingTop: 24 + Constants.statusBarHeight,
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: theme.offwhite,
           flex: 1,
           alignItems: "center",
           justifyContent: "center",
