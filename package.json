@@ -53,7 +53,7 @@
     "react-native-svg-charts": "^5.3.0",
     "react-native-swiper": "^1.5.14",
     "react-native-webview": "7.0.5",
-    "react-navigation": "^4.0.6",
+    "react-navigation": "^4.4.3",
     "react-navigation-stack": "^1.9.0",
     "react-navigation-tabs": "^2.5.5",
     "react-timer-mixin": "^0.13.4",
