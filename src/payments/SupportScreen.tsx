@@ -40,7 +40,7 @@ export default class SupportScreen extends React.Component<ScreenProps> {
           paddingTop: Constants.statusBarHeight + 48,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
-          paddingLeft: 24,
+          paddingLeft: 30,
           paddingRight: 24,
         }}
       >
@@ -64,7 +64,7 @@ export default class SupportScreen extends React.Component<ScreenProps> {
               marginBottom: 12,
             }}
             placeholderTextColor={textInputPlaceholderColor}
-            placeholder={"ex: 'joe@example.org'"}
+            placeholder={"ex: 'johndoe@gmail.com'"}
             value={this.state.email}
             onChangeText={email => {
               this.setState({ email });

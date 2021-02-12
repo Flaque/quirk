@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 
 export const FadesIn = posed.View({
   visible: { opacity: 1, y: 0 },
-  hidden: { opacity: 0, y: -10 },
+  hidden: { opacity: 0, y: -15 },
 });
 
 export const FadesInAndShrinks = posed.View({

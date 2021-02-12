@@ -188,7 +188,7 @@ export default class extends React.Component<
             flex: 1,
             paddingLeft: 12,
             paddingRight: 12,
-            paddingTop: 24,
+            paddingTop: 30,
             marginTop: Constants.statusBarHeight,
             backgroundColor: theme.pink,
             justifyContent: "center",
