@@ -123,6 +123,8 @@ Quirk is built with two main goals in mind:
 
 - Don't be bloated
 - Don't be evil
+### New Buisness Model
+ The company could potentinally change their buisness model to effiecently meet the requirements free of other peoples cost this would be potentionally adding advertisement as most big platoforms application like youtube and google make a significant amount of money on the basis of the buisnesss structure. This could reincooperate and help restore this buisness as we could shine a new messsage for free with helping people with mental issues and this could suffiecently help more people. We could be the old structure of the model but also a free one would be also good.
 
 ### Don't be bloated
 
