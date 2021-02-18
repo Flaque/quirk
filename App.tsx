@@ -33,7 +33,10 @@ if (Platform.OS === "android") {
       fontFamily: "Roboto",
     },
   });
+
+
 }
+
 
 const App = createBottomTabNavigator(
   {
