@@ -63,9 +63,9 @@ export const Header = ({
   <Text
     style={{
       fontWeight: "900",
-      fontSize: 48,
+      fontSize: 50,
       color: theme.darkText,
-      marginBottom: 12,
+      marginBottom: 10,
       ...style,
     }}
     textBreakStrategy={"simple"}
