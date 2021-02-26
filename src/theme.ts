@@ -1,8 +1,8 @@
 export default {
-  lightOffwhite: "#fbfcfe",
-  offwhite: "#f2f5fa",
-  lightGray: "#EAEDF8",
-  gray: "#dadfeb",
+  lightOffwhite: "black",
+  offwhite: "purple",
+  lightGray: "pink",
+  gray: "violet",
   veryLightText: "#8894af",
   lightText: "#596275",
   darkText: "#303952",
