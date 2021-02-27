@@ -1,5 +1,5 @@
 export default {
-  lightOffwhite: "#fbfcfe",
+  red: "#ff0000",
   offwhite: "#f2f5fa",
   lightGray: "#EAEDF8",
   gray: "#dadfeb",
