@@ -1,5 +1,5 @@
 🚧🚧🚧
-
+-------------------------
 **Quirk is no longer being maintained.**
 
 Quirk started as a little thing I made for myself as I started doing CBT. As I got better, I needed Quirk less. But at the same time, lots of other people had discovered Quirk and started picking it up. That meant more bug fixes, more features, and just more work to be done. I really couldn't keep it up well, especially with my main focus at the time (my day job). 
@@ -21,7 +21,7 @@ Now-a-days, we're making [Room Service](https://www.roomservice.dev/), which hel
 If you like Quirk and want it to continue, feel free to fork it. We'd ask that you change the name to avoid confusion. Just heed our warning, becareful about the way you keep yourself afloat and becareful about your desire to work on this full-time. There's [more of a write up about this here.](https://evanjconrad.com/posts/moral-competence) 
 
 If you want to fork Quirk, you should fork off of [this commit](https://github.com/Flaque/quirk/commit/7a4eabe48414de5edfefcd693e79178120eae142), it's right before we added payments and when the code was the cleanest. 
-
+---------------------
 🚧🚧🚧
 
 
