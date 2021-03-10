@@ -63,7 +63,7 @@ export const Header = ({
   <Text
     style={{
       fontWeight: "900",
-      fontSize: 48,
+      fontSize: 44,
       color: theme.darkText,
       marginBottom: 12,
       ...style,
