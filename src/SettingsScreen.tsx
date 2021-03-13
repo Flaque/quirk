@@ -75,6 +75,7 @@ const Feedback = () => (
       style={{
         borderWidth: 0,
         borderBottomWidth: 0,
+        borderRadius:50
       }}
       width={"100%"}
       onPress={() => {
