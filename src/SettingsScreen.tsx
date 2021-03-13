@@ -48,7 +48,7 @@ export async function getHistoryButtonLabel(): Promise<
 
   if (!isHistoryButtonLabelSetting(value)) {
     console.error(
-      `Something went wrong getting ${HISTORY_BUTTON_LABEL_KEY}. Got: "${value}"`
+      `Something went wrong here, getting ${HISTORY_BUTTON_LABEL_KEY}. Got: "${value}"`
     );
     return HISTORY_BUTTON_LABEL_DEFAULT;
   }
@@ -65,7 +65,7 @@ const Feedback = () => (
       }}
     >
       We take your feedback extremely seriously. The email below goes directly
-      to the creators of Quirk.
+      to the creators of Quirk. Thank you so much for your time.
     </Paragraph>
     <ActionButton
       flex={1}
@@ -269,7 +269,7 @@ class SettingScreen extends React.Component<Props, State> {
       >
         <ScrollView
           style={{
-            backgroundColor: theme.lightOffwhite,
+            backgroundColor: "red",
             marginTop: Constants.statusBarHeight + 24,
             paddingTop: 24,
             height: "100%",
