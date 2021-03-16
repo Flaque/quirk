@@ -65,7 +65,7 @@ const Feedback = () => (
       }}
     >
       We take your feedback extremely seriously. The email below goes directly
-      to the creators of Quirk.
+      to the creators of Quirk. Please send a detailed and appropriate feedback message so we can solve the problem as quick & efficient as possible.
     </Paragraph>
     <ActionButton
       flex={1}
