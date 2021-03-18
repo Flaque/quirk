@@ -399,7 +399,7 @@ export const GhostButton = ({
         textAlign: "center",
         color: textColor || theme.darkText,
         fontWeight: "700",
-        fontSize: fontSize || 16,
+        fontSize: fontSize || 19,
       }}
     >
       {title}
