@@ -97,5 +97,5 @@
     },
     "extends": "xo-react"
   },
-  "private": true
+  "private": false
 }
