@@ -220,7 +220,7 @@ export default class extends React.Component<
             paddingLeft: 12,
             paddingRight: 12,
             paddingTop: 24,
-            backgroundColor: "white",
+            backgroundColor: "red",
             borderTopWidth: 2,
             borderColor: theme.darkPink,
           }}
