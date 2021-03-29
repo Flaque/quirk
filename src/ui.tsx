@@ -5,6 +5,8 @@ import {
   TouchableOpacity,
   ImageSourcePropType,
   Image,
+  SafeViewProvider,
+  SafeAreaView
 } from "react-native";
 import PropTypes from "prop-types";
 import theme from "./theme";
@@ -178,7 +180,7 @@ export const SelectorTextItem = ({
           >
             {text}
           </Text>
-          {selected && <Feather name={"check"} size={16} color={"white"} />}
+          {selected && <Feather name={""} size={16} color={"white"} />}
         </View>
       </View>
 
@@ -295,7 +297,7 @@ export const RoundedSelectorButton = ({
       </Text>
     </View>
 
-    {selected && <Feather name={"check"} size={16} color={"white"} />}
+    {selected && <Feather name={""} size={16} color={"white"} />}
   </TouchableOpacity>
 );
 
