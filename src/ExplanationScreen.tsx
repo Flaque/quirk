@@ -218,8 +218,8 @@ class ExplanationScreen extends React.Component<Props> {
         style={{
           backgroundColor: "white",
           paddingTop: Constants.statusBarHeight + 24,
-          paddingLeft: 24,
-          paddingRight: 24,
+          paddingLeft: 23,
+          paddingRight: 23,
         }}
       >
         <StatusBar barStyle="dark-content" hidden={false} />
@@ -230,7 +230,7 @@ class ExplanationScreen extends React.Component<Props> {
         >
           <View
             style={{
-              marginBottom: 24,
+              marginBottom: 23.5,
               flexDirection: "row",
               justifyContent: "space-between",
             }}
@@ -245,7 +245,7 @@ class ExplanationScreen extends React.Component<Props> {
               {__DEV__ && (
                 <View
                   style={{
-                    marginRight: 8,
+                    marginRight: 7.5,
                   }}
                 >
                   <GhostButton

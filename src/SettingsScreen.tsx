@@ -61,7 +61,7 @@ const Feedback = () => (
     <SubHeader>*feedback</SubHeader>
     <Paragraph
       style={{
-        marginBottom: 16,
+        marginBottom: 15.5,
       }}
     >
       We take your feedback extremely seriously. The email below goes directly
@@ -121,7 +121,7 @@ const GrandfatheredInFreeQuirk = () => (
     </Paragraph>
     <Paragraph
       style={{
-        marginBottom: 49,
+        marginBottom: 50,
       }}
     >
       This will go away if you uninstall the app. Feel free to reach out by
