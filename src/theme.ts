@@ -17,4 +17,5 @@ export default {
   purple: "#8B77AA",
   lightPurple: "#EEEBFF",
   yellow: "#F7D795",
+  lime: "#BFFF00",
 };

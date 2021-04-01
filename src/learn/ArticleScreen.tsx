@@ -54,7 +54,7 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
         >
           <GhostButton
             title="Back"
-            borderColor={theme.lightGray}
+            borderColor={theme.lime}
             textColor={theme.lightText}
             onPress={() => {
               this.props.navigation.navigate(INDEX_LEARN_SCREEN);
