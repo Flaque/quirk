@@ -23,6 +23,7 @@ const Distortion = ({ children }) => (
   <View
     style={{
       marginBottom: 48,
+        alignSelf:'center'
     }}
   >
     {children}
@@ -220,12 +221,14 @@ class ExplanationScreen extends React.Component<Props> {
           paddingTop: Constants.statusBarHeight + 24,
           paddingLeft: 24,
           paddingRight: 24,
+            alignSelf:'center'
         }}
       >
         <StatusBar barStyle="dark-content" hidden={false} />
         <View
           style={{
             marginBottom: Constants.statusBarHeight + 24,
+              alignSelf:'center'
           }}
         >
           <View
@@ -233,6 +236,7 @@ class ExplanationScreen extends React.Component<Props> {
               marginBottom: 24,
               flexDirection: "row",
               justifyContent: "space-between",
+              alignSelf: 'center'
             }}
           >
             <View
