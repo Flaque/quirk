@@ -88,11 +88,11 @@ export default class extends React.Component<ScreenProps> {
         style={{
           backgroundColor: "white",
           height: TAB_BAR_HEIGHT,
-          borderTopColor: theme.lightGray,
+          borderTopColor: theme.gray,
           borderTopWidth: 1,
           paddingBottom: 24,
 
-          paddingTop: 12,
+          paddingTop: 14,
           flexDirection: "row",
           justifyContent: "space-between",
           zIndex: 100,
@@ -109,7 +109,7 @@ export default class extends React.Component<ScreenProps> {
           style={{
             marginHorizontal: 4,
             padding: 0,
-            borderWidth: 0,
+            borderWidth:2,
             borderBottomWidth: 0,
           }}
           onPress={() => {
