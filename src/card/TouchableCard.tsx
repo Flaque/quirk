@@ -16,12 +16,12 @@ export const TouchableCardContainer = ({
   <TouchableOpacity
     onPress={onPress}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "yellow",
       borderColor: theme.lightGray,
       borderBottomWidth: 2,
       borderRadius: 8,
       borderWidth: 1,
-      marginBottom: 18,
+      marginBottom: 15,
       flex: 1,
       ...style,
     }}
