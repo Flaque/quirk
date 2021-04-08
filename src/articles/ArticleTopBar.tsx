@@ -18,7 +18,7 @@ const TopBarContainer = ({
 }) => (
   <View
     style={{
-      backgroundColor: "white",
+      backgroundColor: "red",
       height: TAB_BAR_HEIGHT,
       flexDirection: "row",
       justifyContent: "space-between",
