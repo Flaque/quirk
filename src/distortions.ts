@@ -79,8 +79,8 @@ const distortions: CognitiveDistortion[] = [
     description: i18n.t("should_statements_one_liner"),
   },
   {
-    // ya know, because onigiri has like a little seaweed label.
-    // Trust me it makese sense
+    // you know, because onigiri has like a little seaweed label.
+    // Trust me it makes sense
     emoji: emj("🏷", "🍙"),
     label: i18n.t("labeling"),
     slug: "labeling",
