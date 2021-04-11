@@ -51,7 +51,7 @@ const KeypadSideButton = ({
     accessibilityLabel={accessibilityLabel}
     featherIconName={icon}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "#ffffff",
       width: BUTTON_SIZE,
       ...style,
     }}
