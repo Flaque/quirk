@@ -49,7 +49,7 @@ export default class MarkdownArticle extends React.Component<
               TAB_BAR_HEIGHT -
               Constants.statusBarHeight -
               48,
-            paddingBottom: 24,
+            paddingBottom: 25,
           }}
         >
           <Header>{this.props.title}</Header>
