@@ -5,7 +5,7 @@
 Quirk started as a little thing I made for myself as I started doing CBT. As I got better, I needed Quirk less. But at the same time, lots of other people had discovered Quirk and started picking it up. That meant more bug fixes, more features, and just more work to be done. I really couldn't keep it up well, especially with my main focus at the time (my day job). 
 
 So in order to work on it full time, my brother and I tried to turn it into a company. That way we could continue to develop Quirk as a primary focus, even if we didn't need it anymore.
- 😊😊😊 
+ 
 
 For awhile, Quirk was going quite well. Lots of people subscribed, we got backed by [Y Combinator](https://www.ycombinator.com/), and we were growing _very_ quickly. 
 
@@ -21,14 +21,16 @@ Now-a-days, we're making [Room Service](https://www.roomservice.dev/), which hel
 
 If you like Quirk and want it to continue, feel free to fork it. We'd ask that you change the name to avoid confusion. Just heed our warning, becareful about the way you keep yourself afloat. 
 
-If you want to fork Quirk, you should fork off of [this commit](https://github.com/Flaque/quirk/commit/7a4eabe48414de5edfefcd693e79178120eae142), it's right before we added payments and when the code was the cleanest. 
+If you want to fork Quirk, you should fork off of [this commit](https://github.com/Flaque/quirk/commit/7a4eabe48414de5edfefcd693e79178120eae142), it's right before we added payments and when the code was the cleanest.
+
+It is very important to mention that a good conder should always write the code in a clean manner.
 
 🚧🚧🚧
 
 
 ---
 
-<p align="center">
+<p align="Left">
 <h1 align="center">✨🐙 quirk. </h1>
 </p>
 <p align="center">
