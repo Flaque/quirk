@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   text: {
-    fontSize: 18,
-    lineHeight: 28,
+    fontSize: 25,
+    lineHeight: 42,
   },
   heading: {
     marginBottom: 0,
