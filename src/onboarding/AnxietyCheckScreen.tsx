@@ -17,20 +17,20 @@ const CardButton = ({ onPress, crown, title, description }) => (
     <CardCrown text={crown} featherIconName="cloud" />
     <View
       style={{
-        padding: 12,
+        padding: 15,
         flex: 1,
       }}
     >
       <SubHeader
         style={{
-          fontSize: 16,
+          fontSize: 20,
         }}
       >
         {title}
       </SubHeader>
       <HintHeader
         style={{
-          fontSize: 14,
+          fontSize: 16,
           marginBottom: 0,
         }}
       >
@@ -108,7 +108,7 @@ export default class AnxietyCheckScreen extends React.Component<ScreenProps> {
             >
               <SubHeader
                 style={{
-                  fontSize: 16,
+                  fontSize: 12,
                   marginBottom: 0,
                 }}
               >
