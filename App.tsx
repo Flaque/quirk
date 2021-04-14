@@ -30,7 +30,9 @@ import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 if (Platform.OS === "android") {
   setCustomText({
     style: {
-      fontFamily: "Roboto",
+      fontFamily: "Arial",
+      fontSize: 10,
+      fontColor: 'blue',
     },
   });
 }
