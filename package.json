@@ -8,6 +8,7 @@
     "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "jest",
     "ship": "./scripts/ship.sh"
+    "safe area": "expo Safe Area
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.3",
