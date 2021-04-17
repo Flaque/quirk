@@ -1,4 +1,4 @@
-import { createAppContainer } from "react-navigation";
+import { createAppContainer } from "react-navigation"; 
 import {
   EXPLANATION_SCREEN,
   SETTING_SCREEN,
@@ -31,6 +31,7 @@ if (Platform.OS === "android") {
   setCustomText({
     style: {
       fontFamily: "Roboto",
+      fontSize:2
     },
   });
 }
