@@ -1,4 +1,4 @@
-import { createAppContainer } from "react-navigation";
+import { createAppContainer } from 'react-navigation';
 import {
   EXPLANATION_SCREEN,
   SETTING_SCREEN,
@@ -16,13 +16,13 @@ import PaymentScreen from "./src/payments/PaymentScreen";
 import LockScreen from "./src/lock/LockScreen";
 import MainScreen from "./src/main";
 import React from "react";
-import { createBottomTabNavigator } from "react-navigation-tabs";
+import {createBottomTabNavigator} from "react-navigation-tabs";
 import TabBar from "./src/tabbar/TabBar";
 import OnboardingScreen from "./src/onboarding";
 import IndexLearnScreen from "./src/learn";
 import CheckupScreen from "./src/checkups";
 import { setCustomText } from "react-native-global-props";
-import { Platform } from "react-native";
+import {Platform} from "react-native";
 import SupportScreen from "./src/payments/SupportScreen";
 import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 
@@ -30,7 +30,7 @@ import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 if (Platform.OS === "android") {
   setCustomText({
     style: {
-      fontFamily: "Roboto",
+      fontFamily: "Sans Serif",
     },
   });
 }
