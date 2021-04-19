@@ -5,6 +5,7 @@ import {
   CBT_ON_BOARDING_SCREEN,
   PAYMENT_SCREEN,
   LOCK_SCREEN,
+  
   MAIN_SCREEN,
   CHECKUP_SCREEN,
   SUPPORT_SCREEN,
@@ -54,5 +55,7 @@ const App = createBottomTabNavigator(
     },
   }
 );
+
+
 
 export default withErrorBoundary(createAppContainer(App));
