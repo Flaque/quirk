@@ -5,7 +5,7 @@
     "slug": "quirk",
     "privacy": "unlisted",
     "sdkVersion": "35.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": ["ios", "android", "mac", "windows"],
     "version": "2.4.0",
     "orientation": "portrait",
     "githubUrl": "https://github.com/Flaque/quirk",
@@ -16,7 +16,7 @@
       "backgroundColor": "#F8A5C2"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 1
     },
     "assetBundlePatterns": ["assets/**"],
     "ios": {
@@ -35,7 +35,7 @@
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
     "androidStatusBar": {
-      "backgroundColor": "#fbfcfe"
+      "backgroundColor": "#fbfcfg"
     },
     "hooks": {
       "postPublish": [
@@ -43,7 +43,7 @@
           "file": "sentry-expo/upload-sourcemaps",
           "config": {
             "organization": "evan-conrad",
-            "project": "quirk"
+            "project": "Quirk"
           }
         }
       ]
