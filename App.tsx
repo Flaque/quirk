@@ -25,7 +25,7 @@ import { setCustomText } from "react-native-global-props";
 import { Platform } from "react-native";
 import SupportScreen from "./src/payments/SupportScreen";
 import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
-
+import {Text} from 'react-native'
 // Fixes a bug on OnePlus phones which have some buggy font by default
 if (Platform.OS === "android") {
   setCustomText({
@@ -46,6 +46,8 @@ const App = createBottomTabNavigator(
     [CHECKUP_SCREEN]: CheckupScreen,
     [SUPPORT_SCREEN]: SupportScreen,
     [MARKDOWN_ARTICLE_SCREEN]: MarkdownArticleScreen,
+
+
   },
   {
     initialRouteName: PAYMENT_SCREEN,
