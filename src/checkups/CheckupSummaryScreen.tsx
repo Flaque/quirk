@@ -96,7 +96,7 @@ export default class CheckUpSummaryScreen extends React.Component<
 
               <View
                 style={{
-                  marginBottom: 24,
+                  marginBottom: 20,
                 }}
               >
                 <SubHeader>How things are going</SubHeader>
@@ -113,7 +113,7 @@ export default class CheckUpSummaryScreen extends React.Component<
 
             <Row
               style={{
-                marginTop: 24,
+                marginTop: 10,
               }}
             >
               <ActionButton
