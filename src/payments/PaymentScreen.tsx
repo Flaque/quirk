@@ -486,7 +486,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               flex={1}
               title={"Privacy Policy"}
               fillColor="#EDF0FC"
-              textColor={theme.darkBlue}
+              textColor={theme.red}
               onPress={() => {
                 Linking.canOpenURL("https://quirk.fyi/privacy").then(() =>
                   Linking.openURL("https://quirk.fyi/privacy")
