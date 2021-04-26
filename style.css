@@ -1,0 +1,55 @@
+
+     h1 {
+        color : rgb(255, 0, 0);
+        border: solid;
+        padding-left: 450px;
+     }
+
+     .header {
+        background-color: #ab6ab6;
+        font-style: italic;
+        font-size: x-large;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+     }
+
+     .menu{
+         display: flex;
+         background-color: #51da12;
+         flex-wrap: wrap;
+         justify-content: space-around;
+         font-size: x-large;
+         color: #ffffff;
+         position: relative;
+         
+     }
+    
+     .grid{
+         font-size: medium;
+         color: #10fabf
+     }
+     body {
+        background-image: url('Nature.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+
+      p{
+         text-align: center;
+      }
+
+      .item p{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%,-50%);
+         opacity: 0;
+     }
+
+      .item:hover p {
+         opacity: 1;
+         }
+
+      .item:hover img {
+opacity: 0.33;
+}
