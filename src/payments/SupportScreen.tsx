@@ -62,6 +62,7 @@ export default class SupportScreen extends React.Component<ScreenProps> {
               ...textInputStyle,
               height: 48,
               marginBottom: 12,
+              backgroundColor:"yellow"
             }}
             placeholderTextColor={textInputPlaceholderColor}
             placeholder={"ex: 'joe@example.org'"}

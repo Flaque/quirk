@@ -222,6 +222,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               flexDirection: "row",
               padding: 24,
               marginTop: 48,
+              margin:20,
             }}
           >
             <Image
