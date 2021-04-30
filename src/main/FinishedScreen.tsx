@@ -137,7 +137,7 @@ export default class FinishedScreen extends React.Component<
           >
             <View
               style={{
-                marginBottom: 18,
+                marginBottom: 20,
               }}
             >
               {followUpState(this.state.thought) === "scheduled" && (
@@ -145,7 +145,7 @@ export default class FinishedScreen extends React.Component<
                   text="Follow up scheduled"
                   featherIconName="clipboard"
                   style={{
-                    marginBottom: 18,
+                    marginBottom: 20,
                   }}
                 />
               )}
@@ -155,7 +155,7 @@ export default class FinishedScreen extends React.Component<
                   featherIconName="clipboard"
                   backgroundColor={theme.lightPink}
                   style={{
-                    marginBottom: 18,
+                    marginBottom: 15,
                   }}
                 />
               )}
@@ -175,7 +175,7 @@ export default class FinishedScreen extends React.Component<
 
             <View
               style={{
-                marginBottom: 12,
+                marginBottom: 20,
               }}
             >
               <SubHeader>Your first thought</SubHeader>
@@ -194,7 +194,7 @@ export default class FinishedScreen extends React.Component<
 
             <View
               style={{
-                marginBottom: 12,
+                marginBottom: 15,
               }}
             >
               <SubHeader>How you challenged it</SubHeader>
@@ -207,7 +207,7 @@ export default class FinishedScreen extends React.Component<
                   });
                 }}
                 style={{
-                  marginBottom: 6,
+                  marginBottom: 5,
                 }}
               >
                 <EmojiList thought={this.state.thought} />
@@ -228,7 +228,7 @@ export default class FinishedScreen extends React.Component<
 
             <View
               style={{
-                marginBottom: 12,
+                marginBottom: 10,
               }}
             >
               <SubHeader>What you could think</SubHeader>
@@ -248,7 +248,7 @@ export default class FinishedScreen extends React.Component<
             {this.state.thought.followUpNote && (
               <View
                 style={{
-                  marginBottom: 12,
+                  marginBottom: 11,
                 }}
               >
                 <SubHeader>Follow-up Note</SubHeader>
