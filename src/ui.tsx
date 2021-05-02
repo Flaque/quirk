@@ -63,7 +63,7 @@ export const Header = ({
   <Text
     style={{
       fontWeight: "900",
-      fontSize: 48,
+      fontSize: 50,
       color: theme.darkText,
       marginBottom: 12,
       ...style,
@@ -88,7 +88,7 @@ export const MediumHeader = ({
 }: ParentComponent & { allowFontScaling?: boolean }) => (
   <Text
     style={{
-      fontWeight: "900",
+      fontWeight: "800",
       fontSize: 20,
       color: theme.darkText,
       marginBottom: 12,
@@ -139,7 +139,7 @@ export const SelectorTextItem = ({
   <TouchableOpacity
     onPress={onPress}
     style={{
-      backgroundColor: selected ? theme.blue : "white",
+      backgroundColor: selected ? theme.blue : "yellow",
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
       paddingTop: 8,
