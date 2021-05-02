@@ -457,6 +457,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               marginRight: 32,
               marginBottom: 16,
               justifyContent: "space-between",
+              borderRadius : 20 ,
             }}
           >
             {this.state.loading ? (
