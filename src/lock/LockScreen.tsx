@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   NavigationScreenProp,
@@ -34,7 +35,7 @@ const KeypadButton = ({ title, onPress, style = {} }) => (
     height={BUTTON_SIZE}
     fontSize={18}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "#ffebeb",
       ...style,
     }}
     onPress={onPress}
@@ -51,7 +52,7 @@ const KeypadSideButton = ({
     accessibilityLabel={accessibilityLabel}
     featherIconName={icon}
     style={{
-      backgroundColor: "white",
+      backgroundColor: "#f4d2f7",
       width: BUTTON_SIZE,
       ...style,
     }}
@@ -159,7 +160,7 @@ export default class extends React.Component<
     }
   };
 
-  onBackspace = () => {
+onBackspace = () => {
     haptic.impact(Haptic.ImpactFeedbackStyle.Medium);
     this.setState(prevState => {
       if (prevState.code.length === 0) {

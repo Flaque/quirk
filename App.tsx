@@ -35,6 +35,14 @@ if (Platform.OS === "android") {
   });
 }
 
+if (Platform.OS === "ios") {
+  setCustomText({
+    style: {
+      fontFamily: "Fantasy",
+    },
+  });
+}
+
 const App = createBottomTabNavigator(
   {
     [MAIN_SCREEN]: MainScreen,
