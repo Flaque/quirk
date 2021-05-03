@@ -269,7 +269,7 @@ class SettingScreen extends React.Component<Props, State> {
       >
         <ScrollView
           style={{
-            backgroundColor: theme.lightOffwhite,
+            backgroundColor: theme.white,
             marginTop: Constants.statusBarHeight + 24,
             paddingTop: 24,
             height: "100%",
@@ -291,7 +291,7 @@ class SettingScreen extends React.Component<Props, State> {
               <SubHeader>*reminders</SubHeader>
               <Paragraph
                 style={{
-                  marginBottom: 16,
+                  marginBottom: 15,
                 }}
               >
                 If you'd like, you can turn on notification reminders that help
@@ -350,8 +350,8 @@ class SettingScreen extends React.Component<Props, State> {
                     : "Set Pincode"
                 }
                 width={"100%"}
-                fillColor="#EDF0FC"
-                textColor={theme.darkBlue}
+                fillColor="orange"
+                textColor={theme.lightBlue}
                 style={{
                   borderWidth: 0,
                   borderBottomWidth: 0,
@@ -389,7 +389,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 22,
+                marginBottom: 21,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -399,7 +399,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 22,
+                marginBottom: 21,
                 display: "flex",
                 flexDirection: "column",
               }}
