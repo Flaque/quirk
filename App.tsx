@@ -25,12 +25,13 @@ import { setCustomText } from "react-native-global-props";
 import { Platform } from "react-native";
 import SupportScreen from "./src/payments/SupportScreen";
 import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
-
+// utivbhj879t5uhfdgcfxtyuiytrdtfyu890876trdtyu89i876tr5etyui987654ewrty7u890876543245678908765435ytrfghuiytgfvhbjiuhgvbhjiuygvcbhjiuhg
 // Fixes a bug on OnePlus phones which have some buggy font by default
-if (Platform.OS === "android") {
+if (Platform.OS === "ios") {
   setCustomText({
     style: {
       fontFamily: "Roboto",
+      fontSize: 30,
     },
   });
 }
