@@ -127,6 +127,7 @@ export default class FinishedScreen extends React.Component<
           paddingLeft: 24,
           paddingRight: 24,
           paddingBottom: 50,
+          borderRadius:10
         }}
       >
         {this.state.thought && (
