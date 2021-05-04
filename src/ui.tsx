@@ -140,12 +140,12 @@ export const SelectorTextItem = ({
     onPress={onPress}
     style={{
       backgroundColor: selected ? theme.blue : "white",
-      borderColor: selected ? theme.darkBlue : theme.lightGray,
+      borderColor: selected ? theme.lightBlue : theme.Gray,
       borderBottomWidth: 2,
       paddingTop: 8,
       paddingBottom: 4,
       borderRadius: 8,
-      borderWidth: 1,
+      borderWidth: 2,
       marginBottom: 4,
       marginTop: 1,
     }}
