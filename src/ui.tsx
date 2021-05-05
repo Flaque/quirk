@@ -104,8 +104,8 @@ export const MediumHeader = ({
 export const HintHeader = ({ children, style }: ParentComponent) => (
   <Text
     style={{
-      fontWeight: "700",
-      fontSize: 16,
+      fontWeight: "900",
+      fontSize: 18,
       color: theme.veryLightText,
       marginBottom: 12,
       ...style,
