@@ -9,7 +9,7 @@
     "version": "2.4.0",
     "orientation": "portrait",
     "githubUrl": "https://github.com/Flaque/quirk",
-    "primaryColor": "#bdcfe6",
+    "primaryColor": "#c6e6c7",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
