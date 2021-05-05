@@ -503,6 +503,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               marginRight: 32,
               marginBottom: 16,
               justifyContent: "space-between",
+              backgroundColor: "pink"
             }}
           >
             <ActionButton
@@ -521,9 +522,9 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
             style={{
               display: "flex",
               flexDirection: "row",
-              marginLeft: 32,
-              marginRight: 32,
-              marginBottom: 32,
+              marginLeft: 30,
+              marginRight: 30,
+              marginBottom: 30,
               justifyContent: "space-between",
             }}
           >
