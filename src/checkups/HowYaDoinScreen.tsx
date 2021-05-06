@@ -157,7 +157,7 @@ export default class HowYaDoinScreen extends React.Component<
 
             <SubHeader
               style={{
-                marginTop: 24,
+                marginTop: 25,
               }}
             >
               Add a note (optional)
