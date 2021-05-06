@@ -1,4 +1,4 @@
-🚧🚧🚧
+🚧🚧🚧 Sohum Gautam
 
 **Quirk is no longer being maintained.**
 
@@ -56,7 +56,7 @@ For example, facebook.com is not Facebook's product, facebook.com/business/ads i
 
 So if you want to make a good product that helps folks, you should pick a model of sustainability where the financial incentives of the organization are aligned with the individual interests of the users.
 
-After a lot of tries with other models, that ended up being a subscription. In a subscription, the primary metric is retention: are people still using this thing? If retention drops, people cancel their subscription and you no longer get to exist.
+After a ton of tries with other models, that ended up being a subscription. In a subscription, the primary metric is retention: are people still using this thing? If retention drops, people cancel their subscription and you no longer get to exist.
 
 The _only_ solid way to have good retention is to create something that is actively useful and good. Similarly, the only way to get any value from CBT is to consistently do it. 
 
