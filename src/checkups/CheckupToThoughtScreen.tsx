@@ -40,7 +40,7 @@ export default class CheckupToThoughtScreen extends React.Component<
             marginTop: 12,
           }}
           width="100%"
-          title="Okay, let's challenge it."
+          title="Let's challenge it."
           onPress={this.onChallenge}
         />
 

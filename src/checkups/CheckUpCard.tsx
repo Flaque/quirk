@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   TouchableCardContainer,
@@ -25,7 +25,7 @@ const CheckUpCard = ({
       <CardMutedContent>
         <Text
           style={{
-            fontWeight: "700",
+            fontWeight: "650",
             fontSize: 14,
             color: theme.veryLightText,
           }}

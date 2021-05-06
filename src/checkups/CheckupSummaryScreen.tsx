@@ -24,7 +24,7 @@ const MoodText = ({ mood }: { mood: "good" | "bad" | "neutral" }) => {
     return <Paragraph>Going well 👍</Paragraph>;
   }
   if (mood === "neutral") {
-    return <Paragraph>Going okay 🤷‍</Paragraph>;
+    return <Paragraph>Going good 🤷‍</Paragraph>;
   }
   if (mood === "bad") {
     return <Paragraph>Going poorly 👎</Paragraph>;
