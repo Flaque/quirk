@@ -46,7 +46,7 @@ setting.
 
 ## How Quirk Supports Itself
 
-In order for Quirk to support itself, **it charges a small subscription fee.** Currently it's $5.99 / month in the US, which is roughly the cost of a cup of coffee. This helps pay for a full-time developer to make Quirk not-dead and generally good. 
+In order for Quirk to support itself, **it charges a small subscription fee.** Currently it's $5.99 / month in the US, which is roughly the cost of a cup of coffee. This helps pay for a full-time developer to make Quirk not-dead and generally good. I am changing the price to $10 !!
 
 ### The Survival Law of Product Design
 
