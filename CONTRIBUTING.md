@@ -24,4 +24,5 @@ This is because iOS/expo doesn't have a solid understanding of release candidate
 yarn ship
 ```
 
-That version gets shipped to beta testers but might not actually be the version released to the store.
+That version gets shipped to beta testers but might not actually be the version released to the store. 
+If you're interested in giving expert advice to Quirk or would like to use it for your patients, I'd love to talk to you.
