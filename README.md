@@ -48,8 +48,6 @@ setting.
 
 In order for Quirk to support itself, **it charges a small subscription fee.** Currently it's $5.99 / month in the US, which is roughly the cost of a cup of coffee. This helps pay for a full-time developer to make Quirk not-dead and generally good. 
 
-### The Survival Law of Product Design
-
 To understand _why_ we do a subscription, we can look to the Survival Law of Product Design, a fancy term I just made up. When you make a product, whatever keeps that product alive becomes the primary force of design. 
 
 For example, facebook.com is not Facebook's product, facebook.com/business/ads is Facebook's product. Because 0 dollars are made from facebook accounts, only from advertisers that pay to get access to those facebook accounts. The way you keep the lights on ultimately shapes the product you make. 
@@ -120,9 +118,6 @@ Quirk's goal is to be both inviting and focused. It should be _really_ easy to e
 ## Design Logic
 
 Quirk is built with two main goals in mind:
-
-- Don't be bloated
-- Don't be evil
 
 ### Don't be bloated
 
