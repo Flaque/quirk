@@ -524,6 +524,8 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               marginLeft: 32,
               marginRight: 32,
               marginBottom: 32,
+              borderRadius:20,
+              
               justifyContent: "space-between",
             }}
           >
