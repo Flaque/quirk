@@ -40,8 +40,8 @@ export default class SupportScreen extends React.Component<ScreenProps> {
           paddingTop: Constants.statusBarHeight + 48,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
-          paddingLeft: 24,
-          paddingRight: 24,
+          paddingLeft: 29,
+          paddingRight: 28,
         }}
       >
         <KeyboardAvoidingView
@@ -60,7 +60,7 @@ export default class SupportScreen extends React.Component<ScreenProps> {
           <TextInput
             style={{
               ...textInputStyle,
-              height: 48,
+              height: 45,
               marginBottom: 12,
             }}
             placeholderTextColor={textInputPlaceholderColor}
