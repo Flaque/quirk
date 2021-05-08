@@ -2,7 +2,7 @@
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
     "class-name": true,
-    "interface-name": false,
+    "interface-name": true,
     "member-access": false,
     "comment-format": [true, "check-space"],
     "indent": [true, "spaces"],
