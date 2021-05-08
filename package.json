@@ -27,7 +27,7 @@
     "jest": "^24.9.0",
     "jest-expo": "^32.0.0",
     "json-stringify-safe": "^5.0.1",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "makecancelable": "^1.1.1",
     "prop-types": "^15.6.2",
     "react": "16.8.3",
