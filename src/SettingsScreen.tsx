@@ -71,7 +71,7 @@ const Feedback = () => (
       flex={1}
       title={"Email Feedback"}
       fillColor="#EDF0FC"
-      textColor={theme.darkBlue}
+      textColor={"yellow"}
       style={{
         borderWidth: 0,
         borderBottomWidth: 0,
