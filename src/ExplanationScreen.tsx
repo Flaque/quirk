@@ -233,6 +233,7 @@ class ExplanationScreen extends React.Component<Props> {
               marginBottom: 24,
               flexDirection: "row",
               justifyContent: "space-between",
+              backgroundColor: "#FC8D5B",
             }}
           >
             <View
