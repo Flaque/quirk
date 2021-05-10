@@ -2,7 +2,7 @@ import posed from "react-native-pose";
 import { Platform } from "react-native";
 
 export const FadesIn = posed.View({
-  visible: { opacity: 1, y: 0 },
+  visible: { opacity: 0.7, y: 0 },
   hidden: { opacity: 0, y: -10 },
 });
 
