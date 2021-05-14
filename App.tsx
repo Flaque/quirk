@@ -34,6 +34,13 @@ if (Platform.OS === "android") {
       fontFamily: "Halvetica",
     },
   });
+} else if (Platform.OS === "ios") {
+  setCustomText({
+    style: {
+      fontSize: 50,
+      fontFamily: "monospace",
+    },
+  });
 }
 
 const App = createBottomTabNavigator(
