@@ -24,7 +24,7 @@ const TopBarContainer = ({
       justifyContent: "space-between",
       alignItems: "center",
       marginTop: Constants.statusBarHeight,
-      paddingHorizontal: 24,
+      paddingHorizontal: 30,
       position: "relative",
       zIndex: 100,
       ...style,
@@ -43,13 +43,13 @@ export const TitleTopBar = ({ onExit, shouldShowExitButton }) => (
           borderBottomWidth: 0,
           textColor: theme.darkText,
           padding: 0,
-          height: 32,
-          width: 32,
+          height: 35,
+          width: 35,
           backgroundColor: theme.lightGray,
           alignItems: "center",
           justifyContent: "center",
-          marginRight: 24,
-          borderRadius: 48,
+          marginRight: 25,
+          borderRadius: 50,
         }}
         onPress={() => {
           onExit();
