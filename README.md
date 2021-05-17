@@ -176,6 +176,10 @@ A small amount of data has been deleted without any hope of recovery.
 
 A small amount of data has been corrupted in a recoverable way. The user still has lost data, but the app does not crash, and this is potentially fixable via an update.
 
+### 5 - This file doesn't open in expo.io
+
+Disclaimer that file doesn't open in expo.io in snacks section , it is with such errors which can't be resolved .
+
 # License
 
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
