@@ -174,10 +174,10 @@ A small amount of data has been deleted without any hope of recovery.
 
 ### 4 - Small Scale Data Corruption
 
-A small amount of data has been corrupted in a recoverable way. The user still has lost data, but the app does not crash, and this is potentially fixable via an update.
+A small amount of data has been corrupted in a recoverable way. The user still has lost data, but the app does not crash, and this is potentially fixable through an update.
 
 # License
 
-Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
+Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which assures the users of qurik the freedom to study, share, and modify the software.
 
-Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
+Note that this license ***does not*** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
