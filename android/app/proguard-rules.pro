@@ -49,7 +49,7 @@
 -keep,allowobfuscation @interface **.facebook.proguard.annotations.KeepGettersAndSetters
 -keep,allowobfuscation @interface **.facebook.react.bridge.ReadableType
 
-# Do not strip any method/class that is annotated with @DoNotStrip
+# Do not strip any method/class that is annotated with @DoNotStrip.
 -keep @**.facebook.proguard.annotations.DoNotStrip class *
 -keepclassmembers class * {
   @**.facebook.proguard.annotations.DoNotStrip *;
