@@ -28,6 +28,11 @@ export const Row = ({ children, style }: { children: any; style?: any }) => (
       flexDirection: "row",
       justifyContent: "space-between",
       ...style,
+      fontSize: 24,
+      flex: '1',
+      padding: 10,
+      borderRadius: 20,
+      opacity: 0.7
     }}
   >
     {children}
@@ -67,6 +72,7 @@ export const Header = ({
       color: theme.darkText,
       marginBottom: 12,
       ...style,
+      opacity: 0.5
     }}
     textBreakStrategy={"simple"}
     allowFontScaling={allowFontScaling}
@@ -93,6 +99,7 @@ export const MediumHeader = ({
       color: theme.darkText,
       marginBottom: 12,
       ...style,
+      opacity: .3
     }}
     textBreakStrategy={"simple"}
     allowFontScaling={allowFontScaling}
@@ -108,6 +115,7 @@ export const HintHeader = ({ children, style }: ParentComponent) => (
       fontSize: 16,
       color: theme.veryLightText,
       marginBottom: 12,
+      opacity: .34
       ...style,
     }}
   >

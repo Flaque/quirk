@@ -246,6 +246,9 @@ class ExplanationScreen extends React.Component<Props> {
                 <View
                   style={{
                     marginRight: 8,
+                    padding : 10,
+                    flex: 1,
+                    opacity: 0.75
                   }}
                 >
                   <GhostButton
@@ -255,6 +258,7 @@ class ExplanationScreen extends React.Component<Props> {
                     borderColor={theme.lightGray}
                     textColor={theme.veryLightText}
                     onPress={this.navigateToOnboardingScreen}
+                    fontSize={24}
                   />
                 </View>
               )}
