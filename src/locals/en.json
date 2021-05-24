@@ -1,0 +1,157 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "I missed George's party, he must hate me.",
+    "challenge_ex": "George knows I couldn't make it every time, I wouldn't hate him if he missed something of mine.\n\nI should treat myself at least as well as I treat others.",
+    "alt_thought_ex": "It's true I missed George's party, I can apologize, and he'll probably forgive me.",
+    "cog_distortion": { "label": "Mind Reading", "slug": "mind-reading" },
+    "intro": {
+      "line1": "Welcome to",
+      "emphasis1": "quirk",
+      "line2": ", the",
+      "emphasis2": "Cognitive Behavioral Therapy (CBT)",
+      "line3": "App."
+    },
+    "crash_course": {
+      "line1": "This is a",
+      "emphasis1": "crash course",
+      "line2": "in CBT and",
+      "emphasis2": "not an alternative",
+      "line3": "for a trained therapist."
+    },
+    "mood_thoughts": {
+      "line1": "First:",
+      "emphasis1": "your thoughts cause your moods."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Second: your thoughts can be",
+      "emphasis1": "automatic."
+    },
+    "your_distorted": {
+      "line1": "Third: automatic thoughts are often",
+      "emphasis1": "distorted."
+    },
+    "cbt_overview": {
+      "line1": "The goal of CBT is to recognize the",
+      "emphasis1": "distorted thoughts",
+      "line2": "and",
+      "emphasis2": "replace them",
+      "line3": "with rational ones."
+    },
+    "ready": {
+      "emphasis1": "Ready?",
+      "line1": "Let's go over the steps."
+    },
+    "catch": {
+      "line1": "We'll start by",
+      "emphasis1": "just writing down",
+      "line2": "the automatic thoughts when they happen."
+    },
+    "bad_thought_note": {
+      "line1": "Note the thought:",
+      "line2": "I missed George's party, he must hate me."
+    },
+    "identify_distortions": {
+      "line1": "Look for",
+      "emphasis1": "Cognitive Distortions"
+    },
+    "bad_distortions": {
+      "line1": "Do we really know George will hate us? If not, we're",
+      "emphasis1": "🧠 Mind Reading",
+      "line2": "I missed George's party, he must hate me."
+    },
+    "challenge_screen": {
+      "line1": "Why isn't this thought realistic?",
+      "emphasis1": "Challenge it."
+    },
+    "write_challenge": {
+      "line1": "We'll write something like this:"
+    },
+    "alt_thought": {
+      "line1": "Finally, we'll write an",
+      "emphasis1": "alternative thought."
+    },
+    "show_off": {
+      "line1": "Find it later:"
+    },
+    "got_it": {
+      "line1": "You're ready to go!",
+      "btn_title": "Let's go!"
+    }
+  },
+  "auto_thought": "Automatic Thought",
+  "cog_distortion": "Select any distortions that apply.",
+  "challenge": "Challenge the thought.",
+  "alt_thought": "Alternative Thought",
+  "cbt_form": {
+    "edit": "Edit",
+    "new": "New",
+    "save": "Save",
+    "auto_thought_placeholder": "ex: \"I bet I'll fail this test...\"",
+    "cog_distortion": "Cognitive Distortions",
+    "challenged": "Challenge",
+    "changed_placeholder": "It might not be true that...",
+    "alt_thought_placeholder": "What could we think instead?"
+  },
+  "all_or_nothing_thinking": "All or Nothing Thinking",
+  "all_or_nothing_thinking_explanation": "This distortion happens when we have no room for middle ground. If we think that a small fault in ourselves means we’re fundamentally rotten or otherwise terrible, we’re likely engaging in all or nothing thinking.",
+  "all_or_nothing_thinking_thought": "I bombed the interview, I must be unhirable.",
+  "catastrophizing": "Catastrophizing",
+  "catastrophizing_explanation": "If we’re taking a small problem and blowing it way out of proportion, we’re catastrophizing. Did you make a small mistake at work and are dreading if someone found out even though it’s nothing serious? You’re probably catastrophizing.",
+  "catastrophizing_thought": "I'm feeling jittery, I might be having a heart attack.",
+  "emotional_reasoning": "Emotional Reasoning",
+  "emotional_reasoning_explanation_1": "\"I feel it, therefore it must be true.\" If you find yourself justifying the \"danger\" of something innocuous because you’re afraid of it, then you’re likely engaging in emotional reasoning. Things aren’t dangerous because we’re afraid of them and we’re not awful just because we may think we are.",
+  "emotional_reasoning_explanation_2": "This one is often hard to recognize. It takes some effort to recognize when your emotional mind is taking the logical reins.",
+  "emotional_reasoning_thought": "I feel guilty, therefore I must have done something bad.",
+  "fortune_telling": "Fortune Telling",
+  "fortune_telling_explanation": "This distortion happens when we predict the future. We often overestimate our abilities to predict what will happen. Frequently we'll worry that something might happen and then start to look for evidence that it will occur.",
+  "fortune_telling_thought": "The plane I'm about to get on will crash.",
+  "labeling": "Labeling",
+  "labeling_explanation": "If we're taking one characteristic of a person and applying it to the whole person, we're labeling. If someone brushed us off, they might not be a \"jerk,\" maybe they're just in a hurry. This applies to ourselves as well; just because we make a mistake doesn't mean we're a \"failure.\"",
+  "labeling_thought": "I failed a test, so I'm a bad student.",
+  "magnification_of_the_negative": "Magnification of the Negative",
+  "magnification_of_the_negative_explanation": "If you’re judging a situation based entirely on the negative parts and not considering the positive parts, you’re likely magnifying the negative. If you’re constantly berating yourself for bombing a job interview, you’re probably filtering out all the experience you gained from that interview.",
+  "magnification_of_the_negative_thought": "I ate healthy this week, but I skipped my run.",
+  "mind_reading": "Mind Reading",
+  "mind_reading_explanation": "If we're worried about what someone else is thinking about us, we're attempting to read minds. Unless someone tells you what they're thinking, you have absolutely no way of knowing. So why assume the worst?",
+  "mind_reading_thought": "I think I was rude to George, I'll bet he hates me.",
+  "minimization_of_the_positive": "Minimization of the Positive",
+  "minimization_of_the_positive_explanation": "If we downplay the good things that are happening to us, we're minimizing the positive. Even if our day didn't go 100% as planned, it doesn't mean that the 60% that did go right should be ignored.",
+  "minimization_of_the_positive_thought": "Many people liked my presentation, but I stumbled giving the intro, so it was bad.",
+  "other_blaming": "Other Blaming",
+  "other_blaming_explanation_1": "If a bad situation must be the fault of someone, we're other-blaming. If you failed an exam and you're blaming the teacher, you're directing your energy to the wrong place. Someone cut you off on the highway? If you honk your horn, flip them off, and stew, how is that helping? Now you're cut off and mad!",
+  "other_blaming_explanation_2": "This doesn't mean you have to blame yourself for every negative situation. You don't have to blame anyone. No one has to be at fault if you let the situation pass without attaching blame.",
+  "other_blaming_thought": "That jerk is taking too long in line and I'm going to be late!",
+  "over_generalization": "Over Generalization",
+  "over_generalization_explanation": "If we draw conclusions based on just one example, we're over generalizing. If you bombed a presentation and assume that means you're \"bad\" at presenting, you're over-generalizing.",
+  "over_generalization_thought": "No one asked me to dance, so no one ever will.",
+  "self_blaming": "Self Blaming",
+  "self_blaming_explanation": "If you're attributing a negative situation entirely to yourself, you're self-blaming. You don't have to be responsible for every bad thing that happens. If you're getting caught in traffic and you're berating yourself for not leaving earlier, you're self-blaming. Would you treat someone else this way?",
+  "self_blaming_thought": "My son is failing in school, I must have failed him.",
+  "should_statements": "Should Statements",
+  "should_statements_explanation_1": "If you're assigning someone abilities they don't have, you're using faulty \"should\" statements. For example, if you have a fear of flying and are telling yourself \"I shouldn't be afraid of this, there's nothing wrong with the airplane!\" you're putting an undue burden on yourself. You have a fear of flying! It's normal for people who have a fear of flying to be afraid flying!",
+  "should_statements_explanation_2": "Should statements can seem nonsensical when you say it out loud; that's the point! They're illogical!",
+  "should_statements_thought": "I'm an adult, I shouldn't have these mental issues.",
+  "accessibility": {
+    "help_button": "help",
+    "list_button": "list thoughts",
+    "new_thought_button": "new thought",
+    "settings_button": "settings",
+    "delete_thought_button": "delete thought",
+    "close_button": "close"
+  },
+  "payment": {
+    "ios_explanation": "Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."
+  },
+  "all_or_nothing_thinking_one_liner": "ex: \"That was a thorough waste of time\"",
+  "overgeneralization_one_liner": "ex: \"Everyone will let me down\"",
+  "mind_reading_one_liner": "ex: \"I'll bet he hates me now\"",
+  "fortune_telling_one_liner": "ex: \"I'll get sick at the party\"",
+  "magnification_of_the_negative_one_liner": "Focusing only on what went wrong",
+  "minimization_of_the_positive_one_liner": "Ignoring the good things that happened",
+  "catastrophizing_one_liner": "Focusing on the worst possible scenario",
+  "emotional_reasoning_one_liner": "ex: \"I feel afraid, so I'll have a panic attack\"",
+  "should_statements_one_liner": "ex: \"I should have been better\"",
+  "labeling_one_liner": "ex: \"He's a jerk\"",
+  "self_blaming_one_liner": "Taking all the blame on yourself",
+  "other_blaming_one_liner": "Assigning all the blame to someone else"
+}

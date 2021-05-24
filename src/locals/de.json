@@ -1,0 +1,139 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Ich war nicht auf Georgs Party, er hasst mich bestimmt.",
+    "challenge_ex": "George weiß, dass ich nicht jedes Mal Zeit finde. Ich würde ihn nicht hassen, wenn er etwas von mir verpasst.\n\nIch sollte mich selbst mindestens so gut behandeln, wie ich andere behandle.",
+    "alt_thought_ex": "Es ist wahr, ich habe Georges Party verpasst. Ich kann mich entschuldigen und er wird mir wahrscheinlich verzeihen.",
+    "cog_distortion": { "label": "Gedanken Lesen", "slug": "mind-reading" },
+    "intro": {
+      "line1": "Willkommen zu",
+      "emphasis1": "quirk",
+      "line2": ", der",
+      "emphasis2": "kognitiven Verhaltens-therapie (KVT)",
+      "line3": "App."
+    },
+    "crash_course": {
+      "line1": "Dies ist eine",
+      "emphasis1": "grundlegende Hilfsanwendung",
+      "line2": "in KVT und",
+      "emphasis2": "keine Alternative",
+      "line3": "für einen ausgebildeten Therapeuten."
+    },
+    "mood_thoughts": {
+      "line1": "Erstens:",
+      "emphasis1": "deine Gedanken beeinflussen deine Stimmung."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Zweitens: deine Gedanken können",
+      "emphasis1": "bewertend",
+      "line2": "sein"
+    },
+    "your_distorted": {
+      "line1": "Drittens: bewertende Gedanken können",
+      "emphasis1": "verzerrt",
+      "line2": "sein."
+    },
+    "cbt_overview": {
+      "line1": "Ziel von KVT ist das Erkennen von",
+      "emphasis1": "irrationalen Gedanken",
+      "line2": "und",
+      "emphasis2": "dem Ersetzen",
+      "line3": "mit Rationalen."
+    },
+    "ready": {
+      "emphasis1": "Bereit?",
+      "line1": "Lass und die Schritte besprechen."
+    },
+    "catch": {
+      "line1": "1. Wir starten mit",
+      "emphasis1": "dem Aufschreiben",
+      "line2": "der irrationalen Gedanken."
+    },
+    "bad_thought_note": {
+      "line1": "Schreibe deinen Gedanken auf:",
+      "line2": "Ich war nicht auf Georgs Party, er hasst mich bestimmt."
+    },
+    "identify_distortions": {
+      "line1": "Achte auf eine",
+      "emphasis1": "verzerrte Wahrnehmung."
+    },
+    "bad_distortions": {
+      "line1": "Bist du dir sicher George hast dich? Wenn nicht, bist du am",
+      "emphasis1": "Gedanken Lesen",
+      "line2": "Ich war nicht auf Georgs Party, er hasst mich bestimmt."
+    },
+    "challenge_screen": {
+      "line1": "3. Wieso ist dieser Gedanke nicht realistisch?",
+      "emphasis1": "Überprüfe deine Gedanken."
+    },
+    "write_challenge": {
+      "line1": "Schreib stattdessen:"
+    },
+    "alt_thought": {
+      "line1": "4. Nun, schreib einen",
+      "emphasis1": "korrigierten Gedanken."
+    },
+    "show_off": {
+      "line1": "Finde diesen später:"
+    },
+    "got_it": {
+      "line1": "So einfach ist es.",
+      "btn_title": "Lass uns anfangen!"
+    }
+  },
+  "auto_thought": "Irrationaler Gedanke",
+  "cog_distortion": "Verzerrte Wahrnehmung",
+  "challenge": "Überprüfen",
+  "alt_thought": "Korrigierter Gedanke",
+  "cbt_form": {
+    "edit": "Bearbeiten",
+    "new": "Neu",
+    "save": "Speichern",
+    "auto_thought_placeholder": "Was geht dir durch den Kopf?",
+    "cog_distortion": "Verzerrte Wahrnehmung",
+    "challenged": "Überprüfen",
+    "changed_placeholder": "Korrigiere deinen Gedanken!",
+    "alt_thought_placeholder": "Was könnte ich anstatt dessen denken?"
+  },
+  "all_or_nothing_thinking": "Alles oder Nichts Denken",
+  "all_or_nothing_thinking_explanation": "Die Verzehrung passiert, wenn du keinen Mittelweg siehst. Wenn du denkst, dass ein kleiner Fehler in deinem Verhalten bedeutet, dass du endgültig verdorben oder schlecht bist, denkst du wahrscheinlich in Schwarz und Weiß.",
+  "all_or_nothing_thinking_thought": "Ich habe das Bewerbungsgespräch vermasselt, ich bin komplett uneinstellbar.",
+  "catastrophizing": "Katastrophen ausdenken",
+  "catastrophizing_explanation": "Wenn du ein kleines Problem größer machst, als es ist, denkst du dir Katastrophen aus. Hast du einen kleinen Fehler bei der Arbeit gemacht und fürchtest dich davor, dass es Jemand rausfindet, obwohl es nichts Ernstes ist? Du denkst dir Katastrophen aus.",
+  "catastrophizing_thought": "Ich fühle mich hektisch, vielleicht habe ich einen Schlaganfall.",
+  "emotional_reasoning": "Emotionales Schlussfolgern",
+  "emotional_reasoning_explanation_1": "\"Ich fühle es, deswegen muss es wahr sein.\" Wenn du dich erwischst wie du die \"Gefahr\" von etwas dir selbst unbewusst erklärst, weil du davor Angst hast, dann tust du wahrscheinlich emotional Schlussfolgern. Es ist nicht gefährlich weil du davor Angst hast und du bist nicht furchtbar nur weil du es vielleicht denkst.",
+  "emotional_reasoning_explanation_2": "Es ist schwierig zu erkennen. Es braucht Übung um zu erkennen wenn dein emotionales Denken die Führung vor dem logischen übernimmt.",
+  "emotional_reasoning_thought": "Ich fühle mich schuldig, also muss ich etwas angestellt haben.",
+  "fortune_telling": "Zukunft Vorhersagen",
+  "fortune_telling_explanation": "Diese Verzehrung passiert, wenn wir die Zukunft vorhersagen. Wir überschätzen oft unsere Fähigkeiten vorherzusehen was passieren wird. Manchmal fangen wir mit etwas von dem wir Angst haben an und suchen nach Beweisen, dass es passieren wird.",
+  "fortune_telling_thought": "Das Flugzeug, mit dem ich gleich fliege, wird abstürzen.",
+  "labeling": "Schubladendenken",
+  "labeling_explanation": "Wenn wir eine Charaktereigenschaft nehmen und diese auf die ganze Person beziehen, denken wir in Schubladen. Wenn uns jemand anrempelt, ist diese Person ein \"Depp,\" vielleicht war die Person einfach in Eile. Das trifft auch auf uns zu; nur weil wir einen Fehler gemacht haben, heißt das nicht das wir ein \"Fehler\" sind.",
+  "labeling_thought": "Ich habe eine Prüfung nicht bestanden, also bin ich ein schlechter Student.",
+  "magnification_of_the_negative": "Verherrlichung vom Negativen",
+  "magnification_of_the_negative_explanation": "Wenn du eine Situation vollständig auf dem negativen Aspekt bewertest und die positiven Aspekte übersiehst, verherrlichst du wahrscheinlich das Negative. Wenn du ständig mit dir selbst schimpfst wegen des schlechten Bewerbungsgespräches, achtest du wahrscheinlich nicht auf die Erfahrung, die du gewonnen hast.",
+  "magnification_of_the_negative_thought": "Diese Woche habe ich gesund gegessen, aber ich war nicht Laufen.",
+  "mind_reading": "Gedanken lesen",
+  "mind_reading_explanation": "Wenn wir uns darüber Gedanken machen, was jemand anderes über uns denkt, versuchen wir Gedanken zu lesen. Bis jemand sagt, was er denkt, kannst du nicht wissen, was er denkt. Wieso vom Schlimmsten ausgehen?",
+  "mind_reading_thought": "Ich glaube, ich war unverschämt zu George. Er hasst mich bestimmt.",
+  "minimization_of_the_positive": "Reduzierung vom Positiven",
+  "minimization_of_the_positive_explanation": "Wenn wir die guten Sachen, welche uns passieren nicht wertschätzen, reduzieren wir das Positive. Selbst wenn unser Tag nicht zu 100% wie geplant verlief, heißt nicht dass wir 60% welche gut verliefen ignorieren sollten.",
+  "minimization_of_the_positive_thought": "Viele mochten meine Präsentation, aber ich stotterte bei der Einleitung, also war die Präsentation schlecht.",
+  "other_blaming": "Andere Beschuldigen",
+  "other_blaming_explanation_1": "Wenn eine schlechte Situation die Schuld vom jemanden sein muss, beschuldigen wir andere. Wenn du eine Prüfung nicht bestanden hast und du den Lehrer beschuldigst, verschwendest du deine Energie an der falschen Stelle. Jemand hat dir die Vorfahrt genommen? Du hupst, überholst und setzt den Übertäter fest. Wie hilft dir das? Dir wurde die Vorfahrt genommen und du ärgerst dich!",
+  "other_blaming_explanation_2": "Das heißt nicht, dass du dich selbst beschuldigen solltest für jede negative Situation. Du musst niemanden beschuldigen. Niemand muss Schuld haben, wenn du die Situation hinter dir lässt, ohne Schuld zuzuweisen.",
+  "other_blaming_thought": "Der Depp braucht zu lange in der Schlange und ich werde mich verspäten!",
+  "over_generalization": "Verallgemeinern",
+  "over_generalization_explanation": "Wenn wir basierend auf einer Situation Schlüsse ziehen, verallgemeinern wir. Wenn du eine Präsentation schlecht gehalten hast und vermutest das heißt du bist \"schlecht\" beim Präsentieren, bist du am Verallgemeinern.",
+  "over_generalization_thought": "Niemand bat mich um einen Tanz, also wird nie jemals jemand mit mir Tanzen wollen.",
+  "self_blaming": "Sich selbst Beschuldigen",
+  "self_blaming_explanation": "Wenn du dir eine negative Situation vollständig selbst zurechnest, beschuldigst du dich. Du bist nicht für jede negative Situation, welche passiert verantwortlich. Wenn du in einen Stau gerätst und dich selbst nieder machst, weil du nicht früher Losgefahren bist, beschuldigst du dich selbst. Würdest du jemand anderes so behandeln?",
+  "self_blaming_thought": "Mein Sohn fällt in der Schule durch, ich war nicht für ihn da.",
+  "should_statements": "Sollte Aussagen",
+  "should_statements_explanation_1": "Wenn du jemanden nicht vorhandene Fähigkeiten zusprichst, benutzt du falsche \"sollte\" Aussagen. Als Beispiel, wenn du Flugangst hast und dir selbst einredest \"Ich sollte nicht Angst haben, es ist nichts falsch mit dem Flugzeug!\" legst du eine unnötige Last auf dich. Du hast Flugangst! Es ist normal für Menschen, welche Angst vor dem Fliegen haben, Angst beim Fliegen zu haben!",
+  "should_statements_explanation_2": "Sollte Aussagen klingen manchmal unsinnig, wenn du diesen laut aussprichst; das ist der Punkt! Sie sind unlogisch!",
+  "should_statements_thought": "Ich bin Erwachsen, ich sollte diese mentalen Probleme nicht haben.",
+  "payment": {
+    "ios_explanation": "Die Zahlung wird Ihrem Apple ID-Konto bei Bestätigung des Kaufs belastet. Das Abonnement verlängert sich automatisch, es sei denn, es wird mindestens 24 Stunden vor dem Ende des aktuellen Zeitraums gekündigt. Ihr Konto wird innerhalb von 24 Stunden vor Ablauf des aktuellen Zeitraums mit der Verlängerung belastet. Sie können Ihre Abonnements verwalten und kündigen, indem Sie nach dem Kauf die Einstellungen Ihres App Store-Kontos aufrufen."
+  }
+}

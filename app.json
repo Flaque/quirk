@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "icon": "./assets/ios.png",
+    "name": "quirk",
+    "slug": "quirk",
+    "privacy": "unlisted",
+    "sdkVersion": "35.0.0",
+    "platforms": ["ios", "android"],
+    "version": "2.4.0",
+    "orientation": "portrait",
+    "githubUrl": "https://github.com/Flaque/quirk",
+    "primaryColor": "#F8A5C2",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F8A5C2"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["assets/**"],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "tech.econn.quirk",
+      "icon": "./assets/ios.png",
+      "publishBundlePath": "ios/quirk/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/quirk/Supporting/shell-app-manifest.json"
+    },
+    "android": {
+      "package": "tech.econn.quirk",
+      "permissions": [],
+      "icon": "./assets/android.png",
+      "versionCode": 17,
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#fbfcfe"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "evan-conrad",
+            "project": "quirk"
+          }
+        }
+      ]
+    },
+    "isDetached": true,
+    "detach": {
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.9.0-sdk31.0.0-250a3991-b623-4f9c-b07f-0b9ed7e8c4c9.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.9.2-sdk31.0.0-f0c63b44-0556-45f2-b4b9-ff5082f9ef72.tar.gz"
+    },
+    "scheme": "exp4d07d66c4b23470393769aad813cee0c"
+  }
+}

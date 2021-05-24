@@ -1,0 +1,134 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Unohdin Yrjön juhlat, hän varmasti vihaa minua.",
+    "challenge_ex": "Yrjö tietää, että en voi aina ehtiä. En myöskään olisi vihainen hänelle, jos hän ei pääsisi juhliini.\n\nMinun tulisi kohdella itseäni ainakin yhtä hyvin kuin kohtelen muita.",
+    "alt_thought_ex": "On totta, että unohdin Yrjön juhlat. Voin pyytää anteeksi, ja hän todennäköisesti antaa anteeksi.",
+    "cog_distortion": { "label": "Ajatustenluku", "slug": "mind-reading" },
+    "intro": {
+      "line1": "Tämä on",
+      "emphasis1": "quirk, ",
+      "line2": "applikaatio",
+      "emphasis2": "kognitiiviseen käyttäytymisterapiaan",
+      "line3": ""
+    },
+    "crash_course": {
+      "line1": "Tämä on",
+      "emphasis1": "pikakurssi",
+      "line2": "kognitiiviseen käyttäytymisterapiaan ja",
+      "emphasis2": "ei korvaa",
+      "line3": "koulutettua terapeuttia."
+    },
+    "mood_thoughts": {
+      "line1": "Ajatuksesi",
+      "emphasis1": "aiheuttavat tunteita."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Ajatuksesi voivat olla ",
+      "emphasis1": "automaattisia."
+    },
+    "your_distorted": {
+      "line1": "Automaattiset ajatukset ovat usein",
+      "emphasis1": "vinoutuneita."
+    },
+    "cbt_overview": {
+      "line1": "Kognitiivisen käyttäytymisterapian tavoite on huomata",
+      "emphasis1": "vinoutuneet ajatukset,",
+      "line2": "ja",
+      "emphasis2": "korvata ne",
+      "line3": "rationaalisilla."
+    },
+    "ready": {
+      "emphasis1": "Oletko valmis?",
+      "line1": "Käydään vaiheet läpi."
+    },
+    "catch": {
+      "line1": "1. Aloita",
+      "emphasis1": "kirjoittamalla",
+      "line2": "automaattiset ajatukset kun kohtaat ne."
+    },
+    "bad_thought_note": {
+      "line1": "Kirjoita ajatus:",
+      "line2": "Unohdin Yrjön juhlat, hän varmasti vihaa minua."
+    },
+    "identify_distortions": {
+      "line1": "Etsi",
+      "emphasis1": "kognitiivisia vinoumia"
+    },
+    "bad_distortions": {
+      "line1": "Tiedätkö varmasti, että Yrjö vihaa sinua? Jos et, harjoitat",
+      "emphasis1": "ajatustenlukua",
+      "line2": "Unohdin Yrjön juhlat, hän varmasti vihaa minua."
+    },
+    "challenge_screen": {
+      "line1": "3. Miksi tämä ajatus ei ole rationaalinen?",
+      "emphasis1": "Haasta se."
+    },
+    "write_challenge": {
+      "line1": "Kirjoita jotain tähän tapaan:"
+    },
+    "alt_thought": {
+      "line1": "4. Lopuksi, kirjoita",
+      "emphasis1": "vaihtoehtoinen ajatus."
+    },
+    "show_off": {
+      "line1": "Yhteenveto:"
+    },
+    "got_it": {
+      "line1": "Siinä kaikki",
+      "btn_title": "Aloitetaan!"
+    }
+  },
+  "auto_thought": "Automaattinen ajatus",
+  "cog_distortion": "Kognitiivinen vinouma",
+  "challenge": "Haastaminen",
+  "alt_thought": "Vaihtoehtoinen ajatus",
+  "cbt_form": {
+    "edit": "Muokkaa",
+    "new": "Uusi",
+    "save": "Tallenna",
+    "auto_thought_placeholder": "Mitä ajattelet?",
+    "cog_distortion": "Kognitiivinen vinouma",
+    "challenged": "Haastaminen",
+    "changed_placeholder": "Kyseenalaista ajatus!",
+    "alt_thought_placeholder": "Mitä voisit ajatella tämän sijaan?"
+  },
+  "all_or_nothing_thinking": "Kaikki tai ei mitään",
+  "all_or_nothing_thinking_explanation": "Tämä vinouma tapahtuu kun emme anna tilaa välimuodoille. Jos ajattelemme, että pieni vika itsessämme tarkoittaa, että olemme läpeensä pahoja tai muuten kamalia, on usein kyseessä kaikki tai ei mitään -ajattelu.",
+  "all_or_nothing_thinking_thought": "Mokasin työhaastattelun pahasti. Olen varmaan työtön loppuikäni.",
+  "catastrophizing": "Katastrofiajattelu",
+  "catastrophizing_explanation": "Jos otamme pienen pulman ja paisutamme sen valtavaksi, on kyseessä katastrofiajattelu. Teitkö pienen virheen töissä ja pelkäät, että joku huomaa sen, vaikka kyseessä ei olisi mitään vakavaa? Tämä on todennäköisesti katastrofiajattelua.",
+  "catastrophizing_thought": "Minulla on outo olo, olen varmaan saamassa sydänkohtauksen.",
+  "emotional_reasoning": "Tunneperustelu",
+  "emotional_reasoning_explanation_1": "\"Tunnen sen, joten sen täytyy olla totta.\" Jos huomaat perustelevasi jonkin harmittoman asian \"riskiä\" koska pelkäät sitä, käytät todennäköisesti tunneperustelua. Asiat eivät ole vaarallisia vain pelon takia, ja emme ole kamalia ihmisiä vain koska ajattelisimme niin.",
+  "emotional_reasoning_explanation_2": "Tätä on usein vaikea tunnistaa. Vaatii jonkin verran vaivaa huomata, milloin tunteemme ottavat vallan loogiselta ajattelultamme.",
+  "emotional_reasoning_thought": "Tunnen oloni syylliseksi, joten olen tehnyt jotain pahaa.",
+  "fortune_telling": "Ennustaminen",
+  "fortune_telling_explanation": "Tämä vinouma on kyseessä kun ennustamme tulevaa. Usein yliarvoimme kykymme ennustaa mitä tulee tapahtumaan. Usein huolestumme jostain ja etsimme perusteluja ja todisteita sille, miksi se tapahtuisi.",
+  "fortune_telling_thought": "Lentokone, johon olen nousemassa, syöksyy alas.",
+  "labeling": "Leimaaminen",
+  "labeling_explanation": "Jos  otamme yhden piirteen ihmisessä ja yleistämme sen koko ihmiseen, on kyseessä leimaaminen. Jos joku tönäisee meitä, hän ei ehkä ole \"törkimys\", ehkä hänellä on vain kiire. Tämä pätee myös itseemme; virheen tekeminen ei tarkoita että olet \"epäonnistunut ihmisenä\".",
+  "labeling_thought": "Mokasin kokeessa, joten olen huono opiskelija",
+  "magnification_of_the_negative": "Negatiivisen paisuttaminen",
+  "magnification_of_the_negative_explanation": "Jos arvioit tilannetta perustuen pelkästään negatiivisiin asioihin, etkä ota huomioon positiivisia osia, todennäköisesti kyseessä on negatiivisen paisuttaminen. Jos toistuvasti haukut itseäsi huonosti menneen työhaastattelun takia, sivuutat todennäköisesti kaikki hyvät kokemukset joita sais haastattelusta.",
+  "magnification_of_the_negative_thought": "Söin tällä viikolla terveellisesti, mutta jätin juoksulenkin väliin.",
+  "mind_reading": "Ajatustenluku",
+  "mind_reading_explanation": "Jos olemme huolissamme, että joku ajattelee meitä, yritämme harrastaa ajatustenlukua. Jos kukaan ei erikseen kerro sinulle mitä hän ajattelee, et voi mitenkään tietää. Miksi olettaa pahinta?",
+  "mind_reading_thought": "Olin ilkeä Yrjölle, hän varmasti vihaa minua.",
+  "minimization_of_the_positive": "Positiivisen vähättely",
+  "minimization_of_the_positive_explanation": "Jos sivuutamme kaikki hyvät asiat joita meille tapahtuu, on kyseessä positiivisen vähättely. Vaikka päivämme ei menisi 100% suunnitelmien mukaan, se ei tarkoita etteikö se 60% joka meni hyvin olisi merkityksetöntä.",
+  "minimization_of_the_positive_thought": "Esityksestäni pidettiin, mutta mokasin aloituksessa, joten se oli huono.",
+  "other_blaming": "Muiden syyttäminen",
+  "other_blaming_explanation_1": "Jos huonon tilanteen täytyy olla jonkun vika, on kyseessä muiden syyttäminen. Jos koe tai tentti menee huonosti ja syytät opettajaa, kohdistat energiaasi väärään paikkaan. Joku ohitti sinut moottoritiellä? Jos painat tööttiä, osoitat keskisormella ja kiroilet, mitä se hyödyttää? Olet tullut ohitetun lisäksi vihaiseksi!",
+  "other_blaming_explanation_2": "Tämä ei tarkoita, että kaikista negatiivisista tilanteista tulisi syyttää itseäsi. Sinun ei tarvitse syyttää ketään. Asioiden ei tarvitse olla kenenkään syy, voit antaa tilanteen mennä ohi ilman syyllistämistä.",
+  "other_blaming_thought": "Tuo törkimys on liian hidas jonossa ja tulen myöhästymään!",
+  "over_generalization": "Liika yleistäminen",
+  "over_generalization_explanation": "Jos vedämme johtopäätöksiä perustuen vain yhteen esimerkkiin, on kyseessä liika yleistäminen. Jos mokasit esityksessäsi ja oletat sen tarkoittavan, että olet \"huono puhuja\", yleistät liikaa.",
+  "over_generalization_thought": "Kukaan ei pyytänyt minua mukaan tanssimaan, joten kukaan ei ikinä tule tekemään niin.",
+  "self_blaming": "Itsensä syyllistäminen",
+  "self_blaming_explanation": "Jos otat täyden vastuun negatiivisesta tilanteesta, kyseessä on itsensä syyllistäminen. Sinun ei tarvitse olla vastuussa jokaisesta huonosta asiasta joka tapahtuu. Jos olet jumissa ruuhkassa ja soimaat itseäsi kun et lähtenyt aikaisemmin, syyllistät itseäsi. Kohtelisitko ketään muuta samalla lailla?",
+  "self_blaming_thought": "Lapseni epäonnistuu koulussa, olen pettänyt hänet.",
+  "should_statements": "Pitäisi-lauseet",
+  "should_statements_explanation_1": "Jos liität johonkin ominaisuuksia joita heillä ei ole, käytät pitäisi-lauseita. Esimerkiksi, jos pelkäät lentämistä ja toistat itsellesi \"minulla ei pitäisi olla lentopelkoa, ei lentokoneessa ole mitään vikaa!\", asetat itsellesi turhia paineita. Sinulla on lentopelkoa! On täysin tavallista ihmisille jotka kärsivät lentopelosta pelätä lentämistä!",
+  "should_statements_explanation_2": "Pitäisi-lauseet usein tuntuvat hullunkurisilta kun sanot sen ääneen; ne ovat epäloogisia!",
+  "should_statements_thought": "Olen aikuinen, ei minulla pitäisi olla tällaisia henkisiä ongelmia."
+}

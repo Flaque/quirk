@@ -1,0 +1,134 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Ik heb George's feestje gemist, hij zal me wel haten.",
+    "challenge_ex": "George weet dat ik het niet elke keer kan halen, ik zou hem niet haten als hij iets van mij miste.\n\nIk zou mezelf minstens zo goed moeten behandelen als ik anderen behandel.",
+    "alt_thought_ex": "Het klopt dat ik George's feestje gemist heb, ik kan me verontschuldigen, en hij zal het me waarschijnlijk vergeven.",
+    "cog_distortion": { "label": "Gedachten lezen", "slug": "mind-reading" },
+    "intro": {
+      "line1": "Welkom bij",
+      "emphasis1": "quirk",
+      "line2": ", de",
+      "emphasis2": "cognitieve gedragstherapie (CGT)",
+      "line3": "app."
+    },
+    "crash_course": {
+      "line1": "Dit is een",
+      "emphasis1": "spoedcursus",
+      "line2": "in CGT en",
+      "emphasis2": "geen alternatief",
+      "line3": "voor een getrainde therapeut."
+    },
+    "mood_thoughts": {
+      "line1": "Ten eerste:",
+      "emphasis1": "je gedachten veroorzaken je stemmingen."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Ten tweede: je gedachten kunnen",
+      "emphasis1": "automatisch zijn."
+    },
+    "your_distorted": {
+      "line1": "Ten derde: automatische gedachten zijn vaak",
+      "emphasis1": "vervormd."
+    },
+    "cbt_overview": {
+      "line1": "Het doel van CGT is het herkennen van",
+      "emphasis1": "denkfouten",
+      "line2": "en",
+      "emphasis2": "ze te vervangen",
+      "line3": "met rationele gedachten."
+    },
+    "ready": {
+      "emphasis1": "Gereed?",
+      "line1": "Laten we de stappen samen doorlopen."
+    },
+    "catch": {
+      "line1": "1. We beginnen met het",
+      "emphasis1": "gewoon opschrijven",
+      "line2": "van de automatische gedachten wanneer ze plaatsvinden."
+    },
+    "bad_thought_note": {
+      "line1": "Herken de gedachte:",
+      "line2": "Ik heb George's feestje gemist, hij moet me haten."
+    },
+    "identify_distortions": {
+      "line1": "Zoek naar",
+      "emphasis1": "denkfouten"
+    },
+    "bad_distortions": {
+      "line1": "Weten we zeker dat George ons zal haten? Zo niet, dan zijn we",
+      "emphasis1": "gedachten aan het lezen",
+      "line2": "Ik heb George's feestje gemist, hij moet me haten."
+    },
+    "challenge_screen": {
+      "line1": "3. Waarom is deze gedachte niet realistisch?",
+      "emphasis1": "Daag de gedachte uit."
+    },
+    "write_challenge": {
+      "line1": "We schrijven zoiets als dit:"
+    },
+    "alt_thought": {
+      "line1": "4. Uiteindelijk komen we met een",
+      "emphasis1": "alternatieve gedachte."
+    },
+    "show_off": {
+      "line1": "Vind het later:"
+    },
+    "got_it": {
+      "line1": "En dat is alles.",
+      "btn_title": "Laten we beginnen!"
+    }
+  },
+  "auto_thought": "Automatische gedachte",
+  "cog_distortion": "Cognitieve denkfout",
+  "challenge": "Gedachte uitgedaagd",
+  "alt_thought": "Alternatieve gedachte",
+  "cbt_form": {
+    "edit": "Bewerk",
+    "new": "Nieuw",
+    "save": "Opslaan",
+    "auto_thought_placeholder": "Wat is er aan de hand?",
+    "cog_distortion": "Cognitieve denkfout",
+    "challenged": "Gedachte uitgedaagd",
+    "changed_placeholder": "Daag die gedachte uit!",
+    "alt_thought_placeholder": "Wat is een meer behulpzamere gedachte?"
+  },
+  "all_or_nothing_thinking": "Zwart-witdenken",
+  "all_or_nothing_thinking_explanation": "Bij deze denkfout zien we de middenweg niet meer. Als we denken dat een klein foutje betekent dat er iets fundamenteel mis met ons is, of als we onszelf meteen als een vreselijke persoon zien, dan zijn waarschijnlijk bezig met zwart-witdenken.",
+  "all_or_nothing_thinking_thought": "Ik heb de sollicitatie verpest, ik zal nooit een baan vinden.",
+  "catastrophizing": "Overdrijven",
+  "catastrophizing_explanation": "Als we een klein probleem ver buiten proporties opblazen, dan maken we de denkfout van het overdrijven. Heb je een kleine fout gemaakt op het werk maar maak je je zorgen dat mensen hierachter komen? Dan maak je waarschijnlijk de denkfout van het overdrijven.",
+  "catastrophizing_thought": "Ik voel me gejaagd en zenuwachtig, misschien krijg ik een hartaanval.",
+  "emotional_reasoning": "Emotioneel redeneren",
+  "emotional_reasoning_explanation_1": "\"Ik voel het, daarom moet het waar zijn.\" Als je merkt dat je het \"gevaar\" van iets onschuldigs rechtvaardigt omdat je er bang voor bent, dan ben je waarschijnlijk bezig met emotioneel redeneren. Dingen zijn niet fysiek gevaarlijk enkel omdat we er bang voor zijn. En gebeurtenissen zijn niet vreselijk alleen maar omdat we dat denken.",
+  "emotional_reasoning_explanation_2": "Dit is een denkfout die vaak moeilijk te herkennen is. Het kost enige oefening om te herkennen wanneer emoties je rationele gedachten overstemmen.",
+  "emotional_reasoning_thought": "Ik voel me schuldig, daarom moet ik iets slechts hebben gedaan.",
+  "fortune_telling": "Toekomst voorspellen",
+  "fortune_telling_explanation": "Deze denkfout maken we wanneer we aannemen dat er iets slechts gaat gebeuren, en die voorspelling aannemen als een feit. Maar we overschatten vaak hoe goed we de toekomst kunnen voorspellen. Vaak maken we deze denkfout bij iets waar we ons zorgen over maken, en dan bewijs zoeken voor een slechte uitkomst.",
+  "fortune_telling_thought": "Het vliegtuig waar ik zo zal opstappen zal vast neerstorten.",
+  "labeling": "Etiket plakken",
+  "labeling_explanation": "Als we één kenmerk van iemand nemen en die op de hele persoon plakken, dan maken we de denkfout van het etiket plakken. Als iemand ons heeft afgewimpeld, dan is het misschien geen \"eikel\" maar is hij gewoon gehaast. Dit geldt ook voor onszelf; als we een fout maken betekent dit niet dat we een \"mislukking\" zijn.",
+  "labeling_thought": "Ik heb dat tentamen verpest, ik ben echt een slechte student.",
+  "magnification_of_the_negative": "Uitvergroten van het negatieve",
+  "magnification_of_the_negative_explanation": "Als we een situatie enkel beoordelen op wat er verkeerd ging zonder te kijken naar positieve elementen, dan maken we de denkfout van het uitvergroten van negatieve dingen. Als je jezelf voortdurend berispt voor het mislukken van een sollicitatiegesprek, dan negeer je waarschijnlijk ook de dingen die hebt geleerd en ideeën om het in de toekomst beter te doen.",
+  "magnification_of_the_negative_thought": "Ik heb deze week gezond gegeten, maar heb wel mijn hardlooprondje laten schieten.",
+  "mind_reading": "Gedachten lezen",
+  "mind_reading_explanation": "Als we ons zorgen maken over wat iemand van ons kan vinden, dan maken we de denkfout van het gedachten lezen. Tenzij iemand je vertelt wat ze denken, heb je geen enkele manier om hun gedachten te weten. Dus waarom zou je het ergste aannemen?",
+  "mind_reading_thought": "Ik denk dat Sanne me onbeleefd vond, ik durf te wedden dat ze me niet mag.",
+  "minimization_of_the_positive": "Minimaliseren van het positieve",
+  "minimization_of_the_positive_explanation": "Als we de goede dingen die we meemaken bagatelliseren, dan maken we de denkfout van het minimaliseren van positieve dingen. Zelfs als onze dag niet 100% goed ging zoals we hadden gepland, dan betekent dat niet dat de 60% die wel goed ging genegeerd moet worden.",
+  "minimization_of_the_positive_thought": "Veel mensen vonden mijn presentatie leuk, maar ik kwam maar moeilijk uit mijn woorden tijdens de introductie dus het was slecht.",
+  "other_blaming": "Ander verwijten",
+  "other_blaming_explanation_1": "Als een slechte situatie de schuld van iemand anders moet zijn, dan maken we de denkfout van het de ander verwijten. Als je gezakt bent voor een examen en je geeft de leraar de schuld, dan richt je je energie op de verkeerde plaats. Iemand heeft je afgesneden op de snelweg? Als je flink toetert en je middelvinger opsteekt, hoe helpt dat de situatie dan? Nu ben je afgesneden en ook nog eens boos!",
+  "other_blaming_explanation_2": "Dit betekent niet dat je jezelf de schuld moet geven voor elke negatieve situatie. Je hoeft niemand de schuld te geven! Laat de situatie aan je voorbij gaan zonder iemand verwijten te maken.",
+  "other_blaming_thought": "Die eikel staat te lang in de rij en ik zal te laat komen!",
+  "over_generalization": "Overgeneralisatie",
+  "over_generalization_explanation": "Als we conclusies trekken op basis van slechts één voorbeeld, dan zijn aan het over-generaliseren. Als je een presentatie hebt verknald en denkt dat je \"slecht\" bent in presenteren, dan maak je ook de denkfout van over-generalisatie.",
+  "over_generalization_thought": "Niemand vroeg me om te dansen, dus zal niemand dat ooit doen.",
+  "self_blaming": "Zelfverwijt",
+  "self_blaming_explanation": "Als je een negatieve situatie volledig aan jezelf toeschrijft, dan maak je de denkfout van het zelfverwijt. Maar je bent niet verantwoordelijk voor alle slechte dingen die gebeuren. Als je in de file staat en het je eigen schuld vind omdat je dan maar eerder had moeten vertrekken, dan maak je deze denkfout. Zou je iemand anders in die situatie ook verwijten maken?",
+  "self_blaming_thought": "Mijn zoon faalt op school, ik moet hem in de steek gelaten hebben.",
+  "should_statements": "'Zou moeten'-denken",
+  "should_statements_explanation_1": "Als je mensen (inclusief jezelf) vaardigheden toeschrijft die ze niet hebben, dan maak je de denkfout van het 'zou moeten'-denken. Als je bijvoorbeeld bang bent om te vliegen en tegen jezelf zegt: \"Ik moet hier niet bang voor zijn, er is niets mis met het vliegtuig\". Maar hiermee leg je een te zware last op jezelf. Het is normaal dat mensen met vliegangst bang zijn om te vliegen!",
+  "should_statements_explanation_2": "Mochten deze 'zou moeten'-uitspraken je onzinnig klinken, dat is het punt! Ze zijn onlogisch!",
+  "should_statements_thought": "Ik ben een volwassene, ik zou deze mentale problemen niet moeten hebben."
+}
