@@ -109,7 +109,7 @@ class PaymentScreen extends React.Component<
       userSawApologyNotice();
       Alert.alert(
         "🤦‍ We messed up. 🤦‍",
-        `Due to a bug, your subscription was canceled without your consent. If you were charged, you were refunded!
+        `Due to a bug, your subscription was canceled without your consent. If you were charged then you were refunded!
         
 If you'd like to continue to use Quirk, you have to resubscribe. You won't be double charged.
 
@@ -175,7 +175,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
       });
       await this.redirectToFormScreen();
     } else {
-      Alert.alert("Payment Failed", "Something went wrong, try again?");
+      Alert.alert("Payment Failed", "Something went wrong, try again later");
 
       // This else is important to not call setState after the next screen
       this.setState({
@@ -277,7 +277,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               {dayjs()
                 .add(1, "week")
                 .format("DD-MM-YYYY")}{" "}
-              and nothing will be billed. No questions asked.
+              and nothing will be billed. No questions asked at all.
             </Paragraph>
           </View>
 
@@ -453,9 +453,9 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
             style={{
               display: "flex",
               flexDirection: "row",
-              marginLeft: 32,
-              marginRight: 32,
-              marginBottom: 16,
+              marginLeft: 34,
+              marginRight: 34,
+              marginBottom: 18,
               justifyContent: "space-between",
             }}
           >
