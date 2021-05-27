@@ -8,7 +8,7 @@ export const textInputStyle = {
   padding: 12,
   paddingTop: 16,
   borderRadius: 15,
-  fontSize: 20,
+  fontSize: 22,
   borderColor: theme.lightGray,
   borderWidth: 3,
   borderBottomWidth: 3,
