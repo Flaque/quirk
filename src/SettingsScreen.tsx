@@ -65,7 +65,7 @@ const Feedback = () => (
       }}
     >
       We take your feedback extremely seriously. The email below goes directly
-      to the creators of Quirk.
+      to the creators of Quirk. Thank you for your feedback
     </Paragraph>
     <ActionButton
       flex={1}
@@ -126,7 +126,7 @@ const GrandfatheredInFreeQuirk = () => (
     >
       This will go away if you uninstall the app. Feel free to reach out by
       email ({"ejc" + "@" + "quirk.fyi"}) if you get a new phone; we'll work
-      something out. Thanks for being an early supporter! ❤️
+      something out. Thanks for being an early supporter!
     </Paragraph>
   </>
 );
@@ -295,7 +295,7 @@ class SettingScreen extends React.Component<Props, State> {
                 }}
               >
                 If you'd like, you can turn on notification reminders that help
-                you build up the habit of challenging thoughts.
+                you build up the habit of challenging thoughts. (We use Onesignal)
               </Paragraph>
               <RoundedSelectorButton
                 title={"Please remind me"}
