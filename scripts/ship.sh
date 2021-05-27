@@ -16,3 +16,5 @@ exp publish --release-channel production --non-interactive
 
 # Tag everything
 ./$(dirname $0)/tag_version.sh
+
+echo "Shipped"
