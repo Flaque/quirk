@@ -28,7 +28,7 @@
         "variable-declaration": "nospace"
       },
       {
-        "call-signature": "onespace",
+        "call-signature":"nospace",
         "index-signature": "onespace",
         "parameter": "onespace",
         "property-declaration": "onespace",
