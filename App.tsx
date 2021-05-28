@@ -35,6 +35,7 @@ if (Platform.OS === "android") {
   });
 }
 
+//hi
 const App = createBottomTabNavigator(
   {
     [MAIN_SCREEN]: MainScreen,
