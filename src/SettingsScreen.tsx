@@ -392,6 +392,8 @@ class SettingScreen extends React.Component<Props, State> {
                 marginBottom: 22,
                 display: "flex",
                 flexDirection: "column",
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <Feedback />
@@ -402,6 +404,8 @@ class SettingScreen extends React.Component<Props, State> {
                 marginBottom: 22,
                 display: "flex",
                 flexDirection: "column",
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <SubHeader>*subscription</SubHeader>
