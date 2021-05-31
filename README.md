@@ -1,6 +1,6 @@
-🚧🚧🚧
+❗❗❗
 
-**Quirk is no longer being maintained.**
+**Quirk is no longer being maintained :(**
 
 Quirk started as a little thing I made for myself as I started doing CBT. As I got better, I needed Quirk less. But at the same time, lots of other people had discovered Quirk and started picking it up. That meant more bug fixes, more features, and just more work to be done. I really couldn't keep it up well, especially with my main focus at the time (my day job). 
 
@@ -12,7 +12,7 @@ Unfortunately, in order for the business to work and for us to pay ourselves, we
 
 Anyone who's followed this project will know that we explored multiple paths towards sustainability. Much of it was discussed in the PRs and issues of this repo. We've investigated a completely free model, an indie open source model, a community open source model, a donation model, a pay-up-front model, an ad model, a tele-therapy model, and a subscription model. 
 
-**Quirk (the company) is now Room Service.**
+**Quirk (The Company) is now Room Service.**
 
 Now-a-days, we're making [Room Service](https://www.roomservice.dev/), which helps folks build multiplayer stuff, like what Figma or Google Docs have. Multiple cursors, CRDTs, sockets, lots of people editing the same thing, that sort of thing. We're still the same commercial entity and such, just making a different product now. If you think multiplayer systems are cool and want to join us, send me an email: `evan @ roomservice . dev`. 
 
@@ -28,10 +28,10 @@ If you want to fork Quirk, you should fork off of [this commit](https://github.c
 ---
 
 <p align="center">
-<h1 align="center">✨🐙 quirk. </h1>
+<h1 align="center">✨🐙 Quirk. </h1>
 </p>
 <p align="center">
-  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
+  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download for iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download for Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
 <br><br>
 </p>
 
@@ -64,7 +64,7 @@ The _only_ solid way to have good retention is to create something that is activ
 
 Some amazing folks have helped build the Quirk you see today.
 
-- [@devinroche](https://github.com/devinroche) for setting up translation and stepping up as a core maintainer 🔥
+- [@devinroche](https://github.com/devinroche) for Setting up Translation and Stepping up as a Core Maintainer 🔥
 - [@devilcius](https://github.com/devilcius) for the amazing Spanish translation 🇪🇸
 - [@idnovic](https://github.com/idnovic) for the amazing German translation 🇩🇪 (and the iPad support!)
 - [@kwierbol](https://github.com/kwierbol) for the amazing Polish translation 🇵🇱
@@ -181,3 +181,5 @@ A small amount of data has been corrupted in a recoverable way. The user still h
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
 
 Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
+
+©2021 Quirk CBT. All Rights Reserved.
