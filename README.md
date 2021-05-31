@@ -28,7 +28,7 @@ If you want to fork Quirk, you should fork off of [this commit](https://github.c
 ---
 
 <p align="center">
-<h1 align="center">✨🐙 Quirk. </h1>
+<h1 align="center"> ✨🦅 Quirk </h1>
 </p>
 <p align="center">
   <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download for iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download for Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
@@ -152,7 +152,7 @@ Quirk is built with two main goals in mind:
 
 Quirk _must not_ lose user data. The entire point of the app is to record your thoughts, so if you lost them it would be pretty bad. As stated in [one study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6010839/):
 
-> While an app failure in general can be inconvenient and annoying, it can have serious consequences in the context of mental health apps—someone who has come to rely on an app for emotional support can find a failure “devastating.”
+> While an app failure in general can be inconvenient and annoying, it can have serious consequences in the context of mental health apps—someone who has come to rely on an app for emotional support can find a failure “devastating”.
 
 Therefore, data management should be given a higher priority than any other part of the app.
 
@@ -180,6 +180,6 @@ A small amount of data has been corrupted in a recoverable way. The user still h
 
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
 
-Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
+Note that this license **Does Not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
 
 ©2021 Quirk CBT. All Rights Reserved.
