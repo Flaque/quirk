@@ -1,0 +1,9 @@
+World Health Organization (WHO) data reveals that ONE in FOUR people are affected by mental health issues like anxiety and depression.
+Which means almost 25% of the world population are suffering with mental health issues.
+Cognitive Behavioral Therapy or CBT is a practice used by psychologists to help people improve their mental health.
+CBT is known to have helped treat people with anxiety and depression - two very common mental health problems which are ailing a large portion of our society today.
+CBT is however expensive, so some expert developers developed an app called "Quirk".
+
+What is this Quirk app? 
+Quirk is designed to be an aid in recording, becoming more aware of and changing your thought patterns - techniques used in CBT.
+This app is very interesting and useful for people who have mental issues.
