@@ -1,5 +1,21 @@
 🚧🚧🚧
 
+**Introduction about quirk**
+World Health Organization (WHO) data reveals that ONE in FOUR people are affected by mental health issues like anxiety and depression. This means you might have people around you - friends, classmates at school, family members - who might be going through some of these mental health issues.
+
+Mental health, however, is a very stigmatized topic and does not easily make into our conversation in family, school or with friends. [This video](https://www.youtube.com/watch?v=nCrjevx3-Js), beautifully explains mental health and how to talk about mental health.
+
+Cognitive Behavioral Therapy or CBT is a practice used by psychologists to help people improve their mental health. CBT is known to have helped treat people with anxiety and depression - two very common mental health problems which are ailing a large portion of our society today.
+
+Access to Psychologists and CBT, however, can be expensive for most people. Most people, therefore, choose to live on with their mental health problems without seeking treatment.
+
+To help with this problem, a few developers designed an App called “Quirk”. So what is this Quirk app? Quirk is designed to be an aid in recording, becoming more aware of and changing your thought patterns - techniques used in CBT.
+
+You need to explore the existing Quirk app and make meaningful contributions to the functioning of this app.
+
+Are you ready?
+
+
 **Quirk is no longer being maintained.**
 
 Quirk started as a little thing I made for myself as I started doing CBT. As I got better, I needed Quirk less. But at the same time, lots of other people had discovered Quirk and started picking it up. That meant more bug fixes, more features, and just more work to be done. I really couldn't keep it up well, especially with my main focus at the time (my day job). 
