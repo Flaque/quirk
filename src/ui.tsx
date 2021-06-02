@@ -42,7 +42,7 @@ Row.propTypes = {
 export const FormContainer = ({ children, ...style }) => (
   <View
     style={{
-      marginBottom: 24,
+      marginBottom: 25,
       ...style,
     }}
   >
@@ -431,8 +431,8 @@ export const ActionButton = ({
   <TouchableOpacity
     style={{
       backgroundColor: fillColor,
-      padding: 12,
-      borderRadius: 10,
+      padding: 15,
+      borderRadius: 15,
       textAlign: "center",
       justifyContent: "center",
       alignItems: "center",
@@ -453,7 +453,7 @@ export const ActionButton = ({
       style={{
         textAlign: "center",
         color: textColor,
-        fontWeight: "700",
+        fontWeight: "750",
         fontSize: 16,
       }}
       maxFontSizeMultiplier={1.2}
@@ -488,9 +488,9 @@ export const IconButton = ({
     style={{
       backgroundColor: theme.lightGray,
       height: 48,
-      width: 48,
+      width: 50,
       justifyContent: "center",
-      alignItems: "center",
+    
       borderRadius: 10,
       alignSelf: "center",
       position: "relative",
@@ -504,7 +504,7 @@ export const IconButton = ({
         style={{
           height: 20,
           width: 20,
-          borderRadius: 24,
+          borderRadius: 25,
           backgroundColor: theme.pink,
           position: "absolute",
           bottom: 34,
@@ -531,7 +531,7 @@ export const Paragraph = ({ children, style }: ParentComponent) => (
     style={{
       color: theme.lightText,
       fontWeight: "400",
-      fontSize: 16,
+      fontSize: 20,
       ...style,
     }}
   >
@@ -549,8 +549,8 @@ export const Container = ({ children, style }: ParentComponent) => (
       flexDirection: "column",
       justifyContent: "flex-start",
       paddingLeft: 24,
-      paddingRight: 24,
-      paddingBottom: 50,
+      paddingRight: 26,
+      paddingBottom: 55,
       ...style,
     }}
   >
@@ -565,8 +565,8 @@ Container.propTypes = {
 export const Label = ({ children, style }: { children: any; style?: any }) => (
   <Text
     style={{
-      fontWeight: "700",
-      fontSize: 18,
+      fontWeight: "750",
+      fontSize: 20,
       color: theme.veryLightText,
       marginBottom: 12,
       ...style,
@@ -606,7 +606,7 @@ export const B = ({ children, style }: { children: any; style?: any }) => (
 export const LI = ({ children }) => (
   <Text
     style={{
-      fontSize: 16,
+      fontSize: 20,
       color: theme.lightText,
       marginBottom: 4,
     }}
@@ -629,9 +629,9 @@ export const Badge = ({
       backgroundColor: backgroundColor || theme.lightBlue,
       paddingLeft: 12,
       paddingRight: 12,
-      paddingBottom: 12,
-      paddingTop: 12,
-      borderRadius: 8,
+      paddingBottom: 14,
+      paddingTop: 15,
+      borderRadius: 10,
       justifyContent: "space-between",
       flex: 1,
       flexDirection: "row",
@@ -642,7 +642,7 @@ export const Badge = ({
       style={{
         fontWeight: "700",
         color: theme.lightText,
-        fontSize: 14,
+        fontSize: 15,
       }}
       maxFontSizeMultiplier={1.2}
     >

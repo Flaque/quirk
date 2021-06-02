@@ -25,3 +25,4 @@ yarn ship
 ```
 
 That version gets shipped to beta testers but might not actually be the version released to the store.
+please if you are a new meber of quirk i mean new contributor please change the package.json it means a lot we'll expect from you change the package.json file to the nwest version thanks 

@@ -65,4 +65,4 @@ If you can, in your PR, please include a translation of the description of the a
 
 If possible, please translate the following keywords too (required by iOS localization):
 
-> Anxiety, Depression, Cognitive Behavioral Therapy, CBT, Panic
+> Anxiety, Depression, Cognitive Behavioral Therapy, CBT, Panic or so much more
