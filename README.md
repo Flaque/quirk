@@ -122,7 +122,7 @@ Quirk's goal is to be both inviting and focused. It should be _really_ easy to e
 Quirk is built with two main goals in mind:
 
 - Don't be bloated
-- Don't be evil
+- Don't be mean
 
 ### Don't be bloated
 
@@ -134,7 +134,7 @@ Quirk is built with two main goals in mind:
 
 **Be quick and efficient.** Thoughts shouldn't take 5 minutes to enter and you should be able to skip fields if it's reasonable. Don't let the perfect be the enemy of the good.
 
-### Don't be Evil
+### Don't be Mean
 
 **Thoughts are more valuable than passwords, treat them that way.** Most people would rather give over their passwords than their CBT thoughts. They're incredibly private, occasionally involve other people, and frequently are embarrassing.
 
@@ -147,6 +147,8 @@ Quirk is built with two main goals in mind:
 **Don't push people to be unhappy.** Do not purposefully or accidentally force people to be unhappy to use their app. Don't force people to state their unhappy in order to access a feature. It's easy for this to sneak up in the design, if a user has to rate their happiness below average in order to access the CBT features, you're asking them to be unhappy to use your app.
 
 **Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in the help. But holy moly becareful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._
+
+**Dont online date on this app.** This app is only for people who have problems with their mental health. It's bad to use an app for a different reason when you're supposed to use it to help your anxiety and your depression.
 
 # Engineering Logic
 
