@@ -148,7 +148,7 @@ Quirk is built with two main goals in mind:
 
 **Be extremely cautious about making engagement your core metric.** User engagement is fine to be concerned about. We all want people who need help to be actually engaging in the help. But holy moly becareful about this. You _do not_ want to drive something that is for many people a treatment into a self-perpetuating engagement loop. A ruthless focus on engagement has caused many a product to become skinner boxes. _No one should ever be addicted to your mental health app._
 
-**Dont online date on this app.** This app is only for people who have problems with their mental health. It's bad to use an app for a different reason when you're supposed to use it to help your anxiety and your depression.
+**Dont online date on this app.** This app is used to help people with their depression and their anxiety. It's bad to use this app for a different reason when you're supposed to use it to help your anxiety and your depression.
 
 # Engineering Logic
 
