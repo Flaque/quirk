@@ -16,10 +16,10 @@ import { createAppContainer/*createSwitchNavigator*/ } from "react-navigation";
  */
 
 //In case you want to build your function:
-/*export default function *function_name*() */
+/*export default function *function_name*(){} */
 
 //In case you want to add your audio:
-/*Audio.Sound.createAsunc({
+/*Audio.Sound.createAsync({
   {uri:*mp3 link only*}
   {shouldPlay:true}
 }) */
