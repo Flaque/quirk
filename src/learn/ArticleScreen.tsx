@@ -45,15 +45,15 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
       >
         <View
           style={{
-            paddingBottom: 12,
-            paddingHorizontal: 24,
+            paddingBottom: 9,
+            paddingHorizontal: 4,
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
           }}
         >
           <GhostButton
-            title="Back"
+            title="return"
             borderColor={theme.lightGray}
             textColor={theme.lightText}
             onPress={() => {
