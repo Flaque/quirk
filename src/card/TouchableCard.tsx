@@ -17,7 +17,7 @@ export const TouchableCardContainer = ({
     onPress={onPress}
     style={{
       backgroundColor: "white",
-      borderColor: theme.lightGray,
+      borderColor: theme.red,
       borderBottomWidth: 2,
       borderRadius: 8,
       borderWidth: 1,
