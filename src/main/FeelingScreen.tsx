@@ -167,7 +167,7 @@ export default class FeelingScreen extends React.Component<
           textColor={theme.darkText}
           style={{
             marginBottom: 12,
-            backgroundColor: "white",
+            backgroundColor: "#FFFFFF",
           }}
           onPress={this.onFeltTheSame}
         />
