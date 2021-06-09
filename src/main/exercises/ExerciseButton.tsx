@@ -30,7 +30,7 @@ const ExerciseButton = ({
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: 12,
+        marginBottom: 10,
         borderColor: hasYourAttention ? theme.pink : theme.lightGray,
         borderRadius: 0,
         paddingLeft: 12,
