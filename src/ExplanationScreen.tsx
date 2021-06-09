@@ -25,6 +25,7 @@ const Distortion = ({ children }) => (
       marginBottom: 48,
     }}
   >
+    <Text>hello always be happy</Text>
     {children}
   </View>
 );
