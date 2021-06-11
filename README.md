@@ -180,4 +180,6 @@ A small amount of data has been corrupted in a recoverable way. The user still h
 
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
 
+Quick is a programming language.
+
 Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
