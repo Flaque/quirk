@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#F8A5C2"
+      "backgroundColor": "#95e9fc"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -35,7 +35,7 @@
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
     "androidStatusBar": {
-      "backgroundColor": "#fbfcfe"
+      "backgroundColor": "a2c0fc"
     },
     "hooks": {
       "postPublish": [
