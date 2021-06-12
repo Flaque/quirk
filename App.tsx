@@ -31,6 +31,9 @@ if (Platform.OS === "android") {
   setCustomText({
     style: {
       fontFamily: "Roboto",
+      fontWeight:'bold',
+      fontColor:'blue',
+      fontSize:20,
     },
   });
 }
