@@ -31,8 +31,8 @@ export default class ProgressBar extends React.Component<
       <View
         style={{
           backgroundColor: theme.lightGray,
-          height: 32,
-          borderRadius: 34,
+          height: 33,
+          borderRadius: 35,
         }}
       >
         <Animated.View
@@ -41,9 +41,9 @@ export default class ProgressBar extends React.Component<
               inputRange: [0, 1],
               outputRange: ["0%", "1%"],
             }),
-            height: 32,
+            height: 33,
             backgroundColor: theme.pink,
-            borderRadius: 34,
+            borderRadius: 35,
           }}
         >
           <Image
