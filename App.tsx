@@ -25,6 +25,7 @@ import { setCustomText } from "react-native-global-props";
 import { Platform } from "react-native";
 import SupportScreen from "./src/payments/SupportScreen";
 import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
+import {createSwitchNavigator} from 'react-navigation';
 
 // Fixes a bug on OnePlus phones which have some buggy font by default
 if (Platform.OS === "android") {
