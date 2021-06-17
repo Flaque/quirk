@@ -6,7 +6,7 @@ If you like Quirk, you're welcome to submit a PR, throw down an issue, or otherw
 
 If you're interested in giving expert advice to Quirk or would like to use it for your patients, I'd love to talk to you.
 
-Quirk is currently _not made_ with any expert involvement (just a whole bunch of [NIH searching](https://www.ncbi.nlm.nih.gov/pmc/)). But I'd very much welcome expert opinions or consultations.
+Quirk is currently _not made_ with any expert involvement (just a whole bunch of [NIH searching](https://www.ncbi.nlm.nih.gov/pmc/)). But I'd very much welcome expert opinions or consultations and pls subscribe to my youTube channel so that you guys can know what we ar doing pls subscribe @Anna Freud NCCF
 
 Feel free to shoot me an email:
 
