@@ -283,7 +283,7 @@ class SettingScreen extends React.Component<Props, State> {
             <StatusBar barStyle="dark-content" hidden={false} />
             <Row
               style={{
-                marginBottom: 22,
+                marginBottom: 28,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -327,7 +327,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 22,
+                marginBottom: 28,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -353,8 +353,8 @@ class SettingScreen extends React.Component<Props, State> {
                 fillColor="#EDF0FC"
                 textColor={theme.darkBlue}
                 style={{
-                  borderWidth: 0,
-                  borderBottomWidth: 0,
+                  borderWidth: 3,
+                  borderBottomWidth: 2,
                 }}
                 onPress={() => {
                   this.props.navigation.navigate(LOCK_SCREEN, {
@@ -373,8 +373,8 @@ class SettingScreen extends React.Component<Props, State> {
                   fillColor="#EDF0FC"
                   textColor={theme.darkBlue}
                   style={{
-                    borderWidth: 0,
-                    borderBottomWidth: 0,
+                    borderWidth: 3,
+                    borderBottomWidth: 3,
                     marginTop: 6,
                   }}
                   onPress={async () => {
@@ -389,7 +389,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 22,
+                marginBottom: 82,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -399,7 +399,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 22,
+                marginBottom: 28,
                 display: "flex",
                 flexDirection: "column",
               }}
