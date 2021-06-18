@@ -41,7 +41,7 @@ export default class FamiliarityScreen extends React.Component<
         <ScrollView>
           <MediumHeader
             style={{
-              marginBottom: 24,
+              marginBottom: 25,
             }}
           >
             How familiar are you with CBT?

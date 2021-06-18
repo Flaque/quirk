@@ -45,8 +45,8 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
       >
         <View
           style={{
-            paddingBottom: 12,
-            paddingHorizontal: 24,
+            paddingBottom: 15,
+            paddingHorizontal: 25,
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
@@ -70,7 +70,7 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
           }}
           style={{
             flex: 1,
-            marginHorizontal: 24,
+            marginHorizontal: 25,
           }}
           javaScriptEnabled={false}
           source={{ uri: this.state.url }}
