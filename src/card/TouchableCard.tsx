@@ -43,8 +43,8 @@ export const CardCrown = ({
 }) => (
   <View
     style={{
-      paddingVertical: 8,
-      paddingHorizontal: 12,
+      paddingVertical: 10,
+      paddingHorizontal: 14,
       width: "100%",
       backgroundColor: theme.lightOffwhite,
       borderTopEndRadius: 8,
@@ -57,7 +57,7 @@ export const CardCrown = ({
     <Text
       style={{
         fontSize: 10,
-        fontWeight: "700",
+        fontWeight: "750",
         color: theme.lightText,
         letterSpacing: 1,
       }}

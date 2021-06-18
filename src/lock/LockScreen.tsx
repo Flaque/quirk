@@ -32,7 +32,7 @@ const KeypadButton = ({ title, onPress, style = {} }) => (
     textColor={theme.darkText}
     width={BUTTON_SIZE}
     height={BUTTON_SIZE}
-    fontSize={18}
+    fontSize={20}
     style={{
       backgroundColor: "white",
       ...style,
@@ -62,12 +62,12 @@ const KeypadSideButton = ({
 const Notifier = ({ isActive }) => (
   <BouncyBigOnActive
     style={{
-      width: 32,
-      height: 32,
-      borderRadius: 32,
+      width: 30,
+      height: 30,
+      borderRadius: 30,
       backgroundColor: theme.pink,
       borderColor: theme.darkPink,
-      borderWidth: 2,
+      borderWidth: 3,
     }}
     pose={isActive ? "active" : "inactive"}
   />

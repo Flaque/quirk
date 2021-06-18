@@ -131,7 +131,7 @@ export default class DistortionScreen extends React.Component<
               <>
                 <View
                   style={{
-                    marginBottom: 18,
+                    marginBottom: 20,
                   }}
                 >
                   <MediumHeader>
