@@ -35,17 +35,17 @@
         "variable-declaration": "onespace"
       }
     ],
-    "max-classes-per-file": false,
+    "max-classes-per-file": true,
     "max-line-length": [false],
     "no-internal-module": true,
     "no-trailing-whitespace": true,
-    "no-null-keyword": false,
+    "no-null-keyword": true,
     "space-before-function-paren": false,
     "prefer-const": true,
-    "jsdoc-format": true,
+    "jsdoc-format": false,
     "trailing-comma": false,
     "object-literal-sort-keys": false,
-    "no-var-requires": false,
+    "no-var-requires": true,
     "arrow-parens": false,
     "ordered-imports": false,
     "no-console": {
