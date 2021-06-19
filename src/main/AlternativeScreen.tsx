@@ -80,7 +80,7 @@ export default class AlternativeScreen extends React.Component<
     return (
       <Container
         style={{
-          paddingTop: Constants.statusBarHeight + 24,
+          paddingTop: Constants.statusBarHeight + 25,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
         }}
@@ -88,14 +88,14 @@ export default class AlternativeScreen extends React.Component<
         <KeyboardAvoidingView
           behavior="position"
           style={{
-            paddingBottom: 24,
+            paddingBottom: 25,
           }}
         >
           {this.state.thought && (
             <>
               <MediumHeader>{i18n.t("alt_thought")}</MediumHeader>
               <HintHeader>
-                Given this situation again, what could you think instead?
+                Given this situation again, What could you think instead?
               </HintHeader>
 
               <TextInput
@@ -119,7 +119,7 @@ export default class AlternativeScreen extends React.Component<
                   <ActionButton
                     title={"Save"}
                     onPress={() => this.onFinish()}
-                    width={"100%"}
+                    width={"97%"}
                   />
                 ) : (
                   <>
