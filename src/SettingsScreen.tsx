@@ -283,7 +283,7 @@ class SettingScreen extends React.Component<Props, State> {
             <StatusBar barStyle="dark-content" hidden={false} />
             <Row
               style={{
-                marginBottom: 22,
+                marginBottom: 22.5,
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -291,7 +291,7 @@ class SettingScreen extends React.Component<Props, State> {
               <SubHeader>*reminders</SubHeader>
               <Paragraph
                 style={{
-                  marginBottom: 16,
+                  marginBottom: 15,
                 }}
               >
                 If you'd like, you can turn on notification reminders that help
