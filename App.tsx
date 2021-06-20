@@ -1,4 +1,8 @@
 import { createAppContainer } from "react-navigation";
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
+
+
+
 import {
   EXPLANATION_SCREEN,
   SETTING_SCREEN,
@@ -30,7 +34,7 @@ import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 if (Platform.OS === "android") {
   setCustomText({
     style: {
-      fontFamily: "Roboto",
+      fontFamily: "Ariel",
     },
   });
 }
