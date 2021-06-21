@@ -11,11 +11,13 @@
     "noEmitHelpers": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "sourceMap": false, // Something else (Babel?) is creating the necessary source maps.
-    "strict": false, // since we're converting from a js project
+    "sourceMap": false, 
+    "strict": false, 
     "target": "es2017",
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
   "exclude": ["node_modules"]
 }
+
+//Thank you !!!
