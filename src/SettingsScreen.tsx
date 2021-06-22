@@ -399,7 +399,7 @@ class SettingScreen extends React.Component<Props, State> {
 
             <Row
               style={{
-                marginBottom: 22,
+                marginBottom: 32,
                 display: "flex",
                 flexDirection: "column",
               }}
