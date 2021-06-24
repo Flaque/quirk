@@ -1,0 +1,6 @@
+export const FOLLOW_UP_ONESIGNAL_TEMPLATE =
+  "5b9b46cc-e652-45d9-9f98-41405b5ebe82";
+export const CHECKUP_ONESIGNAL_TEMPLATE =
+  "ff4d341a-15ac-45f3-884d-8ae5c7b401be";
+export const PREDICTION_ONESIGNAL_TEMPLATE =
+  "bb964bfb-e384-421b-bb71-bca6634d7d96";

@@ -1,19 +1,64 @@
+🚧🚧🚧
+
+**Quirk is no longer being maintained.**
+
+Quirk started as a little thing I made for myself as I started doing CBT. As I got better, I needed Quirk less. But at the same time, lots of other people had discovered Quirk and started picking it up. That meant more bug fixes, more features, and just more work to be done. I really couldn't keep it up well, especially with my main focus at the time (my day job). 
+
+So in order to work on it full time, my brother and I tried to turn it into a company. That way we could continue to develop Quirk as a primary focus, even if we didn't need it anymore. 
+
+For awhile, Quirk was going quite well. Lots of people subscribed, we got backed by [Y Combinator](https://www.ycombinator.com/), and we were growing _very_ quickly. 
+
+Unfortunately, in order for the business to work and for us to pay ourselves, we needed folks to be subscribed for a fair amount of time. But in general, most people fell into three camps: didn't use the app at all (and weren't getting value for what they paid), felt better and then unsubscribed, or didn't feel better but persisted anyway. That meant the business model treated successes as failures and failures as successes. So a future Quirk would need to make people feel worse for longer or otherwise not help people we signed up to help. If the incentives of the business weren't aligned with the people, it would have been naive to assume that we could easily fix it as the organization grew and we held less control. We didn't want to go down that path, so we pivoted the company. 
+
+Anyone who's followed this project will know that we explored multiple paths towards sustainability. Much of it was discussed in the PRs and issues of this repo. We've investigated a completely free model, an indie open source model, a community open source model, a donation model, a pay-up-front model, an ad model, a tele-therapy model, and a subscription model. 
+
+**Quirk (the company) is now Room Service.**
+
+Now-a-days, we're making [Room Service](https://www.roomservice.dev/), which helps folks build multiplayer stuff, like what Figma or Google Docs have. Multiple cursors, CRDTs, sockets, lots of people editing the same thing, that sort of thing. We're still the same commercial entity and such, just making a different product now. If you think multiplayer systems are cool and want to join us, send me an email: `evan @ roomservice . dev`. 
+
+**Make your own Quirk.**
+
+If you like Quirk and want it to continue, feel free to fork it. We'd ask that you change the name to avoid confusion. Just heed our warning, becareful about the way you keep yourself afloat and becareful about your desire to work on this full-time. There's [more of a write up about this here.](https://evanjconrad.com/posts/moral-competence) 
+
+If you want to fork Quirk, you should fork off of [this commit](https://github.com/Flaque/quirk/commit/7a4eabe48414de5edfefcd693e79178120eae142), it's right before we added payments and when the code was the cleanest. 
+
+🚧🚧🚧
+
+
+---
+
 <p align="center">
 <h1 align="center">✨🐙 quirk. </h1>
 </p>
 <p align="center">
-  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans@usequirk.com">Contact</a> • <a href="https://timeline.noticeable.io/Eg17gkp9Nga9OcrvjToA">Changelog</a>
+  <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
 <br><br>
 </p>
 
 Quirk is a crossplatform, GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy)
 app built in React Native / Expo.
 
-Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't ask about your mood or ask you
+Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't ask about you
 to do depression-specific CBT exercises. That makes it fairly quick and discreet to use, especially in a public
 setting.
 
-<img src="https://user-images.githubusercontent.com/5942769/54972305-4081d180-4f48-11e9-91d8-7e8117668418.gif" alt="quirk screenshot" />
+![screenshot](https://i.imgur.com/64Cpmpm.png)
+
+## How Quirk Supports Itself
+
+In order for Quirk to support itself, **it charges a small subscription fee.** Currently it's $5.99 / month in the US, which is roughly the cost of a cup of coffee. This helps pay for a full-time developer to make Quirk not-dead and generally good. 
+
+### The Survival Law of Product Design
+
+To understand _why_ we do a subscription, we can look to the Survival Law of Product Design, a fancy term I just made up. When you make a product, whatever keeps that product alive becomes the primary force of design. 
+
+For example, facebook.com is not Facebook's product, facebook.com/business/ads is Facebook's product. Because 0 dollars are made from facebook accounts, only from advertisers that pay to get access to those facebook accounts. The way you keep the lights on ultimately shapes the product you make. 
+
+So if you want to make a good product that helps folks, you should pick a model of sustainability where the financial incentives of the organization are aligned with the individual interests of the users.
+
+After a lot of tries with other models, that ended up being a subscription. In a subscription, the primary metric is retention: are people still using this thing? If retention drops, people cancel their subscription and you no longer get to exist.
+
+The _only_ solid way to have good retention is to create something that is actively useful and good. Similarly, the only way to get any value from CBT is to consistently do it. 
 
 ## Contributors
 
@@ -28,6 +73,11 @@ Some amazing folks have helped build the Quirk you see today.
 - [@jinto](https://github.com/jinto) for the amazing Korean translation 🇰🇷
 - [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and helping guide the entire translation effort. 🎉
 - [@akinariobi](https://github.com/akinariobi) for the Russian translation 🇷🇺 
+- [@miguelmf](https://github.com/miguelmf) for the Portugese translation 🇵🇹
+- [@comradekingu](https://github.com/comradekingu) for the Norweigan Bokmål translation 🇳🇴
+- [@micheleriva](https://github.com/micheleriva) for the Italian translation 🇮🇹
+- [@Jolg42](https://github.com/jolg42) for the French translation 🇫🇷
+- [@Buricescu](https://github.com/Buricescu) for the Romanian translation 🇷🇴
 
 ## Running Locally
 
@@ -37,6 +87,9 @@ Quirk is built on React Native and therefore assumes you have [node](https://nod
 ```sh
 # clone the project and cd into it
 git clone git@github.com:Flaque/quirk.git; cd ./quirk
+
+# copy the sample .env (edit as required)
+cp .env.sample .env
 
 # install dependencies
 yarn

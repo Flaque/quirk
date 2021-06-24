@@ -4,19 +4,21 @@ import {
   NavigationState,
   NavigationAction,
 } from "react-navigation";
-import { SubHeader, Paragraph, Header, IconButton, ActionButton } from "./ui";
-import { ScrollView, View } from "react-native";
-import { Constants } from "expo";
+import { SubHeader, Paragraph, Header, IconButton, GhostButton } from "./ui";
+import { ScrollView, View, StatusBar } from "react-native";
+import * as Haptic from "expo-haptics";
+import Constants from "expo-constants";
 import theme from "./theme";
 import { CBT_ON_BOARDING_SCREEN } from "./screens";
 import i18n from "./i18n";
-
-import { BubbleThought } from "./Bubbles";
+import { BubbleThought } from "./imgs/Bubbles";
 import { recordScreenCallOnFocus } from "./navigation";
+import haptic from "./haptic";
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, NavigationAction>;
 }
+
 const Distortion = ({ children }) => (
   <View
     style={{
@@ -214,13 +216,13 @@ class ExplanationScreen extends React.Component<Props> {
     return (
       <ScrollView
         style={{
-          marginTop: Constants.statusBarHeight,
-          paddingTop: 24,
+          backgroundColor: "white",
+          paddingTop: Constants.statusBarHeight + 24,
           paddingLeft: 24,
           paddingRight: 24,
-          backgroundColor: "white",
         }}
       >
+        <StatusBar barStyle="dark-content" hidden={false} />
         <View
           style={{
             marginBottom: Constants.statusBarHeight + 24,
@@ -233,7 +235,6 @@ class ExplanationScreen extends React.Component<Props> {
               justifyContent: "space-between",
             }}
           >
-            <Header allowFontScaling={false}>quirk.</Header>
             <View
               style={{
                 display: "flex",
@@ -241,25 +242,22 @@ class ExplanationScreen extends React.Component<Props> {
                 alignItems: "center",
               }}
             >
-              <View
-                style={{
-                  marginRight: 8,
-                }}
-              >
-                <ActionButton
-                  title="Intro"
-                  width={80}
-                  height={48}
-                  fillColor={theme.lightGray}
-                  textColor={theme.veryLightText}
-                  onPress={this.navigateToOnboardingScreen}
-                />
-              </View>
-              <IconButton
-                featherIconName={"edit"}
-                accessibilityLabel={i18n.t("accessibility.new_thought_button")}
-                onPress={() => this.props.navigation.pop()}
-              />
+              {__DEV__ && (
+                <View
+                  style={{
+                    marginRight: 8,
+                  }}
+                >
+                  <GhostButton
+                    title="Intro"
+                    width={80}
+                    height={48}
+                    borderColor={theme.lightGray}
+                    textColor={theme.veryLightText}
+                    onPress={this.navigateToOnboardingScreen}
+                  />
+                </View>
+              )}
             </View>
           </View>
 
