@@ -112,7 +112,11 @@ Of course!
 **If you can draw** and can make digital illustrations of the little blobs, let me know and I'll find a place to stick them in the app!
 
 **If you know a language other than English,** help [us translate the app!](/TRANSLATIONS.md)
-
+                                                    
+                                                                        
+                                                                                    
+                                                                                                    Im a dargon
+                                                             e
 # Design
 
 Quirk's goal is to be both inviting and focused. It should be _really_ easy to enter in a thought; people frequently enter these in public settings and need to do it fairly quickly. It also should not cause any increased frustration.
