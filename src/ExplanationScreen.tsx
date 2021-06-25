@@ -22,7 +22,7 @@ interface Props {
 const Distortion = ({ children }) => (
   <View
     style={{
-      marginBottom: 48,
+      marginBottom: 50,
     }}
   >
     {children}
