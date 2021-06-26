@@ -39,13 +39,13 @@ const App = createBottomTabNavigator(
   {
     [MAIN_SCREEN]: MainScreen,
     [SETTING_SCREEN]: SettingScreen,
-    [EXPLANATION_SCREEN]: IndexLearnScreen,
+    [EXPLANATION_SCREEN]: IndexScreen,
     [PAYMENT_SCREEN]: PaymentScreen,
     [LOCK_SCREEN]: LockScreen,
     [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
     [CHECKUP_SCREEN]: CheckupScreen,
     [SUPPORT_SCREEN]: SupportScreen,
-    [MARKDOWN_ARTICLE_SCREEN]: MarkdownArticleScreen,
+    [MARKDOWN_ARTICLE_SCREEN]: MarkDownArticleScreen,
   },
   {
     initialRouteName: PAYMENT_SCREEN,
