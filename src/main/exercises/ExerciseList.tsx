@@ -75,7 +75,7 @@ export default ({
     return (
       <View
         key={group.date}
-        style={{ paddingHorizontal: 24, paddingBottom: 12 }}
+        style={{ paddingHorizontal: 24, paddingBottom: 12, color:"rgb(255,0,0)"}}
       >
         <Label>{isToday ? "Today" : new Date(group.date).toDateString()}</Label>
         {exercises}
