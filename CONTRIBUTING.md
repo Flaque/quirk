@@ -25,3 +25,5 @@ yarn ship
 ```
 
 That version gets shipped to beta testers but might not actually be the version released to the store.
+
+I don't want to make any contribution
