@@ -181,3 +181,7 @@ A small amount of data has been corrupted in a recoverable way. The user still h
 Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which guarantees end users the freedom to study, share, and modify the software.
 
 Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
+
+# MENTAL HEALTH
+
+Mental health is not just a concept that refers to an individual’s psychological and emotional well being. Rather it’s a state of psychological and emotional well being where an individual is able to use their cognitive and emotional capabilities, meet the ordinary demand and functions in the society. 
