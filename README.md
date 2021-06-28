@@ -71,13 +71,16 @@ Some amazing folks have helped build the Quirk you see today.
 - [@Walther](https://github.com/Walther) for the amazing Finnish translation 🇫🇮
 - [@Jos512](https://github.com/Jos512) for the amazing Dutch translation 🇳🇱
 - [@jinto](https://github.com/jinto) for the amazing Korean translation 🇰🇷
-- [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and helping guide the entire translation effort. 🎉
+- [@briankung](https://github.com/briankung) for the Chinese 🇨🇳 localization, internationalization support and helping guide 
+
+the entire translation effort. 🎉
 - [@akinariobi](https://github.com/akinariobi) for the Russian translation 🇷🇺 
 - [@miguelmf](https://github.com/miguelmf) for the Portugese translation 🇵🇹
 - [@comradekingu](https://github.com/comradekingu) for the Norweigan Bokmål translation 🇳🇴
 - [@micheleriva](https://github.com/micheleriva) for the Italian translation 🇮🇹
 - [@Jolg42](https://github.com/jolg42) for the French translation 🇫🇷
 - [@Buricescu](https://github.com/Buricescu) for the Romanian translation 🇷🇴
+
 people who need to get through life. 🌎
 - [@V1br0-cpu](https://github.com/V1br0-cpu) for absolutely nothing
 
