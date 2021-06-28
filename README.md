@@ -78,6 +78,7 @@ Some amazing folks have helped build the Quirk you see today.
 - [@micheleriva](https://github.com/micheleriva) for the Italian translation 🇮🇹
 - [@Jolg42](https://github.com/jolg42) for the French translation 🇫🇷
 - [@Buricescu](https://github.com/Buricescu) for the Romanian translation 🇷🇴
+- [@V1br0-cpu](https://github.com/V1br0-cpu) for absolutely nothing
 
 ## Running Locally
 
