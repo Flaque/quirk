@@ -41,7 +41,7 @@ export default class WelcomeScreen extends React.Component<ScreenProps> {
         <KeyboardAvoidingView
           behavior="position"
           style={{
-            paddingBottom: 24,
+            paddingBottom: 30,
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -49,7 +49,7 @@ export default class WelcomeScreen extends React.Component<ScreenProps> {
           <MediumHeader>Welcome to Quirk! 👋</MediumHeader>
           <HintHeader
             style={{
-              marginBottom: 24,
+              marginBottom: 30,
             }}
           >
             We'll get you started in a moment, but first we've got somethings to
