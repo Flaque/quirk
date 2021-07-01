@@ -43,9 +43,9 @@ const ExerciseButtons = ({
     <View
       style={{
         backgroundColor: theme.offwhite,
-        borderTopWidth: 1,
+        borderTopWidth: 3,
         borderColor: theme.lightGray,
-        paddingTop: 12,
+        paddingTop: 15,
         paddingBottom: 24,
       }}
     >

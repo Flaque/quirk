@@ -101,7 +101,7 @@ export default class ChallengeScreen extends React.Component<
     return (
       <ScrollView
         style={{
-          paddingTop: 24 + Constants.statusBarHeight,
+          paddingTop: 21 + Constants.statusBarHeight,
           paddingHorizontal: 24,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
@@ -110,7 +110,7 @@ export default class ChallengeScreen extends React.Component<
         <KeyboardAvoidingView
           behavior="position"
           style={{
-            paddingBottom: 48,
+            paddingBottom: 29,
             marginBottom: 24,
           }}
         >
