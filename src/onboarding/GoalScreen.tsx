@@ -42,7 +42,7 @@ export default class GoalScreen extends React.Component<ScreenProps> {
           <KeyboardAvoidingView
             behavior="position"
             style={{
-              paddingBottom: 24,
+              paddingBottom: 35,
             }}
           >
             <SubHeader>What are your goals for Quirk?</SubHeader>
@@ -64,7 +64,7 @@ export default class GoalScreen extends React.Component<ScreenProps> {
 
             <Row
               style={{
-                marginTop: 24,
+                marginTop: 30,
               }}
             >
               <ActionButton
