@@ -2,12 +2,12 @@ import posed from "react-native-pose";
 import { Platform } from "react-native";
 
 export const FadesIn = posed.View({
-  visible: { opacity: 1, y: 0 },
+  visible: { opacity: 0.7, y: 0 },
   hidden: { opacity: 0, y: -10 },
 });
 
 export const FadesInAndShrinks = posed.View({
-  visible: { opacity: 1, y: 0 },
+  visible: { opacity: 0.6, y: 0 },
   hidden: { opacity: 0, y: -100 },
 });
 
@@ -32,16 +32,16 @@ export const newPopsUp = ({ fullHeight, hiddenHeight, popUpScale }) =>
     },
     peakNoBounce: {
       height:
-        Platform.OS === "ios" ? fullHeight * popUpScale : fullHeight * 0.6,
+        Platform.OS === "ios" ? fullHeight * popUpScale : fullHeight * 0.8,
       transition: { duration: 0, ease: "easeOut" },
     },
     full: {
       height: fullHeight,
-      transition: { type: "spring", stiffness: 150 },
+      transition: { type: "spring", stiffness: 120 },
     },
     hiddenWiggle: {
       height: hiddenHeight * 1,
-      transition: { type: "spring", stiffness: 100 },
+      transition: { type: "spring", stiffness: 120 },
     },
-    hidden: { height: hiddenHeight * 0.8 },
+    hidden: { height: hiddenHeight * 0.5 },
   });
