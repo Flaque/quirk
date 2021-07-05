@@ -38,9 +38,7 @@ If you want to fork Quirk, you should fork off of [this commit](https://github.c
 Quirk is a crossplatform, GPL-licensed, [Cognitive Behavioral Therapy (CBT)](https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy)
 app built in React Native / Expo.
 
-Unlike many CBT apps, it's fairly unbiased in what you use it for; it doesn't ask about you
-to do depression-specific CBT exercises. That makes it fairly quick and discreet to use, especially in a public
-setting.
+
 
 ![screenshot](https://i.imgur.com/64Cpmpm.png)
 
