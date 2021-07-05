@@ -218,8 +218,8 @@ class ExplanationScreen extends React.Component<Props> {
         style={{
           backgroundColor: "white",
           paddingTop: Constants.statusBarHeight + 24,
-          paddingLeft: 24,
-          paddingRight: 24,
+          paddingLeft: 22,
+          paddingRight: 22,
         }}
       >
         <StatusBar barStyle="dark-content" hidden={false} />
