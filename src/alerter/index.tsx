@@ -56,7 +56,7 @@ class AlertView extends React.Component<AlertViewProps> {
           style={{
             position: "absolute",
             width: "100%",
-            height: 256,
+            height: 300,
             padding: 24,
             bottom: 24,
             borderRadius: 13,
