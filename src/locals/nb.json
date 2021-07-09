@@ -1,0 +1,141 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Jeg gikk glipp av Sundquists fest, han må hate meg for det.",
+    "challenge_ex": "Sundquist vet at jeg kunne få det til hver gang, jeg ville ikke hatet han for å ha glemt noe som var mitt.\n\nJeg burde ta hånd om meg selv minst så bra jeg behandler andre.",
+    "alt_thought_ex": "Det er sant at jeg gikk glipp av Sundquists fest, jeg kan unnskylde meg, og han vil antagelig tilgi det.",
+    "cog_distortion": { "label": "Tankelesing", "slug": "tankelesing" },
+    "intro": {
+      "line1": "Velkommen til",
+      "emphasis1": "quirk",
+      "line2": ", ",
+      "emphasis2": "Kognitiv adferdsterapi (CBT)",
+      "line3": "-programmet."
+    },
+    "crash_course": {
+      "line1": "Dette er et",
+      "emphasis1": "kræsjkurs",
+      "line2": "i CBT og",
+      "emphasis2": "not an alternative",
+      "line3": "til trent personell."
+    },
+    "mood_thoughts": {
+      "line1": "Først:",
+      "emphasis1": "tankene dine forårsaker humøret ditt."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Dernest: dine tanker kan være",
+      "emphasis1": "automatisk betinget."
+    },
+    "your_distorted": {
+      "line1": "For det tredje: Automatiske tanker er ofte",
+      "emphasis1": "forvrengt."
+    },
+    "cbt_overview": {
+      "line1": "Målet med CBT er å gjenkjenne de",
+      "emphasis1": "forvrengte tankene",
+      "line2": "og",
+      "emphasis2": "erstatte dem",
+      "line3": "med rasjonelle tanker."
+    },
+    "ready": {
+      "emphasis1": "Klar?",
+      "line1": "La oss ta det stegvist."
+    },
+    "catch": {
+      "line1": "1. Vi starter med å",
+      "emphasis1": "bare skrive ned",
+      "line2": "de automatiske tankene når de forefinnes."
+    },
+    "bad_thought_note": {
+      "line1": "Merk tanken:",
+      "line2": "Jeg gikk glipp av Sundquists fest, han må hate meg for det."
+    },
+    "identify_distortions": {
+      "line1": "Se opp for",
+      "emphasis1": "Kognitive forvrengninger"
+    },
+    "bad_distortions": {
+      "line1": "Er det ønskelig at Sundquist nærer et hat? Hvis ikke, er dette å anse som",
+      "emphasis1": "tankelesing",
+      "line2": "Jeg gikk glipp av Sundquists fest, han må hate meg for det."
+    },
+    "challenge_screen": {
+      "line1": "3. Hvorfor er ikke denne tanken realistisk?",
+      "emphasis1": "Utfordre den."
+    },
+    "write_challenge": {
+      "line1": "Skriv noe ala dette:"
+    },
+    "alt_thought": {
+      "line1": "4. Til sist, skriv ned en",
+      "emphasis1": "alternativ tanke."
+    },
+    "show_off": {
+      "line1": "Finn den senere:"
+    },
+    "got_it": {
+      "line1": "Det er det hele",
+      "btn_title": "Til verket."
+    }
+  },
+  "auto_thought": "Automatisk tanke",
+  "cog_distortion": "Kognitiv forvrengning",
+  "challenge": "Utfordring",
+  "alt_thought": "Alternativ tanke",
+  "cbt_form": {
+    "edit": "Rediger",
+    "new": "Ny",
+    "save": "Lagre",
+    "auto_thought_placeholder": "Hva er det som skjer?",
+    "cog_distortion": "Kognitiv forvrengning",
+    "challenged": "Utfordring",
+    "changed_placeholder": "Debatter den tanken.",
+    "alt_thought_placeholder": "Hva kan man tenke istedenfor?"
+  },
+  "all_or_nothing_thinking": "Alt eller ingenting-tankegang",
+  "all_or_nothing_thinking_explanation": "Denne forvrengningen skjer når det ikke finnes rom for gråtoner. Hvis en liten feil skal være utslagsgivende for å finne selvet fundamentalt råttent, eller på annet vis forferdelig, er det sannsynlig at tankerekken er å anse som alt eller ingenting.",
+  "all_or_nothing_thinking_thought": "Jeg gikk på trynet i myra under intervjuet, jeg kan ikke være arbeidsfør.",
+  "catastrophizing": "Svartmaling",
+  "catastrophizing_explanation": "Et lite problem blåst ut av sine proposjoner, tilsier svartmaling. Har du gjort en liten feil og gruer deg over tanken på at noen kan ha funnet det ut, selv om det ikke betyr noe? Dette er antagelig katastrofetenkning.",
+  "catastrophizing_thought": "Jeg føler meg litt uvanlig, jeg har nok et hjerteinfarkt.",
+  "emotional_reasoning": "Emosjonell rasjonalisering",
+  "emotional_reasoning_explanation_1": "\"Jeg føler det, derfor må det være sant.\" Hvis du forsvarer \"faren\" tilknyttet noe tilforlatelig fordi du er redd for det, begår du antagelig emosjonell rasjonalisering. Ting er ikke farlige fordi de fryktes, og ens selvbilde kan ikke nødvendigvis jamføres med selvet.",
+  "emotional_reasoning_explanation_2": "Denne er often vanskelig å oppdage. Det krever innsats å finne ut når dine emosjonelle vridninger har tatt logikkens tøyler.",
+  "emotional_reasoning_thought": "Jeg føler skyld, derfor må jeg ha gjort noe galt.",
+  "fortune_telling": "Framtidsspådommer",
+  "fortune_telling_explanation": "Denne forvrengningen inntrer når fremtiden spås. En overvurderer gjerne ens evne til å forutse hva som kommer til å skje. Ofte bekymrer vi oss for at noe kan skje, og leter deretter etter bevis for at det vil skje.",
+  "fortune_telling_thought": "Flyet jeg sitter i kommer til å kræsje.",
+  "labeling": "Ganglagsbeskuelse",
+  "labeling_explanation": "Én karakteristikk tillagt hele personen. Hvis noen har forulempet en, kan det hende at dette ene ikke er utslagsgivende for all adspredelse. Kanskje vedkommende ikke er en \"noksagt,\" men bare har det travelt. Dette gjelder også en selv, å ha gjort en feil er ikke at en er \"mislykket.\"",
+  "labeling_thought": "Jeg gjorde dårlig på en test, så jeg er en dårlig student.",
+  "magnification_of_the_negative": "Forstørrelse av det negative",
+  "magnification_of_the_negative_explanation": "Hvis du dømmer en situasjon helt og holdent i kraft av dens negative deler og ikke tar hensyn til de positive, forstørrer du antagelig det negative. Hvis du konstant bebreider deg selv for å ha torpedert et jobbintervju, filtrerer du antagelig ut all erfaringen du gjorde deg.",
+  "magnification_of_the_negative_thought": "Jeg spiste sunt denne uken, men jeg hoppet over løpeturen.",
+  "mind_reading": "Tankelesing",
+  "mind_reading_explanation": "Hvis du bekymrer deg over hva noen andre tenker om deg, er dette et forsøk på tankelesning. Med mindre noen forteller hva de tenker, finnes det ingen måte å vite det. Hvorfor anta det verste?",
+  "mind_reading_thought": "Jeg synes jeg var uforskammet i Sundquists nærvær, han hater meg sikkert.",
+  "minimization_of_the_positive": "Forminskning av det positive",
+  "minimization_of_the_positive_explanation": "Bagatellisering av de positive tingene som hender oss, er minimering av det positive. Selv om dagen vår ikke gikk helt som planlagt, betyr det ikke at den delen som gikk bra burde ignoreres.",
+  "minimization_of_the_positive_thought": "Mange likte presentasjonen min, men jeg mumlet i innledningen, så den var dårlig.",
+  "other_blaming": "Skyldspåleggelse",
+  "other_blaming_explanation_1": "Hvis en dårlig situasjon må være noens feil, er dette en skyldspåleggelse. Hvis du har strøket på eksamen og legger skylden på læreren, vender du energien til feil hold. Har noen brutt veitrafikkloven? Hvis du tuter, hytter med neven, og surmuler, hvordan hjelper det? Nå er du forulempet og sint!",
+  "other_blaming_explanation_2": "Dette betyr ikke at du må skylde deg selv for enhver negativ situasjon. Du trenger ikke å legge skylden på noen. Ingen trenger å være situasjonens utpekte skyldner hvis du lar situasjonen gå uten å tildele skyld.",
+  "other_blaming_thought": "Den døgenikten bruker for lang tid, og jeg kommer til å bli forsinket!",
+  "over_generalization": "Overgeneralisering",
+  "over_generalization_explanation": "Fatting av konklusjon gitt kun ett eksempel, medfører overgeneralisering. Hvis du tullet til en presentasjon, og med det gjør deg oppfatningen av at du er \"elendig\" på presentasjoner, er dette en overgeneralisering.",
+  "over_generalization_thought": "Ingen spurte meg opp til dans, så det vil aldri skje.",
+  "self_blaming": "Selvskyldneri",
+  "self_blaming_explanation": "Hvis du tilskriver en negativ situasjon utelukkende til deg selv, legger du skyld på deg selv. Du må ikke være ansvarlig for alle dårlige ting som skjer. Hvis du havner i trafikkork og bebreider deg selv for ikke å ha dratt tidligere, skylder du selvet. Ville du behandlet noen andre på denne måten?",
+  "self_blaming_thought": "Min sønn gjør det dårlig på skolen, jeg må ha mislyktes i oppdragelsen.",
+  "should_statements": "Bør-byrden",
+  "should_statements_explanation_1": "Å tildele noen evner de ikke har, betyr at du bruker feilaktige \"burde\"-utsagn. For eksempel hvis du er redd for å fly og forteller deg selv: \"Jeg burde ikke være redd for dette, det er ingenting galt med flyet!\" legger du en utilbørlig byrde på egne skuldre. Du er redd for å fly, dette er vanlig for folk med flyskrekk.",
+  "should_statements_explanation_2": "Burde-utsagn kan synes ulogiske når du sier dem høyt; hvilket er poenget. De er ulogiske.",
+  "should_statements_thought": "Jeg er en voksen, jeg bør ikke ha disse mentale problemene.",
+  "accessibility": {
+    "help_button": "hjelp",
+    "list_button": "list opp tankene dine",
+    "new_thought_button": "ny tanke",
+    "settings_button": "innstillinger",
+    "delete_thought_button": "slett tanke"
+  }
+}

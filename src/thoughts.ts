@@ -5,6 +5,13 @@ export interface Thought {
   alternativeThought: string;
   cognitiveDistortions: CognitiveDistortion[];
   challenge: string;
+  immediateCheckup?: "better" | "worse" | "same";
+
+  // Followup Stuff
+  followUpDate?: string;
+  followUpCompleted?: boolean;
+  followUpCheckup?: "better" | "worse" | "same";
+  followUpNote?: string;
 }
 
 export interface SavedThought extends Thought {
@@ -25,7 +32,7 @@ export const newThought = (): Thought => {
   return {
     automaticThought: "",
     cognitiveDistortions: distortions.map(({ label, slug }) => {
-      return { label, slug, selected: false };
+      return { label, slug, selected: false, description: "" };
     }),
     challenge: "",
     alternativeThought: "",

@@ -11,6 +11,7 @@ import theme from "./theme";
 import { Feather } from "@expo/vector-icons";
 import distortions, { CognitiveDistortion } from "./distortions";
 import { find } from "lodash";
+import shadowStyle from "./shadowStyle";
 
 export interface ParentComponent {
   children: any;
@@ -54,7 +55,11 @@ FormContainer.propTypes = {
   style: PropTypes.object,
 };
 
-export const Header = ({ children, style }: ParentComponent) => (
+export const Header = ({
+  children,
+  style,
+  allowFontScaling,
+}: ParentComponent & { allowFontScaling?: boolean }) => (
   <Text
     style={{
       fontWeight: "900",
@@ -64,6 +69,8 @@ export const Header = ({ children, style }: ParentComponent) => (
       ...style,
     }}
     textBreakStrategy={"simple"}
+    allowFontScaling={allowFontScaling}
+    maxFontSizeMultiplier={1}
   >
     {children}
   </Text>
@@ -73,6 +80,40 @@ Header.propTypes = {
   children: PropTypes.any.isRequired,
   style: PropTypes.object,
 };
+
+export const MediumHeader = ({
+  children,
+  style,
+  allowFontScaling,
+}: ParentComponent & { allowFontScaling?: boolean }) => (
+  <Text
+    style={{
+      fontWeight: "900",
+      fontSize: 20,
+      color: theme.darkText,
+      marginBottom: 12,
+      ...style,
+    }}
+    textBreakStrategy={"simple"}
+    allowFontScaling={allowFontScaling}
+  >
+    {children}
+  </Text>
+);
+
+export const HintHeader = ({ children, style }: ParentComponent) => (
+  <Text
+    style={{
+      fontWeight: "700",
+      fontSize: 16,
+      color: theme.veryLightText,
+      marginBottom: 12,
+      ...style,
+    }}
+  >
+    {children}
+  </Text>
+);
 
 export const SubHeader = ({ children, style }: ParentComponent) => (
   <Text
@@ -91,6 +132,7 @@ export const SubHeader = ({ children, style }: ParentComponent) => (
 export const SelectorTextItem = ({
   text,
   emoji,
+  description,
   selected = false,
   onPress,
 }) => (
@@ -101,37 +143,69 @@ export const SelectorTextItem = ({
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
       paddingTop: 8,
-      paddingBottom: 8,
-      paddingRight: 12,
-      flexDirection: "row",
-      justifyContent: "space-between",
+      paddingBottom: 4,
       borderRadius: 8,
       borderWidth: 1,
       marginBottom: 4,
       marginTop: 1,
     }}
   >
-    <View style={{ flexDirection: "row" }}>
-      <Text
+    <View style={{ flexDirection: "column" }}>
+      <View style={{ flexDirection: "row", marginBottom: 12 }}>
+        <Text
+          style={{
+            marginRight: 12,
+            marginLeft: 12,
+          }}
+        >
+          {emoji}
+        </Text>
+
+        <View
+          style={{
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+          }}
+        >
+          <Text
+            style={{
+              fontWeight: "600",
+              fontSize: 16,
+              color: selected ? "white" : theme.darkText,
+              marginRight: 8,
+            }}
+          >
+            {text}
+          </Text>
+          {selected && <Feather name={"check"} size={16} color={"white"} />}
+        </View>
+      </View>
+
+      <View
         style={{
           marginRight: 12,
           marginLeft: 12,
+          marginBottom: 6,
+          backgroundColor: selected ? theme.darkBlue : theme.lightOffwhite,
+          paddingLeft: 12,
+          paddingRight: 12,
+          paddingBottom: 6,
+          paddingTop: 6,
+          borderRadius: 8,
         }}
       >
-        {emoji}
-      </Text>
-      <Text
-        style={{
-          fontWeight: "400",
-          fontSize: 16,
-          color: selected ? "white" : theme.darkText,
-        }}
-      >
-        {text}
-      </Text>
+        <Paragraph
+          style={{
+            fontWeight: "400",
+            fontSize: 16,
+            color: selected ? "white" : theme.darkText,
+          }}
+        >
+          {description}
+        </Paragraph>
+      </View>
     </View>
-
-    {selected && <Feather name={"check"} size={16} color={"white"} />}
   </TouchableOpacity>
 );
 
@@ -141,7 +215,13 @@ SelectorTextItem.propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-export const RoundedSelector = ({ items, onPress, style }) => (
+export const RoundedSelector = ({
+  items,
+  onPress,
+  style,
+}: {
+  onPress: (slug: string) => void;
+} & any) => (
   <View
     style={{
       backgroundColor: theme.lightOffwhite,
@@ -161,6 +241,7 @@ export const RoundedSelector = ({ items, onPress, style }) => (
           key={slug}
           emoji={cogDistortion.emoji || "🍎"}
           text={cogDistortion.label}
+          description={cogDistortion.description}
           selected={selected}
           onPress={() => onPress(slug)}
         />
@@ -190,8 +271,8 @@ export const RoundedSelectorButton = ({
       backgroundColor: selected ? theme.blue : "white",
       borderColor: selected ? theme.darkBlue : theme.lightGray,
       borderBottomWidth: 2,
-      paddingTop: 8,
-      paddingBottom: 8,
+      paddingTop: 12,
+      paddingBottom: 12,
       paddingRight: 12,
       borderRadius: 8,
       borderWidth: 1,
@@ -204,7 +285,7 @@ export const RoundedSelectorButton = ({
     <View style={{ flexDirection: "row" }}>
       <Text
         style={{
-          fontWeight: "400",
+          fontWeight: "700",
           fontSize: 16,
           color: selected ? "white" : theme.darkText,
           marginLeft: 12,
@@ -218,6 +299,114 @@ export const RoundedSelectorButton = ({
   </TouchableOpacity>
 );
 
+export const FloatingCard = ({
+  children,
+  style,
+}: {
+  children: any;
+  style?: any;
+}) => (
+  <View
+    style={{
+      backgroundColor: "white",
+      borderWidth: 1,
+      borderColor: theme.lightGray,
+      borderRadius: 8,
+      padding: 24,
+      ...shadowStyle,
+      ...style,
+    }}
+  >
+    {children}
+  </View>
+);
+
+export const GhostButtonWithGuts = ({
+  onPress,
+  borderColor,
+  disabled,
+  flex,
+  children,
+  style,
+}: {
+  onPress: () => void;
+  borderColor?: string;
+  disabled?: boolean;
+  flex?: number;
+  children: any;
+  style?: any;
+}) => (
+  <TouchableOpacity
+    style={{
+      padding: 12,
+      borderRadius: 10,
+      borderColor: borderColor || theme.lightGray,
+      borderWidth: 1,
+      borderBottomWidth: 2,
+      flex,
+      ...style,
+    }}
+    disabled={disabled}
+    onPress={onPress}
+  >
+    {children}
+  </TouchableOpacity>
+);
+
+export const GhostButton = ({
+  title,
+  onPress,
+  borderColor,
+  textColor,
+  width,
+  height,
+  disabled,
+  flex,
+  fontSize,
+  style,
+}: {
+  title: string;
+  onPress: () => void;
+  borderColor?: string;
+  textColor?: string;
+  width?: number | string;
+  height?: number;
+  disabled?: boolean;
+  flex?: number;
+  fontSize?: number;
+  style?: any;
+}) => (
+  <TouchableOpacity
+    style={{
+      padding: 12,
+      borderRadius: 10,
+      justifyContent: "center",
+      alignItems: "center",
+      borderColor: borderColor || theme.gray,
+      borderWidth: 1,
+      borderBottomWidth: 2,
+      maxHeight: 48,
+      width,
+      height,
+      flex,
+      ...style,
+    }}
+    disabled={disabled}
+    onPress={onPress}
+  >
+    <Text
+      style={{
+        textAlign: "center",
+        color: textColor || theme.darkText,
+        fontWeight: "700",
+        fontSize: fontSize || 16,
+      }}
+    >
+      {title}
+    </Text>
+  </TouchableOpacity>
+);
+
 export const ActionButton = ({
   title,
   onPress,
@@ -226,14 +415,18 @@ export const ActionButton = ({
   width,
   height,
   disabled,
+  flex,
+  style,
 }: {
   title: string;
   onPress: () => void;
   fillColor?: string;
   textColor?: string;
-  width?: number;
+  width?: number | string;
   height?: number;
   disabled?: boolean;
+  flex?: number;
+  style?: any;
 }) => (
   <TouchableOpacity
     style={{
@@ -244,8 +437,14 @@ export const ActionButton = ({
       justifyContent: "center",
       alignItems: "center",
       maxHeight: 48,
+      borderColor: theme.darkBlue,
+      borderWidth: 1,
+      borderBottomWidth: 2,
       width,
       height,
+      flex,
+      opacity: disabled ? 0.3 : 1,
+      ...style,
     }}
     disabled={disabled}
     onPress={onPress}
@@ -257,6 +456,7 @@ export const ActionButton = ({
         fontWeight: "700",
         fontSize: 16,
       }}
+      maxFontSizeMultiplier={1.2}
     >
       {title}
     </Text>
@@ -274,11 +474,15 @@ export const IconButton = ({
   accessibilityLabel,
   onPress,
   style,
+  iconSize,
+  hasBadge,
 }: {
   featherIconName: string;
   accessibilityLabel: string;
   onPress: () => void;
   style?: object;
+  iconSize?: number;
+  hasBadge?: boolean;
 }) => (
   <TouchableOpacity
     style={{
@@ -289,11 +493,30 @@ export const IconButton = ({
       alignItems: "center",
       borderRadius: 10,
       alignSelf: "center",
+      position: "relative",
       ...style,
     }}
+    accessibilityLabel={accessibilityLabel}
     onPress={onPress}
   >
-    <Feather name={featherIconName} size={24} color={theme.veryLightText} />
+    {hasBadge && (
+      <View
+        style={{
+          height: 20,
+          width: 20,
+          borderRadius: 24,
+          backgroundColor: theme.pink,
+          position: "absolute",
+          bottom: 34,
+          left: 34,
+        }}
+      />
+    )}
+    <Feather
+      name={featherIconName}
+      size={iconSize || 24}
+      color={theme.veryLightText}
+    />
   </TouchableOpacity>
 );
 
@@ -339,7 +562,7 @@ Container.propTypes = {
   children: PropTypes.any,
 };
 
-export const Label = ({ children, ...style }) => (
+export const Label = ({ children, style }: { children: any; style?: any }) => (
   <Text
     style={{
       fontWeight: "700",
@@ -376,6 +599,69 @@ export const I = ({ children }) => (
   <Text style={{ fontStyle: "italic" }}>{children}</Text>
 );
 
-export const B = ({ children }) => (
-  <Text style={{ fontWeight: "bold" }}>{children}</Text>
+export const B = ({ children, style }: { children: any; style?: any }) => (
+  <Text style={{ fontWeight: "bold", ...style }}>{children}</Text>
+);
+
+export const LI = ({ children }) => (
+  <Text
+    style={{
+      fontSize: 16,
+      color: theme.lightText,
+      marginBottom: 4,
+    }}
+  >{`\u2022 ${children}`}</Text>
+);
+
+export const Badge = ({
+  text,
+  backgroundColor,
+  featherIconName,
+  style,
+}: {
+  text: string;
+  backgroundColor?: string;
+  featherIconName: string;
+  style?: any;
+}) => (
+  <View
+    style={{
+      backgroundColor: backgroundColor || theme.lightBlue,
+      paddingLeft: 12,
+      paddingRight: 12,
+      paddingBottom: 12,
+      paddingTop: 12,
+      borderRadius: 8,
+      justifyContent: "space-between",
+      flex: 1,
+      flexDirection: "row",
+      ...style,
+    }}
+  >
+    <Text
+      style={{
+        fontWeight: "700",
+        color: theme.lightText,
+        fontSize: 14,
+      }}
+      maxFontSizeMultiplier={1.2}
+    >
+      {text}
+    </Text>
+    <Feather name={featherIconName} size={16} color={theme.lightText} />
+  </View>
+);
+
+export const CapsLabel = ({ children, style }) => (
+  <Text
+    style={{
+      fontSize: 10,
+      fontWeight: "700",
+      color: theme.lightText,
+      letterSpacing: 1,
+      ...style,
+    }}
+  >
+    {children}
+  </Text>
 );

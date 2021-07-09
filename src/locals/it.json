@@ -1,0 +1,141 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Ho perso la festa di Giorgio, ora deve odiarmi.",
+    "challenge_ex": "Giorgio sa che non posso farcela ogni volta, non lo odierei se sapessi che ha perso qualcosa di mio.\n\nDovrei trattare me stesso bene almeno quanto tratto gli altri",
+    "alt_thought_ex": "È vero che ho perso la festa di Giorgio, ma posso scusarmi così probabilmente mi perdonerà.",
+    "cog_distortion": { "label": "Lettura del pensiero", "slug": "lettura-del-pensiero" },
+    "intro": {
+      "line1": "Benvenuto in",
+      "emphasis1": "quirk",
+      "line2": ", l'app sulla",
+      "emphasis2": "Terapia Cognitivo Comportamentale (TCC)",
+      "line3": ""
+    },
+    "crash_course": {
+      "line1": "Questo è un",
+      "emphasis1": "corso intensivo",
+      "line2": "di TCC e",
+      "emphasis2": "non un'alternativa",
+      "line3": "ad un professionista specializzato."
+    },
+    "mood_thoughts": {
+      "line1": "Primo:",
+      "emphasis1": "i tuoi pensieri influenzano il tuo stato d'animo."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Secondo: i tuoi pensieri possono essere",
+      "emphasis1": "automatici."
+    },
+    "your_distorted": {
+      "line1": "Terzo: i pensieri automatici sono spesso",
+      "emphasis1": "distorti."
+    },
+    "cbt_overview": {
+      "line1": "L'obbiettivo della TCC è riconoscere i",
+      "emphasis1": "pensieri distorti",
+      "line2": "e",
+      "emphasis2": "rimpiazzarli",
+      "line3": "con pensieri razionali."
+    },
+    "ready": {
+      "emphasis1": "Pronto?",
+      "line1": "Facciamo i primi passi."
+    },
+    "catch": {
+      "line1": "1. Inizieremo",
+      "emphasis1": "scrivendo",
+      "line2": "i pensieri automatici quando ci vengono in mente."
+    },
+    "bad_thought_note": {
+      "line1": "Annota il pensiero:",
+      "line2": "Ho perso la festa di Giorgio, deve odiarmi."
+    },
+    "identify_distortions": {
+      "line1": "Cerca la",
+      "emphasis1": "Distorsione cognitiva"
+    },
+    "bad_distortions": {
+      "line1": "Sappiamo con certezza che Giorgio ci odia? Se non possiamo esserne certi",
+      "emphasis1": "Lettura della mente",
+      "line2": "Ho perso la festa di Giorgio, deve odiarmi."
+    },
+    "challenge_screen": {
+      "line1": "3. Perché questo pensiero non era realistico?",
+      "emphasis1": "Sfatalo."
+    },
+    "write_challenge": {
+      "line1": "Scriveremo qualcosa di simile:"
+    },
+    "alt_thought": {
+      "line1": "4. Infine, scriveremo un",
+      "emphasis1": "pensiero alternativo."
+    },
+    "show_off": {
+      "line1": "Scoprilo più tardi:"
+    },
+    "got_it": {
+      "line1": "E ciò è quanto",
+      "btn_title": "Andiamo!"
+    }
+  },
+  "auto_thought": "Pensiero Automatico",
+  "cog_distortion": "Distorsione Cognitiva",
+  "challenge": "Sfida",
+  "alt_thought": "Pensiero Alternativo",
+  "cbt_form": {
+    "edit": "Modifica",
+    "new": "Nuovo",
+    "save": "Salva",
+    "auto_thought_placeholder": "Come va?",
+    "cog_distortion": "Distorsione Cognitiva",
+    "challenged": "Sfida",
+    "changed_placeholder": "Metti in discussione questo pensiero!",
+    "alt_thought_placeholder": "Cosa dovremmo pensare invece?"
+  },
+  "all_or_nothing_thinking": "Pensiero di \"tutto o niente\"",
+  "all_or_nothing_thinking_explanation": "Questa distorsione si presenta quanto non pensiamo ad una via di mezzo. Se pensiamo che una nostra piccola colpa ci renda irreparabilmente marci o terribili, stiamo attuando un pensiero \"tutto o niente\".",
+  "all_or_nothing_thinking_thought": "Il colloqui di lavoro è andato troppo male... non verrò mai assunto.",
+  "catastrophizing": "Catastrofizzando",
+  "catastrophizing_explanation": "Se parlando di piccoli problemi li gonfiamo aumentandone le proporzioni... stiamo catastrofizzando. Hai commesso un piccolo errore al lavoro e temi che qualcuno lo scopra, nonostante non si tratti di qualcosa di serio? Probabilmente stai catastrofizzando.",
+  "catastrophizing_thought": "Mi sento nervoso, probabilmente avrò un attacco di cuore.",
+  "emotional_reasoning": "Ragionamento Emotivo",
+  "emotional_reasoning_explanation_1": "\"Me lo sento, quindi dev'essere vero\". Se ti trovi nella situazione di giustificare il \"pericolo\" di qualcosa di innocuo solo perché ti spaventa, probabilmente stai ragionando in maniera emotiva. Le cose non sono pericolose perché le temiamo e noi non siamo terribili solo perché pensiamo di esserlo.",
+  "emotional_reasoning_explanation_2": "Questo tipo di pensiero spesso è difficile da riconoscere. Ci vuole un certo sforzo per capire quando la tua parte emotiva sta prendendo il sopravvento su quella logica.",
+  "emotional_reasoning_thought": "Mi sento colpevole, quindi devo aver fatto qualcosa di terribile.",
+  "fortune_telling": "Divinazione",
+  "fortune_telling_explanation": "Questa distorsione si verifica quando proviamo a predirre il futuro. Spesso sovrastimiamo le nostre capacità di predirre gli avvenimenti futuri, preoccupandoci di quello che potrebbe accadere e cercando segni di quanto accadrà.",
+  "fortune_telling_thought": "L'aereo che sto per prendere si schianterà al suolo.",
+  "labeling": "Etichettatura",
+  "labeling_explanation": "Se isoliamo una caratteristica di una persona e la applichiamo alla persona intera, la stiamo etichettando. Se qualcuno ci ha tagliato la strada, non dev'essere necessariamente un \"cretino\"... forse andava solo di fretta. Questo vale anche per noi stessi: solo perché commettiamo un errore, non significa che siamo un fallimento.",
+  "labeling_thought": "Ho fallito un esame, quindi sono un cattivo studente.",
+  "magnification_of_the_negative": "Ingrandimento del Negativo",
+  "magnification_of_the_negative_explanation": "Se stai giudicando una situazione basandoti interamente sui lati negativi di essa, senza considerare le parti positive, aumenterai la negatività. Se continui a pensare che hai fallito un colloqui di lavoro, probabilmente non stai pensando a tutto ciò che hai imparato da quell'esperienza.",
+  "magnification_of_the_negative_thought": "Ho mangiato sano questa settimana, ma non sono andato a correre.",
+  "mind_reading": "Lettura della mente",
+  "mind_reading_explanation": "Se siamo preoccupati di cosa gli altri pensano di noi, stiamo tentando di leggere la loro mente. A meno che non ci dicano cosa stanno pensando, non abbiamo modo di saperlo... quindi perché pensare al peggio?",
+  "mind_reading_thought": "Penso di essere stato scortese con Giorgio... penso che mi odierà.",
+  "minimization_of_the_positive": "Minimizzazione del Positivo",
+  "minimization_of_the_positive_explanation": "Se minimizziamo le cose buone che ci stanno accadendo, stiamo riducendo al minimo la positività. Anche se la nostra giornata non è andata al 100% come previsto, non significa che il 60% che è andato bene debba essere ignorato.",
+  "minimization_of_the_positive_thought": "A molte persone è piaciuta la mia presentazione, ma ho avuto difficoltà durante l'introduzione... il risultato è che è andato tutto male.",
+  "other_blaming": "Incolpare gli altri",
+  "other_blaming_explanation_1": "Se una brutta situazione è stata necessariamente causata da qulcuno, stiamo accusando gli altri. Se hai fallito un esame e stai incolpando l'insegnante, stai indirizzando le tue energie nella maniera sbagliata. Qualcuno ti ha tagliato la strada? Suoni il clacson, fai gli abbaglianti, urli... come può aiutarti tutto ciò?",
+  "other_blaming_explanation_2": "Questo non significa che devi incolpare te stesso per ogni situazione negativa. Non devi incolpare nessuno. Nessuno deve essere incolpato se si lascia passare la situazione senza incolpare qualcuno.",
+  "other_blaming_thought": "Questo idiota sta bloccando tutta la coda! Arriverò in ritardo!",
+  "over_generalization": "Generalizzazione",
+  "over_generalization_explanation": "Se traiamo conclusioni basandoci solo su un esempio... stiamo generalizzando. Se una presentazione è andata male e pensi di essere una persona inutile, stai generalizzando.",
+  "over_generalization_thought": "Nessuno mi ha invitato a ballare, quindi nessuno lo farà mai.",
+  "self_blaming": "Incolpare se stessi",
+  "self_blaming_explanation": "Se ti attribuisci la colpa di una situazione negativa, ti stai incolpando da solo. Non devi essere il responsabile di ogni avvenimento negativo. Sei imbottigliato nel traffico e ti incolpi di non essere partito prima? Ti stai incolpando da solo. Tratteresti qualcun'altro allo stesso modo?",
+  "self_blaming_thought": "Mio figlio va male a scuola... devo averlo cresciuto male.",
+  "should_statements": "\"Dovresti\"",
+  "should_statements_explanation_1": "Se stai assegnando delle abilità a persone che non le hanno, stai usando affermazioni difettose. \"Non dovrei avere paura di volare, non c'è nulla di sbagliato in questo aereo!\". Stai attribuendo un peso enorme alla questione. Hai soltanto paura di volare!",
+  "should_statements_explanation_2": "I \"Dovrei\" sembrano non avere senso quando li si dice ad alta voce... e non lo hanno! Non sono logici! ",
+  "should_statements_thought": "Sono un adulto, non dovrei avere questi problemi mentali.",
+  "accessibility": {
+    "help_button": "aiuto",
+    "list_button": "lista dei pensieri",
+    "new_thought_button": "nuovo pensiero",
+    "settings_button": "configurazione",
+    "delete_thought_button": "cancella pensiero"
+  }
+}

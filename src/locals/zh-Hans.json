@@ -1,0 +1,140 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "我错过了乔治邀请我的聚会，他一定恨我了。",
+    "challenge_ex": "乔治知道我不会每次在他错过我的什么事都恨他，我应该至少对我自己像我对待别人一样。",
+    "alt_thought_ex": "是我错过了乔治的聚会，我可以去道歉，而且他也可能会原谅我的。",
+    "cog_distortion": {
+      "label": "读心术",
+      "slug": "mind-reading"
+    },
+    "intro": {
+      "line1": "欢迎来到",
+      "emphasis1": "Quirk",
+      "line2": "的",
+      "emphasis2": "认知行为疗法(CBT)",
+      "line3": "应用程序"
+    },
+    "crash_course": {
+      "line1": "这是一个",
+      "emphasis1": "速成的",
+      "line2": "CBT",
+      "emphasis2": "它不能替代",
+      "line3": "专业的治疗师"
+    },
+    "mood_thoughts": {
+      "line1": "第一点：\n你的想法",
+      "emphasis1": "影响着你的情绪"
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "第二点：\n你的想法可能是",
+      "emphasis1": "本能的反应"
+    },
+    "your_distorted": {
+      "line1": "第三点：\n自动思维往往是",
+      "emphasis1": "扭曲失真的"
+    },
+    "cbt_overview": {
+      "line1": "CBT的目标是让你识别",
+      "emphasis1": "失真的想法",
+      "line2": "，然后用",
+      "emphasis2": "理智的想法",
+      "line3": "去取代它"
+    },
+    "ready": {
+      "emphasis1": "准备好了吗？",
+      "line1": "让我们开始以下的步骤吧！"
+    },
+    "catch": {
+      "line1": "1. 我们首先是要",
+      "emphasis1": "写下来",
+      "line2": "在事发时候的自动思维。"
+    },
+    "bad_thought_note": {
+      "line1": "写下想法：",
+      "line2": "我错过了乔治的聚会，他肯定恨我了。"
+    },
+    "identify_distortions": {
+      "line1": "2. 然后看看是哪类的",
+      "emphasis1": "认知失真"
+    },
+    "bad_distortions": {
+      "line1": "想：我们真的知道乔治会恨我们吗？如果不知道，那我们可能就处在",
+      "emphasis1": "读心术的思维状态下",
+      "line2": "我错过了乔治的聚会，他肯定恨我了。"
+    },
+    "challenge_screen": {
+      "line1": "3. 为什么这种想法不真实？",
+      "emphasis1": "下一步，我们挑战它"
+    },
+    "write_challenge": {
+      "line1": "写下挑战："
+    },
+    "alt_thought": {
+      "line1": "4. 最后，我们将写一个",
+      "emphasis1": "另类思维"
+    },
+    "show_off": {
+      "line1": "总结："
+    },
+    "got_it": {
+      "line1": "这就是全部\n过程。",
+      "btn_title": "我们开始吧！"
+    }
+  },
+  "auto_thought": "自动思维",
+  "cog_distortion": "认知失真类",
+  "challenge": "挑战想法",
+  "alt_thought": "另类思维",
+  "cbt_form": {
+    "edit": "编辑",
+    "new": "新想法",
+    "save": "保存",
+    "auto_thought_placeholder": "你在想什么？这里写下本能的反应",
+    "cog_distortion": "认知失真类",
+    "challenged": "挑战想法",
+    "changed_placeholder": "争论那个想法！",
+    "alt_thought_placeholder": "我们应该怎样思考呢？"
+  },
+  "all_or_nothing_thinking": "全有或全失的思维",
+  "all_or_nothing_thinking_explanation": "当我们找不到中间立场时，这种失真或偏激的情况就会发生。比如我们认为自己的一个小错误就意味着我们完全无能时，你可能就处于全有或全失的思维状态下。",
+  "all_or_nothing_thinking_thought": "我这次面试特别失败，肯定没人会被录用我!",
+  "catastrophizing": "大祸临头",
+  "catastrophizing_explanation": "如果我们把一个小问题，看成天大的问题，这是大祸临头类的认知失真。比如你在工作中犯了一个小错误，你会非常害怕被他人发现，即使错误没多么严重。你可能就处在大祸临头的思维状态下。",
+  "catastrophizing_thought": "我感到紧张不安，我没准是心脏病发作了。",
+  "emotional_reasoning": "情感推理",
+  "emotional_reasoning_explanation_1": "\"我感觉得到，那就肯定是真实的。\"要是你发现自己在证明一无害的东西是有害的，而仅仅是因为你自己在担心它有害，那么你就可能是在情感推理。许多东西或者事情本身是没有危险的，即使我们害怕它。我们本身并没有那么差，即使我们觉得自己很差。你可能就处在情感推理的思维状态下。",
+  "emotional_reasoning_explanation_2": "这种情感推理类的认知失真会比较难以识别。需要多做些努力才能意识到你的逻辑思维缠绕在情绪心态的缰绳之下。",
+  "emotional_reasoning_thought": "我感到内疚，那我一定是做了什么坏事。",
+  "fortune_telling": "笃信命运",
+  "fortune_telling_explanation": "这种失真的出现是在我们预测未来的时候。因为我们往往会高估自我预测的能力。我们经常会在事情开始时担心可能要发生的意外结果，接着会去寻找它将要发生的证据。",
+  "fortune_telling_thought": "我要乘坐的这架飞机肯定将会坠毁。",
+  "labeling": "标注",
+  "labeling_explanation": "如果我们仅采用一个人的某个特征，把它标注到整个人身上，那我们是在标注类方面的认知失真。假如有人排队时把我们挤开自己抢上前去，他们可能并不是一个\"混蛋，\"也许他们只是在赶时间。这也适用于我们自己，要是我们只是犯了一个错误并不意味着我们就是一个\"废物。\"",
+  "labeling_thought": "我没有通过那一个测试，所以我是一个坏学生。",
+  "magnification_of_the_negative": "扩大负面",
+  "magnification_of_the_negative_explanation": "如果你判断一个情况是完全基于它的负面的部分，不再考虑正面的部分，那你基本上是扩大了负面的因素。如果你经常责怪自己集束式面试时的失误，你可能会滤掉所有你从那次面试中得到的个人体验。",
+  "magnification_of_the_negative_thought": "这个星期我饮食健康，但我没去跑步锻炼。",
+  "mind_reading": "读心术",
+  "mind_reading_explanation": "如果我们担心别人在算计我们，我们就在试图用读心术。除非有人告诉你他们在想什么，否则你是绝对没有办法知道的。那么，为什么要去做最坏的假设？",
+  "mind_reading_thought": "我刚才好像对乔治有点粗鲁，我敢打赌，他肯定恨我了。",
+  "minimization_of_the_positive": "压缩正面",
+  "minimization_of_the_positive_explanation": "如果忽视了那些正在对我们自身有益之处，我们就处于压缩乐观或正面影响的状态。即使我们今天没有100％按计划去做，这并不意味着我们应该忽略那按照计划的60％。",
+  "minimization_of_the_positive_thought": "虽然很多人都说喜欢我的演讲，但我刚开始讲的时候有些迟钝，所以我的演讲肯定很差。",
+  "other_blaming": "另加指责",
+  "other_blaming_explanation_1": "如果你发现了对自己不好的状况，必须要找人承担过错，我们就是在另加指责。比如你考试不及格，你就责怪老师，你是把自己的能力用错了地方。有没有人在高速公路上突然在你前面变道？如果你接着按喇叭警告，并反超过去再慢行，会有用吗？现在，是你变疯了！",
+  "other_blaming_explanation_2": "每天都可能有不顺利的状况，但这并不意味着你要责怪自己。你也不必责怪任何其他人。如果你能让那些事情不必苛求地放过去，就不需要指责任何人，也就不是任何人的错了。",
+  "other_blaming_thought": "那个排在前面的混蛋，浪费了那么长的时间，搞得我都要迟到了！",
+  "over_generalization": "过于泛化",
+  "over_generalization_explanation": "如果仅是用一个例子作基础而得出结论，就是以偏概全。如果一次演讲搞砸了，你想像着你一定\"做不好\"演讲了，那你就是在泛化，既以偏概全。",
+  "over_generalization_thought": "没人请我跳舞，以后也不会有人会请我了。",
+  "self_blaming": "自我责备",
+  "self_blaming_explanation": "假如你对自己完全由消极情绪引导，就会自责。你没必要对发生的每一件错事负责。如果你遇到交通阻塞并后悔应该较早出门，这样你是在自我责备。你对待别人也是这样吗？",
+  "self_blaming_thought": "我的儿子上学有不及格，那一定是我没教育好他。",
+  "should_statements": "必定要求",
+  "should_statements_explanation_1": "假如你分配工作给一个没有做此项工作能力的人，你就会毁在\"必要做到\"上。举例来说，如果你有飞行恐惧症，并告诉自己\"我不应该害怕坐飞机，这飞机又没有故障！\"你承担了过重的自我心理负担。你有对飞行的恐惧，这是正常的，谁都会有害怕飞行的恐惧心态！",
+  "should_statements_explanation_2": "如你大声说出来的必定语句听起来很无厘头的， 这才是问题重点！因为它们是不合逻辑！",
+  "should_statements_thought": "我是一个成年人，我肯定不会有这些心理问题。",
+  "payment": {
+    "ios_explanation": "在确认购买时，将从您的Apple ID帐户中收取付款。除非在当前期间结束前至少24小时取消，否则订阅会自动续订。您的帐户将在当前期间结束前24小时内收取续订费用。您可以在购买后转到App Store帐户设置来管理和取消订阅。"
+  }
+}
