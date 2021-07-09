@@ -164,6 +164,8 @@ The following is a list of extremely _bad_ behaviors and states that could happe
 
 All thoughts have been corrupted somehow. For example, the JSON format of every item is wrong. This is put at the top because not only can a user not access the data, but it may spiral out can cause continuing errors forcing the app to be "bricked."
 
+random edit
+
 ### 2 - Large Scale Data Loss
 
 All thoughts have been deleted without any hope of recovery.
