@@ -48,7 +48,7 @@ const App = createBottomTabNavigator(
     [MARKDOWN_ARTICLE_SCREEN]: MarkdownArticleScreen,
   },
   {
-    initialRouteName: PAYMENT_SCREEN,
+    initialRouteName: CBT_ON_BOARDING_SCREEN,
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },
