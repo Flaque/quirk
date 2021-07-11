@@ -1,13 +1,6 @@
 import React from "react";
 import theme from "../theme";
-import {
-  Container,
-  MediumHeader,
-  HintHeader,
-  SubHeader,
-  ActionButton,
-  Row,
-} from "../ui";
+import { Container, HintHeader, SubHeader, ActionButton, Row } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { ScrollView, KeyboardAvoidingView, TextInput } from "react-native";
@@ -15,9 +8,6 @@ import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import { CONDITION_SCREEN } from "./screens";
 import { textInputStyle, textInputPlaceholderColor } from "../textInputStyle";
-import { initSegment } from "../stats";
-
-const Segment = initSegment();
 
 export default class GoalScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -35,12 +25,6 @@ export default class GoalScreen extends React.Component<ScreenProps> {
   };
 
   onNext = async () => {
-    if (this.state.goal && this.state.goal.length > 0) {
-      Segment.trackWithProperties("user_submitted_goal", {
-        message: this.state.goal,
-      });
-    }
-
     haptic.impact(Haptic.ImpactFeedbackStyle.Light);
     this.props.navigation.push(CONDITION_SCREEN);
   };
@@ -61,21 +45,11 @@ export default class GoalScreen extends React.Component<ScreenProps> {
               paddingBottom: 24,
             }}
           >
-            <MediumHeader>Welcome to Quirk! 👋</MediumHeader>
-            <HintHeader
-              style={{
-                marginBottom: 24,
-              }}
-            >
-              We'll get you started in a moment, but first we have some
-              questions.
-            </HintHeader>
-
             <SubHeader>What are your goals for Quirk?</SubHeader>
             <HintHeader>
-              This gets shared with directly with the creators of Quirk so we
-              know how we can best help you. If you're not comfortable sharing,
-              feel free to leave this blank.
+              This is just for you. We take your privacy extremely seriously.
+              Your thoughts can never be read by a Quirk employee; your thoughts
+              are only stored on this device.
             </HintHeader>
 
             <TextInput

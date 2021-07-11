@@ -10,6 +10,7 @@ class ErrorBoundary extends React.Component {
     }
 
     if (errorInfo) {
+      console.error(error, errorInfo);
       Sentry.captureException(error, {
         extra: errorInfo,
       });

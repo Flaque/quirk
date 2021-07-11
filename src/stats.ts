@@ -1,25 +1,28 @@
 /**
- * This is Quirk's public stats file and is part of
- * how we do things.
+ * This is Quirk's stats file and it's how we collect
+ * anonymous telemetry.
  *
- * Quirk should be open; code _and_ stats. Typically,
- * a developer gets stats through the app stores, and even
- * if the app is open source, those stats tend to be kept
- * private.
+ * We do this to check that the lights are on and that
+ * we didn't break anything. Sometimes when we release
+ * a new feature, we'll also use this to see if anyone
+ * actually uses it.
  *
- * Quirk's not gonna be like that. Instead, aggregate stats
- * will be shared publicly, as long as it protects the privacy
- * of the user.
+ * We also record an aggregate success of each exercise
+ * here so we know that we're not making people
+ * unhappy or otherwise causing harm to people.
  *
- * That let's community members:
- * - understand the status of the project
- * - see the fruits of their support
+ * The stats here should never be connected to personally
+ * identifiable information. They might seem harmless,
+ * but for the privacy of the user, we don't ever want
+ * "foobar@example.org" to be connected to 4 thoughts
+ * a day or something.
  *
- * Plus, it allows researchers and mental health professionals
- * access the info in order to develop better treatments.
- *
- * These stats were created by you, the user.
- * **So you, the user, should have access to it.**
+ * On the other hand, we try to release some of this
+ * information publicly in aggregate. Things like user counts,
+ * happiness metrics, etc. We only do this if it
+ * preserves the privacy of user though; we shouldn't
+ * release info in such a small N that it could potentially
+ * identify someone.
  *
  * (Note: we don't necessarily share all financial info
  * publicly due to legal + company risk)
@@ -62,6 +65,10 @@ export function screen(val: ScreenType) {
     return;
   }
   Segment.screen(val);
+}
+
+export function userDownloaded() {
+  Segment.track("user_downloaded_quirk");
 }
 
 export function userGrandfathered() {
@@ -141,6 +148,18 @@ export function userRestoredPurchase() {
 
 export function userSetPincode() {
   Segment.track("user_set_pincode");
+}
+
+export function userSharedSuccess() {
+  Segment.track("user_shared_success");
+}
+
+export function userDidNotShareSuccess() {
+  Segment.track("user_did_not_shared_success");
+}
+
+export function userRepeatedThought() {
+  Segment.track("user_repeated_thought");
 }
 
 /**
@@ -279,6 +298,10 @@ export function identify(userID: string) {
   Segment.identify(userID);
 }
 
+export function identifyWithTraits(userID: string, traits) {
+  Segment.identifyWithTraits(userID, traits);
+}
+
 /**
  * Follow Ups
  */
@@ -316,6 +339,22 @@ export function userReviewedThoughtOnFollowUp() {
 
 export function userRecordedNewThoughtOnFollowUp() {
   Segment.track("user_recorded_new_thought_on_follow_up");
+}
+
+export function userRequestedPincodeReset(code: string) {
+  Segment.trackWithProperties("user_requested_code", {
+    code,
+  });
+}
+
+export function userFinishedCheckup(mood: "good" | "neutral" | "bad") {
+  Segment.trackWithProperties("user_finished_checkup", {
+    mood,
+  });
+}
+
+export function userDismissedSurvey() {
+  Segment.track("user_dismissed_survey");
 }
 
 /**

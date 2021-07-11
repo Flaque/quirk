@@ -5,7 +5,7 @@ platform :ios, '10.0'
 target 'quirk' do
   pod 'ExpoKit',
     :git => "http://github.com/expo/expo.git",
-    :tag => "ios/2.11.2",
+    :tag => "ios/2.13.0",
     :subspecs => [
       "Core"
     ],

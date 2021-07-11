@@ -1,23 +1,17 @@
 import React from "react";
 import { Thought } from "../../thoughts";
 import { ScreenProps } from "react-navigation";
-import {
-  Container,
-  MediumHeader,
-  GhostButton,
-  HintHeader,
-  SubHeader,
-  Row,
-  IconButton,
-} from "../../ui";
+import { Container, GhostButton, HintHeader, SubHeader } from "../../ui";
 import Constants from "expo-constants";
 import theme from "../../theme";
 import { StatusBar, View } from "react-native";
 import * as stats from "../../stats";
 import { FOLLOW_UP_FEELING_REVIEW_SCREEN, THOUGHT_SCREEN } from "../screens";
 import { get } from "lodash";
-import { saveExercise } from "../../thoughtstore";
+import { saveThought } from "../../thoughtstore";
 import haptic from "../../haptic";
+import { scheduleBoost } from "../pulse/pulsestore";
+import { FINISHED_FOLLOW_UP, FELT_BETTER } from "../pulse/constants";
 
 export default class FollowUpFeelingScreen extends React.Component<
   ScreenProps,
@@ -43,7 +37,7 @@ export default class FollowUpFeelingScreen extends React.Component<
   ): Promise<Thought> => {
     const thought = this.state.thought;
     thought.followUpCheckup = feeling;
-    return saveExercise(this.state.thought);
+    return saveThought(this.state.thought);
   };
 
   onFeltBetter = async () => {
@@ -51,6 +45,9 @@ export default class FollowUpFeelingScreen extends React.Component<
 
     haptic.selection();
     const thought = await this.saveCheckup("better");
+
+    await scheduleBoost(FINISHED_FOLLOW_UP);
+    await scheduleBoost(FELT_BETTER);
 
     this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,
@@ -63,6 +60,8 @@ export default class FollowUpFeelingScreen extends React.Component<
     haptic.selection();
     const thought = await this.saveCheckup("same");
 
+    await scheduleBoost(FINISHED_FOLLOW_UP);
+
     this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,
     });
@@ -73,6 +72,8 @@ export default class FollowUpFeelingScreen extends React.Component<
 
     haptic.selection();
     const thought = await this.saveCheckup("worse");
+
+    await scheduleBoost(FINISHED_FOLLOW_UP);
 
     this.props.navigation.navigate(FOLLOW_UP_FEELING_REVIEW_SCREEN, {
       thought,

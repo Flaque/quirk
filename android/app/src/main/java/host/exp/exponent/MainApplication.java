@@ -11,6 +11,8 @@ import org.unimodules.core.interfaces.Package;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
+import com.swmansion.reanimated.ReanimatedPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.reactlibrary.RNPurchasesPackage;
 import expo.loaders.provider.interfaces.AppLoaderPackagesProviderInterface;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
@@ -33,6 +35,8 @@ public class MainApplication extends ExpoApplication implements AppLoaderPackage
 
         // Needed for `react-native link`
         // new MainReactPackage(),
+            new ReanimatedPackage(),
+            new RNGestureHandlerPackage(),
             new RNPurchasesPackage(),
             new ReactNativeOneSignalPackage()
     );

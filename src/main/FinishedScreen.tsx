@@ -9,11 +9,12 @@ import {
   ActionButton,
   GhostButton,
   Badge,
+  Label,
 } from "../ui";
 import ScreenProps from "../ScreenProps";
 import Constants from "expo-constants";
 import { get } from "lodash";
-import { SavedThought } from "../thoughts";
+import { SavedThought, newThought } from "../thoughts";
 import { View, Alert, Platform } from "react-native";
 import theme from "../theme";
 import {
@@ -23,10 +24,10 @@ import {
   DISTORTION_SCREEN,
   FOLLOW_UP_NOTE_SCREEN,
   FEEDBACK_SCREEN,
+  AUTOMATIC_THOUGHT_SCREEN,
 } from "./screens";
-import { NavigationActions, ScrollView } from "react-navigation";
-import { StackActions } from "react-navigation";
-import { deleteExercise, saveExercise, countThoughts } from "../thoughtstore";
+import { ScrollView } from "react-navigation";
+import { deleteThought, saveThought, countThoughts } from "../thoughtstore";
 import haptic from "../haptic";
 import * as Haptic from "expo-haptics";
 import dayjs from "dayjs";
@@ -34,6 +35,9 @@ import EmojiList from "./EmojiList";
 import { TAB_BAR_HEIGHT } from "../tabbar/TabBar";
 import followUpState from "./followups/followUpState";
 import * as flagstore from "../flagstore";
+import { resetNavigationTo } from "../resetNavigationTo";
+import { Feather } from "@expo/vector-icons";
+import { userRepeatedThought } from "../stats";
 
 export default class FinishedScreen extends React.Component<
   ScreenProps,
@@ -85,27 +89,33 @@ export default class FinishedScreen extends React.Component<
     if (followUpState(this.state.thought) === "ready") {
       const oldThought = this.state.thought;
       oldThought.followUpCompleted = true;
-      await saveExercise(oldThought);
+      await saveThought(oldThought);
     }
 
     if (await this.shouldSendToAndroidReview()) {
-      this.props.navigation.push(FEEDBACK_SCREEN);
+      this.props.navigation.navigate(FEEDBACK_SCREEN);
       return;
     }
 
-    const reset = StackActions.reset({
-      index: 0,
-      actions: [NavigationActions.navigate({ routeName: THOUGHT_SCREEN })],
-    });
-    this.props.navigation.dispatch(reset);
+    resetNavigationTo(this.props.navigation, THOUGHT_SCREEN);
     haptic.notification(Haptic.NotificationFeedbackType.Success);
   };
 
   onDelete = async () => {
     const uuid = this.state.thought.uuid;
-    await deleteExercise(uuid);
+    await deleteThought(uuid);
     this.onNext();
     haptic.impact(Haptic.ImpactFeedbackStyle.Heavy);
+  };
+
+  onRepeat = async () => {
+    haptic.impact(Haptic.ImpactFeedbackStyle.Heavy);
+    userRepeatedThought();
+    const thought = newThought();
+    thought.automaticThought = this.state.thought.automaticThought;
+    this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN, {
+      thought,
+    });
   };
 
   render() {
@@ -172,7 +182,7 @@ export default class FinishedScreen extends React.Component<
               <GhostButtonWithGuts
                 borderColor={theme.lightGray}
                 onPress={() => {
-                  this.props.navigation.navigate(THOUGHT_SCREEN, {
+                  this.props.navigation.navigate(AUTOMATIC_THOUGHT_SCREEN, {
                     thought: this.state.thought,
                     isEditing: true,
                   });
@@ -259,6 +269,7 @@ export default class FinishedScreen extends React.Component<
             <Row
               style={{
                 marginTop: 24,
+                marginBottom: 12,
                 justifyContent: "flex-end",
               }}
             >
@@ -267,7 +278,7 @@ export default class FinishedScreen extends React.Component<
                 borderColor={theme.red}
                 textColor={theme.red}
                 style={{
-                  marginRight: 24,
+                  marginRight: 12,
                 }}
                 onPress={() => {
                   Alert.alert("Delete your thought?", "This can't be undone.", [
@@ -283,14 +294,35 @@ export default class FinishedScreen extends React.Component<
                   ]);
                 }}
               />
-              <ActionButton
-                title={"Finish"}
-                onPress={() => this.onNext()}
+              <GhostButtonWithGuts
+                onPress={this.onRepeat}
                 style={{
                   flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "row",
                 }}
-              />
+              >
+                <Label
+                  style={{
+                    fontSize: 16,
+                    flex: 1,
+                    marginBottom: 0,
+                  }}
+                >
+                  Repeat
+                </Label>
+                <Feather name="refresh-cw" color={theme.blue} />
+              </GhostButtonWithGuts>
             </Row>
+            <ActionButton
+              title={"Finish"}
+              onPress={() => this.onNext()}
+              width={"100%"}
+              style={{
+                flex: 1,
+              }}
+            />
           </View>
         )}
       </ScrollView>

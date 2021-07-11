@@ -6,6 +6,7 @@ import { GhostButton } from "../ui";
 import { INDEX_LEARN_SCREEN } from "./screens";
 import theme from "../theme";
 import { get } from "lodash";
+
 export default class ArticleScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
     header: null,
@@ -52,7 +53,7 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
           }}
         >
           <GhostButton
-            title="Back to list"
+            title="Back"
             borderColor={theme.lightGray}
             textColor={theme.lightText}
             onPress={() => {

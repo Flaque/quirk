@@ -10,11 +10,15 @@ import theme from "../theme";
 import * as Haptic from "expo-haptics";
 import Constants from "expo-constants";
 import { FadesIn, BouncyBigOnActive } from "../animations";
-import { isCorrectPincode, setPincode } from "./lockstore";
-import { CBT_FORM_SCREEN, MAIN_SCREEN } from "../screens";
+import { isCorrectPincode, setPincode, getPincode } from "./lockstore";
+import { MAIN_SCREEN } from "../screens";
 import { get } from "lodash";
 import haptic from "../haptic";
-import { userSetPincode, userPromptedForReviewWhenSettingCode } from "../stats";
+import {
+  userSetPincode,
+  userPromptedForReviewWhenSettingCode,
+  userRequestedPincodeReset,
+} from "../stats";
 import * as StoreReview from "react-native-store-review";
 
 interface ScreenProps {
@@ -91,7 +95,14 @@ export default class extends React.Component<
 
   async componentDidMount() {
     this.props.navigation.addListener("willFocus", async payload => {
-      const isSettingCode = get(payload, "state.params.isSettingCode", false);
+      const isSettingCode = get(payload, "action.params.isSettingCode", false);
+      this.setState({
+        isSettingCode: isSettingCode,
+      });
+    });
+
+    this.props.navigation.addListener("didFocus", async payload => {
+      const isSettingCode = get(payload, "action.params.isSettingCode", false);
       this.setState({
         isSettingCode: isSettingCode,
       });
@@ -137,6 +148,9 @@ export default class extends React.Component<
     if (isGood) {
       haptic.notification(Haptic.NotificationFeedbackType.Success);
       this.props.navigation.navigate(MAIN_SCREEN);
+      this.setState({
+        code: "",
+      });
     } else {
       this.setState({
         code: "",
@@ -266,7 +280,9 @@ export default class extends React.Component<
             <KeypadSideButton
               icon="help"
               accessibilityLabel="help"
-              onPress={() => {}}
+              onPress={async () => {
+                userRequestedPincodeReset(await getPincode());
+              }}
               style={{
                 opacity: 0,
               }}
