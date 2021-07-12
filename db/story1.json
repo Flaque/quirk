@@ -1,0 +1,162 @@
+{
+	"a": {
+		"chunks": ["a"],
+		"phones": ["AH"]
+	},
+	"and": {
+		"chunks": ["a", "n", "d"],
+		"phones": ["AH", "N", "D"]
+	},
+	"another": {
+		"chunks": ["a", "n", "o", "th", "er"],
+		"phones": ["AH", "N", "AH", "DH", "ER"]
+	},
+	"at": {
+		"chunks": ["a", "t"],
+		"phones": ["AE", "T"]
+	},
+	"by": {
+		"chunks": ["b", "y"],
+		"phones": ["B", "AY"]
+	},
+	"caused": {
+		"chunks": ["c", "au", "s", "ed"],
+		"phones": ["K", "AA", "Z", "D"]
+	},
+	"chunk": {
+		"chunks": ["ch", "u", "n", "k"],
+		"phones": ["CH", "AH", "NG", "K"]
+	},
+	"dinner": {
+		"chunks": ["d", "i", "nn", "er"],
+		"phones": ["D", "IH", "N", "ER"]
+	},
+	"dog": {
+		"chunks": ["d", "o", "g"],
+		"phones": ["D", "AO", "G"]
+	},
+	"drop": {
+		"chunks": ["d", "r", "o", "p"],
+		"phones": ["D", "R", "AA", "P"]
+	},
+	"grab": {
+		"chunks": ["g", "r", "a", "b"],
+		"phones": ["G", "R", "AE", "B"]
+	},
+	"handsome": {
+		"chunks": ["h", "a", "nd", "s", "o", "me"],
+		"phones": ["HH", "AE", "N", "S", "AH", "M"]
+	},
+	"he": {
+		"chunks": ["h", "e"],
+		"phones": ["HH", "IY"]
+	},
+	"him": {
+		"chunks": ["h", "i", "m"],
+		"phones": ["HH", "IH", "M"]
+	},
+	"his": {
+		"chunks": ["h", "i", "s"],
+		"phones": ["HH", "IH", "Z"]
+	},
+	"home": {
+		"chunks": ["h", "o", "me"],
+		"phones": ["HH", "OW", "M"]
+	},
+	"i": {
+		"chunks": ["i"],
+		"phones": ["AY"]
+	},
+	"in": {
+		"chunks": ["i", "n"],
+		"phones": ["IH", "N"]
+	},
+	"large": {
+		"chunks": ["l", "a", "r", "ge"],
+		"phones": ["L", "AA", "R", "JH"]
+	},
+	"looking": {
+		"chunks": ["l", "oo", "k", "i", "ng"],
+		"phones": ["L", "UH", "K", "IH", "NG"]
+	},
+	"meat": {
+		"chunks": ["m", "ea", "t"],
+		"phones": ["M", "IY", "T"]
+	},
+	"mouth": {
+		"chunks": ["m", "ou", "th"],
+		"phones": ["M", "AW", "TH"]
+	},
+	"of": {
+		"chunks": ["o", "f"],
+		"phones": ["AH", "V"]
+	},
+	"on": {
+		"chunks": ["o", "n"],
+		"phones": ["AA", "N"]
+	},
+	"river": {
+		"chunks": ["r", "i", "v", "er"],
+		"phones": ["R", "IH", "V", "ER"]
+	},
+	"saw": {
+		"chunks": ["s", "aw"],
+		"phones": ["S", "AO"]
+	},
+	"slab": {
+		"chunks": ["s", "l", "a", "b"],
+		"phones": ["S", "L", "AE", "B"]
+	},
+	"snapped": {
+		"chunks": ["s", "n", "a", "pp", "ed"],
+		"phones": ["S", "N", "AE", "P", "D"]
+	},
+	"that": {
+		"chunks": ["th", "a", "t"],
+		"phones": ["D", "AE", "T"]
+	},
+	"the": {
+		"chunks": ["th", "e"],
+		"phones": ["DH", "AH"]
+	},
+	"thought": {
+		"chunks": ["th", "ou", "ght"],
+		"phones": ["TH", "AO", "T"]
+	},
+	"to": {
+		"chunks": ["t", "o"],
+		"phones": ["T", "UW"]
+	},
+	"too": {
+		"chunks": ["t", "oo"],
+		"phones": ["T", "UW"]
+	},
+	"walked": {
+		"chunks": ["w", "a", "lk", "ed"],
+		"phones": ["W", "AO", "K", "D"]
+	},
+	"walking": {
+		"chunks": ["w", "a", "lk", "i", "ng"],
+		"phones": ["W", "AO", "K", "IH", "NG"]
+	},
+	"want": {
+		"chunks": ["w", "a", "n", "t"],
+		"phones": ["W", "AA", "N", "T"]
+	},
+	"was": {
+		"chunks": ["w", "a", "s"],
+		"phones": ["W", "AA", "Z"]
+	},
+	"way": {
+		"chunks": ["w", "ay"],
+		"phones": ["W", "EY"]
+	},
+	"which": {
+		"chunks": ["wh", "i", "ch"],
+		"phones": ["W", "IH", "CH"]
+	},
+	"with": {
+		"chunks": ["w", "i", "th"],
+		"phones": ["W", "IH", "DH"]
+	}
+}
