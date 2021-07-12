@@ -36,11 +36,11 @@ const ArticleWithImageCard = ({
   onPress: (content: Content) => any;
 }) => (
   <TouchableCardContainer onPress={() => onPress(content)}>
-    <CardCrown text="ARTICLE" featherIconName="circle" color={theme.blue} />
+    <CardCrown text="ARTICLE" featherIconName="circle" color={theme.green} />
     <View
       style={{
         borderTopWidth: 1,
-        borderColor: theme.lightGray,
+        borderColor: theme.skyblue,
       }}
     >
       <HowToQuirkImage />
@@ -90,7 +90,7 @@ export default class LearnScreen extends React.Component<ScreenProps> {
         style={{
           paddingTop: Constants.statusBarHeight + 24,
           paddingHorizontal: 24,
-          backgroundColor: theme.lightOffwhite,
+          backgroundColor: theme.lime,
         }}
       >
         <View
