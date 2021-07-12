@@ -1,0 +1,22 @@
+{
+  "ball": {
+    "chunks": ["b","a","ll"],
+    "phones": ["B","AO","L"]
+  },
+  "create": {
+    "chunks": ["c","r","e","a","te"],
+    "phones": ["K","R","IY","EY","T"]
+  },
+  "red": {
+    "chunks": ["r","e","d"],
+    "phones": ["R","EH","D"]
+  },
+  "play": {
+    "chunks": ["p","l","ay"],
+    "phones": ["P","L","EY"]
+  },
+  "never": {
+    "chunks": ["n","e","v","er"],
+    "phones": ["N","EH","V","ER"]
+  }
+}
