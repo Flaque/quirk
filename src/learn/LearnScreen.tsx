@@ -41,6 +41,7 @@ const ArticleWithImageCard = ({
       style={{
         borderTopWidth: 1,
         borderColor: theme.skyblue,
+        fontFamily: 'ink free'
       }}
     >
       <HowToQuirkImage />
