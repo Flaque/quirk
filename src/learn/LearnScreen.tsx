@@ -101,6 +101,7 @@ export default class LearnScreen extends React.Component<ScreenProps> {
           <MediumHeader
             style={{
               marginBottom: 24,
+              fontSize:20
             }}
           >
             To Read
