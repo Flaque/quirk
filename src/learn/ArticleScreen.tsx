@@ -71,6 +71,7 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
           style={{
             flex: 1,
             marginHorizontal: 24,
+            backgroundColor:"red"
           }}
           javaScriptEnabled={false}
           source={{ uri: this.state.url }}
