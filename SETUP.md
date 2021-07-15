@@ -15,3 +15,6 @@ Then install the depenedencies with:
 cd ./ios;
 pod install;
 ```
+# Why not in Android
+
+It should be there in android systems too.
