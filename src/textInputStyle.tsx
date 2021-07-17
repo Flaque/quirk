@@ -4,12 +4,12 @@ import { Dimensions, TextInput as ReactNativeTextInput } from "react-native";
 
 export const textInputStyle = {
   height: Dimensions.get("screen").height * 0.15,
-  backgroundColor: "white",
+  backgroundColor: "lightGrey",
   padding: 12,
   paddingTop: 14,
   borderRadius: 8,
-  fontSize: 16,
-  borderColor: theme.lightGray,
+  fontSize: 18,
+  borderColor: theme.darkGrey,
   borderWidth: 1,
   borderBottomWidth: 2,
   color: theme.darkText,
