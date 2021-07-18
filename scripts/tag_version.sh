@@ -6,3 +6,4 @@ appver=$(cat app.json | jq '.expo.version' | sed "s/\"//g") # last sed removes q
 echo "Tagging version as $appver"
 git tag $appver
 git push --tags
+#echo means result
