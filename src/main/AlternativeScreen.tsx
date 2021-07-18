@@ -119,7 +119,7 @@ export default class AlternativeScreen extends React.Component<
                   <ActionButton
                     title={"Save"}
                     onPress={() => this.onFinish()}
-                    width={"100%"}
+                    width={"70%"}
                   />
                 ) : (
                   <>
