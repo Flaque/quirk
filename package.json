@@ -10,6 +10,7 @@
     "ship": "./scripts/ship.sh"
   },
   "dependencies": {
+    "discord.js": "12.5.1",
     "@expo/vector-icons": "^10.0.3",
     "d3-interpolate": "^1.3.2",
     "d3-interpolate-path": "^2.1.1",
