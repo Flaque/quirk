@@ -51,7 +51,7 @@ const ThoughtItem = ({
         borderColor: theme.lightGray,
         borderBottomWidth: 2,
         borderRadius: 8,
-        borderWidth: 1,
+        borderWidth: 2,
         marginRight: 18,
         flex: 1,
       }}
