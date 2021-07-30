@@ -32,6 +32,8 @@ export const TouchableCardContainer = ({
 
 // The little gray header that can appear at the top of a card.
 // ex: "THOUGHT      <message-icon>"
+// The little gray header that can appear at the top of a card.
+// ex: "THOUGHT      <message-icon>"
 export const CardCrown = ({
   text,
   featherIconName,
