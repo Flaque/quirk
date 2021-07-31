@@ -61,7 +61,7 @@ const Feedback = () => (
     <SubHeader>*feedback</SubHeader>
     <Paragraph
       style={{
-        marginBottom: 16,
+        marginBottom: 14,
       }}
     >
       We take your feedback extremely seriously. The email below goes directly
@@ -69,9 +69,9 @@ const Feedback = () => (
     </Paragraph>
     <ActionButton
       flex={1}
-      title={"Email Feedback"}
+      title={"your Feedback"}
       fillColor="#EDF0FC"
-      textColor={theme.darkBlue}
+      textColor={theme.lightBlue}
       style={{
         borderWidth: 0,
         borderBottomWidth: 0,
@@ -121,10 +121,10 @@ const GrandfatheredInFreeQuirk = () => (
     </Paragraph>
     <Paragraph
       style={{
-        marginBottom: 49,
+        marginBottom: 40,
       }}
     >
-      This will go away if you uninstall the app. Feel free to reach out by
+      This will disappear if you uninstall the app. Feel free to reach out by
       email ({"ejc" + "@" + "quirk.fyi"}) if you get a new phone; we'll work
       something out. Thanks for being an early supporter! ❤️
     </Paragraph>
@@ -291,7 +291,7 @@ class SettingScreen extends React.Component<Props, State> {
               <SubHeader>*reminders</SubHeader>
               <Paragraph
                 style={{
-                  marginBottom: 16,
+                  marginBottom: 14,
                 }}
               >
                 If you'd like, you can turn on notification reminders that help
