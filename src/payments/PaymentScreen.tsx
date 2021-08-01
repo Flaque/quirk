@@ -499,8 +499,8 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
             style={{
               display: "flex",
               flexDirection: "row",
-              marginLeft: 32,
-              marginRight: 32,
+              marginLeft: 35,
+              marginRight: 35,
               marginBottom: 16,
               justifyContent: "space-between",
             }}
