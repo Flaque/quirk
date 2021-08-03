@@ -182,4 +182,4 @@ Quirk is licensed under the [GPL](https://en.wikipedia.org/wiki/GNU_General_Publ
 
 Note that this license **does not** give free reign to redistribute the name and branding of quirk. So if you'd like to publish your own version, please rename it to avoid end-user confusion.
 
-Byju's Future School was here
+Byju's Future Student was here!
