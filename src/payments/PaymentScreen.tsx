@@ -330,7 +330,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               flexDirection: "row",
               marginLeft: 32,
               marginRight: 32,
-              justifyContent: "space-between",
+              justifyContent: "center",
             }}
           >
             <Paragraph
@@ -348,10 +348,10 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
           <View
             style={{
               justifyContent: "flex-end",
-              marginLeft: 32,
-              marginRight: 32,
+              marginLeft: 31,
+              marginRight: 33,
               marginTop: 16,
-              marginBottom: 32,
+              marginBottom: 31,
             }}
           >
             <SubHeader
