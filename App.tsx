@@ -50,7 +50,7 @@ const App = createBottomTabNavigator(
   {
     initialRouteName: PAYMENT_SCREEN,
     tabBarComponent: props => {
-      return <TabBar {...props} />;
+      return <TabBar {...props} />
     },
   }
 );
