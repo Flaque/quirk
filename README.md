@@ -60,6 +60,7 @@ After a lot of tries with other models, that ended up being a subscription. In a
 
 The _only_ solid way to have good retention is to create something that is actively useful and good. Similarly, the only way to get any value from CBT is to consistently do it. 
 
+The problem with this project is that it relied on a subscription service. Longetivity with an informative and pairing app like this is that it only has an initial puropse and not much more needs to be added. It should be a one time fee service or have consistent updates as a free app.
 ## Contributors
 
 Some amazing folks have helped build the Quirk you see today.
