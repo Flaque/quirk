@@ -1,4 +1,4 @@
-// Copy/pasted from the from the Uchiha clan's jutsu
+// Copy/pasted by the Uchiha clan's Mangekyou Sharingan
 import theme from "./theme";
 
 export default {
