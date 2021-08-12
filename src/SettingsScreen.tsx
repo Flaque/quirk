@@ -392,6 +392,7 @@ class SettingScreen extends React.Component<Props, State> {
                 marginBottom: 22,
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: "space-between",
               }}
             >
               <Feedback />
