@@ -117,12 +117,6 @@ Of course!
 
 Quirk's goal is to be both inviting and focused. It should be _really_ easy to enter in a thought; people frequently enter these in public settings and need to do it fairly quickly. It also should not cause any increased frustration.
 
-## Design Logic
-
-Quirk is built with two main goals in mind:
-
-- Don't be bloated
-- Don't be evil
 
 ### Don't be bloated
 
