@@ -9,10 +9,10 @@ export const textInputStyle = {
   paddingTop: 14,
   borderRadius: 8,
   fontSize: 16,
-  borderColor: theme.lightGray,
+  borderColor: theme.red,
   borderWidth: 1,
   borderBottomWidth: 2,
-  color: theme.darkText,
+  color: theme.blue,
   textAlignVertical: "top",
 };
 export const textInputPlaceholderColor = theme.veryLightText;
