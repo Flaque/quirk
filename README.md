@@ -101,7 +101,7 @@ yarn start
 You'll then be in the [expo development environment](https://docs.expo.io/versions/latest/).
 If you already have XCode installed with a simulator, you can just press `i` to start it.
 
-# Can I help?
+# Project Succeedded
 
 Of course!
 
