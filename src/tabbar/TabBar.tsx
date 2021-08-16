@@ -86,7 +86,7 @@ export default class extends React.Component<ScreenProps> {
     return (
       <View
         style={{
-          backgroundColor: "white",
+          backgroundColor: "#f4978e",
           height: TAB_BAR_HEIGHT,
           borderTopColor: theme.lightGray,
           borderTopWidth: 1,
