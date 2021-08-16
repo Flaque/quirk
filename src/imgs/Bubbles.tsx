@@ -30,7 +30,7 @@ export const BubbleThought = ({
   style,
 }: {
   children: any;
-  color?: "yellow" | "purple" | "pink";
+  color?: "red" | "purple" | "pink";
   style?: any;
 }) => {
   const bubbles = {
