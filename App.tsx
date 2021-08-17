@@ -52,7 +52,7 @@ const App = createBottomTabNavigator(
     tabBarComponent: props => {
       return <TabBar {...props} />;
     },
-  }
+  } 
 );
 
 export default withErrorBoundary(createAppContainer(App));
