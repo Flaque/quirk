@@ -22,7 +22,7 @@ import OnboardingScreen from "./src/onboarding";
 import IndexLearnScreen from "./src/learn";
 import CheckupScreen from "./src/checkups";
 import { setCustomText } from "react-native-global-props";
-import { Platform } from "react-native";
+import { Platform,Image,Text,View } from "react-native";
 import SupportScreen from "./src/payments/SupportScreen";
 import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 
@@ -33,7 +33,18 @@ if (Platform.OS === "android") {
       fontFamily: "Roboto",
     },
   });
-}
+} 
+export class image extends React.Component{
+  render(){
+    return(
+      <View>
+      <Image src={require('./assets/background/download.png')}/>
+      <Text> Quirk is an App for mental awarness </Text>
+      </View>
+    )
+  }
+  }
+  
 
 const App = createBottomTabNavigator(
   {
