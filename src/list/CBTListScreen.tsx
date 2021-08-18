@@ -48,9 +48,9 @@ const ThoughtItem = ({
       onPress={() => onPress(thought)}
       style={{
         backgroundColor: "white",
-        borderColor: theme.lightGray,
+        borderColor: theme.lightBlue,
         borderBottomWidth: 2,
-        borderRadius: 8,
+        borderRadius: 9,
         borderWidth: 1,
         marginRight: 18,
         flex: 1,
