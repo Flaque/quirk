@@ -459,7 +459,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
               justifyContent: "space-between",
             }}
           >
-            {this.state.loading ? (
+            {this.state.isLoading ? (
               <BallIndicator color={theme.blue} size={24} />
             ) : (
               <ActionButton

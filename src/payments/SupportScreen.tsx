@@ -59,7 +59,6 @@ export default class SupportScreen extends React.Component<ScreenProps> {
 
           <TextInput
             style={{
-              ...textInputStyle,
               height: 48,
               marginBottom: 12,
             }}
