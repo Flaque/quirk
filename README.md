@@ -1,5 +1,5 @@
 🚧🚧🚧
-Quirk 2.0
+Quirk 3.0
 
 **Quirk is no longer being maintained.**
 
