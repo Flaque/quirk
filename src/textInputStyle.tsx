@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "./theme";
-import { Dimensions, TextInput as ReactNativeTextInput } from "react-native";
+import { Dimensions, TextInput as ReactNativeTextInput, StyleSheet } from "react-native";
 
 export const textInputStyle = {
   height: Dimensions.get("screen").height * 0.15,
@@ -26,8 +26,25 @@ export const TextInput = (props: {
   value: string;
 }) => (
   <ReactNativeTextInput
-    style={textInputStyle}
+    style={styles.textInputStyle}
     placeholderTextColor={textInputPlaceholderColor}
     {...props}
   />
 );
+
+const styles = StyleSheet.create({
+  textInputStyle: {
+    height: Dimensions.get("screen").height * 0.15,
+  backgroundColor: "white",
+  padding: 12,
+  paddingTop: 14,
+  borderRadius: 8,
+  fontSize: 16,
+  borderColor: theme.lightGray,
+  borderWidth: 1,
+  borderBottomWidth: 2,
+  color: theme.darkText,
+  textAlignVertical: "top",
+
+  }
+})

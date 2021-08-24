@@ -35,6 +35,8 @@ import { latestExpirationDate } from "./payments";
 import dayjs from "dayjs";
 import { hasPincode, removePincode } from "./lock/lockstore";
 
+
+
 export { HistoryButtonLabelSetting };
 
 // Exportable settings
@@ -230,9 +232,11 @@ class SettingScreen extends React.Component<Props, State> {
     });
   };
 
-  navigateToList = () => {
+ 
+
+  /* navigateToList = () => {
     this.props.navigation.pop();
-  };
+  } */
 
   navigateToOnboardingScreen = () => {
     this.props.navigation.navigate(CBT_ON_BOARDING_SCREEN);
