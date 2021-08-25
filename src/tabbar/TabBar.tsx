@@ -124,9 +124,11 @@ export default class extends React.Component<ScreenProps> {
           textColor={tab === MAIN_SCREEN ? theme.darkBlue : theme.veryLightText}
           style={{
             marginHorizontal: 4,
-            padding: 0,
+            padding: 5,
             borderWidth: 0,
-            borderBottomWidth: 0,
+            borderBottomWidth: 2,
+            alignItems: "center",
+            borderColor: "yellow"
           }}
           onPress={() => {
             haptic.impact(Haptic.ImpactFeedbackStyle.Light);
