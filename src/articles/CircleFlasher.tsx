@@ -10,17 +10,17 @@ export default ({ pose }) => (
   <OpacityFlasher
     pose={pose}
     style={{
-      width: 36,
-      height: 36,
+      width: 35,
+      height: 35,
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: theme.blue,
       borderColor: theme.darkBlue,
       borderWidth: 1,
       borderBottomWidth: 2,
-      borderRadius: 36,
-      marginBottom: 24,
-      marginRight: 24,
+      borderRadius: 30,
+      marginBottom: 20,
+      marginRight: 20,
       ...shadowStyle,
     }}
   >
