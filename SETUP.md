@@ -1,6 +1,6 @@
 # iOS Setup
 
-You'll need to install [Cocoapods](https://cocoapods.org/) if you haven't
+You will need to install [Cocoapods](https://cocoapods.org/) if you haven't
 already. You can do that by running:
 
 ```
