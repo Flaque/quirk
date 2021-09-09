@@ -8,7 +8,7 @@ If you're interested in giving expert advice to Quirk or would like to use it fo
 
 Quirk is currently _not made_ with any expert involvement (just a whole bunch of [NIH searching](https://www.ncbi.nlm.nih.gov/pmc/)). But I'd very much welcome expert opinions or consultations.
 
-Feel free to shoot me an email:
+Kindly contact me on the below given address :
 
 ```
 humans @ usequirk.com
