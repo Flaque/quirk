@@ -43,8 +43,8 @@ export const BubbleThought = ({
     <View
       style={{
         flexDirection: "row",
-        marginTop: 12,
-        paddingRight: 48,
+        marginTop: 10,
+        paddingRight: ,50
         ...style,
       }}
     >
@@ -52,8 +52,9 @@ export const BubbleThought = ({
       <View
         style={{
           backgroundColor: theme.offwhite,
-          borderRadius: 8,
-          padding: 8,
+          borderRadius: 5,
+          padding: 5,
+            flex:1
         }}
       >
         <Paragraph>{children}</Paragraph>
