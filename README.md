@@ -1,3 +1,9 @@
+HELLO THIS MY C-67 PROJECT NAMED AS QUIRK (CBT APP)
+IT'S RELATED TO GIT CONTRIBUTIONS. 
+THANK YOU
+BY - ANUSHRI 
+
+
 🚧🚧🚧
 
 **Quirk is no longer being maintained.**
