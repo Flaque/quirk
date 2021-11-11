@@ -31,6 +31,8 @@ if (Platform.OS === "android") {
   setCustomText({
     style: {
       fontFamily: "Arial",
+      fontWeight: "bold",
+      
     },
   });
 }
