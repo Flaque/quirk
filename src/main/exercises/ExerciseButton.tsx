@@ -46,7 +46,7 @@ const ExerciseButton = ({
             ? theme.lightPink
             : theme.lightOffwhite,
           height: "100%",
-          width: 64,
+          width: 32,
           justifyContent: "center",
           alignItems: "center",
           paddingRight: 12,
