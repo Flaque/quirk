@@ -47,7 +47,7 @@ const ThoughtItem = ({
     <TouchableOpacity
       onPress={() => onPress(thought)}
       style={{
-        backgroundColor: "white",
+        backgroundColor: "#989898",
         borderColor: theme.lightGray,
         borderBottomWidth: 2,
         borderRadius: 8,
