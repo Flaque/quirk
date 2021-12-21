@@ -40,7 +40,7 @@
     "hooks": {
       "postPublish": [
         {
-          "file": "sentry-expo/upload-sourcemaps",
+          
           "config": {
             "organization": "evan-conrad",
             "project": "quirk"
