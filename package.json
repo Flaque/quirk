@@ -31,7 +31,7 @@
     "makecancelable": "^1.1.1",
     "prop-types": "^15.6.2",
     "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native": "0.66.3",
     "react-native-autogrow-textinput": "^5.2.0",
     "react-native-base64": "^0.0.2",
     "react-native-gesture-handler": "~1.3.0",
