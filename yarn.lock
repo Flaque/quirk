@@ -7208,10 +7208,10 @@ react-native-offline-cache-webview@^0.1.2:
   resolved "https://registry.yarnpkg.com/react-native-offline-cache-webview/-/react-native-offline-cache-webview-0.1.2.tgz#3cd1d95d27a5187bb8e113c3b289e9dd3932ecab"
   integrity sha512-0B7YNm2dAm1Rwl7BbdH2VddiiZKoSjWZd8vC8XqkwOj22m5RlF4/A3iycMKtiI4LX/rDINjcjWb//k+pdS84Qw==
 
-react-native-onesignal@^3.2.14:
-  version "3.2.14"
-  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.2.14.tgz#421a3b34c226e5b6ea9e801b7b3f914d8e3c0abb"
-  integrity sha512-pL5eSTUAPSeVZQcYJcuFhAUGA+Pl22WgBn4VXYGI93Dtmzklhpuzxtkdm4LZSu08tHkhbe3VzYuziconJ33AKw==
+react-native-onesignal@^3.9.4:
+  version "3.9.4"
+  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.9.4.tgz#886ea222471a8242aae5088e680684d1ae2a88c7"
+  integrity sha512-aQLLtqlz3+IUQPGM28VN6uoX/RKRw7JiHV9mun/Xd4P5wY1UtUwiT5RxwVGp2bn2ora8vCSNioaZdVhqupJLGg==
   dependencies:
     invariant "^2.2.2"
 
