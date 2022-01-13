@@ -84,6 +84,7 @@ export default class AutomaticThoughtScreen extends React.Component<
           paddingTop: Constants.statusBarHeight + 24,
           backgroundColor: theme.lightOffwhite,
           flex: 1,
+          color: 'yellow',
         }}
       >
         <KeyboardAvoidingView
