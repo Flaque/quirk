@@ -530,7 +530,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
             <ActionButton
               flex={1}
               title="Alias your Account"
-              fillColor="#EDF0FC"
+              fillColor="white"
               textColor={theme.darkBlue}
               onPress={() => {
                 this.props.navigation.navigate(SUPPORT_SCREEN);
