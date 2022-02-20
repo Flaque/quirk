@@ -14,7 +14,7 @@ export const FadesInAndShrinks = posed.View({
 export const BouncyBigOnActive = posed.View({
   active: { scale: 1, transition: { type: "spring", stiffness: 200 } },
   inactive: { scale: 0.5 },
-  upcoming: { y: -24 },
+  upcoming: { y: -23 },
 });
 
 export const newFadesIn = ({ maxOpacity }) =>
