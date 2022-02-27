@@ -81,15 +81,15 @@ export const CardTitleAndSubtitleContent = ({ title, subtitle }) => (
   >
     <SubHeader
       style={{
-        fontSize: 16,
+        fontSize: 15,
       }}
     >
       {title}
     </SubHeader>
     <HintHeader
       style={{
-        fontSize: 14,
-        marginBottom: 0,
+        fontSize: 15,
+        marginBottom: 0.5,
       }}
     >
       {subtitle}
@@ -102,9 +102,9 @@ export const CardTextContent = ({ text }: { text: string }) => (
     style={{
       color: theme.darkText,
       fontWeight: "400",
-      fontSize: 16,
+      fontSize: 15,
       marginBottom: 8,
-      paddingLeft: 12,
+      paddingLeft: 13,
       paddingRight: 12,
       paddingTop: 12,
       paddingBottom: 6,
