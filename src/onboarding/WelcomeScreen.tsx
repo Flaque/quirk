@@ -58,7 +58,7 @@ export default class WelcomeScreen extends React.Component<ScreenProps> {
 
           <Row
             style={{
-              marginTop: 12,
+              marginTop: 13,
             }}
           >
             <ActionButton
