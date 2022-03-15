@@ -45,7 +45,7 @@ export async function hideMultipleAlerts(slugs: string[]): Promise<boolean> {
 export async function isNewUser(): Promise<boolean> {
   try {
     const value = await AsyncStorage.getItem(NEW_USER_KEY);
-    if (!!value) {
+    if (!value) {
       return false;
     }
 
