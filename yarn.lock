@@ -1704,6 +1704,11 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
+"@snyk/protect@^1.893.0":
+  version "1.893.0"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.893.0.tgz#631f7fe4f4bdfea96012f6abb46e8c7bdd097440"
+  integrity sha512-QHia0qAw3a+jGsAQzE87wVNclVtVy0kQAneloX1y1Ay/7Ks2wMAl1doNfr+MUrloxegoKJwiQU4msuKD/YwQjw==
+
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -3337,12 +3342,7 @@ data-urls@^1.0.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-dayjs@^1.10.7:
-  version "1.10.7"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
-  integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
-
-dayjs@^1.8.15:
+dayjs@^1.10.7, dayjs@^1.8.15:
   version "1.10.7"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
   integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
@@ -3495,11 +3495,6 @@ doctrine@^2.1.0:
   dependencies:
     esutils "^2.0.2"
 
-dom-walk@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
-  integrity sha1-ZyIm3HTI95mtNTB9+TaroRrNYBg=
-
 domexception@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/domexception/-/domexception-1.0.1.tgz#937442644ca6a31261ef36e3ec677fe805582c90"
@@ -3639,12 +3634,7 @@ escape-html@~1.0.3:
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
-escape-string-regexp@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
-  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
-
-escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
+escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
@@ -6881,6 +6871,8 @@ min-document@^2.19.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/min-document/-/min-document-2.19.0.tgz#7bd282e3f5842ed295bb748cdd9f1ffa2c824685"
   integrity sha1-e9KC4/WELtKVu3SM3Z8f+iyCRoU=
+  dependencies:
+    dom-walk "^0.1.0"
 
 minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
@@ -8039,10 +8031,10 @@ react-native-offline-cache-webview@^0.1.2:
   resolved "https://registry.yarnpkg.com/react-native-offline-cache-webview/-/react-native-offline-cache-webview-0.1.2.tgz#3cd1d95d27a5187bb8e113c3b289e9dd3932ecab"
   integrity sha512-0B7YNm2dAm1Rwl7BbdH2VddiiZKoSjWZd8vC8XqkwOj22m5RlF4/A3iycMKtiI4LX/rDINjcjWb//k+pdS84Qw==
 
-react-native-onesignal@^3.9.4:
-  version "3.9.4"
-  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.9.4.tgz#886ea222471a8242aae5088e680684d1ae2a88c7"
-  integrity sha512-aQLLtqlz3+IUQPGM28VN6uoX/RKRw7JiHV9mun/Xd4P5wY1UtUwiT5RxwVGp2bn2ora8vCSNioaZdVhqupJLGg==
+react-native-onesignal@^3.2.14:
+  version "3.2.14"
+  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.2.14.tgz#421a3b34c226e5b6ea9e801b7b3f914d8e3c0abb"
+  integrity sha512-pL5eSTUAPSeVZQcYJcuFhAUGA+Pl22WgBn4VXYGI93Dtmzklhpuzxtkdm4LZSu08tHkhbe3VzYuziconJ33AKw==
   dependencies:
     invariant "^2.2.2"
 
@@ -8173,12 +8165,12 @@ react-native-view-shot@2.6.0:
   resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-2.6.0.tgz#3b23675826f67658366352c4b97b59a6aded2f43"
   integrity sha512-yO9vWi/11m2hEJl8FrW1SMeVzFfPtMKh20MUInGqlsL0H8Ya2JGGlFfrBzx1KiFR2hFb5OdsTLYNtcVZtJ6pLQ==
 
-react-native-webview@7.6.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.6.0.tgz#6bae76430200be5e5ead7d986af2fa341b650186"
-  integrity sha512-IQWtIpCTYb4dTshAJO3hMM9Ms5T6KRpk6qWqgBTGMdmgeEvSxWz9l7Og1ALhb7T7NoAnPy8w/dQmD9LlbGGs5g==
+react-native-webview@7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-7.0.5.tgz#1dd9d4f2856bda86a40222eca3612bf2152bacd3"
+  integrity sha512-FWY3tjbyV3Uhuw1JxJ0zs2HspJ5HAsIfkJaquURsVWQnTdZPnkSQjHWQp0PzGIwJ1PPVOA/gnhRmd7SZU/Br5Q==
   dependencies:
-    escape-string-regexp "2.0.0"
+    escape-string-regexp "1.0.5"
     invariant "2.2.4"
 
 react-native@0.66.3:
@@ -8615,6 +8607,8 @@ rxjs@^6.4.0:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.2.tgz#2e35ce815cd46d84d02a209fb4e5921e051dbec7"
   integrity sha512-HUb7j3kvb7p7eCUHE3FqjoDsC1xfZQ4AHFWfTKSpZ+sAhhz5X1WX0ZuUqWbzB2QhSLp3DoLUG+hMdEDKqWo2Zg==
+  dependencies:
+    tslib "^1.9.0"
 
 safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
@@ -9377,7 +9371,7 @@ ts-jest@^24.0.2:
     semver "^5.5"
     yargs-parser "10.x"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.1, tslib@^1.9.3:
+tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.1, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
