@@ -101,10 +101,6 @@ yarn start
 You'll then be in the [expo development environment](https://docs.expo.io/versions/latest/).
 If you already have XCode installed with a simulator, you can just press `i` to start it.
 
-# Can I help?
-
-Of course!
-
 **If you like the app,** go give it 5 stars! It helps more people find the app.
 
 **If you're a mental health professional,** audit [the descriptions](https://github.com/Flaque/quirk/blob/master/src/locals/en.json) of the cognitive distortions. If you have suggestions, let me know and we'll change stuff!
