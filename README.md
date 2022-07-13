@@ -22,6 +22,8 @@ If you like Quirk and want it to continue, feel free to fork it. We'd ask that y
 
 If you want to fork Quirk, you should fork off of [this commit](https://github.com/Flaque/quirk/commit/7a4eabe48414de5edfefcd693e79178120eae142), it's right before we added payments and when the code was the cleanest. 
 
+Hi i'm just adding this line here for a project so don't mind me.
+
 🚧🚧🚧
 
 
