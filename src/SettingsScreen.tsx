@@ -61,7 +61,7 @@ const Feedback = () => (
     <SubHeader>*feedback</SubHeader>
     <Paragraph
       style={{
-        marginBottom: 16,
+        marginBottom: 14,
       }}
     >
       We take your feedback extremely seriously. The email below goes directly
