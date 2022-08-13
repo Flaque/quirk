@@ -51,7 +51,7 @@ export default class SupportScreen extends React.Component<ScreenProps> {
           }}
         >
           <StatusBar hidden={false} />
-          <MediumHeader>Enter your email.</MediumHeader>
+          <MediumHeader>Enter your email please.</MediumHeader>
           <HintHeader>
             Once you're done, send an email to support and we'll fix your
             problem on our end.
