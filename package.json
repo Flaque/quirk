@@ -23,6 +23,7 @@
     "expo-haptics": "~7.0.0",
     "expo-localization": "~7.0.0",
     "expo-react-native-adapter": "^3.0.1",
+    "firebase": "8.2.3",
     "i18n-js": "^3.2.1",
     "jest": "^24.9.0",
     "jest-expo": "^32.0.0",
