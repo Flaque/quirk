@@ -21,7 +21,7 @@ const POSITIVE_HEADER = "Great! We'll write that down.";
 const NEUTRAL_OR_NEGATIVE_HEADER = "Here's your next steps.";
 
 const POSITIVE_HINT =
-  "Would you still like to review your thought? You can also can finish now and go about your day.";
+  "Do you want to review your thought? You can also finish now";
 const NEUTRAL_OR_NEGATIVE_HINT =
   "If you're dealing with something new or want to walk through the process again, record a new thought. Otherwise, you should review what you wrote before; is it accurate? ";
 
