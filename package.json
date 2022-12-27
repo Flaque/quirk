@@ -8,6 +8,7 @@
     "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "jest",
     "ship": "./scripts/ship.sh"
+    "
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.3",
@@ -30,6 +31,7 @@
     "lodash": "^4.17.13",
     "makecancelable": "^1.1.1",
     "prop-types": "^15.6.2",
+    "firebase":"8.2.3",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-autogrow-textinput": "^5.2.0",
