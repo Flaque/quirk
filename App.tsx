@@ -27,10 +27,10 @@ import SupportScreen from "./src/payments/SupportScreen";
 import MarkdownArticleScreen from "./src/articles/MarkdownArticleScreen";
 
 // Fixes a bug on OnePlus phones which have some buggy font by default
-if (Platform.OS === "android") {
+if (Platform.OS == "android") {
   setCustomText({
     style: {
-      fontFamily: "Roboto",
+      fontFamily: "Times New Sqaure",
     },
   });
 }
@@ -41,10 +41,10 @@ const App = createBottomTabNavigator(
     [SETTING_SCREEN]: SettingScreen,
     [EXPLANATION_SCREEN]: IndexLearnScreen,
     [PAYMENT_SCREEN]: PaymentScreen,
-    [LOCK_SCREEN]: LockScreen,
-    [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
     [CHECKUP_SCREEN]: CheckupScreen,
     [SUPPORT_SCREEN]: SupportScreen,
+    [LOCK_SCREEN]: LockScreen,
+    [CBT_ON_BOARDING_SCREEN]: OnboardingScreen,
     [MARKDOWN_ARTICLE_SCREEN]: MarkdownArticleScreen,
   },
   {
