@@ -46,7 +46,7 @@ const ExerciseButton = ({
             ? theme.lightPink
             : theme.lightOffwhite,
           height: "100%",
-          width: 64,
+          width: 100,
           justifyContent: "center",
           alignItems: "center",
           paddingRight: 12,
@@ -55,6 +55,7 @@ const ExerciseButton = ({
         <Feather
           name={featherIconName}
           color={hasYourAttention ? theme.darkPink : theme.darkBlue}
+		
           size={16}
         />
       </View>
