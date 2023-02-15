@@ -6,3 +6,7 @@ npm-debug.*
 *.key
 *.mobileprovision
 .gitignore
+.DS_Store
+app.ipa
+app.apk
+*.log

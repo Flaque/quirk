@@ -1,0 +1,5 @@
+export const CBT_FORM_SCREEN = "CBTFormScreen";
+export const CBT_LIST_SCREEN = "CBTListScreen";
+export const CBT_ON_BOARDING_SCREEN = "CBT_ON_BOARDING_SCREEN";
+export const EXPLANATION_SCREEN = "EXPLANATION_SCREEN";
+export const SETTING_SCREEN = "SETTING_SCREEN";

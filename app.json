@@ -2,28 +2,28 @@
   "expo": {
     "name": "quirk",
     "slug": "quirk",
-    "privacy": "public",
+    "privacy": "unlisted",
     "sdkVersion": "31.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
-    "version": "1.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.6.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "githubUrl": "https://github.com/Flaque/quirk",
+    "primaryColor": "#F8A5C2",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F8A5C2"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "tech.econn.quirk",
+      "icon": "./assets/ios.png"
+    },
+    "android": {
+      "package": "tech.econn.quirk",
+      "permissions": [],
+      "icon": "./assets/android.png"
     }
   }
 }
