@@ -209,7 +209,7 @@ If you think you're seeing this screen accidentally, click "restore purchases" t
                 position: "absolute",
                 width: "100%",
                 height: Dimensions.get("screen").height / 2.5,
-                backgroundColor: "#FDF1F5",
+                backgroundColor: "red",
               }}
             />
           )}
