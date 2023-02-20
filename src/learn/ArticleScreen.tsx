@@ -6,6 +6,7 @@ import { GhostButton } from "../ui";
 import { INDEX_LEARN_SCREEN } from "./screens";
 import theme from "../theme";
 import { get } from "lodash";
+import {StyleSheet} from 'react-native';
 
 export default class ArticleScreen extends React.Component<ScreenProps> {
   static navigationOptions = {
@@ -44,13 +45,7 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
         }}
       >
         <View
-          style={{
-            paddingBottom: 12,
-            paddingHorizontal: 24,
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexDirection: "row",
-          }}
+          style={styles.view}
         >
           <GhostButton
             title="Back"
@@ -90,3 +85,13 @@ export default class ArticleScreen extends React.Component<ScreenProps> {
     );
   }
 }
+
+const styles= styleSheet.create({
+  view:{
+    paddingBottom: 12,
+    paddingHorizontal: 24,
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
+  }
+})
