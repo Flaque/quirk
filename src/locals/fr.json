@@ -1,0 +1,141 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "J'ai raté la fête de George, il doit me détester.",
+    "challenge_ex": "Georges sait que je ne peux pas venir à chaque fois et je ne le détesterais pas s'il manquait un de mes évènements.\n\nJe devrais me traiter aussi bien que je traite les autres.",
+    "alt_thought_ex": "C'est vrai que j'ai raté la fête de Georges, mais je peux m'excuser et il me pardonnera probablement.",
+    "cog_distortion": { "label": "Lire dans les pensées", "slug": "mind-reading" },
+    "intro": {
+      "line1": "Bienvenue sur",
+      "emphasis1": "quirk, ",
+      "line2": "une app de ",
+      "emphasis2": "Thérapie Comportementale et Cognitive (TCC).",
+      "line3": ""
+    },
+    "crash_course": {
+      "line1": "Ceci est un",
+      "emphasis1": "cours accéléré",
+      "line2": "en TCC et",
+      "emphasis2": "n'est pas une alternative",
+      "line3": "à une thérapeute diplomée."
+    },
+    "mood_thoughts": {
+      "line1": "Premièrement :",
+      "emphasis1": "tes pensées provoquent tes humeurs."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Deuxièmement : tes pensées peuvent être",
+      "emphasis1": "automatiques."
+    },
+    "your_distorted": {
+      "line1": "Troisièmement : les pensées automatiques sont souvent",
+      "emphasis1": "déformées."
+    },
+    "cbt_overview": {
+      "line1": "Le but de la TCC est de reconnaître les",
+      "emphasis1": "pensées déformées",
+      "line2": "et",
+      "emphasis2": "de les remplacer",
+      "line3": "par des pensées rationnelles"
+    },
+    "ready": {
+      "emphasis1": "Prêt-e ?",
+      "line1": "Passons en revue les étapes."
+    },
+    "catch": {
+      "line1": "On commencera par",
+      "emphasis1": "noter les",
+      "line2": "pensées automatiques dès leur apparition."
+    },
+    "bad_thought_note": {
+      "line1": "Note l'idée :",
+      "line2": "Je ne suis pas allé à la fête de George, il doit me détester."
+    },
+    "identify_distortions": {
+      "line1": "Cherche les",
+      "emphasis1": "distorsions cognitives"
+    },
+    "bad_distortions": {
+      "line1": "Sais-tu vraiment que Georges te détestera ? Tu ne peux pas",
+      "emphasis1": "🧠 lire dans les pensées",
+      "line2": "Je ne suis pas allé à la fête de Georges, il doit me détester."
+    },
+    "challenge_screen": {
+      "line1": "Pourquoi cette idée n'est-elle pas réaliste ?",
+      "emphasis1": "Mets-la au défi."
+    },
+    "write_challenge": {
+      "line1": "Tu peux par exemple écrire :"
+    },
+    "alt_thought": {
+      "line1": "Enfin, nous allons écrire une",
+      "emphasis1": "pensée alternative."
+    },
+    "show_off": {
+      "line1": "Retrouve-la plus tard :"
+    },
+    "got_it": {
+      "line1": "Et c'est à peu près tout.",
+      "btn_title": "Allons-y !"
+    }
+  },
+  "auto_thought": "Pensée Automatique",
+  "cog_distortion": "Distorsion cognitive",
+  "challenge": "Défi",
+  "alt_thought": "Pensée alternative",
+  "cbt_form": {
+    "edit": "Modifier",
+    "new": "Nouveau",
+    "save": "Enregistrer",
+    "auto_thought_placeholder": "Que se passe-t-il ?",
+    "cog_distortion": "Distorsion cognitive",
+    "challenged": "Défi",
+    "changed_placeholder": "Remets en question cette pensée !",
+    "alt_thought_placeholder": "Que devrions-nous penser à la place ?"
+  },
+  "all_or_nothing_thinking": "Penser en noir ou blanc",
+  "all_or_nothing_thinking_explanation": "Cette distorsion se produit lorsque nous n'avons pas de place pour un juste milieu. Si nous pensons qu'un petit défaut en nous-mêmes signifie que nous sommes fondamentalement minable ou nul-le, nous sommes probablement en train de voir les choses en blanc ou noir.",
+  "all_or_nothing_thinking_thought": "J'ai raté l'entretien d'embauche, je dois être inempoyable.",
+  "catastrophizing": "L'exagération (dramatisation)",
+  "catastrophizing_explanation": "Si nous prenons un petit problème et que nous en faisons tout un plat, nous sommes en train de dramatiser. Tu as fait une petite erreur au travail et tu crains que quelqu'un l'apprenne alors que ce n'est rien de grave ? Tu es sûrement en train de dramatiser.",
+  "catastrophizing_thought": "Je me sens nerveux-se, je suis peut-être en train de faire une crise cardiaque.",
+  "emotional_reasoning": "Le raisonnement émotionnel",
+  "emotional_reasoning_explanation_1": "\"C'est ce que je ressens, donc ça doit être vrai.\" Si tu postules le caractère \"dangereux\" de quelque chose juste parce que tu en as peur, alors tu t'engages probablement dans un raisonnement émotionnel. Les choses ne sont pas dangereuses parce que nous avons peur d'elles et nous ne sommes pas nul-les simplement parce que nous pensons l'être",
+  "emotional_reasoning_explanation_2": "Celui-ci est souvent difficile à reconnaître. Il faut un certain effort pour reconnaître quand votre esprit émotionnel prend le contrôle.",
+  "emotional_reasoning_thought": "Je me sens coupable, donc j'ai dû faire quelque chose de mal.",
+  "fortune_telling": "L'erreur de voyance",
+  "fortune_telling_explanation": "Cette distorsion se produit lorsqu'on prédit l'avenir. Nous surestimons souvent notre capacité à prédire ce qui va se passer. Souvent, nous nous inquiétons qu'il puisse se passer quelque chose et nous commençons à chercher des preuves que cela va se produire.",
+  "fortune_telling_thought": "L'avion que je m'apprête à prendre va s'écraser.",
+  "labeling": "L'étiquetage",
+  "labeling_explanation": "Si nous prenons une caractéristique d'une personne et l'appliquons à l'ensemble de la personne, nous faisons de l'étiquetage. Si une personne nous repousse, ça ne fait pas d'elle un-e \"imbécile,\", peut-être qu'elle est juste pressée. Cela s'applique aussi à nous-mêmes ; ce n'est pas parce que nous faisons une erreur que nous sommes un-e \"raté-e.\"",
+  "labeling_thought": "J'ai raté un examen, donc je suis un-e mauvais-e élève.",
+  "magnification_of_the_negative": "Amplification du négatif",
+  "magnification_of_the_negative_explanation": "Si tu juges une situation en te basant entièrement sur les aspects négatifs et que tu ne prends pas en compte les aspects positifs, tu es probablement en train de te focaliser sur le négatif. Si tu te reproches constamment d'avoir raté un entretien d'embauche, tu filtres probablement toute l'expérience que tu as acquise lors de cette entrevue.",
+  "magnification_of_the_negative_thought": "J'ai mangé sainement cette semaine, mais j'ai sauté mon jogging.",
+  "mind_reading": "Lire dans les pensées",
+  "mind_reading_explanation": "Si nous nous inquiétons de ce que quelqu'un d'autre pense de nous, nous essayons de lire dans les pensées. À moins que quelqu'un ne te dise ce qu'il pense, tu n'as absolument aucun moyen de le savoir. Alors pourquoi imaginer le pire ?",
+  "mind_reading_thought": "J'ai été impolie avec George, je parie qu'il me déteste.",
+  "minimization_of_the_positive": "Minimisation du positif",
+  "minimization_of_the_positive_explanation": "Si nous minimisons les bonnes choses qui nous arrivent, nous minimisons les aspects positifs. Même si notre journée ne s'est pas déroulée à 100 % comme prévu, cela ne veut pas dire que les 60 % qui se sont bien déroulés doivent être ignorés.",
+  "minimization_of_the_positive_thought": "Beaucoup de gens ont aimé ma présentation, mais j'ai été maladroit-e en donnant l'introduction, donc c'était raté.",
+  "other_blaming": "Blâmer autrui",
+  "other_blaming_explanation_1": "Si nous cherchons à attribuer la responsabilité d'une mauvaise situation à quelqu'un, nous sommes en train de blâmer autrui. Si tu as échoué à un examen et que tu blâmes l'enseignant-e, tu diriges ton énergie au mauvais endroit. Quelqu'un t'a fait une queue de poisson sur l'autoroute ? Si tu klaxonnes, qu'il te fait un doigt d'honneur et que tu bous intérieurement, en quoi ça t'aide ? Maintenant on t'a fait une queue de poisson et tu es en colère !",
+  "other_blaming_explanation_2": "Cela ne veut pas dire que tu dois te blâmer pour chaque situation négative. Tu n'as pas à blâmer qui que ce soit. Personne n'a à être fautif si tu laisses passer la situation sans chercher à jeter le blâme sur autrui.",
+  "other_blaming_thought": "Ce crétin met trop de temps à faire la queue et je vais être en retard !",
+  "over_generalization": "La généralisation à outrance",
+  "over_generalization_explanation": "Si nous tirons des conclusions à partir d'un seul exemple, nous sommes en train de trop généraliser. Si tu as raté une présentation et que tu supposes que ça veut dire que tu es \"mauvais-e\" en présentation orale, c'est que tu surgénéralises.",
+  "over_generalization_thought": "Personne ne m'a invité-e à danser, donc personne ne m'invitera jamais à danser.",
+  "self_blaming": "La personnalisation",
+  "self_blaming_explanation": "Si tu attribues une situation négative entièrement à ta responsabilité personnelle, tu es en train de t'auto-culpabiliser. Tu n'as pas à être responsable de toutes les mauvaises choses qui arrivent. Si tu te fais prendre dans les embouteillages et que tu te reproches de ne pas être parti-e plus tôt, tu es en train de t'auto-culpabiliser. Traiterais-tu un-e ami-e de cette façon ?",
+  "self_blaming_thought": "Mon fils échoue à l'école, je n'en ai pas assez fait pour lui.",
+  "should_statements": "Les fausses obligations",
+  "should_statements_explanation_1": "Si tu assignes à quelqu'un des capacités qu'il n'a pas, tu utilises de fausses \"obligations\". Par exemple, si tu as peur de l'avion et que tu te dis : \"Je ne devrais pas avoir peur de ça, il n'y a pas de problème avec l'avion !\" tu te mets un fardeau excessif. Tu as peur de prendre l'avion ! C'est normal pour les gens qui ont peur de voler d'avoir peur de voler !",
+  "should_statements_explanation_2": "Les fausses obligations peuvent sembler absurdes lorsqu'elles sont dites à voix haute; c'est normal ! Elles sont illogiques !",
+  "should_statements_thought": "Je suis adulte, je ne devrais pas avoir ces problèmes de santé mentale.",
+  "accessibility": {
+    "help_button": "aide",
+    "list_button": "liste de pensées",
+    "new_thought_button": "nouvelle pensée",
+    "settings_button": "réglages",
+    "delete_thought_button": "effacer la pensée"
+  }
+}

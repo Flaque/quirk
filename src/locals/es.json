@@ -1,0 +1,134 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Me perdí la fiesta de Jorge, apuesto a que me odia.",
+    "challenge_ex": "Jorge sabe que no siempre puedo acudir, yo no le odiaría si faltara a algún evento mío.\n\nDebería tratarme a mí mismo por lo menos tan bien como trato a los demás.",
+    "alt_thought_ex": "Es verdad que falté a la fiesta de Jorge, puedo disculparme y seguramente me perdonará por ello.",
+    "cog_distortion": { "label": "Lectura del pensamiento", "slug": "lectura-pensamiento" },
+    "intro": {
+      "line1": "Bienvenido a",
+      "emphasis1": "quirk",
+      "line2": ", la app de",
+      "emphasis2": "Terapia Cognitiva-Conductual (TCC)",
+      "line3": ""
+    },
+    "crash_course": {
+      "line1": "Éste es un",
+      "emphasis1": "curso intensivo",
+      "line2": "en TCC y",
+      "emphasis2": "no una alternativa",
+      "line3": "para un terapeuta formado."
+    },
+    "mood_thoughts": {
+      "line1": "Primero:",
+      "emphasis1": "tus pensamientos causan tu estado de ánimo."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Segundo: tus pensamientos pueden ser",
+      "emphasis1": "automáticos."
+    },
+    "your_distorted": {
+      "line1": "Tercero: a menudo pensamientos automáticos pueden estar",
+      "emphasis1": "distorsionados."
+    },
+    "cbt_overview": {
+      "line1": "El objetivo de la TCC es reconocer los",
+      "emphasis1": "pensamientos distorsionados",
+      "line2": "y",
+      "emphasis2": "remplazarlos",
+      "line3": "con pensamientos racionales."
+    },
+    "ready": {
+      "emphasis1": "¿Listo?",
+      "line1": "Repasemos los pasos."
+    },
+    "catch": {
+      "line1": "1. Empezaremos",
+      "emphasis1": "escribiendo",
+      "line2": "los pensamientos automáticos apenas ocurren."
+    },
+    "bad_thought_note": {
+      "line1": "Apunta el pensamiento:",
+      "line2": "Falté a la fiesta de Jorge, apuesto a que me odia."
+    },
+    "identify_distortions": {
+      "line1": "Busca",
+      "emphasis1": "Distorsiones cognitivas"
+    },
+    "bad_distortions": {
+      "line1": "¿Sabemos de verdad que Jorge nos va a odiar? Si no, estamos",
+      "emphasis1": "leyendo el pensamiento",
+      "line2": "Falté a la fiesta de Jorge, apuesto a que me odia por ello."
+    },
+    "challenge_screen": {
+      "line1": "3. ¿Por qué este pensamiento no es realista?",
+      "emphasis1": "desafíalo."
+    },
+    "write_challenge": {
+      "line1": "Escribiremos algo del tipo:"
+    },
+    "alt_thought": {
+      "line1": "4. Por último, escribiremos un",
+      "emphasis1": "pensamiento alternativo."
+    },
+    "show_off": {
+      "line1": "Encuéntralo más tarde:"
+    },
+    "got_it": {
+      "line1": "Y eso es todo realmente",
+      "btn_title": "¡Vamos!"
+    }
+  },
+  "auto_thought": "Pensamiento automático",
+  "cog_distortion": "Distorsión cognitiva",
+  "challenge": "Desafío",
+  "alt_thought": "Pensamiento alternativo",
+  "cbt_form": {
+    "edit": "Editar",
+    "new": "Nuevo",
+    "save": "Guardar",
+    "auto_thought_placeholder": "¿Qué está pasando?",
+    "cog_distortion": "Distorsion cognitiva",
+    "challenged": "Desafío",
+    "changed_placeholder": "¡Debate ese pensamiento!",
+    "alt_thought_placeholder": "¿Qué deberíamos pensar?"
+  },
+  "all_or_nothing_thinking": "Pensamiento de todo o nada",
+  "all_or_nothing_thinking_explanation": "Esta distorsión sucede cuando no dejamos espacio para el término medio. Si pensamos que una pequeña falta en nosotros mismos significa que estamos fundamentalmente podridos o que somos terribles, es probable que estemos incurriendo en el pensamiento de todo o nada.",
+  "all_or_nothing_thinking_thought": "Suspendí la entrevista, nunca nadie me a va contratar.",
+  "catastrophizing": "Catastrofizar",
+  "catastrophizing_explanation": "Si tomamos un pequeño problema y lo exageramos, estamos catastrofizando. ¿Cometiste un pequeño error en el trabajo y estás temiendo que alguien lo descubra aunque no sea nada grave? Probablemente estés catastrofizando.",
+  "catastrophizing_thought": "Me siento nervioso, podría estar teniendo un ataque al corazón.",
+  "emotional_reasoning": "Razonamiento emocional",
+  "emotional_reasoning_explanation_1": "\"Lo siento por tanto ha de ser verdad.\" Si te encuentras a ti mismo justificando el \"peligro\" de algo inocuo porque le tienes miedo, entonces puede que estés incurriendo en un razonamiento emocional. Las cosas no son peligrosas porque les tengamos miedo de la misma manera que no somos malos porque pensemos que lo somos.",
+  "emotional_reasoning_explanation_2": "Éste es a menudo difícil de reconocer. Se necesita un cierto esfuerzo para reconocer que tu mente emocional ha tomado las riendas lógicas.",
+  "emotional_reasoning_thought": "Me siento culpable, por tanto he tenido que hacer algo malo.",
+  "fortune_telling": "Adivinación",
+  "fortune_telling_explanation": "Esta distorsión ocurre cuando intentamos predecir el futuro. A menudo sobreestimamos nuestras habilidades para predecir lo que sucederá. Con frecuencia, comenzaremos con algo que nos preocupa y luego buscamos evidencia de que ocurrirá.",
+  "fortune_telling_thought": "El avión al que estoy a punto de subir se estrellará.",
+  "labeling": "Etiquetado",
+  "labeling_explanation": "Si estamos tomando una característica de una persona y aplicándola a toda la persona, estamos etiquetando. Si alguien nos rechazó, tal vez no sea un \"imbécil\", tal vez solo tenga prisa. Esto también se aplica a nosotros mismos; solo porque cometamos un error no significa que seamos un \"fracaso\".",
+  "labeling_thought": "Fallé un examen, así que soy un mal estudiante.",
+  "magnification_of_the_negative": "Ampliación de lo negativo",
+  "magnification_of_the_negative_explanation": "Si estás juzgando una situación basada completamente en las partes negativas y no consideras las partes positivas, es probable que estés amplificando las negativas. Si constantemente te estás regañando por haber fallado una entrevista de trabajo, probablemente estés filtrando toda la experiencia que obtuviste de esa entrevista.",
+  "magnification_of_the_negative_thought": "Comí saludable esta semana, pero me salté la carrera.",
+  "mind_reading": "Lectura del pensamiento",
+  "mind_reading_explanation": "Si nos preocupa lo que otra persona está pensando de nosotros, estamos intentando leer el pensamiento. A menos que alguien te diga lo que está pensando, no tienes absolutamente ninguna forma de saberlo. Entonces, ¿por qué asumir lo peor?",
+  "mind_reading_thought": "Creo que fui grosero con Jorge, apuesto a que me odia.",
+  "minimization_of_the_positive": "Minimizar lo positivo",
+  "minimization_of_the_positive_explanation": "Si minimizamos las cosas buenas que nos están sucediendo, estamos minimizando lo positivo. Incluso si nuestro día no fue al 100% como estaba previsto, no significa que el 60% que salió bien deba ignorarse.",
+  "minimization_of_the_positive_thought": "A muchas personas les gustó mi presentación, pero tropecé dando la introducción, así que fue mala.",
+  "other_blaming": "Culpar a otro",
+  "other_blaming_explanation_1": "Si una mala situación tiene que ser culpa de otro, estamos cometiendo este error. Si fallaste un examen y estás culpando al maestro, estás dirigiendo tu energía al lugar equivocado. ¿Alguien te cortó el paso en la carretera? Si tocas el claxon, le maldices y le haces gestos, ¿en qué ayuda esto? ¡Ahora te han cortado el paso y, además, estás enojado!",
+  "other_blaming_explanation_2": "Esto no significa que tengas que culparte por cada situación negativa. No tienes que culpar a alguien. Nadie tiene que ser culpable si dejas pasar la situación sin echar la culpa a alguien.",
+  "other_blaming_thought": "¡Ese imbécil está tomando demasiado tiempo en la fila y voy a llegar tarde!",
+  "over_generalization": "Sobre-generalización",
+  "over_generalization_explanation": "Si sacamos conclusiones basadas en un solo ejemplo, estamos sobre-generalizando. Si fallaste en una presentación y asumes que esto significa que eres \"malo\" haciendo presentaciones, estás sobre-generalizando.",
+  "over_generalization_thought": "Nadie me sacó a bailar, así que nadie lo hará nunca.",
+  "self_blaming": "Auto-culpa",
+  "self_blaming_explanation": "Si estás atribuyendo una situación negativa por completo a ti mismo, estás auto-culpándote. No tienes que ser responsable de todo lo malo que sucede. Si te encuentras atrapado en el tráfico y te estás regañando por no haber salido antes, te estás auto-culpando. ¿Tratarías a otra persona de esta manera?",
+  "self_blaming_thought": "Mi hijo está fallando en la escuela, debo haberle fallado.",
+  "should_statements": "Los deberías",
+  "should_statements_explanation_1": "Si le estás asignando a alguien las habilidades que no tiene, estás usando declaraciones de \"deberías\" defectuosas. Por ejemplo, si tienes miedo de volar y te dices a ti mismo \"¡No debería tener miedo de esto, no hay nada de malo en el avión!\", te estás imponiendo una carga excesiva. ¡Tienes miedo de volar! ¡Es normal que las personas que temen volar tengan miedo de volar!",
+  "should_statements_explanation_2": "Este tipo de afirmaciones pueden parecer absurdas cuando se dicen en voz alta; ¡ese es el punto! ¡Son ilógicas!",
+  "should_statements_thought": "Soy un adulto, no debería tener estos problemas mentales."
+}

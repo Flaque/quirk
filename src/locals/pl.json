@@ -1,0 +1,134 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "Nie było mnie na imprezie Grześka, na pewno jest na mnie zły.",
+    "challenge_ex": "Grzesiek wie, że nie zawsze da się radę. Nie byłbym zły, gdyby on nie mógł przyjść na moją imprezę.\n\nPowinienem traktować siebie co najmniej tak samo dobrze, jak innych ludzi.",
+    "alt_thought_ex": "To prawda, że nie pojawiłem się na imprezie Grześka, przeproszę, a on najprawdopodobniej przyjmie przeprosiny.",
+    "cog_distortion": { "label": "Czytanie Myśli", "slug": "czytanie-myśli" },
+    "intro": {
+      "line1": "Witaj w",
+      "emphasis1": "quirk",
+      "line2": ", aplikacji do",
+      "emphasis2": "Terapii Poznawczo-Behawioralnej",
+      "line3": "(TPB)."
+    },
+    "crash_course": {
+      "line1": "To mały",
+      "emphasis1": "kurs",
+      "line2": "z TPB, który",
+      "emphasis2": "nie jest alternatywą",
+      "line3": "dla psychoterapeuty."
+    },
+    "mood_thoughts": {
+      "line1": "Po pierwsze:",
+      "emphasis1": "twoje nastroje wynikają z twoich myśli."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "Po drugie: twoje myśli mogą być",
+      "emphasis1": "automatyczne."
+    },
+    "your_distorted": {
+      "line1": "Po trzecie: automatyczne myśli są często",
+      "emphasis1": "zniekształcone."
+    },
+    "cbt_overview": {
+      "line1": "Celem TPB jest rozpoznanie",
+      "emphasis1": "zniekształconych myśli",
+      "line2": "i",
+      "emphasis2": "zastąpienie ich",
+      "line3": "racjonalnymi myślami."
+    },
+    "ready": {
+      "emphasis1": "Gotowy?",
+      "line1": "Przejdźmy po kolejnych krokach."
+    },
+    "catch": {
+      "line1": "1. Zaczniemy od",
+      "emphasis1": "spisywania",
+      "line2": "automatycznych myśli kiedy tylko się pojawią."
+    },
+    "bad_thought_note": {
+      "line1": "Zwróć uwagę:",
+      "line2": "Nie było mnie na imprezie Grześka, na pewno jest na mnie zły."
+    },
+    "identify_distortions": {
+      "line1": "Szukaj",
+      "emphasis1": "Zniekształceń Poznawczych"
+    },
+    "bad_distortions": {
+      "line1": "Czy jesteśmy pewni, że Grzesiek będzie zły? Jeśli nie, uprawiamy",
+      "emphasis1": "Czytanie Myśli",
+      "line2": "Nie było mnie na imprezie Grześka, na pewno jest na mnie zły."
+    },
+    "challenge_screen": {
+      "line1": "3. Dlaczego ta myśl nie jest realistyczna?",
+      "emphasis1": "Zakwestionuj ją."
+    },
+    "write_challenge": {
+      "line1": "Napiszemy tak:"
+    },
+    "alt_thought": {
+      "line1": "4. Na końcu napiszemy",
+      "emphasis1": "alternatywną, racjonalną myśl."
+    },
+    "show_off": {
+      "line1": "Możesz to odszukać później:"
+    },
+    "got_it": {
+      "line1": "I to wszystko",
+      "btn_title": "Zaczynajmy!"
+    }
+  },
+  "auto_thought": "Automatyczna Myśl",
+  "cog_distortion": "Zniekształcenie Poznawcze",
+  "challenge": "Zakwestionowanie",
+  "alt_thought": "Alternatywna Myśl",
+  "cbt_form": {
+    "edit": "Edytuj",
+    "new": "Nowy",
+    "save": "Zapisz",
+    "auto_thought_placeholder": "Co się dzieje?",
+    "cog_distortion": "Zniekształcenie Poznawcze",
+    "challenged": "Zakwestionowanie",
+    "changed_placeholder": "Przedyskutuj tę myśl!",
+    "alt_thought_placeholder": "Jaka myśl będzie bardziej racjonalna?"
+  },
+  "all_or_nothing_thinking": "Wszystko albo Nic",
+  "all_or_nothing_thinking_explanation": "To zniekształcenie występuje, kiedy nie widzimy pośrednich możliwości. Jeśli wierzymy, że nasza mała wada oznacza, że jesteśmy doszczętnie zepsuci lub okropni, prawdopodobnie angażujemy się w myślenie typu wszystko albo nic.",
+  "all_or_nothing_thinking_thought": "Skopałem rozmowę kwalifikacyjną, nie nadaję się na pracownika.",
+  "catastrophizing": "Katastrofizacja",
+  "catastrophizing_explanation": "Jeśli wyolbrzymiamy mały problem, katastrofizujemy. Zrobiłeś mały błąd w pracy i obawiasz się, że ktoś się o tym dowie, nawet jeśli nie jest to nic poważnego? Z dużym prawdopodobieństwem katastrofizujesz.",
+  "catastrophizing_thought": "Czuję się roztrzęsiony, to może być atak serca.",
+  "emotional_reasoning": "Rozumowanie Emocjonalne",
+  "emotional_reasoning_explanation_1": "\"Czuję tak, więc to musi być prawda.\" Jeśli zauważasz, że szukasz uzasadnienia dla \"zagrożenia\" ze strony czegoś względnie nieszkodliwego tylko dlatego, że się tego boisz, to prawdopodobnie angażujesz się w rozumowanie emocjonalne. Rzeczy nie są niebezpieczne tylko dlatego, że się ich boimy, a my nie jesteśmy okropni tylko dlatego, że myślimy, że możemy tacy być.",
+  "emotional_reasoning_explanation_2": "To zniekształcenie jest często trudne do rozpoznania. Wymaga nieco wysiłku rozpoznanie sytuacji, w której twój emocjonalny umysł przejmuje cugle od tego logicznego.",
+  "emotional_reasoning_thought": "Czuję się winny, więc musiałem zrobić coś złego.",
+  "fortune_telling": "Przewidywanie Przyszłości",
+  "fortune_telling_explanation": "To zniekształcenie występuje kiedy próbujemy przewidzieć przyszłość. Często przeceniamy nasze możliwości przewidywania tego, co się zdarzy. Często punktem wyjścia jest coś, czego się boimy, że może się zdarzyć, po czym szukamy dowodów, że taka sytuacja faktycznie będzie miała miejsce.",
+  "fortune_telling_thought": "Mój samolot się rozbije.",
+  "labeling": "Szufladkowanie",
+  "labeling_explanation": "Jeśli oceniamy całą osobę poprzez jedną z jej cech, to szufladkujemy. Jeśli ktoś nas odepchnął, niekoniecznie musi być \"dupkiem,\" może po prostu się spieszył. To się tyczy także nas; to, że popełnimy błąd, nie oznacza, że jesteśmy \"nieudacznikami.\"",
+  "labeling_thought": "Nie zdałem egzaminu, więc jestem złym studentem.",
+  "magnification_of_the_negative": "Skupienie na Negatywach",
+  "magnification_of_the_negative_explanation": "Jeśli oceniasz sytuację na podstawie jej negatywnych stron, a nie bierzesz pod uwagę pozytywnych, prawdopodobnie skupiasz się na negatywach. Jeśli nieustannie ganisz się za nieudaną rozmowę kwalifikacyjną, najprawdopodobniej pomijasz doświadczenie, o które jesteś teraz bogatszy po tej rozmowie.",
+  "magnification_of_the_negative_thought": "Jadłem zdrowo w tym tygodniu, ale nie poszedłem biegać.",
+  "mind_reading": "Czytanie Myśli",
+  "mind_reading_explanation": "Jeśli martwimy się tym, co inni o nas myślą, próbujemy czytać myśli. Dopóki ktoś ci nie powie co myśli, nie możesz wiedzieć. Dlaczego więc zakładać najgorsze?",
+  "mind_reading_thought": "Chyba zachowałem się niegrzecznie wobec Grześka, na pewno jest bardzo zły.",
+  "minimization_of_the_positive": "Minimilizacja Pozytywów",
+  "minimization_of_the_positive_explanation": "Jeśli bagatelizujemy dobre rzeczy, które się nam zdarzają, to minimalizujemy pozytywy. Nawet jeśli nasz dzień nie poszedł w 100% zgodnie z planem, to nie znaczy, że te 60%, które się udało, powinno zostać pominięte.",
+  "minimization_of_the_positive_thought": "Ludziom się podobała moja prezentacja, ale zapomniałem słów wstępu, więc wyszło fatalnie.",
+  "other_blaming": "Obwinianie Innych",
+  "other_blaming_explanation_1": "Jeśli zła sytuacja zawsze jest winą kogoś innego, to znaczy, że obwiniamy innych. Jeśli oblałeś egzamin i uważasz, że to wina nauczyciela, kierujesz swoją energię w złą stronę. Ktoś zajechał ci drogę? Jeśli zaczniesz trąbić, a potem siądziesz mu na ogonie i zaczniesz wyzywać, w czym to pomoże? Teraz jesteś zdenerwowany i odbija się to tylko na tobie!",
+  "other_blaming_explanation_2": "Nie oznacza to, że za każdą negatywną sytuację trzeba obwiniać siebie. Nie musisz obwiniać nikogo. Nikt nie musi być winien, jeśli pozwolisz sytuacji po prostu być.",
+  "other_blaming_thought": "Ten dupek przede mną się ociąga, przez niego się spóźnię!",
+  "over_generalization": "Nadmierna Generalizacja",
+  "over_generalization_explanation": "Jeśli wyciągamy wnioski na podstawie jednego przykładu, to nadmiernie uogólniamy. Jeśli nie poszła ci jedna prezentacja i zakładasz, że przez to jesteś \"słaby\" w publicznych prezentacjach, nadmiernie generalizujesz.",
+  "over_generalization_thought": "Nikt nie poprosił mnie do tańca, więc nikt nigdy tego zrobi.",
+  "self_blaming": "Obwinianie Siebie",
+  "self_blaming_explanation": "Jeśli przypisujesz negatywną sytuację całkowicie sobie, obwiniasz się. Nie musisz być odpowiedzialny za każdą złą rzecz, która się dzieje. Jeśli utkwiłeś w korku i masz do siebie pretensje, że nie wyszedłeś z domu wcześniej, obwiniasz siebie. Czy tak samo potraktowałbyś drugą osobę?",
+  "self_blaming_thought": "Mój syn sobie nie radzi w szkole, zawiodłem jako rodzic.",
+  "should_statements": "Stwierdzenia typu Powienienem",
+  "should_statements_explanation_1": "Jeśli przypisujesz komuś możliwości, których nie posiadają, używasz sformuowania \"powienien\" w szkodliwy sposób. Na przykład, jeśli boisz się latać samolotem i mówisz sobie \"Nie powinienem się tego bać, nie ma nic złego w samolotach!\" nakładasz na siebie nadmierny ciężar. Boisz się lotów! To normalne, że ludzie, którzy mają taki lęk, boją się latać!",
+  "should_statements_explanation_2": "Stwierdzenia typu \"Powinienem\" mogą wydawać się bezsensowne, kiedy powiesz je na głos; oto chodzi! Są nielogiczne!",
+  "should_statements_thought": "Jestem dorosłą osobą, nie powinienem mieć problemów psychicznych."
+}

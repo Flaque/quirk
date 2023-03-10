@@ -1,0 +1,149 @@
+{
+  "onboarding_screen": {
+    "auto_thought_ex": "나는 친구의 초대에 못갔어, 나를 미워할꺼야.",
+    "challenge_ex": "그 친구는 내가 모든 모임에 나갈 수 없다는 걸 잘 알아. 나는 내 초대에 누군가 못 온다 해도 미워하지는 않을꺼야\n\n내가 나 자신을 대할 때도, 타인이 나를 대하는 만큼은 존중해줘야해.",
+    "alt_thought_ex": "내가 모임에 못간건 사실이야, 하지만 내가 사과한다면, 친구는 나를 받아줄꺼야.",
+    "cog_distortion": { "label": "독심술", "slug": "mind-reading" },
+    "intro": {
+      "line1": "반갑습니다.",
+      "emphasis1": "quirk",
+      "line2": "는",
+      "emphasis2": "인지 행동 치료 (CBT)",
+      "line3": "를 도와주는 앱입니다."
+    },
+    "crash_course": {
+      "line1": "이 앱은 인지 행동 치료를 위한",
+      "emphasis1": "짧은 훈련용",
+      "line2": "앱이며",
+      "emphasis2": "전문 치료사를 대신할 수는 없습니다.",
+      "line3": ""
+    },
+    "mood_thoughts": {
+      "line1": "하나:",
+      "emphasis1": "당신의 생각이 당신의 기분을 만듭니다."
+    },
+    "thoughts_arent_thoughts": {
+      "line1": "둘: 당신의 생각은 ",
+      "emphasis1": "자동적일 가능성이 있습니다."
+    },
+    "your_distorted": {
+      "line1": "셋: 자동적 생각은 종종",
+      "emphasis1": "왜곡될 수 있습니다."
+    },
+    "cbt_overview": {
+      "line1": "인지 행동 치료는 ",
+      "emphasis1": "왜곡된 생각",
+      "line2": "을 인지하고 그것을",
+      "emphasis2": "이성적인 생각",
+      "line3": "으로 바꿔나가는 것입니다."
+    },
+    "ready": {
+      "emphasis1": "준비되셨나요?",
+      "line1": "이 앱을 사용하는 방법을 설명하겠습니다."
+    },
+    "catch": {
+      "line1": "1. 우선은 그때 그때",
+      "emphasis1": "자동적으로 떠오른 생각",
+      "line2": "을 적으세요."
+    },
+    "bad_thought_note": {
+      "line1": "생각 적기:",
+      "line2": "오늘 친구가 초대한 모임에 나가기로 했는데, 약속을 못지켰어. 그 친구는 날 미워할꺼야."
+    },
+    "identify_distortions": {
+      "line1": "자동적 사고에서",
+      "emphasis1": "인지 왜곡을 찾아내기"
+    },
+    "bad_distortions": {
+      "line1": "정말로 그 친구가 나를 미워하는게 확실할까? 그렇지 않다면 내가 하는 것은",
+      "emphasis1": "독심술이다",
+      "line2": "나는 친구의 초대에 못가서 미움 받을꺼야."
+    },
+    "challenge_screen": {
+      "line1": "3. 이 자동적 사고가 비현실적이라면?",
+      "emphasis1": "바꿔보자."
+    },
+    "write_challenge": {
+      "line1": "왜곡된 것을 고쳐보자:"
+    },
+    "alt_thought": {
+      "line1": "4. 이제",
+      "emphasis1": "새로운 생각을 적어보자."
+    },
+    "show_off": {
+      "line1": "정리하면:"
+    },
+    "got_it": {
+      "line1": "지금까지 이 앱의 사용법을 말씀드렸습니다.",
+      "btn_title": "시작해보아요!"
+    }
+  },
+  "auto_thought": "자동적 사고",
+  "cog_distortion": "인지 왜곡",
+  "challenge": "생각바꾸기",
+  "alt_thought": "대안적 사고",
+  "cbt_form": {
+    "edit": "수정",
+    "new": "등록",
+    "save": "저장",
+    "auto_thought_placeholder": "무슨 생각이 떠올랐나요?",
+    "cog_distortion": "인지 왜곡",
+    "challenged": "생각바꾸기",
+    "changed_placeholder": "어떻게 왜곡되었나요?",
+    "alt_thought_placeholder": "대신에 어떻게 생각하면 좋을까요?"
+  },
+  "all_or_nothing_thinking": "흑백논리",
+  "all_or_nothing_thinking_explanation": "이 왜곡은 중간이 없다고 생각하는 것이다. 아주 작은 잘못도 아주 끔찍하게 생각하는 것도 흑백논리이다.",
+  "all_or_nothing_thinking_thought": "오늘 면접을 망쳤어, 난 평생 취직은 못 할 거야.",
+  "catastrophizing": "재앙화",
+  "catastrophizing_explanation": "작은 문제를 너무 크게 부풀리는 것이다. 회사에서 저지른 작은 실수를 누군가 알아차릴까 봐 전전긍긍한 적이 있는가? 재앙화 왜곡을 하고 있었을 수도 있다.",
+  "catastrophizing_thought": "나 가슴이 두근대는 것 같은데, 심장마비 아닐까.",
+  "emotional_reasoning": "정서적 추론",
+  "emotional_reasoning_explanation_1": "\"내가 느끼는 게 진실이야.\" 평범한 물건을 두려움이 느껴지기 때문에 \"위험하다\"고 생각하는 것이 정서적 추론의 예이다. 두려움을 느끼기 때문에 물건이 위험해지는 것도 아니고, 자신에게 나쁜 느낌이 든다고 끔찍한 인간이 되는 것도 아니다.",
+  "emotional_reasoning_explanation_2": "이 왜곡은 알아차리기 힘들다. 감정이 논리를 이끄는 것을 알아차리려면 어느 정도 노력이 필요하다.",
+  "emotional_reasoning_thought": "내가 죄책감이 드는 걸 보면, 나한테 잘못이 있는 게 틀림없어.",
+  "fortune_telling": "예언자적 사고",
+  "fortune_telling_explanation": "미래에 벌어질 일을 예언하는 것이다. 우리는 앞으로 벌어질 일을 예측하는 우리의 능력을 과신하곤 한다. 그리고 종종 걱정하는 그 일이 벌어질 것이라고 생각하면서 증거를 찾기도 한다.",
+  "fortune_telling_thought": "내가 타려는 비행기는 추락할 거야.",
+  "labeling": "낙인찍기",
+  "labeling_explanation": "한가지 특징만을 강조해서 사람을 평가하는 것이다. 누군가가 나를 무시한다면 그가 \"예의없는 놈\"일 수도 있지만, 그저 바빴기 때문일 수도 있다. 이런 태도는 우리 자신에게도 마찬가지로 적용할 수 있다. 우리가 어떤 실수를 저지른다 해서 그게 곧 우리가 \"실패자\"라는 의미는 아니다.",
+  "labeling_thought": "이번 시험은 모르는 게 너무 많았어. 나는 멍청한 학생이야.",
+  "magnification_of_the_negative": "부정적 사고 극대화",
+  "magnification_of_the_negative_explanation": "안 좋은 부분만 확대해서 평가하는 것이다. 면접에서 떨어진 자신을 질책하기만 한다면, 면접에서 얻은 경험을 무시하게 될 수도 있다.",
+  "magnification_of_the_negative_thought": "이번 주엔 먹는 건 조심했는데, 달리기를 빼먹었어.",
+  "mind_reading": "독심술",
+  "mind_reading_explanation": "타인이 나를 어떻게 생각하는지 걱정한다면, 우리는 독심술을 사용 중인 것이다. 그의 생각을 말하기 전까지, 우리는 그의 생각을 알 수 없다. 그런데 왜 최악의 상황을 상상하는가?",
+  "mind_reading_thought": "아까 내가 좀 예의 없이 말했어, 저 친구는 이제 날 싫어할 거야.",
+  "minimization_of_the_positive": "긍정적 사고 최소화",
+  "minimization_of_the_positive_explanation": "좋은 일이 벌어져도 과소평가하는 것이다. 오늘 하루가 100% 계획한 대로 되지 않았다고 해서, 60%의 진전까지 무시할 필요는 없다.",
+  "minimization_of_the_positive_thought": "다들 내 발표를 좋아했지만, 처음 부분이 매끄럽지 않았어. 이번 발표는 망친 거나 마찬가지야.",
+  "other_blaming": "타인 비난하기",
+  "other_blaming_explanation_1": "나쁜 일의 원인이 다른 사람에게 있다고 단정하는 것이다. 시험을 망치고 나서 선생님을 비난하는 것은 엉뚱한 화풀이일 수 있다. 고속도로에서 끼어드는 차를 향해서 경적을 울리고 하이빔을 쏘고 끙끙거리는 것이 무슨 소용인가? 차라리 나도 미친 척하고 끼어드는 건 어떨까!",
+  "other_blaming_explanation_2": "상황이 안 좋다고 반드시 자신을 비난할 필요는 없다. 그렇다고 타인을 비난해야만 하는 것도 아니다. 아무도 비난하지 않고 상황이 지나가기를 기다려준다면, 누구의 잘못도 아닐 수 있다.",
+  "other_blaming_thought": "저 멍청이가 앞을 너무 비워놨네, 벌써 지각인데!",
+  "over_generalization": "지나친 일반화",
+  "over_generalization_explanation": "한 번의 경험만으로 결론을 내리려 하는 것이다. 회사에서 무언가를 발표하다가 실수를 한 다음 자신은 \"형편없는\" 발표자라고 생각한다면 지나친 일반화이다.",
+  "over_generalization_thought": "아무도 나에게 말을 걸지 않고 있어, 아마 나는 평생 이럴 거야.",
+  "self_blaming": "자책하기",
+  "self_blaming_explanation": "부정적인 상황의 책임을 자신에게만 지우려 하는 것이다. 세상에 벌어지는 모든 안 좋은 일이 전부 당신의 책임은 아니다. 교통체증을 겪으면서 일찍 출발하지 않은 자신을 비난하는 것도 자책하기이다. 다른 사람에게도 자신에게 하듯 비난하는가?",
+  "self_blaming_thought": "아이가 학교에 적응을 못 하는 건, 내가 아이를 잘못 키웠기 때문이야.",
+  "should_statements": "당위진술",
+  "should_statements_explanation_1": "누군가에게 없는 능력을 있다고 여기는 것이다. 예를 들어, 비행기 타기가 두렵다고 느끼면서 '나는 이걸 두려워해선 안 돼. 비행기는 안전할 테니까!'라고 생각하는 건, 너무 힘든 일이다. 당신은 비행기 타기를 두려워하는 것이다! 비행 공포가 있는 사람이 비행을 두려워하는 것은 자연스러운 일이다.",
+  "should_statements_explanation_2": "당위 진술은 큰 소리로 말해보면 힘이 없어지곤 한다. 그 진술이 비논리적이기 때문에!",
+  "should_statements_thought": "나는 어른이니까, 이런 정신적인 문제들이 없어야해.",
+  "payment": {
+    "ios_explanation": "지불 확인은 Apple ID 계좌로 지불됩니다. 현재 기간이 종료되기 최소 24 시간 전에 취소되지 않으면 자동으로 갱신됩니다. 현재 기간이 끝나기 24 시간 이내에 귀하의 계정에 갱신 요금이 부과됩니다. 구매 후 앱 스토어 계정 설정으로 이동하여 구독을 관리하고 취소 할 수 있습니다."
+  },
+  "all_or_nothing_thinking_one_liner": "ex: \"그건 시간 낭비\"",
+  "overgeneralization_one_liner": "ex: \"모두가 나를 실망 시키겠다.\"",
+  "mind_reading_one_liner": "ex: \"그는 나를 싫어한다.\"",
+  "fortune_telling_one_liner": "ex: \"나는 아플거야.\"",
+  "magnification_of_the_negative_one_liner": "나는 무엇이 잘못되었는지 만 안다.",
+  "minimization_of_the_positive_one_liner": "나는 일어난 좋은 일들을 무시한다.",
+  "catastrophizing_one_liner": "나는 최악의 시나리오에 집중한다.",
+  "emotional_reasoning_one_liner": "ex: \"나는 두려워서 공황 발작을 일으킬 것이다.\"",
+  "should_statements_one_liner": "ex: \"나는 더 잘해야했다.\"",
+  "labeling_one_liner": "ex: \"그는 바보 야.\"",
+  "self_blaming_one_liner": "나는 완전히 잘못이다.",
+  "other_blaming_one_liner": "누군가 다른 사람이 전적으로 잘못되었습니다."
+}

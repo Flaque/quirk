@@ -1,0 +1,106 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
+
+
+target 'quirk' do
+  pod 'ExpoKit',
+    :git => "http://github.com/expo/expo.git",
+    :tag => "ios/2.13.0",
+    :subspecs => [
+      "Core"
+    ],
+    :inhibit_warnings => true
+
+  require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
+  use_unimodules!(
+    exclude: [
+      'expo-face-detector',
+      'expo-payments-stripe',
+    ],
+  )
+
+  pod 'React',
+    :path => "../node_modules/react-native",
+    :inhibit_warnings => true,
+    :subspecs => [
+      "Core",
+      "ART",
+      "RCTActionSheet",
+      "RCTAnimation",
+      "RCTCameraRoll",
+      "RCTGeolocation",
+      "RCTImage",
+      "RCTNetwork",
+      "RCTText",
+      "RCTVibration",
+      "RCTWebSocket",
+      "DevSupport",
+      "CxxBridge"
+    ]
+  pod 'yoga',
+    :path => "../node_modules/react-native/ReactCommon/yoga",
+    :inhibit_warnings => true
+  pod 'DoubleConversion',
+    :podspec => "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec",
+    :inhibit_warnings => true
+  pod 'Folly',
+    :podspec => "../node_modules/react-native/third-party-podspecs/Folly.podspec",
+    :inhibit_warnings => true
+  pod 'glog',
+    :podspec => "../node_modules/react-native/third-party-podspecs/glog.podspec",
+    :inhibit_warnings => true
+
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
+  pod 'RNStoreReview', :path => '../node_modules/react-native-store-review/ios'
+
+  pod 'RNPurchases', :path => '../node_modules/react-native-purchases'
+
+
+  post_install do |installer|
+    installer.pods_project.main_group.tab_width = '2';
+    installer.pods_project.main_group.indent_width = '2';
+
+    installer.target_installation_results.pod_target_installation_results
+      .each do |pod_name, target_installation_result|
+
+      if pod_name == 'ExpoKit'
+        target_installation_result.native_target.build_configurations.each do |config|
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'EX_DETACHED=1'
+          
+          # Enable Google Maps support
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'HAVE_GOOGLE_MAPS=1'
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'HAVE_GOOGLE_MAPS_UTILS=1'
+          
+        end
+      end
+
+
+      if ['Amplitude-iOS','Analytics','AppAuth','Branch','CocoaLumberjack','FBSDKCoreKit','FBSDKLoginKit','FBSDKShareKit','GPUImage','JKBigInteger2'].include? pod_name
+        target_installation_result.native_target.build_configurations.each do |config|
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
+        end
+      end
+
+      # Can't specify this in the React podspec because we need to use those podspecs for detached
+      # projects which don't reference ExponentCPP.
+      if pod_name.start_with?('React')
+        target_installation_result.native_target.build_configurations.each do |config|
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
+          config.build_settings['HEADER_SEARCH_PATHS'] ||= ['$(inherited)']
+        end
+      end
+
+      # Build React Native with RCT_DEV enabled and RCT_ENABLE_INSPECTOR and
+      # RCT_ENABLE_PACKAGER_CONNECTION disabled
+      next unless pod_name == 'React'
+      target_installation_result.native_target.build_configurations.each do |config|
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_DEV=1'
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_ENABLE_INSPECTOR=0'
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'ENABLE_PACKAGER_CONNECTION=0'
+      end
+
+    end
+  end
+end
