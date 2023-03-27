@@ -1,6 +1,4 @@
-🚧🚧🚧
-
-**Quirk is no longer being maintained.**
+                                                  ✨🐙 quirk
 
 Quirk started as a little thing I made for myself as I started doing CBT. As I got better, I needed Quirk less. But at the same time, lots of other people had discovered Quirk and started picking it up. That meant more bug fixes, more features, and just more work to be done. I really couldn't keep it up well, especially with my main focus at the time (my day job). 
 
@@ -12,9 +10,6 @@ Unfortunately, in order for the business to work and for us to pay ourselves, we
 
 Anyone who's followed this project will know that we explored multiple paths towards sustainability. Much of it was discussed in the PRs and issues of this repo. We've investigated a completely free model, an indie open source model, a community open source model, a donation model, a pay-up-front model, an ad model, a tele-therapy model, and a subscription model. 
 
-**Quirk (the company) is now Room Service.**
-
-Now-a-days, we're making [Room Service](https://www.roomservice.dev/), which helps folks build multiplayer stuff, like what Figma or Google Docs have. Multiple cursors, CRDTs, sockets, lots of people editing the same thing, that sort of thing. We're still the same commercial entity and such, just making a different product now. If you think multiplayer systems are cool and want to join us, send me an email: `evan @ roomservice . dev`. 
 
 **Make your own Quirk.**
 
@@ -22,7 +17,7 @@ If you like Quirk and want it to continue, feel free to fork it. We'd ask that y
 
 If you want to fork Quirk, you should fork off of [this commit](https://github.com/Flaque/quirk/commit/7a4eabe48414de5edfefcd693e79178120eae142), it's right before we added payments and when the code was the cleanest. 
 
-🚧🚧🚧
+
 
 
 ---
@@ -30,7 +25,7 @@ If you want to fork Quirk, you should fork off of [this commit](https://github.c
 <p align="center">
 <h1 align="center">✨🐙 quirk. </h1>
 </p>
-<p align="center">
+<p align="left">
   <a href="https://itunes.apple.com/us/app/quirk-cbt/id1447026451?mt=8">Download iOS</a> • <a href="https://play.google.com/store/apps/details?id=tech.econn.quirk">Download Android</a> • <a href="mailto:humans+github@quirk.fyi">Contact</a> • <a href="https://tinyletter.com/quirk">Newsletter</a>
 <br><br>
 </p>
