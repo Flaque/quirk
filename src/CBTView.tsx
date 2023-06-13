@@ -37,7 +37,7 @@ export default ({ thought }: ThoughtComponent) => (
       {thought.automaticThought ? (
         <BubbleThought
           style={{
-            marginTop: 0,
+            marginTop: 10,
           }}
         >
           {thought.automaticThought}
