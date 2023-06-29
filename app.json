@@ -8,7 +8,7 @@
     "platforms": ["ios", "android"],
     "version": "2.4.0",
     "orientation": "portrait",
-    "githubUrl": "https://github.com/Flaque/quirk",
+    "githubUrl": "https://github.com/KiyashaBiswas/Pro-67.git",
     "primaryColor": "#F8A5C2",
     "splash": {
       "image": "./assets/splash.png",
