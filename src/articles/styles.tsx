@@ -12,7 +12,7 @@ export default StyleSheet.create({
   heading1: {
     fontSize: 20,
     lineHeight: 22,
-    fontWeight: "900",
+    fontWeight: 900,
   },
   heading2: {
     fontSize: 18,
