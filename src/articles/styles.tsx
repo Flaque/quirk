@@ -12,12 +12,12 @@ export default StyleSheet.create({
   heading1: {
     fontSize: 20,
     lineHeight: 22,
-    fontWeight: "900",
+    fontWeight: "10",
   },
   heading2: {
     fontSize: 18,
     lineHeight: 20,
-    fontWeight: "700",
+    fontWeight: "10",
   },
   pargaraph: {
     marginTop: 0,
