@@ -4,7 +4,7 @@ const alerts: Alert[] = [
   {
     slug: "alternative-thought-title",
     priority: 0,
-    title: "👋 Hey-o!",
+    title: "👋 Hello!",
     body: `Something's changed!
 
 Thoughts shown here are now the alternative thought, not your initial thought. We changed this to cement the importance of changing your thought, not just recording them.
