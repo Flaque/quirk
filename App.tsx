@@ -9,6 +9,7 @@ import {
   CHECKUP_SCREEN,
   SUPPORT_SCREEN,
   MARKDOWN_ARTICLE_SCREEN,
+  BUTTON    
 } from "./src/screens";
 import SettingScreen from "./src/SettingsScreen";
 import withErrorBoundary from "./src/sentry/withErrorBoundary";
@@ -56,3 +57,9 @@ const App = createBottomTabNavigator(
 );
 
 export default withErrorBoundary(createAppContainer(App));
+const app =createButton(
+  style:{ button:
+alignCenter,
+  width:10,
+  height:10
+        })
