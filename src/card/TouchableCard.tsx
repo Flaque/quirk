@@ -17,10 +17,10 @@ export const TouchableCardContainer = ({
     onPress={onPress}
     style={{
       backgroundColor: "white",
-      borderColor: theme.lightGray,
-      borderBottomWidth: 2,
-      borderRadius: 8,
-      borderWidth: 1,
+      borderColor: theme.lightBlue,
+      borderBottomWidth: 4,
+      borderRadius: 12,
+      borderWidth: 2,
       marginBottom: 18,
       flex: 1,
       ...style,
@@ -43,22 +43,22 @@ export const CardCrown = ({
 }) => (
   <View
     style={{
-      paddingVertical: 8,
+      paddingVertical: 14,
       paddingHorizontal: 12,
       width: "100%",
-      backgroundColor: theme.lightOffwhite,
-      borderTopEndRadius: 8,
-      borderTopStartRadius: 8,
-      justifyContent: "space-between",
+      backgroundColor: theme.lightGreen,
+      borderTopEndRadius: 12,
+      borderTopStartRadius: 14,
+      justifyContent: "center",
       flex: 1,
       flexDirection: "row",
     }}
   >
     <Text
       style={{
-        fontSize: 10,
+        fontSize: 15,
         fontWeight: "700",
-        color: theme.lightText,
+        color: theme.lightYellow,
         letterSpacing: 1,
       }}
     >
@@ -66,7 +66,7 @@ export const CardCrown = ({
     </Text>
     <Feather
       name={featherIconName}
-      color={color || theme.veryLightText}
+      color="red";
       size={12}
     />
   </View>
