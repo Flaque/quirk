@@ -17,7 +17,7 @@ export const textInputStyle = {
 };
 export const textInputPlaceholderColor = theme.veryLightText;
 
-export const TextInput = (props: {
+export const TextInput: React.FC<Props> = (props) => {
   placeholder: string;
   multiline?: boolean;
   numberOfLines?: number;
