@@ -70,8 +70,8 @@ const Feedback = () => (
     <ActionButton
       flex={1}
       title={"Email Feedback"}
-      fillColor="#EDF0FC"
-      textColor={theme.darkBlue}
+      fillColor="#d5d8e2"
+      textColor={theme.lightBlue}
       style={{
         borderWidth: 0,
         borderBottomWidth: 0,
@@ -91,8 +91,8 @@ const CancelationInstructions = () => {
     <ActionButton
       flex={1}
       title={"Cancellation Instructions"}
-      fillColor="#EDF0FC"
-      textColor={theme.darkBlue}
+      fillColor="#d5d8e2"
+      textColor={theme.lightBlue}
       style={{
         borderWidth: 0,
         borderBottomWidth: 0,
@@ -136,7 +136,7 @@ const SubscriptionExpirationDate = ({ expirationDate }) => (
     <Row>
       <Paragraph
         style={{
-          marginBottom: 16,
+          marginBottom: 15,
         }}
       >
         Thanks for supporting the development of Quirk!
