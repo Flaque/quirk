@@ -17,7 +17,7 @@ export default StyleSheet.create({
   heading2: {
     fontSize: 18,
     lineHeight: 20,
-    fontWeight: "700",
+    fontWeight: "900",
   },
   pargaraph: {
     marginTop: 0,
