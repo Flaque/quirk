@@ -19,7 +19,7 @@ export default StyleSheet.create({
     lineHeight: 20,
     fontWeight: "700",
   },
-  pargaraph: {
+  paragraph: {
     marginTop: 0,
   },
 });
